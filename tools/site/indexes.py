@@ -14,6 +14,14 @@ search.json  (compact, deterministic; loaded lazily by assets/site.js)
 
   Order: symbols (by lower-cased name), sections (contents order), glossary terms (file order, then
   document order). The order is the final tie-break of the ranking, so keep it stable.
+
+toc.json  (compact, deterministic; loaded by assets/site.js to render the contents sidebar)
+
+  {"v": 1, "toc": [[title, href] | [title, href, [child, ...]], ...]}
+
+  The table of contents (nav.xhtml) as nested arrays in document order. `title` is the full title
+  (the sidebar truncates it visually), `href` is the path from nav.xhtml relative to the site root, with
+  its fragment as written there. A node without children is a two-element array.
 """
 import json
 import re
@@ -82,5 +90,23 @@ def build_search(oebps, toc, records):
 def write_search(oebps, out, toc, records):
     data = build_search(oebps, toc, records)
     path = Path(out) / "search.json"
+    path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    return data
+
+
+def _toc_node(n):
+    item = [n.title, n.href]
+    if n.children:
+        item.append([_toc_node(c) for c in n.children])
+    return item
+
+
+def build_toc(toc):
+    return {"v": 1, "toc": [_toc_node(n) for n in toc.roots]}
+
+
+def write_toc(out, toc):
+    data = build_toc(toc)
+    path = Path(out) / "toc.json"
     path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     return data

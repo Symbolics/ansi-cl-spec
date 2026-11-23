@@ -126,3 +126,115 @@ body.cover .site-header { padding-inline: 0.75rem; text-align: left; }
 .site-search-active { background: var(--site-bar); outline: 1px solid var(--site-link); outline-offset: -1px; }
 .site-search-label { font-weight: 600; }
 .site-search-kind, .site-search-note { color: var(--site-muted); }
+
+/* Contents sidebar (tools/site/assets/site.js). Hidden until the script builds it. Wide screens: a fixed
+ * left column that body padding makes room for (--site-sidebar-w); narrow: an overlay drawer. */
+.site-sidebar, .site-backdrop, .site-menu-button, .site-sidebar-hide, .site-sidebar-close { display: none; }
+.site-has-menu .site-contents { display: none; }
+.site-menu-button {
+  font: inherit;
+  color: var(--site-link);
+  background: transparent;
+  border: 1px solid var(--site-line);
+  border-radius: 0.4em;
+  padding: 0.1em 0.6em;
+  cursor: pointer;
+}
+.site-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  box-sizing: border-box;
+  width: min(20rem, 88vw);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  color: var(--site-fg);
+  background: var(--site-bg);
+  border-right: 1px solid var(--site-line);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+.site-sidebar-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 0.6rem;
+  background: var(--site-bar);
+  border-bottom: 1px solid var(--site-line);
+}
+.site-sidebar-title { flex: 1; font-weight: 600; text-decoration: none; color: var(--site-fg); }
+.site-sidebar-hide, .site-sidebar-close {
+  font: inherit;
+  color: var(--site-muted);
+  background: transparent;
+  border: 1px solid var(--site-line);
+  border-radius: 0.4em;
+  padding: 0.05em 0.5em;
+  cursor: pointer;
+}
+.site-sidebar-close { font-size: 1.2rem; line-height: 1.2; }
+.site-sidebar-body { padding: 0.4em 0.3rem 2em 0.3rem; }
+.site-toc { list-style: none; margin: 0; padding: 0; }
+.site-toc .site-toc { padding-left: 0.75rem; }
+.site-toc-item { margin: 0; padding: 0; }
+.site-toc-row { display: flex; align-items: center; min-width: 0; }
+.site-toc-toggle, .site-toc-spacer { flex: none; box-sizing: border-box; width: 1.5rem; height: 1.6rem; }
+.site-toc-toggle {
+  padding: 0;
+  color: var(--site-muted);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+.site-toc-toggle::before { content: "\25B8"; display: inline-block; transition: transform 0.1s; }
+.site-toc-toggle[aria-expanded="true"]::before { transform: rotate(90deg); }
+.site-toc-link {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.12em 0.3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--site-fg);
+  text-decoration: none;
+  border-radius: 0.3em;
+}
+.site-toc-link:hover { text-decoration: underline; }
+.site-toc-link[aria-current="page"] {
+  font-weight: 600;
+  color: var(--site-link);
+  background: var(--site-bar);
+  box-shadow: inset 3px 0 var(--site-link);
+}
+.site-toc-toggle:focus-visible, .site-toc-link:focus-visible, .site-menu-button:focus-visible,
+.site-sidebar-hide:focus-visible, .site-sidebar-close:focus-visible, .site-sidebar-title:focus-visible {
+  outline: 2px solid var(--site-link);
+  outline-offset: -2px;
+}
+
+@media (min-width: 64em) {
+  html.site-sidebar-on { --site-sidebar-w: 20rem; }
+  html.site-sidebar-on.site-sidebar-collapsed { --site-sidebar-w: 0px; }
+  html.site-sidebar-on:not(.site-sidebar-collapsed) .site-sidebar { display: block; }
+  html.site-sidebar-on:not(.site-sidebar-collapsed) .site-sidebar-hide { display: inline-block; }
+  html.site-sidebar-on.site-sidebar-collapsed .site-menu-button { display: inline-block; }
+  .site-sidebar { width: 20rem; }
+}
+@media (max-width: 63.99em) {
+  html.site-sidebar-on .site-menu-button { display: inline-block; }
+  html.site-sidebar-on .site-sidebar-close { display: inline-block; }
+  html.site-drawer-open .site-sidebar { z-index: 910; display: block; box-shadow: 0 0 24px rgba(0, 0, 0, 0.35); }
+  html.site-drawer-open .site-backdrop { position: fixed; inset: 0; z-index: 900; display: block; background: rgba(0, 0, 0, 0.45); }
+}
+@media print {
+  .site-sidebar, .site-backdrop, .site-menu-button { display: none !important; }
+  html.site-sidebar-on { --site-sidebar-w: 0px !important; }
+}

@@ -65,8 +65,24 @@
     return hits.slice(0, limit || MAX_RESULTS).map(function (h) { return h.item; });
   }
 
+  /* ---------- contents tree (pure; also loaded by node for tests) ---------- */
+
+  /* Index path (e.g. [3, 0, 2]) of the first node, in document order, whose href file (without the
+   * fragment) equals `file`, in toc.json nodes [title, href, children?]; null if none. */
+  function findPath(nodes, file) {
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      if (String(n[1]).split("#")[0] === file) return [i];
+      if (n[2]) {
+        var sub = findPath(n[2], file);
+        if (sub) return [i].concat(sub);
+      }
+    }
+    return null;
+  }
+
   if (typeof module === "object" && module && module.exports) {
-    module.exports = { rank: rank };
+    module.exports = { rank: rank, findPath: findPath };
     return; /* node: no DOM code below runs */
   }
 
@@ -284,9 +300,243 @@
     });
   }
 
-  /* ---------- sidebar (step 4 adds it here) ---------- */
+  /* ---------- sidebar ---------- */
 
-  function initSidebar(root) { /* contents sidebar: added in step 4 */ }
+  var STORE_OPEN = "site-toc-open", STORE_HIDDEN = "site-sidebar-hidden";
+
+  function load(key) {
+    try { return window.localStorage.getItem(key); } catch (e) { return null; }
+  }
+  function save(key, value) {
+    try {
+      if (value === null) window.localStorage.removeItem(key); else window.localStorage.setItem(key, value);
+    } catch (e) { /* storage unavailable: state just isn't remembered */ }
+  }
+
+  function initSidebar(root) {
+    var sb = document.getElementById("site-sidebar");
+    if (!sb || !document.body) return;
+    var page = sb.getAttribute("data-site-page") || "";
+    var html = document.documentElement;
+    var wide = window.matchMedia ? window.matchMedia("(min-width: 64em)") : { matches: false };
+    var header = document.querySelector(".site-header");
+    var contentsLink = header && header.querySelector(".site-contents");
+    var tocData = null, loading = null, rendered = false, current = null, drawerOpen = false;
+    var opened = {}; /* "3/0/2" -> true: branches the user left open */
+    try { opened = JSON.parse(load(STORE_OPEN) || "{}") || {}; } catch (e) { opened = {}; }
+    if (typeof opened !== "object") opened = {};
+
+    /* skeleton */
+    var head = el("div", "site-sidebar-head");
+    var title = el("a", "site-sidebar-title", "Contents");
+    title.setAttribute("href", new URL("nav.xhtml", root).href);
+    var hideBtn = el("button", "site-sidebar-hide", "Hide");
+    hideBtn.setAttribute("type", "button");
+    hideBtn.setAttribute("title", "Hide the contents sidebar");
+    var closeBtn = el("button", "site-sidebar-close", "×");
+    closeBtn.setAttribute("type", "button");
+    closeBtn.setAttribute("aria-label", "Close contents");
+    head.appendChild(title);
+    head.appendChild(hideBtn);
+    head.appendChild(closeBtn);
+    var body = el("div", "site-sidebar-body", "Loading contents…");
+    sb.appendChild(head);
+    sb.appendChild(body);
+    var backdrop = el("div", "site-backdrop");
+    document.body.appendChild(backdrop);
+
+    var menuBtn = null;
+    if (header) {
+      menuBtn = el("button", "site-menu-button", "☰ Contents");
+      menuBtn.setAttribute("type", "button");
+      menuBtn.setAttribute("aria-controls", "site-sidebar");
+      menuBtn.setAttribute("aria-expanded", "false");
+      header.insertBefore(menuBtn, contentsLink || null);
+      html.classList.add("site-has-menu"); /* hides the plain Contents link; it stays for no-JS */
+    }
+
+    function visible() {
+      return wide.matches ? !html.classList.contains("site-sidebar-collapsed") : drawerOpen;
+    }
+    function syncState() {
+      if (menuBtn) menuBtn.setAttribute("aria-expanded", visible() ? "true" : "false");
+      if (visible()) ensureRendered();
+    }
+
+    /* ---- tree ---- */
+
+    function key(path) { return path.join("/"); }
+
+    function makeList(nodes, prefix, depth) {
+      var ul = el("ul", "site-toc");
+      for (var i = 0; i < nodes.length; i++) ul.appendChild(makeItem(nodes[i], prefix.concat([i]), depth));
+      return ul;
+    }
+
+    function setOpen(li, open) {
+      var btn = li.firstChild.firstChild;
+      var node = li._node;
+      if (open && !li._list) {
+        li._list = makeList(node[2], li._path, li._depth + 1);
+        li.appendChild(li._list);
+      }
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      if (li._list) li._list.hidden = !open;
+    }
+
+    function makeItem(node, path, depth) {
+      var li = el("li", "site-toc-item");
+      li._node = node; li._path = path; li._depth = depth;
+      var row = el("div", "site-toc-row");
+      var hasKids = node[2] && node[2].length;
+      if (hasKids) {
+        var btn = el("button", "site-toc-toggle");
+        btn.setAttribute("type", "button");
+        btn.setAttribute("aria-expanded", "false");
+        btn.setAttribute("aria-label", "Subsections of " + node[0]);
+        btn.addEventListener("click", function () {
+          var open = btn.getAttribute("aria-expanded") !== "true";
+          setOpen(li, open);
+          if (open) opened[key(path)] = true; else delete opened[key(path)];
+          save(STORE_OPEN, JSON.stringify(opened));
+        });
+        row.appendChild(btn);
+      } else {
+        row.appendChild(el("span", "site-toc-spacer"));
+      }
+      var a = el("a", "site-toc-link", node[0]);
+      a.setAttribute("href", new URL(node[1], root).href);
+      a.setAttribute("title", node[0]);
+      row.appendChild(a);
+      li.appendChild(row);
+      if (hasKids && (opened[key(path)] || (current && isPrefix(path, current)))) setOpen(li, true);
+      if (current && key(path) === key(current)) a.setAttribute("aria-current", "page");
+      return li;
+    }
+
+    function isPrefix(p, full) {
+      if (p.length >= full.length) return false;
+      for (var i = 0; i < p.length; i++) if (p[i] !== full[i]) return false;
+      return true;
+    }
+
+    function reveal() {
+      var a = body.querySelector('[aria-current="page"]');
+      if (!a || !visible()) return;
+      var r = a.getBoundingClientRect(), b = sb.getBoundingClientRect();
+      sb.scrollTop += (r.top - b.top) - sb.clientHeight / 3;
+    }
+
+    function fetchToc() {
+      if (tocData) return Promise.resolve(tocData);
+      if (!loading) {
+        loading = fetch(new URL("toc.json", root).href)
+          .then(function (r) {
+            if (!r.ok) throw new Error("HTTP " + r.status);
+            return r.json();
+          })
+          .then(function (d) { tocData = d.toc || []; return tocData; })
+          .catch(function (e) { loading = null; throw e; });
+      }
+      return loading;
+    }
+
+    function ensureRendered() {
+      if (rendered) return;
+      rendered = true;
+      fetchToc().then(function (nodes) {
+        current = findPath(nodes, page);
+        while (body.firstChild) body.removeChild(body.firstChild);
+        var nav = el("nav", "site-toc-nav");
+        nav.setAttribute("aria-label", "Table of contents");
+        nav.appendChild(makeList(nodes, [], 0));
+        body.appendChild(nav);
+        reveal();
+      }, function () {
+        rendered = false;
+        body.textContent = "Contents unavailable. ";
+        var a = el("a", null, "Open the contents page");
+        a.setAttribute("href", new URL("nav.xhtml", root).href);
+        body.appendChild(a);
+      });
+    }
+
+    /* ---- wide: collapsible column ---- */
+
+    function applyWide() {
+      html.classList.toggle("site-sidebar-collapsed", load(STORE_HIDDEN) === "1");
+    }
+    sb.hidden = false;
+    sb.removeAttribute("hidden"); /* CSS decides when it shows */
+    html.classList.add("site-sidebar-on");
+    applyWide();
+
+    function setCollapsed(c) {
+      html.classList.toggle("site-sidebar-collapsed", c);
+      save(STORE_HIDDEN, c ? "1" : null);
+      syncState();
+      if (c && menuBtn) menuBtn.focus();
+      else if (!c) { reveal(); hideBtn.focus(); }
+    }
+    hideBtn.addEventListener("click", function () { setCollapsed(true); });
+
+    /* ---- narrow: drawer ---- */
+
+    function focusables() {
+      var all = sb.querySelectorAll("a[href], button");
+      var out = [];
+      for (var i = 0; i < all.length; i++) if (all[i].offsetParent !== null) out.push(all[i]);
+      return out;
+    }
+    function openDrawer() {
+      drawerOpen = true;
+      html.classList.add("site-drawer-open");
+      syncState();
+      reveal();
+      closeBtn.focus();
+    }
+    function closeDrawer(refocus) {
+      if (!drawerOpen) return;
+      drawerOpen = false;
+      html.classList.remove("site-drawer-open");
+      syncState();
+      if (refocus && menuBtn) menuBtn.focus();
+    }
+    closeBtn.addEventListener("click", function () { closeDrawer(true); });
+    backdrop.addEventListener("click", function () { closeDrawer(true); });
+    sb.addEventListener("click", function (e) {
+      var t = e.target;
+      if (t && t.closest && t.closest("a") && drawerOpen) closeDrawer(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (!drawerOpen || wide.matches) return;
+      if (e.key === "Escape") { e.preventDefault(); closeDrawer(true); }
+      else if (e.key === "Tab") {
+        var f = focusables();
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (!sb.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+        else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    if (menuBtn) {
+      menuBtn.addEventListener("click", function () {
+        if (wide.matches) setCollapsed(!html.classList.contains("site-sidebar-collapsed"));
+        else if (drawerOpen) closeDrawer(true); else openDrawer();
+      });
+    }
+
+    function onResize() {
+      if (wide.matches && drawerOpen) { drawerOpen = false; html.classList.remove("site-drawer-open"); }
+      syncState();
+    }
+    if (wide.addEventListener) wide.addEventListener("change", onResize);
+    else if (wide.addListener) wide.addListener(onResize);
+
+    syncState();
+  }
 
   /* ---------- start ---------- */
 

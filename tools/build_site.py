@@ -9,7 +9,7 @@ written into src/:
   nav.xhtml css/ images/ text/   copied from src/OEBPS/, with navigation chrome spliced into each page
   s/                    short symbol links (tools/site/shortlinks.py); /s/ is reserved
   assets/site.css, site.js   stylesheet and script for the chrome (tools/site/assets/)
-  search.json           search index (tools/site/indexes.py)
+  search.json toc.json  search index and table of contents for the scripts (tools/site/indexes.py)
   ANSI-Common-Lisp.epub inventory.json inventory.LICENSE   copied from dist/ (run ./build.sh first)
 
 Output is deterministic. The output directory is replaced.
@@ -136,6 +136,7 @@ def build_site(oebps, dist, out, site=SITE):
     toc = add_navigation(oebps, out)
     records = json.loads((out / "inventory.json").read_text(encoding="utf-8"))["entries"]
     indexes.write_search(oebps, out, toc, records)
+    indexes.write_toc(out, toc)
     shortlinks.write_short_pages(out / "inventory.json", out, site)
     return out
 

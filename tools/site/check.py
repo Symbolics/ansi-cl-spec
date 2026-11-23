@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Validate a built site: every .xhtml parses, and every relative href/src (and meta-refresh url) resolves to a file
-(and, with a fragment, to an existing id in the target); the same for every href in search.json. Usage: python3 tools/site/check.py dist/site"""
+(and, with a fragment, to an existing id in the target); the same for every href in search.json and toc.json. Usage: python3 tools/site/check.py dist/site"""
 import json
 import re
 import sys
@@ -11,7 +11,7 @@ from lxml import etree
 
 XML_ID = "{http://www.w3.org/XML/1998/namespace}id"
 LINK_ATTRS = ("href", "src")
-INDEX_FILES = ("search.json",)  # JSON indexes whose items[*][2] are site-relative hrefs
+INDEX_FILES = ("search.json", "toc.json")  # JSON indexes of site-relative hrefs: items[*][2], nested toc [title, href, children]
 
 
 def _scan(path):
@@ -87,25 +87,37 @@ def check_site(site):
     return errors, stats
 
 
+def _index_entries(name, data):
+    """[(label, href)] of a JSON index."""
+    if name == "toc.json":
+        out, stack = [], list(reversed(data["toc"]))
+        while stack:
+            n = stack.pop()
+            out.append((n[0], n[1]))
+            if len(n) > 2:
+                stack.extend(reversed(n[2]))
+        return out
+    return [(item[0], item[2]) for item in data["items"]]
+
+
 def check_index(site, f, info, errors, stats):
-    """Every item href in search.json must resolve to a file and, with a fragment, to an id in it."""
+    """Every href in search.json / toc.json must resolve to a file and, with a fragment, to an id in it."""
     try:
-        items = json.loads(f.read_text(encoding="utf-8"))["items"]
-    except (ValueError, KeyError, OSError) as e:
+        entries = _index_entries(f.name, json.loads(f.read_text(encoding="utf-8")))
+    except (ValueError, KeyError, IndexError, TypeError, OSError) as e:
         errors.append("%s: unreadable: %s" % (f.name, e))
         return
-    for item in items:
-        href = item[2]
+    for label, href in entries:
         u = urlsplit(href)
         stats["links"] += 1
         target = (site / unquote(u.path)).resolve()
         if u.scheme or not target.is_file() or site not in target.parents:
-            errors.append("%s: href=%r (%r): no such file" % (f.name, href, item[0]))
+            errors.append("%s: href=%r (%r): no such file" % (f.name, href, label))
         elif u.fragment and target.suffix in (".xhtml", ".html"):
             stats["fragments"] += 1
             t = info(target)
             if t is not None and unquote(u.fragment) not in t[0]:
-                errors.append("%s: href=%r (%r): no id %r" % (f.name, href, item[0], unquote(u.fragment)))
+                errors.append("%s: href=%r (%r): no id %r" % (f.name, href, label, unquote(u.fragment)))
 
 
 def main(argv=None):

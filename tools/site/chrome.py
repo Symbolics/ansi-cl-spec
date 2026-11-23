@@ -58,6 +58,12 @@ def crumbs_html(toc, page):
     return '<nav class="site-crumbs" aria-label="Breadcrumb"><ol>%s</ol></nav>' % "".join(items)
 
 
+def sidebar_html(page):
+    """Hidden slot that assets/site.js turns into the contents sidebar (book pages and nav.xhtml only)."""
+    return ('<aside class="site-sidebar" id="site-sidebar" aria-label="Contents" hidden="hidden" '
+            'data-site-page="%s"></aside>\n' % esc(page))
+
+
 def pager_html(toc, page):
     parts = []
     for cls, arrow, target in (("site-prev", "←", toc.prev(page)),
@@ -85,5 +91,5 @@ def add_chrome(text, toc, page, edition_title):
         raise ValueError("%s: cannot find <head>/<body> to splice into" % page)
     pager = "" if page == COVER else pager_html(toc, page)
     return (text[:i_head] + head_html(toc, page) + text[i_head:m.end()] + "\n"
-            + header_html(toc, page, edition_title) + text[m.end():i_body] + pager + text[i_body:])
+            + header_html(toc, page, edition_title) + ("" if page == COVER else sidebar_html(page)) + text[m.end():i_body] + pager + text[i_body:])
 
