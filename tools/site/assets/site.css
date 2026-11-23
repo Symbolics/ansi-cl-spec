@@ -8,7 +8,7 @@
   --site-bar: #f3f4f6;
   --site-content-w: 48em;
   --site-sidebar-w: 0px; /* a sidebar sets this; the page body leaves room for it */
-  --site-gutter: max(0.75rem, calc((100vw - var(--site-sidebar-w) - var(--site-content-w)) / 2));
+  --site-gutter: max(0.75rem, calc((100% - var(--site-sidebar-w) - var(--site-content-w)) / 2)); /* % = width of body's containing block; never 100vw (includes the scrollbar) */
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -40,15 +40,17 @@ pre { overflow-x: auto; }
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.2em 1em;
-  margin: 0 calc(-1 * var(--site-gutter)) 1em;
-  padding: 0.5em var(--site-gutter);
+  margin: 0 0 1em;
+  padding: 0.5em 0;
   background: var(--site-bar);
-  border-bottom: 1px solid var(--site-line);
+  /* full-bleed bar without layout width: shadows add no scrollable overflow; clip-path trims it to the bar's rows */
+  box-shadow: 0 0 0 100vmax var(--site-bar);
+  clip-path: inset(0 -100vmax);
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 0.9rem;
   line-height: 1.4;
 }
-body.cover .site-header { margin: 0 0 1em; padding-inline: 0.75rem; text-align: left; }
+body.cover .site-header { padding-inline: 0.75rem; text-align: left; }
 .site-header a { text-decoration: none; }
 .site-header a:hover, .site-pager a:hover { text-decoration: underline; }
 .site-title { font-weight: 600; }

@@ -68,8 +68,9 @@ def pager_html(toc, page):
     nav = ""
     if parts:
         nav = '<nav class="site-pager" aria-label="Pages">%s</nav>\n' % "\n".join(parts)
-    return nav + ('<p class="site-notice">Copyright © 2026 Symbolics Pte Ltd; this edition is distributed by '
-                  'permission. See <a href="%s">Copyright and Use</a>.</p>\n' % esc(relpath(LEGAL, page)))
+    return nav + ('<p class="site-notice">Copyright \u00a9 2026 Symbolics Pte Ltd. Copying, distribution, display or '
+                  'transmission of this edition is by permission of Symbolics Pte Ltd. '
+                  'See <a href="%s">Copyright and Use</a>.</p>\n' % esc(relpath(LEGAL, page)))
 
 
 def add_chrome(text, toc, page, edition_title):
