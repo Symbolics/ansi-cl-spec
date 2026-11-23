@@ -17,8 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OEBPS = ROOT / "src" / "OEBPS"
 HREF = "text/front/legal.xhtml"
 
-DC = """<!-- dc:date and dcterms:modified are placeholders for the build date; re-set them at the v1 tag. -->
-<dc:identifier id="bookid">{uid}</dc:identifier>
+DC = """<dc:identifier id="bookid">{uid}</dc:identifier>
 <dc:title id="title">ANSI Common Lisp</dc:title>
 <meta refines="#title" property="title-type">main</meta>
 <dc:title id="subtitle">An edition of the draft proposed American National Standard for Programming Language Common Lisp</dc:title>
@@ -40,7 +39,7 @@ DC = """<!-- dc:date and dcterms:modified are placeholders for the build date; r
 <dc:description>A structured EPUB edition of the X3J13 draft proposed ANSI Common Lisp standard (dpANS3R), with per-symbol anchors and a machine-readable symbol inventory. Errors present in the draft are corrected and listed on the Errata and Corrections page. This is not the ANSI standard; the published standard is definitive, and this edition has no formal standing.</dc:description>
 <dc:rights>Copyright © 2026 Symbolics Pte Ltd. All rights reserved. This edition may be copied and distributed only in complete and unmodified form, not for direct commercial advantage, and only with notice that copying, distribution, display or transmission is by permission of Symbolics Pte Ltd. Permission to make modified copies, to make partial copies, or to create derivative works is expressly not granted. Provided "as is", without warranty of any kind, express or implied.</dc:rights>
 <meta property="dcterms:rightsHolder">Symbolics Pte Ltd</meta>
-<meta property="dcterms:modified">2026-11-23T00:00:00Z</meta>
+<meta property="dcterms:modified">2026-11-23T04:55:35Z</meta>
 """
 
 META_RE = re.compile(r'(<metadata[^>]*>\n)(.*?)(?=<meta name="cover")', re.S)
