@@ -59,7 +59,45 @@ def collect_ids(tree):
     return ids, dups
 
 
-def audit(src, symbols=None, require_anchors=False):
+def check_inventory(src, docs, ids, symbols, inv_path, errors):
+    """Check dist/inventory.json against the tree: valid JSON, record count == number of
+    data-symbol elements, all CL symbols covered, every href resolves to an existing file and id."""
+    from urllib.parse import quote
+    try:
+        inv = json.loads(Path(inv_path).read_text(encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        errors.append(f"inventory: cannot read {inv_path}: {e}")
+        return None
+    entries = inv.get("entries", [])
+    oebps = find_opf(src).parent.relative_to(src).as_posix()
+    n_dom = sum(1 for rel, tree in docs.items() if rel.endswith(".xhtml")
+                for _ in tree.xpath("//*[@data-symbol]"))
+    if len(entries) != n_dom:
+        errors.append(f"inventory: {len(entries)} records but {n_dom} data-symbol elements")
+    if inv.get("counts", {}).get("entries") != len(entries):
+        errors.append("inventory: counts.entries does not match the number of records")
+    bad = 0
+    for r in entries:
+        path, _, frag = r["href"].partition("#")
+        if path != r["path"] or frag != quote(r["anchor"], safe="!$&'()*+,/:;=?@-._~"):
+            bad += 1
+            errors.append(f"inventory: {r['symbol']!r}: href {r['href']!r} inconsistent with path/anchor")
+            continue
+        rel = posixpath.join(oebps, path) if oebps != "." else path
+        if not (src / rel).is_file() or r["anchor"] not in ids.get(rel, ()):
+            bad += 1
+            errors.append(f"inventory: {r['symbol']!r}: href {r['href']!r} does not resolve")
+    missing = []
+    if symbols is not None:
+        have = {r["symbol"].lower() for r in entries if r.get("package") == "COMMON-LISP"}
+        missing = sorted(set(symbols) - have)
+        if missing:
+            errors.append(f"inventory: {len(missing)} CL symbols missing: " + ", ".join(missing[:20]))
+    return {"records": len(entries), "data_symbol_elements": n_dom, "bad_hrefs": bad,
+            "cl_missing": len(missing)}
+
+
+def audit(src, symbols=None, require_anchors=False, inventory=None):
     src = Path(src)
     errors = []
     opf_path = find_opf(src)
@@ -167,7 +205,12 @@ def audit(src, symbols=None, require_anchors=False):
         if require_anchors and coverage["no_anchor"]:
             errors.append(f"{len(coverage['no_anchor'])} CL symbols lack a data-symbol anchor")
 
+    inv_rep = None
+    if inventory is not None:
+        inv_rep = check_inventory(src, docs, ids, symbols, inventory, errors)
+
     return {
+        "inventory": inv_rep,
         "xhtml_files": n_xhtml,
         "links_checked": n_links,
         "broken_links": n_broken,
@@ -183,12 +226,13 @@ def main(argv=None):
     ap.add_argument("--symbols", default=str(ROOT / "tools" / "data" / "cl-symbols.txt"))
     ap.add_argument("--require-anchors", action="store_true",
                     help="error if any CL symbol lacks a data-symbol anchor")
+    ap.add_argument("--inventory", metavar="PATH", help="also check this inventory.json")
     ap.add_argument("--json", metavar="PATH", help="write a machine-readable report")
     a = ap.parse_args(argv)
 
     sp = Path(a.symbols)
     symbols = [l.strip() for l in sp.read_text().splitlines() if l.strip()] if sp.is_file() else None
-    rep = audit(a.src, symbols, a.require_anchors)
+    rep = audit(a.src, symbols, a.require_anchors, a.inventory)
 
     print(f"audit: {rep['xhtml_files']} XHTML files, {rep['links_checked']} internal links, "
           f"{rep['broken_links']} broken, {rep['duplicate_ids']} duplicate ids")
@@ -199,6 +243,10 @@ def main(argv=None):
               f"({c['index_only']} index-only), {len(c['in_none'])} in none")
         if c["in_none"]:
             print("  in none: " + ", ".join(c["in_none"]))
+    iv = rep["inventory"]
+    if iv:
+        print(f"inventory: {iv['records']} records, {iv['data_symbol_elements']} data-symbol elements, "
+              f"{iv['bad_hrefs']} bad hrefs, {iv['cl_missing']} CL symbols missing")
     for e in rep["errors"][:50]:
         print("ERROR " + e)
     if len(rep["errors"]) > 50:

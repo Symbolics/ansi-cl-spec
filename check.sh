@@ -28,7 +28,15 @@ if grep -qE '^(FATAL|ERROR|WARNING)' dist/epubcheck.txt; then
 fi
 grep -q '^EPUBCheck completed' dist/epubcheck.txt || { echo "epubcheck did not finish"; fail=1; }
 
-python3 tools/audit.py --json dist/audit.json "$@" || fail=1
+# symbol inventory: generate twice, the outputs must be byte-identical
+python3 tools/09_inventory.py || { echo "check: FAIL (inventory)"; exit 1; }
+mkdir -p dist/.inv2
+python3 tools/09_inventory.py --out-dir dist/.inv2 >/dev/null || fail=1
+cmp -s dist/inventory.json dist/.inv2/inventory.json && cmp -s dist/inventory.LICENSE dist/.inv2/inventory.LICENSE \
+  || { echo "inventory is not deterministic"; fail=1; }
+rm -rf dist/.inv2
+
+python3 tools/audit.py --json dist/audit.json --inventory dist/inventory.json "$@" || fail=1
 [ $roundtrip -eq 1 ] && { python3 tools/roundtrip.py || fail=1; }
 
 if [ $fail -eq 0 ]; then echo "check: PASS"; else echo "check: FAIL"; fi

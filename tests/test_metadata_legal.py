@@ -77,3 +77,10 @@ def test_apply_and_idempotent(tmp_path):
     assert s07.main(["--oebps", str(tmp_path), "--check"]) == 0
     assert s07.main(["--oebps", str(tmp_path)]) == 0
     assert before == {n: (tmp_path / n).read_text() for n in before}
+
+
+def test_description_matches_errata_step():
+    spec8 = importlib.util.spec_from_file_location("s08", Path(__file__).parent.parent / "tools" / "08_errata_page.py")
+    s08 = importlib.util.module_from_spec(spec8)
+    spec8.loader.exec_module(s08)
+    assert "<dc:description>%s</dc:description>" % s08.DESCRIPTION in s07.DC
