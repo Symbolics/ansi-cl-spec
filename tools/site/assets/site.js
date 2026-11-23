@@ -147,7 +147,7 @@
       input.setAttribute("aria-autocomplete", "list");
       input.setAttribute("aria-expanded", "false");
       input.setAttribute("aria-controls", uid + "-list");
-      input.setAttribute("placeholder", "Search symbols, sections, glossary (press /)");
+      input.setAttribute("placeholder", "Search symbols and sections (/)");
       var status = el("span", "site-search-status");
       status.setAttribute("role", "status");
       status.setAttribute("aria-live", "polite");
