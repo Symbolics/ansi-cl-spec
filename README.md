@@ -30,6 +30,23 @@ truth**: `src/` is the unpacked EPUB and is edited directly; the `.epub` is buil
   (meaningful only on an unedited `src/`).
 - `python3 -m pytest -q` runs the tool tests.
 
+## Re-running the audits
+
+The committed results are in `audit/text/` (EPUB vs dpANS3R text) and `audit/examples/` (the spec's
+examples run in SBCL). The tools find dictionary entries by markup (`h3.entry`, recursively), so they
+work on the renamed layout in `src/` and on the original flat layout (e.g. a `git archive v0-original
+src/OEBPS/text` export passed as `--epub` / `--text-dir`). Results are keyed by section number and
+names; file paths are reported relative to `OEBPS/`. To re-run without overwriting the committed
+results, send the output elsewhere:
+
+    python3 tools/compare_text.py --epub src/OEBPS/text --out /tmp/audit-text   # fetches dpANS3R into vendor/dpans (or pass --tex DIR)
+    python3 tools/examples_run.py --text-dir src/OEBPS/text --out-dir /tmp/audit-examples
+
+Expected: text, 3833/3917 sections at ratio 1.0 and 0 unmatched; examples, match 2208, mismatch 124,
+error 167, impl-dependent 164, no-expectation 198, skipped 153, unparsed 38. The examples run needs
+`sbcl`; some actual values (timestamps, temp paths, object addresses) differ from run to run, the
+classifications do not.
+
 ## Tooling policy
 
 Python 3 (stdlib + lxml; pytest for tests). SBCL is used only to run the spec's examples and to

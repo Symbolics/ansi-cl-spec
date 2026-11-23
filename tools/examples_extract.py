@@ -18,6 +18,9 @@ from pathlib import Path
 
 from lxml import etree
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import epub_entries  # noqa: E402
+
 IT0, IT1 = "\x01", "\x02"
 ARROW, PRINT = "→", "▷"
 NO_VALUES_RE = re.compile(r"^<\s*no values\s*>$", re.I)
@@ -407,9 +410,10 @@ def finalize_unparsed(entry):
 
 
 def extract_all(text_dir):
+    """Entries of every dictionary-entry file (found by markup, recursively), either layout."""
     entries = []
-    for p in sorted(Path(text_dir).glob("e*.xhtml")):
-        e = extract_entry(p.read_bytes(), p.name)
+    for p in epub_entries.find_entry_files(text_dir):
+        e = extract_entry(p.read_bytes(), epub_entries.rel_to_oebps(p, text_dir))
         if e:
             entries.append(finalize_unparsed(e))
     entries.sort(key=lambda e: [int(x) if x.isdigit() else x for x in re.split(r"[.]", e["secno"])])

@@ -206,3 +206,41 @@ def test_match_by_chapter_names_kind():
          {"chapter": 5, "names": ["zzz"], "kind": "Macro"}]
     pairs, tex_only, epub_only, how = compare_text.match(t, e)
     assert sorted(pairs) == [(0, 1), (1, 0)] and tex_only == [] and epub_only == [2]
+
+
+NEW_LAYOUT = """<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"><body><section>
+<h3 id="DictEntry_x" class="entry" data-kind="function"><span class="secno">14.2.33</span> <span class="names"><span id="member" data-symbol="member">member</span>, <span id="member-if" data-symbol="member-if">member-if</span></span> <span class="kind">Function</span></h3>
+<dl>
+<dt data-section="description"><b>Description:</b></dt><dd>See <i><a href="../26-glossary/p.xhtml#x">proper list</a></i>. Section <a href="../3-evaluation-and-compilation/3.6-traversal.xhtml#s">3.6 Traversal</a>, <a href="index.xhtml#c">14 Conses</a>.</dd>
+<dt data-section="examples"><b>Examples:</b></dt><dd><pre> (member 1 '(1)) → (1)
+</pre></dd>
+</dl></section></body></html>"""
+
+
+def test_epub_tree_new_layout_found_by_markup(tmp_path):
+    text = tmp_path / "OEBPS" / "text"
+    (text / "14-conses").mkdir(parents=True)
+    (text / "index").mkdir()
+    (text / "14-conses" / "14.2.33-member.xhtml").write_text(NEW_LAYOUT, encoding="utf-8")
+    (text / "14-conses" / "index.xhtml").write_text("<html xmlns='http://www.w3.org/1999/xhtml'><body/></html>")
+    (text / "index" / "m.xhtml").write_text("<html xmlns='http://www.w3.org/1999/xhtml'><body/></html>")
+    (es,) = epub_entries.parse_tree(text)
+    assert (es["secno"], es["names"], es["kind"]) == ("14.2.33", ["member", "member-if"], "Function")
+    assert es["file"] == "text/14-conses/14.2.33-member.xhtml"  # relative to OEBPS/
+    assert [s["label"] for s in es["sections"]] == ["Description", "Examples"]
+    assert es["sections"][0]["text"].count("§") == 2 and "proper list" in es["sections"][0]["text"]
+    import examples_extract
+    (xe,) = examples_extract.extract_all(text)
+    assert (xe["secno"], xe["names"], xe["file"]) == ("14.2.33", "member, member-if", es["file"])
+    assert len(xe["steps"]) == 1
+
+
+def test_epub_tree_original_layout(tmp_path):
+    text = tmp_path / "OEBPS" / "text"
+    text.mkdir(parents=True)
+    (text / "e14-2-33.xhtml").write_text(EPUB, encoding="utf-8")
+    (text / "c14.xhtml").write_text("<html xmlns='http://www.w3.org/1999/xhtml'><body/></html>")
+    (es,) = epub_entries.parse_tree(text)
+    assert es["file"] == "text/e14-2-33.xhtml" and es["secno"] == "14.2.33"
+    assert "Section §." in es["sections"][1]["text"]

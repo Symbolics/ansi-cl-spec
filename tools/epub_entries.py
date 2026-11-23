@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Parse EPUB dictionary-entry files (src/OEBPS/text/eN-M-K.xhtml) into entries."""
+"""Parse EPUB dictionary-entry files into entries.
+
+Entries are found by markup (any .xhtml under the text directory holding an `h3.entry` heading), so
+this works on the renamed layout (`14-conses/14.2.9-car.xhtml`) and on the original flat one
+(`e14-2-9.xhtml`).  Names may be wrapped in <span data-symbol> spans; only their text is used.
+Reported file paths are relative to OEBPS/.
+"""
 import re
 import sys
 from pathlib import Path
@@ -8,6 +14,17 @@ from lxml import etree
 
 NS = "{http://www.w3.org/1999/xhtml}"
 SECREF = "\u00a7"  # section/chapter link text is replaced by this marker
+
+
+def is_section_href(href):
+    """True for a link to a section/chapter file: `s14-1.xhtml`/`c14.xhtml` (original layout) or
+    `14-conses/14.1-cons-concepts.xhtml`/`14-conses/index.xhtml` (renamed layout), not glossary/index."""
+    path = href.split("#", 1)[0]
+    if re.match(r"(s|c)\d", href):
+        return True
+    if "26-glossary/" in path or "index/" in path:
+        return False
+    return bool(re.search(r"(^|/)(\d+(\.\d+)*-[^/]*|index)\.xhtml$", path))
 
 
 def _tag(el):
@@ -23,7 +40,7 @@ def element_text(el, out=None):
     tag = _tag(el)
     if tag == "a":
         href = el.get("href", "")
-        if re.match(r"(s|c)\d", href) and re.match(r"(Figure\s+)?\d+(\.\d+|-\d+)*\s", "".join(el.itertext()).strip() + " "):
+        if is_section_href(href) and re.match(r"(Figure\s+)?\d+(\.\d+|-\d+)*\s", "".join(el.itertext()).strip() + " "):
             out.append("Figure " + SECREF if "".join(el.itertext()).startswith("Figure") else SECREF)
             if el.tail:
                 out.append(el.tail)
@@ -44,12 +61,33 @@ def element_text(el, out=None):
     return "".join(out) if top else None
 
 
-def parse_file(path):
+def rel_to_oebps(path, text_dir=None):
+    """Path of PATH relative to OEBPS/ (the parent of the `text` directory)."""
+    path = Path(path)
+    base = Path(text_dir) if text_dir else path.parent
+    root = base.parent if base.name == "text" else base
+    try:
+        return path.relative_to(root).as_posix()
+    except ValueError:
+        return path.name
+
+
+def find_entry_files(text_dir):
+    """Files under TEXT_DIR (recursively) that contain an `h3.entry` heading, sorted by path."""
+    out = []
+    for p in sorted(Path(text_dir).rglob("*.xhtml")):
+        b = p.read_bytes()
+        if b"<h3" in b and re.search(rb'<h3\b[^>]*\bclass="entry"', b):
+            out.append(p)
+    return out
+
+
+def parse_file(path, text_dir=None):
     path = Path(path)
     tree = etree.parse(str(path))
     h3 = tree.find(f".//{NS}h3[@class='entry']")
     secno = h3.find(f"{NS}span[@class='secno']").text.strip()
-    names = h3.find(f"{NS}span[@class='names']").text
+    names = "".join(h3.find(f"{NS}span[@class='names']").itertext())
     kind = h3.find(f"{NS}span[@class='kind']").text.strip()
     sections = []
     dl = h3.getnext()
@@ -68,7 +106,7 @@ def parse_file(path):
         else:
             extra.append(t)
     return {
-        "file": path.name,
+        "file": rel_to_oebps(path, text_dir),
         "secno": secno,
         "chapter": int(secno.split(".")[0]),
         "id": h3.get("id"),
@@ -80,8 +118,9 @@ def parse_file(path):
 
 
 def parse_tree(textdir):
-    files = sorted(Path(textdir).glob("e*-*-*.xhtml"))
-    return [parse_file(f) for f in files if re.fullmatch(r"e\d+-\d+-\d+\.xhtml", f.name)]
+    es = [parse_file(f, textdir) for f in find_entry_files(textdir)]
+    es.sort(key=lambda e: ([int(x) if x.isdigit() else x for x in e["secno"].split(".")], e["file"]))
+    return es
 
 
 if __name__ == "__main__":
