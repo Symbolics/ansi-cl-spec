@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.35 invoke-restart-interactively — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_invoke_resta_660" class="entry"><span class="secno">9.2.35</span> <span class="names">invoke-restart-interactively</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>invoke-restart-interactively</b>
+<i>restart</i>
+  → <i>{<i>result</i>}*</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>restart</i>—a <i><a href="g-r.xhtml#restartdesignator">restart designator</a></i>.
+
+<p>
+<i>results</i>—the <i><a href="g-v.xhtml#value">values</a></i> returned by the <i><a href="g-f.xhtml#function">function</a></i> 
+		   associated with <i>restart</i>, if that <i><a href="g-f.xhtml#function">function</a></i> returns.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_invoke_resta_660"><b>invoke-restart-interactively</b></a> calls the <i><a href="g-f.xhtml#function">function</a></i> associated
+with <i>restart</i>, prompting for any necessary arguments. 
+If <i>restart</i> is a name, it must be valid in the current <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i>.  
+
+<p>
+  <a href="#DictEntry_invoke_resta_660"><b>invoke-restart-interactively</b></a> 
+prompts for arguments by executing
+  the code provided in the <code>:interactive</code> keyword to 
+<a href="e9-2-37.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a> or 
+  <code>:interactive-function</code> keyword to <a href="e9-2-36.xhtml#DictEntry_restart_bind_661"><b>restart-bind</b></a>.
+
+</p><p>
+
+If no such options have been supplied in the corresponding
+<a href="e9-2-36.xhtml#DictEntry_restart_bind_661"><b>restart-bind</b></a> or <a href="e9-2-37.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a>, 
+then the consequences are undefined if the <i>restart</i> takes
+  required arguments.  If the arguments are optional, an argument list of
+  <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is used.
+
+</p><p>
+  Once the arguments have been determined, 
+<a href="#DictEntry_invoke_resta_660"><b>invoke-restart-interactively</b></a>
+  executes the following:
+
+</p><pre> (apply #'invoke-restart <i>restart</i> <i>arguments</i>)
+</pre>
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defun add3 (x) (check-type x number) (+ x 3))
+ 
+ (add3 'seven)
+▷ Error: The value SEVEN was not of type NUMBER.
+▷ To continue, type :CONTINUE followed by an option number:
+▷ 1: Specify a different value to use.
+▷ 2: Return to Lisp Toplevel.
+▷ Debug&gt; <span class="user">(invoke-restart-interactively 'store-value)</span>
+▷ Type a form to evaluate and use: <span class="user">7</span>
+→ 10
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+If prompting for arguments is necesary,
+some typeout may occur (on <i>query I/O</i>).
+
+<p>
+
+A non-local transfer of control might be done by the restart.
+
+</p></dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*query-io*</b></a>, active <i><a href="g-r.xhtml#restart">restarts</a></i>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+If <i>restart</i> is not valid, an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e5-3-67.xhtml#DictEntry_control_erro_453"><b>control-error</b></a>
+is signaled.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e9-2-33.xhtml#DictEntry_find_restart_658"><b>find-restart</b></a>,
+<a href="e9-2-34.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a>,
+<a href="e9-2-37.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a>,
+<a href="e9-2-36.xhtml#DictEntry_restart_bind_661"><b>restart-bind</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<a href="#DictEntry_invoke_resta_660"><b>invoke-restart-interactively</b></a> is used internally by the debugger
+and may also be useful in implementing other portable, interactive debugging 
+tools.
+
+</dd></dl>
+</section>
+</body>
+</html>

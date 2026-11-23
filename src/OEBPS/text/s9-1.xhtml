@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.1 Condition System Concepts</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Condition_Sy_603"><span class="secno">9.1</span> Condition System Concepts</h2>
+<p>
+
+Common Lisp constructs are described not only in terms of their
+behavior in situations during which they are intended to be used (see
+the "Description" part of each <i><a href="g-o.xhtml#operator">operator</a></i> specification),
+but in all other situations (see the "Exceptional Situations"
+part of each <i><a href="g-o.xhtml#operator">operator</a></i> specification).
+
+</p><p>
+A situation is the evaluation of an expression in a specific context.
+
+A <i><a href="g-c.xhtml#condition">condition</a></i> is an <i><a href="g-o.xhtml#object">object</a></i> that
+represents a specific situation that has been detected.  
+<i><a href="g-c.xhtml#condition">Conditions</a></i> are <i><a href="g-g.xhtml#generalizedinstance">generalized instances</a></i> of the <i><a href="g-c.xhtml#class">class</a></i> <a href="e9-2-1.xhtml#DictEntry_condition_626"><b>condition</b></a>.
+A hierarchy of <i><a href="g-c.xhtml#condition">condition</a></i> classes is defined in <i>Common Lisp</i>.  
+A <i><a href="g-c.xhtml#condition">condition</a></i> has <i><a href="g-s.xhtml#slot">slots</a></i> that contain data 
+relevant to the situation that the <i><a href="g-c.xhtml#condition">condition</a></i> represents.
+
+</p><p>
+An error is a situation in which normal program execution cannot
+continue correctly without some form of intervention (either
+interactively by the user or under program control).  Not all errors
+are detected.  When an error goes undetected, the effects can be
+<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>, <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>, unspecified, or
+undefined. See Section <a href="s1-4.xhtml#Section_Definitions_23">1.4 Definitions</a>.  All detected errors can
+be represented by <i><a href="g-c.xhtml#condition">conditions</a></i>, but not all 
+<i><a href="g-c.xhtml#condition">conditions</a></i> represent errors.
+
+</p><p>
+Signaling is the process by which a <i><a href="g-c.xhtml#condition">condition</a></i> can alter
+the flow of control in a program by raising the 
+<i><a href="g-c.xhtml#condition">condition</a></i> which can then be <i>handled</i>.  The functions
+<a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>, <a href="e9-2-12.xhtml#DictEntry_cerror_637"><b>cerror</b></a>, <a href="e9-2-17.xhtml#DictEntry_signal_642"><b>signal</b></a>, and
+<a href="e9-2-20.xhtml#DictEntry_warn_645"><b>warn</b></a> are used to signal <i><a href="g-c.xhtml#condition">conditions</a></i>.
+
+</p><p>
+The process of signaling involves the selection and invocation of a
+<i><a href="g-h.xhtml#handler">handler</a></i> from a set of <i><a href="g-a.xhtml#active">active</a></i> <i><a href="g-h.xhtml#handler">handlers</a></i>.  
+A <i><a href="g-h.xhtml#handler">handler</a></i> is a <i><a href="g-f.xhtml#function">function</a></i> of one argument (the 
+<i><a href="g-c.xhtml#condition">condition</a></i>) that is invoked to handle a <i><a href="g-c.xhtml#condition">condition</a></i>.
+Each <i><a href="g-h.xhtml#handler">handler</a></i> is associated with a <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-t.xhtml#type">type</a></i>,
+and a <i><a href="g-h.xhtml#handler">handler</a></i> will be invoked only on a <i><a href="g-c.xhtml#condition">condition</a></i> of the
+<i><a href="g-h.xhtml#handler">handler</a></i>'s associated <i><a href="g-t.xhtml#type">type</a></i>.
+
+</p><p>
+<i><a href="g-a.xhtml#active">Active</a></i> <i><a href="g-h.xhtml#handler">handlers</a></i> are <i>established</i> dynamically
+(see <a href="e9-2-26.xhtml#DictEntry_handler_bind_651"><b>handler-bind</b></a> or <a href="e9-2-27.xhtml#DictEntry_handler_case_652"><b>handler-case</b></a>).
+<i><a href="g-h.xhtml#handler">Handlers</a></i> are invoked in a <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i> 
+equivalent to that of the signaler,
+except that the set of <i><a href="g-a.xhtml#active">active</a></i> <i><a href="g-h.xhtml#handler">handlers</a></i> 
+is bound in such a way as to include only those that were <i><a href="g-a.xhtml#active">active</a></i> 
+at the time the <i><a href="g-h.xhtml#handler">handler</a></i> being invoked was <i>established</i>.
+Signaling a <i><a href="g-c.xhtml#condition">condition</a></i> has no side-effect on the <i><a href="g-c.xhtml#condition">condition</a></i>, 
+and there is no dynamic state contained in a <i><a href="g-c.xhtml#condition">condition</a></i>.
+
+</p><p>
+If a <i><a href="g-h.xhtml#handler">handler</a></i> is invoked, it can address the <i><a href="g-s.xhtml#situation">situation</a></i> 
+in one of three ways:
+
+</p><ul>
+<li><b>Decline</b>
+
+<p>
+It can decline to <i><a href="g-h.xhtml#handle">handle</a></i> the <i><a href="g-c.xhtml#condition">condition</a></i>.  It does this by
+simply returning rather than transferring control.
+When this happens, any values returned by the handler are
+ignored and the next most recently established handler is invoked.
+If there is no such handler and the signaling function is <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>
+or <a href="e9-2-12.xhtml#DictEntry_cerror_637"><b>cerror</b></a>, the debugger is entered in the
+<i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i> of the signaler. If there is no such
+handler and the signaling function is either <a href="e9-2-17.xhtml#DictEntry_signal_642"><b>signal</b></a> or
+<a href="e9-2-20.xhtml#DictEntry_warn_645"><b>warn</b></a>, the signaling function simply returns <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></li><li><b>Handle</b>
+
+<p>
+It can <i><a href="g-h.xhtml#handle">handle</a></i> the <i><a href="g-c.xhtml#condition">condition</a></i> by performing a non-local
+transfer of control.  This can be done either primitively by using
+<a href="e5-3-24.xhtml#DictEntry_go_410"><b>go</b></a>, <a href="e5-3-26.xhtml#DictEntry_return_412"><b>return</b></a>, <a href="e5-3-28.xhtml#DictEntry_throw_414"><b>throw</b></a> or more
+abstractly by using a function such as <a href="e9-2-41.xhtml#DictEntry_abort_666"><b>abort</b></a> or
+<a href="e9-2-34.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a>.
+
+</p></li><li><b>Defer</b>
+
+<p>
+It can put off a decision about whether to <i><a href="g-h.xhtml#handle">handle</a></i> or <i><a href="g-d.xhtml#decline">decline</a></i>,
+by any of a number of actions, but most commonly by 
+    signaling another condition,
+    resignaling the same condition,
+ or forcing entry into the debugger.
+
+</p></li></ul>
+<section>
+<h3 id="SubSection_Condition_Ty_604"><span class="secno">9.1.1</span> Condition Types</h3>
+<p>
+
+The next figure lists the <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-t.xhtml#type">types</a></i>.
+Additional <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-t.xhtml#type">types</a></i> can be defined by using <a href="e9-2-29.xhtml#DictEntry_define_condi_654"><b>define-condition</b></a>.
+
+</p><table id="fig-9-1" class="fig">
+<caption><span class="figlabel">Figure 9-1.</span> Standardized Condition Types</caption>
+
+  <tbody><tr>
+    <td>arithmetic-error</td>
+    <td>floating-point-overflow</td>
+    <td>simple-type-error</td>
+  </tr>
+  <tr>
+    <td>cell-error</td>
+    <td>floating-point-underflow</td>
+    <td>simple-warning</td>
+  </tr>
+  <tr>
+    <td>condition</td>
+    <td>package-error</td>
+    <td>storage-condition</td>
+  </tr>
+  <tr>
+    <td>control-error</td>
+    <td>parse-error</td>
+    <td>stream-error</td>
+  </tr>
+  <tr>
+    <td>division-by-zero</td>
+    <td>print-not-readable</td>
+    <td>style-warning</td>
+  </tr>
+  <tr>
+    <td>end-of-file</td>
+    <td>program-error</td>
+    <td>type-error</td>
+  </tr>
+  <tr>
+    <td>error</td>
+    <td>reader-error</td>
+    <td>unbound-slot</td>
+  </tr>
+  <tr>
+    <td>file-error</td>
+    <td>serious-condition</td>
+    <td>unbound-variable</td>
+  </tr>
+  <tr>
+    <td>floating-point-inexact</td>
+    <td>simple-condition</td>
+    <td>undefined-function</td>
+  </tr>
+  <tr>
+    <td>floating-point-invalid-operation</td>
+    <td>simple-error</td>
+    <td>warning</td>
+  </tr>
+</tbody></table>
+
+
+
+
+
+
+
+
+
+<p>
+All <i><a href="g-c.xhtml#condition">condition</a></i> types are <i><a href="g-s.xhtml#subtype">subtypes</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-1.xhtml#DictEntry_condition_626"><b>condition</b></a>.  That is,
+
+</p><pre> (typep <i>c</i> 'condition) → <i><a href="g-t.xhtml#true">true</a></i>
+
+
+
+
+
+
+
+
+
+</pre><p>
+if and only if <i>c</i> is a <i><a href="g-c.xhtml#condition">condition</a></i>.
+
+</p><p>
+<i><a href="g-i.xhtml#implementation">Implementations</a></i> must define all specified <i><a href="g-s.xhtml#subtype">subtype</a></i> relationships.
+
+Except where noted, all <i><a href="g-s.xhtml#subtype">subtype</a></i> relationships indicated in 
+this document are not mutually exclusive.
+A <i><a href="g-c.xhtml#condition">condition</a></i> inherits the structure of its <i><a href="g-s.xhtml#supertype">supertypes</a></i>.
+
+
+
+</p><p>
+The metaclass of the <i><a href="g-c.xhtml#class">class</a></i> <a href="e9-2-1.xhtml#DictEntry_condition_626"><b>condition</b></a> is not specified.
+<i><a href="g-n.xhtml#name">Names</a></i> of <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-t.xhtml#type">types</a></i> may be used to specify
+<i><a href="g-s.xhtml#supertype">supertype</a></i> relationships in <a href="e9-2-29.xhtml#DictEntry_define_condi_654"><b>define-condition</b></a>, 
+but the consequences are not specified if an attempt is made to use
+a <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-t.xhtml#type">type</a></i> as a <i><a href="g-s.xhtml#superclass">superclass</a></i> in a <a href="e7-7-25.xhtml#DictEntry_defclass_581"><b>defclass</b></a> <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+The next figure shows <i><a href="g-o.xhtml#operator">operators</a></i> that
+define <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-t.xhtml#type">types</a></i> and creating <i><a href="g-c.xhtml#condition">conditions</a></i>.
+
+</p><table id="fig-9-2" class="fig">
+<caption><span class="figlabel">Figure 9-2.</span> Operators that define and create conditions.</caption>
+
+  <tbody><tr>
+    <td>define-condition</td>
+    <td>make-condition</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+The next figure shows <i><a href="g-o.xhtml#operator">operators</a></i> that <i><a href="g-r.xhtml#read">read</a></i> 
+the <i><a href="g-v.xhtml#value">value</a></i> of <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-s.xhtml#slot">slots</a></i>.
+
+</p><table id="fig-9-3" class="fig">
+<caption><span class="figlabel">Figure 9-3.</span> Operators that read condition slots.</caption>
+
+  <tbody><tr>
+    <td>arithmetic-error-operands</td>
+    <td>simple-condition-format-arguments</td>
+  </tr>
+  <tr>
+    <td>arithmetic-error-operation</td>
+    <td>simple-condition-format-control</td>
+  </tr>
+  <tr>
+    <td>cell-error-name</td>
+    <td>stream-error-stream</td>
+  </tr>
+  <tr>
+    <td>file-error-pathname</td>
+    <td>type-error-datum</td>
+  </tr>
+  <tr>
+    <td>package-error-package</td>
+    <td>type-error-expected-type</td>
+  </tr>
+  <tr>
+    <td>print-not-readable-object</td>
+    <td>unbound-slot-instance</td>
+  </tr>
+</tbody></table>
+<section>
+<h4 id="SubSubSectio_Serious_Cond_605"><span class="secno">9.1.1.1</span> Serious Conditions</h4>
+<p>
+
+A <i><a href="g-s.xhtml#seriouscondition">serious condition</a></i> is a <i><a href="g-c.xhtml#condition">condition</a></i> serious
+enough to require interactive intervention if not handled.  
+<i><a href="g-s.xhtml#seriouscondition">Serious conditions</a></i> are typically signaled with <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> or <a href="e9-2-12.xhtml#DictEntry_cerror_637"><b>cerror</b></a>;
+non-serious <i><a href="g-c.xhtml#condition">conditions</a></i> are typically signaled with <a href="e9-2-17.xhtml#DictEntry_signal_642"><b>signal</b></a> or <a href="e9-2-20.xhtml#DictEntry_warn_645"><b>warn</b></a>.
+
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Creating_Con_606"><span class="secno">9.1.2</span> Creating Conditions</h3>
+<p>
+
+The function <a href="e9-2-30.xhtml#DictEntry_make_conditi_655"><b>make-condition</b></a> can be used to construct
+a <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-o.xhtml#object">object</a></i> explicitly.  Functions such as <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>,
+<a href="e9-2-12.xhtml#DictEntry_cerror_637"><b>cerror</b></a>, <a href="e9-2-17.xhtml#DictEntry_signal_642"><b>signal</b></a>, and <a href="e9-2-20.xhtml#DictEntry_warn_645"><b>warn</b></a> operate on
+<i><a href="g-c.xhtml#condition">conditions</a></i> and might create <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-o.xhtml#object">objects</a></i>
+implicitly.  Macros such as <a href="e5-3-46.xhtml#DictEntry_case_ccase_432"><b>ccase</b></a>, <a href="e5-3-47.xhtml#DictEntry_typecase_ct_433"><b>ctypecase</b></a>,
+<a href="e5-3-46.xhtml#DictEntry_case_ccase_432"><b>ecase</b></a>, <a href="e5-3-47.xhtml#DictEntry_typecase_ct_433"><b>etypecase</b></a>, <a href="e9-2-13.xhtml#DictEntry_check_type_638"><b>check-type</b></a>, and
+<a href="e9-2-10.xhtml#DictEntry_assert_635"><b>assert</b></a> might also implicitly create (and <i><a href="g-s.xhtml#signal">signal</a></i>)
+<i><a href="g-c.xhtml#condition">conditions</a></i>.
+</p>
+<section>
+<h4 id="SubSubSectio_Condition_De_607"><span class="secno">9.1.2.1</span> Condition Designators</h4>
+<p>
+
+
+A number of the functions in the condition system take arguments which
+are identified as <b><i>condition designators</i></b>.
+By convention, those arguments are notated as
+
+</p><p>
+ <i>datum</i> <code>&amp;rest</code> <i>arguments</i>
+
+</p><p>
+Taken together, the <i>datum</i> and the <i>arguments</i> are 
+"<i><a href="g-d.xhtml#designator">designators</a></i> for a <i><a href="g-c.xhtml#condition">condition</a></i> of default type <i>default-type</i>."
+How the denoted <i><a href="g-c.xhtml#condition">condition</a></i> is computed depends on the type of the <i>datum</i>:
+
+</p><ul>
+
+<li> If the <i>datum</i> is a <i><a href="g-s.xhtml#symbol">symbol</a></i> 
+              naming a <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-t.xhtml#type">type</a></i> <i> ... </i>
+
+<p>
+The denoted <i><a href="g-c.xhtml#condition">condition</a></i> is the result of
+
+</p><pre> (apply #'make-condition <i>datum</i> <i>arguments</i>)
+</pre>
+
+</li><li> If the <i>datum</i> is a <i><a href="g-f.xhtml#formatcontrol">format control</a></i> <i> ... </i>
+
+
+<p>
+The denoted <i><a href="g-c.xhtml#condition">condition</a></i> is the result of 
+
+</p><pre> (make-condition <i>defaulted-type</i> 
+                 :format-control <i>datum</i>
+                 :format-arguments <i>arguments</i>)
+</pre>
+
+
+<p>
+where the <i>defaulted-type</i> is a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <i>default-type</i>.
+
+</p></li><li> If the <i>datum</i> is a <i><a href="g-c.xhtml#condition">condition</a></i> <i> ... </i>
+
+<p>
+The denoted <i><a href="g-c.xhtml#condition">condition</a></i> is the <i>datum</i> itself.
+In this case, unless otherwise specified by the description of the
+<i><a href="g-o.xhtml#operator">operator</a></i> in question, the <i><a href="g-a.xhtml#argument">arguments</a></i> must be <i><a href="g-n.xhtml#null">null</a></i>;
+that is, the consequences are undefined if any <i>arguments</i> were supplied. 
+
+</p></li></ul>
+
+<p>
+Note that the <i>default-type</i> gets used only in the case where
+the <i>datum</i> <i><a href="g-s.xhtml#string">string</a></i> is supplied.  In the other situations,
+the resulting condition is not necessarily of <i><a href="g-t.xhtml#type">type</a></i> <i>default-type</i>.
+
+</p><p>
+Here are some illustrations of how different <i><a href="g-c.xhtml#conditiondesignator">condition designators</a></i>
+can denote equivalent <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-o.xhtml#object">objects</a></i>:
+
+</p><pre>(let ((c (make-condition 'arithmetic-error :operator '/ :operands '(7 0))))
+  (error c))
+==(error 'arithmetic-error :operator '/ :operands '(7 0))
+
+(error "Bad luck.")
+==(error 'simple-error :format-control "Bad luck." :format-arguments '())
+</pre>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Printing_Con_608"><span class="secno">9.1.3</span> Printing Conditions</h3>
+<p>
+
+
+If the <code>:report</code> argument to <a href="e9-2-29.xhtml#DictEntry_define_condi_654"><b>define-condition</b></a> is used,
+a print function is defined that is called whenever 
+the defined <i><a href="g-c.xhtml#condition">condition</a></i> is printed while the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e22-4-20.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> is <i><a href="g-f.xhtml#false">false</a></i>. 
+This function is called the <b><i>condition reporter</i></b>;
+the text which it outputs is called a <b><i>report message</i></b>.
+
+</p><p>
+When a <i><a href="g-c.xhtml#condition">condition</a></i> is printed and <a href="e22-4-20.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a>
+is <i><a href="g-f.xhtml#false">false</a></i>, the <i><a href="g-c.xhtml#conditionreporter">condition reporter</a></i> for the <i><a href="g-c.xhtml#condition">condition</a></i> is invoked.
+<i><a href="g-c.xhtml#condition">Conditions</a></i> are printed automatically by functions such as
+<a href="e9-2-22.xhtml#DictEntry_invoke_debug_647"><b>invoke-debugger</b></a>, <a href="e9-2-23.xhtml#DictEntry_break_648"><b>break</b></a>, and <a href="e9-2-20.xhtml#DictEntry_warn_645"><b>warn</b></a>.
+
+</p><p>
+When <a href="e22-4-20.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> is <i><a href="g-t.xhtml#true">true</a></i>, the <i><a href="g-o.xhtml#object">object</a></i> should print in an
+abbreviated fashion according to the style of the implementation
+(<i>e.g.</i>,  by <a href="e22-4-12.xhtml#DictEntry_print_unread_1352"><b>print-unreadable-object</b></a>).  It is not required that a
+<i><a href="g-c.xhtml#condition">condition</a></i> can be recreated by reading its printed representation.
+
+</p><p>
+No <i><a href="g-f.xhtml#function">function</a></i> is provided for directly <i>accessing</i> 
+or invoking <i><a href="g-c.xhtml#conditionreporter">condition reporters</a></i>.
+</p>
+<section>
+<h4 id="SubSubSectio_Recommended__609"><span class="secno">9.1.3.1</span> Recommended Style in Condition Reporting</h4>
+<p>
+
+In order to ensure a properly aesthetic result when presenting
+<i><a href="g-r.xhtml#reportmessage">report messages</a></i> to the user, certain stylistic conventions are
+recommended.
+
+</p><p>
+There are stylistic recommendations for the content of the messages
+output by <i><a href="g-c.xhtml#conditionreporter">condition reporters</a></i>, but there are no formal requirements 
+on those <i><a href="g-p.xhtml#program">programs</a></i>.
+If a <i><a href="g-p.xhtml#program">program</a></i> violates the recommendations for some message, the
+display of that message might be less aesthetic than if the guideline
+had been observed, but the <i><a href="g-p.xhtml#program">program</a></i> is still considered a
+<i><a href="g-c.xhtml#conformingprogram">conforming program</a></i>.
+
+</p><p>
+The requirements on a <i><a href="g-p.xhtml#program">program</a></i> or <i><a href="g-i.xhtml#implementation">implementation</a></i> which
+invokes a <i><a href="g-c.xhtml#conditionreporter">condition reporter</a></i> are somewhat stronger.  A <i>conforming
+program</i> must be permitted to assume that if these style guidelines are
+followed, proper aesthetics will be maintained.  Where appropriate, any
+specific requirements on such routines are explicitly mentioned below.
+</p>
+<section>
+<h5 id="SubSubSubSec_Capitalizati_610"><span class="secno">9.1.3.1.1</span> Capitalization and Punctuation in Condition Reports</h5>
+<p>
+
+It is recommended that a <i><a href="g-r.xhtml#reportmessage">report message</a></i> be a complete sentences, in the
+proper case and correctly punctuated.  In English, for example, this
+means the first letter should be uppercase, and there should be a
+trailing period.
+
+</p><pre> (error "This is a message")  ; Not recommended
+ (error "this is a message.") ; Not recommended
+
+ (error "This is a message.") ; Recommended instead
+</pre>
+</section>
+<section>
+<h5 id="SubSubSubSec_Leading_and__611"><span class="secno">9.1.3.1.2</span> Leading and Trailing Newlines in Condition Reports</h5>
+<p>
+
+It is recommended that a <i><a href="g-r.xhtml#reportmessage">report message</a></i> not begin with any 
+introductory text, such as "<code>Error: </code>" or "<code>Warning: </code>"
+or even just <i><a href="g-f.xhtml#freshline">freshline</a></i> or <i><a href="g-n.xhtml#newline">newline</a></i>. 
+Such text is added, if appropriate to the context,
+by the routine invoking the <i><a href="g-c.xhtml#conditionreporter">condition reporter</a></i>.
+
+</p><p>
+It is recommended that a <i><a href="g-r.xhtml#reportmessage">report message</a></i> not be followed 
+by a trailing <i><a href="g-f.xhtml#freshline">freshline</a></i> or <i><a href="g-n.xhtml#newline">newline</a></i>.
+Such text is added, if appropriate to the context, 
+by the routine invoking the <i><a href="g-c.xhtml#conditionreporter">condition reporter</a></i>.
+
+</p><pre> (error "This is a message.~%")   ; Not recommended
+ (error "~&amp;This is a message.")   ; Not recommended
+ (error "~&amp;This is a message.~%") ; Not recommended
+
+ (error "This is a message.")     ; Recommended instead
+</pre>
+</section>
+<section>
+<h5 id="SubSubSubSec_Embedded_New_612"><span class="secno">9.1.3.1.3</span> Embedded Newlines in Condition Reports</h5>
+<p>
+
+Especially if it is long, it is permissible and appropriate for 
+a <i><a href="g-r.xhtml#reportmessage">report message</a></i> to contain one or more embedded <i><a href="g-n.xhtml#newline">newlines</a></i>.
+
+</p><p>
+If the calling routine conventionally inserts some additional prefix
+(such as "<code>Error: </code>" or "<code>;; Error: </code>") on the first line of
+the message, it must also assure that an appropriate prefix will be
+added to each subsequent line of the output, so that the left edge of
+the message output by the <i><a href="g-c.xhtml#conditionreporter">condition reporter</a></i> will still be properly
+aligned.
+
+</p><pre> (defun test ()
+   (error "This is an error message.~%It has two lines."))
+
+ ;; Implementation A
+ (test)
+ This is an error message.
+ It has two lines.
+
+ ;; Implementation B
+ (test)
+ ;; Error: This is an error message.
+ ;;        It has two lines.
+
+ ;; Implementation C
+ (test)
+ &gt;&gt; Error: This is an error message. 
+           It has two lines.
+</pre>
+</section>
+<section>
+<h5 id="SubSubSubSec_Note_about_T_613"><span class="secno">9.1.3.1.4</span> Note about Tabs in Condition Reports</h5>
+<p>
+
+Because the indentation of a <i><a href="g-r.xhtml#reportmessage">report message</a></i> might be shifted to the right or
+left by an arbitrary amount, special care should be taken with the
+semi-standard <i><a href="g-c.xhtml#character">character</a></i> <i>&lt;Tab&gt;</i> 
+(in those <i><a href="g-i.xhtml#implementation">implementations</a></i> that support such a <i><a href="g-c.xhtml#character">character</a></i>).  
+Unless the <i><a href="g-i.xhtml#implementation">implementation</a></i> specifically defines its behavior 
+in this context, its use should be avoided.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Mentioning_C_614"><span class="secno">9.1.3.1.5</span> Mentioning Containing Function in Condition Reports</h5>
+<p>
+
+The name of the containing function should generally not be mentioned in
+<i><a href="g-r.xhtml#reportmessage">report messages</a></i>.  It is assumed that the <i><a href="g-d.xhtml#debugger">debugger</a></i> will make this
+information accessible in situations where it is necessary and appropriate.
+
+
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Signaling_an_615"><span class="secno">9.1.4</span> Signaling and Handling Conditions</h3>
+<p>
+
+
+The operation of the condition system depends on the ordering of
+active <i><a href="g-a.xhtml#applicablehandler">applicable handlers</a></i> from most recent to least recent.
+
+</p><p>
+Each <i><a href="g-h.xhtml#handler">handler</a></i> is associated with a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>
+that must designate a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-1.xhtml#DictEntry_condition_626"><b>condition</b></a>.  A <i><a href="g-h.xhtml#handler">handler</a></i>
+is said to be <i><a href="g-a.xhtml#applicable">applicable</a></i> to a <i><a href="g-c.xhtml#condition">condition</a></i> if that
+<i><a href="g-c.xhtml#condition">condition</a></i> is of the <i><a href="g-t.xhtml#type">type</a></i> designated by the associated
+<i><a href="g-t.xhtml#typespecifier">type specifier</a></i>.
+
+</p><p>
+<i><a href="g-a.xhtml#active">Active</a></i> <i><a href="g-h.xhtml#handler">handlers</a></i> are <i>established</i> by using 
+<a href="e9-2-26.xhtml#DictEntry_handler_bind_651"><b>handler-bind</b></a> (or an abstraction based on <a href="e9-2-26.xhtml#DictEntry_handler_bind_651"><b>handler-bind</b></a>, 
+such as <a href="e9-2-27.xhtml#DictEntry_handler_case_652"><b>handler-case</b></a> or <a href="e9-2-28.xhtml#DictEntry_ignore_error_653"><b>ignore-errors</b></a>).
+
+</p><p>
+<i><a href="g-a.xhtml#active">Active</a></i> <i><a href="g-h.xhtml#handler">handlers</a></i> can be <i>established</i> within the
+dynamic scope of other <i><a href="g-a.xhtml#active">active</a></i> <i><a href="g-h.xhtml#handler">handlers</a></i>.
+At any point during program execution, there is a set of <i><a href="g-a.xhtml#active">active</a></i> <i><a href="g-h.xhtml#handler">handlers</a></i>.
+When a <i><a href="g-c.xhtml#condition">condition</a></i> is signaled, the <i><a href="g-m.xhtml#mostrecent">most recent</a></i> active <i><a href="g-a.xhtml#applicablehandler">applicable handler</a></i>
+for that <i><a href="g-c.xhtml#condition">condition</a></i> is selected from this set.
+Given a <i><a href="g-c.xhtml#condition">condition</a></i>, the order of recentness of 
+active <i><a href="g-a.xhtml#applicablehandler">applicable handlers</a></i> is defined by the following two rules:
+
+</p><ul>
+
+<li>1. Each handler in a set of active handlers <i>H<sub>1</sub></i> is
+more recent than every handler in a set <i>H<sub>2</sub></i> if the
+handlers in <i>H<sub>2</sub></i> were active when the handlers in <i>H<sub>1</sub></i> were
+established.
+
+</li><li>2. Let <i>h<sub>1</sub></i> and <i>h<sub>2</sub></i> be two applicable active
+handlers established by the same <i><a href="g-f.xhtml#form">form</a></i>. Then <i>h<sub>1</sub></i> is
+more recent than <i>h<sub>2</sub></i> if <i>h<sub>1</sub></i> was defined to the left of
+<i>h<sub>2</sub></i> in the <i><a href="g-f.xhtml#form">form</a></i> that established them.
+
+</li></ul>
+
+<p>
+
+
+
+Once a handler in a handler binding <i><a href="g-f.xhtml#form">form</a></i> (such as 
+<a href="e9-2-26.xhtml#DictEntry_handler_bind_651"><b>handler-bind</b></a> or <a href="e9-2-27.xhtml#DictEntry_handler_case_652"><b>handler-case</b></a>) has been selected, all
+handlers in that <i><a href="g-f.xhtml#form">form</a></i> become inactive for 
+the remainder of the signaling process.
+
+While the selected <i><a href="g-h.xhtml#handler">handler</a></i> runs, no other <i><a href="g-h.xhtml#handler">handler</a></i> established
+by that <i><a href="g-f.xhtml#form">form</a></i> is active. That is, if the <i><a href="g-h.xhtml#handler">handler</a></i> declines, 
+no other handler established by that <i><a href="g-f.xhtml#form">form</a></i> will be considered for possible invocation.
+
+
+</p><p>
+The next figure shows <i><a href="g-o.xhtml#operator">operators</a></i> relating to 
+the <i>handling</i> of <i><a href="g-c.xhtml#condition">conditions</a></i>.
+
+</p><table id="fig-9-4" class="fig">
+<caption><span class="figlabel">Figure 9-4.</span> Operators relating to handling conditions.</caption>
+
+  <tbody><tr>
+    <td>handler-bind</td>
+    <td>handler-case</td>
+    <td>ignore-errors</td>
+  </tr>
+</tbody></table>
+<section>
+<h4 id="SubSubSectio_Signaling_616"><span class="secno">9.1.4.1</span> Signaling</h4>
+<p>
+
+
+When a <i><a href="g-c.xhtml#condition">condition</a></i> is signaled, the most recent
+applicable <i><a href="g-a.xhtml#active">active</a></i> <i><a href="g-h.xhtml#handler">handler</a></i> is invoked.  
+Sometimes a handler will decline by simply returning
+without a transfer of control.
+In such cases, the next most recent applicable active handler is
+invoked. 
+
+</p><p>
+If there are no applicable handlers for a <i><a href="g-c.xhtml#condition">condition</a></i> that
+has been signaled, or if all applicable handlers decline, the
+<i><a href="g-c.xhtml#condition">condition</a></i> is unhandled.
+
+</p><p>
+The functions <a href="e9-2-12.xhtml#DictEntry_cerror_637"><b>cerror</b></a> and <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> invoke the
+interactive <i><a href="g-c.xhtml#condition">condition</a></i> handler (the debugger) rather than
+return if the <i><a href="g-c.xhtml#condition">condition</a></i> being signaled, regardless of
+its <i><a href="g-t.xhtml#type">type</a></i>, is unhandled.  In contrast, <a href="e9-2-17.xhtml#DictEntry_signal_642"><b>signal</b></a>
+returns <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> if the <i><a href="g-c.xhtml#condition">condition</a></i> being signaled,
+regardless of its <i><a href="g-t.xhtml#type">type</a></i>, is unhandled.
+
+</p><p>
+The <i><a href="g-v.xhtml#variable">variable</a></i> <a href="e9-2-25.xhtml#DictEntry_break_on_si_650"><b>*break-on-signals*</b></a> can be used to cause the
+debugger to be entered before the signaling process begins.
+
+</p><p>
+The next figure shows <i><a href="g-d.xhtml#definedname">defined names</a></i> relating to
+the <i>signaling</i> of <i><a href="g-c.xhtml#condition">conditions</a></i>.
+
+</p><table id="fig-9-5" class="fig">
+<caption><span class="figlabel">Figure 9-5.</span> Defined names relating to signaling conditions.</caption>
+
+  <tbody><tr>
+    <td>*break-on-signals*</td>
+    <td>error</td>
+    <td>warn</td>
+  </tr>
+  <tr>
+    <td>cerror</td>
+    <td>signal</td>
+    <td/>
+  </tr>
+</tbody></table>
+<section>
+<h5 id="SubSubSubSec_Resignaling__617"><span class="secno">9.1.4.1.1</span> Resignaling a Condition</h5>
+<p>
+
+
+During the <i><a href="g-d.xhtml#dynamicextent">dynamic extent</a></i> of the <i>signaling</i> process for
+a particular <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-o.xhtml#object">object</a></i>, 
+<b>signaling</b> the same <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-o.xhtml#object">object</a></i> again
+is permitted if and only if the <i><a href="g-s.xhtml#situation">situation</a></i> represented in both
+cases are the same.
+
+</p><p>
+For example, a <i><a href="g-h.xhtml#handler">handler</a></i> might legitimately <i><a href="g-s.xhtml#signal">signal</a></i> 
+the <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-o.xhtml#object">object</a></i> that is its <i><a href="g-a.xhtml#argument">argument</a></i>
+in order to allow outer <i><a href="g-h.xhtml#handler">handlers</a></i> first opportunity to <i><a href="g-h.xhtml#handle">handle</a></i> 
+the condition.  (Such a <i><a href="g-h.xhtml#handler">handlers</a></i> is sometimes called a "default handler.")
+This action is permitted because the <i><a href="g-s.xhtml#situation">situation</a></i> which the second
+<i>signaling</i> process is addressing is really the same <i><a href="g-s.xhtml#situation">situation</a></i>.
+
+</p><p>
+On the other hand, in an <i><a href="g-i.xhtml#implementation">implementation</a></i> that implemented asynchronous 
+keyboard events by interrupting the user process with a call to <a href="e9-2-17.xhtml#DictEntry_signal_642"><b>signal</b></a>,
+it would not be permissible for two distinct asynchronous keyboard events
+to <i><a href="g-s.xhtml#signal">signal</a></i> <i><a href="g-i.xhtml#identical">identical</a></i> <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-o.xhtml#object">objects</a></i>
+at the same time for different 
+
+
+situations.
+
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Restarts_618"><span class="secno">9.1.4.2</span> Restarts</h4>
+<p>
+
+
+
+The interactive condition handler returns only through
+non-local transfer of control to specially defined <i><a href="g-r.xhtml#restart">restarts</a></i>
+that can be set up either by the system or by user code.  Transferring
+control to a restart is called "invoking" the restart.  Like
+handlers, active <i><a href="g-r.xhtml#restart">restarts</a></i> are <i>established</i>
+dynamically, and 
+only active <i><a href="g-r.xhtml#restart">restarts</a></i>
+can be invoked.  An active 
+<i><a href="g-r.xhtml#restart">restart</a></i> can be invoked by the user from
+the debugger or by a program by using <a href="e9-2-34.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a>.
+
+</p><p>
+
+A <i><a href="g-r.xhtml#restart">restart</a></i> contains a 
+<i><a href="g-f.xhtml#function">function</a></i> to be <i>called</i> when the <i><a href="g-r.xhtml#restart">restart</a></i> is
+invoked, an optional name that can be used to find or invoke the 
+<i><a href="g-r.xhtml#restart">restart</a></i>, and
+an optional set of interaction information for the debugger to use to
+enable the user to manually invoke a <i><a href="g-r.xhtml#restart">restart</a></i>. 
+</p><p>
+The name of a <i><a href="g-r.xhtml#restart">restart</a></i> is
+used by <a href="e9-2-34.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a>. <i><a href="g-r.xhtml#restart">Restarts</a></i> that can be invoked
+only within the debugger do not need names.
+</p><p>
+<i><a href="g-r.xhtml#restart">Restarts</a></i> can be established by using <a href="e9-2-36.xhtml#DictEntry_restart_bind_661"><b>restart-bind</b></a>, 
+<a href="e9-2-37.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a>, and <a href="e9-2-40.xhtml#DictEntry_with_simple__665"><b>with-simple-restart</b></a>.
+A <i><a href="g-r.xhtml#restart">restart</a></i> function can itself invoke any other <i><a href="g-r.xhtml#restart">restart</a></i>
+that was active at the time of establishment of the <i><a href="g-r.xhtml#restart">restart</a></i> 
+of which the <i><a href="g-f.xhtml#function">function</a></i> is part.
+
+</p><p>
+
+
+The <i><a href="g-r.xhtml#restart">restarts</a></i> <i>established</i> by 
+    a <a href="e9-2-36.xhtml#DictEntry_restart_bind_661"><b>restart-bind</b></a> <i><a href="g-f.xhtml#form">form</a></i>, 
+    a <a href="e9-2-37.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a> <i><a href="g-f.xhtml#form">form</a></i>,
+ or a <a href="e9-2-40.xhtml#DictEntry_with_simple__665"><b>with-simple-restart</b></a> <i><a href="g-f.xhtml#form">form</a></i>
+have <i><a href="g-d.xhtml#dynamicextent">dynamic extent</a></i>
+which extends for the duration of that <i><a href="g-f.xhtml#form">form</a></i>'s execution.
+
+
+
+</p><p>
+<i><a href="g-r.xhtml#restart">Restarts</a></i> of the same name can be ordered from least recent to
+most recent according to the following two rules:
+
+</p><ul>
+
+<li>1. Each <i><a href="g-r.xhtml#restart">restart</a></i> in a set of active restarts
+<i>R<sub>1</sub></i> is more recent than every <i><a href="g-r.xhtml#restart">restart</a></i> in a
+set <i>R<sub>2</sub></i> if the <i><a href="g-r.xhtml#restart">restarts</a></i> 
+in <i>R<sub>2</sub></i> were active when the  <i><a href="g-r.xhtml#restart">restarts</a></i> in <i>R<sub>1</sub></i> were
+established.
+
+</li><li>2. Let <i>r<sub>1</sub></i> and <i>r<sub>2</sub></i> be two active <i><a href="g-r.xhtml#restart">restarts</a></i> with
+the same name established by the same <i><a href="g-f.xhtml#form">form</a></i>. Then <i>r<sub>1</sub></i> is
+more recent than <i>r<sub>2</sub></i> if <i>r<sub>1</sub></i> was defined to the
+left of <i>r<sub>2</sub></i> in the <i><a href="g-f.xhtml#form">form</a></i> that established them.
+
+</li></ul>
+
+<p>
+If a <i><a href="g-r.xhtml#restart">restart</a></i> is invoked but does not transfer control,
+the values resulting from the <i><a href="g-r.xhtml#restart">restart</a></i> function are
+returned by the function that invoked the restart, either
+<a href="e9-2-34.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a> or <a href="e9-2-35.xhtml#DictEntry_invoke_resta_660"><b>invoke-restart-interactively</b></a>.
+</p>
+<section>
+<h5 id="SubSubSubSec_Interactive__619"><span class="secno">9.1.4.2.1</span> Interactive Use of Restarts</h5>
+<p>
+
+For interactive handling, two pieces of information are needed
+from a <i><a href="g-r.xhtml#restart">restart</a></i>: a report function and an interactive function.
+
+</p><p>
+The report function
+
+is used by a program such as the debugger to
+present a description of the action the <i><a href="g-r.xhtml#restart">restart</a></i> will take.  
+The report function is specified and established by the 
+<code>:report-function</code> keyword to
+<a href="e9-2-36.xhtml#DictEntry_restart_bind_661"><b>restart-bind</b></a> or the 
+<code>:report</code> keyword to <a href="e9-2-37.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a>. 
+
+
+</p><p>
+The interactive function, which can be specified using the 
+<code>:interactive-function</code> keyword to 
+<a href="e9-2-36.xhtml#DictEntry_restart_bind_661"><b>restart-bind</b></a> or <code>:interactive</code> keyword
+to <a href="e9-2-37.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a>, is used when the <i><a href="g-r.xhtml#restart">restart</a></i>
+is invoked
+interactively, such as from the debugger, to produce a suitable
+list of arguments. 
+
+
+
+</p><p>
+<a href="e9-2-34.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a> invokes the most recently <i>established</i>
+
+<i><a href="g-r.xhtml#restart">restart</a></i> whose
+name is the same as the first argument to <a href="e9-2-34.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a>.
+If a <i><a href="g-r.xhtml#restart">restart</a></i> is invoked interactively by the debugger and  does
+not transfer control but rather returns values, the precise
+action of the debugger on those values is <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Interfaces_t_620"><span class="secno">9.1.4.2.2</span> Interfaces to Restarts</h5>
+<p>
+
+
+
+Some <i><a href="g-r.xhtml#restart">restarts</a></i> have functional interfaces, 
+
+
+
+such as <a href="e9-2-41.xhtml#DictEntry_abort_666"><b>abort</b></a>, <a href="e9-2-42.xhtml#DictEntry_continue_667"><b>continue</b></a>, 
+<a href="e9-2-43.xhtml#DictEntry_muffle_warni_668"><b>muffle-warning</b></a>, <a href="e9-2-44.xhtml#DictEntry_store_value_669"><b>store-value</b></a>, and 
+<a href="e9-2-45.xhtml#DictEntry_use_value_670"><b>use-value</b></a>.
+They are ordinary functions that use 
+ <a href="e9-2-33.xhtml#DictEntry_find_restart_658"><b>find-restart</b></a> and <a href="e9-2-34.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a> internally,
+that have the same name as the <i><a href="g-r.xhtml#restart">restarts</a></i> they manipulate,
+and that are provided simply for notational convenience.
+
+</p><p>
+The next figure shows <i><a href="g-d.xhtml#definedname">defined names</a></i> relating to
+<i><a href="g-r.xhtml#restart">restarts</a></i>.
+
+</p><table id="fig-9-6" class="fig">
+<caption><span class="figlabel">Figure 9-6.</span> Defined names relating to restarts.</caption>
+
+  <tbody><tr>
+    <td>abort</td>
+    <td>invoke-restart-interactively</td>
+    <td>store-value</td>
+  </tr>
+  <tr>
+    <td>compute-restarts</td>
+    <td>muffle-warning</td>
+    <td>use-value</td>
+  </tr>
+  <tr>
+    <td>continue</td>
+    <td>restart-bind</td>
+    <td>with-simple-restart</td>
+  </tr>
+  <tr>
+    <td>find-restart</td>
+    <td>restart-case</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>invoke-restart</td>
+    <td>restart-name</td>
+    <td/>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h5 id="SubSubSubSec_Restart_Test_621"><span class="secno">9.1.4.2.3</span> Restart Tests</h5>
+<p>
+Each <i><a href="g-r.xhtml#restart">restart</a></i> has an associated test, which is a function of one
+argument (a <i><a href="g-c.xhtml#condition">condition</a></i> or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>) which returns <i><a href="g-t.xhtml#true">true</a></i> if the <i><a href="g-r.xhtml#restart">restart</a></i>
+should be visible in the current <i><a href="g-s.xhtml#situation">situation</a></i>.  This test is created by 
+the <code>:test-function</code> option to <a href="e9-2-36.xhtml#DictEntry_restart_bind_661"><b>restart-bind</b></a> or 
+the <code>:test</code> option to <a href="e9-2-37.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a>.
+
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Associating__622"><span class="secno">9.1.4.2.4</span> Associating a Restart with a Condition</h5>
+<p>
+
+
+
+A <i><a href="g-r.xhtml#restart">restart</a></i> can be "associated with" a <i><a href="g-c.xhtml#condition">condition</a></i> explicitly
+by <a href="e9-2-39.xhtml#DictEntry_with_conditi_664"><b>with-condition-restarts</b></a>, or implicitly by <a href="e9-2-37.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a>.
+Such an assocation has <i><a href="g-d.xhtml#dynamicextent">dynamic extent</a></i>.
+
+</p><p>
+A single <i><a href="g-r.xhtml#restart">restart</a></i> may be associated with several <i><a href="g-c.xhtml#condition">conditions</a></i> 
+at the same time.
+A single <i><a href="g-c.xhtml#condition">condition</a></i> may have several associated <i><a href="g-r.xhtml#restart">restarts</a></i>
+at the same time.
+
+</p><p>
+Active restarts associated with a particular <i><a href="g-c.xhtml#condition">condition</a></i> can be detected
+by <i>calling</i> a <i><a href="g-f.xhtml#function">function</a></i> such as <a href="e9-2-33.xhtml#DictEntry_find_restart_658"><b>find-restart</b></a>, supplying
+that <i><a href="g-c.xhtml#condition">condition</a></i> as the <i>condition</i> <i><a href="g-a.xhtml#argument">argument</a></i>.
+Active restarts can also be detected without regard to any associated
+<i><a href="g-c.xhtml#condition">condition</a></i> by calling such a function without a <i>condition</i> <i><a href="g-a.xhtml#argument">argument</a></i>,
+or by supplying a value of <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> for such an <i><a href="g-a.xhtml#argument">argument</a></i>.
+
+
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Assertions_623"><span class="secno">9.1.5</span> Assertions</h3>
+<p>
+
+Conditional signaling of <i><a href="g-c.xhtml#condition">conditions</a></i>
+based on such things as key match, form evaluation,
+and <i><a href="g-t.xhtml#type">type</a></i> are handled by assertion <i><a href="g-o.xhtml#operator">operators</a></i>.
+The next figure shows <i><a href="g-o.xhtml#operator">operators</a></i> relating to assertions.
+
+</p><table id="fig-9-7" class="fig">
+<caption><span class="figlabel">Figure 9-7.</span> Operators relating to assertions.</caption>
+
+  <tbody><tr>
+    <td>assert</td>
+    <td>check-type</td>
+    <td>ecase</td>
+  </tr>
+  <tr>
+    <td>ccase</td>
+    <td>ctypecase</td>
+    <td>etypecase</td>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h3 id="SubSection_Notes_about__624"><span class="secno">9.1.6</span> Notes about the Condition System&#x27;s Background</h3>
+<p>
+
+For a background reference to the abstract concepts detailed in this
+section, see <i>Exceptional Situations in Lisp</i>.  The details of that paper are not binding on
+this document, but may be helpful in establishing a conceptual basis for
+understanding this material.
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</body>
+</html>

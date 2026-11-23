@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.67 deposit-field — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_deposit_fiel_841" class="entry"><span class="secno">12.2.67</span> <span class="names">deposit-field</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>deposit-field</b>
+<i>newbyte bytespec integer</i>
+  → <i>result-integer</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>newbyte</i>—an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+<p>
+<i>bytespec</i>—a <i><a href="g-b.xhtml#bytespecifier">byte specifier</a></i>.
+
+</p><p>
+<i>integer</i>—an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>result-integer</i>—an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Replaces a field of bits within <i>integer</i>; specifically,
+returns an <i><a href="g-i.xhtml#integer">integer</a></i> that contains the bits of <i>newbyte</i>
+within the <i><a href="g-b.xhtml#byte">byte</a></i> specified by <i>bytespec</i>,
+and elsewhere contains the bits of <i>integer</i>.  
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (deposit-field 7 (byte 2 1) 0) → 6
+ (deposit-field -1 (byte 4 0) 0) → 15
+ (deposit-field 0 (byte 2 1) -3) → -7
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e12-2-66.xhtml#DictEntry_byte_byte_s_840"><b>byte</b></a>,
+<a href="e12-2-68.xhtml#DictEntry_dpb_842"><b>dpb</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (logbitp <i>j</i> (deposit-field <i>m</i> (byte <i>s</i> <i>p</i>) <i>n</i>))
+ ==(if (and (&gt;= <i>j</i> <i>p</i>) (&lt; <i>j</i> (+ <i>p</i> <i>s</i>)))
+        (logbitp <i>j</i> <i>m</i>)
+        (logbitp <i>j</i> <i>n</i>))
+</pre>
+
+<p>
+   <a href="#DictEntry_deposit_fiel_841"><b>deposit-field</b></a> is to <a href="e12-2-71.xhtml#DictEntry_mask_field_845"><b>mask-field</b></a> 
+as <a href="e12-2-68.xhtml#DictEntry_dpb_842"><b>dpb</b></a>           is to <a href="e12-2-69.xhtml#DictEntry_ldb_843"><b>ldb</b></a>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

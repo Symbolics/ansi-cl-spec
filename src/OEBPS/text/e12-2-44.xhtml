@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.44 numberp — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_numberp_818" class="entry"><span class="secno">12.2.44</span> <span class="names">numberp</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>numberp</b>
+<i>object</i>
+  → <i>generalized-boolean</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>object</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+<p>
+<i>generalized-boolean</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns <i><a href="g-t.xhtml#true">true</a></i> if <i>object</i> is of <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-1.xhtml#DictEntry_number_775"><b>number</b></a>; otherwise, returns <i><a href="g-f.xhtml#false">false</a></i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (numberp 12) → <i><a href="g-t.xhtml#true">true</a></i>
+ (numberp (expt 2 130)) → <i><a href="g-t.xhtml#true">true</a></i>
+ (numberp #c(5/3 7.2)) → <i><a href="g-t.xhtml#true">true</a></i>
+ (numberp nil) → <i><a href="g-f.xhtml#false">false</a></i>
+ (numberp (cons 1 2)) → <i><a href="g-f.xhtml#false">false</a></i>
+</pre>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (numberp <i>object</i>) ==(typep <i>object</i> 'number)
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

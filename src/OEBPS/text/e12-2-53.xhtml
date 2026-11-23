@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.53 numerator, denominator — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_numerator_d_827" class="entry"><span class="secno">12.2.53</span> <span class="names">numerator, denominator</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>numerator</b>
+<i>rational</i>
+  → <i>numerator</i>
+<p>
+<b>denominator</b>
+<i>rational</i>
+  → <i>denominator</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>rational</i>—a <i><a href="g-r.xhtml#rational">rational</a></i>.
+
+<p>
+<i>numerator</i>—an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>denominator</i>—a positive <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_numerator_d_827"><b>numerator</b></a> and <a href="#DictEntry_numerator_d_827"><b>denominator</b></a> reduce <i>rational</i>
+to canonical form and compute the numerator or denominator of that number.
+
+<p>
+<a href="#DictEntry_numerator_d_827"><b>numerator</b></a> and <a href="#DictEntry_numerator_d_827"><b>denominator</b></a> return the numerator 
+or denominator of the canonical form of <i>rational</i>.
+
+</p><p>
+If <i>rational</i> is an <i><a href="g-i.xhtml#integer">integer</a></i>, 
+<a href="#DictEntry_numerator_d_827"><b>numerator</b></a> returns <i>rational</i>
+and <a href="#DictEntry_numerator_d_827"><b>denominator</b></a> returns 1.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (numerator 1/2) → 1
+ (denominator 12/36) → 3
+ (numerator -1) → -1
+ (denominator (/ -33)) → 33
+ (numerator (/ 8 -6)) → -4
+ (denominator (/ 8 -6)) → 3
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e25-2-23.xhtml#DictEntry____1450"><b>/</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (gcd (numerator x) (denominator x)) → 1
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

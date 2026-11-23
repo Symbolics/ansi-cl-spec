@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.7.13 slot-unbound — Standard Generic Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_slot_unbound_569" class="entry"><span class="secno">7.7.13</span> <span class="names">slot-unbound</span> <span class="kind">Standard Generic Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>slot-unbound</b>
+<i>class instance slot-name</i>
+  →
+{<i>result</i>}*
+
+</dd><dt><b>Method Signatures:</b></dt><dd>
+
+<b>slot-unbound</b>
+<i>(<i>class</i> <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>)
+		       instance slot-name</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>class</i>—the <i><a href="g-c.xhtml#class">class</a></i> of the <i>instance</i>.
+
+<p>
+<i>instance</i>—the <i>instance</i> in which an attempt
+		   was made to <i><a href="g-r.xhtml#read">read</a></i> the <i><a href="g-u.xhtml#unbound">unbound</a></i> <i><a href="g-s.xhtml#slot">slot</a></i>.
+
+</p><p>
+<i>slot-name</i>—the <i><a href="g-n.xhtml#name">name</a></i> of the <i><a href="g-u.xhtml#unbound">unbound</a></i> <i><a href="g-s.xhtml#slot">slot</a></i>.
+
+</p><p>
+<i>result</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The generic function <a href="#DictEntry_slot_unbound_569"><b>slot-unbound</b></a> is called when an
+unbound <i><a href="g-s.xhtml#slot">slot</a></i> is read in
+an <i>instance</i> whose metaclass is <a href="e4-4-10.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a>.
+The default <i><a href="g-m.xhtml#method">method</a></i> signals an error 
+ 
+of <i><a href="g-t.xhtml#type">type</a></i> <a href="e7-7-40.xhtml#DictEntry_unbound_slot_596"><b>unbound-slot</b></a>.
+The name slot of the 
+<a href="e7-7-40.xhtml#DictEntry_unbound_slot_596"><b>unbound-slot</b></a> <i><a href="g-c.xhtml#condition">condition</a></i> is initialized
+  to the name of the offending variable, and the instance slot
+  of the <a href="e7-7-40.xhtml#DictEntry_unbound_slot_596"><b>unbound-slot</b></a> <i><a href="g-c.xhtml#condition">condition</a></i> is initialized to the offending instance.
+ 
+
+<p>
+ 
+The generic function <a href="#DictEntry_slot_unbound_569"><b>slot-unbound</b></a> is not intended to be called
+by programmers.  Programmers may write <i><a href="g-m.xhtml#method">methods</a></i> for it.
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="#DictEntry_slot_unbound_569"><b>slot-unbound</b></a> is called only 
+
+
+indirectly by <a href="e7-7-14.xhtml#DictEntry_slot_value_570"><b>slot-value</b></a>.
+
+</p><p>
+
+
+
+
+If <a href="#DictEntry_slot_unbound_569"><b>slot-unbound</b></a> returns, 
+only the <i><a href="g-p.xhtml#primaryvalue">primary value</a></i> will be used by the caller,
+and all other values will be ignored.
+
+
+</p></dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+ 
+The default <i><a href="g-m.xhtml#method">method</a></i> on <a href="#DictEntry_slot_unbound_569"><b>slot-unbound</b></a>
+signals an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e7-7-40.xhtml#DictEntry_unbound_slot_596"><b>unbound-slot</b></a>.
+ 
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e7-7-11.xhtml#DictEntry_slot_makunbo_567"><b>slot-makunbound</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+An unbound <i><a href="g-s.xhtml#slot">slot</a></i> may occur if no <code>:initform</code> form was
+specified for the <i><a href="g-s.xhtml#slot">slot</a></i> and the <i><a href="g-s.xhtml#slot">slot</a></i> value has not been set,
+or if <a href="e7-7-11.xhtml#DictEntry_slot_makunbo_567"><b>slot-makunbound</b></a> has been called on the <i><a href="g-s.xhtml#slot">slot</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

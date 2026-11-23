@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.8.13 define-symbol-macro — Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_define_symbo_295" class="entry"><span class="secno">3.8.13</span> <span class="names">define-symbol-macro</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>define-symbol-macro</b>
+<i>symbol expansion</i><br/>   
+  → <i>symbol</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>symbol</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+<p>
+<i>expansion</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Provides a mechanism for globally affecting the <i><a href="g-m.xhtml#macroexpansion">macro expansion</a></i>
+of the indicated <i>symbol</i>.
+
+<p>
+Globally establishes an expansion function for the <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i> 
+named by <i>symbol</i>.
+
+The only guaranteed property of an expansion <i><a href="g-f.xhtml#function">function</a></i> for a <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i>
+is that when it is applied to the <i><a href="g-f.xhtml#form">form</a></i> and the <i><a href="g-e.xhtml#environment">environment</a></i> it returns
+the correct expansion.  (In particular, it is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> 
+whether the expansion is conceptually stored in the expansion function,
+the <i><a href="g-e.xhtml#environment">environment</a></i>, or both.)
+
+</p><p>
+Each global reference to <i>symbol</i> (<i>i.e.</i>,  not <i>shadowed</i><sub>2</sub> by a 
+<i><a href="g-b.xhtml#binding">binding</a></i> for a <i><a href="g-v.xhtml#variable">variable</a></i> or <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i> named by
+the same <i><a href="g-s.xhtml#symbol">symbol</a></i>) is expanded by the normal macro expansion process;
+see Section <a href="s3-1.xhtml#SubSubSubSec_Symbols_as_F_196">3.1.2.1.1 Symbols as Forms</a>.
+The expansion of a <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i> is subject to further <i><a href="g-m.xhtml#macroexpansion">macro expansion</a></i>
+in the same <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> as the <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i> reference,
+exactly analogous to normal <i><a href="g-m.xhtml#macro">macros</a></i>.
+
+</p><p>
+
+The consequences are unspecified if a <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a> declaration is made for
+<i>symbol</i> while in the scope of this definition (<i>i.e.</i>,  when it is not 
+<i>shadowed</i><sub>2</sub> by a <i><a href="g-b.xhtml#binding">binding</a></i> for a <i><a href="g-v.xhtml#variable">variable</a></i>
+or <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i> named by the same <i><a href="g-s.xhtml#symbol">symbol</a></i>).
+
+</p><p>
+Any use of <a href="e5-3-20.xhtml#DictEntry_setq_406"><b>setq</b></a> to set the value of 
+
+
+the <i>symbol</i>
+ while in the scope of this definition
+ is treated as if it were a <a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a>.
+<a href="e5-3-21.xhtml#DictEntry_psetq_407"><b>psetq</b></a> of <i>symbol</i>
+ is treated as if it were a <a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>psetf</b></a>, and
+<a href="e5-3-52.xhtml#DictEntry_multiple_val_438"><b>multiple-value-setq</b></a> 
+ is treated as if it were a <a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> of <a href="e4-4-22.xhtml#DictEntry_values_357"><b>values</b></a>.
+
+</p><p>
+A <i><a href="g-b.xhtml#binding">binding</a></i> for a <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i> can be <i>shadowed</i><sub>2</sub>
+by <a href="e5-3-18.xhtml#DictEntry_let_let_404"><b>let</b></a> or <a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre>(defvar *things* (list 'alpha 'beta 'gamma)) → *THINGS*
+
+(define-symbol-macro thing1 (first *things*)) →  THING1
+(define-symbol-macro thing2 (second *things*)) →  THING2
+(define-symbol-macro thing3 (third *things*)) →  THING3
+
+thing1 →  ALPHA
+(setq thing1 'ONE) →  ONE
+*things* → (ONE BETA GAMMA)
+(multiple-value-setq (thing2 thing3) (values 'two 'three)) →  TWO
+thing3 →  THREE
+*things* → (ONE TWO THREE)
+
+(list thing2 (let ((thing2 2)) thing2)) → (TWO 2)
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+If <i>symbol</i> is already defined as a <i><a href="g-g.xhtml#globalvariable">global variable</a></i>,
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e5-3-68.xhtml#DictEntry_program_erro_454"><b>program-error</b></a> is signaled.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>,
+<a href="e3-8-12.xhtml#DictEntry_macroexpand_294"><b>macroexpand</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

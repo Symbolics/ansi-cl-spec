@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.20 warn — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_warn_645" class="entry"><span class="secno">9.2.20</span> <span class="names">warn</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>warn</b>
+<i>datum <code>&amp;rest</code> arguments</i>
+  → <i><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i><p><i></i>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>datum</i>, <i>arguments</i>—<i><a href="g-d.xhtml#designator">designators</a></i> for a <i><a href="g-c.xhtml#condition">condition</a></i> 
+ of default type <a href="e9-2-21.xhtml#DictEntry_simple_warni_646"><b>simple-warning</b></a>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+<i><a href="g-s.xhtml#signal">Signals</a></i> a <i><a href="g-c.xhtml#condition">condition</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-2.xhtml#DictEntry_warning_627"><b>warning</b></a>.
+If the <i><a href="g-c.xhtml#condition">condition</a></i> is not <i>handled</i>,
+reports the <i><a href="g-c.xhtml#condition">condition</a></i> to <i><a href="g-e.xhtml#erroroutput">error output</a></i>.
+
+<p>
+The precise mechanism for warning is as follows:
+
+</p><ul>
+
+<li><b>The warning condition is signaled</b>
+
+<p>
+While the <a href="e9-2-2.xhtml#DictEntry_warning_627"><b>warning</b></a> <i><a href="g-c.xhtml#condition">condition</a></i> is being signaled,
+the <a href="e9-2-43.xhtml#DictEntry_muffle_warni_668"><b>muffle-warning</b></a> <i><a href="g-r.xhtml#restart">restart</a></i> is established for use by a <i><a href="g-h.xhtml#handler">handler</a></i>.
+If invoked, this <i><a href="g-r.xhtml#restart">restart</a></i> bypasses further action by <a href="#DictEntry_warn_645"><b>warn</b></a>,
+which in turn causes <a href="#DictEntry_warn_645"><b>warn</b></a> to immediately return <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></li><li><b>If no handler for the warning condition is found</b>
+
+<p>
+If no handlers for the warning condition are found,
+or if all such handlers decline,
+then the <i><a href="g-c.xhtml#condition">condition</a></i> is reported to <i><a href="g-e.xhtml#erroroutput">error output</a></i>
+by <a href="#DictEntry_warn_645"><b>warn</b></a> in an <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> format.
+</p></li><li><b><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is returned</b>
+
+<p>
+The value returned by <a href="#DictEntry_warn_645"><b>warn</b></a> if it returns is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+</p></li></ul>
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre>  (defun foo (x)
+    (let ((result (* x 2)))
+      (if (not (typep result 'fixnum))
+          (warn "You're using very big numbers."))
+      result))
+→  FOO
+ 
+  (foo 3)
+→ 6
+ 
+  (foo most-positive-fixnum)
+▷ Warning: You're using very big numbers.
+→ 4294967294
+ 
+  (setq *break-on-signals* t)
+→  T
+ 
+  (foo most-positive-fixnum)
+▷ Break: Caveat emptor.
+▷ To continue, type :CONTINUE followed by an option number.
+▷ 1: Return from Break.
+▷ 2: Abort to Lisp Toplevel.
+▷ Debug&gt; :continue 1
+▷ Warning: You're using very big numbers.
+→ 4294967294
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+A warning is issued.  The debugger might be entered.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+Existing handler bindings.
+
+<p>
+<a href="e9-2-25.xhtml#DictEntry_break_on_si_650"><b>*break-on-signals*</b></a>,
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*error-output*</b></a>.         
+
+</p></dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+If <i>datum</i> is a <i><a href="g-c.xhtml#condition">condition</a></i>
+and if the <i><a href="g-c.xhtml#condition">condition</a></i> is not of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-2.xhtml#DictEntry_warning_627"><b>warning</b></a>,
+or <i>arguments</i> is <i><a href="g-n.xhtml#nonnil">non-nil</a></i>, an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> is signaled.
+
+<p>
+If <i>datum</i> is a condition type, 
+the result of <code>(apply #'make-condition datum arguments)</code> 
+must be of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-2.xhtml#DictEntry_warning_627"><b>warning</b></a> or an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> is signaled.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e9-2-25.xhtml#DictEntry_break_on_si_650"><b>*break-on-signals*</b></a>,
+<a href="e9-2-43.xhtml#DictEntry_muffle_warni_668"><b>muffle-warning</b></a>,
+<a href="e9-2-17.xhtml#DictEntry_signal_642"><b>signal</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,2316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>6.1 The LOOP Facility</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_The_LOOP_Fac_457"><span class="secno">6.1</span> The LOOP Facility</h2>
+<section>
+<h3 id="SubSection_Overview_of__458"><span class="secno">6.1.1</span> Overview of the Loop Facility</h3>
+<p>
+
+The <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-m.xhtml#macro">macro</a></i> performs iteration.
+</p>
+<section>
+<h4 id="SubSubSectio_Simple_vs_Ex_459"><span class="secno">6.1.1.1</span> Simple vs Extended Loop</h4>
+<p><a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">forms</a></i> are partitioned into two categories: 
+     simple <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">forms</a></i> 
+ and extended <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">forms</a></i>.
+</p>
+<section>
+<h5 id="SubSubSubSec_Simple_Loop_460"><span class="secno">6.1.1.1.1</span> Simple Loop</h5>
+<p>
+
+
+A simple <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> is one that has a body containing
+only <i><a href="g-c.xhtml#compoundform">compound forms</a></i>.
+
+Each <i><a href="g-f.xhtml#form">form</a></i> is <i>evaluated</i> in turn from left to right.
+When the last <i>form</i> has been <i>evaluated</i>, 
+then the first <i>form</i> is evaluated again, and so on, in a never-ending cycle.
+
+A simple <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> establishes an <i><a href="g-i.xhtml#implicitblock">implicit block</a></i> named <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+The execution of a simple <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> can be terminated by explicitly
+transfering control to the <i><a href="g-i.xhtml#implicitblock">implicit block</a></i> (using <a href="e5-3-26.xhtml#DictEntry_return_412"><b>return</b></a> or
+<a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a>) or to some <i><a href="g-e.xhtml#exitpoint">exit point</a></i> outside of the <i><a href="g-b.xhtml#block">block</a></i> 
+(<i>e.g.</i>,  using <a href="e5-3-28.xhtml#DictEntry_throw_414"><b>throw</b></a>, <a href="e5-3-24.xhtml#DictEntry_go_410"><b>go</b></a>, or <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a>).
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Extended_Loo_461"><span class="secno">6.1.1.1.2</span> Extended Loop</h5>
+<p>
+
+An extended <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> is one that has a body containing
+<i><a href="g-a.xhtml#atomic">atomic</a></i> <i><a href="g-e.xhtml#expression">expressions</a></i>.  When the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-m.xhtml#macro">macro</a></i> processes such a
+<i><a href="g-f.xhtml#form">form</a></i>, it invokes a facility that is commonly called "the Loop Facility."
+
+</p><p>
+The Loop Facility provides standardized access to mechanisms commonly used 
+in iterations through Loop schemas, which are introduced by <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i>.
+
+</p><p>
+The body of an extended <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> is divided into <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> clauses,
+each which is in turn made up of <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> and <i><a href="g-f.xhtml#form">forms</a></i>. 
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Loop_Keyword_462"><span class="secno">6.1.1.2</span> Loop Keywords</h4>
+<p><i><a href="g-l.xhtml#loopkeyword">Loop keywords</a></i> are not true <i><a href="g-k.xhtml#keyword">keywords</a></i><sub>1</sub>; 
+they are special <i><a href="g-s.xhtml#symbol">symbols</a></i>, recognized by <i><a href="g-n.xhtml#name">name</a></i> rather than <i><a href="g-o.xhtml#object">object</a></i> identity,
+that are meaningful only to the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> facility.
+A <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> is a <i><a href="g-s.xhtml#symbol">symbol</a></i> but is recognized by its <i><a href="g-n.xhtml#name">name</a></i>
+(not its identity), regardless of the <i><a href="g-p.xhtml#package">packages</a></i> in which it is <i><a href="g-a.xhtml#accessible">accessible</a></i>.  
+
+</p><p>
+
+In general, <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> are not <i><a href="g-e.xhtml#externalsymbol">external symbols</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i>,
+except in the coincidental situation that a <i><a href="g-s.xhtml#symbol">symbol</a></i> with the same name as a
+<i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> was needed for some other purpose in <i>Common Lisp</i>.  For example,
+there is a <i><a href="g-s.xhtml#symbol">symbol</a></i> in the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> whose <i><a href="g-n.xhtml#name">name</a></i> is <code>"UNLESS"</code> but
+not one whose <i><a href="g-n.xhtml#name">name</a></i> is <code>"UNTIL"</code>.
+
+
+</p><p>
+If no <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> are supplied in a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i>,
+the Loop Facility executes the loop body repeatedly; see Section <a href="#SubSubSubSec_Simple_Loop_460">6.1.1.1.1 Simple Loop</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Parsing_Loop_463"><span class="secno">6.1.1.3</span> Parsing Loop Clauses</h4>
+<p>
+
+The syntactic parts of an extended <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> are called clauses; 
+
+
+the rules for parsing are determined by 
+
+that clause's keyword.
+The following example shows a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> with six clauses:
+
+</p><pre> (loop for i from 1 to (compute-top-value)       ; first clause
+       while (not (unacceptable i))              ; second clause
+       collect (square i)                        ; third clause
+       do (format t "Working on ~D now" i)       ; fourth clause
+       when (evenp i)                            ; fifth clause
+         do (format t "~D is a non-odd number" i)
+       finally (format t "About to exit!"))      ; sixth clause
+</pre>
+
+<p>
+
+Each <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> introduces 
+either a compound loop clause or a simple loop clause
+that can consist of a <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> followed by a single <i><a href="g-f.xhtml#form">form</a></i>.
+The number of <i><a href="g-f.xhtml#form">forms</a></i> in a clause is determined by the <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> 
+that begins the clause and by the auxiliary keywords in the clause.
+The keywords <code>do</code>, 
+
+<code>doing</code>,
+
+<code>initially</code>, and <code>finally</code> 
+are the only loop keywords that can take any number of <i><a href="g-f.xhtml#form">forms</a></i> and 
+group them as an <i><a href="g-i.xhtml#implicitprogn">implicit progn</a></i>.
+
+</p><p>
+
+Loop clauses can contain auxiliary keywords, which are sometimes
+called prepositions.  For example, the first clause in the code
+above includes the prepositions <code>from</code> and <code>to</code>, 
+which mark the value from which stepping begins and the value at which stepping
+ends.
+
+</p><p>
+For detailed information about <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> syntax,
+see the <i><a href="g-m.xhtml#macro">macro</a></i> <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Expanding_Lo_464"><span class="secno">6.1.1.4</span> Expanding Loop Forms</h4>
+<p>
+
+A <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-m.xhtml#macroform">macro form</a></i> expands into a <i><a href="g-f.xhtml#form">form</a></i> containing
+
+one or more binding forms (that <i><a href="g-e.xhtml#establish">establish</a></i> <i><a href="g-b.xhtml#binding">bindings</a></i> of loop variables)
+and a <a href="e5-3-22.xhtml#DictEntry_block_408"><b>block</b></a> and a <a href="e5-3-27.xhtml#DictEntry_tagbody_413"><b>tagbody</b></a> (that express a looping control 
+structure). The variables established in <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> are bound as
+if by <a href="e5-3-18.xhtml#DictEntry_let_let_404"><b>let</b></a> or <a href="e3-8-1.xhtml#DictEntry_lambda_283"><b>lambda</b></a>.  
+
+</p><p>
+Implementations can interleave the setting of initial values with the <i><a href="g-b.xhtml#binding">bindings</a></i>.  
+However, the assignment of the initial values is always calculated in the order
+specified by the user.  A variable is thus sometimes bound to a meaningless value 
+of the correct <i><a href="g-t.xhtml#type">type</a></i>, and then later in the prologue it is set to the true
+initial value by using <a href="e5-3-20.xhtml#DictEntry_setq_406"><b>setq</b></a>.
+
+One implication of this interleaving is that it is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>
+
+
+
+
+
+
+
+
+
+whether the <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> in which the initial value <i><a href="g-f.xhtml#form">forms</a></i>
+(variously called the <i>form1</i>, <i>form2</i>, <i>form3</i>, <i>step-fun</i>,
+ <i>vector</i>, <i>hash-table</i>, and <i>package</i>) in any <i>for-as-subclause</i>,
+except <i>for-as-equals-then</i>,
+are <i>evaluated</i> includes only the loop variables preceding that <i><a href="g-f.xhtml#form">form</a></i>
+or includes more or all of the loop variables;
+the <i>form1</i> and <i>form2</i> in a <i>for-as-equals-then</i> form
+includes the <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> of all the loop variables.
+
+
+</p><p>
+
+After the <i><a href="g-f.xhtml#form">form</a></i> is expanded, it consists of three basic parts in the 
+<a href="e5-3-27.xhtml#DictEntry_tagbody_413"><b>tagbody</b></a>: 
+      the loop prologue,
+      the loop body,
+  and the loop epilogue.
+
+</p><ul>
+
+<li><b>Loop prologue</b>
+
+<p>
+The loop prologue contains <i><a href="g-f.xhtml#form">forms</a></i> 
+that are executed before iteration begins, such as
+any automatic variable initializations prescribed 
+by the <i>variable</i> clauses, along with any <code>initially</code> clauses
+in the order they appear in the source.
+
+</p></li><li><b>Loop body</b>
+
+<p>
+The loop body contains those <i><a href="g-f.xhtml#form">forms</a></i> that are executed during iteration, 
+including application-specific calculations, termination tests,
+and variable <i>stepping</i><sub>1</sub>.
+
+</p></li><li><b>Loop epilogue</b>
+
+<p>
+The loop epilogue contains <i><a href="g-f.xhtml#form">forms</a></i> that are executed after iteration 
+terminates, such as <code>finally</code> clauses, if any, along
+with any implicit return value from an <i>accumulation</i> clause or
+an <i>termination-test</i> clause.
+
+</p></li></ul>
+
+<p>
+
+Some clauses from the source <i><a href="g-f.xhtml#form">form</a></i>
+
+contribute code only to the loop prologue; these clauses must
+  come before other clauses that are in the main body of the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> form.            
+  Others contribute code only to the loop epilogue.
+  All other clauses contribute to the final 
+translated <i><a href="g-f.xhtml#form">form</a></i> in the same 
+  order given in the original source <i><a href="g-f.xhtml#form">form</a></i> of the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.
+
+</p><p>
+
+Expansion of the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> macro produces an <i><a href="g-i.xhtml#implicitblock">implicit block</a></i> named <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> 
+
+unless <code>named</code> is supplied.
+
+Thus, <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a> (and sometimes <a href="e5-3-26.xhtml#DictEntry_return_412"><b>return</b></a>)
+can be used to return values from <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> or to exit <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Summary_of_L_465"><span class="secno">6.1.1.5</span> Summary of Loop Clauses</h4>
+<p>
+
+Loop clauses fall into one of the following categories:
+</p>
+<section>
+<h5 id="SubSubSubSec_Summary_of_V_466"><span class="secno">6.1.1.5.1</span> Summary of Variable Initialization and Stepping Clauses</h5>
+<p>
+
+The <code>for</code> and <code>as</code> constructs provide iteration control clauses
+that establish a variable to be initialized.
+<code>for</code> and <code>as</code> clauses can be combined with the loop
+keyword <code>and</code> to get <i><a href="g-p.xhtml#parallel">parallel</a></i> initialization and <i>stepping</i><sub>1</sub>.
+Otherwise, the initialization and <i>stepping</i><sub>1</sub> are <i><a href="g-s.xhtml#sequential">sequential</a></i>.
+
+</p><p>
+The <code>with</code> construct is similar to a single <a href="e5-3-18.xhtml#DictEntry_let_let_404"><b>let</b></a> clause.
+<code>with</code> clauses can be combined using the <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>and</code>
+to get <i><a href="g-p.xhtml#parallel">parallel</a></i> initialization.
+
+</p><p>
+For more information, see Section <a href="#SubSection_Variable_Ini_475">6.1.2 Variable Initialization and Stepping Clauses</a>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Summary_of_V_467"><span class="secno">6.1.1.5.2</span> Summary of Value Accumulation Clauses</h5>
+<p>
+
+The <code>collect</code> (or <code>collecting</code>) construct
+takes one <i><a href="g-f.xhtml#form">form</a></i> in its clause
+and adds the value of that <i><a href="g-f.xhtml#form">form</a></i> to the end of a <i><a href="g-l.xhtml#list">list</a></i> 
+of values.  By default, the <i><a href="g-l.xhtml#list">list</a></i> of values is returned 
+when the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> finishes.
+
+</p><p>
+The <code>append</code> (or <code>appending</code>) construct 
+takes one <i><a href="g-f.xhtml#form">form</a></i> in its clause
+and appends the value of that <i><a href="g-f.xhtml#form">form</a></i> to the end of a <i><a href="g-l.xhtml#list">list</a></i>
+of values.  By default, the <i><a href="g-l.xhtml#list">list</a></i> of values is returned when the 
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> finishes.
+
+</p><p>
+The <code>nconc</code> (or <code>nconcing</code>) construct 
+is similar to the <code>append</code> construct,  
+but its <i><a href="g-l.xhtml#list">list</a></i> values are concatenated as if by the function
+<code>nconc</code>.  By default, the <i><a href="g-l.xhtml#list">list</a></i> of values is returned when 
+the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> finishes.
+
+</p><p>
+The <code>sum</code> (or <code>summing</code>) construct 
+takes one <i><a href="g-f.xhtml#form">form</a></i> in its clause 
+that must evaluate to a <i><a href="g-n.xhtml#number">number</a></i> and accumulates the sum of all these
+<i><a href="g-n.xhtml#number">numbers</a></i>.  By default, the cumulative sum is returned when the
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> finishes.
+
+</p><p>
+The <code>count</code> (or <code>counting</code>) construct 
+takes one <i><a href="g-f.xhtml#form">form</a></i> in its clause 
+and counts the number of times that the <i><a href="g-f.xhtml#form">form</a></i> evaluates to <i><a href="g-t.xhtml#true">true</a></i>.
+By default, the count is returned when the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> finishes.
+
+</p><p>
+The <code>minimize</code> (or <code>minimizing</code>) construct
+takes one <i><a href="g-f.xhtml#form">form</a></i> in its clause 
+and determines the minimum value obtained by evaluating that <i><a href="g-f.xhtml#form">form</a></i>.
+By default, the minimum value is returned when the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> finishes.
+
+</p><p>
+The <code>maximize</code> (or <code>maximizing</code>) construct
+takes one <i><a href="g-f.xhtml#form">form</a></i> in its clause 
+and determines the maximum value obtained by evaluating that <i><a href="g-f.xhtml#form">form</a></i>.
+By default, the maximum value is returned when the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> finishes.
+
+</p><p>
+For more information, see Section <a href="#SubSection_Value_Accumu_492">6.1.3 Value Accumulation Clauses</a>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Summary_of_T_468"><span class="secno">6.1.1.5.3</span> Summary of Termination Test Clauses</h5>
+<p>
+
+The <code>for</code> and <code>as</code> constructs provide a termination test
+that is determined by the iteration control clause.
+
+</p><p>
+The <code>repeat</code> construct causes termination after a specified
+number of iterations.
+
+(It uses an internal variable to keep track of the number of iterations.)
+
+</p><p>
+The <code>while</code> construct takes one <i><a href="g-f.xhtml#form">form</a></i>, a <i>test</i>, 
+and terminates the iteration if the <i>test</i> evaluates to <i><a href="g-f.xhtml#false">false</a></i>.
+
+A <code>while</code> clause is equivalent to the expression 
+<code>(if (not <i>test</i>) (loop-finish))</code>.
+
+</p><p>
+The <code>until</code> construct is the inverse of <code>while</code>;
+it terminates the iteration if the <i>test</i> evaluates to
+any <i><a href="g-n.xhtml#nonnil">non-nil</a></i> value.
+
+An <code>until</code> clause is equivalent to the expression
+<code>(if <i>test</i> (loop-finish))</code>.
+
+</p><p>
+The <code>always</code> construct takes one <i><a href="g-f.xhtml#form">form</a></i> and
+terminates the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> if the <i><a href="g-f.xhtml#form">form</a></i> ever evaluates to <i><a href="g-f.xhtml#false">false</a></i>;
+in this case, the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> returns <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+Otherwise, it provides a default return value of <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>.
+
+</p><p>
+The <code>never</code> construct takes one <i><a href="g-f.xhtml#form">form</a></i> and
+terminates the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> if the <i><a href="g-f.xhtml#form">form</a></i> ever evaluates to <i><a href="g-t.xhtml#true">true</a></i>;
+in this case, the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> returns <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+Otherwise, it provides a default return value of <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>.
+
+</p><p>
+The <code>thereis</code> construct takes one <i><a href="g-f.xhtml#form">form</a></i> and
+terminates the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> if the <i><a href="g-f.xhtml#form">form</a></i> ever evaluates to
+a <i><a href="g-n.xhtml#nonnil">non-nil</a></i> <i><a href="g-o.xhtml#object">object</a></i>;
+in this case, the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> returns that <i><a href="g-o.xhtml#object">object</a></i>.
+
+Otherwise, it provides a default return value of <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+
+</p><p>
+
+If multiple termination test clauses are specified, 
+the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> terminates if any are satisfied.
+
+</p><p>
+For more information, see Section <a href="#SubSection_Termination__498">6.1.4 Termination Test Clauses</a>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Summary_of_U_469"><span class="secno">6.1.1.5.4</span> Summary of Unconditional Execution Clauses</h5>
+<p>
+
+The <code>do</code> (or <code>doing</code>) construct evaluates all <i><a href="g-f.xhtml#form">forms</a></i> in its clause.
+
+</p><p>
+The <code>return</code> construct takes one 
+
+
+  <i><a href="g-f.xhtml#form">form</a></i>. Any <i><a href="g-v.xhtml#value">values</a></i> returned by the <i><a href="g-f.xhtml#form">form</a></i> are
+  immediately returned by the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> form.
+
+   It is equivalent to the clause
+   <code>do (return-from <i>block-name</i> <i>value</i>)</code>,
+   where <i>block-name</i> is the name specified in a <code>named</code>
+   clause, or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> if there is no <code>named</code> clause.
+
+
+</p><p>
+For more information, see Section <a href="#SubSection_Unconditiona_502">6.1.5 Unconditional Execution Clauses</a>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Summary_of_C_470"><span class="secno">6.1.1.5.5</span> Summary of Conditional Execution Clauses</h5>
+<p>
+
+The <code>if</code> and <code>when</code> constructs take one <i><a href="g-f.xhtml#form">form</a></i> as a test 
+and a clause that is executed when the test <i><a href="g-y.xhtml#yield">yields</a></i> <i><a href="g-t.xhtml#true">true</a></i>.
+The clause can be a value accumulation, unconditional, or 
+another conditional clause; it can also be any combination
+of such clauses connected by the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <code>and</code> keyword.
+
+</p><p>
+The <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <code>unless</code> construct is similar to the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <code>when</code> construct
+except that it complements the test result.
+
+</p><p>
+The <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <code>else</code> construct provides an optional component of <code>if</code>,
+<code>when</code>, and <code>unless</code> clauses that is executed 
+     when an <code>if</code> or <code>when</code> test <i><a href="g-y.xhtml#yield">yields</a></i> <i><a href="g-f.xhtml#false">false</a></i>
+  or when an <code>unless</code> test <i><a href="g-y.xhtml#yield">yields</a></i> <i><a href="g-t.xhtml#true">true</a></i>.
+The component is one of the clauses described under <code>if</code>.
+
+</p><p>
+The <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <code>end</code> construct provides an optional component to mark the
+end of a conditional clause.
+
+</p><p>
+For more information, see Section <a href="#SubSection_Conditional__504">6.1.6 Conditional Execution Clauses</a>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Summary_of_M_471"><span class="secno">6.1.1.5.6</span> Summary of Miscellaneous Clauses</h5>
+<p>
+
+The <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <code>named</code> construct gives a name for the <i><a href="g-b.xhtml#block">block</a></i> of the loop.
+
+</p><p>
+The <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <code>initially</code> construct causes its <i><a href="g-f.xhtml#form">forms</a></i> to be
+evaluated in the loop prologue, which precedes all <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> code
+except for initial settings supplied by the constructs <code>with</code>,
+<code>for</code>, or <code>as</code>.
+
+</p><p>
+The <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <code>finally</code> construct causes its <i><a href="g-f.xhtml#form">forms</a></i> to
+be evaluated in the loop epilogue after normal iteration terminates.
+
+
+ 
+
+</p><p>
+For more information, see Section <a href="#SubSection_Miscellaneou_506">6.1.7 Miscellaneous Clauses</a>.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Order_of_Exe_472"><span class="secno">6.1.1.6</span> Order of Execution</h4>
+<p>
+ 
+
+  With the exceptions listed below, clauses are executed in the loop body
+  in the order in which they appear in the source.  Execution is repeated 
+  until a clause
+  terminates the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> or until a <a href="e5-3-26.xhtml#DictEntry_return_412"><b>return</b></a>, <a href="e5-3-24.xhtml#DictEntry_go_410"><b>go</b></a>,
+  or <a href="e5-3-28.xhtml#DictEntry_throw_414"><b>throw</b></a> form is encountered 
+
+which transfers control to a point outside of the loop.
+ The following actions are
+  exceptions to the linear order of execution:
+
+</p><ul>
+
+<li>  All variables are initialized first, 
+  regardless of where the establishing clauses appear in the
+  source.  The order of initialization follows the order of these clauses.
+
+</li><li>  The code for any <code>initially</code> clauses is collected
+  into one <a href="e5-3-59.xhtml#DictEntry_progn_445"><b>progn</b></a> in the order in which the clauses appear in
+  the source.  The collected code is executed once in the loop prologue
+  after any implicit variable initializations.
+
+</li><li>    The code for any <code>finally</code> clauses is collected 
+  into one <a href="e5-3-59.xhtml#DictEntry_progn_445"><b>progn</b></a> in the order in which the clauses appear in
+  the source.  The collected code is executed once in the loop epilogue
+  before any implicit values from the accumulation clauses are returned.
+  Explicit returns anywhere in the source, however, will exit the 
+  <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> without executing the epilogue code.
+
+</li><li>  A <code>with</code> clause introduces a variable <i><a href="g-b.xhtml#binding">binding</a></i>
+  and an optional initial value.  The initial values are calculated 
+  in the order in which the <code>with</code> clauses occur.
+
+</li><li>  
+  Iteration control clauses implicitly perform the following actions:
+
+<ul>
+<li>--  initialize variables;
+
+</li><li>--  <i><a href="g-s.xhtml#step">step</a></i> variables, generally 
+between each execution of the loop body;
+
+</li><li>-- perform termination tests, 
+generally just before the execution of the
+  loop body.
+
+</li></ul>
+  </li></ul>
+</section>
+<section>
+<h4 id="SubSubSectio_Destructurin_473"><span class="secno">6.1.1.7</span> Destructuring</h4>
+<p>
+
+
+The <i>d-type-spec</i> argument is used for destructuring.
+If the
+<i>d-type-spec</i> argument consists solely of the <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-13.xhtml#DictEntry_fixnum_787"><b>fixnum</b></a>,
+<a href="e12-2-4.xhtml#DictEntry_float_778"><b>float</b></a>, <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>, or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, the <code>of-type</code> keyword is optional.
+The <code>of-type</code> construct is optional in these cases to provide backwards
+compatibility; thus, the following two expressions are the same:
+
+</p><pre>;;; This expression uses the old syntax for type specifiers.
+ (loop for i fixnum upfrom 3 ...)
+ 
+;;; This expression uses the new syntax for type specifiers.
+ (loop for i of-type fixnum upfrom 3 ...)
+
+;; Declare X and Y to be of type VECTOR and FIXNUM respectively.
+ (loop for (x y) of-type (vector fixnum) 
+       in l do ...)
+</pre>
+
+<p>
+A <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> for a destructuring pattern is a <i><a href="g-t.xhtml#tree">tree</a></i> of 
+<i><a href="g-t.xhtml#typespecifier">type specifiers</a></i> with the same shape as the <i><a href="g-t.xhtml#tree">tree</a></i> of
+<i><a href="g-v.xhtml#variable">variable</a></i> <i><a href="g-n.xhtml#name">names</a></i>, with the following exceptions:
+
+</p><ul> 
+<li>
+When aligning the <i><a href="g-t.xhtml#tree">trees</a></i>, an <i><a href="g-a.xhtml#atom">atom</a></i> in the
+<i><a href="g-t.xhtml#tree">tree</a></i> of <i><a href="g-t.xhtml#typespecifier">type specifiers</a></i> that matches a <i><a href="g-c.xhtml#cons">cons</a></i> 
+in the variable tree declares the same <i><a href="g-t.xhtml#type">type</a></i> for each variable
+in the subtree rooted at the <i><a href="g-c.xhtml#cons">cons</a></i>.
+
+</li><li> 
+A <i><a href="g-c.xhtml#cons">cons</a></i> in the <i><a href="g-t.xhtml#tree">tree</a></i> of <i><a href="g-t.xhtml#typespecifier">type specifiers</a></i> that 
+matches an <i><a href="g-a.xhtml#atom">atom</a></i> in the <i><a href="g-t.xhtml#tree">tree</a></i> of <i><a href="g-v.xhtml#variable">variable</a></i> <i><a href="g-n.xhtml#name">names</a></i>
+is a <i>compound type specifer</i>.
+
+</li></ul>
+
+<p>
+Destructuring allows <i><a href="g-b.xhtml#binding">binding</a></i> of a set of variables to a corresponding
+set of values anywhere that a value can normally be bound to a single
+variable.  During <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> expansion, 
+each variable in the variable list
+is matched with the values in the values list.  If there are more variables
+in the variable list than there are values in the values list, the 
+remaining variables are given a value of <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.  If there are more
+values than variables listed, the extra values are discarded.
+
+</p><p>
+ 
+To assign values from a list to the variables <code>a</code>,
+<code>b</code>, and <code>c</code>, the <code>for</code> clause could be used to
+bind the variable <code>numlist</code> to the 
+<i><a href="g-c.xhtml#car">car</a></i> of the supplied <i>form</i>,
+and then another <code>for</code> clause could be used to bind the variables
+<code>a</code>, <code>b</code>, and <code>c</code> <i><a href="g-s.xhtml#sequentially">sequentially</a></i>.  
+
+</p><pre>;; Collect values by using FOR constructs.
+ (loop for numlist in '((1 2 4.0) (5 6 8.3) (8 9 10.4))
+       for a of-type integer = (first numlist)
+       and b of-type integer = (second numlist)
+       and c of-type float = (third numlist)
+       collect (list c b a))
+→ ((4.0 2 1) (8.3 6 5) (10.4 9 8))
+</pre>
+
+
+<p>
+Destructuring makes this process easier by allowing the variables to
+be bound in each loop iteration.  
+<i><a href="g-t.xhtml#type">Types</a></i> can be declared by using a 
+list of <i>type-spec</i> arguments.  If 
+all the <i><a href="g-t.xhtml#type">types</a></i>
+are the same, a shorthand destructuring syntax can be used, as the second
+example illustrates.
+
+</p><pre>;; Destructuring simplifies the process.
+ (loop for (a b c) of-type (integer integer float) in
+       '((1 2 4.0) (5 6 8.3) (8 9 10.4))
+       collect (list c b a))
+→ ((4.0 2 1) (8.3 6 5) (10.4 9 8))
+ 
+
+;; If all the types are the same, this way is even simpler.
+ (loop for (a b c) of-type float in
+       '((1.0 2.0 4.0) (5.0 6.0 8.3) (8.0 9.0 10.4))
+       collect (list c b a))
+→ ((4.0 2.0 1.0) (8.3 6.0 5.0) (10.4 9.0 8.0))
+</pre>
+
+<p>
+If destructuring is used to declare or initialize a number of groups
+of variables into <i><a href="g-t.xhtml#type">types</a></i>, the <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>and</code> can be used
+to simplify the process further.
+ 
+</p><pre>;; Initialize and declare variables in parallel by using the AND construct.
+ (loop with (a b) of-type float = '(1.0 2.0)
+       and (c d) of-type integer = '(3 4)
+       and (e f)
+       return (list a b c d e f))
+→ (1.0 2.0 3 4 NIL NIL)
+</pre>
+ 
+
+<p>
+ 
+If <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is used in a destructuring list, no variable is provided for
+its place.
+
+</p><pre> (loop for (a nil b) = '(1 2 3)
+       do (return (list a b)))
+→ (1 3)
+</pre>
+
+<p>
+Note that 
+
+
+<i><a href="g-d.xhtml#dottedlist">dotted lists</a></i>
+can specify destructuring.
+
+</p><pre> (loop for (x . y) = '(1 . 2)
+       do (return y))
+→ 2
+ (loop for ((a . b) (c . d)) of-type ((float . float) (integer . integer)) in
+       '(((1.2 . 2.4) (3 . 4)) ((3.4 . 4.6) (5 . 6)))
+       collect (list a b c d))
+→ ((1.2 2.4 3 4) (3.4 4.6 5 6))
+</pre>
+
+<p>
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e5-3-68.xhtml#DictEntry_program_erro_454"><b>program-error</b></a> is signaled (at macro expansion time)
+if the same variable is bound twice in any variable-binding
+clause of a single <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> expression.  Such variables include
+local variables, iteration control variables, and variables found by
+destructuring.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Restrictions_474"><span class="secno">6.1.1.8</span> Restrictions on Side-Effects</h4>
+<p>
+
+
+See Section <a href="s3-6.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>.
+
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Variable_Ini_475"><span class="secno">6.1.2</span> Variable Initialization and Stepping Clauses</h3>
+<section>
+<h4 id="SubSubSectio_Iteration_Co_476"><span class="secno">6.1.2.1</span> Iteration Control</h4>
+<p>
+
+Iteration control clauses allow direction of <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> iteration.
+The <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> <code>for</code> and <code>as</code>
+
+designate iteration control clauses.
+Iteration control clauses differ with respect to the specification of
+termination tests and to the initialization and <i>stepping</i><sub>1</sub>
+of loop variables.  Iteration clauses by themselves
+do not cause the Loop Facility to return values, but they
+can be used in conjunction with value-accumulation clauses to
+return values.  
+
+</p><p>
+All variables are initialized in the loop prologue.  
+A <i><a href="g-v.xhtml#variable">variable</a></i> <i><a href="g-b.xhtml#binding">binding</a></i> has <i><a href="g-l.xhtml#lexicalscope">lexical scope</a></i>
+unless it is proclaimed <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a>;
+thus, by default, the variable can be <i>accessed</i> only by <i><a href="g-f.xhtml#form">forms</a></i> 
+that lie textually within the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.
+Stepping assignments are made in the loop body before any other <i><a href="g-f.xhtml#form">forms</a></i>
+are evaluated in the body.  
+
+</p><p>
+The variable argument in iteration control clauses can be a 
+destructuring list.  A destructuring list
+is a <i><a href="g-t.xhtml#tree">tree</a></i> whose <i><a href="g-n.xhtml#nonnil">non-nil</a></i> <i><a href="g-a.xhtml#atom">atoms</a></i> are <i><a href="g-v.xhtml#variable">variable</a></i> <i><a href="g-n.xhtml#name">names</a></i>.
+See Section <a href="#SubSubSectio_Destructurin_473">6.1.1.7 Destructuring</a>.
+
+</p><p>
+The iteration control clauses <code>for</code>, <code>as</code>,  and <code>repeat</code> 
+must precede any other loop clauses, except
+  <code>initially</code>, <code>with</code>, and <code>named</code>,
+since they establish variable <i><a href="g-b.xhtml#binding">bindings</a></i>.  
+When iteration control clauses are
+used in a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>,
+
+the corresponding
+termination tests in the loop body are evaluated
+before any other loop body code is executed.
+
+</p><p>
+ 
+If multiple iteration clauses are used to control iteration, variable
+initialization and <i>stepping</i><sub>1</sub> occur <i><a href="g-s.xhtml#sequentially">sequentially</a></i> by default.  
+The <code>and</code> construct can be used to connect two or more
+iteration clauses when <i><a href="g-s.xhtml#sequential">sequential</a></i> <i><a href="g-b.xhtml#binding">binding</a></i> and 
+<i>stepping</i><sub>1</sub> are not necessary.
+The iteration behavior of clauses joined by <code>and</code>
+is analogous to the behavior of the macro <a href="e6-2-1.xhtml#DictEntry_do_do_514"><b>do</b></a> with
+respect to <a href="e6-2-1.xhtml#DictEntry_do_do_514"><b>do*</b></a>.
+
+</p><p>
+The <code>for</code> and <code>as</code> clauses iterate by using one or more local 
+loop  variables that are initialized to some value and that 
+can be modified or <i>stepped</i><sub>1</sub> after each iteration.  
+For these clauses, iteration terminates when a local
+variable reaches some supplied value or when some other loop clause
+terminates iteration.
+
+At each iteration, variables can be 
+   <i>stepped</i><sub>1</sub> by an increment or a decrement
+or can be assigned a new value by the evaluation of a <i><a href="g-f.xhtml#form">form</a></i>).
+Destructuring can be used to assign 
+
+
+values to variables during iteration. 
+
+</p><p>
+The <code>for</code> and <code>as</code> keywords are synonyms; they can be used
+interchangeably.  There are seven syntactic formats for these constructs.
+In each syntactic format, the <i><a href="g-t.xhtml#type">type</a></i> of
+<i>var</i> can be supplied by the optional <i>type-spec</i>
+argument.  If <i>var</i> is a destructuring list, the <i><a href="g-t.xhtml#type">type</a></i>
+supplied by the <i>type-spec</i> argument must appropriately match
+the elements of the list.  
+
+By convention, <code>for</code> introduces new iterations and <code>as</code>
+introduces iterations that depend on a previous iteration specification.
+</p>
+<section>
+<h5 id="SubSubSubSec_The_for_as_a_477"><span class="secno">6.1.2.1.1</span> The for-as-arithmetic subclause</h5>
+<p>
+
+In the <i>for-as-arithmetic</i> subclause, the <code>for</code> 
+or <code>as</code> construct iterates from the value supplied by
+<i>form1</i> to the value supplied by <i>form2</i> in increments or
+decrements denoted by <i>form3</i>. Each
+expression is evaluated only once and must evaluate to a <i><a href="g-n.xhtml#number">number</a></i>.  
+The variable <i>var</i> is bound to the value of 
+<i>form1</i> in the first iteration and is <i>stepped</i><sub>1</sub>
+by the value of <i>form3</i> in each succeeding iteration,
+or by 1 if <i>form3</i> is not provided.  
+The following <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> serve as valid prepositions within this 
+syntax.
+At least one of the 
+
+prepositions must be used; 
+and at most one from each line may be used in a single subclause.
+
+</p><ul>                 
+
+<li><code>from | downfrom | upfrom</code>
+
+</li><li><code>to | downto | upto | below | above</code>
+
+</li><li><code>by</code>
+</li></ul>
+
+<p>
+
+The prepositional phrases in each subclause may appear in any order.
+For example, either "<code>from x by y</code>" or "<code>by y from x</code>" is permitted.
+However, because left-to-right order of evaluation is preserved,
+the effects will be different in the case of side effects.
+
+Consider:
+
+</p><pre>(let ((x 1)) (loop for i from x by (incf x) to 10 collect i))
+→ (1 3 5 7 9)
+(let ((x 1)) (loop for i by (incf x) from x to 10 collect i))
+→ (2 4 6 8 10)
+</pre>
+
+
+<p>
+The descriptions of the prepositions follow:
+
+</p><ul>
+<li><code>from</code>
+
+<p>
+The <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>from</code> specifies the value from which
+<i>stepping</i><sub>1</sub> begins, as supplied by <i>form1</i>.  
+<i>Stepping</i><sub>1</sub> is incremental by default.  If 
+decremental <i>stepping</i><sub>1</sub> is desired, 
+the preposition <code>downto</code> 
+or <code>above</code> must be used with <i>form2</i>.  For incremental
+<i>stepping</i><sub>1</sub>, the default <code>from</code> value is 0.
+
+</p></li><li><code>downfrom, upfrom</code>
+
+<p>
+The <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>downfrom</code> 
+indicates that the variable <i>var</i> is decreased in decrements
+supplied by <i>form3</i>; the <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>upfrom</code> indicates that 
+<i>var</i> is increased in increments supplied by <i>form3</i>.
+
+</p></li><li><code>to</code>
+
+<p>
+The <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>to</code> marks the end value
+for <i>stepping</i><sub>1</sub> supplied in <i>form2</i>.
+<i>Stepping</i><sub>1</sub> is incremental by default.
+If decremental <i>stepping</i><sub>1</sub> is desired, 
+the preposition <code>downfrom</code> must be used with <i>form1</i>,
+or else the preposition <code>downto</code> or <code>above</code> should be used instead
+   of <code>to</code> with <i>form2</i>.
+
+</p></li><li><code>downto, upto</code>
+
+<p>
+The <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>downto</code> specifies decremental <i>stepping</i>;
+the <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>upto</code> specifies incremental <i>stepping</i>.
+In both cases, the amount of change on each step is specified by <i>form3</i>,
+and the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> terminates when the variable <i>var</i> passes 
+the value of <i>form2</i>.
+Since there is no default for <i>form1</i> in decremental <i>stepping</i><sub>1</sub>,
+a <i>form1</i> value must be supplied (using <code>from</code> or <code>downfrom</code>)
+when <code>downto</code> is supplied.
+
+</p></li><li><code>below, above</code>
+
+<p>
+The <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> <code>below</code> and <code>above</code> are analogous to
+<code>upto</code> and <code>downto</code> respectively.  These keywords stop
+iteration just before the value of the variable <i>var</i> reaches the value 
+supplied by <i>form2</i>; the end value of <i>form2</i> is not included.
+Since there is no default for <i>form1</i> in decremental <i>stepping</i><sub>1</sub>,
+a <i>form1</i> value must be supplied (using <code>from</code> or <code>downfrom</code>)
+when <code>above</code> is supplied.
+
+</p></li><li><code>by</code>
+
+<p>
+The <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>by</code> marks the increment or decrement supplied by
+<i>form3</i>.  The value of <i>form3</i> can be any 
+
+positive 
+<i><a href="g-n.xhtml#number">number</a></i>.
+The default value is 1.
+
+</p></li></ul>
+
+<p>
+In an iteration control clause, the <code>for</code> or <code>as</code> construct
+causes termination when the supplied limit is reached.  That is,
+iteration continues until the value <i>var</i> is stepped to the
+exclusive or inclusive limit supplied by <i>form2</i>.  The range is
+exclusive if <i>form3</i> increases or decreases <i>var</i>
+to the value of <i>form2</i> without reaching that value; the loop
+keywords <code>below</code> and <code>above</code> provide exclusive limits.  An
+inclusive limit allows <i>var</i> to attain the value of
+<i>form2</i>; <code>to</code>, <code>downto</code>, and <code>upto</code> provide inclusive
+limits.
+</p>
+<section>
+<h6 id="SubSubSubSub_Examples_of__478"><span class="secno">6.1.2.1.1.1</span> Examples of for-as-arithmetic subclause</h6>
+<pre>;; Print some numbers.
+ (loop for i from 1 to 3
+       do (print i))
+▷1
+▷2
+▷3
+→  NIL
+ 
+;; Print every third number.
+ (loop for i from 10 downto 1 by 3
+       do (print i))
+▷10 
+▷7 
+▷4 
+▷1 
+→  NIL
+ 
+;; Step incrementally from the default starting value.
+ (loop for i below 3
+       do (print i))
+▷0
+▷1
+▷2
+→  NIL
+</pre>
+</section>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_for_as_i_479"><span class="secno">6.1.2.1.2</span> The for-as-in-list subclause</h5>
+<p>
+
+In the <i>for-as-in-list</i> subclause,
+the <code>for</code> 
+or <code>as</code> construct iterates over the contents of a 
+<i><a href="g-l.xhtml#list">list</a></i>.  It checks for 
+the end of the <i><a href="g-l.xhtml#list">list</a></i> as if by using <a href="e14-2-23.xhtml#DictEntry_endp_936"><b>endp</b></a>.  
+The variable <i>var</i> is bound to the successive elements  of 
+the <i><a href="g-l.xhtml#list">list</a></i> in <i>form1</i> before each
+iteration.  At the end of each iteration, the function <i>step-fun</i>
+is applied to the <i><a href="g-l.xhtml#list">list</a></i>; the default value for <i>step-fun</i> is
+<a href="e14-2-9.xhtml#DictEntry_car____cdr_922"><b>cdr</b></a>.
+The <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> <code>in</code> and <code>by</code> serve as valid prepositions in
+this syntax.
+The <code>for</code> or <code>as</code> construct causes termination when the
+end of the <i><a href="g-l.xhtml#list">list</a></i> is reached.
+</p>
+<section>
+<h6 id="SubSubSubSub_Examples_of__480"><span class="secno">6.1.2.1.2.1</span> Examples of for-as-in-list subclause</h6>
+<pre>;; Print every item in a list.
+ (loop for item in '(1 2 3) do (print item))
+▷1
+▷2
+▷3
+→  NIL
+ 
+;; Print every other item in a list.
+ (loop for item in '(1 2 3 4 5) by #'cddr
+       do (print item))
+▷1
+▷3
+▷5
+→  NIL
+ 
+;; Destructure a list, and sum the x values using fixnum arithmetic.
+ (loop for (item . x) of-type (t . fixnum) in '((A . 1) (B . 2) (C . 3))
+       unless (eq item 'B) sum x)
+→ 4
+</pre>
+</section>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_for_as_o_481"><span class="secno">6.1.2.1.3</span> The for-as-on-list subclause</h5>
+<p>
+
+
+In the <i>for-as-on-list</i> subclause, the <code>for</code> or <code>as</code>
+construct iterates over
+
+a <i><a href="g-l.xhtml#list">list</a></i>. It checks for the
+end of the <i><a href="g-l.xhtml#list">list</a></i> as if by using <a href="e14-2-4.xhtml#DictEntry_atom_917"><b>atom</b></a>.
+
+The variable <i>var</i> is bound to the successive tails of the 
+<i><a href="g-l.xhtml#list">list</a></i> in 
+<i>form1</i>.  At the end of each iteration, the function <i>step-fun</i>
+ is applied to the <i><a href="g-l.xhtml#list">list</a></i>; the default value for <i>step-fun</i> is <a href="e14-2-9.xhtml#DictEntry_car____cdr_922"><b>cdr</b></a>.
+ The <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> <code>on</code> and <code>by</code> serve as valid
+prepositions in this syntax.
+The <code>for</code> or <code>as</code> construct causes termination when the
+end of the <i><a href="g-l.xhtml#list">list</a></i> is reached.
+</p>
+<section>
+<h6 id="SubSubSubSub_Examples_of__482"><span class="secno">6.1.2.1.3.1</span> Examples of for-as-on-list subclause</h6>
+<pre>;; Collect successive tails of a list.
+ (loop for sublist on '(a b c d)
+       collect sublist)
+→ ((A B C D) (B C D) (C D) (D))
+ 
+;; Print a list by using destructuring with the loop keyword ON.
+ (loop for (item) on '(1 2 3)
+       do (print item))
+▷1 
+▷2 
+▷3 
+→  NIL
+ 
+</pre>
+</section>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_for_as_e_483"><span class="secno">6.1.2.1.4</span> The for-as-equals-then subclause</h5>
+<p>
+
+In the <i>for-as-equals-then</i> subclause
+the <code>for</code> 
+or <code>as</code> construct 
+initializes the variable <i>var</i> by setting it to the
+  result of evaluating <i>form1</i> on the first iteration, then setting
+  it to the result of evaluating <i>form2</i> on the second and
+  subsequent iterations.  If <i>form2</i> is omitted, the construct
+  uses <i>form1</i> on the second and
+  subsequent iterations.  
+
+
+The <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> <i>=</i> and <code>then</code> serve as valid prepositions
+in this syntax. 
+This construct does not provide any termination tests.
+</p>
+<section>
+<h6 id="SubSubSubSub_Examples_of__484"><span class="secno">6.1.2.1.4.1</span> Examples of for-as-equals-then subclause</h6>
+<pre>;; Collect some numbers.
+ (loop for item = 1 then (+ item 10)
+       for iteration from 1 to 5
+       collect item)
+→ (1 11 21 31 41)
+</pre>
+</section>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_for_as_a_485"><span class="secno">6.1.2.1.5</span> The for-as-across subclause</h5>
+<p>
+
+In the <i>for-as-across</i> subclause the <code>for</code> 
+  or <code>as</code> construct binds the variable <i>var</i> to the value of
+  each element in the array <i>vector</i>.
+  The <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>across</code> marks the array <i>vector</i>; <code>across</code>
+  is used as a preposition in this syntax.
+  Iteration stops when there are no more elements in the supplied
+  <i><a href="g-a.xhtml#array">array</a></i> that can be referenced.
+  Some implementations might recognize a <a href="e3-8-28.xhtml#DictEntry_the_310"><b>the</b></a> special form
+  in the <i>vector</i> form to produce more efficient code.
+</p>
+<section>
+<h6 id="SubSubSubSub_Examples_of__486"><span class="secno">6.1.2.1.5.1</span> Examples of for-as-across subclause</h6>
+<pre> (loop for char across (the simple-string (find-message channel))
+       do (write-char char stream))
+</pre>
+</section>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_for_as_h_487"><span class="secno">6.1.2.1.6</span> The for-as-hash subclause</h5>
+<p>
+
+In the <i>for-as-hash</i> subclause
+  the <code>for</code> 
+  or <code>as</code> construct 
+  iterates over the elements, keys, and values of a <i>hash-table</i>.
+  In this syntax, a compound preposition is used to designate access to a
+  <i><a href="g-h.xhtml#hashtable">hash table</a></i>.
+  The variable <i>var</i> takes on the value of each hash key
+  or hash value in the supplied <i>hash-table</i>. 
+  The following <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> serve as valid prepositions within this syntax:
+
+</p><ul>
+
+<li><code>being</code>
+
+<p>
+The keyword <code>being</code> introduces either the Loop schema 
+<code>hash-key</code> or <code>hash-value</code>.
+
+</p></li><li><code>each</code>, <code>the</code>
+
+<p>
+The <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>each</code>
+follows the <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>being</code> when <code>hash-key</code> or
+<code>hash-value</code> is used.  The <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>the</code> is used with
+<code>hash-keys</code> and <code>hash-values</code> only for ease of reading.
+This agreement isn't required.
+
+</p></li><li><code>hash-key</code>, <code>hash-keys</code>
+
+<p>
+These <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> access each key entry of the <i><a href="g-h.xhtml#hashtable">hash table</a></i>.  If 
+the name <code>hash-value</code> is supplied in a <code>using</code> construct with one
+of these Loop schemas, the iteration can optionally access the keyed
+value. The order in which the keys are accessed is undefined; empty
+slots in the <i><a href="g-h.xhtml#hashtable">hash table</a></i> are ignored.  
+
+</p></li><li><code>hash-value</code>, <code>hash-values</code>
+
+<p>
+These <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> access each value entry of a 
+<i><a href="g-h.xhtml#hashtable">hash table</a></i>.  If 
+the name <code>hash-key</code> is supplied in a <code>using</code> construct with one of
+these Loop schemas, the iteration can optionally access the key that
+corresponds to the value.  The order in which the keys are accessed is
+undefined; empty slots in the <i><a href="g-h.xhtml#hashtable">hash table</a></i> are ignored. 
+
+</p></li><li><code>using</code>
+
+<p>
+The <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>using</code> introduces 
+the optional key or the keyed value to
+be accessed.  It allows access to the hash key if iteration is over
+the hash values, and the hash value if 
+iteration is over the hash keys.
+
+</p></li><li><code>in</code>, <code>of</code>
+
+<p>
+These loop prepositions introduce <i>hash-table</i>.
+
+</p></li></ul>
+
+<p>
+
+In effect 
+
+</p><p>
+<code>being</code>
+<code>{</code><code>each</code> | <code>the</code><code>}</code>
+<code>{</code><code>hash-value</code>  |
+       <code>hash-values</code> |
+       <code>hash-key</code>    |
+       <code>hash-keys</code><code>}</code>
+<code>{</code><code>in</code> | <code>of</code><code>}</code>
+
+</p><p>
+is a compound preposition.
+
+</p><p>
+Iteration stops when there are no more hash keys or hash values to be
+referenced in the supplied <i>hash-table</i>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_for_as_p_488"><span class="secno">6.1.2.1.7</span> The for-as-package subclause</h5>
+<p>
+
+In the <i>for-as-package</i> subclause
+the <code>for</code> 
+or <code>as</code> construct                    
+iterates over the <i><a href="g-s.xhtml#symbol">symbols</a></i> in a <i><a href="g-p.xhtml#package">package</a></i>.
+In this syntax, a compound preposition is used to designate access to a
+<i><a href="g-p.xhtml#package">package</a></i>.
+The variable <i>var</i> takes on the value of each <i><a href="g-s.xhtml#symbol">symbol</a></i>
+in the supplied <i><a href="g-p.xhtml#package">package</a></i>.  
+ The following <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i> serve as valid prepositions within this syntax:
+
+</p><ul>
+
+<li><code>being</code>
+
+<p>
+The keyword <code>being</code> introduces either the Loop schema 
+<code>symbol</code>, <code>present-symbol</code>,  or <code>external-symbol</code>.
+
+</p></li><li><code>each</code>, <code>the</code>
+
+<p>
+The <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>each</code>
+follows the <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>being</code> when <code>symbol</code>, 
+<code>present-symbol</code>, or <code>external-symbol</code> is used.  
+The <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>the</code> is used with <code>symbols</code>, 
+<code>present-symbols</code>, and <code>external-symbols</code> only for ease of reading.
+This agreement isn't required.
+
+</p></li><li><code>present-symbol</code>, <code>present-symbols</code>
+
+<p>
+These Loop schemas iterate over the <i><a href="g-s.xhtml#symbol">symbols</a></i> 
+
+that are <i><a href="g-p.xhtml#present">present</a></i> in a <i><a href="g-p.xhtml#package">package</a></i>.
+
+
+The <i>package</i> to be iterated over is supplied in the same way
+that <i><a href="g-p.xhtml#package">package</a></i> arguments to <a href="e11-2-4.xhtml#DictEntry_find_package_719"><b>find-package</b></a> are supplied.  
+If the <i>package</i> for the iteration is not supplied, 
+the <i><a href="g-c.xhtml#currentpackage">current package</a></i> is used.  
+If a <i>package</i> that does not exist is supplied, 
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e11-2-29.xhtml#DictEntry_package_erro_744"><b>package-error</b></a> is signaled.
+
+</p></li><li><code>symbol</code>, <code>symbols</code>
+
+<p>
+These Loop schemas iterate over <i><a href="g-s.xhtml#symbol">symbols</a></i> that are
+<i><a href="g-a.xhtml#accessible">accessible</a></i> in a given <i>package</i>.  
+The <i>package</i> to be iterated over is supplied in the same way
+that <i><a href="g-p.xhtml#package">package</a></i> arguments to <a href="e11-2-4.xhtml#DictEntry_find_package_719"><b>find-package</b></a> are supplied.
+If the <i>package</i> for the iteration is not supplied, 
+the <i><a href="g-c.xhtml#currentpackage">current package</a></i> is used.
+If a <i>package</i> that does not exist is supplied, 
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e11-2-29.xhtml#DictEntry_package_erro_744"><b>package-error</b></a> is signaled.
+
+</p></li><li><code>external-symbol</code>, <code>external-symbols</code>
+
+<p>
+These Loop schemas iterate over the <i><a href="g-e.xhtml#externalsymbol">external symbols</a></i> of a <i>package</i>.
+The <i>package</i> to be iterated over is supplied in the same way
+that <i><a href="g-p.xhtml#package">package</a></i> arguments to <a href="e11-2-4.xhtml#DictEntry_find_package_719"><b>find-package</b></a> are supplied.
+If the <i>package</i> for the iteration is not supplied, 
+the <i><a href="g-c.xhtml#currentpackage">current package</a></i> is used.
+If a <i>package</i> that does not exist is supplied, 
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e11-2-29.xhtml#DictEntry_package_erro_744"><b>package-error</b></a> is signaled.
+
+</p></li><li><code>in</code>, <code>of</code>
+
+<p>
+These loop prepositions introduce <i>package</i>.
+
+</p></li></ul>
+
+<p>
+
+In effect 
+
+</p><p>
+<code>being</code>
+<code>{</code><code>each</code> | <code>the</code><code>}</code>
+<code>{</code><code>symbol</code>          |
+       <code>symbols</code>         |
+       <code>present-symbol</code>  |
+       <code>present-symbols</code> |
+       <code>external-symbol</code> |
+       <code>external-symbols</code><code>}</code>
+<code>{</code><code>in</code> | <code>of</code><code>}</code>
+
+</p><p>
+is a compound preposition.
+
+</p><p>
+Iteration stops when there are no more <i><a href="g-s.xhtml#symbol">symbols</a></i> to be referenced 
+in the supplied <i>package</i>.
+</p>
+<section>
+<h6 id="SubSubSubSub_Examples_of__489"><span class="secno">6.1.2.1.7.1</span> Examples of for-as-package subclause</h6>
+<pre> (let ((*package* (make-package "TEST-PACKAGE-1")))
+   ;; For effect, intern some symbols
+   (read-from-string "(THIS IS A TEST)")
+   (export (intern "THIS"))
+   (loop for x being each present-symbol of *package*
+          do (print x)))
+▷ A 
+▷ TEST 
+▷ THIS
+▷ IS 
+→  NIL
+</pre>
+</section>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Local_Variab_490"><span class="secno">6.1.2.2</span> Local Variable Initializations</h4>
+<p>
+
+When a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> is executed, the local variables are bound and are
+initialized to some value.  These local variables exist until <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>
+iteration terminates, at which point they cease to exist.  
+Implicit variables are also established by iteration control clauses and the
+<code>into</code> preposition of accumulation clauses.
+
+</p><p>
+The <code>with</code> construct initializes variables that are local to 
+a loop.  The variables are initialized one time only.
+If the optional <i>type-spec</i> argument is supplied for the variable 
+<i>var</i>, but there is no related expression to be evaluated, <i>var</i>
+is initialized to an appropriate default value for its <i><a href="g-t.xhtml#type">type</a></i>.
+
+
+For example, for the types <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>, <a href="e12-2-1.xhtml#DictEntry_number_775"><b>number</b></a>, 
+and <a href="e12-2-4.xhtml#DictEntry_float_778"><b>float</b></a>,
+the default values are <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, <code>0</code>, and <code>0.0</code> respectively.
+The consequences are undefined if a 
+<i>type-spec</i> argument is supplied for <i>var</i> if
+the related expression returns a value that is not of the supplied 
+<i><a href="g-t.xhtml#type">type</a></i>.
+By default, the <code>with</code> construct initializes variables
+<i><a href="g-s.xhtml#sequentially">sequentially</a></i>; that is, one variable is assigned a value before the
+next expression is evaluated.  However, by using the <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>and</code>
+to join several <code>with</code> clauses, 
+initializations can be forced to occur in <i><a href="g-p.xhtml#parallel">parallel</a></i>; that 
+is, all of the supplied
+<i>forms</i> are evaluated, and the results are bound to the respective
+variables simultaneously.
+
+</p><p>
+
+
+<i><a href="g-s.xhtml#sequential">Sequential</a></i> <i><a href="g-b.xhtml#binding">binding</a></i> is used when it is desireable for the initialization of
+some variables to depend on the values of previously bound variables.
+For example, suppose the variables <code>a</code>, <code>b</code>, and <code>c</code> are to be bound in sequence:
+
+</p><pre> (loop with a = 1 
+       with b = (+ a 2) 
+       with c = (+ b 3)
+       return (list a b c))
+→ (1 3 6)
+</pre>
+
+<p>
+The execution of the above <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> is equivalent to the execution of
+the following code:
+
+</p><pre> (block nil
+   (let* ((a 1)
+          (b (+ a 2))
+          (c (+ b 3)))
+     (tagbody
+         (next-loop (return (list a b c))
+                    (go next-loop)
+                    end-loop))))
+</pre>
+
+
+<p>
+If the values of previously bound variables are not needed
+for the initialization of other local variables, an 
+<code>and</code> clause can be used to 
+
+
+specify that the bindings are to occur in <i><a href="g-p.xhtml#parallel">parallel</a></i>:
+
+</p><pre> (loop with a = 1 
+       and b = 2 
+       and c = 3
+       return (list a b c))
+→ (1 2 3)
+</pre>
+
+<p>
+The execution of the above loop is equivalent to the execution of
+the following code:
+
+</p><pre> (block nil
+   (let ((a 1)
+         (b 2)
+         (c 3))
+     (tagbody
+         (next-loop (return (list a b c))
+                    (go next-loop)
+                    end-loop))))
+</pre>
+<section>
+<h5 id="SubSubSubSec_Examples_of__491"><span class="secno">6.1.2.2.1</span> Examples of WITH clause</h5>
+<pre>;; These bindings occur in sequence.
+ (loop with a = 1 
+       with b = (+ a 2) 
+       with c = (+ b 3)
+       return (list a b c))
+→ (1 3 6)
+ 
+;; These bindings occur in parallel.
+ (setq a 5 b 10)
+→ 10
+ (loop with a = 1
+       and b = (+ a 2)
+       and c = (+ b 3)
+       return (list a b c))
+→ (1 7 13)
+ 
+;; This example shows a shorthand way to declare local variables 
+;; that are of different types.
+ (loop with (a b c) of-type (float integer float)
+       return (format nil "~A ~A ~A" a b c))
+→ "0.0 0 0.0"
+ 
+;; This example shows a shorthand way to declare local variables 
+;; that are the same type.
+ (loop with (a b c) of-type float 
+       return (format nil "~A ~A ~A" a b c))
+→ "0.0 0.0 0.0"
+</pre>
+</section>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Value_Accumu_492"><span class="secno">6.1.3</span> Value Accumulation Clauses</h3>
+<p>
+
+
+The constructs <code>collect</code>, <code>collecting</code>,
+<code>append</code>, <code>appending</code>,
+<code>nconc</code>, <code>nconcing</code>,
+<code>count</code>, <code>counting</code>,
+<code>maximize</code>, <code>maximizing</code>,
+<code>minimize</code>, <code>minimizing</code>,
+<code>sum</code>, and <code>summing</code>,
+allow values to be accumulated in a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.
+
+</p><p>
+The constructs <code>collect</code>, 
+<code>collecting</code>, <code>append</code>, <code>appending</code>, 
+<code>nconc</code>, and <code>nconcing</code>, 
+designate clauses that
+accumulate values in <i><a href="g-l.xhtml#list">lists</a></i> and return them.
+The constructs <code>count</code>, <code>counting</code>, 
+<code>maximize</code>, <code>maximizing</code>, <code>minimize</code>, <code>minimizing</code>,
+<code>sum</code>, and <code>summing</code> designate clauses that accumulate and
+return numerical values.
+
+</p><p>
+During each iteration,  the constructs
+<code>collect</code> and <code>collecting</code>
+collect the value of the supplied
+<i>form</i> into a <i><a href="g-l.xhtml#list">list</a></i>. 
+When iteration terminates, the <i><a href="g-l.xhtml#list">list</a></i> is returned.
+The argument <i>var</i> is 
+set to the <i><a href="g-l.xhtml#list">list</a></i> 
+of collected values; if <i>var</i> is supplied, the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>
+does not return the final <i><a href="g-l.xhtml#list">list</a></i> automatically.  If 
+<i>var</i> is not
+supplied, it is equivalent to supplying an internal name for
+<i>var</i> and returning its value in a <code>finally</code> clause.
+The <i>var</i> argument
+is bound as if by the construct <code>with</code>.
+
+No mechanism is provided for declaring the <i><a href="g-t.xhtml#type">type</a></i> of <i>var</i>;
+it must be of <i><a href="g-t.xhtml#type">type</a></i> <a href="e14-2-1.xhtml#DictEntry_list_914"><b>list</b></a>.
+
+</p><p>
+The constructs <code>append</code>, <code>appending</code>, 
+<code>nconc</code>, and  <code>nconcing</code>
+are similar to <code>collect</code> except that the
+values of the supplied <i>form</i> must be <i><a href="g-l.xhtml#list">lists</a></i>.  
+
+</p><ul>
+<li>
+The <code>append</code> keyword causes its <i><a href="g-l.xhtml#list">list</a></i> values to be concatenated 
+into a single <i><a href="g-l.xhtml#list">list</a></i>, as if 
+they were arguments to the <i><a href="g-f.xhtml#function">function</a></i> <a href="e14-2-26.xhtml#DictEntry_append_939"><b>append</b></a>.
+
+</li><li>
+The <code>nconc</code> keyword causes its <i><a href="g-l.xhtml#list">list</a></i> values to be concatenated
+into a single <i><a href="g-l.xhtml#list">list</a></i>,
+as if they were arguments to the <i><a href="g-f.xhtml#function">function</a></i> <a href="e14-2-25.xhtml#DictEntry_nconc_938"><b>nconc</b></a>.  
+</li></ul>
+
+<p>
+The argument <i>var</i> is 
+set to the <i><a href="g-l.xhtml#list">list</a></i> of 
+concatenated values; if <i>var</i> is supplied, 
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>
+does not return the final <i><a href="g-l.xhtml#list">list</a></i> automatically.  
+The <i>var</i> argument
+is bound as if by the construct <code>with</code>.
+ A <i><a href="g-t.xhtml#type">type</a></i> cannot be supplied for <i>var</i>; 
+it must be of <i><a href="g-t.xhtml#type">type</a></i> <a href="e14-2-1.xhtml#DictEntry_list_914"><b>list</b></a>.
+ The construct <code>nconc</code> 
+destructively modifies its argument <i><a href="g-l.xhtml#list">lists</a></i>.
+
+</p><p>
+
+
+
+The <code>count</code> construct counts the number of times 
+that the supplied <i>form</i> returns <i><a href="g-t.xhtml#true">true</a></i>.
+The argument <i>var</i> accumulates the number of occurrences; 
+if <i>var</i> is supplied, 
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> does not return the final count automatically.
+The <i>var</i> argument is bound as if by the construct <code>with</code> 
+
+to a zero of the appropriate type.
+
+Subsequent values (including any necessary coercions) 
+are computed as if by the function <a href="e12-2-28.xhtml#DictEntry_1_1__802"><b>1+</b></a>.
+If <code>into</code> <i>var</i> is used,
+a <i><a href="g-t.xhtml#type">type</a></i> can be supplied  for <i>var</i> with the <i>type-spec</i> argument;
+the consequences are unspecified if a nonnumeric <i><a href="g-t.xhtml#type">type</a></i> is supplied.           
+If there is no <code>into</code> variable,
+the optional <i>type-spec</i> argument
+applies to the internal variable that is keeping the count.  
+The default <i><a href="g-t.xhtml#type">type</a></i> is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>; 
+but it must be
+
+a <i><a href="g-s.xhtml#supertype">supertype</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-13.xhtml#DictEntry_fixnum_787"><b>fixnum</b></a>.
+
+</p><p>
+
+
+
+The <code>maximize</code> and 
+
+
+<code>minimize</code> 
+constructs compare
+the value of the supplied <i>form</i> obtained during the first 
+iteration with values obtained in successive iterations.
+The maximum (for <code>maximize</code>) or minimum (for <code>minimize</code>) 
+value encountered is determined 
+
+(as if by the <i><a href="g-f.xhtml#function">function</a></i> <a href="e12-2-16.xhtml#DictEntry_max_min_790"><b>max</b></a> for <code>maximize</code> and
+ as if by the <i><a href="g-f.xhtml#function">function</a></i> <a href="e12-2-16.xhtml#DictEntry_max_min_790"><b>min</b></a> for <code>minimize</code>)
+and returned.
+
+If the <code>maximize</code> or <code>minimize</code> clause
+is never executed, the accumulated value is unspecified.
+The argument <i>var</i> accumulates the maximum or minimum value;
+if <i>var</i> is supplied,
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> does not return the maximum or minimum automatically.
+The <i>var</i> argument is bound as if by the construct <code>with</code>.
+If <code>into</code> <i>var</i> is used,
+a <i><a href="g-t.xhtml#type">type</a></i> can be supplied for <i>var</i> with the <i>type-spec</i> argument;
+the consequences are unspecified if a nonnumeric <i><a href="g-t.xhtml#type">type</a></i> is supplied.           
+If there is no <code>into</code> variable,
+the optional <i>type-spec</i> argument applies to the internal variable 
+that is keeping the maximum or minimum value.  
+
+The default <i><a href="g-t.xhtml#type">type</a></i> 
+
+is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>; but it
+must be a <i><a href="g-s.xhtml#supertype">supertype</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-3.xhtml#DictEntry_real_777"><b>real</b></a>.
+
+</p><p>
+The <code>sum</code> construct forms a cumulative sum 
+of the successive <i><a href="g-p.xhtml#primaryvalue">primary values</a></i> of the supplied <i>form</i>
+at each iteration.
+The argument <i>var</i> is used to accumulate the sum;
+if <i>var</i> is supplied,
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> does not return the final sum automatically.
+The <i>var</i> argument is bound as if by the construct <code>with</code>
+
+to a zero of the appropriate type.
+Subsequent values (including any necessary coercions) are computed as if by the <i><a href="g-f.xhtml#function">function</a></i> <a href="e12-2-25.xhtml#DictEntry__799"><b>+</b></a>.
+If <code>into</code> <i>var</i> is used,
+a <i><a href="g-t.xhtml#type">type</a></i> can be supplied for <i>var</i> with the <i>type-spec</i> argument;
+the consequences are unspecified if a nonnumeric <i><a href="g-t.xhtml#type">type</a></i> is supplied.           
+If there is no <code>into</code> variable,
+the optional <i>type-spec</i> argument applies to the internal variable
+that is keeping the sum.
+
+The default <i><a href="g-t.xhtml#type">type</a></i>
+
+is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>; but it
+must be a <i><a href="g-s.xhtml#supertype">supertype</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-1.xhtml#DictEntry_number_775"><b>number</b></a>.
+
+</p><p>
+
+If <code>into</code> is used,
+the construct does not provide a default return value;
+however, the variable is available
+for use in any <code>finally</code> clause.  
+
+</p><p>
+
+
+Certain kinds of accumulation clauses can be combined in a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> 
+if their destination is the same 
+(the result of <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> or an <code>into</code> <i>var</i>) 
+because they are considered to accumulate conceptually compatible quantities.
+In particular, 
+any elements of following sets of accumulation clauses can be mixed
+with other elements of the same set for the same destination 
+in a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i>:
+
+</p><ul>
+<li> <code>collect</code>, <code>append</code>, <code>nconc</code>
+
+</li><li> <code>sum</code>, <code>count</code>
+
+</li><li> <code>maximize</code>, <code>minimize</code>
+</li></ul>
+
+<pre>;; Collect every name and the kids in one list by using 
+;; COLLECT and APPEND.
+ (loop for name in '(fred sue alice joe june)
+       for kids in '((bob ken) () () (kris sunshine) ())
+       collect name
+       append kids)
+→ (FRED BOB KEN SUE ALICE JOE KRIS SUNSHINE JUNE)
+</pre>
+
+<p>
+
+
+Any two
+clauses that do not accumulate the same <i><a href="g-t.xhtml#type">type</a></i> of 
+<i><a href="g-o.xhtml#object">object</a></i> 
+can coexist in a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> only 
+if each clause accumulates its values into 
+a different
+
+
+<i><a href="g-v.xhtml#variable">variable</a></i>.
+</p>
+<section>
+<h4 id="SubSubSectio_Examples_of__493"><span class="secno">6.1.3.1</span> Examples of COLLECT clause</h4>
+<pre>;; Collect all the symbols in a list.
+ (loop for i in '(bird 3 4 turtle (1 . 4) horse cat)
+       when (symbolp i) collect i)
+→ (BIRD TURTLE HORSE CAT)
+ 
+;; Collect and return odd numbers.
+ (loop for i from 1 to 10
+       if (oddp i) collect i)
+→ (1 3 5 7 9)
+ 
+;; Collect items into local variable, but don't return them.
+ (loop for i in '(a b c d) by #'cddr
+       collect i into my-list
+       finally (print my-list))
+▷(A C) 
+→  NIL
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Examples_of__494"><span class="secno">6.1.3.2</span> Examples of APPEND and NCONC clauses</h4>
+<pre>;; Use APPEND to concatenate some sublists.
+  (loop for x in '((a) (b) ((c)))
+        append x)
+→ (A B (C))
+ 
+;; NCONC some sublists together.  Note that only lists made by the
+;; call to LIST are modified.
+  (loop for i upfrom 0 
+        as x in '(a b (c))
+        nconc (if (evenp i) (list x) nil))
+→ (A (C))
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Examples_of__495"><span class="secno">6.1.3.3</span> Examples of COUNT clause</h4>
+<pre> (loop for i in '(a b nil c nil d e)
+       count i)
+→ 5
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Examples_of__496"><span class="secno">6.1.3.4</span> Examples of MAXIMIZE and MINIMIZE clauses</h4>
+<pre> (loop for i in '(2 1 5 3 4)
+       maximize i)
+→ 5
+ (loop for i in '(2 1 5 3 4)
+       minimize i)
+→ 1
+ 
+;; In this example, FIXNUM applies to the internal variable that holds
+;; the maximum value.
+ (setq series '(1.2 4.3 5.7))
+→ (1.2 4.3 5.7)
+ (loop for v in series 
+       maximize (round v) of-type fixnum)
+→ 6
+ 
+;; In this example, FIXNUM applies to the variable RESULT.
+ (loop for v of-type float in series
+       minimize (round v) into result of-type fixnum
+       finally (return result))
+→ 1
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Examples_of__497"><span class="secno">6.1.3.5</span> Examples of SUM clause</h4>
+<pre> (loop for i of-type fixnum in '(1 2 3 4 5)
+       sum i)
+→ 15
+ (setq series '(1.2 4.3 5.7))
+→ (1.2 4.3 5.7)
+ (loop for v in series 
+       sum (* 2.0 v))
+→ 22.4
+</pre>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Termination__498"><span class="secno">6.1.4</span> Termination Test Clauses</h3>
+<p>
+
+
+The <code>repeat</code> construct causes iteration to terminate after a
+specified number of times.
+ The loop body executes <i>n</i> times, where <i>n</i> is the value 
+of the expression <i>form</i>.  The <i>form</i> argument is evaluated one time
+in the loop prologue.  If the expression evaluates to 0 or 
+to a negative <i><a href="g-n.xhtml#number">number</a></i>, the loop body is not evaluated.
+
+</p><p>
+The constructs <code>always</code>,
+<code>never</code>,
+<code>thereis</code>,
+<code>while</code>,
+<code>until</code>,
+and the macro <a href="e6-2-5.xhtml#DictEntry_loop_finish_518"><b>loop-finish</b></a>
+allow conditional termination of iteration within
+a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.
+
+</p><p>
+The constructs <code>always</code>, <code>never</code>, and <code>thereis</code> provide
+specific values to be returned when a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> terminates.  
+Using <code>always</code>, <code>never</code>, or <code>thereis</code> in a loop with 
+value accumulation clauses that are not <code>into</code> causes 
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e5-3-68.xhtml#DictEntry_program_erro_454"><b>program-error</b></a> to be signaled (at macro expansion time).
+Since <code>always</code>, <code>never</code>, and <code>thereis</code>
+use 
+
+the <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a> <i><a href="g-s.xhtml#specialoperator">special operator</a></i>
+
+to terminate iteration,
+any <code>finally</code> clause that is supplied is not evaluated
+
+when exit occurs due to any of these constructs.
+In all other respects these
+constructs behave like the <code>while</code> and <code>until</code> constructs.
+
+</p><p>
+  The <code>always</code> construct takes one <i><a href="g-f.xhtml#form">form</a></i> and terminates the 
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>
+  if the <i><a href="g-f.xhtml#form">form</a></i> ever evaluates to <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>; in this case, it returns
+  <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.  Otherwise, it provides a default return value of <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>.
+If the value of the supplied <i><a href="g-f.xhtml#form">form</a></i> is never <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, some other construct
+can terminate the iteration.
+
+</p><p>
+The <code>never</code> construct terminates iteration the first time that
+the value of the supplied <i>form</i> is <i><a href="g-n.xhtml#nonnil">non-nil</a></i>; the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> returns 
+<a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.                                         
+If the value of the supplied <i>form</i> is always  <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, some other 
+construct can terminate the iteration.  
+Unless some other clause contributes 
+a return value, the default value returned is <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>.
+
+</p><p>
+The <code>thereis</code> construct terminates iteration the first time that the
+value of the supplied <i>form</i> is <i><a href="g-n.xhtml#nonnil">non-nil</a></i>; the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> returns the
+value of the supplied <i>form</i>.
+If the value of the supplied <i>form</i> 
+is always  <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, some other
+construct can terminate the iteration.  Unless some other clause contributes a 
+return value, the default value returned is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+ 
+
+There are two differences between the <code>thereis</code> and <code>until</code>
+constructs: 
+
+</p><ul>
+<li> The <code>until</code> construct does not return a value or 
+<a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> based on the value of the supplied <i>form</i>.
+
+</li><li> The <code>until</code> construct executes 
+any <code>finally</code> clause.
+Since <code>thereis</code> uses
+
+the <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a> <i><a href="g-s.xhtml#specialoperator">special operator</a></i>
+
+to terminate iteration,
+any <code>finally</code> clause that is supplied is not evaluated
+
+when exit occurs due to <code>thereis</code>.
+
+</li></ul>
+
+<p>
+The <code>while</code> construct allows iteration to continue until the 
+supplied <i>form</i> 
+evaluates to <i><a href="g-f.xhtml#false">false</a></i>.  The supplied <i>form</i> 
+is reevaluated at the location of the <code>while</code> clause.
+
+</p><p>
+The <code>until</code> construct is equivalent to 
+<code>while (not <i>form</i>)...</code>.  If the value of the
+supplied <i>form</i> is <i><a href="g-n.xhtml#nonnil">non-nil</a></i>, iteration terminates.
+
+</p><p>
+Termination-test control constructs can be used anywhere within the loop body.
+The termination tests are used in the order in which they appear.
+If an <code>until</code> or <code>while</code> clause causes
+termination, any clauses that precede it in the source
+are still evaluated.  
+If the <code>until</code> and <code>while</code> constructs cause termination,
+control is passed to the loop epilogue, where any <code>finally</code>
+clauses will be executed.  
+
+</p><p>
+There are two differences between the <code>never</code> and <code>until</code>
+constructs: 
+
+</p><ul>
+<li> The <code>until</code> construct does not return 
+<a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a> or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> based on the value of the supplied <i>form</i>.
+
+</li><li> 
+The <code>until</code> construct 
+
+does not bypass any <code>finally</code> clauses.
+Since <code>never</code> uses 
+
+the <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a> <i><a href="g-s.xhtml#specialoperator">special operator</a></i>
+
+to terminate iteration,
+any <code>finally</code> clause that is supplied is not evaluated
+
+when exit occurs due to <code>never</code>. 
+</li></ul>
+
+<p>
+In most cases it is not necessary to use <a href="e6-2-5.xhtml#DictEntry_loop_finish_518"><b>loop-finish</b></a>
+because other loop control clauses terminate the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.  
+The macro <a href="e6-2-5.xhtml#DictEntry_loop_finish_518"><b>loop-finish</b></a> is used to provide a normal exit
+from a nested conditional inside a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.
+
+Since <a href="e6-2-5.xhtml#DictEntry_loop_finish_518"><b>loop-finish</b></a> transfers control to the loop epilogue,
+using <a href="e6-2-5.xhtml#DictEntry_loop_finish_518"><b>loop-finish</b></a> within a <code>finally</code> expression can cause
+infinite looping.
+</p>
+<section>
+<h4 id="SubSubSectio_Examples_of__499"><span class="secno">6.1.4.1</span> Examples of REPEAT clause</h4>
+<pre> (loop repeat 3
+       do (format t "~&amp;What I say three times is true.~%"))
+▷ What I say three times is true.
+▷ What I say three times is true.
+▷ What I say three times is true.
+→  NIL
+ (loop repeat -15
+   do (format t "What you see is what you expect~%"))
+→  NIL
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Examples_of__500"><span class="secno">6.1.4.2</span> Examples of ALWAYS, NEVER, and THEREIS clauses</h4>
+<pre>;; Make sure I is always less than 11 (two ways).
+;; The FOR construct terminates these loops.
+ (loop for i from 0 to 10
+       always (&lt; i 11))
+→  T
+ (loop for i from 0 to 10
+       never (&gt; i 11))
+→  T
+ 
+;; If I exceeds 10 return I; otherwise, return NIL.
+;; The THEREIS construct terminates this loop.
+ (loop for i from 0
+       thereis (when (&gt; i 10) i) )
+→ 11
+
+;;; The FINALLY clause is not evaluated in these examples.
+ (loop for i from 0 to 10
+       always (&lt; i 9)
+       finally (print "you won't see this"))
+→  NIL
+ (loop never t
+       finally (print "you won't see this"))
+→  NIL
+ (loop thereis "Here is my value"
+       finally (print "you won't see this"))
+→ "Here is my value"
+ 
+;; The FOR construct terminates this loop, so the FINALLY clause 
+;; is evaluated.
+ (loop for i from 1 to 10
+       thereis (&gt; i 11)
+       finally (prin1 'got-here))
+▷ GOT-HERE
+→  NIL
+ 
+;; If this code could be used to find a counterexample to Fermat's
+;; last theorem, it would still not return the value of the
+;; counterexample because all of the THEREIS clauses in this example
+;; only return T.  But if Fermat is right, that won't matter
+;; because this won't terminate.
+ 
+ (loop for z upfrom 2
+       thereis
+         (loop for n upfrom 3 below (log z 2)
+               thereis
+                 (loop for x below z
+                       thereis
+                         (loop for y below z
+                               thereis (= (+ (expt x n) (expt y n))
+                                          (expt z n))))))
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Examples_of__501"><span class="secno">6.1.4.3</span> Examples of WHILE and UNTIL clauses</h4>
+<pre> (loop while (hungry-p) do (eat))
+ 
+;; UNTIL NOT is equivalent to WHILE.
+ (loop until (not (hungry-p)) do (eat))
+ 
+;; Collect the length and the items of STACK.
+ (let ((stack '(a b c d e f)))
+   (loop for item = (length stack) then (pop stack)
+         collect item
+         while stack))
+→ (6 A B C D E F)
+ 
+;; Use WHILE to terminate a loop that otherwise wouldn't terminate.
+;; Note that WHILE occurs after the WHEN.
+ (loop for i fixnum from 3
+       when (oddp i) collect i
+       while (&lt; i 5))
+→ (3 5)
+</pre>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Unconditiona_502"><span class="secno">6.1.5</span> Unconditional Execution Clauses</h3>
+<p>
+
+
+The <code>do</code> and <code>doing</code> constructs 
+evaluate the 
+supplied <i>forms</i> 
+wherever they occur in the expanded form of <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.
+ The <i>form</i> argument can be any <i><a href="g-c.xhtml#compoundform">compound form</a></i>.
+Each <i>form</i> is evaluated in every iteration.
+Because every loop clause must begin with a <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i>, 
+the keyword <code>do</code> is used when no control action other than execution is 
+required.
+
+</p><p>
+
+
+
+ The <code>return</code> construct takes one <i><a href="g-f.xhtml#form">form</a></i>. 
+ Any <i><a href="g-v.xhtml#value">values</a></i> returned by the <i><a href="g-f.xhtml#form">form</a></i> 
+ are immediately returned by the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> form.
+
+  It is equivalent to the clause
+  <code>do (return-from <i>block-name</i> <i>value</i>)</code>,
+  where <i>block-name</i> is the name specified in a <code>named</code>
+  clause, or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> if there is no <code>named</code> clause.
+
+</p>
+<section>
+<h4 id="SubSubSectio_Examples_of__503"><span class="secno">6.1.5.1</span> Examples of unconditional execution</h4>
+<pre>;; Print numbers and their squares.
+;; The DO construct applies to multiple forms.
+ (loop for i from 1 to 3
+       do (print i)
+          (print (* i i)))
+▷1 
+▷1 
+▷2 
+▷4 
+▷3 
+▷9 
+→  NIL
+
+</pre>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Conditional__504"><span class="secno">6.1.6</span> Conditional Execution Clauses</h3>
+<p>
+The <code>if</code>, <code>when</code>, and <code>unless</code> constructs
+establish conditional control in a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>. If the test
+passes, the succeeding loop clause is executed. If the test does
+not pass, the succeeding clause is skipped, and program control
+moves to the clause that follows the <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i>
+<code>else</code>. If the test does not pass and no <code>else</code>
+clause is supplied, control is transferred to the clause or
+construct following the entire conditional clause.
+
+</p><p>
+If conditional clauses are nested, each <code>else</code> is paired
+with the closest preceding conditional clause that has no
+associated <code>else</code> or <code>end</code>. 
+
+</p><p>
+In the <code>if</code> and <code>when</code> clauses, which are
+synonymous, the test passes if the value of <i>form</i> is
+<i><a href="g-t.xhtml#true">true</a></i>.
+
+</p><p>
+In the <code>unless</code> clause,
+the test passes if the value of <i>form</i> is <i><a href="g-f.xhtml#false">false</a></i>.
+
+</p><p>
+Clauses that follow the test expression can be grouped by using 
+the <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>and</code> to produce a conditional block consisting of 
+a compound clause.
+
+</p><p>
+
+
+
+The <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>it</code> can be used to refer to the result
+of the test expression in a clause.
+Use the <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>it</code> in place of the form in a
+<code>return</code> clause or an <i>accumulation</i> clause that is
+inside a conditional execution clause.
+If multiple clauses are connected with <code>and</code>, the <code>it</code>
+construct must be in the first clause in the block.
+
+
+</p><p>
+The optional <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> <code>end</code> marks the end of the clause.  If this
+keyword is not supplied, the next <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> marks the end.  The construct
+<code>end</code> can be used to distinguish the scoping of compound clauses.
+</p>
+<section>
+<h4 id="SubSubSectio_Examples_of__505"><span class="secno">6.1.6.1</span> Examples of WHEN clause</h4>
+<pre>;; Signal an exceptional condition.
+ (loop for item in '(1 2 3 a 4 5)
+       when (not (numberp item))
+        return (cerror "enter new value" "non-numeric value: ~s" item))
+Error: non-numeric value: A
+ 
+;; The previous example is equivalent to the following one.
+ (loop for item in '(1 2 3 a 4 5)
+       when (not (numberp item))
+        do (return 
+            (cerror "Enter new value" "non-numeric value: ~s" item)))
+Error: non-numeric value: A
+</pre>
+
+<pre>;; This example parses a simple printed string representation from 
+;; BUFFER (which is itself a string) and returns the index of the
+;; closing double-quote character.
+ (let ((buffer "\"a\" \"b\""))
+   (loop initially (unless (char= (char buffer 0) #\")
+                     (loop-finish))
+         for i of-type fixnum from 1 below (length (the string buffer))
+         when (char= (char buffer i) #\")
+          return i))
+→ 2
+ 
+;; The collected value is returned.
+ (loop for i from 1 to 10
+
+
+
+
+
+
+
+
+
+       when (&gt; i 5)
+         collect i
+       finally (prin1 'got-here))
+▷ GOT-HERE
+→ (6 7 8 9 10) 
+
+;; Return both the count of collected numbers and the numbers.
+ (loop for i from 1 to 10
+       when (&gt; i 5)
+         collect i into number-list
+         and count i into number-count
+       finally (return (values number-count number-list)))
+→ 5, (6 7 8 9 10)
+</pre>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Miscellaneou_506"><span class="secno">6.1.7</span> Miscellaneous Clauses</h3>
+<section>
+<h4 id="SubSubSectio_Control_Tran_507"><span class="secno">6.1.7.1</span> Control Transfer Clauses</h4>
+<p>
+
+The <code>named</code> construct
+establishes a name for an <i><a href="g-i.xhtml#implicitblock">implicit block</a></i> surrounding the 
+
+entire
+ 
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> so that the <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a> <i><a href="g-s.xhtml#specialoperator">special operator</a></i> can be used to return 
+values from or to exit <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.   
+Only one name per <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> can be assigned.
+If used, the <code>named</code> construct must be the first clause in the loop expression.
+
+</p><p>
+
+
+ The <code>return</code> construct takes one <i><a href="g-f.xhtml#form">form</a></i>. 
+ Any <i><a href="g-v.xhtml#value">values</a></i> returned by the <i><a href="g-f.xhtml#form">form</a></i> 
+ are immediately returned by the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> form.
+
+This construct is similar to the <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a> <i><a href="g-s.xhtml#specialoperator">special operator</a></i> and the <a href="e5-3-26.xhtml#DictEntry_return_412"><b>return</b></a> <i><a href="g-m.xhtml#macro">macro</a></i>.
+
+
+The <code>return</code> construct 
+
+
+
+does not execute any <code>finally</code> clause that 
+
+the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i>
+
+is given.
+</p>
+<section>
+<h5 id="SubSubSubSec_Examples_of__508"><span class="secno">6.1.7.1.1</span> Examples of NAMED clause</h5>
+<pre>;; Just name and return.
+ (loop named max
+       for i from 1 to 10
+       do (print i)
+       do (return-from max 'done))
+▷1 
+→  DONE
+</pre>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Initial_and__509"><span class="secno">6.1.7.2</span> Initial and Final Execution</h4>
+<p>
+
+The <code>initially</code> and <code>finally</code> constructs
+evaluate forms that occur before and after the loop body.
+
+</p><p>
+The <code>initially</code> construct causes the supplied
+
+
+<i>compound-forms</i>
+to be evaluated
+in the loop prologue, which precedes all loop code except for 
+initial settings supplied by constructs <code>with</code>, <code>for</code>, or
+<code>as</code>.
+  The code for any <code>initially</code> clauses is 
+
+
+
+executed
+in the order in which the clauses appeared in
+  the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.  
+
+</p><p>
+The <code>finally</code> construct causes the supplied
+
+
+<i>compound-forms</i>
+to be evaluated
+in the loop epilogue after normal iteration terminates.
+  The code for any <code>finally</code> clauses is 
+
+executed
+ in the order in which the clauses appeared in
+  the <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.  The collected code is executed once in the loop epilogue
+  before any implicit values are returned from the accumulation clauses.
+
+An explicit transfer of control (<i>e.g.</i>,  by <a href="e5-3-26.xhtml#DictEntry_return_412"><b>return</b></a>, <a href="e5-3-24.xhtml#DictEntry_go_410"><b>go</b></a>, or <a href="e5-3-28.xhtml#DictEntry_throw_414"><b>throw</b></a>)
+from the loop body, however, will exit the 
+  <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> without executing the epilogue code.
+
+
+
+</p><p>
+Clauses such as <code>return</code>, <code>always</code>, <code>never</code>, and 
+<code>thereis</code>
+can bypass the <code>finally</code> clause.
+
+<a href="e5-3-26.xhtml#DictEntry_return_412"><b>return</b></a> (or <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a>, if the <code>named</code> option was supplied)
+
+can be used after <code>finally</code> to return values from a <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.  
+
+
+Such an <i><a href="g-e.xhtml#explicitreturn">explicit return</a></i>
+
+inside the
+<code>finally</code> clause takes precedence over returning the accumulation
+from clauses supplied by such keywords as <code>collect</code>, <code>nconc</code>, 
+<code>append</code>, <code>sum</code>, <code>count</code>, <code>maximize</code>, and 
+<code>minimize</code>; 
+the accumulation values for these preempted clauses are not returned by 
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> if <a href="e5-3-26.xhtml#DictEntry_return_412"><b>return</b></a> or <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a> is used.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Examples_of__510"><span class="secno">6.1.8</span> Examples of Miscellaneous Loop Features</h3>
+<pre> (let ((i 0))                     ; no loop keywords are used
+    (loop (incf i) (if (= i 3) (return i)))) → 3
+ (let ((i 0)(j 0))
+    (tagbody
+      (loop (incf j 3) (incf i) (if (= i 3) (go exit)))
+      exit)
+    j) → 9
+</pre>
+
+<p>
+In the following example, the variable <code>x</code> is stepped
+before <code>y</code> is stepped; thus, the value of <code>y</code>
+reflects the updated value of <code>x</code>:
+
+</p><pre> (loop for x from 1 to 10 
+       for y = nil then x 
+       collect (list x y))
+→ ((1 NIL) (2 2) (3 3) (4 4) (5 5) (6 6) (7 7) (8 8) (9 9) (10 10))
+</pre>
+
+<p>
+In this example, <code>x</code> and <code>y</code> are stepped in <i><a href="g-p.xhtml#parallel">parallel</a></i>:
+
+</p><pre> (loop for x from 1 to 10 
+       and y = nil then x 
+       collect (list x y))
+→ ((1 NIL) (2 1) (3 2) (4 3) (5 4) (6 5) (7 6) (8 7) (9 8) (10 9))
+</pre>
+<section>
+<h4 id="SubSubSectio_Examples_of__511"><span class="secno">6.1.8.1</span> Examples of clause grouping</h4>
+<pre>;; Group conditional clauses.
+ (loop for i in '(1 324 2345 323 2 4 235 252)
+       when (oddp i)
+         do (print i)
+         and collect i into odd-numbers
+         and do (terpri)
+       else                              ; I is even.
+         collect i into even-numbers
+       finally
+         (return (values odd-numbers even-numbers)))
+▷1 
+▷
+▷2345 
+▷
+▷323 
+▷
+▷235 
+→ (1 2345 323 235), (324 2 4 252)
+
+;; Collect numbers larger than 3.
+ (loop for i in '(1 2 3 4 5 6)
+       when (and (&gt; i 3) i)
+       collect it)                      ; IT refers to (and (&gt; i 3) i).
+→ (4 5 6)
+ 
+;; Find a number in a list.
+ (loop for i in '(1 2 3 4 5 6)
+       when (and (&gt; i 3) i)
+       return it)
+→ 4
+     
+;; The above example is similar to the following one.
+ (loop for i in '(1 2 3 4 5 6)
+       thereis (and (&gt; i 3) i))
+→ 4
+
+
+;; Nest conditional clauses.
+ (let ((list '(0 3.0 apple 4 5 9.8 orange banana)))
+   (loop for i in list
+         when (numberp i)
+           when (floatp i)
+             collect i into float-numbers
+           else                                  ; Not (floatp i)
+             collect i into other-numbers
+         else                                    ; Not (numberp i)
+           when (symbolp i) 
+             collect i into symbol-list
+           else                                  ; Not (symbolp i)
+             do (error "found a funny value in list ~S, value ~S~%" list i)
+         finally (return (values float-numbers other-numbers symbol-list))))
+→ (3.0 9.8), (0 4 5), (APPLE ORANGE BANANA)
+
+;; Without the END preposition, the last AND would apply to the
+;; inner IF rather than the outer one.
+ (loop for x from 0 to 3 
+       do (print x)
+       if (zerop (mod x 2))
+         do (princ " a")
+          and if (zerop (floor x 2))
+                do (princ " b")
+                end
+          and do (princ " c"))
+▷0  a b c
+▷1 
+▷2  a c
+▷3 
+→  NIL
+</pre>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Notes_about__512"><span class="secno">6.1.9</span> Notes about Loop</h3>
+<p><i><a href="g-t.xhtml#type">Types</a></i> can be supplied for loop variables.  
+It is not necessary to supply a <i><a href="g-t.xhtml#type">type</a></i> for any variable,
+but supplying the <i><a href="g-t.xhtml#type">type</a></i> 
+can ensure that the variable has a correctly typed initial value,
+and it can also enable compiler optimizations 
+(depending on the <i><a href="g-i.xhtml#implementation">implementation</a></i>).
+
+</p><p>
+The clause <code>repeat</code> <i>n</i> ... is roughly equivalent to a clause such as 
+
+</p><pre> (loop for <i>internal-variable</i> downfrom (- <i>n</i> 1) to 0 ...)
+</pre>
+
+<p>
+but in some <i><a href="g-i.xhtml#implementation">implementations</a></i>,
+the <code>repeat</code> construct might be more efficient.
+
+</p><p>
+Within the executable parts of the loop clauses and around the entire
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> form, variables can be bound by using <a href="e5-3-18.xhtml#DictEntry_let_let_404"><b>let</b></a>.
+
+</p><p>
+
+Use caution when using a variable named <code>IT</code> (in any <i><a href="g-p.xhtml#package">package</a></i>)
+in connection with <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>, since <code>it</code> is a <i><a href="g-l.xhtml#loopkeyword">loop keyword</a></i> 
+that can be used in place of a <i><a href="g-f.xhtml#form">form</a></i> in certain contexts.
+
+
+</p><p>
+There is
+
+
+no
+
+<i><a href="g-s.xhtml#standardized">standardized</a></i>
+mechanism for users to add
+extensions to <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>.
+
+
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</body>
+</html>

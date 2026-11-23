@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.20 setq — Special Form</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_setq_406" class="entry"><span class="secno">5.3.20</span> <span class="names">setq</span> <span class="kind">Special Form</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>setq</b>
+<i>{<i>pair</i>}*</i>
+  → <i>result</i>
+<p>
+
+pair::= var form</p></dd><dt><b>Pronunciation:</b></dt><dd>
+
+<span class="pron">[ ˈsetˌkyü ]</span>
+
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>var</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i> naming a <i><a href="g-v.xhtml#variable">variable</a></i> other than a <i><a href="g-c.xhtml#constantvariable">constant variable</a></i>.
+
+<p>
+<i>form</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+
+<i>result</i>—the <i><a href="g-p.xhtml#primaryvalue">primary value</a></i> of the last <i>form</i>,
+		 or <a href="e5-3-30.xhtml#DictEntry_nil_416"><b>nil</b></a> if no <i>pairs</i> were supplied.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Assigns values to <i><a href="g-v.xhtml#variable">variables</a></i>.
+
+<p>
+
+<code>(setq <i>var1</i> <i>form1</i> <i>var2</i> <i>form2</i> ...)</code>
+is the simple variable assignment statement of <i>Lisp</i>.
+First <i>form1</i> is evaluated
+and the result is stored in the variable <i>var1</i>, then <i>form2</i>
+is evaluated and the result stored in <i>var2</i>, and so forth.
+<a href="#DictEntry_setq_406"><b>setq</b></a> may be used for assignment of both lexical
+and dynamic variables.
+
+</p><p>
+
+If any <i>var</i> refers to a <i><a href="g-b.xhtml#binding">binding</a></i> 
+made by <a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>,
+then that <i>var</i> is treated as if <a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a>
+(not <a href="#DictEntry_setq_406"><b>setq</b></a>) had been used.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> ;; A simple use of SETQ to establish values for variables.
+ (setq a 1 b 2 c 3) → 3
+ a → 1
+ b → 2
+ c → 3
+
+ ;; Use of SETQ to update values by sequential assignment.
+ (setq a (1+ b) b (1+ a) c (+ a b)) → 7
+ a → 3
+ b → 4
+ c → 7
+
+ ;; This illustrates the use of SETQ on a symbol macro.
+ (let ((x (list 10 20 30)))
+   (symbol-macrolet ((y (car x)) (z (cadr x)))
+     (setq y (1+ z) z (1+ y))
+     (list x y z)))
+→ ((21 22 30) 21 22)
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The <i><a href="g-p.xhtml#primaryvalue">primary value</a></i> of each <i>form</i> is assigned to the corresponding <i>var</i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-21.xhtml#DictEntry_psetq_407"><b>psetq</b></a>,
+<a href="e10-2-19.xhtml#DictEntry_set_693"><b>set</b></a>,
+<a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

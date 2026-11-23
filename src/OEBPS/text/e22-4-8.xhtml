@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>22.4.8 pprint-newline — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_pprint_newli_1348" class="entry"><span class="secno">22.4.8</span> <span class="names">pprint-newline</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>pprint-newline</b>
+<i>kind <code>&amp;optional</code> stream</i>
+  → <i><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i><p><i></i>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>kind</i>—one of <code>:linear</code>, <code>:fill</code>, <code>:miser</code>, or <code>:mandatory</code>.
+
+<p>
+<i>stream</i>—a <i><a href="g-s.xhtml#streamdesignator">stream designator</a></i>.
+ The default is <i><a href="g-s.xhtml#standardoutput">standard output</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+If <i>stream</i> is a <i><a href="g-p.xhtml#prettyprintingstream">pretty printing stream</a></i>
+   and the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e22-4-26.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a> is <i><a href="g-t.xhtml#true">true</a></i>,
+a line break is inserted in the output 
+when the appropriate condition below is satisfied;
+otherwise, <a href="#DictEntry_pprint_newli_1348"><b>pprint-newline</b></a> has no effect.
+
+
+<p>
+<i>Kind</i> specifies the style of conditional newline.
+This <i><a href="g-p.xhtml#parameter">parameter</a></i> is treated as follows:
+
+</p><ul>
+
+<li><code>:linear</code>
+
+<p>
+This specifies a
+"linear-style" <i><a href="g-c.xhtml#conditionalnewline">conditional newline</a></i>.
+A line break is inserted 
+if and only if the immediately containing <i><a href="g-s.xhtml#section">section</a></i>
+cannot be printed on one line.
+The effect of this is that line breaks are
+either inserted at every linear-style conditional newline in a logical block
+or at none of them.
+
+</p></li><li><code>:miser</code>
+
+<p>
+This specifies a 
+"miser-style" <i><a href="g-c.xhtml#conditionalnewline">conditional newline</a></i>.
+A line break is inserted
+if and only if the immediately containing <i><a href="g-s.xhtml#section">section</a></i>
+cannot be printed on one line
+and miser style is in effect in the immediately containing logical block.
+The effect of this is that miser-style conditional newlines
+act like linear-style conditional newlines,
+but only when miser style is in effect.
+Miser style is in effect for a logical block if and only if 
+the starting position of the logical block
+is less than or equal to
+<a href="e22-4-24.xhtml#DictEntry_print_miser_1364"><b>*print-miser-width*</b></a> <i><a href="g-e.xhtml#em">ems</a></i> from the right margin.
+
+</p></li><li><code>:fill</code>
+
+<p>
+This specifies a
+"fill-style" <i><a href="g-c.xhtml#conditionalnewline">conditional newline</a></i>.
+A line break is inserted if and only if
+either (a) the following <i><a href="g-s.xhtml#section">section</a></i> cannot be printed 
+	   on the end of the current line,
+       (b) the preceding <i><a href="g-s.xhtml#section">section</a></i> was not printed on a single line,
+    or (c) the immediately containing <i><a href="g-s.xhtml#section">section</a></i> cannot
+	   be printed on one line and miser style is in effect
+	   in the immediately containing logical block.
+If a logical block is broken up into a number of subsections
+by fill-style conditional newlines,
+the basic effect is that the logical block
+is printed with as many subsections as possible on each line.
+However, if miser style is in effect,
+fill-style conditional newlines act like linear-style conditional newlines.
+
+</p></li><li><code>:mandatory</code>
+
+<p>
+This specifies a
+"mandatory-style" <i><a href="g-c.xhtml#conditionalnewline">conditional newline</a></i>.
+A line break is always inserted.
+This implies that  none of the containing <i><a href="g-s.xhtml#section">sections</a></i>
+can be printed on a single line and 
+will therefore trigger the insertion of line breaks 
+at linear-style conditional newlines in these <i><a href="g-s.xhtml#section">sections</a></i>.
+
+</p></li></ul>
+
+<p>
+When a line break is inserted by any type of conditional newline, 
+any blanks that immediately precede the conditional newline are omitted 
+from the output and indentation is introduced at the beginning of the next line.
+By default, the indentation causes the following line to begin 
+in the same horizontal position 
+as the first character in the immediately containing logical block.
+(The indentation can be changed via <a href="e22-4-6.xhtml#DictEntry_pprint_inden_1346"><b>pprint-indent</b></a>.)
+
+</p><p>
+There are a variety of ways unconditional newlines can be introduced into
+the output (<i>i.e.</i>,  via <a href="e21-2-19.xhtml#DictEntry_terpri_fres_1210"><b>terpri</b></a> or by printing a string containing a newline
+character).  As with mandatory conditional newlines, this prevents any of
+the containing <i><a href="g-s.xhtml#section">sections</a></i> from being printed on one line.  In general, when
+an unconditional newline is encountered, it is printed out without
+suppression of the preceding blanks and without any indentation following
+it.  However, if a per-line prefix has been specified (see
+<a href="e22-4-7.xhtml#DictEntry_pprint_logic_1347"><b>pprint-logical-block</b></a>), this prefix will always be printed no matter 
+how a newline originates.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+See Section <a href="s22-2.xhtml#SubSection_Examples_of__1285">22.2.2 Examples of using the Pretty Printer</a>.
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+Output to <i>stream</i>.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e22-4-26.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a>, <b>*print-miser*</b>.
+The presence of containing logical blocks.
+The placement of newlines and conditional newlines.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> is signaled if <i>kind</i> 
+is not one of <code>:linear</code>, <code>:fill</code>, <code>:miser</code>, or <code>:mandatory</code>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="s22-3.xhtml#SubSubSectio_Tilde_Unders_1310">22.3.5.1 Tilde Underscore: Conditional Newline</a>,
+Section <a href="s22-2.xhtml#SubSection_Examples_of__1285">22.2.2 Examples of using the Pretty Printer</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

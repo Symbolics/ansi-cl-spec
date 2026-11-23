@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>16.2.2 base-string — Type</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_base_string_1021" class="entry"><span class="secno">16.2.2</span> <span class="names">base-string</span> <span class="kind">Type</span></h3>
+<dl>
+
+
+<dt><b>Supertypes:</b></dt><dd>
+
+<a href="#DictEntry_base_string_1021"><b>base-string</b></a>,
+<a href="e16-2-7.xhtml#DictEntry_string_1026"><b>string</b></a>,
+<a href="e15-2-3.xhtml#DictEntry_vector_981"><b>vector</b></a>,
+<a href="e15-2-1.xhtml#DictEntry_array_979"><b>array</b></a>,
+<a href="e17-3-1.xhtml#DictEntry_sequence_1041"><b>sequence</b></a>,
+<a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+The <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_base_string_1021"><b>base-string</b></a> is equivalent to 
+
+<code>(vector base-char)</code>.
+
+The <i><a href="g-b.xhtml#basestring">base string</a></i> representation is the most efficient <i><a href="g-s.xhtml#string">string</a></i> representation
+that can hold an arbitrary sequence of <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>.
+
+</dd><dt><b>Compound Type Specifier Kind:</b></dt><dd>
+
+Abbreviating.
+
+</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+
+
+<code>(base-string <code>[</code>size<code>]</code>)</code>
+
+
+</dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+
+
+<i>size</i>—a non-negative <i><a href="g-f.xhtml#fixnum">fixnum</a></i>,
+	    or the <i><a href="g-s.xhtml#symbol">symbol</a></i> <a href="e25-2-22.xhtml#DictEntry____1449"><b>*</b></a>.
+
+
+</dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+
+This is equivalent to the type <code>(vector base-char <i>size</i>)</code>;
+that is, the set of <i><a href="g-b.xhtml#basestring">base strings</a></i> of size <i>size</i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

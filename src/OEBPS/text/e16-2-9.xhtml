@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>16.2.9 string-trim, string-left-trim, string-right-trim — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_string_trim_1028" class="entry"><span class="secno">16.2.9</span> <span class="names">string-trim, string-left-trim, string-right-trim</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<table>
+<tbody><tr><td><b>string-trim</b> <i>character-bag string</i></td><td>→  <i>trimmed-string</i></td></tr>
+<tr><td><b>string-left-trim</b> <i>character-bag string</i></td><td>→  <i>trimmed-string</i></td></tr>
+<tr><td><b>string-right-trim</b> <i>character-bag string</i></td><td>→  <i>trimmed-string</i></td></tr>
+</tbody></table>
+
+
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>character-bag</i>—a <i><a href="g-s.xhtml#sequence">sequence</a></i> containing <i><a href="g-c.xhtml#character">characters</a></i>.
+
+<p>
+
+<i>string</i>—a <i><a href="g-s.xhtml#stringdesignator">string designator</a></i>.
+
+
+</p><p>
+<i>trimmed-string</i>—a <i><a href="g-s.xhtml#string">string</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_string_trim_1028"><b>string-trim</b></a> returns a substring of <i>string</i>, 
+with all characters in <i>character-bag</i> stripped off the beginning and end.
+<a href="#DictEntry_string_trim_1028"><b>string-left-trim</b></a> is similar but strips characters off only the beginning; 
+<a href="#DictEntry_string_trim_1028"><b>string-right-trim</b></a> strips off only the end.
+
+<p>
+If no <i><a href="g-c.xhtml#character">characters</a></i> need to be trimmed from the <i>string</i>,
+then either <i>string</i> itself or a copy of it may be returned,
+at the discretion of the implementation.
+
+</p><p>
+
+All of these <i><a href="g-f.xhtml#function">functions</a></i> observe the <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (string-trim "abc" "abcaakaaakabcaaa") → "kaaak"
+ (string-trim '(#\Space #\Tab #\Newline) " garbanzo beans
+        ") → "garbanzo beans"
+ (string-trim " (*)" " ( *three (silly) words* ) ")
+→ "three (silly) words"
+
+ (string-left-trim "abc" "labcabcabc") → "labcabcabc"
+ (string-left-trim " (*)" " ( *three (silly) words* ) ")
+→ "three (silly) words* ) "
+
+ (string-right-trim " (*)" " ( *three (silly) words* ) ") 
+→ " ( *three (silly) words"
+</pre>
+
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The <i><a href="g-i.xhtml#implementation">implementation</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

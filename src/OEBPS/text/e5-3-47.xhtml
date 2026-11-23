@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.47 typecase, ctypecase, etypecase — Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_typecase_ct_433" class="entry"><span class="secno">5.3.47</span> <span class="names">typecase, ctypecase, etypecase</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>typecase</b>
+<i>keyform  {<i>normal-clause</i>}* [↓otherwise-clause]</i>
+  → <i>{<i>result</i>}*</i>
+<p>
+<b>ctypecase</b>
+<i>keyplace {<i>normal-clause</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+</p><p>
+<b>etypecase</b>
+<i>keyform  {<i>normal-clause</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+</p><p>
+
+normal-clause::= (type {<i>form</i>}*)</p><p>
+
+otherwise-clause::= (<code>{</code>otherwise | t<code>}</code> {<i>form</i>}*)</p><p>
+
+clause::= normal-clause | otherwise-clause</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>keyform</i>—a <i><a href="g-f.xhtml#form">form</a></i>; evaluated to produce a <i>test-key</i>.
+
+<p>
+<i>keyplace</i>—a <i><a href="g-f.xhtml#form">form</a></i>; evaluated initially to produce a <i>test-key</i>.
+   Possibly also used later as a <i><a href="g-p.xhtml#place">place</a></i> if no <i>types</i> match.
+
+</p><p>
+<i>test-key</i>—an object produced by evaluating <i>keyform</i> or <i>keyplace</i>.
+
+</p><p>
+<i>type</i>—a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>.
+
+</p><p>
+<i>forms</i>—an <i><a href="g-i.xhtml#implicitprogn">implicit progn</a></i>.
+
+</p><p>
+<i>results</i>—the <i><a href="g-v.xhtml#value">values</a></i> returned by the <i>forms</i> 
+		  in the matching <i>clause</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+These <i><a href="g-m.xhtml#macro">macros</a></i> allow the conditional execution of a body of <i>forms</i>
+in a <i>clause</i> that is selected by matching the <i>test-key</i> on the basis 
+of its <i><a href="g-t.xhtml#type">type</a></i>.
+
+<p>
+The <i>keyform</i> or <i>keyplace</i> is <i>evaluated</i> to produce the
+<i>test-key</i>.
+
+</p><p>
+Each of the <i>normal-clauses</i> is then considered in turn.
+If the <i>test-key</i> is of the <i><a href="g-t.xhtml#type">type</a></i> 
+given by the <i>clauses</i>'s <i>type</i>,
+the <i>forms</i> in that <i>clause</i> are
+<i>evaluated</i> as an <i><a href="g-i.xhtml#implicitprogn">implicit progn</a></i>, and the <i><a href="g-v.xhtml#value">values</a></i>
+it returns are returned as the value of the <a href="#DictEntry_typecase_ct_433"><b>typecase</b></a>,
+<a href="#DictEntry_typecase_ct_433"><b>ctypecase</b></a>, or <a href="#DictEntry_typecase_ct_433"><b>etypecase</b></a> <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+These <i><a href="g-m.xhtml#macro">macros</a></i> differ only in their <i>behavior</i> when 
+no <i>normal-clause</i> matches; specifically:
+
+</p><ul>
+
+<li><a href="#DictEntry_typecase_ct_433"><b>typecase</b></a>
+
+<p>
+If no <i>normal-clause</i> matches, and there is an <i>otherwise-clause</i>,
+then that <i>otherwise-clause</i> automatically matches; the <i>forms</i> in
+that <i>clause</i> are <i>evaluated</i> as an <i><a href="g-i.xhtml#implicitprogn">implicit progn</a></i>, 
+and the <i><a href="g-v.xhtml#value">values</a></i> it returns are returned as the value of the <a href="#DictEntry_typecase_ct_433"><b>typecase</b></a>.
+
+</p><p>
+If there is no <i>otherwise-clause</i>, <a href="#DictEntry_typecase_ct_433"><b>typecase</b></a> returns <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></li><li><a href="#DictEntry_typecase_ct_433"><b>ctypecase</b></a>
+
+<p>
+If no <i>normal-clause</i> matches,
+a <i><a href="g-c.xhtml#correctable">correctable</a></i> <i><a href="g-e.xhtml#error">error</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> is signaled.
+The offending datum is the <i>test-key</i> and
+the expected type is <i><a href="g-t.xhtml#typeequivalent">type equivalent</a></i> to <code>(or <i>type1</i> <i>type2</i> ...)</code>.
+The <a href="e9-2-44.xhtml#DictEntry_store_value_669"><b>store-value</b></a> <i><a href="g-r.xhtml#restart">restart</a></i> can be used to correct the error.
+
+</p><p>
+If the <a href="e9-2-44.xhtml#DictEntry_store_value_669"><b>store-value</b></a> <i><a href="g-r.xhtml#restart">restart</a></i> is invoked, its <i><a href="g-a.xhtml#argument">argument</a></i> becomes the 
+new <i>test-key</i>, and is stored in <i>keyplace</i> as if by
+<code>(setf <i>keyplace</i> <i>test-key</i>)</code>.
+Then <a href="#DictEntry_typecase_ct_433"><b>ctypecase</b></a> starts over, considering each <i>clause</i> anew.
+
+</p><p>
+If the <a href="e9-2-44.xhtml#DictEntry_store_value_669"><b>store-value</b></a> <i><a href="g-r.xhtml#restart">restart</a></i> is invoked interactively, 
+the user is prompted for a new <i>test-key</i> to use.
+
+</p><p>
+The subforms of <i>keyplace</i> might be evaluated again if
+none of the cases holds.
+
+</p></li><li><a href="#DictEntry_typecase_ct_433"><b>etypecase</b></a>
+
+<p>
+If no <i>normal-clause</i> matches,
+a <i><a href="g-n.xhtml#noncorrectable">non-correctable</a></i> <i><a href="g-e.xhtml#error">error</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> is signaled.
+The offending datum is the <i>test-key</i> and
+the expected type is <i><a href="g-t.xhtml#typeequivalent">type equivalent</a></i> to <code>(or <i>type1</i> <i>type2</i> ...)</code>.
+
+</p><p>
+Note that in contrast with <a href="#DictEntry_typecase_ct_433"><b>ctypecase</b></a>,
+the caller of <a href="#DictEntry_typecase_ct_433"><b>etypecase</b></a> may rely on the fact that <a href="#DictEntry_typecase_ct_433"><b>etypecase</b></a> 
+does not return if a <i>normal-clause</i> does not match.
+
+</p></li></ul>
+
+<p>
+
+In all three cases, is permissible for more than one <i>clause</i> to specify a
+matching <i><a href="g-t.xhtml#type">type</a></i>, particularly if one is a <i><a href="g-s.xhtml#subtype">subtype</a></i> of another;
+the earliest applicable <i>clause</i> is chosen.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre>;;; (Note that the parts of this example which use TYPE-OF 
+;;;  are implementation-dependent.)
+ (defun what-is-it (x)
+   (format t "~&amp;~S is ~A.~%"
+           x (typecase x
+               (float "a float")
+               (null "a symbol, boolean false, or the empty list")
+               (list "a list")
+               (t (format nil "a(n) ~(~A~)" (type-of x))))))
+→  WHAT-IS-IT
+ (map 'nil #'what-is-it '(nil (a b) 7.0 7 box))
+▷ NIL is a symbol, boolean false, or the empty list.
+▷(A B) is a list.
+▷7.0 is a float.
+▷7 is a(n) integer.
+▷ BOX is a(n) symbol.
+→  NIL
+ (setq x 1/3)
+→ 1/3
+ (ctypecase x
+     (integer (* x 4))
+     (symbol  (symbol-value x)))
+▷ Error: The value of X, 1/3, is neither an integer nor a symbol.
+▷ To continue, type :CONTINUE followed by an option number:
+▷ 1: Specify a value to use instead.
+▷ 2: Return to Lisp Toplevel.
+▷ Debug&gt; <span class="user">:CONTINUE 1</span>
+▷ Use value: <span class="user">3.7</span>
+▷ Error: The value of X, 3.7, is neither an integer nor a symbol.
+▷ To continue, type :CONTINUE followed by an option number:
+▷ 1: Specify a value to use instead.
+▷ 2: Return to Lisp Toplevel.
+▷ Debug&gt; <span class="user">:CONTINUE 1</span>
+▷ Use value: <span class="user">12</span>
+→ 48
+ x → 12
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="#DictEntry_typecase_ct_433"><b>ctypecase</b></a> and <a href="#DictEntry_typecase_ct_433"><b>etypecase</b></a>, since they might signal an error,
+are potentially affected by existing <i>handlers</i> and <a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*debug-io*</b></a>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+<a href="#DictEntry_typecase_ct_433"><b>ctypecase</b></a> and <a href="#DictEntry_typecase_ct_433"><b>etypecase</b></a> signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a>
+if no <i>normal-clause</i> matches.
+
+<p>
+The <i><a href="g-c.xhtml#compiler">compiler</a></i> may choose to issue a warning of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-3.xhtml#DictEntry_style_warnin_628"><b>style-warning</b></a>
+if a <i>clause</i> will never be selected because it is completely 
+shadowed by earlier clauses.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-46.xhtml#DictEntry_case_ccase_432"><b>case</b></a>,
+<a href="e5-3-42.xhtml#DictEntry_cond_428"><b>cond</b></a>,
+<a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a>,
+Section <a href="s5-1.xhtml#Section_Generalized__368">5.1 Generalized Reference</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre>(typecase <i>test-key</i>
+  <code>{</code>(<i>type</i> {<i>form</i>}*)<code>}</code><sup>*</sup>)
+==
+(let ((#1=#:g0001 <i>test-key</i>))
+  (cond <code>{</code>((typep #1# '<i>type</i>) {<i>form</i>}*)<code>}</code><sup>*</sup>))
+</pre>
+
+<p>
+The specific error message used by <a href="#DictEntry_typecase_ct_433"><b>etypecase</b></a> and <a href="#DictEntry_typecase_ct_433"><b>ctypecase</b></a> can vary
+between implementations.  In situations where control of the specific wording 
+of the error message is important, it is better to use <a href="#DictEntry_typecase_ct_433"><b>typecase</b></a> with an
+<i>otherwise-clause</i> that explicitly signals an error with an appropriate 
+message.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

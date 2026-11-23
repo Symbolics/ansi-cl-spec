@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.8.12 macroexpand, macroexpand-1 — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_macroexpand_294" class="entry"><span class="secno">3.8.12</span> <span class="names">macroexpand, macroexpand-1</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>macroexpand</b>
+<i>form <code>&amp;optional</code> env</i>
+  → <i>expansion, expanded-p</i>
+<p>
+<b>macroexpand-1</b>
+<i>form <code>&amp;optional</code> env</i>
+  → <i>expansion, expanded-p</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>form</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+<p>
+<i>env</i>—an <i><a href="g-e.xhtml#environment">environment</a></i> <i><a href="g-o.xhtml#object">object</a></i>.
+  The default is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>expansion</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+
+<i>expanded-p</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_macroexpand_294"><b>macroexpand</b></a> and <a href="#DictEntry_macroexpand_294"><b>macroexpand-1</b></a> expand <i><a href="g-m.xhtml#macro">macros</a></i>.
+
+<p>
+
+
+If <i>form</i> is a <i><a href="g-m.xhtml#macroform">macro form</a></i>,
+then <a href="#DictEntry_macroexpand_294"><b>macroexpand-1</b></a> expands the <i><a href="g-m.xhtml#macroform">macro form</a></i> call once.
+
+</p><p>
+
+<a href="#DictEntry_macroexpand_294"><b>macroexpand</b></a> 
+repeatedly expands <i>form</i> until it is no longer a <i><a href="g-m.xhtml#macroform">macro form</a></i>.
+In effect, <a href="#DictEntry_macroexpand_294"><b>macroexpand</b></a> calls <a href="#DictEntry_macroexpand_294"><b>macroexpand-1</b></a> repeatedly
+until the <i><a href="g-s.xhtml#secondaryvalue">secondary value</a></i> it returns is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+
+If <i>form</i> is a <i><a href="g-m.xhtml#macroform">macro form</a></i>,
+then the <i>expansion</i> is a <i><a href="g-m.xhtml#macroexpansion">macro expansion</a></i>
+ and <i>expanded-p</i> is <i><a href="g-t.xhtml#true">true</a></i>.
+Otherwise,
+ the <i>expansion</i> is the given <i>form</i>
+ and <i>expanded-p</i> is <i><a href="g-f.xhtml#false">false</a></i>.
+
+</p><p>
+
+Macro expansion is carried out as follows.  
+Once <a href="#DictEntry_macroexpand_294"><b>macroexpand-1</b></a> has
+determined that the <i>form</i> is a <i><a href="g-m.xhtml#macroform">macro form</a></i>,
+it obtains an appropriate expansion <i><a href="g-f.xhtml#function">function</a></i> for the
+<i><a href="g-m.xhtml#macro">macro</a></i> or <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i>.
+The value of 
+<a href="e3-8-15.xhtml#DictEntry_macroexpand_297"><b>*macroexpand-hook*</b></a> is 
+
+coerced to a <i><a href="g-f.xhtml#function">function</a></i> and
+
+then called as a <i><a href="g-f.xhtml#function">function</a></i> of three arguments:
+      the expansion <i><a href="g-f.xhtml#function">function</a></i>,
+      the <i>form</i>,
+  and the <i>env</i>.
+The <i><a href="g-v.xhtml#value">value</a></i> returned from this call is taken to be the expansion
+of the <i>form</i>.
+
+</p><p>
+
+
+In addition to <i><a href="g-m.xhtml#macro">macro</a></i> definitions in the global environment,
+any local macro definitions established within <i>env</i> by <a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a> 
+or <a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a> are considered.
+If only <i>form</i> is supplied as an argument,
+then the environment is effectively null, and only global macro definitions
+as established by <a href="e3-8-10.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a> are considered.
+
+<i><a href="g-m.xhtml#macro">Macro</a></i> definitions are shadowed by local <i><a href="g-f.xhtml#function">function</a></i> definitions.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defmacro alpha (x y) `(beta ,x ,y)) →  ALPHA
+ (defmacro beta (x y) `(gamma ,x ,y)) →  BETA
+ (defmacro delta (x y) `(gamma ,x ,y)) →  EPSILON
+ (defmacro expand (form &amp;environment env)
+   (multiple-value-bind (expansion expanded-p)
+       (macroexpand form env)
+     `(values ',expansion ',expanded-p))) →  EXPAND
+ (defmacro expand-1 (form &amp;environment env)
+   (multiple-value-bind (expansion expanded-p)
+       (macroexpand-1 form env)
+     `(values ',expansion ',expanded-p))) →  EXPAND-1
+
+;; Simple examples involving just the global environment
+ (macroexpand-1 '(alpha a b)) → (BETA A B), <i><a href="g-t.xhtml#true">true</a></i>
+ (expand-1 (alpha a b)) → (BETA A B), <i><a href="g-t.xhtml#true">true</a></i>
+ (macroexpand '(alpha a b)) → (GAMMA A B), <i><a href="g-t.xhtml#true">true</a></i>
+ (expand (alpha a b)) → (GAMMA A B), <i><a href="g-t.xhtml#true">true</a></i>
+ (macroexpand-1 'not-a-macro) →  NOT-A-MACRO, <i><a href="g-f.xhtml#false">false</a></i>
+ (expand-1 not-a-macro) →  NOT-A-MACRO, <i><a href="g-f.xhtml#false">false</a></i>
+ (macroexpand '(not-a-macro a b)) → (NOT-A-MACRO A B), <i><a href="g-f.xhtml#false">false</a></i>
+ (expand (not-a-macro a b)) → (NOT-A-MACRO A B), <i><a href="g-f.xhtml#false">false</a></i>
+
+;; Examples involving lexical environments
+ (macrolet ((alpha (x y) `(delta ,x ,y)))
+   (macroexpand-1 '(alpha a b))) → (BETA A B), <i><a href="g-t.xhtml#true">true</a></i>
+ (macrolet ((alpha (x y) `(delta ,x ,y)))
+   (expand-1 (alpha a b))) → (DELTA A B), <i><a href="g-t.xhtml#true">true</a></i>
+ (macrolet ((alpha (x y) `(delta ,x ,y)))
+   (macroexpand '(alpha a b))) → (GAMMA A B), <i><a href="g-t.xhtml#true">true</a></i>
+ (macrolet ((alpha (x y) `(delta ,x ,y)))
+   (expand (alpha a b))) → (GAMMA A B), <i><a href="g-t.xhtml#true">true</a></i>
+ (macrolet ((beta (x y) `(epsilon ,x ,y)))
+   (expand (alpha a b))) → (EPSILON A B), <i><a href="g-t.xhtml#true">true</a></i>
+ (let ((x (list 1 2 3)))
+   (symbol-macrolet ((a (first x)))
+     (expand a))) → (FIRST X), <i><a href="g-t.xhtml#true">true</a></i>
+ (let ((x (list 1 2 3)))
+   (symbol-macrolet ((a (first x)))
+     (macroexpand 'a))) →  A, <i><a href="g-f.xhtml#false">false</a></i>
+ (symbol-macrolet ((b (alpha x y)))
+   (expand-1 b)) → (ALPHA X Y), <i><a href="g-t.xhtml#true">true</a></i>
+ (symbol-macrolet ((b (alpha x y)))
+   (expand b)) → (GAMMA X Y), <i><a href="g-t.xhtml#true">true</a></i>
+ (symbol-macrolet ((b (alpha x y))
+                   (a b))
+   (expand-1 a)) →  B, <i><a href="g-t.xhtml#true">true</a></i>
+ (symbol-macrolet ((b (alpha x y))
+                   (a b))
+   (expand a)) → (GAMMA X Y), <i><a href="g-t.xhtml#true">true</a></i>
+
+;; Examples of shadowing behavior
+ (flet ((beta (x y) (+ x y)))
+   (expand (alpha a b))) → (BETA A B), <i><a href="g-t.xhtml#true">true</a></i>
+ (macrolet ((alpha (x y) `(delta ,x ,y)))
+   (flet ((alpha (x y) (+ x y)))
+     (expand (alpha a b)))) → (ALPHA A B), <i><a href="g-f.xhtml#false">false</a></i>
+ (let ((x (list 1 2 3)))
+   (symbol-macrolet ((a (first x)))
+     (let ((a x))
+       (expand a)))) →  A, <i><a href="g-f.xhtml#false">false</a></i>
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e3-8-10.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a>,
+<a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> of <a href="e3-8-11.xhtml#DictEntry_macro_functi_293"><b>macro-function</b></a>,
+<a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a>,
+<a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e3-8-15.xhtml#DictEntry_macroexpand_297"><b>*macroexpand-hook*</b></a>,
+<a href="e3-8-10.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a>,
+<a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> of <a href="e3-8-11.xhtml#DictEntry_macro_functi_293"><b>macro-function</b></a>,
+<a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a>,
+<a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>,
+Section <a href="s3-1.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+Neither <a href="#DictEntry_macroexpand_294"><b>macroexpand</b></a> nor <a href="#DictEntry_macroexpand_294"><b>macroexpand-1</b></a> 
+makes any explicit attempt to expand <i><a href="g-m.xhtml#macroform">macro forms</a></i> that are
+either <i><a href="g-s.xhtml#subform">subforms</a></i> of the <i>form</i> 
+    or <i><a href="g-s.xhtml#subform">subforms</a></i> of the <i>expansion</i>.
+Such expansion might occur implicitly, however,
+due to the semantics or implementation of the <i><a href="g-m.xhtml#macrofunction">macro function</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

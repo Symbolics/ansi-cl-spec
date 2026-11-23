@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.29 open — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_open_1220" class="entry"><span class="secno">21.2.29</span> <span class="names">open</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>open</b>
+<i>filespec <code>&amp;key</code> direction element-type
+				               if-exists if-does-not-exist
+						     external-format</i><br/> 
+  → <i>stream</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>filespec</i>—a <i><a href="g-p.xhtml#pathnamedesignator">pathname designator</a></i>.
+
+<p>
+<i>direction</i>—one of <code>:input</code>, <code>:output</code>, <code>:io</code>, or <code>:probe</code>.
+ The default is <code>:input</code>.
+
+</p><p>
+
+
+
+<i>element-type</i>—a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> 
+		       for <i><a href="g-r.xhtml#recognizablesubtype">recognizable subtype</a></i> of <a href="e13-2-1.xhtml#DictEntry_character_884"><b>character</b></a>;
+		    or a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> 
+		       for a <i><a href="g-f.xhtml#finite">finite</a></i> <i><a href="g-r.xhtml#recognizablesubtype">recognizable subtype</a></i> of <i><a href="g-i.xhtml#integer">integer</a></i>;
+		    or one of the <i><a href="g-s.xhtml#symbol">symbols</a></i> 
+                          <a href="e12-2-9.xhtml#DictEntry_signed_byte_783"><b>signed-byte</b></a>,
+                          <a href="e12-2-10.xhtml#DictEntry_unsigned_byt_784"><b>unsigned-byte</b></a>,
+		       or <code>:default</code>.
+ The default is <a href="e13-2-1.xhtml#DictEntry_character_884"><b>character</b></a>.
+
+</p><p>
+<i>if-exists</i>—one of <code>:error</code>, <code>:new-version</code>, <code>:rename</code>,
+		  <code>:rename-and-delete</code>, <code>:overwrite</code>, <code>:append</code>,
+		  <code>:supersede</code>, or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+ The default is <code>:new-version</code> if the version component of <i>filespec</i> is <code>:newest</code>,
+          or <code>:error</code> otherwise.
+
+</p><p>
+
+
+<i>if-does-not-exist</i>—one of <code>:error</code>, <code>:create</code>, or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+ The default is <code>:error</code> if <i>direction</i> is <code>:input</code> 
+		      or <i>if-exists</i> is <code>:overwrite</code> or <code>:append</code>;
+	  <code>:create</code> if <i>direction</i> is <code>:output</code> or <code>:io</code>,
+		      and <i>if-exists</i> is neither <code>:overwrite</code> nor <code>:append</code>;
+       or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> when <i>direction</i> is <code>:probe</code>.
+
+</p><p>
+
+<i>external-format</i>—an <i><a href="g-e.xhtml#externalfileformatdesignator">external file format designator</a></i>.
+  The default is <code>:default</code>.
+
+
+</p><p>
+
+<i>stream</i>—a <i><a href="g-f.xhtml#filestream">file stream</a></i> or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+<a href="#DictEntry_open_1220"><b>open</b></a> creates, opens, and returns a <i><a href="g-f.xhtml#filestream">file stream</a></i> 
+that is connected to the file specified by <i>filespec</i>.
+<i>Filespec</i> is the name of the file to be opened.  
+
+If the <i>filespec</i> <i><a href="g-d.xhtml#designator">designator</a></i> is a <i><a href="g-s.xhtml#stream">stream</a></i>,
+that <i><a href="g-s.xhtml#stream">stream</a></i> is not closed first or otherwise affected.
+
+<p>
+The keyword arguments to <a href="#DictEntry_open_1220"><b>open</b></a> specify the characteristics 
+of the <i><a href="g-f.xhtml#filestream">file stream</a></i> that is returned, and how to handle errors.
+
+</p><p>
+
+If <i>direction</i> is <code>:input</code>
+
+
+or <code>:probe</code>,
+or if <i>if-exists</i> is not <code>:new-version</code>
+and the version component of the <i>filespec</i> is <code>:newest</code>,
+then the file opened is that file already existing in the file system
+that has a version greater than that of any other file in the file system
+whose other pathname components are the same as those of <i>filespec</i>.
+
+</p><p>
+
+
+An implementation is required to recognize all of 
+the <a href="#DictEntry_open_1220"><b>open</b></a> keyword options 
+and to do something reasonable in the context of the host operating
+system.  
+For example, if a file system does not support distinct file
+versions and does not distinguish the notions of deletion and expunging,
+<code>:new-version</code> might be treated the same as
+<code>:rename</code> or <code>:supersede</code>, and <code>:rename-and-delete</code> might
+be treated the same as <code>:supersede</code>.
+
+</p><ul>
+
+<li><code>:direction</code>
+
+<p>
+These are the possible values for <i>direction</i>, 
+and how they affect the nature of the <i><a href="g-s.xhtml#stream">stream</a></i> that is created:
+
+</p><ul>
+
+<li><code>:input</code>
+
+<p>
+Causes the creation of an <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-f.xhtml#filestream">file stream</a></i>.
+
+</p></li><li><code>:output</code> 	            
+
+<p>
+Causes the creation of an <i><a href="g-o.xhtml#output">output</a></i> <i><a href="g-f.xhtml#filestream">file stream</a></i>.
+
+</p></li><li><code>:io</code>
+
+<p>
+Causes the creation of a <i><a href="g-b.xhtml#bidirectional">bidirectional</a></i> <i><a href="g-f.xhtml#filestream">file stream</a></i>.
+
+</p></li><li><code>:probe</code>
+
+<p>
+Causes the creation of a "no-directional" <i><a href="g-f.xhtml#filestream">file stream</a></i>; 
+in effect, the <i><a href="g-f.xhtml#filestream">file stream</a></i> is created 
+and then closed prior to being returned by <a href="#DictEntry_open_1220"><b>open</b></a>.
+
+</p></li></ul>
+
+</li><li><code>:element-type</code>
+
+<p>
+The <i>element-type</i> specifies the unit of transaction for the <i><a href="g-f.xhtml#filestream">file stream</a></i>.
+
+If it is <code>:default</code>,
+the unit is determined by <i><a href="g-f.xhtml#filesystem">file system</a></i>,
+possibly based on the <i><a href="g-f.xhtml#file">file</a></i>.
+
+</p></li><li><code>:if-exists</code>
+
+<p>
+<i>if-exists</i> specifies the action to be taken if <i>direction</i> is
+<code>:output</code> or <code>:io</code> and a file of the name <i>filespec</i> 
+already exists.
+If <i>direction</i> is <code>:input</code>, not supplied, or <code>:probe</code>, 
+<i>if-exists</i> is ignored.
+These are the results of <a href="#DictEntry_open_1220"><b>open</b></a> as modified by <i>if-exists</i>:
+
+
+
+</p><ul> 
+
+<li><code>:error</code>
+
+<p>
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e20-2-9.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> is signaled.
+
+</p></li><li><code>:new-version</code>
+
+<p>
+A new file is created with a larger version number.
+
+</p></li><li><code>:rename</code> 
+
+<p>
+The existing file is renamed to some other name and then a new file is created.
+
+</p></li><li><code>:rename-and-delete</code>
+
+<p>
+The existing file is renamed to some other name,
+then it is deleted but not expunged, and then a new file is created.
+
+</p></li><li><code>:overwrite</code>
+
+<p>
+Output operations on the <i><a href="g-s.xhtml#stream">stream</a></i> destructively modify the existing file.
+If <i>direction</i> is <code>:io</code> the file is opened in a bidirectional mode
+that allows both reading and writing.  The file pointer is initially 
+positioned at the beginning of the file; however, the file is not truncated
+back to length zero when it is opened.
+
+</p></li><li><code>:append</code>
+
+<p>
+Output operations on the <i><a href="g-s.xhtml#stream">stream</a></i> destructively modify the existing file.
+The file pointer is initially positioned at the end of the file.
+
+</p><p>
+If <i>direction</i> is <code>:io</code>,
+the file is opened in a bidirectional mode that allows both reading and writing.
+
+</p></li><li><code>:supersede</code>
+
+<p>
+The existing file is superseded;
+that is, a new file with the same name as the old one is created.
+If possible, the implementation should not destroy the old file until the new
+<i><a href="g-s.xhtml#stream">stream</a></i> is closed.
+
+</p></li><li><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+
+<p>
+No file or <i><a href="g-s.xhtml#stream">stream</a></i> is created;
+instead, <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is returned to indicate failure.
+
+</p></li></ul>
+
+</li><li><code>:if-does-not-exist</code>
+
+<p>
+
+<i>if-does-not-exist</i>
+specifies the action to be taken if
+a file of name <i>filespec</i> does not already exist.
+These are the results of <a href="#DictEntry_open_1220"><b>open</b></a> as modified by <i>if-does-not-exist</i>:
+
+</p><ul>
+
+<li><code>:error</code>
+
+
+<p>
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e20-2-9.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> is signaled.
+
+</p></li><li><code>:create</code>
+
+<p>
+An empty file is created.
+Processing continues  as if the file 
+had already existed but no processing as 
+directed by <i>if-exists</i> is performed.
+
+</p></li><li><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+
+<p>
+No file or <i><a href="g-s.xhtml#stream">stream</a></i> is created;
+instead, <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is returned to indicate failure.
+
+</p></li></ul>
+
+</li><li><code>:external-format</code>
+
+<p>
+This option selects an <i><a href="g-e.xhtml#externalfileformat">external file format</a></i> for the <i><a href="g-f.xhtml#file">file</a></i>:
+
+The only <i><a href="g-s.xhtml#standardized">standardized</a></i> value for this option is <code>:default</code>,
+although <i><a href="g-i.xhtml#implementation">implementations</a></i> are permitted to define additional 
+<i><a href="g-e.xhtml#externalfileformat">external file formats</a></i> and <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> values 
+returned by <a href="e21-2-30.xhtml#DictEntry_stream_exter_1221"><b>stream-external-format</b></a> can also be used by <i><a href="g-c.xhtml#conformingprogram">conforming programs</a></i>.
+
+</p><p>
+
+
+The <i>external-format</i> is meaningful for
+any kind of <i><a href="g-f.xhtml#filestream">file stream</a></i> whose <i><a href="g-e.xhtml#elementtype">element type</a></i>
+is a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <i><a href="g-c.xhtml#character">character</a></i>.
+This option is ignored for <i><a href="g-s.xhtml#stream">streams</a></i> for which it is not meaningful;
+however, <i><a href="g-i.xhtml#implementation">implementations</a></i> may define other <i><a href="g-e.xhtml#elementtype">element types</a></i> 
+for which it is meaningful.
+
+The consequences are unspecified if a <i><a href="g-c.xhtml#character">character</a></i> is written 
+that cannot be represented by the given <i><a href="g-e.xhtml#externalfileformat">external file format</a></i>.
+
+
+</p></li></ul>
+
+<p>
+
+When a file is opened, a <i><a href="g-f.xhtml#filestream">file stream</a></i> is constructed to serve
+as the file system's ambassador to the <i>Lisp</i> environment;
+operations on the <i><a href="g-f.xhtml#filestream">file stream</a></i> are reflected by operations on the file
+in the file system.  
+
+</p><p>
+A file can be deleted, renamed, or destructively modified by <a href="#DictEntry_open_1220"><b>open</b></a>.
+
+</p><p>
+For information about opening relative pathnames,
+see Section <a href="s19-2.xhtml#SubSection_Merging_Path_1127">19.2.3 Merging Pathnames</a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (open <i>filespec</i> :direction :probe)  → #&lt;Closed Probe File Stream...&gt;
+ (setq q (merge-pathnames (user-homedir-pathname) "test"))
+→ #&lt;PATHNAME :HOST NIL :DEVICE <i>device-name</i> :DIRECTORY <i>directory-name</i>
+    :NAME "test" :TYPE NIL :VERSION :NEWEST&gt;
+ (open <i>filespec</i> :if-does-not-exist :create) → #&lt;Input File Stream...&gt;
+ (setq s (open <i>filespec</i> :direction :probe)) → #&lt;Closed Probe File Stream...&gt;
+ (truename s) → #&lt;PATHNAME :HOST NIL :DEVICE <i>device-name</i> :DIRECTORY
+    <i>directory-name</i> :NAME <i>filespec</i> :TYPE <i>extension</i> :VERSION 1&gt;
+ (open s :direction :output :if-exists nil) →  NIL 
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The nature and state of the host computer's <i><a href="g-f.xhtml#filesystem">file system</a></i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+If <i>if-exists</i> is <code>:error</code>, (subject to the
+constraints on the meaning of <i>if-exists</i> listed above),
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e20-2-9.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> is signaled.                        
+
+<p>
+If <i>if-does-not-exist</i> is <code>:error</code> (subject to the
+constraints on the meaning of <i>if-does-not-exist</i> listed above),
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e20-2-9.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> is signaled.
+
+</p><p>
+
+If it is impossible for an implementation to handle some option
+in a manner close to what is specified here,
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> might be signaled.
+
+</p><p>
+
+
+
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e20-2-9.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> is signaled if
+<code>(wild-pathname-p <i>filespec</i>)</code> returns true.
+
+
+</p><p>
+
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> is signaled if the <i>external-format</i> 
+is not understood by the <i><a href="g-i.xhtml#implementation">implementation</a></i>.
+
+
+</p><p>
+
+
+The various <i><a href="g-f.xhtml#filesystem">file systems</a></i> in existence today have widely differing capabilities,
+and some aspects of the <i><a href="g-f.xhtml#filesystem">file system</a></i> are beyond the scope of this specification
+to define.  A given <i><a href="g-i.xhtml#implementation">implementation</a></i> might not be able to support all of these options 
+in exactly the manner stated.  An <i><a href="g-i.xhtml#implementation">implementation</a></i> is required to recognize all of 
+these option keywords and to try to do something "reasonable" in the context of the 
+host <i><a href="g-f.xhtml#filesystem">file system</a></i>.  Where necessary to accomodate the <i><a href="g-f.xhtml#filesystem">file system</a></i>,
+an <i><a href="g-i.xhtml#implementation">implementation</a></i> deviate slightly from the semantics specified here without 
+being disqualified for consideration as a <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i>.
+If it is utterly impossible for an <i><a href="g-i.xhtml#implementation">implementation</a></i> to handle some option
+in a manner similar to what is specified here, it may simply signal an error.
+
+</p><p>
+With regard to the <code>:element-type</code> option, if a <i><a href="g-t.xhtml#type">type</a></i> is
+requested that is not supported by the <i><a href="g-f.xhtml#filesystem">file system</a></i>, a substitution of types 
+such as that which goes on in <i>upgrading</i> is permissible.  As a minimum 
+requirement, it should be the case that opening an <i><a href="g-o.xhtml#output">output</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>
+to a <i><a href="g-f.xhtml#file">file</a></i> in a given <i><a href="g-e.xhtml#elementtype">element type</a></i> and later opening 
+an <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-s.xhtml#stream">stream</a></i> to the same <i><a href="g-f.xhtml#file">file</a></i> in the same <i><a href="g-e.xhtml#elementtype">element type</a></i>
+should work compatibly.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+
+<a href="e21-2-31.xhtml#DictEntry_with_open_fi_1222"><b>with-open-file</b></a>,
+<a href="e21-2-32.xhtml#DictEntry_close_1223"><b>close</b></a>,
+<a href="e19-4-1.xhtml#DictEntry_pathname_1144"><b>pathname</b></a>,
+<a href="e19-4-2.xhtml#DictEntry_logical_path_1145"><b>logical-pathname</b></a>,
+
+Section <a href="s19-2.xhtml#SubSection_Merging_Path_1127">19.2.3 Merging Pathnames</a>,
+
+Section <a href="s19-1.xhtml#SubSection_Pathnames_as_1095">19.1.2 Pathnames as Filenames</a>
+
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+
+
+<p>
+
+<a href="#DictEntry_open_1220"><b>open</b></a> does not automatically close the file when an abnormal
+exit occurs.
+
+</p><p>
+When <i>element-type</i> is a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <a href="e13-2-1.xhtml#DictEntry_character_884"><b>character</b></a>,
+<a href="e21-2-17.xhtml#DictEntry_read_char_1208"><b>read-char</b></a> and/or <a href="e21-2-21.xhtml#DictEntry_write_char_1212"><b>write-char</b></a> can be
+used on the resulting <i><a href="g-f.xhtml#filestream">file stream</a></i>. 
+
+</p><p>
+When <i>element-type</i> is a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <i><a href="g-i.xhtml#integer">integer</a></i>,
+<a href="e21-2-14.xhtml#DictEntry_read_byte_1205"><b>read-byte</b></a> and/or <a href="e21-2-15.xhtml#DictEntry_write_byte_1206"><b>write-byte</b></a> can be used on the resulting <i><a href="g-f.xhtml#filestream">file stream</a></i>.
+
+</p><p>
+When <i>element-type</i> is <code>:default</code>,
+the <i><a href="g-t.xhtml#type">type</a></i> can be determined by using <a href="e21-2-12.xhtml#DictEntry_stream_eleme_1203"><b>stream-element-type</b></a>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

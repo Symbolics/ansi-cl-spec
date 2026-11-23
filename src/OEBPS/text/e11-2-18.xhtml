@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>11.2.18 use-package — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_use_package_733" class="entry"><span class="secno">11.2.18</span> <span class="names">use-package</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>use-package</b>
+<i>packages-to-use <code>&amp;optional</code> package</i>
+  → <i><a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+</i><p><i></i>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>packages-to-use</i>—a <i><a href="g-d.xhtml#designator">designator</a></i> for 
+			  a <i><a href="g-l.xhtml#list">list</a></i> of <i><a href="g-p.xhtml#packagedesignator">package designators</a></i>.
+  The <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i> may not be supplied.
+
+<p>
+
+
+
+<i>package</i>—a <i><a href="g-p.xhtml#packagedesignator">package designator</a></i>.
+  The default is the <i><a href="g-c.xhtml#currentpackage">current package</a></i>.
+  The <i>package</i> cannot be the <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i>.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_use_package_733"><b>use-package</b></a> causes <i>package</i> to inherit all the
+<i><a href="g-e.xhtml#externalsymbol">external symbols</a></i> of <i>packages-to-use</i>.
+The inherited <i><a href="g-s.xhtml#symbol">symbols</a></i> become <i><a href="g-a.xhtml#accessible">accessible</a></i> as 
+<i><a href="g-i.xhtml#internalsymbol">internal symbols</a></i> of <i>package</i>.  
+
+<p>
+
+<i>Packages-to-use</i> are added to the <i><a href="g-u.xhtml#uselist">use list</a></i> of <i>package</i>
+if they are not there already.  All <i><a href="g-e.xhtml#externalsymbol">external symbols</a></i> in
+<i>packages-to-use</i> become <i><a href="g-a.xhtml#accessible">accessible</a></i> in <i>package</i>
+as <i><a href="g-i.xhtml#internalsymbol">internal symbols</a></i>.
+
+<a href="#DictEntry_use_package_733"><b>use-package</b></a> does not cause any new <i><a href="g-s.xhtml#symbol">symbols</a></i> to be <i><a href="g-p.xhtml#present">present</a></i>
+in <i>package</i> but only makes them <i><a href="g-a.xhtml#accessible">accessible</a></i> by inheritance.
+
+</p><p>
+
+<a href="#DictEntry_use_package_733"><b>use-package</b></a> checks for
+name conflicts between the newly imported symbols and those already
+<i><a href="g-a.xhtml#accessible">accessible</a></i> in <i>package</i>.  
+
+A name conflict in <a href="#DictEntry_use_package_733"><b>use-package</b></a> 
+between two external symbols inherited
+by <i>package</i> from <i>packages-to-use</i> may be resolved in favor of
+either <i><a href="g-s.xhtml#symbol">symbol</a></i> 
+by <i>importing</i> one of them into <i>package</i> and making it a
+shadowing symbol. 
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (export (intern "LAND-FILL" (make-package 'trash)) 'trash) →  T
+ (find-symbol "LAND-FILL" (make-package 'temp)) →  NIL, NIL
+ (package-use-list 'temp) → (#&lt;PACKAGE "TEMP"&gt;)
+ (use-package 'trash 'temp) →  T
+ (package-use-list 'temp) → (#&lt;PACKAGE "TEMP"&gt; #&lt;PACKAGE "TRASH"&gt;)
+ (find-symbol "LAND-FILL" 'temp) →  TRASH:LAND-FILL, :INHERITED
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The <i><a href="g-u.xhtml#uselist">use list</a></i> of <i>package</i> may be modified.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e11-2-17.xhtml#DictEntry_unuse_packag_732"><b>unuse-package</b></a>,
+<a href="e11-2-25.xhtml#DictEntry_package_use__740"><b>package-use-list</b></a>,
+Section <a href="s11-1.xhtml#Section_Package_Conc_696">11.1 Package Concepts</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+It is permissible for a <i><a href="g-p.xhtml#package">package</a></i> <i>P<sub>1</sub></i> 
+to <i><a href="g-u.xhtml#use">use</a></i> a <i><a href="g-p.xhtml#package">package</a></i> <i>P<sub>2</sub></i>
+even if <i>P<sub>2</sub></i> already uses <i>P<sub>1</sub></i>.
+The using of <i><a href="g-p.xhtml#package">packages</a></i> is not transitive, 
+so no problem results from the apparent circularity.
+
+</dd></dl>
+</section>
+</body>
+</html>

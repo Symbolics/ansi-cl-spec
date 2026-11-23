@@ -1,0 +1,1112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>22.1 The Lisp Printer</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_The_Lisp_Pri_1250"><span class="secno">22.1</span> The Lisp Printer</h2>
+<section>
+<h3 id="SubSection_Overview_of__1251"><span class="secno">22.1.1</span> Overview of The Lisp Printer</h3>
+<p><i>Common Lisp</i> provides a representation of most <i><a href="g-o.xhtml#object">objects</a></i> in the form 
+of printed text called the printed representation.
+Functions such as <a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>print</b></a> take an <i><a href="g-o.xhtml#object">object</a></i> 
+and send the characters of its printed representation to a <i><a href="g-s.xhtml#stream">stream</a></i>. 
+The collection of routines that does this is known as the (<i>Common Lisp</i>) printer.  
+
+</p><p>
+
+Reading a printed representation 
+
+
+typically
+produces an <i><a href="g-o.xhtml#object">object</a></i> that is <a href="e5-3-35.xhtml#DictEntry_equal_421"><b>equal</b></a> to the
+originally printed <i><a href="g-o.xhtml#object">object</a></i>.
+</p>
+<section>
+<h4 id="SubSubSectio_Multiple_Pos_1252"><span class="secno">22.1.1.1</span> Multiple Possible Textual Representations</h4>
+<p>
+
+Most <i><a href="g-o.xhtml#object">objects</a></i> have more than one possible textual representation.
+For example, the positive <i><a href="g-i.xhtml#integer">integer</a></i> with a magnitude of twenty-seven
+can be textually expressed in any of these ways:
+
+</p><pre> 27    27.    #o33    #x1B    #b11011    #.(* 3 3 3)    81/3
+</pre>
+
+<p>
+A list containing the two symbols <code>A</code> and <code>B</code> can also be textually
+expressed in a variety of ways:
+
+</p><pre> (A B)    (a b)    (  a  b )    (\A |B|) 
+(|\A|
+  B
+)
+</pre>
+
+<p>
+In general,
+
+
+
+
+from the point of view of the <i>Lisp reader</i>,
+
+wherever <i><a href="g-w.xhtml#whitespace">whitespace</a></i> is permissible in a textual representation,
+any number of <i><a href="g-s.xhtml#space">spaces</a></i> and <i><a href="g-n.xhtml#newline">newlines</a></i> can appear in <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i>.
+
+</p><p>
+
+When a function such as <a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>print</b></a> produces a printed representation,
+it must choose 
+
+
+from among many possible textual representations.
+In most cases, it chooses a 
+
+
+program readable representation,
+but in certain cases it might use a more compact notation that is not 
+program-readable.
+
+</p><p>
+A number of option variables, called
+<b><i>printer control variables</i></b>,
+are provided to permit control of individual aspects of the 
+printed representation of <i><a href="g-o.xhtml#object">objects</a></i>.
+The next figure shows the <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-p.xhtml#printercontrolvariable">printer control variables</a></i>;
+there might also be <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-p.xhtml#printercontrolvariable">printer control variables</a></i>.
+
+</p><table id="fig-22-1" class="fig">
+<caption><span class="figlabel">Figure 22-1.</span> Standardized Printer Control Variables</caption>
+
+  <tbody><tr>
+    <td>*print-array*</td>
+    <td>*print-gensym*</td>
+    <td>*print-pprint-dispatch*</td>
+  </tr>
+  <tr>
+    <td>*print-base*</td>
+    <td>*print-length*</td>
+    <td>*print-pretty*</td>
+  </tr>
+  <tr>
+    <td>*print-case*</td>
+    <td>*print-level*</td>
+    <td>*print-radix*</td>
+  </tr>
+  <tr>
+    <td>*print-circle*</td>
+    <td>*print-lines*</td>
+    <td>*print-readably*</td>
+  </tr>
+  <tr>
+    <td>*print-escape*</td>
+    <td>*print-miser-width*</td>
+    <td>*print-right-margin*</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+In addition to the <i><a href="g-p.xhtml#printercontrolvariable">printer control variables</a></i>, 
+the following additional <i><a href="g-d.xhtml#definedname">defined names</a></i> 
+relate to or affect the behavior of the <i>Lisp printer</i>:
+
+</p><table id="fig-22-2" class="fig">
+<caption><span class="figlabel">Figure 22-2.</span> Additional Influences on the Lisp printer.</caption>
+
+  <tbody><tr>
+    <td>*package*</td>
+    <td>*read-eval*</td>
+    <td>readtable-case</td>
+  </tr>
+  <tr>
+    <td>*read-default-float-format*</td>
+    <td>*readtable*</td>
+    <td/>
+  </tr>
+</tbody></table>
+<section>
+<h5 id="SubSubSubSec_Printer_Esca_1253"><span class="secno">22.1.1.1.1</span> Printer Escaping</h5>
+<p>
+
+The <i><a href="g-v.xhtml#variable">variable</a></i> <a href="e22-4-20.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> controls whether the <i>Lisp printer</i>
+tries to produce notations such as escape characters and package prefixes.
+
+</p><p>
+The <i><a href="g-v.xhtml#variable">variable</a></i> <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> can be used to override
+many of the individual aspects controlled by the other 
+<i><a href="g-p.xhtml#printercontrolvariable">printer control variables</a></i> when program-readable output
+is especially important.
+
+</p><p>
+
+One of the many effects of making the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> be <i><a href="g-t.xhtml#true">true</a></i>
+is that the <i>Lisp printer</i> behaves as if <a href="e22-4-20.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> were also <i><a href="g-t.xhtml#true">true</a></i>.
+For notational convenience, we say that 
+if the value of either <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> or <a href="e22-4-20.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> is <i><a href="g-t.xhtml#true">true</a></i>, 
+then <b><i>printer escaping</i></b> is "enabled";
+and we say that
+if the values of both <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> and <a href="e22-4-20.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> are <i><a href="g-f.xhtml#false">false</a></i>, 
+then <i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is "disabled".
+
+
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Printer_Disp_1254"><span class="secno">22.1.2</span> Printer Dispatching</h3>
+<p>
+The <i>Lisp printer</i> makes its determination of how to print an
+<i><a href="g-o.xhtml#object">object</a></i> as follows:
+
+</p><p>
+If the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e22-4-26.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a> is <i><a href="g-t.xhtml#true">true</a></i>, 
+printing is controlled by the <i><a href="g-c.xhtml#currentpprintdispatchtable">current pprint dispatch table</a></i>;
+
+see Section <a href="s22-2.xhtml#SubSubSectio_Pretty_Print_1283">22.2.1.4 Pretty Print Dispatch Tables</a>.
+
+</p><p>
+Otherwise (if the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e22-4-26.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a> is <i><a href="g-f.xhtml#false">false</a></i>),
+the object's <a href="e22-4-11.xhtml#DictEntry_print_object_1351"><b>print-object</b></a> method is used;
+see Section <a href="#SubSection_Default_Prin_1255">22.1.3 Default Print-Object Methods</a>.
+
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Default_Prin_1255"><span class="secno">22.1.3</span> Default Print-Object Methods</h3>
+<p>
+
+
+
+
+
+This section describes the default behavior of 
+<a href="e22-4-11.xhtml#DictEntry_print_object_1351"><b>print-object</b></a> methods for the <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-t.xhtml#type">types</a></i>.
+</p>
+<section>
+<h4 id="SubSubSectio_Printing_Num_1256"><span class="secno">22.1.3.1</span> Printing Numbers</h4>
+<section>
+<h5 id="SubSubSubSec_Printing_Int_1257"><span class="secno">22.1.3.1.1</span> Printing Integers</h5>
+<p><i><a href="g-i.xhtml#integer">Integers</a></i> are printed in the radix specified by the <i><a href="g-c.xhtml#currentoutputbase">current output base</a></i>
+in positional notation, most significant digit first.
+If appropriate, a radix specifier can be printed; see <a href="e22-4-17.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a>.
+If an <i><a href="g-i.xhtml#integer">integer</a></i> is negative, a minus sign is printed and then the
+absolute value of the <i><a href="g-i.xhtml#integer">integer</a></i> is printed.
+The <i><a href="g-i.xhtml#integer">integer</a></i> zero is represented
+by the single digit <code>0</code> and never has a sign.
+A decimal point might be printed, 
+depending on the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e22-4-17.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a>.
+
+</p><p>
+For related information about the syntax of an <i><a href="g-i.xhtml#integer">integer</a></i>,
+see Section <a href="s2-3.xhtml#SubSubSubSec_Syntax_of_an_134">2.3.2.1.1 Syntax of an Integer</a>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Printing_Rat_1258"><span class="secno">22.1.3.1.2</span> Printing Ratios</h5>
+<p><i><a href="g-r.xhtml#ratio">Ratios</a></i> are printed as follows:
+the absolute value of the numerator is printed, as for an <i><a href="g-i.xhtml#integer">integer</a></i>;
+then a <code>/</code>; then the denominator.  The numerator and denominator are
+both printed in the radix specified by the <i><a href="g-c.xhtml#currentoutputbase">current output base</a></i>; 
+they are obtained as if by
+<a href="e12-2-53.xhtml#DictEntry_numerator_d_827"><b>numerator</b></a> and <a href="e12-2-53.xhtml#DictEntry_numerator_d_827"><b>denominator</b></a>, and so <i><a href="g-r.xhtml#ratio">ratios</a></i>
+are printed in reduced form (lowest terms).
+If appropriate, a radix specifier can be printed; see 
+<a href="e22-4-17.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a>.
+If the ratio is negative, a minus sign is printed before the numerator.
+
+</p><p>
+For related information about the syntax of a <i><a href="g-r.xhtml#ratio">ratio</a></i>,
+see Section <a href="s2-3.xhtml#SubSubSubSec_Syntax_of_a__135">2.3.2.1.2 Syntax of a Ratio</a>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Printing_Flo_1259"><span class="secno">22.1.3.1.3</span> Printing Floats</h5>
+<p>
+
+
+If the magnitude of the <i><a href="g-f.xhtml#float">float</a></i> is either zero or between <i>10<sup>-3</sup></i> (inclusive)
+and <i>10<sup>7</sup></i> (exclusive), it is printed as the integer part of the number,
+then a decimal point,
+followed by the fractional part of the number;
+there is always at least one
+digit on each side of the decimal point.    
+If the sign of the number
+(as determined by <a href="e12-2-73.xhtml#DictEntry_decode_float_847"><b>float-sign</b></a>)
+is negative, then a minus sign is printed before the number.
+If the format of the number
+does not match that specified by
+<a href="e23-2-14.xhtml#DictEntry_read_defaul_1394"><b>*read-default-float-format*</b></a>, then the <i><a href="g-e.xhtml#exponentmarker">exponent marker</a></i> for
+that format and the digit <code>0</code> are also printed.
+For example, the base of the natural logarithms as a <i><a href="g-s.xhtml#shortfloat">short float</a></i>
+might be printed as <code>2.71828S0</code>.
+
+</p><p>
+
+For non-zero magnitudes outside of the range <i>10<sup>-3</sup></i> to <i>10<sup>7</sup></i>,
+a <i><a href="g-f.xhtml#float">float</a></i> is printed in computerized scientific notation.
+The representation of the number is scaled to be between
+1 (inclusive) and 10 (exclusive) and then printed, with one digit
+before the decimal point and at least one digit after the decimal point.
+Next the <i><a href="g-e.xhtml#exponentmarker">exponent marker</a></i> for the format is printed,
+except that
+if the format of the number matches that specified by 
+<a href="e23-2-14.xhtml#DictEntry_read_defaul_1394"><b>*read-default-float-format*</b></a>, then the <i><a href="g-e.xhtml#exponentmarker">exponent marker</a></i> <code>E</code>
+is used.
+Finally, the power of ten by which the fraction must be multiplied
+to equal the original number is printed as a decimal integer.
+For example, Avogadro's number as a <i><a href="g-s.xhtml#shortfloat">short float</a></i> 
+is printed as <code>6.02S23</code>.
+
+</p><p>
+For related information about the syntax of a <i><a href="g-f.xhtml#float">float</a></i>,
+see Section <a href="s2-3.xhtml#SubSubSectio_Syntax_of_a__136">2.3.2.2 Syntax of a Float</a>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Printing_Com_1260"><span class="secno">22.1.3.1.4</span> Printing Complexes</h5>
+<p>
+
+
+A <i><a href="g-c.xhtml#complex">complex</a></i> is printed as <code>#C</code>, an open parenthesis,
+the printed representation of its real part, a space,
+the printed representation of its imaginary part, and finally
+a close parenthesis.
+
+</p><p>
+For related information about the syntax of a <i><a href="g-c.xhtml#complex">complex</a></i>,
+see Section <a href="s2-3.xhtml#SubSubSectio_Syntax_of_a__137">2.3.2.3 Syntax of a Complex</a> and Section <a href="s2-4.xhtml#SubSubSectio_Sharpsign_C_171">2.4.8.11 Sharpsign C</a>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Note_about_P_1261"><span class="secno">22.1.3.1.5</span> Note about Printing Numbers</h5>
+<p>
+
+The printed representation of a number must not contain <i><a href="g-e.xhtml#escape">escape</a></i> <i><a href="g-c.xhtml#character">characters</a></i>;
+see Section <a href="s2-3.xhtml#SubSubSubSec_Escape_Chara_130">2.3.1.1.1 Escape Characters and Potential Numbers</a>.
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Printing_Cha_1262"><span class="secno">22.1.3.2</span> Printing Characters</h4>
+<p>
+
+
+
+
+When <i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is disabled,
+
+a <i><a href="g-c.xhtml#character">character</a></i> prints as itself;
+it is sent directly to the output <i><a href="g-s.xhtml#stream">stream</a></i>.
+
+
+When <i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is enabled,
+
+then <code>#\</code> syntax is used.
+
+</p><p>
+
+
+When the printer types out the name of a <i><a href="g-c.xhtml#character">character</a></i>,
+it uses the same table as the <code>#\</code> <i><a href="g-r.xhtml#readermacro">reader macro</a></i> would use;
+therefore any <i><a href="g-c.xhtml#character">character</a></i> name that is typed out
+is acceptable as input (in that <i><a href="g-i.xhtml#implementation">implementation</a></i>).
+If a <i><a href="g-n.xhtml#nongraphic">non-graphic</a></i> <i><a href="g-c.xhtml#character">character</a></i> has a <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-n.xhtml#name">name</a></i><sub>5</sub>,
+that <i><a href="g-n.xhtml#name">name</a></i> is preferred over non-standard <i><a href="g-n.xhtml#name">names</a></i>
+for printing in <code>#\</code> notation.
+For the <i><a href="g-g.xhtml#graphic">graphic</a></i> <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>,
+the <i><a href="g-c.xhtml#character">character</a></i> itself is always used
+for printing in <code>#\</code> notation—even if 
+the <i><a href="g-c.xhtml#character">character</a></i> also has a <i><a href="g-n.xhtml#name">name</a></i><sub>5</sub>.
+
+</p><p>
+For details about the <code>#\</code> <i><a href="g-r.xhtml#readermacro">reader macro</a></i>, see Section <a href="s2-4.xhtml#SubSubSectio_Sharpsign_Ba_160">2.4.8.1 Sharpsign Backslash</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Printing_Sym_1263"><span class="secno">22.1.3.3</span> Printing Symbols</h4>
+<p>
+
+
+
+
+
+When <i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is disabled,
+
+only the characters of the <i><a href="g-s.xhtml#symbol">symbol</a></i>'s <i><a href="g-n.xhtml#name">name</a></i> are output 
+
+
+
+
+(but the case in which to print characters in the <i><a href="g-n.xhtml#name">name</a></i> is
+controlled by <a href="e22-4-18.xhtml#DictEntry_print_case_1358"><b>*print-case*</b></a>;
+see Section <a href="#SubSubSubSec_Effect_of_Re_1265">22.1.3.3.2 Effect of Readtable Case on the Lisp Printer</a>).
+
+
+</p><p>
+
+The remainder of this section applies only 
+
+
+when <i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is enabled.
+
+
+</p><p>
+
+
+
+
+
+When printing a <i><a href="g-s.xhtml#symbol">symbol</a></i>, the printer inserts enough 
+<i><a href="g-s.xhtml#singleescape">single escape</a></i> and/or <i><a href="g-m.xhtml#multipleescape">multiple escape</a></i>
+characters (<i>backslashes</i> and/or <i><a href="g-v.xhtml#verticalbar">vertical-bars</a></i>) so that if
+<a href="e23-2-4.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> were called with the same <a href="e23-2-17.xhtml#DictEntry_readtable_1397"><b>*readtable*</b></a> and
+with <a href="e23-2-13.xhtml#DictEntry_read_base_1393"><b>*read-base*</b></a> bound to the <i><a href="g-c.xhtml#currentoutputbase">current output base</a></i>, it
+would return the same <i><a href="g-s.xhtml#symbol">symbol</a></i> (if it is not 
+<i><a href="g-a.xhtml#apparentlyuninterned">apparently uninterned</a></i>) or an <i><a href="g-u.xhtml#uninterned">uninterned</a></i> <i><a href="g-s.xhtml#symbol">symbol</a></i>
+with the same <i><a href="g-p.xhtml#printname">print name</a></i> (otherwise).
+
+</p><p>
+For example, if the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e22-4-17.xhtml#DictEntry_print_base_1357"><b>*print-base*</b></a> were <code>16</code> 
+when printing the symbol <code>face</code>, it would have to be printed as
+<code>\FACE</code> or <code>\Face</code> or <code>|FACE|</code>, 
+because the token <code>face</code> would be read as a hexadecimal
+number (decimal value 64206) if the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e23-2-13.xhtml#DictEntry_read_base_1393"><b>*read-base*</b></a> were <code>16</code>.
+
+</p><p>
+For additional restrictions concerning characters with  nonstandard
+<i><a href="g-s.xhtml#syntaxtype">syntax types</a></i> in the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i>, see the <i><a href="g-v.xhtml#variable">variable</a></i> <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> 
+
+
+</p><p>
+For information about how the <i>Lisp reader</i> parses <i><a href="g-s.xhtml#symbol">symbols</a></i>,
+see Section <a href="s2-3.xhtml#SubSection_Symbols_as_T_139">2.3.4 Symbols as Tokens</a> and Section <a href="s2-4.xhtml#SubSubSectio_Sharpsign_Co_165">2.4.8.5 Sharpsign Colon</a>.
+
+</p><p>
+
+
+<a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> might be printed as <code>()</code> 
+
+
+when <a href="e22-4-26.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a> is <i><a href="g-t.xhtml#true">true</a></i>
+and <i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is enabled.
+
+</p>
+<section>
+<h5 id="SubSubSubSec_Package_Pref_1264"><span class="secno">22.1.3.3.1</span> Package Prefixes for Symbols</h5>
+<p><i>Package prefixes</i> are printed if necessary.
+The rules for <i>package prefixes</i> are as follows.
+When the <i><a href="g-s.xhtml#symbol">symbol</a></i> is printed, if it is in the <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i>, 
+
+then it is printed with a preceding <i><a href="g-c.xhtml#colon">colon</a></i>; otherwise, if
+it is <i><a href="g-a.xhtml#accessible">accessible</a></i> in the <i><a href="g-c.xhtml#currentpackage">current package</a></i>, it is printed without any
+<i><a href="g-p.xhtml#packageprefix">package prefix</a></i>; otherwise, it is printed with a <i><a href="g-p.xhtml#packageprefix">package prefix</a></i>.
+
+</p><p>
+
+A <i><a href="g-s.xhtml#symbol">symbol</a></i> that is <i><a href="g-a.xhtml#apparentlyuninterned">apparently uninterned</a></i> is printed
+preceded by "<code>#:</code>" 
+
+
+
+if <a href="e22-4-21.xhtml#DictEntry_print_gensy_1361"><b>*print-gensym*</b></a> is <i><a href="g-t.xhtml#true">true</a></i> and <i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is enabled;
+if <a href="e22-4-21.xhtml#DictEntry_print_gensy_1361"><b>*print-gensym*</b></a> is <i><a href="g-f.xhtml#false">false</a></i> or <i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is disabled,
+
+then the <i><a href="g-s.xhtml#symbol">symbol</a></i> is printed without a prefix,
+as if it were in the <i><a href="g-c.xhtml#currentpackage">current package</a></i>.
+
+</p><p>
+
+Because the <code>#:</code> syntax does not intern the
+following symbol, it is necessary to use circular-list syntax
+if <a href="e22-4-19.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a> is <i><a href="g-t.xhtml#true">true</a></i> and
+the same uninterned symbol appears several times in an expression
+to be printed.  For example, the result of
+
+</p><pre> (let ((x (make-symbol "FOO"))) (list x x))
+</pre><p>
+would be printed as <code>(#:foo #:foo)</code> if <a href="e22-4-19.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a>
+were <i><a href="g-f.xhtml#false">false</a></i>, but as <code>(#1=#:foo #1#)</code> if <a href="e22-4-19.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a>
+were <i><a href="g-t.xhtml#true">true</a></i>.
+
+</p><p>
+A summary of the preceding package prefix rules follows:
+
+</p><ul>
+<li><code>foo:bar</code>
+
+<p>
+<code>foo:bar</code> is printed when <i><a href="g-s.xhtml#symbol">symbol</a></i> <code>bar</code> 
+is external in its <i><a href="g-h.xhtml#homepackage">home package</a></i> <code>foo</code> 
+and is not <i><a href="g-a.xhtml#accessible">accessible</a></i> in the <i><a href="g-c.xhtml#currentpackage">current package</a></i>.
+
+</p></li><li><code>foo::bar</code>
+
+<p>
+<code>foo::bar</code> is printed when <code>bar</code> is internal in its <i><a href="g-h.xhtml#homepackage">home package</a></i>
+<code>foo</code> and is not <i><a href="g-a.xhtml#accessible">accessible</a></i> in the <i><a href="g-c.xhtml#currentpackage">current package</a></i>.
+
+</p></li><li><code>:bar</code>
+
+<p>
+<code>:bar</code> is printed when the home package of <code>bar</code> is the <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i>.
+
+</p></li><li><code>#:bar</code>  
+
+<p>
+<code>#:bar</code> is printed when <code>bar</code> is <i><a href="g-a.xhtml#apparentlyuninterned">apparently uninterned</a></i>,
+even in the pathological case that <code>bar</code> 
+has no <i><a href="g-h.xhtml#homepackage">home package</a></i> but is nevertheless somehow <i><a href="g-a.xhtml#accessible">accessible</a></i> 
+in the <i><a href="g-c.xhtml#currentpackage">current package</a></i>.
+</p></li></ul>
+</section>
+<section>
+<h5 id="SubSubSubSec_Effect_of_Re_1265"><span class="secno">22.1.3.3.2</span> Effect of Readtable Case on the Lisp Printer</h5>
+<p>
+
+
+
+
+When 
+
+<i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is disabled,
+or the characters under consideration are not already 
+quoted specifically by <i><a href="g-s.xhtml#singleescape">single escape</a></i> or <i><a href="g-m.xhtml#multipleescape">multiple escape</a></i>
+syntax,
+
+the <i><a href="g-r.xhtml#readtablecase">readtable case</a></i> of the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i> 
+affects the way the <i>Lisp printer</i> writes <i><a href="g-s.xhtml#symbol">symbols</a></i>
+in the following ways:
+
+</p><ul>
+<li><code>:upcase</code>
+
+<p>
+ When the <i><a href="g-r.xhtml#readtablecase">readtable case</a></i> is <code>:upcase</code>,
+ <i><a href="g-u.xhtml#uppercase">uppercase</a></i> <i><a href="g-c.xhtml#character">characters</a></i>
+ are printed in the case specified by <a href="e22-4-18.xhtml#DictEntry_print_case_1358"><b>*print-case*</b></a>, and
+ <i><a href="g-l.xhtml#lowercase">lowercase</a></i> <i><a href="g-c.xhtml#character">characters</a></i> are printed in their own case.
+
+</p></li><li><code>:downcase</code>
+
+<p>
+ When the <i><a href="g-r.xhtml#readtablecase">readtable case</a></i> is <code>:downcase</code>,
+ <i><a href="g-u.xhtml#uppercase">uppercase</a></i> <i><a href="g-c.xhtml#character">characters</a></i> are printed in their own case, and
+ <i><a href="g-l.xhtml#lowercase">lowercase</a></i> <i><a href="g-c.xhtml#character">characters</a></i>
+ are printed in the case specified by <a href="e22-4-18.xhtml#DictEntry_print_case_1358"><b>*print-case*</b></a>.
+
+</p></li><li><code>:preserve</code>
+
+<p>
+ When the <i><a href="g-r.xhtml#readtablecase">readtable case</a></i> is <code>:preserve</code>,
+ all <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i> <i><a href="g-c.xhtml#character">characters</a></i> are printed in their own case.
+
+</p></li><li><code>:invert</code>
+
+<p>
+ When the <i><a href="g-r.xhtml#readtablecase">readtable case</a></i> is <code>:invert</code>,
+ the case of all <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i> <i><a href="g-c.xhtml#character">characters</a></i> 
+ in single case symbol names is inverted.
+ Mixed-case symbol names are printed as is.
+</p></li></ul> 
+
+<p>
+The rules for escaping <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i> <i><a href="g-c.xhtml#character">characters</a></i> in symbol names are affected by
+the <a href="e23-2-7.xhtml#DictEntry_readtable_ca_1387"><b>readtable-case</b></a> 
+
+
+if <i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is enabled.
+
+<i><a href="g-a.xhtml#alphabetic">Alphabetic</a></i> <i><a href="g-c.xhtml#character">characters</a></i> are escaped as follows:                
+</p><ul>
+<li><code>:upcase</code>
+
+<p>
+When the <i><a href="g-r.xhtml#readtablecase">readtable case</a></i> is <code>:upcase</code>,
+all <i><a href="g-l.xhtml#lowercase">lowercase</a></i> <i><a href="g-c.xhtml#character">characters</a></i> must be escaped.
+
+</p></li><li><code>:downcase</code>
+
+<p>
+When the <i><a href="g-r.xhtml#readtablecase">readtable case</a></i> is <code>:downcase</code>,
+all <i><a href="g-u.xhtml#uppercase">uppercase</a></i> <i><a href="g-c.xhtml#character">characters</a></i> must be escaped.
+
+</p></li><li><code>:preserve</code>
+
+<p>
+When the <i><a href="g-r.xhtml#readtablecase">readtable case</a></i> is <code>:preserve</code>, 
+no <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i> <i><a href="g-c.xhtml#character">characters</a></i> need be escaped.
+
+</p></li><li><code>:invert</code>
+
+<p>
+When the <i><a href="g-r.xhtml#readtablecase">readtable case</a></i> is <code>:invert</code>,
+no <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i> <i><a href="g-c.xhtml#character">characters</a></i> need be escaped.
+
+</p></li></ul>
+<section>
+<h6 id="SubSubSubSub_Examples_of__1266"><span class="secno">22.1.3.3.2.1</span> Examples of Effect of Readtable Case on the Lisp Printer</h6>
+<pre> (defun test-readtable-case-printing ()
+   (let ((*readtable* (copy-readtable nil))
+         (*print-case* *print-case*))
+     (format t "READTABLE-CASE *PRINT-CASE*  Symbol-name  Output~
+              ~%----------------------------------------------- - ~
+              ~%")
+     (dolist (readtable-case '(:upcase :downcase :preserve :invert))
+       (setf (readtable-case *readtable*) readtable-case)
+       (dolist (print-case '(:upcase :downcase :capitalize))
+         (dolist (symbol '(|ZEBRA| |Zebra| |zebra|))
+           (setq *print-case* print-case)
+           (format t "~&amp;:~A~15T:~A~29T~A~42T~A"
+                   (string-upcase readtable-case)
+                   (string-upcase print-case)
+                   (symbol-name symbol)
+                   (prin1-to-string symbol)))))))
+</pre><p>
+  The output from <code>(test-readtable-case-printing)</code> should be as follows:
+
+</p><pre>    READTABLE-CASE *PRINT-CASE*  Symbol-name  Output
+    ----------------------------------------------- - 
+    :UPCASE        :UPCASE       ZEBRA        ZEBRA
+    :UPCASE        :UPCASE       Zebra        |Zebra|
+    :UPCASE        :UPCASE       zebra        |zebra|
+    :UPCASE        :DOWNCASE     ZEBRA        zebra
+    :UPCASE        :DOWNCASE     Zebra        |Zebra|
+    :UPCASE        :DOWNCASE     zebra        |zebra|
+    :UPCASE        :CAPITALIZE   ZEBRA        Zebra
+    :UPCASE        :CAPITALIZE   Zebra        |Zebra|
+    :UPCASE        :CAPITALIZE   zebra        |zebra|
+    :DOWNCASE      :UPCASE       ZEBRA        |ZEBRA|
+    :DOWNCASE      :UPCASE       Zebra        |Zebra|
+    :DOWNCASE      :UPCASE       zebra        ZEBRA
+    :DOWNCASE      :DOWNCASE     ZEBRA        |ZEBRA|
+    :DOWNCASE      :DOWNCASE     Zebra        |Zebra|
+    :DOWNCASE      :DOWNCASE     zebra        zebra
+    :DOWNCASE      :CAPITALIZE   ZEBRA        |ZEBRA|
+    :DOWNCASE      :CAPITALIZE   Zebra        |Zebra|
+    :DOWNCASE      :CAPITALIZE   zebra        Zebra
+    :PRESERVE      :UPCASE       ZEBRA        ZEBRA
+    :PRESERVE      :UPCASE       Zebra        Zebra
+    :PRESERVE      :UPCASE       zebra        zebra
+    :PRESERVE      :DOWNCASE     ZEBRA        ZEBRA
+    :PRESERVE      :DOWNCASE     Zebra        Zebra
+    :PRESERVE      :DOWNCASE     zebra        zebra
+    :PRESERVE      :CAPITALIZE   ZEBRA        ZEBRA
+    :PRESERVE      :CAPITALIZE   Zebra        Zebra
+    :PRESERVE      :CAPITALIZE   zebra        zebra
+    :INVERT        :UPCASE       ZEBRA        zebra
+    :INVERT        :UPCASE       Zebra        Zebra
+    :INVERT        :UPCASE       zebra        ZEBRA
+    :INVERT        :DOWNCASE     ZEBRA        zebra
+    :INVERT        :DOWNCASE     Zebra        Zebra
+    :INVERT        :DOWNCASE     zebra        ZEBRA
+    :INVERT        :CAPITALIZE   ZEBRA        zebra
+    :INVERT        :CAPITALIZE   Zebra        Zebra
+    :INVERT        :CAPITALIZE   zebra        ZEBRA
+</pre>
+</section>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Printing_Str_1267"><span class="secno">22.1.3.4</span> Printing Strings</h4>
+<p>
+
+
+The characters of the <i><a href="g-s.xhtml#string">string</a></i> are output in order.
+
+
+If <i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is enabled,
+
+a <i><a href="g-d.xhtml#doublequote">double-quote</a></i> is output before and after, and all
+<i><a href="g-d.xhtml#doublequote">double-quotes</a></i> and <i><a href="g-s.xhtml#singleescape">single escapes</a></i> are preceded by <i><a href="g-b.xhtml#backslash">backslash</a></i>.
+The printing of <i><a href="g-s.xhtml#string">strings</a></i> is not affected by <a href="e22-4-16.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a>.
+Only the <i><a href="g-a.xhtml#active">active</a></i> <i><a href="g-e.xhtml#element">elements</a></i> of the <i><a href="g-s.xhtml#string">string</a></i> are printed.
+
+</p><p>
+For information on how the <i>Lisp reader</i> parses <i><a href="g-s.xhtml#string">strings</a></i>,
+see Section <a href="s2-4.xhtml#SubSection_Double_Quote_155">2.4.5 Double-Quote</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Printing_Lis_1268"><span class="secno">22.1.3.5</span> Printing Lists and Conses</h4>
+<p>
+
+
+Wherever possible, list notation is preferred over dot notation.  
+Therefore the following algorithm is used to print a <i><a href="g-c.xhtml#cons">cons</a></i> <i>x</i>:
+
+</p><ul>
+<li>1. A <i><a href="g-l.xhtml#leftparenthesis">left-parenthesis</a></i> is printed.
+
+</li><li>2. The <i><a href="g-c.xhtml#car">car</a></i> of <i>x</i> is printed. 
+
+</li><li>3. If the <i><a href="g-c.xhtml#cdr">cdr</a></i> of <i>x</i> is itself a <i><a href="g-c.xhtml#cons">cons</a></i>,
+          it is made to be the current <i><a href="g-c.xhtml#cons">cons</a></i> 
+	  (<i>i.e.</i>,  <i>x</i> becomes that <i><a href="g-c.xhtml#cons">cons</a></i>), 
+
+	  a <i><a href="g-s.xhtml#space">space</a></i>
+
+
+	  is printed,
+          and step 2 is re-entered.
+
+</li><li>4. If the <i><a href="g-c.xhtml#cdr">cdr</a></i> of <i>x</i> is not <i><a href="g-n.xhtml#null">null</a></i>, 
+
+	  a <i><a href="g-s.xhtml#space">space</a></i>,
+
+
+          a <i><a href="g-d.xhtml#dot">dot</a></i>,
+
+	  a <i><a href="g-s.xhtml#space">space</a></i>,
+
+
+          and the <i><a href="g-c.xhtml#cdr">cdr</a></i> of <i>x</i> are printed.
+
+</li><li>5. A <i><a href="g-r.xhtml#rightparenthesis">right-parenthesis</a></i> is printed.
+</li></ul>
+
+<p>
+
+Actually, the above algorithm is only used when <a href="e22-4-26.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a>
+is <i><a href="g-f.xhtml#false">false</a></i>.  When <a href="e22-4-26.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a> is <i><a href="g-t.xhtml#true">true</a></i> (or 
+when <a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>pprint</b></a> is used),
+additional <i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>1</sub> 
+may replace the use of a single <i><a href="g-s.xhtml#space">space</a></i>,
+and a more elaborate algorithm with similar goals but more presentational 
+flexibility is used; see Section <a href="#SubSection_Printer_Disp_1254">22.1.2 Printer Dispatching</a>.
+
+
+</p><p>
+
+
+Although the two expressions below are equivalent,
+and the reader accepts
+either one and 
+
+
+produces
+the same <i><a href="g-c.xhtml#cons">cons</a></i>, the printer
+always prints such a <i><a href="g-c.xhtml#cons">cons</a></i> in the second form.
+
+</p><pre> (a . (b . ((c . (d . nil)) . (e . nil))))
+ (a b (c d) e)
+</pre><p>
+The printing of <i>conses</i> is affected by <a href="e22-4-22.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a>,
+<a href="e22-4-22.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a>, and <a href="e22-4-19.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a>.
+
+</p><p>
+        
+Following are examples of printed representations of <i><a href="g-l.xhtml#list">lists</a></i>:
+
+</p><pre> (a . b)     ;A dotted pair of a and b
+ (a.b)       ;A list of one element, the symbol named a.b
+ (a. b)      ;A list of two elements a. and b
+ (a .b)      ;A list of two elements a and .b
+ (a b . c)   ;A dotted list of a and b with c at the end; two conses
+ .iot        ;The symbol whose name is .iot
+ (. b)       ;Invalid -- an error is signaled if an attempt is made to read 
+             ;this syntax.
+ (a .)       ;Invalid -- an error is signaled.
+ (a .. b)    ;Invalid -- an error is signaled.
+ (a . . b)   ;Invalid -- an error is signaled.
+ (a b c ...) ;Invalid -- an error is signaled.
+ (a \. b)    ;A list of three elements a, ., and b
+ (a |.| b)   ;A list of three elements a, ., and b
+ (a \... b)  ;A list of three elements a, ..., and b
+ (a |...| b) ;A list of three elements a, ..., and b
+</pre>
+
+<p>
+For information on how the <i>Lisp reader</i> parses <i><a href="g-l.xhtml#list">lists</a></i> and <i>conses</i>,
+see Section <a href="s2-4.xhtml#SubSection_Left_Parenth_143">2.4.1 Left-Parenthesis</a>. 
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Printing_Bit_1269"><span class="secno">22.1.3.6</span> Printing Bit Vectors</h4>
+<p>
+
+
+A <i><a href="g-b.xhtml#bitvector">bit vector</a></i> is printed as <code>#*</code> followed by the bits of the <i><a href="g-b.xhtml#bitvector">bit vector</a></i>
+in order.  If <a href="e22-4-16.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a> is <i><a href="g-f.xhtml#false">false</a></i>, then the <i><a href="g-b.xhtml#bitvector">bit vector</a></i> is
+printed in a format (using <code>#&lt;</code>) that is concise but not readable.
+Only the <i><a href="g-a.xhtml#active">active</a></i> <i><a href="g-e.xhtml#element">elements</a></i> of the <i><a href="g-b.xhtml#bitvector">bit vector</a></i> are printed.
+
+</p><p>
+
+For information on <i>Lisp reader</i> parsing of <i><a href="g-b.xhtml#bitvector">bit vectors</a></i>,
+see Section <a href="s2-4.xhtml#SubSubSectio_Sharpsign_As_163">2.4.8.4 Sharpsign Asterisk</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Printing_Oth_1270"><span class="secno">22.1.3.7</span> Printing Other Vectors</h4>
+<p>
+
+
+
+
+If <a href="e22-4-16.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a> is <i><a href="g-t.xhtml#true">true</a></i> 
+and <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> is <i><a href="g-f.xhtml#false">false</a></i>,
+any
+
+<i><a href="g-v.xhtml#vector">vector</a></i> 
+other than a <i><a href="g-s.xhtml#string">string</a></i> or <i><a href="g-b.xhtml#bitvector">bit vector</a></i> is printed using
+general-vector syntax; this means that information
+about specialized vector representations does not appear.
+The printed representation of a zero-length <i><a href="g-v.xhtml#vector">vector</a></i> is <code>#()</code>.
+The printed representation of a non-zero-length <i><a href="g-v.xhtml#vector">vector</a></i> begins with <code>#(</code>.
+Following that, the first element of the <i><a href="g-v.xhtml#vector">vector</a></i> is printed.  
+
+If there are any other elements, they are printed in turn, with 
+each such additional element preceded by
+a <i><a href="g-s.xhtml#space">space</a></i> if <a href="e22-4-26.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a> is <i><a href="g-f.xhtml#false">false</a></i>,
+or <i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>1</sub> if <a href="e22-4-26.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a> is <i><a href="g-t.xhtml#true">true</a></i>.
+
+A <i><a href="g-r.xhtml#rightparenthesis">right-parenthesis</a></i> after the last element
+terminates the printed representation of the <i><a href="g-v.xhtml#vector">vector</a></i>. 
+The printing of <i><a href="g-v.xhtml#vector">vectors</a></i> 
+is affected by <a href="e22-4-22.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a> and <a href="e22-4-22.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a>.
+If the <i><a href="g-v.xhtml#vector">vector</a></i> has a <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i>, 
+then only those elements below
+the <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i> are printed.
+
+</p><p>
+
+
+
+If both <a href="e22-4-16.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a> and <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> are <i><a href="g-f.xhtml#false">false</a></i>,
+
+the <i><a href="g-v.xhtml#vector">vector</a></i> is not printed as described above,
+but in a format (using <code>#&lt;</code>) that is concise but not readable.
+
+</p><p>
+
+If <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> is <i><a href="g-t.xhtml#true">true</a></i>,
+the <i><a href="g-v.xhtml#vector">vector</a></i> prints in an <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> manner;
+see the <i><a href="g-v.xhtml#variable">variable</a></i> <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a>.
+
+
+</p><p>
+For information on how the <i>Lisp reader</i> parses these "other <i><a href="g-v.xhtml#vector">vectors</a></i>,"
+see Section <a href="s2-4.xhtml#SubSubSectio_Sharpsign_Le_162">2.4.8.3 Sharpsign Left-Parenthesis</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Printing_Oth_1271"><span class="secno">22.1.3.8</span> Printing Other Arrays</h4>
+<p>
+
+
+
+
+If  <a href="e22-4-16.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a> is <i><a href="g-t.xhtml#true">true</a></i> 
+and <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> is <i><a href="g-f.xhtml#false">false</a></i>,
+any
+
+<i><a href="g-a.xhtml#array">array</a></i> other than a <i><a href="g-v.xhtml#vector">vector</a></i> is printed
+using <code>#</code><code>n</code><code>A</code> format.
+Let <code>n</code> be the <i><a href="g-r.xhtml#rank">rank</a></i> of the <i><a href="g-a.xhtml#array">array</a></i>.
+Then <code>#</code> is printed, then <code>n</code> as a decimal integer,
+then <code>A</code>, then <code>n</code> open parentheses.  
+Next the <i><a href="g-e.xhtml#element">elements</a></i> are scanned in row-major order,
+
+using <a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>write</b></a> on each <i><a href="g-e.xhtml#element">element</a></i>, 
+and separating <i><a href="g-e.xhtml#element">elements</a></i> from each other with <i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>1</sub>.
+
+
+The array's dimensions are numbered 0 to <code>n</code>-1 from left to right,
+and are enumerated with the rightmost index changing fastest.
+
+
+Every time the index for dimension <code>j</code> is incremented,
+the following actions are taken:
+
+</p><ul>
+<li>
+If <code>j</code> &lt; <code>n</code>-1, then a close parenthesis is printed.
+
+</li><li>
+If incrementing the index for dimension <code>j</code> caused it to equal
+dimension <code>j</code>, that index is reset to zero and the
+index for dimension <code>j</code>-1 is incremented (thereby performing these three steps recursively),
+unless <code>j</code>=0, in which case the entire algorithm is terminated.
+If incrementing the index for dimension <code>j</code> did not cause it to
+equal dimension <code>j</code>, then a space is printed.
+
+</li><li>
+If <code>j</code> &lt; <code>n</code>-1, then an open parenthesis is printed.
+</li></ul>
+
+<p>
+This causes the contents to be printed in a format suitable for
+<code>:initial-contents</code> to <a href="e15-2-7.xhtml#DictEntry_make_array_985"><b>make-array</b></a>.
+The lists effectively printed by this procedure are subject to
+truncation by <a href="e22-4-22.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a> and <a href="e22-4-22.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a>.
+
+</p><p>
+
+If the <i><a href="g-a.xhtml#array">array</a></i> 
+is of a specialized <i><a href="g-t.xhtml#type">type</a></i>, containing bits or characters,
+then the innermost lists generated by the algorithm given above can instead
+be printed using bit-vector or string syntax, provided that these innermost
+lists would not be subject to truncation by <a href="e22-4-22.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a>.  
+
+</p><p>
+
+
+
+If both <a href="e22-4-16.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a> and <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> are <i><a href="g-f.xhtml#false">false</a></i>,
+
+then the <i><a href="g-a.xhtml#array">array</a></i> is printed
+in a format (using <code>#&lt;</code>) that is concise but not readable.
+
+</p><p>
+
+If <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> is <i><a href="g-t.xhtml#true">true</a></i>,
+the <i><a href="g-a.xhtml#array">array</a></i> prints in an <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> manner; 
+see the <i><a href="g-v.xhtml#variable">variable</a></i> <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a>.
+
+
+In particular,
+this may be important for arrays having some dimension <code>0</code>.
+
+</p><p>
+For information on how the <i>Lisp reader</i> parses these "other <i><a href="g-a.xhtml#array">arrays</a></i>,"
+see Section <a href="s2-4.xhtml#SubSubSectio_Sharpsign_A_172">2.4.8.12 Sharpsign A</a>.
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Examples_of__1272"><span class="secno">22.1.3.9</span> Examples of Printing Arrays</h4>
+<pre> (let ((a (make-array '(3 3)))
+       (*print-pretty* t)
+       (*print-array* t))
+   (dotimes (i 3) (dotimes (j 3) (setf (aref a i j) (format nil "&lt;~D,~D&gt;" i j))))
+   (print a)
+   (print (make-array 9 :displaced-to a)))
+▷#2A(("&lt;0,0&gt;" "&lt;0,1&gt;" "&lt;0,2&gt;") 
+▷    ("&lt;1,0&gt;" "&lt;1,1&gt;" "&lt;1,2&gt;") 
+▷    ("&lt;2,0&gt;" "&lt;2,1&gt;" "&lt;2,2&gt;")) 
+▷#("&lt;0,0&gt;" "&lt;0,1&gt;" "&lt;0,2&gt;" "&lt;1,0&gt;" "&lt;1,1&gt;" "&lt;1,2&gt;" "&lt;2,0&gt;" "&lt;2,1&gt;" "&lt;2,2&gt;") 
+→ #&lt;ARRAY 9 indirect 36363476&gt;
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Printing_Ran_1273"><span class="secno">22.1.3.10</span> Printing Random States</h4>
+<p>
+
+
+A specific syntax for printing <i><a href="g-o.xhtml#object">objects</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-39.xhtml#DictEntry_random_state_813"><b>random-state</b></a> is
+not specified. However, every <i><a href="g-i.xhtml#implementation">implementation</a></i>
+must arrange to print a <i><a href="g-r.xhtml#randomstate">random state</a></i> <i><a href="g-o.xhtml#object">object</a></i> in such a way that,
+within the same implementation, <a href="e23-2-4.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>
+can construct from the printed representation a copy of the 
+<i><a href="g-r.xhtml#randomstate">random state</a></i>
+object as if the copy had been made by <a href="e12-2-40.xhtml#DictEntry_make_random__814"><b>make-random-state</b></a>.
+
+</p><p>
+If the type <i><a href="g-r.xhtml#randomstate">random state</a></i> is effectively implemented 
+by using the machinery for <a href="e8-1-1.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a>,
+the usual structure syntax can then be used for printing 
+<i><a href="g-r.xhtml#randomstate">random state</a></i>
+objects; one might look something like
+
+</p><pre> #S(RANDOM-STATE :DATA #(14 49 98436589 786345 8734658324 ... ))
+</pre><p>
+where the components are <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Printing_Pat_1274"><span class="secno">22.1.3.11</span> Printing Pathnames</h4>
+<p>
+
+
+When <i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is enabled,
+
+the syntax <code>#P"..."</code> is how a
+<i><a href="g-p.xhtml#pathname">pathname</a></i> is printed by <a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>write</b></a> and the other functions herein described.
+
+The <code>"..."</code> is the namestring representation of the pathname.
+
+</p><p>
+
+
+When <i><a href="g-p.xhtml#printerescaping">printer escaping</a></i> is disabled,
+
+<a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>write</b></a> writes a <i><a href="g-p.xhtml#pathname">pathname</a></i> <i>P</i>
+by writing <code>(namestring <i>P</i>)</code> instead.
+
+</p><p>
+For information on how the <i>Lisp reader</i> parses <i><a href="g-p.xhtml#pathname">pathnames</a></i>,
+see Section <a href="s2-4.xhtml#SubSubSectio_Sharpsign_P_174">2.4.8.14 Sharpsign P</a>.
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Printing_Str_1275"><span class="secno">22.1.3.12</span> Printing Structures</h4>
+<p>
+
+
+
+
+
+By default, a <i><a href="g-s.xhtml#structure">structure</a></i> of type <i>S</i> is printed using <code>#S</code> syntax.
+This behavior can be customized by specifying a <code>:print-function</code> 
+or <code>:print-object</code> option to the <a href="e8-1-1.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> <i><a href="g-f.xhtml#form">form</a></i> that defines <i>S</i>,
+or by writing a <a href="e22-4-11.xhtml#DictEntry_print_object_1351"><b>print-object</b></a> <i><a href="g-m.xhtml#method">method</a></i> 
+that is <i><a href="g-s.xhtml#specialized">specialized</a></i> for <i><a href="g-o.xhtml#object">objects</a></i> of type <i>S</i>.
+
+
+</p><p>
+
+
+Different structures might print out in different ways;
+the default notation for structures is:
+
+</p><pre> #S(<i>structure-name</i> <code>{</code><i>slot-key</i> <i>slot-value</i><code>}</code><sup>*</sup>)
+</pre><p>
+where <code>#S</code> indicates structure syntax,
+<i>structure-name</i> is a <i><a href="g-s.xhtml#structurename">structure name</a></i>,
+each <i>slot-key</i> is an initialization argument <i><a href="g-n.xhtml#name">name</a></i>
+for a <i><a href="g-s.xhtml#slot">slot</a></i> in the <i><a href="g-s.xhtml#structure">structure</a></i>,
+and each corresponding <i>slot-value</i> is a representation
+of the <i><a href="g-o.xhtml#object">object</a></i> in that <i><a href="g-s.xhtml#slot">slot</a></i>.
+
+
+
+</p><p>
+For information on how the <i>Lisp reader</i> parses <i><a href="g-s.xhtml#structure">structures</a></i>,
+see Section <a href="s2-4.xhtml#SubSubSectio_Sharpsign_S_173">2.4.8.13 Sharpsign S</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Printing_Oth_1276"><span class="secno">22.1.3.13</span> Printing Other Objects</h4>
+<p>
+
+
+
+
+Other <i><a href="g-o.xhtml#object">objects</a></i> are printed in an <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> manner.
+It is not required that an <i><a href="g-i.xhtml#implementation">implementation</a></i> print those <i><a href="g-o.xhtml#object">objects</a></i>
+<i><a href="g-r.xhtml#readably">readably</a></i>.
+
+</p><p>
+For example, <i><a href="g-h.xhtml#hashtable">hash tables</a></i>, 
+	     <i><a href="g-r.xhtml#readtable">readtables</a></i>,
+             <i><a href="g-p.xhtml#package">packages</a></i>,
+             <i><a href="g-s.xhtml#stream">streams</a></i>,
+         and <i><a href="g-f.xhtml#function">functions</a></i>
+might not print <i><a href="g-r.xhtml#readably">readably</a></i>.
+
+</p><p>
+A common notation to use in this circumstance is <code>#&lt;...&gt;</code>.
+Since <code>#&lt;</code> is not readable by the <i>Lisp reader</i>,
+the precise format of the text which follows is not important,
+but a common format to use is that provided by the <a href="e22-4-12.xhtml#DictEntry_print_unread_1352"><b>print-unreadable-object</b></a> <i><a href="g-m.xhtml#macro">macro</a></i>.
+
+</p><p>
+For information on how the <i>Lisp reader</i> treats this notation,
+see Section <a href="s2-4.xhtml#SubSubSectio_Sharpsign_Le_182">2.4.8.20 Sharpsign Less-Than-Sign</a>.
+For information on how to notate <i><a href="g-o.xhtml#object">objects</a></i> that cannot be printed <i><a href="g-r.xhtml#readably">readably</a></i>,
+see Section <a href="s2-4.xhtml#SubSubSectio_Sharpsign_Do_166">2.4.8.6 Sharpsign Dot</a>.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Examples_of__1277"><span class="secno">22.1.4</span> Examples of Printer Behavior</h3>
+<pre> (let ((*print-escape* t)) (fresh-line) (write #\a))
+▷#\a
+→ #\a
+ (let ((*print-escape* nil) (*print-readably* nil))
+   (fresh-line)
+   (write #\a))
+▷ a
+→ #\a
+ (progn (fresh-line) (prin1 #\a))
+▷#\a
+→ #\a
+ (progn (fresh-line) (print #\a))
+▷
+▷#\a
+→ #\a
+ (progn (fresh-line) (princ #\a))
+▷ a
+→ #\a
+
+ (dolist (val '(t nil))
+   (let ((*print-escape* val) (*print-readably* val))
+     (print '#\a) 
+     (prin1 #\a) (write-char #\Space)
+     (princ #\a) (write-char #\Space)
+     (write #\a)))
+▷#\a #\a a #\a
+▷#\a #\a a a
+→  NIL
+
+ (progn (fresh-line) (write '(let ((a 1) (b 2)) (+ a b))))
+▷(LET ((A 1) (B 2)) (+ A B))
+→ (LET ((A 1) (B 2)) (+ A B))
+
+ (progn (fresh-line) (pprint '(let ((a 1) (b 2)) (+ a b))))
+▷(LET ((A 1)
+▷      (B 2))               
+▷  (+ A B))
+→ (LET ((A 1) (B 2)) (+ A B))
+
+ (progn (fresh-line) 
+        (write '(let ((a 1) (b 2)) (+ a b)) :pretty t))
+▷(LET ((A 1)
+▷      (B 2))
+▷  (+ A B))                 
+→ (LET ((A 1) (B 2)) (+ A B))
+
+ (with-output-to-string (s)  
+    (write 'write :stream s)
+    (prin1 'prin1 s))
+→ "WRITEPRIN1"
+</pre>
+</section>
+</section>
+</section>
+</body>
+</html>

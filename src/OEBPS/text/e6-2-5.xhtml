@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>6.2.5 loop-finish — Local Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_loop_finish_518" class="entry"><span class="secno">6.2.5</span> <span class="names">loop-finish</span> <span class="kind">Local Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>loop-finish</b>
+<i> &lt; <i>no arguments</i> &gt; </i>
+  →  <b>|</b> 
+</dd><dt><b>Description:</b></dt><dd>
+
+The <a href="#DictEntry_loop_finish_518"><b>loop-finish</b></a> <i><a href="g-m.xhtml#macro">macro</a></i> can be used lexically within 
+
+
+an extended
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> 
+to terminate that <i><a href="g-f.xhtml#form">form</a></i> "normally."
+That is, it transfers control to the loop epilogue
+
+of the lexically innermost extended <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i>.
+This permits execution of any <b>finally</b> clause (for effect)
+and
+
+
+the return of
+any accumulated result.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre>;; Terminate the loop, but return the accumulated count.
+ (loop for i in '(1 2 3 stop-here 4 5 6)
+       when (symbolp i) do (loop-finish)
+       count i)
+→ 3
+ 
+;; The preceding loop is equivalent to:
+ (loop for i in '(1 2 3 stop-here 4 5 6)
+       until (symbolp i)
+       count i)
+→ 3
+
+;; While LOOP-FINISH can be used can be used in a variety of 
+;; situations it is really most needed in a situation where a need
+;; to exit is detected at other than the loop's `top level'
+;; (where UNTIL or WHEN often work just as well), or where some 
+;; computation must occur between the point where a need to exit is
+;; detected and the point where the exit actually occurs.  For example:
+ (defun tokenize-sentence (string)
+   (macrolet ((add-word (wvar svar)
+                `(when ,wvar
+                   (push (coerce (nreverse ,wvar) 'string) ,svar)
+                   (setq ,wvar nil))))
+     (loop with word = '() and sentence = '() and endpos = nil
+           for i below (length string)
+           do (let ((char (aref string i)))
+                (case char
+                  (#\Space (add-word word sentence))
+                  (#\. (setq endpos (1+ i)) (loop-finish))
+                  (otherwise (push char word))))
+           finally (add-word word sentence)
+                   (return (values (nreverse sentence) endpos)))))
+→  TOKENIZE-SENTENCE
+ 
+ (tokenize-sentence "this is a sentence. this is another sentence.")
+→ ("this" "is" "a" "sentence"), 19
+ 
+ (tokenize-sentence "this is a sentence")
+→ ("this" "is" "a" "sentence"), NIL
+
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+Transfers control.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+Whether or not <a href="#DictEntry_loop_finish_518"><b>loop-finish</b></a> is <i><a href="g-f.xhtml#fbound">fbound</a></i> in the
+<i><a href="g-g.xhtml#globalenvironment">global environment</a></i> is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>;
+however, the restrictions on redefinition and <i>shadowing</i> of
+<a href="#DictEntry_loop_finish_518"><b>loop-finish</b></a> are the same as for <i><a href="g-s.xhtml#symbol">symbols</a></i> in the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i>
+which are <i><a href="g-f.xhtml#fbound">fbound</a></i> in the <i><a href="g-g.xhtml#globalenvironment">global environment</a></i>.
+The consequences of attempting to use <a href="#DictEntry_loop_finish_518"><b>loop-finish</b></a> outside
+of <a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a> are undefined.
+
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>,
+Section <a href="s6-1.xhtml#Section_The_LOOP_Fac_457">6.1 The LOOP Facility</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

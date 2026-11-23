@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.9 storage-condition — Condition Type</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_storage_cond_634" class="entry"><span class="secno">9.2.9</span> <span class="names">storage-condition</span> <span class="kind">Condition Type</span></h3>
+<dl>
+
+
+<dt><b>Class Precedence List:</b></dt><dd>
+
+<a href="#DictEntry_storage_cond_634"><b>storage-condition</b></a>,
+<a href="e9-2-4.xhtml#DictEntry_serious_cond_629"><b>serious-condition</b></a>,
+<a href="e9-2-1.xhtml#DictEntry_condition_626"><b>condition</b></a>,
+<a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+The <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_storage_cond_634"><b>storage-condition</b></a> consists of serious conditions that 
+relate to problems with memory management that are potentially due to
+<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> limits rather than semantic errors
+in <i><a href="g-c.xhtml#conformingprogram">conforming programs</a></i>, and that typically warrant entry to the 
+debugger if not handled.  Depending on the details of the <i><a href="g-i.xhtml#implementation">implementation</a></i>, 
+these might include such problems as 
+  stack overflow,
+  memory region overflow, 
+and
+  storage exhausted.
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+While some <i>Common Lisp</i> operations might signal <i>storage-condition</i>
+because they are defined to create <i><a href="g-o.xhtml#object">objects</a></i>,
+it is unspecified whether operations that are not defined to create
+<i><a href="g-o.xhtml#object">objects</a></i> create them anyway 
+and so might also signal <a href="#DictEntry_storage_cond_634"><b>storage-condition</b></a>.
+Likewise, the evaluator itself might create <i><a href="g-o.xhtml#object">objects</a></i>
+and so might signal <a href="#DictEntry_storage_cond_634"><b>storage-condition</b></a>.
+(The natural assumption might be that such 
+<i><a href="g-o.xhtml#object">object</a></i> creation is naturally inefficient, 
+but even that is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.)
+In general, the entire question of how storage allocation is done is
+<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>, 
+and so any operation might signal <a href="#DictEntry_storage_cond_634"><b>storage-condition</b></a> at any time.
+Because such a <i><a href="g-c.xhtml#condition">condition</a></i> is indicative of a limitation 
+   of the <i><a href="g-i.xhtml#implementation">implementation</a></i> 
+or of the <i>image</i>
+rather than an error in a <i><a href="g-p.xhtml#program">program</a></i>,
+<i><a href="g-o.xhtml#object">objects</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_storage_cond_634"><b>storage-condition</b></a> are not of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-11.xhtml#DictEntry_error_636"><b>error</b></a>.
+
+</dd></dl>
+</section>
+</body>
+</html>

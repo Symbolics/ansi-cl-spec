@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>17.3.20 concatenate — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_concatenate_1060" class="entry"><span class="secno">17.3.20</span> <span class="names">concatenate</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>concatenate</b>
+<i>result-type <code>&amp;rest</code> sequences</i>
+  → <i>result-sequence</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>result-type</i>—a <a href="e17-3-1.xhtml#DictEntry_sequence_1041"><b>sequence</b></a> <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>.
+
+
+<p>
+<i>sequences</i>—a <i><a href="g-s.xhtml#sequence">sequence</a></i>.
+
+</p><p>
+<i>result-sequence</i>—a <i><a href="g-p.xhtml#propersequence">proper sequence</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <i>result-type</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_concatenate_1060"><b>concatenate</b></a> returns a <i><a href="g-s.xhtml#sequence">sequence</a></i> that contains 
+all the individual elements of all the <i>sequences</i> in the order 
+that they are supplied.
+The <i><a href="g-s.xhtml#sequence">sequence</a></i> is of type <i>result-type</i>, 
+which must be a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e17-3-1.xhtml#DictEntry_sequence_1041"><b>sequence</b></a>.
+
+<p>
+All of the <i>sequences</i> are copied from; the result
+does not share any structure with any of the <i>sequences</i>.
+
+Therefore, if only one <i>sequence</i> is provided
+and it is of type <i>result-type</i>,
+<a href="#DictEntry_concatenate_1060"><b>concatenate</b></a> is required to copy <i>sequence</i> rather than simply
+returning it.  
+
+</p><p>
+It is an error if any element of the <i>sequences</i> cannot be an
+element of the <i><a href="g-s.xhtml#sequence">sequence</a></i> result.
+
+
+</p><p>
+
+If the <i>result-type</i> is a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <a href="e14-2-1.xhtml#DictEntry_list_914"><b>list</b></a>,
+the result will be a <i><a href="g-l.xhtml#list">list</a></i>.
+
+</p><p>
+If the <i>result-type</i> is a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <a href="e15-2-3.xhtml#DictEntry_vector_981"><b>vector</b></a>,
+then if the implementation can determine the element type specified
+for the <i>result-type</i>, the element type of the resulting array 
+is the result of <i>upgrading</i> that element type; or, if the
+implementation can determine that the element type is unspecified (or <code>*</code>),
+the element type of the resulting array is <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>;
+otherwise, an error is signaled.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre>(concatenate 'string "all" " " "together" " " "now") → "all together now"
+(concatenate 'list "ABC" '(d e f) #(1 2 3) #*1011)
+→ (#\A #\B #\C D E F 1 2 3 1 0 1 1)
+(concatenate 'list) →  NIL
+</pre>
+
+<pre>  (concatenate '(vector * 2) "a" "bc") should signal an error
+</pre>
+
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+An error is signaled if the <i>result-type</i> is neither
+     a <i><a href="g-r.xhtml#recognizablesubtype">recognizable subtype</a></i> of <a href="e14-2-1.xhtml#DictEntry_list_914"><b>list</b></a>,
+ nor a <i><a href="g-r.xhtml#recognizablesubtype">recognizable subtype</a></i> of <a href="e15-2-3.xhtml#DictEntry_vector_981"><b>vector</b></a>.
+
+
+<p>
+
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> should be signaled if <i>result-type</i> 
+specifies the number of elements and the sum of <i>sequences</i>
+is different from that number.
+
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e14-2-26.xhtml#DictEntry_append_939"><b>append</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

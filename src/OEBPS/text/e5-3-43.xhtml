@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.43 if — Special Operator</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_if_429" class="entry"><span class="secno">5.3.43</span> <span class="names">if</span> <span class="kind">Special Operator</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>if</b>
+<i><i>test-form</i> <i>then-form</i> [<i>else-form</i>]</i>
+  → <i>{<i>result</i>}*</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>Test-form</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+<p>
+<i>Then-form</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+
+<i>Else-form</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+  The default is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+
+
+<i>results</i>—if the <i>test-form</i> <i>yielded</i> <i><a href="g-t.xhtml#true">true</a></i>,
+  the <i><a href="g-v.xhtml#value">values</a></i> returned by the <i>then-form</i>; otherwise,
+  the <i><a href="g-v.xhtml#value">values</a></i> returned by the <i>else-form</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_if_429"><b>if</b></a> allows the execution of a <i><a href="g-f.xhtml#form">form</a></i> to be dependent
+on a single <i>test-form</i>.
+
+
+<p>
+
+First <i>test-form</i> is evaluated.
+If the result is <i><a href="g-t.xhtml#true">true</a></i>, then <i>then-form</i> is selected;
+otherwise <i>else-form</i> is selected.
+Whichever form is selected is then evaluated.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (if t 1) → 1
+ (if nil 1 2) → 2 
+ (defun test ()
+   (dolist (truth-value '(t nil 1 (a b c)))
+     (if truth-value (print 'true) (print 'false))
+     (prin1 truth-value))) →  TEST
+ (test)
+▷ TRUE T
+▷ FALSE NIL
+▷ TRUE 1
+▷ TRUE (A B C)
+→  NIL
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-42.xhtml#DictEntry_cond_428"><b>cond</b></a>,
+<a href="e5-3-45.xhtml#DictEntry_when_unless_431"><b>unless</b></a>,
+<a href="e5-3-45.xhtml#DictEntry_when_unless_431"><b>when</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (if <i>test-form</i> <i>then-form</i> <i>else-form</i>)
+ ==(cond (<i>test-form</i> <i>then-form</i>) (t <i>else-form</i>))
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

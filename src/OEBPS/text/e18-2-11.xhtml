@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>18.2.11 maphash — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_maphash_1088" class="entry"><span class="secno">18.2.11</span> <span class="names">maphash</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>maphash</b>
+<i>function hash-table</i>
+  → <i><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i><p><i></i>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>function</i>—a <i><a href="g-d.xhtml#designator">designator</a></i> for a <i><a href="g-f.xhtml#function">function</a></i> of two <i><a href="g-a.xhtml#argument">arguments</a></i>,
+		     the <i><a href="g-k.xhtml#key">key</a></i> and the <i><a href="g-v.xhtml#value">value</a></i>.
+
+<p>
+<i>hash-table</i>—a <i><a href="g-h.xhtml#hashtable">hash table</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Iterates over all entries in the <i>hash-table</i>.  For each entry,
+the <i>function</i> is called with two <i><a href="g-a.xhtml#argument">arguments</a></i>--the <i><a href="g-k.xhtml#key">key</a></i> 
+and the <i><a href="g-v.xhtml#value">value</a></i> of that entry.
+
+<p>
+The consequences are unspecified if any attempt is made to add or remove
+an entry from the <i>hash-table</i> while a <a href="#DictEntry_maphash_1088"><b>maphash</b></a> is in progress,
+with two exceptions:
+   the <i>function</i> can use can use <a href="e25-2-15.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> of <a href="e18-2-9.xhtml#DictEntry_gethash_1086"><b>gethash</b></a>
+   to change the <i><a href="g-v.xhtml#value">value</a></i> part of the entry currently being processed, 
+or it can use <a href="e18-2-10.xhtml#DictEntry_remhash_1087"><b>remhash</b></a> to remove that entry.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq table (make-hash-table)) → #&lt;HASH-TABLE EQL 0/120 32304110&gt;
+ (dotimes (i 10) (setf (gethash i table) i)) →  NIL
+ (let ((sum-of-squares 0))
+    (maphash #'(lambda (key val) 
+                 (let ((square (* val val)))
+                   (incf sum-of-squares square)
+                   (setf (gethash key table) square)))
+             table)
+    sum-of-squares) → 285
+ (hash-table-count table) → 10
+ (maphash #'(lambda (key val)
+               (when (oddp val) (remhash key table)))
+           table) →  NIL
+ (hash-table-count table) → 5
+ (maphash #'(lambda (k v) (print (list k v))) table)
+(0 0) 
+(8 64) 
+(2 4) 
+(6 36) 
+(4 16) 
+→  NIL
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+None, other than any which might be done by the <i>function</i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e6-2-4.xhtml#DictEntry_loop_517"><b>loop</b></a>,
+<a href="e18-2-12.xhtml#DictEntry_with_hash_ta_1089"><b>with-hash-table-iterator</b></a>,
+
+Section <a href="s3-6.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.21 psetq — Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_psetq_407" class="entry"><span class="secno">5.3.21</span> <span class="names">psetq</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>psetq</b>
+<i>{<i>pair</i>}*</i>
+  → <i><a href="e5-3-30.xhtml#DictEntry_nil_416"><b>nil</b></a>
+</i><p><i></i>
+
+</p><p>
+
+pair::= var form</p></dd><dt><b>Pronunciation:</b></dt><dd>
+
+<a href="#DictEntry_psetq_407"><b>psetq</b></a>: <span class="pron">[ ¦pēˈsetˌkyü ]</span>
+
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>var</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i> naming a <i><a href="g-v.xhtml#variable">variable</a></i> other than a <i><a href="g-c.xhtml#constantvariable">constant variable</a></i>.
+
+<p>
+<i>form</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Assigns values to <i><a href="g-v.xhtml#variable">variables</a></i>.
+
+<p>
+This is just like <a href="e5-3-20.xhtml#DictEntry_setq_406"><b>setq</b></a>, except that the assignments 
+happen "in parallel."  That is, first all of the forms are
+evaluated, and only then are the variables set to the resulting values.
+In this way, the assignment to one variable does not affect the value
+computation of another in the way that would occur with <a href="e5-3-20.xhtml#DictEntry_setq_406"><b>setq</b></a>'s 
+sequential assignment.
+
+</p><p>
+
+If any <i>var</i> refers to a <i><a href="g-b.xhtml#binding">binding</a></i> 
+made by <a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>,
+then that <i>var</i> is treated as if <a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>psetf</b></a> (not <a href="#DictEntry_psetq_407"><b>psetq</b></a>)
+had been used.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> ;; A simple use of PSETQ to establish values for variables.
+ ;; As a matter of style, many programmers would prefer SETQ 
+ ;; in a simple situation like this where parallel assignment
+ ;; is not needed, but the two have equivalent effect.
+ (psetq a 1 b 2 c 3) →  NIL
+ a → 1
+ b → 2
+ c → 3
+
+ ;; Use of PSETQ to update values by parallel assignment.
+ ;; The effect here is very different than if SETQ had been used.
+ (psetq a (1+ b) b (1+ a) c (+ a b)) →  NIL
+ a → 3
+ b → 2
+ c → 3
+
+ ;; Use of PSETQ on a symbol macro.
+ (let ((x (list 10 20 30)))
+   (symbol-macrolet ((y (car x)) (z (cadr x)))
+     (psetq y (1+ z) z (1+ y))
+     (list x y z)))
+→ ((21 11 30) 21 11)
+
+ ;; Use of parallel assignment to swap values of A and B.
+ (let ((a 1) (b 2))
+   (psetq a b  b a)
+   (values a b))
+→ 2, 1
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The values of <i>forms</i> are assigned to <i>vars</i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>psetf</b></a>,
+<a href="e5-3-20.xhtml#DictEntry_setq_406"><b>setq</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

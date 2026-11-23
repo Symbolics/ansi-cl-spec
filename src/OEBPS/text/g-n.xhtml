@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Glossary — N</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="glossary">
+<section>
+<h3 id="GlossaryEntr_N_1473" class="letter">N</h3>
+<dl>
+<dt id="name"><b>name:</b></dt><dd> <i>n.</i>, <i>v.t.</i> 
+  1. <i>n.</i> an <i><a href="g-i.xhtml#identifier">identifier</a></i> by which an <i><a href="g-o.xhtml#object">object</a></i>,
+     a <i><a href="g-b.xhtml#binding">binding</a></i>, or an <i><a href="g-e.xhtml#exitpoint">exit point</a></i>
+
+     is referred to by association using a <i><a href="g-b.xhtml#binding">binding</a></i>.
+  2. <i>v.t.</i> to give a <i><a href="#name">name</a></i> to.
+  3. <i>n.</i> (of an <i><a href="g-o.xhtml#object">object</a></i> having a name component) 
+     the <i><a href="g-o.xhtml#object">object</a></i> which is that component.  
+     The string which is a symbol's name is returned
+	       by <a href="e10-2-11.xhtml#DictEntry_symbol_name_685"><b>symbol-name</b></a>.
+  4. <i>n.</i> (of a <i><a href="g-p.xhtml#pathname">pathname</a></i>)
+     a. the name component, returned by <a href="e19-4-6.xhtml#DictEntry_pathname_hos_1149"><b>pathname-name</b></a>.
+     b. the entire namestring, returned by <a href="e19-4-11.xhtml#DictEntry_namestring__1154"><b>namestring</b></a>.
+  5. <i>n.</i> (of a <i><a href="g-c.xhtml#character">character</a></i>)
+     a <i><a href="g-s.xhtml#string">string</a></i> that names the <i><a href="g-c.xhtml#character">character</a></i>
+     and that has <i><a href="g-l.xhtml#length">length</a></i> greater than one.
+     (All <i><a href="#nongraphic">non-graphic</a></i> <i><a href="g-c.xhtml#character">characters</a></i> are required to have <i><a href="#name">names</a></i>
+      unless they have some <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attribute</a></i>
+      which is not <i><a href="#null">null</a></i>.  Whether or not other <i><a href="g-c.xhtml#character">characters</a></i>
+      have <i><a href="#name">names</a></i> is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.)
+
+<p>
+<span id="namedconstant"/></p></dd><dt><b>named constant:</b></dt><dd> <i>n.</i> 
+  a <i><a href="g-v.xhtml#variable">variable</a></i> that is defined by <i>Common Lisp</i>,
+				    by the <i><a href="g-i.xhtml#implementation">implementation</a></i>,
+  				 or by user code (see the <i><a href="g-m.xhtml#macro">macro</a></i> <a href="e5-3-15.xhtml#DictEntry_defconstant_401"><b>defconstant</b></a>)
+  to always <i><a href="g-y.xhtml#yield">yield</a></i> the same <i><a href="g-v.xhtml#value">value</a></i> when <i>evaluated</i>.
+  The value of a named constant may not be changed
+            by assignment or by binding.
+
+<p>
+
+
+<span id="namespace"/></p></dd><dt><b>namespace:</b></dt><dd> <i>n.</i> 
+  1. <i><a href="g-b.xhtml#binding">bindings</a></i> whose denotations are restricted to a particular kind.
+     The bindings of names to tags is the tag namespace.
+  2. any <i><a href="g-m.xhtml#mapping">mapping</a></i> whose domain is a set of <i><a href="#name">names</a></i>.
+     A package defines a namespace.
+
+<p>
+
+<span id="namestring"/></p></dd><dt><b>namestring:</b></dt><dd> <i>n.</i> 
+  a <i><a href="g-s.xhtml#string">string</a></i> that represents a <i><a href="g-f.xhtml#filename">filename</a></i>
+  using either the <i><a href="g-s.xhtml#standardized">standardized</a></i> notation for naming <i><a href="g-l.xhtml#logicalpathname">logical pathnames</a></i>
+         described in Section <a href="s19-3.xhtml#SubSection_Syntax_of_Lo_1130">19.3.1 Syntax of Logical Pathname Namestrings</a>,
+     or some <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> notation for naming a <i><a href="g-p.xhtml#physicalpathname">physical pathname</a></i>.
+
+
+<p>
+<span id="newline"/></p></dd><dt><b>newline:</b></dt><dd> <i>n.</i>   the <i><a href="g-s.xhtml#standardcharacter">standard character</a></i> <i>&lt;Newline&gt;</i>,
+  notated for the <i>Lisp reader</i> as <code>#\Newline</code>.
+
+<p>
+<span id="nextmethod"/></p></dd><dt><b>next method:</b></dt><dd> <i>n.</i> 
+  the next <i><a href="g-m.xhtml#method">method</a></i> to be invoked with respect to a given
+  <i><a href="g-m.xhtml#method">method</a></i> for a particular set of arguments or argument
+  <i>classes</i>.  
+
+
+
+  See Section <a href="s7-6.xhtml#SubSubSubSec_Applying_met_551">7.6.6.1.3 Applying method combination to the sorted list of applicable methods</a>.
+
+<p>
+<span id="nickname"/></p></dd><dt><b>nickname:</b></dt><dd> <i>n.</i> (of a <i><a href="g-p.xhtml#package">package</a></i>)
+  one of possibly several <i><a href="#name">names</a></i> that can be used to refer to
+  the <i><a href="g-p.xhtml#package">package</a></i> but that is not the primary <i><a href="#name">name</a></i> 
+  of the <i><a href="g-p.xhtml#package">package</a></i>.
+
+<p>
+<span id="nil"/></p></dd><dt><b>nil:</b></dt><dd> <i>n.</i> 
+  the <i><a href="g-o.xhtml#object">object</a></i> that is at once
+        the <i><a href="g-s.xhtml#symbol">symbol</a></i> named <code>"NIL"</code> in the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i>,
+        the <i><a href="g-e.xhtml#emptylist">empty list</a></i>,
+        the <i><a href="g-b.xhtml#boolean">boolean</a></i> (or <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>) representing <i><a href="g-f.xhtml#false">false</a></i>,
+    and the <i><a href="#name">name</a></i> of the <i><a href="g-e.xhtml#emptytype">empty type</a></i>.
+<p>
+<span id="nonatomic"/></p></dd><dt><b>non-atomic:</b></dt><dd> <i>adj.</i> 
+  being other than an <i><a href="g-a.xhtml#atom">atom</a></i>; <i>i.e.</i>,  being a <i><a href="g-c.xhtml#cons">cons</a></i>.
+
+<p>
+<span id="nonconstantvariable"/></p></dd><dt><b>non-constant variable:</b></dt><dd> <i>n.</i>   a <i><a href="g-v.xhtml#variable">variable</a></i> that is not a <i><a href="g-c.xhtml#constantvariable">constant variable</a></i>.
+
+<p>
+<span id="noncorrectable"/></p></dd><dt><b>non-correctable:</b></dt><dd> <i>adj.</i> (of an <i><a href="g-e.xhtml#error">error</a></i>)
+  not intentionally <i><a href="g-c.xhtml#correctable">correctable</a></i>.
+  (Because of the dynamic nature of <i><a href="g-r.xhtml#restart">restarts</a></i>,
+   it is neither possible nor generally useful to completely prohibit
+   an <i><a href="g-e.xhtml#error">error</a></i> from being <i><a href="g-c.xhtml#correctable">correctable</a></i>.
+   This term is used in order to express an intent that no special effort
+   should be made by <i><a href="g-c.xhtml#code">code</a></i> signaling an <i><a href="g-e.xhtml#error">error</a></i> to make
+   that <i><a href="g-e.xhtml#error">error</a></i> <i><a href="g-c.xhtml#correctable">correctable</a></i>; 
+   however, there is no actual requirement on <i><a href="g-c.xhtml#conformingprogram">conforming programs</a></i>
+   or <i><a href="g-c.xhtml#conformingimplementation">conforming implementations</a></i> imposed by this term.)
+
+<p>
+<span id="nonempty"/></p></dd><dt><b>non-empty:</b></dt><dd> <i>adj.</i>   having at least one <i><a href="g-e.xhtml#element">element</a></i>.
+
+<p>
+<span id="nongenericfunction"/></p></dd><dt><b>non-generic function:</b></dt><dd> <i>n.</i> 
+  a <i><a href="g-f.xhtml#function">function</a></i> that is not a <i><a href="g-g.xhtml#genericfunction">generic function</a></i>.
+
+<p>
+<span id="nongraphic"/></p></dd><dt><b>non-graphic:</b></dt><dd> <i>adj.</i> (of a <i><a href="g-c.xhtml#character">character</a></i>)
+  not <i><a href="g-g.xhtml#graphic">graphic</a></i>.
+  See Section <a href="s13-1.xhtml#SubSubSectio_Graphic_Char_867">13.1.4.1 Graphic Characters</a>.
+
+<p>
+<span id="nonlist"/></p></dd><dt><b>non-list:</b></dt><dd> <i>n.</i>, <i>adj.</i> 
+  other than a <i><a href="g-l.xhtml#list">list</a></i>; <i>i.e.</i>,  a <i><a href="#nonnil">non-nil</a></i> <i><a href="g-a.xhtml#atom">atom</a></i>.
+
+<p>
+<span id="nonlocalexit"/></p></dd><dt><b>non-local exit:</b></dt><dd> <i>n.</i> 
+  a transfer of control (and sometimes <i><a href="g-v.xhtml#value">values</a></i>) to 
+  an <i><a href="g-e.xhtml#exitpoint">exit point</a></i> for reasons other than a <i><a href="#normalreturn">normal return</a></i>.
+  The operators <a href="e5-3-24.xhtml#DictEntry_go_410"><b>go</b></a>, <a href="e5-3-28.xhtml#DictEntry_throw_414"><b>throw</b></a>, 
+	    and <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a> cause a non-local exit.
+
+<p>
+<span id="nonnil"/></p></dd><dt><b>non-nil:</b></dt><dd> <i>n.</i>, <i>adj.</i> 
+  not <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.  Technically, any <i><a href="g-o.xhtml#object">object</a></i> which is not <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> can be
+  referred to as <i><a href="g-t.xhtml#true">true</a></i>, but that would tend to imply a unique view
+  of the <i><a href="g-o.xhtml#object">object</a></i> as a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+  Referring to such an <i><a href="g-o.xhtml#object">object</a></i> as <i><a href="#nonnil">non-nil</a></i> avoids this implication.
+
+<p>
+
+
+<span id="nonnulllexicalenvironment"/></p></dd><dt><b>non-null lexical environment:</b></dt><dd> <i>n.</i> 
+  a <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> that has additional information not present in
+  the <i><a href="g-g.xhtml#globalenvironment">global environment</a></i>, such as one or more <i><a href="g-b.xhtml#binding">bindings</a></i>.
+
+<p>
+<span id="nonsimple"/></p></dd><dt><b>non-simple:</b></dt><dd> <i>adj.</i>   not <i><a href="g-s.xhtml#simple">simple</a></i>.
+
+<p>
+
+
+<span id="nonterminating"/></p></dd><dt><b>non-terminating:</b></dt><dd> <i>adj.</i> (of a <i><a href="g-m.xhtml#macrocharacter">macro character</a></i>)
+  being such that it is treated as a constituent <i><a href="g-c.xhtml#character">character</a></i>
+  when it appears in the middle of an extended token.
+  See Section <a href="s2-2.xhtml#Section_Reader_Algor_126">2.2 Reader Algorithm</a>.
+
+<p>
+<span id="nontoplevelform"/></p></dd><dt><b>non-top-level form:</b></dt><dd> <i>n.</i> 
+  a <i><a href="g-f.xhtml#form">form</a></i> that, by virtue of its position as a <i><a href="g-s.xhtml#subform">subform</a></i>
+  of another <i><a href="g-f.xhtml#form">form</a></i>, is not a <i><a href="g-t.xhtml#toplevelform">top level form</a></i>.
+  See Section <a href="s3-2.xhtml#SubSubSectio_Processing_o_224">3.2.3.1 Processing of Top Level Forms</a>.
+
+<p>
+<span id="normalreturn"/></p></dd><dt><b>normal return:</b></dt><dd> <i>n.</i> 
+  the natural transfer of control and <i><a href="g-v.xhtml#value">values</a></i> which occurs after
+  the complete <i>execution</i> of a <i><a href="g-f.xhtml#form">form</a></i>.
+
+<p>
+<span id="normalized"/></p></dd><dt><b>normalized:</b></dt><dd> <i>adj.</i>, <i>ANSI</i>, <i>IEEE</i> (of a <i><a href="g-f.xhtml#float">float</a></i>)
+  conforming to the description of "normalized" as described by <i>IEEE Standard for Binary Floating-Point Arithmetic</i>.
+  See <i><a href="g-d.xhtml#denormalized">denormalized</a></i>.
+
+<p>
+<span id="null"/></p></dd><dt><b>null:</b></dt><dd> <i>adj.</i>, <i>n.</i> 
+  1. <i>adj.</i> 
+     a. (of a <i><a href="g-l.xhtml#list">list</a></i>) having no <i><a href="g-e.xhtml#element">elements</a></i>: empty.  See <i><a href="g-e.xhtml#emptylist">empty list</a></i>.
+     b. (of a <i><a href="g-s.xhtml#string">string</a></i>) having a <i><a href="g-l.xhtml#length">length</a></i> of zero.
+	(It is common, both within this document and in observed spoken behavior,
+         to refer to an empty string by an apparent definite reference,
+         as in "the <i><a href="#null">null</a></i> <i><a href="g-s.xhtml#string">string</a></i>" even though no attempt is made to
+	 <i><a href="g-i.xhtml#intern">intern</a></i><sub>2</sub> null strings.  The phrase 
+         "a <i><a href="#null">null</a></i> <i><a href="g-s.xhtml#string">string</a></i>" is technically more correct, 
+	 but is generally considered awkward by most Lisp programmers.  
+	 As such, the phrase "the <i><a href="#null">null</a></i> <i><a href="g-s.xhtml#string">string</a></i>" 
+         should be treated as an indefinite reference in all cases 
+	 except for anaphoric references.)
+      c. (of an <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attribute</a></i> of a <i><a href="g-c.xhtml#character">character</a></i>)
+	 An <i><a href="g-o.xhtml#object">object</a></i> to which the value of that <i><a href="g-a.xhtml#attribute">attribute</a></i> defaults 
+	 if no specific value was requested.
+  2. <i>n.</i> an <i><a href="g-o.xhtml#object">object</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e14-2-2.xhtml#DictEntry_null_915"><b>null</b></a> (the only such <i><a href="g-o.xhtml#object">object</a></i> being <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>).
+
+<p>
+
+<span id="nulllexicalenvironment"/></p></dd><dt><b>null lexical environment:</b></dt><dd> <i>n.</i> 
+  the <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> which has no <i><a href="g-b.xhtml#binding">bindings</a></i>.
+
+<p>
+<span id="number"/></p></dd><dt><b>number:</b></dt><dd> <i>n.</i>   an <i><a href="g-o.xhtml#object">object</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-1.xhtml#DictEntry_number_775"><b>number</b></a>.
+
+<p>
+<span id="numeric"/></p></dd><dt><b>numeric:</b></dt><dd> <i>adj.</i> (of a <i><a href="g-c.xhtml#character">character</a></i>)
+     being one of the <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i> <code>0</code> through <i>9</i>,
+  or being some other <i><a href="g-g.xhtml#graphic">graphic</a></i> <i><a href="g-c.xhtml#character">character</a></i>
+     defined by the <i><a href="g-i.xhtml#implementation">implementation</a></i> to be <i><a href="#numeric">numeric</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

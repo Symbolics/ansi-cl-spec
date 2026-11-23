@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>19.4.16 translate-pathname — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_translate_pa_1159" class="entry"><span class="secno">19.4.16</span> <span class="names">translate-pathname</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>translate-pathname</b>
+<i>source from-wildcard to-wildcard <code>&amp;key</code></i><br/> 
+  → <i>translated-pathname</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>source</i>—a <i><a href="g-p.xhtml#pathnamedesignator">pathname designator</a></i>.
+
+<p>
+<i>from-wildcard</i>—a <i><a href="g-p.xhtml#pathnamedesignator">pathname designator</a></i>.
+
+</p><p>
+<i>to-wildcard</i>—a <i><a href="g-p.xhtml#pathnamedesignator">pathname designator</a></i>.
+
+</p><p>
+<i>translated-pathname</i>—a <i><a href="g-p.xhtml#pathname">pathname</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_translate_pa_1159"><b>translate-pathname</b></a> translates <i>source</i> 
+(that matches <i>from-wildcard</i>) into a corresponding <i><a href="g-p.xhtml#pathname">pathname</a></i> 
+that matches <i>to-wildcard</i>, and returns the corresponding <i><a href="g-p.xhtml#pathname">pathname</a></i>.
+
+<p>
+The resulting <i><a href="g-p.xhtml#pathname">pathname</a></i> is <i>to-wildcard</i> with each wildcard or missing
+field replaced by a portion of <i>source</i>.  A "wildcard field" is a
+<i><a href="g-p.xhtml#pathname">pathname</a></i> component with a value of <code>:wild</code>, a <code>:wild</code> element of a
+<i><a href="g-l.xhtml#list">list</a></i>-valued directory component, or an <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> portion
+of a component, such as the <code>"*"</code> in the complex wildcard string
+<code>"foo*bar"</code> that some implementations support.  An implementation that
+adds other wildcard features, such as regular expressions, must define
+how <a href="#DictEntry_translate_pa_1159"><b>translate-pathname</b></a> extends to those features.  
+A "missing field" is a <i><a href="g-p.xhtml#pathname">pathname</a></i> component with a value of <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+    The portion of <i>source</i> 
+that is copied into the resulting <i><a href="g-p.xhtml#pathname">pathname</a></i> is 
+<i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>.  Typically 
+it is determined by the user interface conventions
+    of the file systems involved.  Usually it is the portion of <i>source</i>
+    that matches a wildcard field of 
+<i>from-wildcard</i> that is in the same
+    position as the wildcard or missing field of 
+<i>to-wildcard</i>.  If there
+    is no wildcard field in 
+<i>from-wildcard</i> at that position, then usually
+    it is the entire corresponding 
+<i><a href="g-p.xhtml#pathname">pathname</a></i> component of <i>source</i>, or in
+    the case of a 
+<i><a href="g-l.xhtml#list">list</a></i>-valued directory component, the entire corresponding
+    <i><a href="g-l.xhtml#list">list</a></i> element.  
+
+</p><p>
+    During the copying of a portion of <i>source</i> into 
+the resulting <i><a href="g-p.xhtml#pathname">pathname</a></i>, additional
+    <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> translations of <i><a href="g-c.xhtml#case">case</a></i> or file naming
+    conventions might occur, especially when 
+<i>from-wildcard</i> and
+    <i>to-wildcard</i> are for different hosts.
+
+</p><p>
+It is valid for
+    <i>source</i> to be a wild 
+<i><a href="g-p.xhtml#pathname">pathname</a></i>; in general this will produce a wild
+    result.  It 
+is valid for <i>from-wildcard</i> and/or <i>to-wildcard</i> to be
+    non-wild <i><a href="g-p.xhtml#pathname">pathnames</a></i>.  
+
+</p><p>
+    There are no specified keyword arguments for 
+<a href="#DictEntry_translate_pa_1159"><b>translate-pathname</b></a>, but
+    implementations are permitted to extend it by adding keyword arguments.
+
+</p><p>
+
+
+
+
+<a href="#DictEntry_translate_pa_1159"><b>translate-pathname</b></a> maps customary case in
+<i>source</i> into customary case in the output <i><a href="g-p.xhtml#pathname">pathname</a></i>.
+
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> ;; The results of the following five forms are all implementation-dependent.
+ ;; The second item in particular is shown with multiple results just to 
+ ;; emphasize one of many particular variations which commonly occurs.
+ (pathname-name (translate-pathname "foobar" "foo*" "*baz")) → "barbaz"
+ (pathname-name (translate-pathname "foobar" "foo*" "*"))
+→ "foobar"
+OR→"bar"
+ (pathname-name (translate-pathname "foobar" "*"    "foo*")) → "foofoobar"
+ (pathname-name (translate-pathname "bar"    "*"    "foo*")) → "foobar"
+ (pathname-name (translate-pathname "foobar" "foo*" "baz*")) → "bazbar"
+
+ (defun translate-logical-pathname-1 (pathname rules)
+   (let ((rule (assoc pathname rules :test #'pathname-match-p)))
+     (unless rule (error "No translation rule for ~A" pathname))
+     (translate-pathname pathname (first rule) (second rule))))
+ (translate-logical-pathname-1 "FOO:CODE;BASIC.LISP"
+                       '(("FOO:DOCUMENTATION;" "MY-UNIX:/doc/foo/")
+                         ("FOO:CODE;"          "MY-UNIX:/lib/foo/")
+                         ("FOO:PATCHES;*;"     "MY-UNIX:/lib/foo/patch/*/")))
+→ #P"MY-UNIX:/lib/foo/basic.l"
+
+;;;This example assumes one particular set of wildcard conventions
+;;;Not all file systems will run this example exactly as written
+ (defun rename-files (from to)
+   (dolist (file (directory from))
+     (rename-file file (translate-pathname file from to))))
+ (rename-files "/usr/me/*.lisp" "/dev/her/*.l")
+   ;Renames /usr/me/init.lisp to /dev/her/init.l
+ (rename-files "/usr/me/pcl*/*" "/sys/pcl/*/")
+   ;Renames /usr/me/pcl-5-may/low.lisp to /sys/pcl/pcl-5-may/low.lisp
+   ;In some file systems the result might be /sys/pcl/5-may/low.lisp
+ (rename-files "/usr/me/pcl*/*" "/sys/library/*/")
+   ;Renames /usr/me/pcl-5-may/low.lisp to /sys/library/pcl-5-may/low.lisp
+   ;In some file systems the result might be /sys/library/5-may/low.lisp
+ (rename-files "/usr/me/foo.bar" "/usr/me2/")
+   ;Renames /usr/me/foo.bar to /usr/me2/foo.bar
+ (rename-files "/usr/joe/*-recipes.text" "/usr/jim/cookbook/joe's-*-rec.text")
+   ;Renames /usr/joe/lamb-recipes.text to /usr/jim/cookbook/joe's-lamb-rec.text
+   ;Renames /usr/joe/pork-recipes.text to /usr/jim/cookbook/joe's-pork-rec.text
+   ;Renames /usr/joe/veg-recipes.text to /usr/jim/cookbook/joe's-veg-rec.text
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+If any of <i>source</i>, <i>from-wildcard</i>, or <i>to-wildcard</i>
+is not a <i><a href="g-p.xhtml#pathname">pathname</a></i>, a <i><a href="g-s.xhtml#string">string</a></i>, or a <i><a href="g-s.xhtml#streamassociatedwithafile">stream associated with a file</a></i>
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> is signaled.  
+
+<p>
+<code>(pathname-match-p <i>source from-wildcard</i>)</code> must
+be true or an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> is signaled.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e19-4-11.xhtml#DictEntry_namestring__1154"><b>namestring</b></a>,
+<a href="e19-4-6.xhtml#DictEntry_pathname_hos_1149"><b>pathname-host</b></a>,
+
+<a href="e19-4-1.xhtml#DictEntry_pathname_1144"><b>pathname</b></a>,
+<a href="e19-4-2.xhtml#DictEntry_logical_path_1145"><b>logical-pathname</b></a>,
+Section <a href="s20-1.xhtml#Section_File_System__1162">20.1 File System Concepts</a>,
+
+
+Section <a href="s19-1.xhtml#SubSection_Pathnames_as_1095">19.1.2 Pathnames as Filenames</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The exact behavior of <a href="#DictEntry_translate_pa_1159"><b>translate-pathname</b></a> cannot be dictated
+by the <i>Common Lisp</i> language and must be allowed to vary, depending on the
+user interface conventions of the file systems involved.
+
+<p>
+The following is an implementation guideline.
+One file system performs this operation by
+    examining each piece of the three 
+<i><a href="g-p.xhtml#pathname">pathnames</a></i> in turn, where a piece is a
+    <i><a href="g-p.xhtml#pathname">pathname</a></i> component or a 
+<i><a href="g-l.xhtml#list">list</a></i> element of a structured component such as
+    a hierarchical directory.  Hierarchical directory elements in
+    <i>from-wildcard</i> and 
+<i>to-wildcard</i> are matched by whether they are
+    wildcards, not by depth in the directory hierarchy.  If the piece in
+<i>to-wildcard</i> is present and not wild, it is copied into the result.
+    If the piece in <i>to-wildcard</i> is 
+<code>:wild</code> or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, the piece in <i>source</i> is
+    copied into the result.  Otherwise, the piece in
+<i>to-wildcard</i> might be
+    a complex wildcard such as <code>"foo*bar"</code> and the piece in 
+<i>from-wildcard</i>
+    should be wild; the portion of the piece in 
+<i>source</i> that matches the
+    wildcard portion of the piece in 
+<i>from-wildcard</i> replaces the wildcard
+    portion of the piece in 
+<i>to-wildcard</i> and the value produced is used in
+    the result.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.8.8 compiler-macro-function — Accessor</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_compiler_mac_290" class="entry"><span class="secno">3.8.8</span> <span class="names">compiler-macro-function</span> <span class="kind">Accessor</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>compiler-macro-function</b>
+<i>name <code>&amp;optional</code> environment</i>
+  → <i>function</i>
+<p>
+
+(<b>setf</b>
+(<b>compiler-macro-function</b> <i>name <code>&amp;optional</code> environment</i>) <i>new-function</i>)
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>name</i>—a <i><a href="g-f.xhtml#functionname">function name</a></i>.
+
+<p>
+<i>environment</i>—an <i><a href="g-e.xhtml#environment">environment</a></i> <i><a href="g-o.xhtml#object">object</a></i>.
+
+</p><p>
+<i>function</i>, <i>new-function</i>—a <i><a href="g-c.xhtml#compilermacrofunction">compiler macro function</a></i>, or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<i>Accesses</i> the <i><a href="g-c.xhtml#compilermacrofunction">compiler macro function</a></i> named <i>name</i>, if any,
+in the <i>environment</i>.
+
+<p>
+A value of <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> denotes the absence of a <i><a href="g-c.xhtml#compilermacrofunction">compiler macro function</a></i> named <i>name</i>.
+
+</p></dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+The consequences are undefined if <i>environment</i> is <i><a href="g-n.xhtml#nonnil">non-nil</a></i>
+in a use of <a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> of <a href="#DictEntry_compiler_mac_290"><b>compiler-macro-function</b></a>.
+
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e3-8-9.xhtml#DictEntry_define_compi_291"><b>define-compiler-macro</b></a>, Section <a href="s3-2.xhtml#SubSubSectio_Compiler_Mac_216">3.2.2.1 Compiler Macros</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

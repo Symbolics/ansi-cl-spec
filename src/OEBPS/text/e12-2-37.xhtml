@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.37 signum — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_signum_811" class="entry"><span class="secno">12.2.37</span> <span class="names">signum</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>signum</b>
+<i>number</i>
+  → <i>signed-prototype</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>number</i>—a <i><a href="g-n.xhtml#number">number</a></i>.
+
+<p>
+<i>signed-prototype</i>—a <i><a href="g-n.xhtml#number">number</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_signum_811"><b>signum</b></a> determines a numerical value that indicates whether
+<i>number</i> is negative, zero, or positive.
+
+<p>
+
+For a <i><a href="g-r.xhtml#rational">rational</a></i>,
+<a href="#DictEntry_signum_811"><b>signum</b></a> returns one of <code>-1</code>, <code>0</code>, or <code>1</code>
+according to whether <i>number</i> is negative, zero, or positive.
+For a <i><a href="g-f.xhtml#float">float</a></i>, 
+the result is a <i><a href="g-f.xhtml#float">float</a></i> of the same format
+whose value is minus one, zero, or one.
+For a <i><a href="g-c.xhtml#complex">complex</a></i> number <code>z</code>,
+<code>(signum <i>z</i>)</code> is a complex number of the same phase but with unit magnitude,
+unless <code>z</code> is a complex zero, in which case the result is <code>z</code>.
+
+</p><p>
+For <i><a href="g-r.xhtml#rational">rational</a></i> <i><a href="g-a.xhtml#argument">arguments</a></i>, <a href="#DictEntry_signum_811"><b>signum</b></a> is a rational function,
+but it may be irrational for <i><a href="g-c.xhtml#complex">complex</a></i> <i><a href="g-a.xhtml#argument">arguments</a></i>.
+
+</p><p>
+If <i>number</i> is a <i><a href="g-f.xhtml#float">float</a></i>, the result is a <i><a href="g-f.xhtml#float">float</a></i>.
+If <i>number</i> is a <i><a href="g-r.xhtml#rational">rational</a></i>, the result is a <i><a href="g-r.xhtml#rational">rational</a></i>.
+If <i>number</i> is a <i><a href="g-c.xhtml#complexfloat">complex float</a></i>, the result is a <i><a href="g-c.xhtml#complexfloat">complex float</a></i>.
+If <i>number</i> is a <i><a href="g-c.xhtml#complexrational">complex rational</a></i>, the result is a <i><a href="g-c.xhtml#complex">complex</a></i>, 
+but it is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> whether that result is a
+<i><a href="g-c.xhtml#complexrational">complex rational</a></i> or a <i><a href="g-c.xhtml#complexfloat">complex float</a></i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (signum 0) → 0
+ (signum 99) → 1
+ (signum 4/5) → 1
+ (signum -99/100) → -1
+ (signum 0.0) → 0.0
+ (signum #c(0 33)) → #C(0.0 1.0)
+ (signum #c(7.5 10.0)) → #C(0.6 0.8)
+ (signum #c(0.0 -14.7)) → #C(0.0 -1.0)
+ (eql (signum -0.0) -0.0) → <i><a href="g-t.xhtml#true">true</a></i>
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="s12-1.xhtml#SubSubSectio_Rule_of_Floa_759">12.1.3.3 Rule of Float Substitutability</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+<pre> (signum x) ==(if (zerop x) x (/ x (abs x)))
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

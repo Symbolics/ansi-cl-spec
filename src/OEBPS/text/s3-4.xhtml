@@ -1,0 +1,1467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.4 Lambda Lists</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Lambda_Lists_242"><span class="secno">3.4</span> Lambda Lists</h2>
+<p>
+A <b><i>lambda list</i></b> is a <i><a href="g-l.xhtml#list">list</a></i> that
+specifies a set of <i><a href="g-p.xhtml#parameter">parameters</a></i> (sometimes called <i><a href="g-l.xhtml#lambdavariable">lambda variables</a></i>)
+and a protocol for receiving <i><a href="g-v.xhtml#value">values</a></i> for those <i><a href="g-p.xhtml#parameter">parameters</a></i>.
+
+</p><p>
+There are several kinds of <i><a href="g-l.xhtml#lambdalist">lambda lists</a></i>.
+
+</p><table id="fig-3-10" class="fig">
+<caption><span class="figlabel">Figure 3-10.</span> What Kind of Lambda Lists to Use</caption>
+<tbody><tr><th>Context</th>
+<th>Kind of Lambda List</th>
+</tr>
+
+  <tr>
+    <td><a href="e5-3-2.xhtml#DictEntry_defun_388"><b>defun</b></a> <i><a href="g-f.xhtml#form">form</a></i></td>
+    <td><i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e3-8-10.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a> <i><a href="g-f.xhtml#form">form</a></i></td>
+    <td><i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i></td>
+    <td><i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>flet</b></a> local <i><a href="g-f.xhtml#function">function</a></i> definition</td>
+    <td><i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>labels</b></a> local <i><a href="g-f.xhtml#function">function</a></i> definition</td>
+    <td><i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e9-2-27.xhtml#DictEntry_handler_case_652"><b>handler-case</b></a> <i>clause</i> specification
+						</td>
+    <td><i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e9-2-37.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a> <i>clause</i> specification
+						</td>
+    <td><i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a> local <i><a href="g-m.xhtml#macro">macro</a></i> definition</td>
+    <td><i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e7-7-33.xhtml#DictEntry_define_metho_589"><b>define-method-combination</b></a>		</td>
+    <td><i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i>	</td>
+  </tr>
+  <tr>
+    <td><a href="e7-7-33.xhtml#DictEntry_define_metho_589"><b>define-method-combination</b></a> <code>:arguments</code> option</td>
+    <td>
+
+
+
+       <i><a href="g-d.xhtml#definemethodcombinationargumentslambdalist">define-method-combination arguments lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e8-1-1.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> <code>:constructor</code> option</td>
+    <td><i><a href="g-b.xhtml#boalambdalist">boa lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e7-7-26.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> <i><a href="g-f.xhtml#form">form</a></i></td>
+    <td><i><a href="g-g.xhtml#genericfunctionlambdalist">generic function lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e7-7-26.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> <i><a href="g-m.xhtml#method">method</a></i> clause</td>
+    <td><i><a href="g-s.xhtml#specializedlambdalist">specialized lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e7-7-27.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a> <i><a href="g-f.xhtml#form">form</a></i></td>
+    <td><i><a href="g-s.xhtml#specializedlambdalist">specialized lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e5-3-61.xhtml#DictEntry_defsetf_447"><b>defsetf</b></a> <i><a href="g-f.xhtml#form">form</a></i></td>
+    <td><i><a href="g-d.xhtml#defsetflambdalist">defsetf lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e5-3-62.xhtml#DictEntry_define_setf__448"><b>define-setf-expander</b></a> <i><a href="g-f.xhtml#form">form</a></i>	</td>
+    <td><i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i>	</td>
+  </tr>
+  <tr>
+    <td><a href="e4-4-25.xhtml#DictEntry_deftype_360"><b>deftype</b></a> <i><a href="g-f.xhtml#form">form</a></i>			</td>
+    <td><i><a href="g-d.xhtml#deftypelambdalist">deftype lambda list</a></i>		</td>
+  </tr>
+  <tr>
+    <td><a href="e5-3-17.xhtml#DictEntry_destructurin_403"><b>destructuring-bind</b></a> <i><a href="g-f.xhtml#form">form</a></i>	</td>
+    <td><i><a href="g-d.xhtml#destructuringlambdalist">destructuring lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td>
+
+
+ <a href="e3-8-9.xhtml#DictEntry_define_compi_291"><b>define-compiler-macro</b></a> <i><a href="g-f.xhtml#form">form</a></i></td>
+    <td><i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i></td>
+  </tr>
+  <tr>
+    <td><a href="e5-3-60.xhtml#DictEntry_define_modif_446"><b>define-modify-macro</b></a> <i><a href="g-f.xhtml#form">form</a></i></td>
+    <td><i><a href="g-d.xhtml#definemodifymacrolambdalist">define-modify-macro lambda list</a></i></td>
+  </tr>
+</tbody></table>
+
+
+<p>
+The next figure lists some <i><a href="g-d.xhtml#definedname">defined names</a></i> that are applicable
+to <i><a href="g-l.xhtml#lambdalist">lambda lists</a></i>.
+
+</p><table id="fig-3-11" class="fig">
+<caption><span class="figlabel">Figure 3-11.</span> Defined names applicable to lambda lists</caption>
+
+  <tbody><tr>
+    <td>lambda-list-keywords</td>
+    <td>lambda-parameters-limit</td>
+    <td/>
+  </tr>
+</tbody></table>
+<section>
+<h3 id="SubSection_Ordinary_Lam_243"><span class="secno">3.4.1</span> Ordinary Lambda Lists</h3>
+<p>
+
+
+An <b><i>ordinary lambda list</i></b> is used to describe how a set of
+<i><a href="g-a.xhtml#argument">arguments</a></i> is received by an <i>ordinary</i> <i><a href="g-f.xhtml#function">function</a></i>.  
+The <i><a href="g-d.xhtml#definedname">defined names</a></i> in the next figure are those which use
+<i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda lists</a></i>:
+
+</p><table id="fig-3-12" class="fig">
+<caption><span class="figlabel">Figure 3-12.</span> Standardized Operators that use Ordinary Lambda Lists</caption>
+
+  <tbody><tr>
+    <td>define-method-combination</td>
+    <td>handler-case</td>
+    <td>restart-case</td>
+  </tr>
+  <tr>
+    <td>defun</td>
+    <td>labels</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>flet</td>
+    <td>lambda</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+An <i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i> can contain the <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> shown
+in the next figure.
+
+</p><table id="fig-3-13" class="fig">
+<caption><span class="figlabel">Figure 3-13.</span> Lambda List Keywords used by Ordinary Lambda Lists</caption>
+
+  <tbody><tr>
+    <td><a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a></td>
+    <td><a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a></td>
+    <td><a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a></td>
+  </tr>
+  <tr>
+    <td><a href="#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a></td>
+    <td><a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a></td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+Each <i><a href="g-e.xhtml#element">element</a></i> of a <i><a href="g-l.xhtml#lambdalist">lambda list</a></i> is either a parameter specifier
+or a <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keyword</a></i>.
+
+Implementations are free to provide additional <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i>.
+For a list of all <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i>
+used by the implementation, see <a href="e5-3-13.xhtml#DictEntry_lambda_list__399"><b>lambda-list-keywords</b></a>.
+
+</p><p>
+The syntax for <i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda lists</a></i> is as follows: 
+
+</p><p>
+
+
+lambda-list::= ({<i>var</i>}*<br/>
+		      <code>[</code><code>&amp;optional</code> <code>{</code><i>var</i> | 
+               (<i>var</i> <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup><code>]</code><br/>
+		      <code>[</code><code>&amp;rest</code> <i>var</i><code>]</code><br/>
+		      <code>[</code><code>&amp;key</code> <code>{</code><i>var</i> | 
+                        (<code>{</code><i>var</i> | 
+                                        (<i>keyword-name</i> <i>var</i>)<code>}</code> 
+                                <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup>
+				  
+				  [<code>&amp;allow-other-keys</code>]<code>]</code><br/>
+		      <code>[</code><code>&amp;aux</code> <code>{</code><i>var</i> | (<i>var</i> <i>[</i><i>init-form</i> <i>]</i>)<code>}</code><sup>*</sup><code>]</code>)<br/></p><p>
+
+A <i>var</i> or <i>supplied-p-parameter</i> must be a <i><a href="g-s.xhtml#symbol">symbol</a></i>
+that is not the name of a <i><a href="g-c.xhtml#constantvariable">constant variable</a></i>.
+
+</p><p>
+An <i>init-form</i> can be any <i><a href="g-f.xhtml#form">form</a></i>.
+
+Whenever any <i>init-form</i> is evaluated for any parameter
+specifier, that <i><a href="g-f.xhtml#form">form</a></i> may refer to any parameter variable to
+the left of the specifier in which the <i>init-form</i> appears,
+including any <i>supplied-p-parameter</i> variables, and may rely 
+on the fact that no other parameter variable has yet been bound
+(including its own parameter variable).
+
+</p><p>
+A <i>keyword-name</i> can be any <i><a href="g-s.xhtml#symbol">symbol</a></i>, 
+but by convention is normally a <i><a href="g-k.xhtml#keyword">keyword</a></i><sub>1</sub>;
+all <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-f.xhtml#function">functions</a></i> follow that convention.
+
+</p><p>
+
+An <i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i> has five parts, any or all of which may be empty.
+For information about the treatment of argument mismatches,
+see Section <a href="s3-5.xhtml#Section_Error_Checki_266">3.5 Error Checking in Function Calls</a>.
+</p>
+<section>
+<h4 id="SubSubSectio_Specifiers_f_244"><span class="secno">3.4.1.1</span> Specifiers for the required parameters</h4>
+<p>
+
+These are all the parameter specifiers up to 
+the first <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keyword</a></i>;
+if there are no <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i>, 
+then all the specifiers are for required parameters.
+Each required parameter is specified by a parameter variable <i>var</i>.
+<i>var</i> is bound as a lexical variable unless it is declared <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a>.
+
+</p><p>
+
+If there are <code>n</code> required parameters (<code>n</code> may be zero), 
+there must be at least <code>n</code> passed arguments, and the 
+required parameters are bound to the first <code>n</code> passed arguments;
+see Section <a href="s3-5.xhtml#Section_Error_Checki_266">3.5 Error Checking in Function Calls</a>.
+The other parameters are then processed using any remaining arguments.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Specifiers_f_245"><span class="secno">3.4.1.2</span> Specifiers for optional parameters</h4>
+<p>
+If <a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a> is present,
+the optional parameter specifiers are those following 
+<a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a> 
+up to the next <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keyword</a></i> or the end of the list.
+If optional parameters are specified, then each one is processed as
+follows.  If any unprocessed arguments remain, then the parameter variable
+<i>var</i> is bound to the next remaining argument, just as for a required
+parameter.  If no arguments remain, however, then <i>init-form</i> 
+is evaluated, and the parameter variable
+is bound to the resulting value 
+(or to <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> if no <i>init-form</i> appears
+in the parameter specifier).
+If another variable name <i>supplied-p-parameter</i> 
+appears in the specifier, it is bound
+to <i><a href="g-t.xhtml#true">true</a></i> if an argument had been available, and to <i><a href="g-f.xhtml#false">false</a></i> if no
+argument remained (and therefore <i>init-form</i> had to be evaluated).
+<i>Supplied-p-parameter</i>
+is bound not to an argument but to a value indicating whether or not
+an argument had been supplied for the corresponding <i>var</i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_A_specifier__246"><span class="secno">3.4.1.3</span> A specifier for a rest parameter</h4>
+<p>
+<a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a>, if present, must be followed by a single <i><a href="g-r.xhtml#restparameter">rest parameter</a></i>
+specifier, which in turn must be followed by another 
+<i><a href="g-l.xhtml#lambdalistkeyword">lambda list keyword</a></i> or the end of the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i>.  After all
+optional parameter specifiers have been processed, then there may or
+may not be a <i><a href="g-r.xhtml#restparameter">rest parameter</a></i>.  If there is a <i><a href="g-r.xhtml#restparameter">rest parameter</a></i>, it is
+bound to a <i><a href="g-l.xhtml#list">list</a></i> of all as-yet-unprocessed arguments.  If
+no unprocessed arguments remain, the <i><a href="g-r.xhtml#restparameter">rest parameter</a></i> is bound to the
+<i><a href="g-e.xhtml#emptylist">empty list</a></i>.  If there is no <i><a href="g-r.xhtml#restparameter">rest parameter</a></i> and there are no 
+<i><a href="g-k.xhtml#keywordparameter">keyword parameters</a></i>, then an error 
+
+
+should be signaled if
+any unprocessed arguments remain; see Section <a href="s3-5.xhtml#Section_Error_Checki_266">3.5 Error Checking in Function Calls</a>.
+The value of a <i><a href="g-r.xhtml#restparameter">rest parameter</a></i>
+is permitted, but not required, to share structure with the
+last argument to <a href="e5-3-1.xhtml#DictEntry_apply_387"><b>apply</b></a>.
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Specifiers_f_247"><span class="secno">3.4.1.4</span> Specifiers for keyword parameters</h4>
+<p>
+
+
+
+
+
+
+
+If <a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a> 
+is present, all specifiers up to the next <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keyword</a></i>
+or the end of the <i><a href="g-l.xhtml#list">list</a></i> are keyword parameter specifiers.
+When keyword parameters are processed,
+the same arguments are processed that
+would be made into a <i><a href="g-l.xhtml#list">list</a></i> for a <i><a href="g-r.xhtml#restparameter">rest parameter</a></i>.
+It is permitted to specify both <a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a> and <a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a>.
+In this case the remaining arguments are used for both purposes;
+that is, all remaining arguments are made into a <i><a href="g-l.xhtml#list">list</a></i> for the
+<i><a href="g-r.xhtml#restparameter">rest parameter</a></i>, and are also processed for the <a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a> parameters.
+
+If <a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a> is specified, there must remain
+an even number of arguments; see Section <a href="s3-5.xhtml#SubSubSectio_Odd_Number_o_274">3.5.1.6 Odd Number of Keyword Arguments</a>.
+
+These arguments are considered as pairs,
+the first argument in each pair being interpreted as a name
+and the second as the corresponding value.
+The first <i><a href="g-o.xhtml#object">object</a></i> of each pair must be a <i><a href="g-s.xhtml#symbol">symbol</a></i>;
+see Section <a href="s3-5.xhtml#SubSubSectio_Invalid_Keyw_273">3.5.1.5 Invalid Keyword Arguments</a>.
+The keyword parameter specifiers may optionally be followed by the
+<i><a href="g-l.xhtml#lambdalistkeyword">lambda list keyword</a></i> <a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a>.
+
+</p><p>
+
+In each keyword parameter specifier must be a name <i>var</i> for
+the parameter variable.
+
+If the <i>var</i> appears alone or in a <code>(<i>var</i> <i>init-form</i>)</code>
+combination, the keyword name used when matching <i><a href="g-a.xhtml#argument">arguments</a></i> to <i><a href="g-p.xhtml#parameter">parameters</a></i>
+is a <i><a href="g-s.xhtml#symbol">symbol</a></i> in the <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i> whose <i><a href="g-n.xhtml#name">name</a></i> is the
+<i><a href="g-s.xhtml#same">same</a></i> (under <a href="e16-2-10.xhtml#DictEntry_string_str_1029"><b>string=</b></a>) as <i>var</i>'s.
+If the notation <code>((<i>keyword-name</i> <i>var</i>) <i>init-form</i>)</code> is used,
+then the keyword name used to match <i><a href="g-a.xhtml#argument">arguments</a></i> to <i><a href="g-p.xhtml#parameter">parameters</a></i> is
+<i>keyword-name</i>, which may be a <i><a href="g-s.xhtml#symbol">symbol</a></i> in any <i><a href="g-p.xhtml#package">package</a></i>.
+(Of course, if it is not a <i><a href="g-s.xhtml#symbol">symbol</a></i> in the <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i>,
+it does not necessarily self-evaluate, so care must be taken when calling the function
+to make sure that normal evaluation still yields the keyword name.)
+
+Thus
+
+<b/></p><pre> (defun foo (&amp;key radix (type 'integer)) ...)
+</pre><p>
+means exactly the same as
+
+</p><pre> (defun foo (&amp;key ((:radix radix)) ((:type type) 'integer)) ...)
+</pre>
+
+<p>
+The keyword parameter specifiers are, like all parameter specifiers,
+effectively processed from left to right.  For each keyword parameter
+specifier, if there is an argument pair whose name matches that
+specifier's name (that is, the names are <a href="e5-3-33.xhtml#DictEntry_eq_419"><b>eq</b></a>), then the
+parameter variable for that specifier is bound to the second item (the
+value) of that argument pair.  If more than one such argument pair
+matches, the leftmost argument pair is used.  If no such argument pair
+exists, then the <i>init-form</i> for that specifier is evaluated and
+the parameter variable is bound to that value (or to <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> if no
+<i>init-form</i> was specified).  <i>supplied-p-parameter</i> is
+treated as for <a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a> parameters: it is bound to <i><a href="g-t.xhtml#true">true</a></i> if there
+was a matching argument pair, and to <i><a href="g-f.xhtml#false">false</a></i> otherwise.
+
+</p><p>
+
+Unless keyword argument checking is suppressed,
+an argument pair must a name matched by a parameter specifier;
+see Section <a href="s3-5.xhtml#SubSubSectio_Unrecognized_272">3.5.1.4 Unrecognized Keyword Arguments</a>.
+
+</p><p>
+If keyword argument checking is suppressed, 
+then it is permitted for an argument pair
+to match no parameter specifier, and the argument pair is ignored, but
+such an argument pair is accessible through the <i><a href="g-r.xhtml#restparameter">rest parameter</a></i> if
+one was supplied.  The purpose of these mechanisms is to allow sharing
+of argument lists among several <i><a href="g-l.xhtml#lambdaexpression">lambda expressions</a></i> and to
+allow either the caller or the called <i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i> to
+specify that such sharing may be taking place.
+
+</p><p>
+
+Note that if <a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a> is present, a keyword argument of <code>:allow-other-keys</code>
+is always permitted—regardless of whether the associated value is <i><a href="g-t.xhtml#true">true</a></i>
+or <i><a href="g-f.xhtml#false">false</a></i>.  However, if the value is <i><a href="g-f.xhtml#false">false</a></i>, other non-matching
+keywords are not tolerated (unless <a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a> was used).
+
+</p><p>
+Furthermore, if the receiving argument list specifies a regular argument which
+would be flagged by <code>:allow-other-keys</code>, then <code>:allow-other-keys</code> has both
+its special-cased meaning (identifying whether additional keywords are permitted)
+and its normal meaning (data flow into the function in question).
+
+
+</p>
+<section>
+<h5 id="SubSubSubSec_Suppressing__248"><span class="secno">3.4.1.4.1</span> Suppressing Keyword Argument Checking</h5>
+<p>
+
+
+
+If <a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a> was specified in the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i> of a <i><a href="g-f.xhtml#function">function</a></i>,
+<i><a href="g-k.xhtml#keyword">keyword</a></i><sub>2</sub> <i><a href="g-a.xhtml#argument">argument</a></i> checking is suppressed in calls
+to that <i><a href="g-f.xhtml#function">function</a></i>.
+
+</p><p>
+If the <code>:allow-other-keys</code> <i><a href="g-a.xhtml#argument">argument</a></i> is <i><a href="g-t.xhtml#true">true</a></i> in a call to a <i><a href="g-f.xhtml#function">function</a></i>,
+<i><a href="g-k.xhtml#keyword">keyword</a></i><sub>2</sub> <i><a href="g-a.xhtml#argument">argument</a></i> checking is suppressed 
+
+
+in that call.
+
+</p><p>
+The <code>:allow-other-keys</code> <i><a href="g-a.xhtml#argument">argument</a></i> is permissible in all situations involving
+<i><a href="g-k.xhtml#keyword">keyword</a></i><sub>2</sub> <i><a href="g-a.xhtml#argument">arguments</a></i>, even when its associated <i><a href="g-v.xhtml#value">value</a></i>
+is <i><a href="g-f.xhtml#false">false</a></i>.
+</p>
+<section>
+<h6 id="SubSubSubSub_Examples_of__249"><span class="secno">3.4.1.4.1.1</span> Examples of Suppressing Keyword Argument Checking</h6>
+<pre>;;; The caller can supply :ALLOW-OTHER-KEYS T to suppress checking.
+ ((lambda (&amp;key x) x) :x 1 :y 2 :allow-other-keys t) → 1
+;;; The callee can use &amp;ALLOW-OTHER-KEYS to suppress checking.
+ ((lambda (&amp;key x &amp;allow-other-keys) x) :x 1 :y 2) → 1
+;;; :ALLOW-OTHER-KEYS NIL is always permitted.
+ ((lambda (&amp;key) t) :allow-other-keys nil) →  T
+;;; As with other keyword arguments, only the left-most pair
+;;; named :ALLOW-OTHER-KEYS has any effect.
+ ((lambda (&amp;key x) x) 
+  :x 1 :y 2 :allow-other-keys t :allow-other-keys nil)
+→ 1
+;;; Only the left-most pair named :ALLOW-OTHER-KEYS has any effect,
+;;; so in safe code this signals a PROGRAM-ERROR (and might enter the
+;;; debugger).  In unsafe code, the consequences are undefined.
+ ((lambda (&amp;key x) x)                   ;This call is not valid
+  :x 1 :y 2 :allow-other-keys nil :allow-other-keys t)
+</pre>
+</section>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Specifiers_f_250"><span class="secno">3.4.1.5</span> Specifiers for &amp;aux variables</h4>
+<p>
+These are not really parameters.  If the <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keyword</a></i>
+<a href="#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a> is present, all specifiers after it are auxiliary variable
+specifiers.  After all parameter specifiers have been processed, the
+auxiliary variable specifiers (those following <code>&amp;aux</code>) are processed
+from left to right.  For each one, <i>init-form</i> is evaluated and
+<i>var</i> is bound to that value (or to <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> if no <i>init-form</i>
+was specified).  <a href="#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a> variable processing is analogous to
+<a href="e5-3-18.xhtml#DictEntry_let_let_404"><b>let*</b></a> processing.
+
+</p><pre> (lambda (x y &amp;aux (a (car x)) (b 2) c) (list x y a b c))
+    ==(lambda (x y) (let* ((a (car x)) (b 2) c) (list x y a b c)))
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Examples_of__251"><span class="secno">3.4.1.6</span> Examples of Ordinary Lambda Lists</h4>
+<p>
+
+Here are some examples involving <i><a href="g-o.xhtml#optionalparameter">optional parameters</a></i> and <i><a href="g-r.xhtml#restparameter">rest parameters</a></i>:
+
+</p><pre> ((lambda (a b) (+ a (* b 3))) 4 5) → 19
+ ((lambda (a &amp;optional (b 2)) (+ a (* b 3))) 4 5) → 19
+ ((lambda (a &amp;optional (b 2)) (+ a (* b 3))) 4) → 10
+ ((lambda (&amp;optional (a 2 b) (c 3 d) &amp;rest x) (list a b c d x)))
+→ (2 NIL 3 NIL NIL)
+ ((lambda (&amp;optional (a 2 b) (c 3 d) &amp;rest x) (list a b c d x)) 6)
+→ (6 T 3 NIL NIL)
+ ((lambda (&amp;optional (a 2 b) (c 3 d) &amp;rest x) (list a b c d x)) 6 3)
+→ (6 T 3 T NIL)
+ ((lambda (&amp;optional (a 2 b) (c 3 d) &amp;rest x) (list a b c d x)) 6 3 8)
+→ (6 T 3 T (8))
+ ((lambda (&amp;optional (a 2 b) (c 3 d) &amp;rest x) (list a b c d x))
+  6 3 8 9 10 11)
+→ (6 t 3 t (8 9 10 11))
+</pre>
+
+<p>
+Here are some examples involving <i><a href="g-k.xhtml#keywordparameter">keyword parameters</a></i>:
+
+</p><pre> ((lambda (a b &amp;key c d) (list a b c d)) 1 2) → (1 2 NIL NIL)
+ ((lambda (a b &amp;key c d) (list a b c d)) 1 2 :c 6) → (1 2 6 NIL)
+ ((lambda (a b &amp;key c d) (list a b c d)) 1 2 :d 8) → (1 2 NIL 8)
+ ((lambda (a b &amp;key c d) (list a b c d)) 1 2 :c 6 :d 8) → (1 2 6 8)
+ ((lambda (a b &amp;key c d) (list a b c d)) 1 2 :d 8 :c 6) → (1 2 6 8)
+ ((lambda (a b &amp;key c d) (list a b c d)) :a 1 :d 8 :c 6) → (:a 1 6 8)
+ ((lambda (a b &amp;key c d) (list a b c d)) :a :b :c :d) → (:a :b :d NIL)
+ ((lambda (a b &amp;key ((:sea c)) d) (list a b c d)) 1 2 :sea 6) → (1 2 6 NIL)
+ ((lambda (a b &amp;key ((c c)) d) (list a b c d)) 1 2 'c 6) → (1 2 6 NIL)
+</pre>
+
+<p>
+Here are some examples involving <i><a href="g-o.xhtml#optionalparameter">optional parameters</a></i>, <i><a href="g-r.xhtml#restparameter">rest parameters</a></i>,
+and <i><a href="g-k.xhtml#keywordparameter">keyword parameters</a></i> together:
+
+</p><pre> ((lambda (a &amp;optional (b 3) &amp;rest x &amp;key c (d a))
+    (list a b c d x)) 1)   
+→ (1 3 NIL 1 ()) 
+ ((lambda (a &amp;optional (b 3) &amp;rest x &amp;key c (d a))
+    (list a b c d x)) 1 2)
+→ (1 2 NIL 1 ())
+ ((lambda (a &amp;optional (b 3) &amp;rest x &amp;key c (d a))
+    (list a b c d x)) :c 7)
+→ (:c 7 NIL :c ())
+ ((lambda (a &amp;optional (b 3) &amp;rest x &amp;key c (d a))
+    (list a b c d x)) 1 6 :c 7)
+→ (1 6 7 1 (:c 7))
+ ((lambda (a &amp;optional (b 3) &amp;rest x &amp;key c (d a))
+    (list a b c d x)) 1 6 :d 8)
+→ (1 6 NIL 8 (:d 8))
+ ((lambda (a &amp;optional (b 3) &amp;rest x &amp;key c (d a))
+    (list a b c d x)) 1 6 :d 8 :c 9 :d 10)
+→ (1 6 9 8 (:d 8 :c 9 :d 10))
+</pre>
+
+<p>
+
+As an example of the use of <a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a> and
+<code>:allow-other-keys</code>, consider a <i><a href="g-f.xhtml#function">function</a></i> that takes two named
+arguments of its own and also accepts additional named arguments to be
+passed to <a href="e15-2-7.xhtml#DictEntry_make_array_985"><b>make-array</b></a>:
+
+</p><pre> (defun array-of-strings (str dims &amp;rest named-pairs
+                          &amp;key (start 0) end &amp;allow-other-keys)
+   (apply #'make-array dims
+          :initial-element (subseq str start end)
+          :allow-other-keys t
+          named-pairs))
+</pre>
+
+<p>
+This <i><a href="g-f.xhtml#function">function</a></i> takes a <i><a href="g-s.xhtml#string">string</a></i> and dimensioning
+information and returns an <i><a href="g-a.xhtml#array">array</a></i> of the specified
+dimensions, each of whose elements is the specified 
+<i><a href="g-s.xhtml#string">string</a></i>.  However, <code>:start</code> and <code>:end</code> named
+arguments may be used to specify that a substring of the given
+<i><a href="g-s.xhtml#string">string</a></i> should be used.  In addition, the presence of
+<a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a> in the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i> indicates that the
+caller may supply additional named arguments; the <i><a href="g-r.xhtml#restparameter">rest parameter</a></i>
+provides access to them.  These additional named arguments are passed
+to <a href="e15-2-7.xhtml#DictEntry_make_array_985"><b>make-array</b></a>.  The <i><a href="g-f.xhtml#function">function</a></i> <a href="e15-2-7.xhtml#DictEntry_make_array_985"><b>make-array</b></a>
+normally does not allow the named arguments <code>:start</code> 
+and <code>:end</code> to be used, and an error should be
+signaled if such named arguments are supplied to <a href="e15-2-7.xhtml#DictEntry_make_array_985"><b>make-array</b></a>.
+However, the presence in the call to <a href="e15-2-7.xhtml#DictEntry_make_array_985"><b>make-array</b></a> 
+of the named argument <code>:allow-other-keys</code> with
+a <i><a href="g-t.xhtml#true">true</a></i> value causes any extraneous named arguments, including
+<code>:start</code> and <code>:end</code>, to be acceptable and ignored.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Generic_Func_252"><span class="secno">3.4.2</span> Generic Function Lambda Lists</h3>
+<p>
+
+
+A <b><i>generic function lambda list</i></b> is used to describe the overall shape of
+the argument list to be accepted by a <i><a href="g-g.xhtml#genericfunction">generic function</a></i>.
+Individual <i><a href="g-m.xhtml#method">method</a></i> <i><a href="g-s.xhtml#signature">signatures</a></i> might contribute additional 
+<i><a href="g-k.xhtml#keywordparameter">keyword parameters</a></i> to the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i> of the <i><a href="g-e.xhtml#effectivemethod">effective method</a></i>.
+
+</p><p>
+
+A <i><a href="g-g.xhtml#genericfunctionlambdalist">generic function lambda list</a></i> is used by <a href="e7-7-26.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a>.
+</p><p>
+A <i><a href="g-g.xhtml#genericfunctionlambdalist">generic function lambda list</a></i> has the following syntax:
+
+</p><p>
+
+
+lambda-list::= ({<i>var</i>}*<br/>
+		      <code>[</code><code>&amp;optional</code> <code>{</code><i>var</i> | (<i>var</i>)<code>}</code><sup>*</sup><code>]</code><br/>
+		      <code>[</code><code>&amp;rest</code> <i>var</i><code>]</code><br/>
+		      <code>[</code><code>&amp;key</code> <code>{</code><i>var</i> | (<code>{</code><i>var</i> | 
+                                                  (<i>keyword-name</i> <i>var</i>)<code>}</code>)<code>}</code><sup>*</sup>
+				  
+				  [<code>&amp;allow-other-keys</code>]<code>]</code>)<br/></p><p>
+A <i><a href="g-g.xhtml#genericfunctionlambdalist">generic function lambda list</a></i> can contain the <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> shown
+in the next figure.
+
+</p><table id="fig-3-14" class="fig">
+<caption><span class="figlabel">Figure 3-14.</span> Lambda List Keywords used by Generic Function Lambda Lists</caption>
+
+  <tbody><tr>
+    <td><a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a></td>
+    <td><a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a></td>
+    <td/>
+  </tr>
+  <tr>
+    <td><a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a></td>
+    <td><a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a></td>
+    <td/>
+
+  </tr>
+</tbody></table>
+
+
+<p>
+A <i><a href="g-g.xhtml#genericfunctionlambdalist">generic function lambda list</a></i> differs from an <i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i> 
+in the following ways:
+
+</p><ul>
+<li><b>Required arguments</b>
+
+<p>
+
+
+
+Zero or more <i><a href="g-r.xhtml#requiredparameter">required parameters</a></i> must be specified.
+
+</p></li><li><b>Optional and keyword arguments</b>
+
+<p>
+<i><a href="g-o.xhtml#optionalparameter">Optional parameters</a></i> and <i><a href="g-k.xhtml#keywordparameter">keyword parameters</a></i> may not have 
+default initial value forms nor use supplied-p parameters.
+
+</p></li><li><b>Use of <a href="#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a></b>
+
+<p>
+The use of <a href="#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a> is not allowed. 
+</p></li></ul>
+</section>
+<section>
+<h3 id="SubSection_Specialized__253"><span class="secno">3.4.3</span> Specialized Lambda Lists</h3>
+<p>
+
+
+A <b><i>specialized lambda list</i></b> is used to <i><a href="g-s.xhtml#specialize">specialize</a></i> a <i><a href="g-m.xhtml#method">method</a></i>
+for a particular <i><a href="g-s.xhtml#signature">signature</a></i> and to describe how <i><a href="g-a.xhtml#argument">arguments</a></i> matching
+that <i><a href="g-s.xhtml#signature">signature</a></i> are received by the <i><a href="g-m.xhtml#method">method</a></i>.  
+The <i><a href="g-d.xhtml#definedname">defined names</a></i> in the next figure use <i><a href="g-s.xhtml#specializedlambdalist">specialized lambda lists</a></i>
+in some way; see the dictionary entry for each for information about how.
+
+</p><table id="fig-3-15" class="fig">
+<caption><span class="figlabel">Figure 3-15.</span> Standardized Operators that use Specialized Lambda Lists</caption>
+
+  <tbody><tr>
+    <td>defmethod</td>
+    <td>defgeneric</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+
+
+<p>
+A <i><a href="g-s.xhtml#specializedlambdalist">specialized lambda list</a></i> can contain the <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> shown
+in the next figure.
+
+</p><table id="fig-3-16" class="fig">
+<caption><span class="figlabel">Figure 3-16.</span> Lambda List Keywords used by Specialized Lambda Lists</caption>
+
+  <tbody><tr>
+    <td><a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a></td>
+    <td><a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a></td>
+    <td><a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a></td>
+  </tr>
+  <tr>
+    <td><a href="#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a></td>
+    <td><a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a></td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+A <i><a href="g-s.xhtml#specializedlambdalist">specialized lambda list</a></i> is syntactically the same as an <i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i>
+except that each <i><a href="g-r.xhtml#requiredparameter">required parameter</a></i> may optionally be associated with a <i><a href="g-c.xhtml#class">class</a></i>
+or <i><a href="g-o.xhtml#object">object</a></i> for which that <i><a href="g-p.xhtml#parameter">parameter</a></i> is <i><a href="g-s.xhtml#specialized">specialized</a></i>.
+
+</p><table>
+<tbody><tr><td>
+lambda-list::= </td><td>(<code>{</code><i>var</i> | 
+(<i>var</i> [<i>specializer</i>])<sup>*</sup><br/>
+		     <code>[</code><code>&amp;optional</code> <code>{</code><i>var</i> | 
+               (<i>var</i> <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup><code>]</code><br/>
+		     <code>[</code><code>&amp;rest</code> <i>var</i><code>]</code><br/>
+		     <code>[</code><code>&amp;key</code> <code>{</code><i>var</i> | 
+                        (<code>{</code><i>var</i> | 
+                                        (<i>keyword-name</i> <i>var</i>)<code>}</code> 
+                                <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup> [<code>&amp;allow-other-keys</code>]<code>]</code><br/>
+		     <code>[</code><code>&amp;aux</code> <code>{</code><i>var</i> | (<i>var</i> <i>[</i><i>init-form</i> <i>]
+</i>)<code>}</code><sup>*</sup><code>]</code>)<br/></td></tr></tbody></table>
+</section>
+<section>
+<h3 id="SubSection_Macro_Lambda_254"><span class="secno">3.4.4</span> Macro Lambda Lists</h3>
+<p>
+
+
+A <b><i>macro lambda list</i></b> is used in describing <i><a href="g-m.xhtml#macro">macros</a></i> 
+defined by the <i><a href="g-o.xhtml#operator">operators</a></i> in the next figure.
+
+</p><table id="fig-3-17" class="fig">
+<caption><span class="figlabel">Figure 3-17.</span> Operators that use Macro Lambda Lists</caption>
+
+  <tbody><tr>
+    <td>define-compiler-macro</td>
+    <td>defmacro</td>
+    <td>macrolet</td>
+  </tr>
+  <tr>
+    <td>define-setf-expander</td>
+    <td/>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+With the additional restriction that
+an <i><a href="g-e.xhtml#environmentparameter">environment parameter</a></i> may appear only once
+(at any of the positions indicated),
+a <i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i> has the following syntax:
+
+</p><table>
+<tbody><tr><td>
+reqvars::= </td><td><code>{</code><i>var</i> | 
+↓<i>pattern</i><code>}</code></td></tr>
+</tbody></table>
+<table>
+<tbody><tr><td>
+optvars::= </td><td><code>[</code><code>&amp;optional</code> <code>{</code><i>var</i> | 
+(<code>{</code><i>var</i> | ↓<i>pattern</i><code>}</code> <i>[</i>init-form [supplied-p-parameter <i>]
+</i>])<code>}</code><sup>*</sup><code>]</code></td></tr>
+</tbody></table>
+<table>
+<tbody><tr><td>
+restvar::= </td><td><code>[</code><code>{</code><code>&amp;rest</code> | <code>&amp;body</code><code>}</code> <code>]</code><code>{</code><i>var</i> | 
+↓<i>pattern</i><code>}</code></td></tr>
+</tbody></table>
+<table>
+<tbody><tr><td>
+keyvars::= </td><td>[<code>&amp;key</code> <code>{</code><i>var</i> | 
+(<code>{</code><i>var</i> | (<i>keyword-name</i><code>{</code><i>var</i> | 
+↓<i>pattern</i><code>}</code> )<code>}</code> 
+<i>[</i>init-form [supplied-p-parameter <i>]
+</i>])<code>}</code><sup>*</sup></td></tr>
+<tr><td/><td>[<code>&amp;allow-other-keys</code>]]</td></tr>
+</tbody></table>
+<table>
+<tbody><tr><td>
+auxvars::= </td><td><code>[</code><code>&amp;aux</code> <code>{</code><i>var</i> | (<i>var</i> <i>[</i><i>init-form</i> <i>]
+</i>)<code>}</code><sup>*</sup><code>]</code></td></tr>
+</tbody></table>
+<table>
+<tbody><tr><td>
+envvar::= </td><td><code>[</code><code>&amp;environment</code> <i>var</i><code>]</code></td></tr>
+</tbody></table>
+<table>
+<tbody><tr><td>
+wholevar::= </td><td><code>[</code><code>&amp;whole</code> <i>var</i><code>]</code></td></tr>
+</tbody></table>
+<table>
+<tbody><tr><td>
+lambda-list::= </td><td>(↓wholevar ↓envvar
+ ↓reqvars  ↓envvar
+ ↓optvars  ↓envvar</td></tr>
+<tr><td/><td>↓restvar  ↓envvar
+ ↓keyvars  ↓envvar
+ ↓auxvars  ↓envvar) |</td></tr>
+<tr><td/><td>(↓wholevar ↓envvar
+ ↓reqvars  ↓envvar
+ ↓optvars  ↓envvar <code>.</code>
+ <i>var</i>)</td></tr></tbody></table>
+<table>
+<tbody><tr><td>
+pattern::= </td>
+<td>(↓wholevar↓reqvars↓optvars↓restvar↓keyvars↓auxvars) |</td></tr>
+<tr><td/><td>(↓wholevar ↓reqvars ↓optvars <code>.</code>
+<i>var</i>)</td></tr></tbody></table>
+
+
+
+<p>
+A <i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i> can contain
+the <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> shown in the next figure.
+
+</p><table id="fig-3-18" class="fig">
+<caption><span class="figlabel">Figure 3-18.</span> Lambda List Keywords used by Macro Lambda Lists</caption>
+
+  <tbody><tr>
+    <td><a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a></td>
+    <td><a href="#SubSection_Macro_Lambda_254"><b>&amp;environment</b></a></td>
+    <td><a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a></td>
+  </tr>
+  <tr>
+    <td><a href="#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a></td>
+    <td><a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a></td>
+    <td><a href="#SubSection_Macro_Lambda_254"><b>&amp;whole</b></a></td>
+  </tr>
+  <tr>
+    <td><a href="#SubSection_Macro_Lambda_254"><b>&amp;body</b></a></td>
+    <td><a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a></td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+<i><a href="g-o.xhtml#optionalparameter">Optional parameters</a></i> (introduced by <a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a>) and
+<i><a href="g-k.xhtml#keywordparameter">keyword parameters</a></i> (introduced by <a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a>)
+can be supplied in a <i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i>,
+just as in an <i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i>.
+Both may contain default initialization forms and <i><a href="g-s.xhtml#suppliedpparameter">supplied-p parameters</a></i>.
+
+</p><p>
+
+<a href="#SubSection_Macro_Lambda_254"><b>&amp;body</b></a>
+is identical in function to <a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a>,
+but it can be used to inform certain output-formatting 
+and editing functions that the remainder of the <i><a href="g-f.xhtml#form">form</a></i> is
+treated as a body, and should be indented accordingly.
+Only one of <a href="#SubSection_Macro_Lambda_254"><b>&amp;body</b></a> or <a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a> can be used at any particular level; 
+see Section <a href="#SubSubSectio_Destructurin_255">3.4.4.1 Destructuring by Lambda Lists</a>.
+
+<a href="#SubSection_Macro_Lambda_254"><b>&amp;body</b></a> can appear at any level of a 
+<i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i>; 
+for details, see Section <a href="#SubSubSectio_Destructurin_255">3.4.4.1 Destructuring by Lambda Lists</a>.
+
+
+</p><p>
+
+<a href="#SubSection_Macro_Lambda_254"><b>&amp;whole</b></a>
+is followed by a single variable that is bound to the
+entire macro-call form; this is the value that the <i><a href="g-m.xhtml#macrofunction">macro function</a></i>
+receives as its first argument.
+
+
+If <a href="#SubSection_Macro_Lambda_254"><b>&amp;whole</b></a> and a following variable appear,
+they must appear first in <i>lambda-list</i>,
+
+before any other parameter or <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keyword</a></i>.
+
+<a href="#SubSection_Macro_Lambda_254"><b>&amp;whole</b></a> can appear at any level of a <i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i>. 
+At inner levels, the <a href="#SubSection_Macro_Lambda_254"><b>&amp;whole</b></a> variable is bound to
+		the corresponding part of the argument, 
+as with <a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a>, but unlike <a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a>, other arguments are also allowed.
+The use of <a href="#SubSection_Macro_Lambda_254"><b>&amp;whole</b></a> does not affect the pattern of arguments
+     specified.
+
+
+
+
+</p><p>
+
+<a href="#SubSection_Macro_Lambda_254"><b>&amp;environment</b></a>
+is followed by a single variable that is bound
+to an <i><a href="g-e.xhtml#environment">environment</a></i> representing the <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> in which the
+macro call is to be interpreted.
+This <i><a href="g-e.xhtml#environment">environment</a></i> 
+
+
+
+should be used with
+
+<a href="e3-8-11.xhtml#DictEntry_macro_functi_293"><b>macro-function</b></a>,
+
+
+
+<a href="e5-3-63.xhtml#DictEntry_get_setf_exp_449"><b>get-setf-expansion</b></a>,
+
+
+
+
+
+
+
+
+<a href="e3-8-8.xhtml#DictEntry_compiler_mac_290"><b>compiler-macro-function</b></a>, 
+
+
+and
+<a href="e3-8-12.xhtml#DictEntry_macroexpand_294"><b>macroexpand</b></a> 
+(for example) in computing the expansion of the macro, to ensure that any
+<i><a href="g-l.xhtml#lexicalbinding">lexical bindings</a></i> or definitions established in the 
+<i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> are taken into account.
+
+<a href="#SubSection_Macro_Lambda_254"><b>&amp;environment</b></a> can only appear at the top level of a
+	<i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i>, and can only
+appear once, but can appear anywhere in that list;
+
+
+the <a href="#SubSection_Macro_Lambda_254"><b>&amp;environment</b></a> <i><a href="g-p.xhtml#parameter">parameter</a></i> is <i><a href="g-b.xhtml#bound">bound</a></i> along with <a href="#SubSection_Macro_Lambda_254"><b>&amp;whole</b></a>
+before any other <i><a href="g-v.xhtml#variable">variables</a></i> in the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i>, regardless of where
+<a href="#SubSection_Macro_Lambda_254"><b>&amp;environment</b></a> appears in the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i>.
+
+
+The <i><a href="g-o.xhtml#object">object</a></i> that is bound to the
+<i><a href="g-e.xhtml#environmentparameter">environment parameter</a></i> has <i><a href="g-d.xhtml#dynamicextent">dynamic extent</a></i>.
+
+
+
+</p><p>
+
+Destructuring allows a <i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i> to express
+the structure of a macro call syntax.
+If no <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> appear,
+then the <i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i> is a <i><a href="g-t.xhtml#tree">tree</a></i>
+containing parameter names at the leaves.
+
+The pattern and the <i><a href="g-m.xhtml#macroform">macro form</a></i> must have compatible <i><a href="g-t.xhtml#treestructure">tree structure</a></i>; 
+that is, their <i><a href="g-t.xhtml#treestructure">tree structure</a></i> must be equivalent,
+or it must differ only in that some <i>leaves</i> of the pattern
+match <i><a href="g-n.xhtml#nonatomic">non-atomic</a></i> <i><a href="g-o.xhtml#object">objects</a></i> of the <i><a href="g-m.xhtml#macroform">macro form</a></i>.
+
+For information about error detection in this <i><a href="g-s.xhtml#situation">situation</a></i>,
+see Section <a href="s3-5.xhtml#SubSubSectio_Destructurin_275">3.5.1.7 Destructuring Mismatch</a>.
+
+
+</p><p>
+
+
+
+
+A destructuring <i><a href="g-l.xhtml#lambdalist">lambda list</a></i>
+(whether at top level or embedded) 
+
+can
+be dotted, ending
+in a parameter name.  This situation is treated exactly as if the
+parameter name that ends the <i><a href="g-l.xhtml#list">list</a></i> had appeared preceded by <a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a>.
+
+</p><p>
+
+It is permissible for a <i><a href="g-m.xhtml#macro">macro</a></i> <i><a href="g-f.xhtml#form">form</a></i> (or a <i><a href="g-s.xhtml#subexpression">subexpression</a></i> of a
+<i><a href="g-m.xhtml#macro">macro</a></i> <i><a href="g-f.xhtml#form">form</a></i>)
+to be a <i><a href="g-d.xhtml#dottedlist">dotted list</a></i> 
+only  when <code>(... &amp;rest var)</code> or <code>(... . var)</code> is used to match
+ it. It is the responsibility of the <i><a href="g-m.xhtml#macro">macro</a></i> to recognize and deal
+ with such situations.
+
+
+</p>
+<section>
+<h4 id="SubSubSectio_Destructurin_255"><span class="secno">3.4.4.1</span> Destructuring by Lambda Lists</h4>
+<p>
+
+
+
+
+Anywhere in a <i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i> where a parameter
+name can appear, and where <i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i> syntax
+(as described in Section <a href="#SubSection_Ordinary_Lam_243">3.4.1 Ordinary Lambda Lists</a>) does not 
+otherwise allow a <i><a href="g-l.xhtml#list">list</a></i>, a <i><a href="g-d.xhtml#destructuringlambdalist">destructuring lambda list</a></i> 
+can appear in place
+of the parameter name.  When this is done, then the argument 
+that would match the parameter is treated as a (possibly dotted) <i><a href="g-l.xhtml#list">list</a></i>,
+to be used as an argument list for satisfying the
+parameters in the embedded <i><a href="g-l.xhtml#lambdalist">lambda list</a></i>.
+This is known as destructuring.
+
+</p><p>
+Destructuring is the process of decomposing a compound <i><a href="g-o.xhtml#object">object</a></i> into
+its component parts, using an abbreviated, declarative syntax, rather
+than writing it out by hand using the primitive component-accessing
+functions.  Each component part is bound to a variable.
+
+
+</p><p>
+A destructuring operation requires an <i><a href="g-o.xhtml#object">object</a></i> to be decomposed, 
+a pattern that specifies what components are to be extracted, and the names
+of the variables whose values are to be the components.
+</p>
+<section>
+<h5 id="SubSubSubSec_Data_directe_256"><span class="secno">3.4.4.1.1</span> Data-directed Destructuring by Lambda Lists</h5>
+<p>
+
+In data-directed destructuring,
+the pattern is a sample <i><a href="g-o.xhtml#object">object</a></i> of the <i><a href="g-t.xhtml#type">type</a></i> to be decomposed.
+Wherever a component is to be extracted, 
+a <i><a href="g-s.xhtml#symbol">symbol</a></i> appears in the pattern; 
+this <i><a href="g-s.xhtml#symbol">symbol</a></i> is the name of the variable whose value will be that component.
+</p>
+<section>
+<h6 id="SubSubSubSub_Examples_of__257"><span class="secno">3.4.4.1.1.1</span> Examples of Data-directed Destructuring by Lambda Lists</h6>
+<p>
+
+An example pattern is
+
+</p><p>
+<code>	(a b c)</code>
+
+</p><p>
+which destructures a list of three elements.  The variable <code>a</code> is assigned
+to the first element, <code>b</code> to the second, etc.  A more complex example
+is
+
+</p><p>
+<code>	((first . rest) . more)</code>
+
+</p><p>
+The important features of data-directed destructuring are its syntactic
+simplicity and the ability to extend it to lambda-list-directed destructuring.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h5 id="SubSubSubSec_Lambda_list__258"><span class="secno">3.4.4.1.2</span> Lambda-list-directed Destructuring by Lambda Lists</h5>
+<p>
+
+An extension of data-directed destructuring of <i><a href="g-t.xhtml#tree">trees</a></i> is
+lambda-list-directed destructuring.  This derives from the analogy
+between the three-element destructuring pattern
+
+</p><p>
+<code>	(first second third)</code>
+
+</p><p>
+and the three-argument <i><a href="g-l.xhtml#lambdalist">lambda list</a></i>
+
+</p><p>
+<code>	(first second third)</code>
+
+</p><p>
+Lambda-list-directed destructuring is identical to data-directed destructuring
+if no <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> appear in the pattern.  
+Any list in the pattern (whether a sub-list or the whole pattern itself)
+that contains a <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keyword</a></i> is interpreted specially.
+Elements of the list to the left of the first
+<i><a href="g-l.xhtml#lambdalistkeyword">lambda list keyword</a></i> are treated as destructuring patterns, as usual, but the
+remaining elements of the list are treated like a function's 
+<i><a href="g-l.xhtml#lambdalist">lambda list</a></i>
+except that where a variable would normally be required, an arbitrary
+destructuring pattern is allowed.  Note that in case of ambiguity,
+<i><a href="g-l.xhtml#lambdalist">lambda list</a></i> syntax is preferred over destructuring syntax.  Thus, after
+<a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a> a list of elements is a list of a destructuring pattern
+and a default value form.
+
+</p><p>
+The detailed behavior of each <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keyword</a></i> in a 
+lambda-list-directed destructuring
+pattern is as follows:
+
+</p><ul>
+<li><a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a>
+
+<p>
+Each following element is a variable or a list of a destructuring
+pattern, a default value form, and a supplied-p variable.  The default value and
+the supplied-p variable can be omitted.  
+If the list being destructured ends
+early, so that it does not have an element to match against this destructuring
+(sub)-pattern, the default form is evaluated and destructured instead.  The
+supplied-p variable receives the value 
+<a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> if the default form is used, <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a> otherwise.
+
+</p></li><li><a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a>, <a href="#SubSection_Macro_Lambda_254"><b>&amp;body</b></a>
+
+<p>
+The next element is a destructuring pattern that matches the
+rest of the list.  <a href="#SubSection_Macro_Lambda_254"><b>&amp;body</b></a> is identical to <a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a> but declares that what
+is being matched is a list of forms that constitutes the body of <i><a href="g-f.xhtml#form">form</a></i>.
+This next element must be the last unless a <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keyword</a></i> follows it.
+
+</p></li><li><a href="#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a> 
+
+<p>
+The remaining elements are not destructuring patterns at all, but are
+auxiliary variable bindings.  
+
+
+
+</p></li><li><a href="#SubSection_Macro_Lambda_254"><b>&amp;whole</b></a>
+
+<p>
+The next element is a destructuring pattern that matches the entire
+form in a macro, or the entire <i><a href="g-s.xhtml#subexpression">subexpression</a></i> at inner levels.
+
+
+
+</p></li><li><a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a>
+
+<p>
+Each following element is one of
+</p><ul>
+
+<li>
+ a <i><a href="g-v.xhtml#variable">variable</a></i>,
+
+</li><li>or
+ a list of a variable,
+           an optional initialization form,
+       and an optional supplied-p variable.
+
+</li><li>or
+ a list of a list of a keyword and a destructuring pattern,
+           an optional initialization form,
+       and an optional supplied-p variable.
+</li></ul>
+The rest of the list being destructured
+is taken to be alternating keywords and values and is taken apart appropriately.
+
+</li><li><a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a>
+
+<p>
+Stands by itself.
+</p></li></ul>
+</section>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Destructurin_259"><span class="secno">3.4.5</span> Destructuring Lambda Lists</h3>
+<p>
+
+
+A <b><i>destructuring lambda list</i></b> is used by <a href="e5-3-17.xhtml#DictEntry_destructurin_403"><b>destructuring-bind</b></a>.
+
+</p><p>
+<i><a href="g-d.xhtml#destructuringlambdalist">Destructuring lambda lists</a></i> are closely related to 
+<i><a href="g-m.xhtml#macrolambdalist">macro lambda lists</a></i>; see Section <a href="#SubSection_Macro_Lambda_254">3.4.4 Macro Lambda Lists</a>.
+A <i><a href="g-d.xhtml#destructuringlambdalist">destructuring lambda list</a></i> can contain all of the
+<i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> listed for <i><a href="g-m.xhtml#macrolambdalist">macro lambda lists</a></i>
+except for <a href="#SubSection_Macro_Lambda_254"><b>&amp;environment</b></a>, and supports destructuring in the
+same way.  Inner <i><a href="g-l.xhtml#lambdalist">lambda lists</a></i> nested within a <i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i>
+have the syntax of <i><a href="g-d.xhtml#destructuringlambdalist">destructuring lambda lists</a></i>.
+
+</p><p>
+A <i><a href="g-d.xhtml#destructuringlambdalist">destructuring lambda list</a></i> has the following syntax:
+
+</p><p>
+
+
+
+reqvars::= <code>{</code><i>var</i> | 
+↓<i>lambda-list</i><code>}</code><sup>*</sup></p><p>
+
+optvars::= <code>[</code><code>&amp;optional</code> <code>{</code><i>var</i> | 
+                         (<i>var</i> <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup><code>]</code></p><p>
+
+restvar::= <code>[</code><code>{</code><code>&amp;rest</code> | <code>&amp;body</code><code>}</code> <code>{</code><i>var</i> | 
+                         ↓<i>lambda-list</i><code>}</code><code>]</code></p><p>
+
+keyvars::= <code>[</code><code>&amp;key</code> <code>{</code><i>var</i> | 
+                         (<code>{</code><i>var</i> | (<i>keyword-name</i> <i>var</i>)<code>}</code> 
+                         <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup>[<code>&amp;
+                         allow-other-keys</code>]<code>]</code></p><p>
+
+auxvars::= <code>[</code><code>&amp;aux</code> <code>{</code><i>var</i> | (<i>var</i> <i>[</i><i>init-form</i> <i>]</i>)<code>}</code><sup>*</sup><code>]</code></p><p>
+
+envvar::= <code>[</code><code>&amp;environment</code> <i>var</i><code>]</code></p><p>
+
+
+wholevar::= <code>[</code><code>&amp;whole</code> <i>var</i><code>]</code></p><p>
+
+lambda-list::= (↓wholevar
+        ↓reqvars
+        ↓optvars
+        ↓restvar
+        ↓keyvars
+        ↓auxvars) |<br/>
+ (↓wholevar ↓reqvars ↓optvars <code>.</code>
+
+	 <i>var</i>)</p>
+</section>
+<section>
+<h3 id="SubSection_Boa_Lambda_L_260"><span class="secno">3.4.6</span> Boa Lambda Lists</h3>
+<p>
+
+
+A <b><i>boa lambda list</i></b> is a <i><a href="g-l.xhtml#lambdalist">lambda list</a></i> that is syntactically 
+like an <i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i>, but that is processed in
+"<b>b</b>y <b>o</b>rder of <b>a</b>rgument" style.
+
+</p><p>
+A <i><a href="g-b.xhtml#boalambdalist">boa lambda list</a></i> is used only in a <a href="e8-1-1.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> <i><a href="g-f.xhtml#form">form</a></i>,
+when explicitly specifying the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i> 
+of a constructor <i><a href="g-f.xhtml#function">function</a></i> (sometimes called a "boa constructor").
+
+</p><p>
+
+The <a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a>, <a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a>, <a href="#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a>,
+
+<a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a>, and <a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a>
+
+<i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> are recognized in a <i><a href="g-b.xhtml#boalambdalist">boa lambda list</a></i>.
+The way these <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> differ from their
+use in an <i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i> follows.
+
+</p><p>
+Consider this example, which describes how <b>destruct</b> processes
+its <code>:constructor</code> option.
+
+</p><pre> (:constructor create-foo
+         (a &amp;optional b (c 'sea) &amp;rest d &amp;aux e (f 'eff)))
+</pre>
+
+<p>
+This defines <code>create-foo</code> to be a constructor of one or more arguments.
+The first argument is used to initialize the <code>a</code> slot.  The second
+argument is used to initialize the <code>b</code> slot.  If there isn't any
+second argument, then the default value given in the body of the
+<a href="e8-1-1.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> (if given) is used instead.  
+The third argument is used to
+initialize the <code>c</code> slot.  If there isn't any third argument, then the
+symbol <code>sea</code> is used instead.  Any arguments following the third
+argument are collected into a <i><a href="g-l.xhtml#list">list</a></i> 
+and used to initialize the <code>d</code>
+slot.  If there are three or fewer arguments, then <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is placed in
+the <code>d</code> slot.  The <code>e</code> slot is not initialized; 
+its initial value is <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>.
+Finally, the <code>f</code> slot is initialized to contain the symbol <code>eff</code>.
+
+<a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a> and <a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a> arguments default
+in a manner similar to that of <a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a> arguments: if no default
+is supplied in the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i> then the default value 
+given in the body of the <a href="e8-1-1.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> (if given) is used instead.
+For example:
+
+</p><pre> (defstruct (foo (:constructor CREATE-FOO (a &amp;optional b (c 'sea)
+                                             &amp;key (d 2)
+                                             &amp;aux e (f 'eff))))
+   (a 1) (b 2) (c 3) (d 4) (e 5) (f 6))
+ 
+ (create-foo 10) → #S(FOO A 10 B 2 C SEA D 2 E <i>implemention-dependent</i> F EFF)
+ (create-foo 10 'bee 'see :d 'dee) 
+→ #S(FOO A 10 B BEE C SEE D DEE E <i>implemention-dependent</i> F EFF)
+</pre>
+
+<p>
+If keyword arguments of the form 
+<code>((<i>key</i> <i>var</i>) [<i>default</i> [<i>svar</i>]])</code>
+are specified, the <i><a href="g-s.xhtml#slot">slot</a></i> <i><a href="g-n.xhtml#name">name</a></i> is matched with <i>var</i> 
+(not <i>key</i>).
+
+</p><p>
+
+The actions taken in the <code>b</code> and <code>e</code> cases were carefully
+chosen to allow the user to specify all possible behaviors. 
+The <a href="#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a> variables can be used to completely override the default
+initializations given in the body.
+
+</p><p>
+
+If no default value is supplied for an <i><a href="g-a.xhtml#auxvariable">aux variable</a></i> variable,
+the consequences are undefined if an attempt is later made to read
+the corresponding <i><a href="g-s.xhtml#slot">slot</a></i>'s value before a value is explicitly assigned.
+If such a <i><a href="g-s.xhtml#slot">slot</a></i> has a <code>:type</code> option specified,
+this suppressed initialization does not imply a type mismatch situation;
+the declared type is only required to apply when the <i><a href="g-s.xhtml#slot">slot</a></i> is finally assigned.
+
+
+</p><p>
+
+With this definition, the following can be written:
+
+</p><pre> (create-foo 1 2)
+</pre><p>
+instead of
+
+</p><pre> (make-foo :a 1 :b 2)
+</pre><p>
+and <code>create-foo</code> provides defaulting different
+from that of <code>make-foo</code>.
+
+</p><p>
+Additional arguments that do not correspond to slot names but
+are merely present to supply values used in subsequent initialization 
+computations are allowed.
+For example, in the definition
+
+</p><pre> (defstruct (frob (:constructor create-frob
+                  (a &amp;key (b 3 have-b) (c-token 'c) 
+                          (c (list c-token (if have-b 7 2))))))
+         a b c)
+</pre>
+
+<p>
+the <code>c-token</code> argument is used merely to supply a value used in the 
+initialization of the <code>c</code> slot. The <i><a href="g-s.xhtml#suppliedpparameter">supplied-p parameters</a></i> 
+associated with <i><a href="g-o.xhtml#optionalparameter">optional parameters</a></i> and <i><a href="g-k.xhtml#keywordparameter">keyword parameters</a></i>
+might also be used this way.
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Defsetf_Lamb_261"><span class="secno">3.4.7</span> Defsetf Lambda Lists</h3>
+<p>
+
+
+A <b><i>defsetf lambda list</i></b> is used by <a href="e5-3-61.xhtml#DictEntry_defsetf_447"><b>defsetf</b></a>.
+
+</p><p>
+A <i><a href="g-d.xhtml#defsetflambdalist">defsetf lambda list</a></i> has the following syntax:
+
+</p><p>
+
+
+
+
+lambda-list::= ({<i>var</i>}*<br/>
+		     <code>[</code><code>&amp;optional</code> <code>{</code><i>var</i> | 
+               (<i>var</i> <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup><code>]</code><br/>
+		     <code>[</code><code>&amp;rest</code> <i>var</i><code>]</code><br/>
+		     <code>[</code><code>&amp;key</code> <code>{</code><i>var</i> | 
+                        (<code>{</code><i>var</i> | 
+                                        (<i>keyword-name</i> <i>var</i>)<code>}</code> 
+                                <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup>
+				  
+				  [<code>&amp;allow-other-keys</code>]<code>]</code><br/>
+		     <code>[</code><code>&amp;environment</code> <i>var</i><code>]</code></p><p>
+A <i><a href="g-d.xhtml#defsetflambdalist">defsetf lambda list</a></i> can contain the <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> shown
+in the next figure.
+
+</p><table id="fig-3-19" class="fig">
+<caption><span class="figlabel">Figure 3-19.</span> Lambda List Keywords used by Defsetf Lambda Lists</caption>
+
+  <tbody><tr>
+    <td><a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a></td>
+    <td><a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a></td>
+    <td><a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a></td>
+  </tr>
+  <tr>
+    <td><a href="#SubSection_Macro_Lambda_254"><b>&amp;environment</b></a></td>
+    <td><a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a></td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+A <i><a href="g-d.xhtml#defsetflambdalist">defsetf lambda list</a></i> differs from an <i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i> 
+only in that it does not permit the use of <a href="#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a>, 
+and that it permits use of <a href="#SubSection_Macro_Lambda_254"><b>&amp;environment</b></a>, 
+     which introduces an <i><a href="g-e.xhtml#environmentparameter">environment parameter</a></i>.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Deftype_Lamb_262"><span class="secno">3.4.8</span> Deftype Lambda Lists</h3>
+<p>
+
+
+A <b><i>deftype lambda list</i></b> is used by <a href="e4-4-25.xhtml#DictEntry_deftype_360"><b>deftype</b></a>.
+
+</p><p>
+A <i><a href="g-d.xhtml#deftypelambdalist">deftype lambda list</a></i> has the same syntax as a <i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i>,
+and can therefore contain the <i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> as a <i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i>.
+
+</p><p>
+
+
+A <i><a href="g-d.xhtml#deftypelambdalist">deftype lambda list</a></i> differs from a <i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i> 
+only in that if no <i>init-form</i> is supplied for an <i><a href="g-o.xhtml#optionalparameter">optional parameter</a></i>
+or <i><a href="g-k.xhtml#keywordparameter">keyword parameter</a></i> in the <i>lambda-list</i>, the default <i><a href="g-v.xhtml#value">value</a></i> 
+for that <i><a href="g-p.xhtml#parameter">parameter</a></i> is the <i><a href="g-s.xhtml#symbol">symbol</a></i> <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a> (rather than <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>).
+
+
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Define_modif_263"><span class="secno">3.4.9</span> Define-modify-macro Lambda Lists</h3>
+<p>
+
+
+A <b><i>define-modify-macro lambda list</i></b> is used by 
+<a href="e5-3-60.xhtml#DictEntry_define_modif_446"><b>define-modify-macro</b></a>.
+
+</p><p>
+A <i><a href="g-d.xhtml#definemodifymacrolambdalist">define-modify-macro lambda list</a></i> can contain the 
+<i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> shown in the next figure.
+
+</p><table id="fig-3-20" class="fig">
+<caption><span class="figlabel">Figure 3-20.</span> Lambda List Keywords used by Define-modify-macro Lambda Lists</caption>
+
+  <tbody><tr>
+    <td><a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a></td>
+    <td><a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a></td>
+  </tr>
+</tbody></table>
+
+
+<p>
+<i><a href="g-d.xhtml#definemodifymacrolambdalist">Define-modify-macro lambda lists</a></i> are similar to 
+<i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda lists</a></i>, but do not support keyword arguments.
+<a href="e5-3-60.xhtml#DictEntry_define_modif_446"><b>define-modify-macro</b></a> has no need match keyword arguments, and
+a <i><a href="g-r.xhtml#restparameter">rest parameter</a></i> is sufficient.  <i><a href="g-a.xhtml#auxvariable">Aux variables</a></i> are also
+not supported, since <a href="e5-3-60.xhtml#DictEntry_define_modif_446"><b>define-modify-macro</b></a> has no body <i><a href="g-f.xhtml#form">forms</a></i>
+which could refer to such <i><a href="g-b.xhtml#binding">bindings</a></i>.  See the <i><a href="g-m.xhtml#macro">macro</a></i> <a href="e5-3-60.xhtml#DictEntry_define_modif_446"><b>define-modify-macro</b></a>.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Define_metho_264"><span class="secno">3.4.10</span> Define-method-combination Arguments Lambda Lists</h3>
+<p>
+
+
+A <b><i>define-method-combination arguments lambda list</i></b> is used by 
+the <code>:arguments</code> option to <a href="e7-7-33.xhtml#DictEntry_define_metho_589"><b>define-method-combination</b></a>.
+
+</p><p>
+A <i><a href="g-d.xhtml#definemethodcombinationargumentslambdalist">define-method-combination arguments lambda list</a></i> can contain the 
+<i><a href="g-l.xhtml#lambdalistkeyword">lambda list keywords</a></i> shown in the next figure.
+
+</p><table id="fig-3-21" class="fig">
+<caption><span class="figlabel">Figure 3-21.</span> Lambda List Keywords used by Define-method-combination arguments Lambda Lists</caption>
+
+  <tbody><tr>
+    <td><a href="#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a></td>
+    <td><a href="#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a></td>
+    <td><a href="#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a></td>
+  </tr>
+  <tr>
+    <td><a href="#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a></td>
+    <td><a href="#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a></td>
+    <td><a href="#SubSection_Macro_Lambda_254"><b>&amp;whole</b></a></td>
+  </tr>
+</tbody></table>
+
+
+<p>
+<i><a href="g-d.xhtml#definemethodcombinationargumentslambdalist">Define-method-combination arguments lambda lists</a></i> are similar to 
+<i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda lists</a></i>, but also permit the use of <a href="#SubSection_Macro_Lambda_254"><b>&amp;whole</b></a>.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Syntactic_In_265"><span class="secno">3.4.11</span> Syntactic Interaction of Documentation Strings and Declarations</h3>
+<p>
+
+
+In a number of situations, a <i><a href="g-d.xhtml#documentationstring">documentation string</a></i> can appear amidst a
+series of <a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="g-e.xhtml#expression">expressions</a></i> prior to a series of <i><a href="g-f.xhtml#form">forms</a></i>.
+
+</p><p>
+In that case, if a <i><a href="g-s.xhtml#string">string</a></i> <i>S</i> appears where a <i><a href="g-d.xhtml#documentationstring">documentation string</a></i> is
+permissible and is not followed by 
+  either a <a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="g-e.xhtml#expression">expression</a></i> 
+      or a <i><a href="g-f.xhtml#form">form</a></i>
+then <i>S</i> is taken to be a <i><a href="g-f.xhtml#form">form</a></i>;
+otherwise, <i>S</i> is taken as a <i><a href="g-d.xhtml#documentationstring">documentation string</a></i>.
+The consequences are unspecified if more than one such <i><a href="g-d.xhtml#documentationstring">documentation string</a></i> 
+is present.
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</body>
+</html>

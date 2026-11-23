@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.34 mapc, mapcar, mapcan, mapl, maplist, mapcon — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_mapc_mapcar_947" class="entry"><span class="secno">14.2.34</span> <span class="names">mapc, mapcar, mapcan, mapl, maplist, mapcon</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>mapc</b>
+<i>function <code>&amp;rest</code> lists+</i>
+  → <i>list-1</i>
+<p>
+<b>mapcar</b>
+<i>function <code>&amp;rest</code> lists+</i>
+  → <i>result-list</i>
+</p><p>
+<b>mapcan</b>
+<i>function <code>&amp;rest</code> lists+</i>
+  → <i>concatenated-results</i>
+</p><p>
+<b>mapl</b>
+<i>function <code>&amp;rest</code> lists+</i>
+  → <i>list-1</i>
+</p><p>
+<b>maplist</b>
+<i>function <code>&amp;rest</code> lists+</i>
+  → <i>result-list</i>
+</p><p>
+<b>mapcon</b>
+<i>function <code>&amp;rest</code> lists+</i>
+  → <i>concatenated-results</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>function</i>—a <i><a href="g-d.xhtml#designator">designator</a></i> for a <i><a href="g-f.xhtml#function">function</a></i> 
+  that must take as many <i><a href="g-a.xhtml#argument">arguments</a></i> as there are <i>lists</i>.
+
+<p>
+
+<i>list</i>—a <i><a href="g-p.xhtml#properlist">proper list</a></i>.
+
+</p><p>
+<i>list-1</i>—the first <i>list</i> (which must be a <i><a href="g-p.xhtml#properlist">proper list</a></i>).
+
+
+</p><p>
+<i>result-list</i>—a <i><a href="g-l.xhtml#list">list</a></i>.
+
+</p><p>
+<i>concatenated-results</i>—a <i><a href="g-l.xhtml#list">list</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The mapping operation involves applying <i>function</i> to
+successive sets of arguments in which
+one argument is obtained from each <i><a href="g-s.xhtml#sequence">sequence</a></i>.
+Except for <a href="#DictEntry_mapc_mapcar_947"><b>mapc</b></a> and <a href="#DictEntry_mapc_mapcar_947"><b>mapl</b></a>,
+the result contains the results returned by <i>function</i>.
+In the cases of <a href="#DictEntry_mapc_mapcar_947"><b>mapc</b></a> and <a href="#DictEntry_mapc_mapcar_947"><b>mapl</b></a>,
+the resulting <i><a href="g-s.xhtml#sequence">sequence</a></i> is <i>list</i>.
+
+<p>
+
+<i>function</i> is called
+first on all the elements with index <code>0</code>, then on all those
+with index <code>1</code>, and so on.
+<i>result-type</i> specifies the <i><a href="g-t.xhtml#type">type</a></i> of
+the 
+resulting <i><a href="g-s.xhtml#sequence">sequence</a></i>.
+
+If <i>function</i> is a <i><a href="g-s.xhtml#symbol">symbol</a></i>, it is <a href="e4-4-24.xhtml#DictEntry_coerce_359"><b>coerce</b></a>d
+to a <i><a href="g-f.xhtml#function">function</a></i> as if by <a href="e10-2-10.xhtml#DictEntry_symbol_funct_684"><b>symbol-function</b></a>.
+
+
+</p><p>
+
+<a href="#DictEntry_mapc_mapcar_947"><b>mapcar</b></a> operates on successive <i><a href="g-e.xhtml#element">elements</a></i> of the <i>lists</i>.
+<i>function</i> is applied to the first <i><a href="g-e.xhtml#element">element</a></i> of each <i>list</i>,
+then to the second <i><a href="g-e.xhtml#element">element</a></i> of each <i>list</i>, and so on.
+The iteration terminates when the shortest <i>list</i> runs out,
+and excess elements in other lists are ignored.
+The value returned by <a href="#DictEntry_mapc_mapcar_947"><b>mapcar</b></a> is a <i><a href="g-l.xhtml#list">list</a></i>
+of the results of successive calls to <i>function</i>.
+
+</p><p>
+
+<a href="#DictEntry_mapc_mapcar_947"><b>mapc</b></a> is like <a href="#DictEntry_mapc_mapcar_947"><b>mapcar</b></a> except that the results of 
+applying <i>function</i> are not accumulated.
+The <i>list</i> argument is returned.
+
+</p><p>
+
+<a href="#DictEntry_mapc_mapcar_947"><b>maplist</b></a> is like <a href="#DictEntry_mapc_mapcar_947"><b>mapcar</b></a> except that
+<i>function</i> is applied to successive sublists of the <i>lists</i>.
+<i>function</i> 
+is first applied to the <i>lists</i> themselves, 
+and then to the <i><a href="g-c.xhtml#cdr">cdr</a></i> of each
+<i>list</i>, and then to the <i><a href="g-c.xhtml#cdr">cdr</a></i> of the <i><a href="g-c.xhtml#cdr">cdr</a></i>
+of each <i>list</i>, and so on.  
+
+</p><p>
+<a href="#DictEntry_mapc_mapcar_947"><b>mapl</b></a> is like <a href="#DictEntry_mapc_mapcar_947"><b>maplist</b></a> except that the results of 
+applying <i>function</i> are not accumulated;
+<i>list-1</i> is returned.
+
+</p><p>
+
+<a href="#DictEntry_mapc_mapcar_947"><b>mapcan</b></a> and <a href="#DictEntry_mapc_mapcar_947"><b>mapcon</b></a> are like <a href="#DictEntry_mapc_mapcar_947"><b>mapcar</b></a> and
+<a href="#DictEntry_mapc_mapcar_947"><b>maplist</b></a> respectively, except that the results of
+applying <i>function</i> are combined 
+into a <i><a href="g-l.xhtml#list">list</a></i> by the use of <a href="e14-2-25.xhtml#DictEntry_nconc_938"><b>nconc</b></a>
+rather than <a href="e14-2-1.xhtml#DictEntry_list_914"><b>list</b></a>.
+That is,
+
+</p><pre> (mapcon f x1 ... xn)
+   ==(apply #'nconc (maplist f x1 ... xn))
+</pre>
+and similarly for the relationship between <a href="#DictEntry_mapc_mapcar_947"><b>mapcan</b></a> 
+and <a href="#DictEntry_mapc_mapcar_947"><b>mapcar</b></a>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (mapcar #'car '((1 a) (2 b) (3 c))) → (1 2 3) 
+ (mapcar #'abs '(3 -4 2 -5 -6)) → (3 4 2 5 6)
+ (mapcar #'cons '(a b c) '(1 2 3)) → ((A . 1) (B . 2) (C . 3))
+
+ (maplist #'append '(1 2 3 4) '(1 2) '(1 2 3)) 
+→ ((1 2 3 4 1 2 1 2 3) (2 3 4 2 2 3)) 
+ (maplist #'(lambda (x) (cons 'foo x)) '(a b c d))
+→ ((FOO A B C D) (FOO B C D) (FOO C D) (FOO D))
+ (maplist #'(lambda (x) (if (member (car x) (cdr x)) 0 1)) '(a b a c d b c))
+→ (0 0 1 0 1 1 1)
+;An entry is 1 if the corresponding element of the input
+;  list was the last instance of that element in the input list.
+
+ (setq dummy nil) →  NIL 
+ (mapc #'(lambda (&amp;rest x) (setq dummy (append dummy x)))
+        '(1 2 3 4)
+        '(a b c d e)
+        '(x y z)) → (1 2 3 4) 
+  dummy → (1 A X 2 B Y 3 C Z)                   
+
+ (setq dummy nil) →  NIL 
+ (mapl #'(lambda (x) (push x dummy)) '(1 2 3 4)) → (1 2 3 4) 
+ dummy → ((4) (3 4) (2 3 4) (1 2 3 4)) 
+
+ (mapcan #'(lambda (x y) (if (null x) nil (list x y)))
+          '(nil nil nil d e)
+          '(1 2 3 4 5 6)) → (D 4 E 5) 
+ (mapcan #'(lambda (x) (and (numberp x) (list x)))
+          '(a 1 b c 3 4 d 5))
+→ (1 3 4 5)
+</pre>
+In this case the function serves as a filter; 
+this is a standard <i>Lisp</i> idiom using <a href="#DictEntry_mapc_mapcar_947"><b>mapcan</b></a>.
+
+<pre> (mapcon #'list '(1 2 3 4)) → ((1 2 3 4) (2 3 4) (3 4) (4)) 
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should be prepared to signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if any <i>list</i> is not a <i><a href="g-p.xhtml#properlist">proper list</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e6-2-3.xhtml#DictEntry_dolist_516"><b>dolist</b></a>,
+<a href="e17-3-7.xhtml#DictEntry_map_1047"><b>map</b></a>,
+
+Section <a href="s3-6.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.73 decode-float, scale-float, float-radix, float-sign, … — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_decode_float_847" class="entry"><span class="secno">12.2.73</span> <span class="names">decode-float, scale-float, float-radix, float-sign, float-digits, float-precision, integer-decode-float</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>decode-float</b>
+<i>float</i>
+  → <i>significand, exponent, sign</i>
+<p>
+<b>scale-float</b>
+<i>float integer</i>
+  → <i>scaled-float</i>
+</p><p>
+<b>float-radix</b>
+<i>float</i>
+  → <i>float-radix</i>
+</p><p>
+<b>float-sign</b>
+<i>float-1 <code>&amp;optional</code> float-2</i>
+  → <i>signed-float</i>
+</p><p>
+<b>float-digits</b>
+<i>float</i>
+  → <i>digits1</i>
+</p><p>
+<b>float-precision</b>
+<i>float</i>
+  → <i>digits2</i>
+</p><p>
+<b>integer-decode-float</b>
+<i>float</i>
+  → <i>significand, exponent, integer-sign</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>digits1</i>—a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+<p>
+<i>digits2</i>—a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>exponent</i>—an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>float</i>—a <i><a href="g-f.xhtml#float">float</a></i>.
+
+</p><p>
+<i>float-1</i>—a <i><a href="g-f.xhtml#float">float</a></i>.
+
+</p><p>
+<i>float-2</i>—a <i><a href="g-f.xhtml#float">float</a></i>.
+
+</p><p>
+<i>float-radix</i>—an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>integer</i>—a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>integer-sign</i>—the <i><a href="g-i.xhtml#integer">integer</a></i> <code>-1</code>,
+		    or the <i><a href="g-i.xhtml#integer">integer</a></i> <code>1</code>.
+
+</p><p>
+<i>scaled-float</i>—a <i><a href="g-f.xhtml#float">float</a></i>.
+
+</p><p>
+<i>sign</i>—A <i><a href="g-f.xhtml#float">float</a></i> of the same <i><a href="g-t.xhtml#type">type</a></i> as <i>float</i>
+	       but numerically equal to <code>1.0</code> or <code>-1.0</code>.
+
+</p><p>
+<i>signed-float</i>—a <i><a href="g-f.xhtml#float">float</a></i>.
+
+</p><p>
+<i>significand</i>—a <i><a href="g-f.xhtml#float">float</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+<a href="#DictEntry_decode_float_847"><b>decode-float</b></a> computes three values that characterize
+<i>float</i>.
+The first value is of the same <i><a href="g-t.xhtml#type">type</a></i>
+as <i>float</i> and 
+represents the significand.
+The second value represents the exponent
+to which the radix (notated in this description by <i>b</i>) must
+be raised to obtain the value that, when multiplied with the first
+result, produces the absolute value of <i>float</i>.
+If <i>float</i> is zero, any <i><a href="g-i.xhtml#integer">integer</a></i> value may be returned, 
+provided that the identity shown for <a href="#DictEntry_decode_float_847"><b>scale-float</b></a> holds.
+The third value
+is of the same <i><a href="g-t.xhtml#type">type</a></i> as <i>float</i>
+and is 1.0 if <i>float</i> is greater
+than or equal to zero or -1.0 otherwise.
+
+<p>
+<a href="#DictEntry_decode_float_847"><b>decode-float</b></a> 
+divides <i>float</i> by an integral power of <i>b</i>
+
+
+
+
+
+
+
+
+
+so as to bring its value between <i>1/<i>b</i></i> (inclusive) and <i>1</i> (exclusive),
+and returns the quotient as the first value.
+If <i>float</i> is zero, however, the result
+equals the absolute value of <i>float</i> (that is, if there is a negative
+zero, its significand is considered to be a positive zero).
+
+</p><p>
+
+<a href="#DictEntry_decode_float_847"><b>scale-float</b></a> returns
+<code>(* <i>float</i> (expt (float <i>b</i> <i>float</i>) 
+<i>integer</i>)) </code>, where <i>b</i> is the radix of the floating-point
+representation. <i>float</i> is not necessarily between <i>1/<i>b</i></i> and <i>1</i>.
+
+</p><p>
+
+<a href="#DictEntry_decode_float_847"><b>float-radix</b></a> returns 
+the radix of <i>float</i>.
+
+</p><p>
+
+<a href="#DictEntry_decode_float_847"><b>float-sign</b></a> returns a number <code>z</code> such
+that <code>z</code> and <i>float-1</i> have the same sign and also such that
+<code>z</code> and <i>float-2</i> have the same absolute value.
+If <i>float-2</i> is not supplied, its value is <code>(float 1 <i>float-1</i>)</code>.
+If an implementation
+has distinct representations for negative zero and positive zero,
+then <code>(float-sign -0.0)</code> →  <code>-1.0</code>.
+
+</p><p>
+
+<a href="#DictEntry_decode_float_847"><b>float-digits</b></a> returns
+the number of radix <i>b</i> digits
+used in the representation of <i>float</i> (including any implicit
+digits, such as a "hidden bit").
+
+</p><p>
+<a href="#DictEntry_decode_float_847"><b>float-precision</b></a>
+returns
+the number of significant radix <i>b</i> digits present in <i>float</i>;
+if <i>float</i> is a <i><a href="g-f.xhtml#float">float</a></i>
+zero, then the result is an <i><a href="g-i.xhtml#integer">integer</a></i> zero.
+
+</p><p>
+For <i><a href="g-n.xhtml#normalized">normalized</a></i> <i><a href="g-f.xhtml#float">floats</a></i>,
+the results of <a href="#DictEntry_decode_float_847"><b>float-digits</b></a> and <a href="#DictEntry_decode_float_847"><b>float-precision</b></a> are the same,
+but the precision is less than the number of representation digits 
+for a <i><a href="g-d.xhtml#denormalized">denormalized</a></i> or zero number.
+
+</p><p>
+
+
+
+<a href="#DictEntry_decode_float_847"><b>integer-decode-float</b></a> computes three values that characterize
+<i>float</i> - 
+the significand scaled so as to be an <i><a href="g-i.xhtml#integer">integer</a></i>,
+and the same last two
+values that are returned by <a href="#DictEntry_decode_float_847"><b>decode-float</b></a>.
+If <i>float</i> is zero, <a href="#DictEntry_decode_float_847"><b>integer-decode-float</b></a> returns 
+zero as the first value.
+The second value bears the same relationship to the first value
+as for <a href="#DictEntry_decode_float_847"><b>decode-float</b></a>:
+
+</p><pre> (multiple-value-bind (signif expon sign)
+                      (integer-decode-float f)
+   (scale-float (float signif f) expon)) ==(abs f)
+</pre>
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> ;; Note that since the purpose of this functionality is to expose
+ ;; details of the implementation, all of these examples are necessarily
+ ;; very implementation-dependent.  Results may vary widely.
+
+ ;; Values shown here are chosen consistently from one particular implementation.
+ (decode-float .5) → 0.5, 0, 1.0
+ (decode-float 1.0) → 0.5, 1, 1.0
+ (scale-float 1.0 1) → 2.0
+ (scale-float 10.01 -2) → 2.5025
+ (scale-float 23.0 0) → 23.0
+ (float-radix 1.0) → 2
+ (float-sign 5.0) → 1.0
+ (float-sign -5.0) → -1.0
+ (float-sign 0.0) → 1.0
+ (float-sign 1.0 0.0) → 0.0
+ (float-sign 1.0 -10.0) → 10.0
+ (float-sign -1.0 10.0) → -10.0
+ (float-digits 1.0) → 24
+ (float-precision 1.0) → 24
+ (float-precision least-positive-single-float) → 1
+ (integer-decode-float 1.0) → 8388608, -23, 1
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The implementation's representation for <i><a href="g-f.xhtml#float">floats</a></i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+The functions <a href="#DictEntry_decode_float_847"><b>decode-float</b></a>, <a href="#DictEntry_decode_float_847"><b>float-radix</b></a>, <a href="#DictEntry_decode_float_847"><b>float-digits</b></a>,
+<a href="#DictEntry_decode_float_847"><b>float-precision</b></a>, and <a href="#DictEntry_decode_float_847"><b>integer-decode-float</b></a> should signal an error
+if their only argument is not a <i><a href="g-f.xhtml#float">float</a></i>.
+
+<p>
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="#DictEntry_decode_float_847"><b>scale-float</b></a> should signal an error if its first argument
+is not a <i><a href="g-f.xhtml#float">float</a></i> or if its second argument is not an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p><p>
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="#DictEntry_decode_float_847"><b>float-sign</b></a> should signal an error if its first argument
+is not a <i><a href="g-f.xhtml#float">float</a></i> or if its second argument is supplied but is 
+not a <i><a href="g-f.xhtml#float">float</a></i>.
+
+</p></dd><dt><b>Notes:</b></dt><dd>
+
+The product of the first result of <a href="#DictEntry_decode_float_847"><b>decode-float</b></a> or <a href="#DictEntry_decode_float_847"><b>integer-decode-float</b></a>,
+of the radix raised to the power of the second result, and of the third result
+is exactly equal to the value of <i>float</i>.
+
+<pre> (multiple-value-bind (signif expon sign)
+                      (decode-float f)
+   (scale-float signif expon))
+==(abs f)
+</pre>
+and
+
+<pre> (multiple-value-bind (signif expon sign)
+                      (decode-float f)
+   (* (scale-float signif expon) sign))
+== f
+</pre>
+</dd></dl>
+</section>
+</body>
+</html>

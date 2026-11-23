@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>8.1.2 copy-structure — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_copy_structu_601" class="entry"><span class="secno">8.1.2</span> <span class="names">copy-structure</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>copy-structure</b>
+<i>structure</i>
+  → <i>copy</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>structure</i>—a <i><a href="g-s.xhtml#structure">structure</a></i>.
+
+<p>
+<i>copy</i>—a copy of the <i>structure</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Returns a <i><a href="g-c.xhtml#copy">copy</a></i><sub>6</sub> of the <i>structure</i>.
+
+<p>
+Only the <i>structure</i> itself is copied; not the values of the slots.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+the <code>:copier</code> option to <a href="e8-1-1.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The <i>copy</i> is the <i><a href="g-s.xhtml#same">same</a></i> as the given <i>structure</i>
+under <a href="e5-3-36.xhtml#DictEntry_equalp_422"><b>equalp</b></a>, but not under <a href="e5-3-35.xhtml#DictEntry_equal_421"><b>equal</b></a>.
+
+</dd></dl>
+</section>
+</body>
+</html>

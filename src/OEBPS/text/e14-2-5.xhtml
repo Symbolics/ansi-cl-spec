@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.5 cons — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_cons_918" class="entry"><span class="secno">14.2.5</span> <span class="names">cons</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>cons</b>
+<i>object-1 object-2</i>
+  → <i>cons</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>object-1</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+<p>
+<i>object-2</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+</p><p>
+<i>cons</i>—a <i><a href="g-c.xhtml#cons">cons</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Creates a <i><a href="g-f.xhtml#fresh">fresh</a></i> <i><a href="g-c.xhtml#cons">cons</a></i>, the <i><a href="g-c.xhtml#car">car</a></i> of which is <i>object-1</i>
+and the <i><a href="g-c.xhtml#cdr">cdr</a></i> of which is <i>object-2</i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (cons 1 2) → (1 . 2)
+ (cons 1 nil) → (1)
+ (cons nil 2) → (NIL . 2)
+ (cons nil nil) → (NIL)
+ (cons 1 (cons 2 (cons 3 (cons 4 nil)))) → (1 2 3 4)
+ (cons 'a 'b) → (A . B)
+ (cons 'a (cons 'b (cons 'c '<code>()</code>))) → (A B C)
+ (cons 'a '(b c d)) → (A B C D)
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e14-2-15.xhtml#DictEntry_list_list_928"><b>list</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+If <i>object-2</i> is a <i><a href="g-l.xhtml#list">list</a></i>, <a href="#DictEntry_cons_918"><b>cons</b></a> can be thought of as
+producing a new <i><a href="g-l.xhtml#list">list</a></i> which is like it but has <i>object-1</i> prepended.
+</dd></dl>
+</section>
+</body>
+</html>

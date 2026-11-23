@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.37 copy-alist — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_copy_alist_950" class="entry"><span class="secno">14.2.37</span> <span class="names">copy-alist</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>copy-alist</b>
+<i>alist</i>
+  → <i>new-alist</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>alist</i>—an <i><a href="g-a.xhtml#associationlist">association list</a></i>.
+
+<p>
+<i>new-alist</i>—an <i><a href="g-a.xhtml#associationlist">association list</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_copy_alist_950"><b>copy-alist</b></a> returns a <i><a href="g-c.xhtml#copy">copy</a></i> of <i>alist</i>.
+
+<p>
+The <i><a href="g-l.xhtml#liststructure">list structure</a></i> of <i>alist</i> is copied,
+and the <i><a href="g-e.xhtml#element">elements</a></i> of <i>alist</i> which are <i>conses</i> are
+also copied (as <i>conses</i> only). 
+Any other <i><a href="g-o.xhtml#object">objects</a></i> which are referred to, 
+whether directly or indirectly,
+by the <i>alist</i> continue to be shared.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre>(defparameter *alist* (acons 1 "one" (acons 2 "two" '())))
+*alist* → ((1 . "one") (2 . "two"))
+(defparameter *list-copy* (copy-list *alist*))
+*list-copy* → ((1 . "one") (2 . "two"))
+(defparameter *alist-copy* (copy-alist *alist*))
+*alist-copy* → ((1 . "one") (2 . "two"))
+(setf (cdr (assoc 2 *alist-copy*)) "deux") → "deux"
+*alist-copy* → ((1 . "one") (2 . "deux"))
+*alist* → ((1 . "one") (2 . "two"))
+(setf (cdr (assoc 1 *list-copy*)) "uno") → "uno"
+*list-copy* → ((1 . "uno") (2 . "two"))
+*alist* → ((1 . "uno") (2 . "two"))
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e14-2-14.xhtml#DictEntry_copy_list_927"><b>copy-list</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

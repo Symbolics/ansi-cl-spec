@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Glossary — I</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="glossary">
+<section>
+<h3 id="GlossaryEntr_I_1469" class="letter">I</h3>
+<dl>
+<dt id="IOcustomizationvariable"><b>I/O customization variable:</b></dt><dd> <i>n.</i>   one of the <i><a href="g-s.xhtml#streamvariable">stream variables</a></i> in the next figure, 
+  or some other (<i><a href="#implementationdefined">implementation-defined</a></i>) <i><a href="g-s.xhtml#streamvariable">stream variable</a></i>
+      that is defined by the <i><a href="#implementation">implementation</a></i> 
+      to be an <i>I/O customization variable</i>.
+
+<table id="fig-26-2" class="fig">
+<caption><span class="figlabel">Figure 26-2.</span> Standardized I/O Customization Variables</caption>
+
+  <tbody><tr>
+    <td>*debug-io*</td>
+    <td>*error-io*</td>
+    <td>query-io*</td>
+  </tr>
+  <tr>
+    <td>*standard-input*</td>
+    <td>*standard-output*</td>
+    <td>*trace-output*</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+<span id="identical"/></p></dd><dt><b>identical:</b></dt><dd> <i>adj.</i> 
+  the <i><a href="g-s.xhtml#same">same</a></i> under <a href="e5-3-33.xhtml#DictEntry_eq_419"><b>eq</b></a>.
+
+<p>
+<span id="identifier"/></p></dd><dt><b>identifier:</b></dt><dd> <i>n.</i>        
+  1. a <i><a href="g-s.xhtml#symbol">symbol</a></i> used to identify or to distinguish <i><a href="g-n.xhtml#name">names</a></i>. 
+  2. a <i><a href="g-s.xhtml#string">string</a></i> used the same way.            
+
+<p>
+<span id="immutable"/></p></dd><dt><b>immutable:</b></dt><dd> <i>adj.</i>   not subject to change, either because no <i><a href="g-o.xhtml#operator">operator</a></i> is provided which is
+  capable of effecting such change or because some constraint exists which 
+  prohibits the use of an <i><a href="g-o.xhtml#operator">operator</a></i> that might otherwise be capable of
+  effecting such a change.  Except as explicitly indicated otherwise,
+  <i><a href="#implementation">implementations</a></i> are not required to detect attempts to modify
+  <i><a href="#immutable">immutable</a></i> <i><a href="g-o.xhtml#object">objects</a></i> or <i><a href="g-c.xhtml#cell">cells</a></i>; the consequences of attempting
+  to make such modification are undefined.
+  Numbers are immutable.
+
+<p>
+<span id="implementation"/></p></dd><dt><b>implementation:</b></dt><dd> <i>n.</i> 
+  a system, mechanism, or body of <i><a href="g-c.xhtml#code">code</a></i> that implements the semantics of <i>Common Lisp</i>.
+
+<p>
+<span id="implementationlimit"/></p></dd><dt><b>implementation limit:</b></dt><dd> <i>n.</i> 
+  a restriction imposed by an <i><a href="#implementation">implementation</a></i>.
+
+<p>
+<span id="implementationdefined"/></p></dd><dt><b>implementation-defined:</b></dt><dd> <i>adj.</i> 
+  <i><a href="#implementationdependent">implementation-dependent</a></i>, but required by this specification to be
+  defined by each <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> and to be documented by 
+  the corresponding implementor.
+
+
+<p>
+<span id="implementationdependent"/></p></dd><dt><b>implementation-dependent:</b></dt><dd> <i>adj.</i> 
+  describing a behavior or aspect of <i>Common Lisp</i> which has been deliberately left
+  unspecified, that might be defined in some <i><a href="g-c.xhtml#conformingimplementation">conforming implementations</a></i> 
+  but not in others, and whose details may differ between <i><a href="#implementation">implementations</a></i>.
+
+
+  A <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> is encouraged (but not required) to 
+  document its treatment of each item in this specification which is
+  marked <i><a href="#implementationdependent">implementation-dependent</a></i>, although in some cases
+  such documentation might simply identify the item as "undefined."
+
+<p>
+<span id="implementationindependent"/></p></dd><dt><b>implementation-independent:</b></dt><dd> <i>adj.</i> 
+  used to identify or emphasize a behavior or aspect of <i>Common Lisp</i> which does 
+  not vary between <i><a href="g-c.xhtml#conformingimplementation">conforming implementations</a></i>.
+
+<p>
+<span id="implicitblock"/></p></dd><dt><b>implicit block:</b></dt><dd> <i>n.</i> 
+ a <i><a href="g-b.xhtml#block">block</a></i> introduced by a <i><a href="g-m.xhtml#macroform">macro form</a></i> 
+ rather than by an explicit <a href="e5-3-22.xhtml#DictEntry_block_408"><b>block</b></a> <i><a href="g-f.xhtml#form">form</a></i>.
+
+<p>
+<span id="implicitcompilation"/></p></dd><dt><b>implicit compilation:</b></dt><dd> <i>n.</i> 
+ <i><a href="g-c.xhtml#compilation">compilation</a></i> performed during <i><a href="g-e.xhtml#evaluation">evaluation</a></i>.
+
+<p>
+<span id="implicitprogn"/></p></dd><dt><b>implicit progn:</b></dt><dd> <i>n.</i> 
+  an ordered set of adjacent <i><a href="g-f.xhtml#form">forms</a></i> appearing in another
+  <i><a href="g-f.xhtml#form">form</a></i>, and defined by their context in that <i><a href="g-f.xhtml#form">form</a></i>
+  to be executed as if within a <a href="e5-3-59.xhtml#DictEntry_progn_445"><b>progn</b></a>.
+
+<p>
+<span id="implicittagbody"/></p></dd><dt><b>implicit tagbody:</b></dt><dd> <i>n.</i> 
+  an ordered set of adjacent <i><a href="g-f.xhtml#form">forms</a></i> and/or <i><a href="g-t.xhtml#tag">tags</a></i> 
+  appearing in another <i><a href="g-f.xhtml#form">form</a></i>, and defined by their context 
+  in that <i><a href="g-f.xhtml#form">form</a></i> to be executed as if within a <a href="e5-3-27.xhtml#DictEntry_tagbody_413"><b>tagbody</b></a>.
+
+<p>
+<span id="import"/></p></dd><dt><b>import:</b></dt><dd> <i>v.t.</i> (a <i><a href="g-s.xhtml#symbol">symbol</a></i> into a <i><a href="g-p.xhtml#package">package</a></i>)
+  to make the <i><a href="g-s.xhtml#symbol">symbol</a></i> be <i><a href="g-p.xhtml#present">present</a></i> in the <i><a href="g-p.xhtml#package">package</a></i>.
+
+<p>
+<span id="improperlist"/></p></dd><dt><b>improper list:</b></dt><dd> <i>n.</i> 
+  a <i><a href="g-l.xhtml#list">list</a></i> which is not a <i><a href="g-p.xhtml#properlist">proper list</a></i>:  
+  a <i><a href="g-c.xhtml#circularlist">circular list</a></i> or a <i><a href="g-d.xhtml#dottedlist">dotted list</a></i>.
+
+<p>
+<span id="inaccessible"/></p></dd><dt><b>inaccessible:</b></dt><dd> <i>adj.</i> 
+  not <i><a href="g-a.xhtml#accessible">accessible</a></i>.
+
+<p>
+<span id="indefiniteextent"/></p></dd><dt><b>indefinite extent:</b></dt><dd> <i>n.</i> 
+  an <i><a href="g-e.xhtml#extent">extent</a></i> whose duration is unlimited.
+  Most Common Lisp objects have indefinite extent.
+
+<p>
+<span id="indefinitescope"/></p></dd><dt><b>indefinite scope:</b></dt><dd> <i>n.</i> 
+  <i><a href="g-s.xhtml#scope">scope</a></i> that is unlimited.
+
+<p>
+<span id="indicator"/></p></dd><dt><b>indicator:</b></dt><dd> <i>n.</i> 
+  a <i><a href="g-p.xhtml#propertyindicator">property indicator</a></i>.
+
+<p>
+<span id="indirectinstance"/></p></dd><dt><b>indirect instance:</b></dt><dd> <i>n.</i> (of a <i><a href="g-c.xhtml#class">class</a></i> <i>C<sub>1</sub></i>)
+  an <i><a href="g-o.xhtml#object">object</a></i> of <i><a href="g-c.xhtml#class">class</a></i> <i>C<sub>2</sub></i>, 
+  where <i>C<sub>2</sub></i> is a <i><a href="g-s.xhtml#subclass">subclass</a></i> of <i>C<sub>1</sub></i>.
+  An integer is an indirect instance of the class <a href="e12-2-1.xhtml#DictEntry_number_775"><b>number</b></a>.
+
+<p>
+<span id="inherit"/></p></dd><dt><b>inherit:</b></dt><dd> <i>v.t.</i> 
+  1. to receive or acquire a quality, trait, or characteristic; 
+     to gain access to a feature defined elsewhere.
+  2. (a <i><a href="g-c.xhtml#class">class</a></i>) to acquire the structure and behavior defined
+     by a <i><a href="g-s.xhtml#superclass">superclass</a></i>.
+  3. (a <i><a href="g-p.xhtml#package">package</a></i>) to make <i><a href="g-s.xhtml#symbol">symbols</a></i> <i><a href="g-e.xhtml#exported">exported</a></i> by another
+     <i><a href="g-p.xhtml#package">package</a></i> <i><a href="g-a.xhtml#accessible">accessible</a></i> by using <a href="e11-2-18.xhtml#DictEntry_use_package_733"><b>use-package</b></a>.
+
+<p>
+
+<span id="initialpprintdispatchtable"/></p></dd><dt><b>initial pprint dispatch table:</b></dt><dd> <i>n.</i>   the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e22-4-25.xhtml#DictEntry_print_pprin_1365"><b>*print-pprint-dispatch*</b></a> at the time the <i>Lisp image</i> is started.
+
+
+<p>
+
+<span id="initialreadtable"/></p></dd><dt><b>initial readtable:</b></dt><dd> <i>n.</i>   the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e23-2-17.xhtml#DictEntry_readtable_1397"><b>*readtable*</b></a> at the time the <i>Lisp image</i> is started.
+
+
+<p>
+
+<span id="initializationargumentlist"/></p></dd><dt><b>initialization argument list:</b></dt><dd> <i>n.</i> 
+
+
+  a <i><a href="g-p.xhtml#propertylist">property list</a></i> of initialization argument <i><a href="g-n.xhtml#name">names</a></i> and <i><a href="g-v.xhtml#value">values</a></i>
+  used in the protocol for initializing and reinitializing <i><a href="#instance">instances</a></i> of <i>classes</i>.
+  See Section <a href="s7-1.xhtml#Section_Object_Creat_520">7.1 Object Creation and Initialization</a>.
+
+
+<p>
+<span id="initializationform"/></p></dd><dt><b>initialization form:</b></dt><dd> <i>n.</i> 
+  a <i><a href="g-f.xhtml#form">form</a></i> used to supply the initial <i><a href="g-v.xhtml#value">value</a></i> for a <i><a href="g-s.xhtml#slot">slot</a></i>
+  or <i><a href="g-v.xhtml#variable">variable</a></i>.
+  The initialization form for a slot in a <a href="e7-7-25.xhtml#DictEntry_defclass_581"><b>defclass</b></a> form
+            is introduced by the keyword <code>:initform</code>.
+
+<p>
+<span id="input"/></p></dd><dt><b>input:</b></dt><dd> <i>adj.</i> (of a <i><a href="g-s.xhtml#stream">stream</a></i>)
+  supporting input operations (<i>i.e.</i>,  being a "data source").
+  An <i><a href="#input">input</a></i> <i><a href="g-s.xhtml#stream">stream</a></i> might also be an <i><a href="g-o.xhtml#output">output</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>,
+  in which case it is sometimes called a <i><a href="g-b.xhtml#bidirectional">bidirectional</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>.
+  See the <i><a href="g-f.xhtml#function">function</a></i> <a href="e21-2-9.xhtml#DictEntry_input_stream_1200"><b>input-stream-p</b></a>.
+
+<p>
+<span id="instance"/></p></dd><dt><b>instance:</b></dt><dd> <i>n.</i> 
+  1. a <i><a href="g-d.xhtml#directinstance">direct instance</a></i>.
+  2. a <i><a href="g-g.xhtml#generalizedinstance">generalized instance</a></i>.
+  3. an <i><a href="#indirectinstance">indirect instance</a></i>.
+
+<p>
+<span id="integer"/></p></dd><dt><b>integer:</b></dt><dd> <i>n.</i> 
+  an <i><a href="g-o.xhtml#object">object</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-8.xhtml#DictEntry_integer_782"><b>integer</b></a>, which represents a mathematical integer.
+
+<p>
+<span id="interactivestream"/></p></dd><dt><b>interactive stream:</b></dt><dd> <i>n.</i> 
+  a <i><a href="g-s.xhtml#stream">stream</a></i> on which it makes sense to perform interactive querying.
+  See Section <a href="s21-1.xhtml#SubSubSubSec_Interactive__1184">21.1.1.1.3 Interactive Streams</a>.
+
+<p>
+
+
+<span id="intern"/></p></dd><dt><b>intern:</b></dt><dd> <i>v.t.</i> 
+  1. (a <i><a href="g-s.xhtml#string">string</a></i> in a <i><a href="g-p.xhtml#package">package</a></i>)
+     to look up the <i><a href="g-s.xhtml#string">string</a></i> in the <i><a href="g-p.xhtml#package">package</a></i>, 
+     returning either a <i><a href="g-s.xhtml#symbol">symbol</a></i> with that <i><a href="g-n.xhtml#name">name</a></i>
+     which was already <i><a href="g-a.xhtml#accessible">accessible</a></i> in the <i><a href="g-p.xhtml#package">package</a></i>
+     or a newly created <i><a href="#internalsymbol">internal symbol</a></i> of the <i><a href="g-p.xhtml#package">package</a></i> 
+     with that <i><a href="g-n.xhtml#name">name</a></i>.
+  2. <i>Idiom.</i> generally, to observe a protocol whereby objects which 
+     are equivalent or have equivalent names under some predicate defined
+     by the protocol are mapped to a single canonical object.
+
+<p>
+<span id="internalsymbol"/></p></dd><dt><b>internal symbol:</b></dt><dd> <i>n.</i> (of a <i><a href="g-p.xhtml#package">package</a></i>)
+  a symbol which is <i><a href="g-a.xhtml#accessible">accessible</a></i> in the <i><a href="g-p.xhtml#package">package</a></i>,
+
+  but which is not an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of the <i><a href="g-p.xhtml#package">package</a></i>.
+
+<p>
+<span id="internaltime"/></p></dd><dt><b>internal time:</b></dt><dd> <i>n.</i>   <i><a href="g-t.xhtml#time">time</a></i>, represented as an <i><a href="#integer">integer</a></i> number of <i><a href="#internaltimeunit">internal time units</a></i>.
+  <i><a href="g-a.xhtml#absolute">Absolute</a></i> <i><a href="#internaltime">internal time</a></i> is measured as an offset 
+  from an arbitrarily chosen, <i><a href="#implementationdependent">implementation-dependent</a></i> base.
+  See Section <a href="s25-1.xhtml#SubSubSectio_Internal_Tim_1425">25.1.4.3 Internal Time</a>.
+
+<p>
+
+<span id="internaltimeunit"/></p></dd><dt><b>internal time unit:</b></dt><dd> <i>n.</i> 
+  a unit of time equal to <i>1/n</i> of a second, 
+  for some <i><a href="#implementationdefined">implementation-defined</a></i> <i><a href="#integer">integer</a></i> value of <i>n</i>.
+  See the <i><a href="g-v.xhtml#variable">variable</a></i> <a href="e25-2-11.xhtml#DictEntry_internal_tim_1438"><b>internal-time-units-per-second</b></a>.
+
+<p>
+<span id="interned"/></p></dd><dt><b>interned:</b></dt><dd> <i>adj.</i> <i>Trad.</i> 
+  1. (of a <i><a href="g-s.xhtml#symbol">symbol</a></i>) <i><a href="g-a.xhtml#accessible">accessible</a></i><sub>3</sub> in
+     any <i><a href="g-p.xhtml#package">package</a></i>.
+  2. (of a <i><a href="g-s.xhtml#symbol">symbol</a></i> in a specific <i><a href="g-p.xhtml#package">package</a></i>) 
+     <i><a href="g-p.xhtml#present">present</a></i> in that <i><a href="g-p.xhtml#package">package</a></i>.
+
+<p>
+<span id="interpretedfunction"/></p></dd><dt><b>interpreted function:</b></dt><dd> <i>n.</i> 
+  a <i><a href="g-f.xhtml#function">function</a></i> that is not a <i><a href="g-c.xhtml#compiledfunction">compiled function</a></i>.
+  (It is possible for there to be a <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> which
+   has no <i><a href="#interpretedfunction">interpreted functions</a></i>, but a <i><a href="g-c.xhtml#conformingprogram">conforming program</a></i>
+   must not assume that all <i><a href="g-f.xhtml#function">functions</a></i> are <i><a href="g-c.xhtml#compiledfunction">compiled functions</a></i>.)
+
+<p>
+<span id="interpretedimplementation"/></p></dd><dt><b>interpreted implementation:</b></dt><dd> <i>n.</i>   an <i><a href="#implementation">implementation</a></i> that uses an execution strategy for 
+  <i><a href="#interpretedfunction">interpreted functions</a></i> that does not involve a one-time semantic
+  analysis pre-pass, and instead uses "lazy" (and sometimes repetitious)
+  semantic analysis of <i><a href="g-f.xhtml#form">forms</a></i> as they are encountered during execution.
+
+<p>
+<span id="intervaldesignator"/></p></dd><dt><b>interval designator:</b></dt><dd> <i>n.</i> (of <i><a href="g-t.xhtml#type">type</a></i> <i>T</i>)
+  an ordered pair of <i><a href="g-o.xhtml#object">objects</a></i> that describe a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <i>T</i>
+  by delimiting an interval on the real number line.
+  See Section <a href="s12-1.xhtml#SubSection_Interval_Des_772">12.1.6 Interval Designators</a>.
+
+<p>
+<span id="invalid"/></p></dd><dt><b>invalid:</b></dt><dd> <i>n.</i>, <i>adj.</i>   1. <i>n.</i>      a possible <i><a href="g-c.xhtml#constituenttrait">constituent trait</a></i> of a <i><a href="g-c.xhtml#character">character</a></i>
+     which if present signifies that the <i><a href="g-c.xhtml#character">character</a></i> 
+     cannot ever appear in a <i><a href="g-t.xhtml#token">token</a></i> 
+     except under the control of a <i><a href="g-s.xhtml#singleescape">single escape</a></i> <i><a href="g-c.xhtml#character">character</a></i>.
+     For details, see Section <a href="s2-1.xhtml#SubSubSectio_Constituent__116">2.1.4.1 Constituent Characters</a>.
+  2. <i>adj.</i> (of a <i><a href="g-c.xhtml#character">character</a></i>)
+     being a <i><a href="g-c.xhtml#character">character</a></i> that has <i><a href="g-s.xhtml#syntaxtype">syntax type</a></i> <i><a href="g-c.xhtml#constituent">constituent</a></i>
+     in the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i> and that has the 
+     <i><a href="g-c.xhtml#constituenttrait">constituent trait</a></i> <i><a href="#invalid">invalid</a></i><sub>1</sub>.
+     See <a href="s2-1.xhtml#fig-2-8">Figure 2-8</a>.
+
+<p>
+
+<span id="iterationform"/></p></dd><dt><b>iteration form:</b></dt><dd> <i>n.</i>   a <i><a href="g-c.xhtml#compoundform">compound form</a></i> whose <i><a href="g-o.xhtml#operator">operator</a></i> is named in the next figure,
+  or a <i><a href="g-c.xhtml#compoundform">compound form</a></i> that has an <i><a href="#implementationdefined">implementation-defined</a></i> <i><a href="g-o.xhtml#operator">operator</a></i>
+     and that is defined by the <i><a href="#implementation">implementation</a></i> to be an <i><a href="#iterationform">iteration form</a></i>.
+
+<table id="fig-26-3" class="fig">
+<caption><span class="figlabel">Figure 26-3.</span> Standardized Iteration Forms</caption>
+
+  <tbody><tr>
+    <td>do</td>
+    <td>do-external-symbols</td>
+    <td>dotimes</td>
+  </tr>
+  <tr>
+    <td>do*</td>
+    <td>do-symbols</td>
+    <td>loop</td>
+  </tr>
+  <tr>
+    <td>do-all-symbols</td>
+    <td>dolist</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+
+
+<span id="iterationvariable"/></p></dd><dt><b>iteration variable:</b></dt><dd> <i>n.</i>   a <i><a href="g-v.xhtml#variable">variable</a></i> <i>V</i>, the <i><a href="g-b.xhtml#binding">binding</a></i> for which was created by an
+  <i><a href="g-e.xhtml#explicituse">explicit use</a></i> of <i>V</i> in an <i><a href="#iterationform">iteration form</a></i>.
+
+
+</dd></dl>
+</section>
+</body>
+</html>

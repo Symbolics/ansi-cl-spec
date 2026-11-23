@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.38 sqrt, isqrt — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_sqrt_isqrt_812" class="entry"><span class="secno">12.2.38</span> <span class="names">sqrt, isqrt</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>sqrt</b>
+<i>number</i>
+  → <i>root</i>
+<p>
+<b>isqrt</b>
+<i>natural</i>
+  → <i>natural-root</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>number</i>, <i>root</i>—a <i><a href="g-n.xhtml#number">number</a></i>.
+
+<p>
+<i>natural</i>, <i>natural-root</i>—a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_sqrt_isqrt_812"><b>sqrt</b></a> and <a href="#DictEntry_sqrt_isqrt_812"><b>isqrt</b></a> compute square roots.
+
+<p>
+
+<a href="#DictEntry_sqrt_isqrt_812"><b>sqrt</b></a> returns the <i><a href="g-p.xhtml#principal">principal</a></i> square root of <i>number</i>.
+If the <i>number</i> is not a <i><a href="g-c.xhtml#complex">complex</a></i> but is negative,
+then the result is a <i><a href="g-c.xhtml#complex">complex</a></i>.
+
+</p><p>
+
+<a href="#DictEntry_sqrt_isqrt_812"><b>isqrt</b></a> returns the greatest <i><a href="g-i.xhtml#integer">integer</a></i> 
+less than or equal to the exact positive square root of <i>natural</i>.
+
+</p><p>
+If <i>number</i> is a positive <i><a href="g-r.xhtml#rational">rational</a></i>,
+it is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> 
+whether <i>root</i> is a <i><a href="g-r.xhtml#rational">rational</a></i> or a <i><a href="g-f.xhtml#float">float</a></i>.
+If <i>number</i> is a negative <i><a href="g-r.xhtml#rational">rational</a></i>,
+it is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> 
+whether <i>root</i> is a <i><a href="g-c.xhtml#complexrational">complex rational</a></i> or a <i><a href="g-c.xhtml#complexfloat">complex float</a></i>.
+
+</p><p>
+
+The mathematical definition of complex square root (whether or not
+minus zero is supported) follows:
+
+</p><p>
+<code>(sqrt <i>x</i>) = (exp (/ (log <i>x</i>) 2))</code>
+
+</p><p>
+The branch cut for square root lies along the negative real axis,
+continuous with quadrant II.
+The range consists of the right half-plane, including the non-negative
+imaginary axis and excluding the negative imaginary axis.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (sqrt 9.0) → 3.0
+ (sqrt -9.0) → #C(0.0 3.0)
+ (isqrt 9) → 3
+ (sqrt 12) → 3.4641016
+ (isqrt 12) → 3
+ (isqrt 300) → 17
+ (isqrt 325) → 18
+ (sqrt 25)
+→ 5
+OR→5.0
+ (isqrt 25) → 5
+ (sqrt -1) → #C(0.0 1.0)
+ (sqrt #c(0 2)) → #C(1.0 1.0)
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="#DictEntry_sqrt_isqrt_812"><b>sqrt</b></a> should signal <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if its argument 
+is not a <i><a href="g-n.xhtml#number">number</a></i>.
+
+<p>
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="#DictEntry_sqrt_isqrt_812"><b>isqrt</b></a> should signal <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if its argument 
+is not a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p><p>
+The functions <a href="#DictEntry_sqrt_isqrt_812"><b>sqrt</b></a> and <a href="#DictEntry_sqrt_isqrt_812"><b>isqrt</b></a> might signal <a href="e12-2-78.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e12-2-31.xhtml#DictEntry_exp_expt_805"><b>exp</b></a>,
+<a href="e12-2-35.xhtml#DictEntry_log_809"><b>log</b></a>,
+Section <a href="s12-1.xhtml#SubSubSectio_Rule_of_Floa_759">12.1.3.3 Rule of Float Substitutability</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (isqrt x) ==(values (floor (sqrt x))) 
+</pre>
+but it is potentially more efficient.
+
+</dd></dl>
+</section>
+</body>
+</html>

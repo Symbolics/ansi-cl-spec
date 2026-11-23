@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.19 floor, ffloor, ceiling, fceiling, truncate, ftruncate, … — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_floor_ffloo_793" class="entry"><span class="secno">12.2.19</span> <span class="names">floor, ffloor, ceiling, fceiling, truncate, ftruncate, round, fround</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<table>
+<tbody><tr><td><b>floor</b> <i>number</i> <code>&amp;optional</code> <i>divisor</i> </td><td>→  <i>quotient, 
+remainder</i></td></tr>
+<tr><td><b>ffloor</b> <i>number</i> <code>&amp;optional</code> <i>divisor</i> </td><td>→  <i>quotient, 
+remainder</i></td></tr>
+<tr><td><b>ceiling</b> <i>number</i> <code>&amp;optional</code> <i>divisor</i> </td><td>→  <i>quotient, 
+remainder</i></td></tr>
+<tr><td><b>fceiling</b> <i>number</i> <code>&amp;optional</code> <i>divisor</i> </td><td>→  <i>quotient, 
+remainder</i></td></tr>
+<tr><td><b>truncate</b> <i>number</i> <code>&amp;optional</code> <i>divisor</i> </td><td>→  <i>quotient, 
+remainder</i></td></tr>
+<tr><td><b>ftruncate</b> <i>number</i> <code>&amp;optional</code> <i>divisor</i> </td><td>→  <i>quotient, 
+remainder</i></td></tr>
+<tr><td><b>round</b> <i>number</i> <code>&amp;optional</code> <i>divisor</i> </td><td>→  <i>quotient, 
+remainder</i></td></tr>
+<tr><td><b>fround</b> <i>number</i> <code>&amp;optional</code> <i>divisor</i> </td><td>→  <i>quotient, 
+remainder</i></td></tr>
+<tr><td>
+</td></tr></tbody></table>
+
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>number</i>—a <i>real</i>.
+
+<p>
+<i>divisor</i>—a non-zero <i>real</i>.
+ The default is the <i><a href="g-i.xhtml#integer">integer</a></i> <code>1</code>.
+
+</p><p>
+<i>quotient</i>—for <a href="#DictEntry_floor_ffloo_793"><b>floor</b></a>, <a href="#DictEntry_floor_ffloo_793"><b>ceiling</b></a>, 
+		       <a href="#DictEntry_floor_ffloo_793"><b>truncate</b></a>, and <a href="#DictEntry_floor_ffloo_793"><b>round</b></a>: an <i><a href="g-i.xhtml#integer">integer</a></i>;
+		   for <a href="#DictEntry_floor_ffloo_793"><b>ffloor</b></a>, <a href="#DictEntry_floor_ffloo_793"><b>fceiling</b></a>, 
+		       <a href="#DictEntry_floor_ffloo_793"><b>ftruncate</b></a>, and <a href="#DictEntry_floor_ffloo_793"><b>fround</b></a>: a <i><a href="g-f.xhtml#float">float</a></i>.
+
+</p><p>
+<i>remainder</i>—a <i>real</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+These functions divide <i>number</i> by <i>divisor</i>, 
+returning a <i>quotient</i> and <i>remainder</i>, such that 
+
+<p>
+  <i>quotient</i>·<i>divisor</i>+<i>remainder</i>=<i>number</i>
+
+</p><p>
+The <i>quotient</i> always represents a mathematical integer.
+When more than one mathematical integer might be possible
+ (<i>i.e.</i>,  when the remainder is not zero),
+the kind of rounding or truncation depends on the <i><a href="g-o.xhtml#operator">operator</a></i>:
+
+</p><ul>
+
+<li><a href="#DictEntry_floor_ffloo_793"><b>floor</b></a>, <a href="#DictEntry_floor_ffloo_793"><b>ffloor</b></a>
+
+<p>
+
+<a href="#DictEntry_floor_ffloo_793"><b>floor</b></a> and <a href="#DictEntry_floor_ffloo_793"><b>ffloor</b></a> produce a <i>quotient</i> 
+that has been truncated toward negative infinity;
+that is, the <i>quotient</i> represents the largest mathematical integer
+that is not larger than the mathematical quotient.
+
+</p></li><li><a href="#DictEntry_floor_ffloo_793"><b>ceiling</b></a>, <a href="#DictEntry_floor_ffloo_793"><b>fceiling</b></a>
+
+<p>
+
+<a href="#DictEntry_floor_ffloo_793"><b>ceiling</b></a> and <a href="#DictEntry_floor_ffloo_793"><b>fceiling</b></a> produce a <i>quotient</i>
+that has been truncated toward positive infinity;
+that is, the <i>quotient</i> represents the smallest mathematical integer
+that is not smaller than the mathematical result.
+
+</p></li><li><a href="#DictEntry_floor_ffloo_793"><b>truncate</b></a>, <a href="#DictEntry_floor_ffloo_793"><b>ftruncate</b></a>
+
+<p>
+
+<a href="#DictEntry_floor_ffloo_793"><b>truncate</b></a> and <a href="#DictEntry_floor_ffloo_793"><b>ftruncate</b></a> produce a <i>quotient</i>
+that has been truncated towards zero;
+that is, the <i>quotient</i> represents the mathematical integer
+of the same sign as the mathematical quotient, and
+that has the greatest integral magnitude not greater than that of the mathematical quotient.
+
+</p></li><li><a href="#DictEntry_floor_ffloo_793"><b>round</b></a>, <a href="#DictEntry_floor_ffloo_793"><b>fround</b></a>
+
+<p>
+
+<a href="#DictEntry_floor_ffloo_793"><b>round</b></a> and <a href="#DictEntry_floor_ffloo_793"><b>fround</b></a> produce a <i>quotient</i>
+that has been rounded to the nearest mathematical integer;
+if the mathematical quotient is exactly halfway between two integers,
+(that is, it has the form <i>integer</i>+<i>1/2</i>),
+then the <i>quotient</i> has been rounded to the even (divisible by two) integer.
+
+</p></li></ul>
+
+<p>
+
+All of these functions perform type conversion operations on <i>numbers</i>.
+
+</p><p>
+The <i>remainder</i>
+is an <i><a href="g-i.xhtml#integer">integer</a></i>  if both   <code>x</code> and <code>y</code> are <i><a href="g-i.xhtml#integer">integers</a></i>,
+is a  <i><a href="g-r.xhtml#rational">rational</a></i> if both   <code>x</code> and <code>y</code> are <i><a href="g-r.xhtml#rational">rationals</a></i>, and
+is a  <i><a href="g-f.xhtml#float">float</a></i>    if either <code>x</code> or  <code>y</code> is  a <i><a href="g-f.xhtml#float">float</a></i>.
+
+</p><p>
+<a href="#DictEntry_floor_ffloo_793"><b>ffloor</b></a>, <a href="#DictEntry_floor_ffloo_793"><b>fceiling</b></a>, <a href="#DictEntry_floor_ffloo_793"><b>ftruncate</b></a>, and <a href="#DictEntry_floor_ffloo_793"><b>fround</b></a> 
+handle arguments of different <i><a href="g-t.xhtml#type">types</a></i> in the following way:
+If  <i>number</i>  is     a <i><a href="g-f.xhtml#float">float</a></i>,
+and <i>divisor</i> is not a <i><a href="g-f.xhtml#float">float</a></i> of longer format,
+then the first result is a <i><a href="g-f.xhtml#float">float</a></i> of the same <i><a href="g-t.xhtml#type">type</a></i> as <i>number</i>.
+Otherwise, the first result is of the <i><a href="g-t.xhtml#type">type</a></i> determined by <i><a href="g-c.xhtml#contagion">contagion</a></i> rules;
+see Section <a href="s12-1.xhtml#SubSubSectio_Contagion_in_751">12.1.1.2 Contagion in Numeric Operations</a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (floor 3/2) → 1, 1/2
+ (ceiling 3 2) → 2, -1
+ (ffloor 3 2) → 1.0, 1
+ (ffloor -4.7) → -5.0, 0.3
+ (ffloor 3.5d0) → 3.0d0, 0.5d0
+ (fceiling 3/2) → 2.0, -1/2
+ (truncate 1) → 1, 0
+ (truncate .5) → 0, 0.5
+ (round .5) → 0, 0.5
+ (ftruncate -7 2) → -3.0, -1
+ (fround -7 2) → -4.0, 1
+ (dolist (n '(2.6 2.5 2.4 0.7 0.3 -0.3 -0.7 -2.4 -2.5 -2.6))
+   (format t "~&amp;~4,1@F ~2,' D ~2,' D ~2,' D ~2,' D"
+           n (floor n) (ceiling n) (truncate n) (round n)))
+▷+2.6  2  3  2  3
+▷+2.5  2  3  2  2
+▷+2.4  2  3  2  2
+▷+0.7  0  1  0  1
+▷+0.3  0  1  0  0
+▷-0.3 -1  0  0  0
+▷-0.7 -1  0  0 -1
+▷-2.4 -3 -2 -2 -2
+▷-2.5 -3 -2 -2 -2
+▷-2.6 -3 -2 -2 -3
+→  NIL
+</pre>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+When only <i>number</i> is given, the two results are exact;
+the mathematical sum of the two results is always equal to the
+mathematical value of <i>number</i>.
+
+<p>
+
+<code>(<i>function</i> <i>number</i> <i>divisor</i>)</code>
+and <code>(<i>function</i> (/ <i>number</i> <i>divisor</i>))</code>
+(where <i>function</i> is any of one
+of <a href="#DictEntry_floor_ffloo_793"><b>floor</b></a>, <a href="#DictEntry_floor_ffloo_793"><b>ceiling</b></a>, <a href="#DictEntry_floor_ffloo_793"><b>ffloor</b></a>, 
+<a href="#DictEntry_floor_ffloo_793"><b>fceiling</b></a>, <a href="#DictEntry_floor_ffloo_793"><b>truncate</b></a>, 
+<a href="#DictEntry_floor_ffloo_793"><b>round</b></a>, <a href="#DictEntry_floor_ffloo_793"><b>ftruncate</b></a>, and <a href="#DictEntry_floor_ffloo_793"><b>fround</b></a>)
+return the same first value, but
+they return different remainders as the second value. For example:
+
+</p><pre> (floor 5 2) → 2, 1
+ (floor (/ 5 2)) → 2, 1/2
+</pre>
+
+<p>
+If an effect is desired that is similar to <a href="#DictEntry_floor_ffloo_793"><b>round</b></a>,
+but that always rounds up or down (rather than toward the nearest even integer) 
+if the mathematical quotient is exactly halfway between two integers, 
+the programmer should consider a construction such as
+    <code>(floor (+ x 1/2))</code>
+ or <code>(ceiling (- x 1/2))</code>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>4.4.3 function — System Class</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_function_338" class="entry"><span class="secno">4.4.3</span> <span class="names">function</span> <span class="kind">System Class</span></h3>
+<dl>
+
+
+<dt><b>Class Precedence List:</b></dt><dd>
+
+<a href="#DictEntry_function_338"><b>function</b></a>,
+<a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+A <i><a href="g-f.xhtml#function">function</a></i> is an <i><a href="g-o.xhtml#object">object</a></i> that represents code 
+to be executed when an appropriate number of arguments is supplied.
+
+
+
+A <i><a href="g-f.xhtml#function">function</a></i> is produced by 
+ the <a href="#DictEntry_function_338"><b>function</b></a> <i><a href="g-s.xhtml#specialform">special form</a></i>,
+ the <i><a href="g-f.xhtml#function">function</a></i> <a href="e4-4-24.xhtml#DictEntry_coerce_359"><b>coerce</b></a>,
+
+
+
+or
+ the <i><a href="g-f.xhtml#function">function</a></i> <a href="e3-8-3.xhtml#DictEntry_compile_285"><b>compile</b></a>.
+A <i><a href="g-f.xhtml#function">function</a></i> can be directly invoked by using it as the first argument to
+<a href="e5-3-7.xhtml#DictEntry_funcall_393"><b>funcall</b></a>, <a href="e5-3-1.xhtml#DictEntry_apply_387"><b>apply</b></a>, or <a href="e5-3-49.xhtml#DictEntry_multiple_val_435"><b>multiple-value-call</b></a>.
+
+</dd><dt><b>Compound Type Specifier Kind:</b></dt><dd>
+
+Specializing.
+
+</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+
+
+<code>(function <code>[</code>arg-typespec [value-typespec]<code>]</code>)</code>
+
+<p>
+
+arg-typespec::= ({<i>typespec</i>}*            <br/>
+		       <code>[</code><code>&amp;optional</code> {<i>typespec</i>}*<code>]</code> <br/>
+                       <code>[</code><code>&amp;rest</code> <i>typespec</i><code>]</code>    <br/>
+                       <code>[</code><code>&amp;key</code> {(keyword typespec)}*<code>]</code>)</p></dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+
+<i>typespec</i>—a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>.
+
+<p>
+<i>value-typespec</i>—a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>.
+
+</p></dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+
+
+<p>
+The list form of the <a href="#DictEntry_function_338"><b>function</b></a> <i>type-specifier</i>
+can be used only for declaration and not for discrimination.
+Every element of this <i><a href="g-t.xhtml#type">type</a></i> is
+
+
+a <i><a href="g-f.xhtml#function">function</a></i> that accepts arguments of the
+types   
+specified by the  <i>argj-types</i> and returns values that are
+members of the <i><a href="g-t.xhtml#type">types</a></i> specified by <i>value-type</i>. The
+<a href="s3-4.xhtml#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a>, <a href="s3-4.xhtml#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a>, <a href="s3-4.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a>, 
+
+and <a href="s3-4.xhtml#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a> 
+
+markers can appear in the list of argument types. 
+
+The <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> provided
+with <a href="s3-4.xhtml#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a> is the <i><a href="g-t.xhtml#type">type</a></i> 
+of each actual argument, not the <i><a href="g-t.xhtml#type">type</a></i> of the
+corresponding variable.
+
+
+</p><p>
+
+The <a href="s3-4.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a> parameters 
+should be supplied as lists of the form <code>(<i>keyword</i> <i>type</i>)</code>.  
+The <i>keyword</i> must be a valid keyword-name symbol
+as must be supplied in the actual arguments of a
+call.
+
+This is usually a <i><a href="g-s.xhtml#symbol">symbol</a></i> in the <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i> but can be any <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+
+When <a href="s3-4.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a> is given in a
+<a href="#DictEntry_function_338"><b>function</b></a> <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> <i><a href="g-l.xhtml#lambdalist">lambda list</a></i>,
+the <i><a href="g-k.xhtml#keywordparameter">keyword parameters</a></i> given
+are exhaustive unless <a href="s3-4.xhtml#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a> is also present. 
+<a href="s3-4.xhtml#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a> is an indication 
+that other keyword arguments might actually be
+supplied and, if supplied, can be used. 
+For example,
+the <i><a href="g-t.xhtml#type">type</a></i> of the <i><a href="g-f.xhtml#function">function</a></i> <a href="e14-2-18.xhtml#DictEntry_make_list_931"><b>make-list</b></a> could be declared as follows:
+
+</p><pre> (function ((integer 0) &amp;key (:initial-element t)) list)
+</pre>
+
+
+<p>
+The <i>value-type</i> can be a <a href="e4-4-22.xhtml#DictEntry_values_357"><b>values</b></a> 
+<i><a href="g-t.xhtml#typespecifier">type specifier</a></i> in order to indicate the
+<i><a href="g-t.xhtml#type">types</a></i> of <i><a href="g-m.xhtml#multiplevalues">multiple values</a></i>.
+
+</p><p>
+Consider a declaration of the following form:
+
+</p><pre> (ftype (function (arg0-type arg1-type ...) val-type) f))
+</pre>
+
+<p>
+Any <i><a href="g-f.xhtml#form">form</a></i>
+<code>(f arg0 arg1 ...)</code>
+within the scope of
+that declaration is equivalent to the following:
+
+</p><pre> (the val-type (f (the arg0-type arg0) (the arg1-type arg1) ...))
+</pre>
+
+<p>
+That is, the consequences are undefined if any of the arguments are
+not of the specified <i><a href="g-t.xhtml#type">types</a></i> or the result is not of the
+specified <i><a href="g-t.xhtml#type">type</a></i>. In particular, if any argument is not of the
+correct <i><a href="g-t.xhtml#type">type</a></i>, the result is not guaranteed to be of the
+specified <i><a href="g-t.xhtml#type">type</a></i>.
+
+</p><p>
+Thus, an <a href="e3-8-23.xhtml#DictEntry_ftype_305"><b>ftype</b></a> declaration for a <i><a href="g-f.xhtml#function">function</a></i>
+describes <i><a href="g-c.xhtml#call">calls</a></i> to the <i><a href="g-f.xhtml#function">function</a></i>, not the actual definition
+of the <i><a href="g-f.xhtml#function">function</a></i>.
+
+</p><p>
+Consider a declaration of the following form:
+
+</p><pre> (type (function (arg0-type arg1-type ...) val-type) fn-valued-variable)
+</pre>
+
+<p>
+This declaration has the interpretation that, within the scope of the
+declaration, the consequences are unspecified if the value of <code>
+fn-valued-variable</code> is called with arguments not of the specified
+<i><a href="g-t.xhtml#type">types</a></i>; the value resulting from a valid call will be of type
+<code>val-type</code>.
+
+</p><p>
+As with variable type declarations, nested declarations
+imply intersections of <i><a href="g-t.xhtml#type">types</a></i>, as follows:
+</p><ul>
+<li> 
+Consider the following two
+declarations of <a href="e3-8-23.xhtml#DictEntry_ftype_305"><b>ftype</b></a>:
+
+<pre> (ftype (function (arg0-type1 arg1-type1 ...) val-type1) f))
+</pre>
+and
+
+<pre> (ftype (function (arg0-type2 arg1-type2 ...) val-type2) f))
+</pre>
+
+
+
+<p>
+If both these declarations are in effect,
+then within the shared scope of the declarations, calls to <code>f</code> can be
+treated as if <code>f</code> were declared as follows:
+
+</p><pre> (ftype (function ((and arg0-type1 arg0-type2) (and arg1-type1 arg1-type2 ...) ...)
+                  (and val-type1 val-type2)) 
+        f))
+</pre>
+
+<p>
+
+
+It is permitted to ignore one or all of the <a href="e3-8-23.xhtml#DictEntry_ftype_305"><b>ftype</b></a> declarations in force.
+
+</p></li><li> 
+If two (or more) type declarations are in effect for a variable, and
+they are both <code>function</code> declarations, the declarations combine similarly.
+</li></ul>
+
+</dd></dl>
+</section>
+</body>
+</html>

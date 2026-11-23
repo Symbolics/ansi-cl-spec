@@ -1,0 +1,980 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.1 Number Concepts</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Number_Conce_747"><span class="secno">12.1</span> Number Concepts</h2>
+<section>
+<h3 id="SubSection_Numeric_Oper_748"><span class="secno">12.1.1</span> Numeric Operations</h3>
+<p><i>Common Lisp</i> provides a large variety of operations related to <i><a href="g-n.xhtml#number">numbers</a></i>.
+This section provides an overview of those operations by grouping them
+into categories that emphasize some of the relationships among them.
+
+</p><p>
+The next figure shows <i><a href="g-o.xhtml#operator">operators</a></i> relating to
+arithmetic operations.
+
+</p><table id="fig-12-1" class="fig">
+<caption><span class="figlabel">Figure 12-1.</span> Operators relating to Arithmetic.</caption>
+
+  <tbody><tr>
+    <td>*</td>
+    <td>1+</td>
+    <td>gcd</td>
+  </tr>
+  <tr>
+    <td>+</td>
+    <td>1-</td>
+    <td>incf</td>
+  </tr>
+  <tr>
+    <td>-</td>
+    <td>conjugate</td>
+    <td>lcm</td>
+  </tr>
+  <tr>
+    <td>/</td>
+    <td>decf</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+The next figure shows <i><a href="g-d.xhtml#definedname">defined names</a></i> relating to
+exponential, logarithmic, and trigonometric operations.
+
+</p><table id="fig-12-2" class="fig">
+<caption><span class="figlabel">Figure 12-2.</span> Defined names relating to Exponentials, Logarithms, and Trigonometry.</caption>
+
+  <tbody><tr>
+    <td>abs</td>
+    <td>cos</td>
+    <td>signum</td>
+  </tr>
+  <tr>
+    <td>acos</td>
+    <td>cosh</td>
+    <td>sin</td>
+  </tr>
+  <tr>
+    <td>acosh</td>
+    <td>exp</td>
+    <td>sinh</td>
+  </tr>
+  <tr>
+    <td>asin</td>
+    <td>expt</td>
+    <td>sqrt</td>
+  </tr>
+  <tr>
+    <td>asinh</td>
+    <td>isqrt</td>
+    <td>tan</td>
+  </tr>
+  <tr>
+    <td>atan</td>
+    <td>log</td>
+    <td>tanh</td>
+  </tr>
+  <tr>
+    <td>atanh</td>
+    <td>phase</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>cis</td>
+    <td>pi</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+The next figure shows <i><a href="g-o.xhtml#operator">operators</a></i> relating to
+numeric comparison and predication.
+
+</p><table id="fig-12-3" class="fig">
+<caption><span class="figlabel">Figure 12-3.</span> Operators for numeric comparison and predication.</caption>
+
+  <tbody><tr>
+    <td>/=</td>
+    <td>&gt;=</td>
+    <td>oddp</td>
+  </tr>
+  <tr>
+    <td>&lt;</td>
+    <td>evenp</td>
+    <td>plusp</td>
+  </tr>
+  <tr>
+    <td>&lt;=</td>
+    <td>max</td>
+    <td>zerop</td>
+  </tr>
+  <tr>
+    <td>=</td>
+    <td>min</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>&gt;</td>
+    <td>minusp</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+The next figure shows <i><a href="g-d.xhtml#definedname">defined names</a></i> relating to
+numeric type manipulation and coercion.
+
+</p><table id="fig-12-4" class="fig">
+<caption><span class="figlabel">Figure 12-4.</span> Defined names relating to numeric type manipulation and coercion.</caption>
+
+  <tbody><tr>
+    <td>ceiling</td>
+    <td>float-radix</td>
+    <td>rational</td>
+  </tr>
+  <tr>
+    <td>complex</td>
+    <td>float-sign</td>
+    <td>rationalize</td>
+  </tr>
+  <tr>
+    <td>decode-float</td>
+    <td>floor</td>
+    <td>realpart</td>
+  </tr>
+  <tr>
+    <td>denominator</td>
+    <td>fround</td>
+    <td>rem</td>
+  </tr>
+  <tr>
+    <td>fceiling</td>
+    <td>ftruncate</td>
+    <td>round</td>
+  </tr>
+  <tr>
+    <td>ffloor</td>
+    <td>imagpart</td>
+    <td>scale-float</td>
+  </tr>
+  <tr>
+    <td>float</td>
+    <td>integer-decode-float</td>
+    <td>truncate</td>
+  </tr>
+  <tr>
+    <td>float-digits</td>
+    <td>mod</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>float-precision</td>
+    <td>numerator</td>
+    <td/>
+  </tr>
+</tbody></table>
+<section>
+<h4 id="SubSubSectio_Associativit_749"><span class="secno">12.1.1.1</span> Associativity and Commutativity in Numeric Operations</h4>
+<p>
+
+For functions that are mathematically associative (and possibly commutative),
+a <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> may process the <i><a href="g-a.xhtml#argument">arguments</a></i> in any manner 
+consistent with associative (and possibly commutative) rearrangement.  This does not
+affect the order in which the <i><a href="g-a.xhtml#argument">argument</a></i> <i><a href="g-f.xhtml#form">forms</a></i> are <i>evaluated</i>;
+for a discussion of evaluation order, see Section <a href="s3-1.xhtml#SubSubSubSub_Function_For_204">3.1.2.1.2.3 Function Forms</a>.
+What is unspecified is only the order in which the <i><a href="g-p.xhtml#parameter">parameter</a></i> <i><a href="g-v.xhtml#value">values</a></i>
+are processed.  This implies that <i><a href="g-i.xhtml#implementation">implementations</a></i> may differ in which 
+automatic <i>coercions</i> are applied; see Section <a href="#SubSubSectio_Contagion_in_751">12.1.1.2 Contagion in Numeric Operations</a>.
+
+</p><p>
+A <i><a href="g-c.xhtml#conformingprogram">conforming program</a></i> can control the order of processing explicitly by 
+separating the operations into separate (possibly nested) <i><a href="g-f.xhtml#functionform">function forms</a></i>,
+or by writing explicit calls to <i><a href="g-f.xhtml#function">functions</a></i> that perform coercions.
+</p>
+<section>
+<h5 id="SubSubSubSec_Examples_of__750"><span class="secno">12.1.1.1.1</span> Examples of Associativity and Commutativity in Numeric Operations</h5>
+<p>
+
+Consider the following expression, in which we assume that <code>1.0</code> and
+<code>1.0e-15</code> both denote <i><a href="g-s.xhtml#singlefloat">single floats</a></i>:
+
+</p><pre> (+ 1/3 2/3 1.0d0 1.0 1.0e-15)
+</pre>
+
+<p>
+One <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> might
+process the <i><a href="g-a.xhtml#argument">arguments</a></i> from left to right,
+first adding <code>1/3</code> and <code>2/3</code> to get <code>1</code>, 
+then converting that to a <i><a href="g-d.xhtml#doublefloat">double float</a></i> 
+for combination with <code>1.0d0</code>,
+then successively converting and adding <code>1.0</code> and <code>1.0e-15</code>.
+
+</p><p>
+Another <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> might process the <i><a href="g-a.xhtml#argument">arguments</a></i> from
+right to left, first performing a <i><a href="g-s.xhtml#singlefloat">single float</a></i> addition of <code>1.0</code> and
+<code>1.0e-15</code> (perhaps losing accuracy in the process), then converting the sum to 
+a <i><a href="g-d.xhtml#doublefloat">double float</a></i> and adding <code>1.0d0</code>, then converting <code>2/3</code> to a
+<i><a href="g-d.xhtml#doublefloat">double float</a></i> and adding it, and then converting <code>1/3</code> and adding that.
+
+</p><p>
+A third <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> might first scan all the <i><a href="g-a.xhtml#argument">arguments</a></i>,
+process all the <i><a href="g-r.xhtml#rational">rationals</a></i> first to keep that part of the computation exact,
+then find an <i><a href="g-a.xhtml#argument">argument</a></i> of the largest floating-point format among all the
+<i><a href="g-a.xhtml#argument">arguments</a></i> and add that, and then add in all other <i><a href="g-a.xhtml#argument">arguments</a></i>, converting
+each in turn (all in a perhaps misguided attempt to make the computation as accurate
+as possible).
+
+</p><p>
+In any case, all three strategies are legitimate.
+
+</p><p>
+A <i><a href="g-c.xhtml#conformingprogram">conforming program</a></i> could control the order by writing, for example,
+
+</p><pre> (+ (+ 1/3 2/3) (+ 1.0d0 1.0e-15) 1.0)
+</pre>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Contagion_in_751"><span class="secno">12.1.1.2</span> Contagion in Numeric Operations</h4>
+<p>
+
+
+For information about the contagion rules for implicit coercions of <i><a href="g-a.xhtml#argument">arguments</a></i> 
+in numeric operations, see
+     Section <a href="#SubSubSectio_Rule_of_Floa_765">12.1.4.4 Rule of Float Precision Contagion</a>, 
+     Section <a href="#SubSubSectio_Rule_of_Floa_761">12.1.4.1 Rule of Float and Rational Contagion</a>,
+ and Section <a href="#SubSubSectio_Rule_of_Comp_768">12.1.5.2 Rule of Complex Contagion</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Viewing_Inte_752"><span class="secno">12.1.1.3</span> Viewing Integers as Bits and Bytes</h4>
+<section>
+<h5 id="SubSubSubSec_Logical_Oper_753"><span class="secno">12.1.1.3.1</span> Logical Operations on Integers</h5>
+<p>
+
+Logical operations require <i><a href="g-i.xhtml#integer">integers</a></i> as arguments;
+
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> should be signaled 
+if an argument is supplied that is not an <i><a href="g-i.xhtml#integer">integer</a></i>.
+<i><a href="g-i.xhtml#integer">Integer</a></i> arguments to logical operations are treated as if
+they were represented in two's-complement notation.
+
+
+
+</p><p>
+The next figure shows <i><a href="g-d.xhtml#definedname">defined names</a></i> relating to
+logical operations on numbers.
+
+</p><table id="fig-12-5" class="fig">
+<caption><span class="figlabel">Figure 12-5.</span> Defined names relating to logical operations on numbers.</caption>
+
+  <tbody><tr>
+    <td>ash</td>
+    <td>boole-ior</td>
+    <td>logbitp</td>
+  </tr>
+  <tr>
+    <td>boole</td>
+    <td>boole-nand</td>
+    <td>logcount</td>
+  </tr>
+  <tr>
+    <td>boole-1</td>
+    <td>boole-nor</td>
+    <td>logeqv</td>
+  </tr>
+  <tr>
+    <td>boole-2</td>
+    <td>boole-orc1</td>
+    <td>logior</td>
+  </tr>
+  <tr>
+    <td>boole-and</td>
+    <td>boole-orc2</td>
+    <td>lognand</td>
+  </tr>
+  <tr>
+    <td>boole-andc1</td>
+    <td>boole-set</td>
+    <td>lognor</td>
+  </tr>
+  <tr>
+    <td>boole-andc2</td>
+    <td>boole-xor</td>
+    <td>lognot</td>
+  </tr>
+  <tr>
+    <td>boole-c1</td>
+    <td>integer-length</td>
+    <td>logorc1</td>
+  </tr>
+  <tr>
+    <td>boole-c2</td>
+    <td>logand</td>
+    <td>logorc2</td>
+  </tr>
+  <tr>
+    <td>boole-clr</td>
+    <td>logandc1</td>
+    <td>logtest</td>
+  </tr>
+  <tr>
+    <td>boole-eqv</td>
+    <td>logandc2</td>
+    <td>logxor</td>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h5 id="SubSubSubSec_Byte_Operati_754"><span class="secno">12.1.1.3.2</span> Byte Operations on Integers</h5>
+<p>
+
+The byte-manipulation <i><a href="g-f.xhtml#function">functions</a></i> use <i><a href="g-o.xhtml#object">objects</a></i> 
+called <i><a href="g-b.xhtml#bytespecifier">byte specifiers</a></i> to designate the size and position
+of a specific <i><a href="g-b.xhtml#byte">byte</a></i> within an <i><a href="g-i.xhtml#integer">integer</a></i>.
+The representation of a <i><a href="g-b.xhtml#bytespecifier">byte specifier</a></i> is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>;
+it might or might not be a <i><a href="g-n.xhtml#number">number</a></i>.
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="e12-2-66.xhtml#DictEntry_byte_byte_s_840"><b>byte</b></a> will construct a <i><a href="g-b.xhtml#bytespecifier">byte specifier</a></i>,
+which various other byte-manipulation <i><a href="g-f.xhtml#function">functions</a></i> will accept.
+
+</p><p>
+The next figure shows <i><a href="g-d.xhtml#definedname">defined names</a></i> relating to
+manipulating <i><a href="g-b.xhtml#byte">bytes</a></i> of <i><a href="g-n.xhtml#number">numbers</a></i>.
+
+</p><table id="fig-12-6" class="fig">
+<caption><span class="figlabel">Figure 12-6.</span> Defined names relating to byte manipulation.</caption>
+
+  <tbody><tr>
+    <td>byte</td>
+    <td>deposit-field</td>
+    <td>ldb-test</td>
+  </tr>
+  <tr>
+    <td>byte-position</td>
+    <td>dpb</td>
+    <td>mask-field</td>
+  </tr>
+  <tr>
+    <td>byte-size</td>
+    <td>ldb</td>
+    <td/>
+  </tr>
+</tbody></table>
+</section>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Implementati_755"><span class="secno">12.1.2</span> Implementation-Dependent Numeric Constants</h3>
+<p>
+
+The next figure shows <i><a href="g-d.xhtml#definedname">defined names</a></i> relating to
+<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> details about <i><a href="g-n.xhtml#number">numbers</a></i>.
+
+</p><table id="fig-12-7" class="fig">
+<caption><span class="figlabel">Figure 12-7.</span> Defined names relating to implementation-dependent details about numbers.</caption>
+
+  <tbody><tr>
+    <td>double-float-epsilon</td>
+    <td>most-negative-fixnum</td>
+  </tr>
+  <tr>
+    <td>double-float-negative-epsilon</td>
+    <td>most-negative-long-float</td>
+  </tr>
+  <tr>
+    <td>least-negative-double-float</td>
+    <td>most-negative-short-float</td>
+  </tr>
+  <tr>
+    <td>least-negative-long-float</td>
+    <td>most-negative-single-float</td>
+  </tr>
+  <tr>
+    <td>least-negative-short-float</td>
+    <td>most-positive-double-float</td>
+  </tr>
+  <tr>
+    <td>least-negative-single-float</td>
+    <td>most-positive-fixnum</td>
+  </tr>
+  <tr>
+    <td>least-positive-double-float</td>
+    <td>most-positive-long-float</td>
+  </tr>
+  <tr>
+    <td>least-positive-long-float</td>
+    <td>most-positive-short-float</td>
+  </tr>
+  <tr>
+    <td>least-positive-short-float</td>
+    <td>most-positive-single-float</td>
+  </tr>
+  <tr>
+    <td>least-positive-single-float</td>
+    <td>short-float-epsilon</td>
+  </tr>
+  <tr>
+    <td>long-float-epsilon</td>
+    <td>short-float-negative-epsilon</td>
+  </tr>
+  <tr>
+    <td>long-float-negative-epsilon</td>
+    <td>single-float-epsilon</td>
+  </tr>
+  <tr>
+    <td>most-negative-double-float</td>
+    <td>single-float-negative-epsilon</td>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h3 id="SubSection_Rational_Com_756"><span class="secno">12.1.3</span> Rational Computations</h3>
+<p>
+
+
+
+The rules in this section apply to <i><a href="g-r.xhtml#rational">rational</a></i> computations.
+</p>
+<section>
+<h4 id="SubSubSectio_Rule_of_Unbo_757"><span class="secno">12.1.3.1</span> Rule of Unbounded Rational Precision</h4>
+<p>
+
+Rational computations cannot overflow in the usual sense 
+(though there may not be enough storage to represent a result), 
+since <i><a href="g-i.xhtml#integer">integers</a></i> and <i><a href="g-r.xhtml#ratio">ratios</a></i> may in principle be of any magnitude.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Rule_of_Cano_758"><span class="secno">12.1.3.2</span> Rule of Canonical Representation for Rationals</h4>
+<p>
+
+If any computation produces a result that is a mathematical ratio of two integers
+such that the denominator evenly divides the numerator, then the result is converted
+to the equivalent <i><a href="g-i.xhtml#integer">integer</a></i>.  
+
+</p><p>
+
+
+
+If the denominator does not evenly divide the numerator,
+the canonical representation of a <i><a href="g-r.xhtml#rational">rational</a></i> number is as the <i><a href="g-r.xhtml#ratio">ratio</a></i>
+that numerator and that denominator, where the greatest common divisor of
+the numerator and denominator is one, and where the denominator is positive
+and greater than one.
+
+</p><p>
+When used as input (in the default syntax),
+the notation <code>-0</code> always denotes the <i><a href="g-i.xhtml#integer">integer</a></i> <code>0</code>.
+A <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> must not have a
+representation of "minus zero" for <i><a href="g-i.xhtml#integer">integers</a></i>
+that is distinct from its representation of zero for <i><a href="g-i.xhtml#integer">integers</a></i>.
+However, such a distinction is possible for <i><a href="g-f.xhtml#float">floats</a></i>; 
+see the <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-4.xhtml#DictEntry_float_778"><b>float</b></a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Rule_of_Floa_759"><span class="secno">12.1.3.3</span> Rule of Float Substitutability</h4>
+<p>
+
+
+
+When the arguments to an irrational mathematical <i><a href="g-f.xhtml#function">function</a></i> 
+
+are all <i><a href="g-r.xhtml#rational">rational</a></i> and the true mathematical result
+is also (mathematically) rational, then unless otherwise noted
+an implementation is free to return either an accurate
+<i><a href="g-r.xhtml#rational">rational</a></i> result
+or a <i><a href="g-s.xhtml#singlefloat">single float</a></i> approximation.
+If the arguments are all <i><a href="g-r.xhtml#rational">rational</a></i> 
+but the result cannot be expressed
+as a <i><a href="g-r.xhtml#rational">rational</a></i> number, then a <i><a href="g-s.xhtml#singlefloat">single float</a></i> 
+approximation is always returned.
+
+</p><p>
+
+If the arguments to 
+
+
+
+an irrational
+mathematical <i><a href="g-f.xhtml#function">function</a></i> are all of type
+  <code>(or rational (complex rational))</code> 
+and the true mathematical result is
+  (mathematically) a complex number with rational real and imaginary
+  parts, then unless otherwise noted an implementation is free to return
+  either an accurate result of type <code>(or rational (complex rational))</code> 
+or
+  a <i><a href="g-s.xhtml#singlefloat">single float</a></i>
+  (permissible only if the imaginary part of the true mathematical
+  result is zero) or <code>(complex single-float)</code>. If the arguments are
+  all of type <code>(or rational (complex rational))</code>
+but the result cannot be
+  expressed as a <i><a href="g-r.xhtml#rational">rational</a></i> or <i><a href="g-c.xhtml#complexrational">complex rational</a></i>,
+then the returned
+  value will be of <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-5.xhtml#DictEntry_short_float_779"><b>single-float</b></a> 
+(permissible only if the imaginary
+  part of the true mathematical result is zero) or <code>(complex single-float)</code>.
+
+
+</p><p>
+
+
+Float substitutability applies neither to the rational <i><a href="g-f.xhtml#function">functions</a></i> 
+      <a href="e12-2-25.xhtml#DictEntry__799"><b>+</b></a>,
+      <a href="e12-2-26.xhtml#DictEntry___800"><b>-</b></a>,
+      <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a>,
+  and <a href="e12-2-27.xhtml#DictEntry__801"><b>/</b></a> 
+nor to the related <i><a href="g-o.xhtml#operator">operators</a></i> 
+      <a href="e12-2-28.xhtml#DictEntry_1_1__802"><b>1+</b></a>,
+      <a href="e12-2-28.xhtml#DictEntry_1_1__802"><b>1-</b></a>,
+      <a href="e12-2-33.xhtml#DictEntry_incf_decf_807"><b>incf</b></a>,
+      <a href="e12-2-33.xhtml#DictEntry_incf_decf_807"><b>decf</b></a>,
+  and <a href="e12-2-48.xhtml#DictEntry_conjugate_822"><b>conjugate</b></a>.
+For rational <i><a href="g-f.xhtml#function">functions</a></i>,
+  if all arguments are <i><a href="g-r.xhtml#rational">rational</a></i>,
+    then the result is <i><a href="g-r.xhtml#rational">rational</a></i>; 
+  if all arguments are of type <code>(or rational (complex rational))</code>,
+    then the result is of type <code>(or rational (complex rational))</code>.
+
+</p><table id="fig-12-8" class="fig">
+<caption><span class="figlabel">Figure 12-8.</span> Functions Affected by Rule of Float Substitutability</caption>
+<tbody><tr><th>Function</th>
+<th>Sample Results</th>
+</tr>
+
+  <tr>
+    <td><a href="e12-2-29.xhtml#DictEntry_abs_803"><b>abs</b></a></td>
+    <td><code>(abs #c(3 4)) →  5 <i>or</i> 5.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-21.xhtml#DictEntry_asin_acos__795"><b>acos</b></a></td>
+    <td><code>(acos 1) →  0 <i>or</i> 0.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-23.xhtml#DictEntry_sinh_cosh__797"><b>acosh</b></a></td>
+    <td><code>(acosh 1) →  0 <i>or</i> 0.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-21.xhtml#DictEntry_asin_acos__795"><b>asin</b></a></td>
+    <td><code>(asin 0) →  0 <i>or</i> 0.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-23.xhtml#DictEntry_sinh_cosh__797"><b>asinh</b></a></td>
+    <td><code>(asinh 0) →  0 <i>or</i> 0.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-21.xhtml#DictEntry_asin_acos__795"><b>atan</b></a></td>
+    <td><code>(atan 0) →  0 <i>or</i> 0.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-23.xhtml#DictEntry_sinh_cosh__797"><b>atanh</b></a></td>
+    <td><code>(atanh 0) →  0 <i>or</i> 0.0</code></td>
+  </tr>
+  <tr>
+    <td>
+
+<a href="e12-2-45.xhtml#DictEntry_cis_819"><b>cis</b></a></td>
+    <td><code>(cis 0) →  1 <i>or</i> #c(1.0 0.0)</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-20.xhtml#DictEntry_sin_cos_ta_794"><b>cos</b></a></td>
+    <td><code>(cos 0) →  1 <i>or</i> 1.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-23.xhtml#DictEntry_sinh_cosh__797"><b>cosh</b></a></td>
+    <td><code>(cosh 0) →  1 <i>or</i> 1.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-31.xhtml#DictEntry_exp_expt_805"><b>exp</b></a></td>
+    <td><code>(exp 0) →  1 <i>or</i> 1.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-31.xhtml#DictEntry_exp_expt_805"><b>expt</b></a></td>
+    <td><code>(expt 8 1/3) →  2 <i>or</i> 2.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-35.xhtml#DictEntry_log_809"><b>log</b></a></td>
+    <td><code>(log 1) →  0 <i>or</i> 0.0</code></td>
+  </tr>
+  <tr>
+    <td/>
+    <td><code>(log 8 2) →  3 <i>or</i> 3.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-49.xhtml#DictEntry_phase_823"><b>phase</b></a></td>
+    <td><code>(phase 7) →  0 <i>or</i> 0.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-37.xhtml#DictEntry_signum_811"><b>signum</b></a></td>
+    <td><code>(signum #c(3 4)) →  #c(3/5 4/5) <i>or</i> #c(0.6 0.8)</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-20.xhtml#DictEntry_sin_cos_ta_794"><b>sin</b></a></td>
+    <td><code>(sin 0) →  0 <i>or</i> 0.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-23.xhtml#DictEntry_sinh_cosh__797"><b>sinh</b></a></td>
+    <td><code>(sinh 0) →  0 <i>or</i> 0.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-38.xhtml#DictEntry_sqrt_isqrt_812"><b>sqrt</b></a></td>
+    <td><code>(sqrt 4) →  2 <i>or</i> 2.0</code></td>
+  </tr>
+  <tr>
+    <td/>
+    <td><code>(sqrt 9/16) →  3/4 <i>or</i> 0.75</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-20.xhtml#DictEntry_sin_cos_ta_794"><b>tan</b></a></td>
+    <td><code>(tan 0) →  0 <i>or</i> 0.0</code></td>
+  </tr>
+  <tr>
+    <td><a href="e12-2-23.xhtml#DictEntry_sinh_cosh__797"><b>tanh</b></a></td>
+    <td><code>(tanh 0) →  0 <i>or</i> 0.0</code></td>
+  </tr>
+</tbody></table>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Floating_poi_760"><span class="secno">12.1.4</span> Floating-point Computations</h3>
+<p>
+
+
+The following rules apply to floating point computations.
+
+</p>
+<section>
+<h4 id="SubSubSectio_Rule_of_Floa_761"><span class="secno">12.1.4.1</span> Rule of Float and Rational Contagion</h4>
+<p>
+
+
+
+When <i><a href="g-r.xhtml#rational">rationals</a></i> and <i><a href="g-f.xhtml#float">floats</a></i> are combined by a numerical function, 
+the <i><a href="g-r.xhtml#rational">rational</a></i> is first converted to a <i><a href="g-f.xhtml#float">float</a></i> of the same format.
+For <i><a href="g-f.xhtml#function">functions</a></i> such as <a href="e12-2-25.xhtml#DictEntry__799"><b>+</b></a> that take more than two arguments,
+it is permitted that part of the operation be carried out exactly using
+<i><a href="g-r.xhtml#rational">rationals</a></i> and the rest be done using floating-point arithmetic.
+
+</p><p>
+When <i><a href="g-r.xhtml#rational">rationals</a></i> and <i><a href="g-f.xhtml#float">floats</a></i> are compared by a numerical function, 
+the <i><a href="g-f.xhtml#function">function</a></i> <a href="e12-2-6.xhtml#DictEntry_rational_780"><b>rational</b></a> is effectively called to convert the <i><a href="g-f.xhtml#float">float</a></i> 
+to a <i><a href="g-r.xhtml#rational">rational</a></i> and then an exact
+comparison is performed. In the case of <i><a href="g-c.xhtml#complex">complex</a></i> numbers,
+the real and imaginary parts are effectively handled individually.
+</p>
+<section>
+<h5 id="SubSubSubSec_Examples_of__762"><span class="secno">12.1.4.1.1</span> Examples of Rule of Float and Rational Contagion</h5>
+<pre> ;;;; Combining rationals with floats.
+ ;;; This example assumes an implementation in which 
+ ;;; (float-radix 0.5) is 2 (as in IEEE) or 16 (as in IBM/360),
+ ;;; or else some other implementation in which 1/2 has an exact 
+ ;;;  representation in floating point.
+ (+ 1/2 0.5) → 1.0
+ (- 1/2 0.5d0) → 0.0d0
+ (+ 0.5 -0.5 1/2) → 0.5
+
+ ;;;; Comparing rationals with floats.
+ ;;; This example assumes an implementation in which the default float 
+ ;;; format is IEEE single-float, IEEE double-float, or some other format
+ ;;; in which 5/7 is rounded upwards by FLOAT.
+ (&lt; 5/7 (float 5/7)) → <i><a href="g-t.xhtml#true">true</a></i>
+ (&lt; 5/7 (rational (float 5/7))) → <i><a href="g-t.xhtml#true">true</a></i>
+ (&lt; (float 5/7) (float 5/7)) → <i><a href="g-f.xhtml#false">false</a></i>
+</pre>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Rule_of_Floa_763"><span class="secno">12.1.4.2</span> Rule of Float Approximation</h4>
+<p>
+
+Computations with <i><a href="g-f.xhtml#float">floats</a></i> are only approximate,
+although they are described as if the results
+were mathematically accurate. 
+Two mathematically identical
+expressions may be computationally different because of errors
+inherent in the floating-point approximation process.
+The precision of a <i><a href="g-f.xhtml#float">float</a></i> is not necessarily
+correlated with the accuracy of that number.
+For instance, 3.142857142857142857 is a more precise approximation
+to <i> pi </i> than 3.14159, but the latter is more accurate.
+The precision refers to the number of bits retained in the representation.
+When an operation combines a <i><a href="g-s.xhtml#shortfloat">short float</a></i> with a 
+<i><a href="g-l.xhtml#longfloat">long float</a></i>,
+the result will be a <i><a href="g-l.xhtml#longfloat">long float</a></i>. 
+<i>Common Lisp</i> functions assume that the accuracy of
+arguments to them does not exceed their precision.  Therefore
+when two <i>small floats</i> 
+are combined, the result is a <i>small float</i>. 
+<i>Common Lisp</i> functions 
+never convert automatically from a larger size to a smaller one.
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Rule_of_Floa_764"><span class="secno">12.1.4.3</span> Rule of Float Underflow and Overflow</h4>
+<p>
+
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-83.xhtml#DictEntry_floating_poi_857"><b>floating-point-overflow</b></a>
+or <a href="e12-2-84.xhtml#DictEntry_floating_poi_858"><b>floating-point-underflow</b></a> should be signaled if a 
+floating-point computation causes exponent overflow or underflow, respectively.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Rule_of_Floa_765"><span class="secno">12.1.4.4</span> Rule of Float Precision Contagion</h4>
+<p>
+
+
+
+The result of a numerical function is a <i><a href="g-f.xhtml#float">float</a></i> of the 
+largest format among all the floating-point arguments to the <i><a href="g-f.xhtml#function">function</a></i>. 
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Complex_Comp_766"><span class="secno">12.1.5</span> Complex Computations</h3>
+<p>
+
+
+
+The following rules apply to <i><a href="g-c.xhtml#complex">complex</a></i> computations:
+</p>
+<section>
+<h4 id="SubSubSectio_Rule_of_Comp_767"><span class="secno">12.1.5.1</span> Rule of Complex Substitutability</h4>
+<p>
+
+Except during the execution of irrational and transcendental <i><a href="g-f.xhtml#function">functions</a></i>,
+no numerical <i><a href="g-f.xhtml#function">function</a></i> ever <i><a href="g-y.xhtml#yield">yields</a></i> a <i><a href="g-c.xhtml#complex">complex</a></i> unless 
+one or more of its <i><a href="g-a.xhtml#argument">arguments</a></i> is a <i><a href="g-c.xhtml#complex">complex</a></i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Rule_of_Comp_768"><span class="secno">12.1.5.2</span> Rule of Complex Contagion</h4>
+<p>
+
+
+
+
+
+When a 
+
+<i>real</i>
+
+and 
+a <i><a href="g-c.xhtml#complex">complex</a></i> are both part of a computation, 
+the 
+
+<i>real</i>
+
+is first converted to a <i><a href="g-c.xhtml#complex">complex</a></i> by providing an imaginary part of <code>0</code>.
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Rule_of_Cano_769"><span class="secno">12.1.5.3</span> Rule of Canonical Representation for Complex Rationals</h4>
+<p>
+
+
+
+If the result of any computation would be a <i><a href="g-c.xhtml#complex">complex</a></i>
+number whose real part is of <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-6.xhtml#DictEntry_rational_780"><b>rational</b></a> and whose imaginary
+part is zero, the result is converted to the <i><a href="g-r.xhtml#rational">rational</a></i> 
+which is the real part.
+This rule does not apply to <i><a href="g-c.xhtml#complex">complex</a></i> numbers whose parts
+are <i><a href="g-f.xhtml#float">floats</a></i>. 
+For example, <code>#C(5 0)</code> and <code>5</code> are not <i><a href="g-d.xhtml#different">different</a></i> <i><a href="g-o.xhtml#object">objects</a></i> in <i>Common Lisp</i>
+(they are always the <i><a href="g-s.xhtml#same">same</a></i> under <a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a>);
+<code>#C(5.0 0.0)</code> and <code>5.0</code> are always <i><a href="g-d.xhtml#different">different</a></i> <i><a href="g-o.xhtml#object">objects</a></i> in <i>Common Lisp</i> (they are never the <i><a href="g-s.xhtml#same">same</a></i> under <a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a>,
+although they are the <i><a href="g-s.xhtml#same">same</a></i> under <a href="e5-3-36.xhtml#DictEntry_equalp_422"><b>equalp</b></a> and <a href="e12-2-15.xhtml#DictEntry___lt_789"><b>=</b></a>).
+</p>
+<section>
+<h5 id="SubSubSubSec_Examples_of__770"><span class="secno">12.1.5.3.1</span> Examples of Rule of Canonical Representation for Complex Rationals</h5>
+<pre> #c(1.0 1.0) → #C(1.0 1.0)
+ #c(0.0 0.0) → #C(0.0 0.0)
+ #c(1.0 1) → #C(1.0 1.0)
+ #c(0.0 0) → #C(0.0 0.0)
+ #c(1 1) → #C(1 1)
+ #c(0 0) → 0
+ (typep #c(1 1) '(complex (eql 1))) → <i><a href="g-t.xhtml#true">true</a></i>
+ (typep #c(0 0) '(complex (eql 0))) → <i><a href="g-f.xhtml#false">false</a></i>
+</pre>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Principal_Va_771"><span class="secno">12.1.5.4</span> Principal Values and Branch Cuts</h4>
+<p>
+
+Many of the irrational and transcendental functions are multiply defined
+in the complex domain; for example, there are in general an infinite
+number of complex values for the logarithm function.  In each such
+case, a <i><a href="g-p.xhtml#principal">principal</a></i> <i><a href="g-v.xhtml#value">value</a></i> must be chosen for the function to return.
+In general, such values cannot be chosen so as to make the range
+continuous; lines in the domain
+called branch cuts must be defined, which in turn
+define the discontinuities in the range.
+
+<i>Common Lisp</i> defines the branch cuts, <i><a href="g-p.xhtml#principal">principal</a></i> <i><a href="g-v.xhtml#value">values</a></i>, and boundary
+conditions for the complex functions following "Principal Values and Branch Cuts in Complex APL." The branch
+cut rules that apply to each function are located with the description of
+that function.
+
+</p><p>
+
+The next figure lists
+the identities that are obeyed
+throughout the applicable portion of the complex domain, even on
+the branch cuts:
+
+</p><table id="fig-12-9" class="fig">
+<caption><span class="figlabel">Figure 12-9.</span> Trigonometric Identities for Complex Domain</caption>
+
+  <tbody><tr>
+    <td>sin i z = i sinh z</td>
+    <td>sinh i z = i sin z</td>
+    <td>arctan  i z = i arctanh z</td>
+  </tr>
+  <tr>
+    <td>cos i z = cosh z</td>
+    <td>cosh i z = cos z</td>
+    <td>arcsinh i z = i arcsin z</td>
+  </tr>
+  <tr>
+    <td>tan i z = i tanh z</td>
+    <td>arcsin i z = i arcsinh z</td>
+    <td>arctanh i z = i arctan z</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+The quadrant numbers referred to in the discussions of branch cuts are as illustrated
+in the next figure.
+
+</p>
+<figure id="fig-12-10" class="diagram"><table class="ctr">
+<tbody><tr><td/><td>Positive<br/>Imaginary Axis</td><td/></tr>
+<tr><td/><td><b>:</b></td><td/></tr>
+<tr><td/><td><code>II</code><b>:</b><code> I</code></td><td/></tr>
+<tr><td>Negative Real Axis</td><td>························</td><td>Positive Real Axis</td></tr>
+<tr><td/><td><code>III</code><b>:</b><code> IV</code></td><td/></tr>
+<tr><td/><td><b>:</b></td><td/></tr>
+<tr><td/><td>Negative<br/>Imaginary Axis</td><td/></tr>
+</tbody></table><figcaption><span class="figlabel">Figure 12-10.</span> Quadrant Numbering for Branch Cuts</figcaption></figure>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Interval_Des_772"><span class="secno">12.1.6</span> Interval Designators</h3>
+<p>
+
+
+The <i><a href="g-c.xhtml#compoundtypespecifier">compound type specifier</a></i> form of the numeric <i><a href="g-t.xhtml#typespecifier">type specifiers</a></i>
+
+
+
+permit the user to specify an interval on the real number line
+which describe a <i><a href="g-s.xhtml#subtype">subtype</a></i> of the <i><a href="g-t.xhtml#type">type</a></i> which would be described by the
+corresponding <i><a href="g-a.xhtml#atomictypespecifier">atomic type specifier</a></i>.  A <i><a href="g-s.xhtml#subtype">subtype</a></i> of some <i><a href="g-t.xhtml#type">type</a></i>
+<i>T</i> is specified using an ordered pair of <i><a href="g-o.xhtml#object">objects</a></i> called
+<i><a href="g-i.xhtml#intervaldesignator">interval designators</a></i> for <i><a href="g-t.xhtml#type">type</a></i> <i>T</i>.
+
+</p><p>
+The first of the two <i><a href="g-i.xhtml#intervaldesignator">interval designators</a></i> for <i><a href="g-t.xhtml#type">type</a></i> <i>T</i> can be
+any of the following:
+
+</p><ul>
+
+<li>a number <i>N</i> of <i><a href="g-t.xhtml#type">type</a></i> <i>T</i>
+
+<p>
+This denotes a lower inclusive bound of <i>N</i>.  That is, <i><a href="g-e.xhtml#element">elements</a></i>
+of the <i><a href="g-s.xhtml#subtype">subtype</a></i> of <i>T</i> will be greater than or equal to <i>N</i>.
+
+</p></li><li>a <i><a href="g-s.xhtml#singleton">singleton</a></i> <i><a href="g-l.xhtml#list">list</a></i> whose <i><a href="g-e.xhtml#element">element</a></i> is
+	  a number <i>M</i> of <i><a href="g-t.xhtml#type">type</a></i> <i>T</i>
+
+<p>
+This denotes a lower exclusive bound of <i>M</i>.  That is, <i><a href="g-e.xhtml#element">elements</a></i>
+of the <i><a href="g-s.xhtml#subtype">subtype</a></i> of <i>T</i> will be greater than <i>M</i>.
+
+</p></li><li>the symbol <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a>
+
+<p>
+This denotes the absence of a lower bound on the interval.
+
+</p></li></ul>
+
+<p>
+The second of the two <i><a href="g-i.xhtml#intervaldesignator">interval designators</a></i> for <i><a href="g-t.xhtml#type">type</a></i> <i>T</i> can be
+any of the following:
+
+</p><ul>
+
+<li>a number <i>N</i> of <i><a href="g-t.xhtml#type">type</a></i> <i>T</i>
+
+<p>
+This denotes an upper inclusive bound of <i>N</i>.  That is, <i><a href="g-e.xhtml#element">elements</a></i>
+of the <i><a href="g-s.xhtml#subtype">subtype</a></i> of <i>T</i> will be less than or equal to <i>N</i>.
+
+</p></li><li>a <i><a href="g-s.xhtml#singleton">singleton</a></i> <i><a href="g-l.xhtml#list">list</a></i> whose <i><a href="g-e.xhtml#element">element</a></i> is
+	  a number <i>M</i> of <i><a href="g-t.xhtml#type">type</a></i> <i>T</i>
+
+<p>
+This denotes an upper exclusive bound of <i>M</i>.  That is, <i><a href="g-e.xhtml#element">elements</a></i>
+of the <i><a href="g-s.xhtml#subtype">subtype</a></i> of <i>T</i> will be less than <i>M</i>.
+
+</p></li><li>the symbol <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a>
+
+<p>
+This denotes the absence of an upper bound on the interval.
+
+</p></li></ul>
+</section>
+<section>
+<h3 id="SubSection_Random_State_773"><span class="secno">12.1.7</span> Random-State Operations</h3>
+<p>
+
+The next figure lists some <i><a href="g-d.xhtml#definedname">defined names</a></i> that are applicable to <i><a href="g-r.xhtml#randomstate">random states</a></i>.
+
+</p><table id="fig-12-11" class="fig">
+<caption><span class="figlabel">Figure 12-11.</span> Random-state defined names</caption>
+
+  <tbody><tr>
+    <td>*random-state*</td>
+    <td>random</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>make-random-state</td>
+    <td>random-state-p</td>
+    <td/>
+  </tr>
+</tbody></table>
+</section>
+</section>
+</section>
+</body>
+</html>

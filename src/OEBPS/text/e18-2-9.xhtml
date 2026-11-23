@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>18.2.9 gethash — Accessor</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_gethash_1086" class="entry"><span class="secno">18.2.9</span> <span class="names">gethash</span> <span class="kind">Accessor</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>gethash</b>
+<i>key hash-table <code>&amp;optional</code> default</i>
+  → <i>value, present-p</i>
+<p>
+(<b>setf</b>
+(<b>gethash</b> <i>key hash-table <code>&amp;optional</code> default</i>) <i>new-value</i>)
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>key</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+<p>
+<i>hash-table</i>—a <i><a href="g-h.xhtml#hashtable">hash table</a></i>.
+
+</p><p>
+<i>default</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+ The default is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>value</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+</p><p>
+<i>present-p</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<i>Value</i> is the <i><a href="g-o.xhtml#object">object</a></i> in <i>hash-table</i> whose <i><a href="g-k.xhtml#key">key</a></i> 
+is the <i><a href="g-s.xhtml#same">same</a></i> as <i>key</i> under the <i>hash-table</i>'s equivalence test.
+If there is no such entry, <i>value</i> is the <i>default</i>.
+
+<p>
+
+<i>Present-p</i> is <i><a href="g-t.xhtml#true">true</a></i> if an entry is found; otherwise, it is <i><a href="g-f.xhtml#false">false</a></i>.
+
+</p><p>
+
+<a href="e25-2-15.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> may be used with <a href="#DictEntry_gethash_1086"><b>gethash</b></a> to modify the <i><a href="g-v.xhtml#value">value</a></i>
+associated with a given <i><a href="g-k.xhtml#key">key</a></i>, or to add a new entry.
+
+When a <a href="#DictEntry_gethash_1086"><b>gethash</b></a> <i><a href="g-f.xhtml#form">form</a></i> is used as a <a href="e25-2-15.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> <i>place</i>,
+any <i>default</i> which is supplied is evaluated according to normal
+left-to-right evaluation rules, but its <i><a href="g-v.xhtml#value">value</a></i> is ignored.
+
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq table (make-hash-table)) → #&lt;HASH-TABLE EQL 0/120 32206334&gt;
+ (gethash 1 table) →  NIL, <i><a href="g-f.xhtml#false">false</a></i>
+ (gethash 1 table 2) → 2, <i><a href="g-f.xhtml#false">false</a></i>
+ (setf (gethash 1 table) "one") → "one"
+ (setf (gethash 2 table "two") "two") → "two"
+ (gethash 1 table) → "one", <i><a href="g-t.xhtml#true">true</a></i>
+ (gethash 2 table) → "two", <i><a href="g-t.xhtml#true">true</a></i>
+ (gethash nil table) →  NIL, <i><a href="g-f.xhtml#false">false</a></i>
+ (setf (gethash nil table) nil) →  NIL 
+ (gethash nil table) →  NIL, <i><a href="g-t.xhtml#true">true</a></i>
+ (defvar *counters* (make-hash-table)) → *COUNTERS*
+ (gethash 'foo *counters*) →  NIL, <i><a href="g-f.xhtml#false">false</a></i>
+ (gethash 'foo *counters* 0) → 0, <i><a href="g-f.xhtml#false">false</a></i>
+ (defmacro how-many (obj) `(values (gethash ,obj *counters* 0))) →  HOW-MANY
+ (defun count-it (obj) (incf (how-many obj))) →  COUNT-IT
+ (dolist (x '(bar foo foo bar bar baz)) (count-it x))
+ (how-many 'foo) → 2
+ (how-many 'bar) → 3
+ (how-many 'quux) → 0
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e18-2-10.xhtml#DictEntry_remhash_1087"><b>remhash</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The <i><a href="g-s.xhtml#secondaryvalue">secondary value</a></i>, <i>present-p</i>,
+can be used to distinguish the absence of an entry
+from the presence of an entry that has a value of <i>default</i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

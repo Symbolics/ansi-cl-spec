@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>13.2.18 code-char — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_code_char_901" class="entry"><span class="secno">13.2.18</span> <span class="names">code-char</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>code-char</b>
+<i>code</i>
+  → <i>char-p</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>code</i>—a <i><a href="g-c.xhtml#charactercode">character code</a></i>.
+
+<p>
+<i>char-p</i>—a <i><a href="g-c.xhtml#character">character</a></i> or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns a <i><a href="g-c.xhtml#character">character</a></i> with the <i><a href="g-c.xhtml#code">code</a></i> <i><a href="g-a.xhtml#attribute">attribute</a></i> given by <i>code</i>.
+If no such <i><a href="g-c.xhtml#character">character</a></i> exists and one cannot be created, <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is returned.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre>(code-char 65.) → #\A  ;in an implementation using ASCII codes
+(code-char (char-code #\Space)) → #\Space  ;in any implementation
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The <i><a href="g-i.xhtml#implementation">implementation</a></i>'s character encoding.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e13-2-16.xhtml#DictEntry_char_code_899"><b>char-code</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+
+</dd></dl>
+</section>
+</body>
+</html>

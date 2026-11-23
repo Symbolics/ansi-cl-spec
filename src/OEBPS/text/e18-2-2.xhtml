@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>18.2.2 make-hash-table — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_make_hash_ta_1079" class="entry"><span class="secno">18.2.2</span> <span class="names">make-hash-table</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>make-hash-table</b>
+<i><code>&amp;key</code> test size rehash-size rehash-threshold</i>
+  → <i>hash-table</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>test</i>—a <i><a href="g-d.xhtml#designator">designator</a></i> for one of the <i><a href="g-f.xhtml#function">functions</a></i>
+	       <a href="e5-3-33.xhtml#DictEntry_eq_419"><b>eq</b></a>,
+	       <a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a>,
+	       <a href="e5-3-35.xhtml#DictEntry_equal_421"><b>equal</b></a>, or
+
+	       <a href="e5-3-36.xhtml#DictEntry_equalp_422"><b>equalp</b></a>.
+
+  The default is <a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a>.
+
+<p>
+
+
+<i>size</i>—a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+  The default is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</p><p>
+
+<i>rehash-size</i>—a <i>real</i> of <i><a href="g-t.xhtml#type">type</a></i> <code>(or (integer 1 *) (float (1.0) *))</code>.
+  The default is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</p><p>
+
+
+
+
+
+
+
+
+
+  
+<i>rehash-threshold</i>—a <i>real</i> of <i><a href="g-t.xhtml#type">type</a></i> <code>(real 0 1)</code>.
+  The default is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+
+  
+
+</p><p>
+<i>hash-table</i>—a <i><a href="g-h.xhtml#hashtable">hash table</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Creates and returns a new <i><a href="g-h.xhtml#hashtable">hash table</a></i>.
+
+<p>
+<i>test</i> determines how <i><a href="g-k.xhtml#key">keys</a></i> are compared.
+
+An <i><a href="g-o.xhtml#object">object</a></i> is said to be present in the <i>hash-table</i>
+if that <i><a href="g-o.xhtml#object">object</a></i> is the <i><a href="g-s.xhtml#same">same</a></i> under the <i>test</i> 
+as the <i><a href="g-k.xhtml#key">key</a></i> for some entry in the <i>hash-table</i>.
+
+</p><p>
+<i>size</i> is a hint to the <i><a href="g-i.xhtml#implementation">implementation</a></i> about how much initial space
+to allocate in the <i>hash-table</i>.
+
+
+
+This information, taken together with the <i>rehash-threshold</i>, controls
+the approximate number of entries which it should be possible
+to insert before the table has to grow.
+
+The actual size might be rounded up from <i>size</i> to the next `good' size;
+for example, some <i><a href="g-i.xhtml#implementation">implementations</a></i> might round to the next prime number.
+
+</p><p>
+<i>rehash-size</i> specifies a minimum amount to increase the size of the 
+<i>hash-table</i> when it becomes full
+enough to require rehashing; 
+see <i>rehash-theshold</i> below.
+
+If <i>rehash-size</i> is an <i><a href="g-i.xhtml#integer">integer</a></i>,
+the expected growth rate for the table is additive and
+the <i><a href="g-i.xhtml#integer">integer</a></i> is the number of entries to add;
+if it is a <i><a href="g-f.xhtml#float">float</a></i>,
+the expected growth rate for the table is multiplicative and
+the <i><a href="g-f.xhtml#float">float</a></i> is the ratio of the new size to the old size.
+
+As with <i>size</i>, the actual size of the increase might be rounded up.
+
+</p><p>
+<i>rehash-threshold</i> specifies how full the <i>hash-table</i> can get 
+before it must grow.
+
+It specifies the maximum desired hash-table occupancy level.
+
+
+
+</p><p>
+
+The <i><a href="g-v.xhtml#value">values</a></i> of <i>rehash-size</i> and <i>rehash-threshold</i> do not constrain the
+<i><a href="g-i.xhtml#implementation">implementation</a></i> to use any particular method for computing when and by how much
+the size of <i>hash-table</i> should be enlarged.  Such decisions are   
+<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>, and these <i><a href="g-v.xhtml#value">values</a></i> only hints
+from the <i><a href="g-p.xhtml#programmer">programmer</a></i> to the <i><a href="g-i.xhtml#implementation">implementation</a></i>, and the <i><a href="g-i.xhtml#implementation">implementation</a></i>
+is permitted to ignore them.
+
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (setq table (make-hash-table)) → #&lt;HASH-TABLE EQL 0/120 46142754&gt;
+ (setf (gethash "one" table) 1) → 1
+ (gethash "one" table) →  NIL, <i><a href="g-f.xhtml#false">false</a></i>
+ (setq table (make-hash-table :test 'equal)) → #&lt;HASH-TABLE EQUAL 0/139 46145547&gt;
+ (setf (gethash "one" table) 1) → 1
+ (gethash "one" table) → 1, T
+ (make-hash-table :rehash-size 1.5 :rehash-threshold 0.7) 
+→ #&lt;HASH-TABLE EQL 0/120 46156620&gt;
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e18-2-9.xhtml#DictEntry_gethash_1086"><b>gethash</b></a>,
+<a href="e18-2-1.xhtml#DictEntry_hash_table_1078"><b>hash-table</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

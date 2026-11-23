@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.22 invoke-debugger — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_invoke_debug_647" class="entry"><span class="secno">9.2.22</span> <span class="names">invoke-debugger</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>invoke-debugger</b>
+<i>condition</i>
+  →  <b>|</b> 
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>condition</i>—a <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-o.xhtml#object">object</a></i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_invoke_debug_647"><b>invoke-debugger</b></a> attempts to enter the debugger with <i>condition</i>.
+
+<p>
+If <a href="e9-2-24.xhtml#DictEntry_debugger_ho_649"><b>*debugger-hook*</b></a> is not <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, it should be a <i><a href="g-f.xhtml#function">function</a></i> 
+(or the name of a <i><a href="g-f.xhtml#function">function</a></i>) to be called prior to entry to 
+the standard debugger.  The <i><a href="g-f.xhtml#function">function</a></i> is called with
+<a href="e9-2-24.xhtml#DictEntry_debugger_ho_649"><b>*debugger-hook*</b></a> bound to <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, and the <i><a href="g-f.xhtml#function">function</a></i> 
+must accept two arguments: the <i>condition</i> 
+and the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e9-2-24.xhtml#DictEntry_debugger_ho_649"><b>*debugger-hook*</b></a> prior to binding it to <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>. 
+If the <i><a href="g-f.xhtml#function">function</a></i> returns normally,
+the standard debugger is entered.
+
+</p><p>
+
+The standard debugger never directly returns.  Return can occur only by a
+non-local transfer of control, such as the use of a restart function.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (ignore-errors ;Normally, this would suppress debugger entry
+   (handler-bind ((error #'invoke-debugger)) ;But this forces debugger entry
+     (error "Foo.")))
+Debug: Foo.
+To continue, type :CONTINUE followed by an option number:
+ 1: Return to Lisp Toplevel.
+Debug&gt;
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+<a href="e9-2-24.xhtml#DictEntry_debugger_ho_649"><b>*debugger-hook*</b></a> is bound to <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+program execution is discontinued,
+and the debugger is entered.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*debug-io*</b></a> and <a href="e9-2-24.xhtml#DictEntry_debugger_ho_649"><b>*debugger-hook*</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>, <a href="e9-2-23.xhtml#DictEntry_break_648"><b>break</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.36 mod, rem — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_mod_rem_810" class="entry"><span class="secno">12.2.36</span> <span class="names">mod, rem</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>mod</b>
+<i>number divisor</i>
+  → <i>modulus</i>
+<p>
+<b>rem</b>
+<i>number divisor</i>
+  → <i>remainder</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>number</i>—a <i>real</i>.
+
+<p>
+<i>divisor</i>—a <i>real</i>.
+
+</p><p>
+<i>modulus</i>, <i>remainder</i>—a <i>real</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_mod_rem_810"><b>mod</b></a> and <a href="#DictEntry_mod_rem_810"><b>rem</b></a> are generalizations of the modulus
+and remainder functions respectively.
+
+<p>
+<a href="#DictEntry_mod_rem_810"><b>mod</b></a> performs the operation <a href="e12-2-19.xhtml#DictEntry_floor_ffloo_793"><b>floor</b></a> 
+on <i>number</i> and <i>divisor</i> 
+and returns the remainder of the <a href="e12-2-19.xhtml#DictEntry_floor_ffloo_793"><b>floor</b></a> operation.
+
+</p><p>
+<a href="#DictEntry_mod_rem_810"><b>rem</b></a> performs the operation <a href="e12-2-19.xhtml#DictEntry_floor_ffloo_793"><b>truncate</b></a> 
+on <i>number</i> and <i>divisor</i>
+and returns the remainder of the <a href="e12-2-19.xhtml#DictEntry_floor_ffloo_793"><b>truncate</b></a> operation.
+
+</p><p>
+<a href="#DictEntry_mod_rem_810"><b>mod</b></a> and <a href="#DictEntry_mod_rem_810"><b>rem</b></a> are 
+
+the modulus and remainder functions 
+when <i>number</i> and <i>divisor</i> are <i><a href="g-i.xhtml#integer">integers</a></i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (rem -1 5) → -1
+ (mod -1 5) → 4
+ (mod 13 4) → 1
+ (rem 13 4) → 1
+ (mod -13 4) → 3
+ (rem -13 4) → -1
+ (mod 13 -4) → -3
+ (rem 13 -4) → 1
+ (mod -13 -4) → -1
+ (rem -13 -4) → -1
+ (mod 13.4 1) → 0.4
+ (rem 13.4 1) → 0.4
+ (mod -13.4 1) → 0.6
+ (rem -13.4 1) → -0.4
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e12-2-19.xhtml#DictEntry_floor_ffloo_793"><b>floor</b></a>, <a href="e12-2-19.xhtml#DictEntry_floor_ffloo_793"><b>truncate</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The result of <a href="#DictEntry_mod_rem_810"><b>mod</b></a> is either zero or a 
+
+<i>real</i>
+
+with the same sign as <i>divisor</i>.
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.42 continue — Restart</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_continue_667" class="entry"><span class="secno">9.2.42</span> <span class="names">continue</span> <span class="kind">Restart</span></h3>
+<dl>
+
+
+<dt><b>Data Arguments Required:</b></dt><dd>
+
+None.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+The <a href="#DictEntry_continue_667"><b>continue</b></a> <i><a href="g-r.xhtml#restart">restart</a></i> is generally part of protocols where there is
+  a single "obvious" way to continue, such as in 
+<a href="e9-2-23.xhtml#DictEntry_break_648"><b>break</b></a> and <a href="e9-2-12.xhtml#DictEntry_cerror_637"><b>cerror</b></a>.  Some
+  user-defined protocols may also wish to incorporate it for similar reasons.
+  In general, however, it is more reliable to design a special purpose restart
+  with a name that more directly suits the particular application.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (let ((x 3))
+   (handler-bind ((error #'(lambda (c)
+                             (let ((r (find-restart 'continue c)))
+                               (when r (invoke-restart r))))))
+     (cond ((not (floatp x))
+            (cerror "Try floating it." "~D is not a float." x)
+            (float x))
+           (t x)))) → 3.0
+</pre>   
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="s9-1.xhtml#SubSubSectio_Restarts_618">9.1.4.2 Restarts</a>,
+Section <a href="s9-1.xhtml#SubSubSubSec_Interfaces_t_620">9.1.4.2.2 Interfaces to Restarts</a>,
+<a href="e9-2-34.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a>,
+<a href="#DictEntry_continue_667"><b>continue</b></a> (<i><a href="g-f.xhtml#function">function</a></i>),
+<a href="e9-2-10.xhtml#DictEntry_assert_635"><b>assert</b></a>,
+<a href="e9-2-12.xhtml#DictEntry_cerror_637"><b>cerror</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

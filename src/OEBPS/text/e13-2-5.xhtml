@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>13.2.5 char=, char/=, char&lt;, char&gt;, char&lt;=, char&gt;=, … — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_char_char_888" class="entry"><span class="secno">13.2.5</span> <span class="names">char=, char/=, char&lt;, char&gt;, char&lt;=, char&gt;=, char-equal, char-not-equal, char-lessp, char-greaterp, char-not-greaterp, char-not-lessp</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<table>
+<tbody><tr><td><b>char= </b><code>&amp;rest</code> <i>characters</i><sup>+</sup> </td><td>→  
+<i>generalized-boolean</i></td></tr>
+<tr><td><b>char/= </b><code>&amp;rest</code> <i>characters</i><sup>+</sup> </td><td>→   
+<i>generalized-boolean</i></td></tr>
+<tr><td><b>char&lt;</b> <code>&amp;rest</code> <i>characters</i><sup>+</sup> </td><td>→   
+<i>generalized-boolean</i></td></tr>
+<tr><td><b>char&gt;</b> <code>&amp;rest</code> <i>characters</i><sup>+</sup> </td><td>→   
+<i>generalized-boolean</i></td></tr>
+<tr><td><b>char&lt;=</b> <code>&amp;rest</code> <i>characters</i><sup>+</sup> </td><td>→   
+<i>generalized-boolean</i></td></tr>
+<tr><td><b>char&gt;=</b> <code>&amp;rest</code> <i>characters</i><sup>+</sup> </td><td>→   
+<i>generalized-boolean</i></td></tr>
+
+<tr/>
+
+<tr><td><b>char-equal </b><code>&amp;rest</code> <i>characters</i><sup>+</sup> </td><td>→   
+<i>generalized-boolean</i></td></tr>
+<tr><td><b>char-not-equal </b><code>&amp;rest</code> <i>characters</i><sup>+</sup> </td><td>→   
+<i>generalized-boolean</i></td></tr>
+<tr><td><b>char-lessp </b><code>&amp;rest</code> <i>characters</i><sup>+</sup> </td><td>→   
+<i>generalized-boolean</i></td></tr>
+<tr><td><b>char-greaterp </b><code>&amp;rest</code> <i>characters</i><sup>+</sup> </td><td>→  
+<i>generalized-boolean</i></td></tr>
+<tr><td><b>char-not-greaterp </b><code>&amp;rest</code> <i>characters</i><sup>+</sup> </td><td>→   
+<i>generalized-boolean</i></td></tr>
+<tr><td><b>char-not-lessp </b><code>&amp;rest</code> <i>characters</i><sup>+</sup> </td><td>→   
+<i>generalized-boolean</i></td></tr>
+</tbody></table>
+
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>character</i>—a <i><a href="g-c.xhtml#character">character</a></i>.
+
+<p>
+<i>generalized-boolean</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+These predicates compare <i><a href="g-c.xhtml#character">characters</a></i>.
+
+<p>
+<a href="#DictEntry_char_char_888"><b>char=</b></a> returns <i><a href="g-t.xhtml#true">true</a></i> if all <i>characters</i> are the <i><a href="g-s.xhtml#same">same</a></i>;
+otherwise, it returns <i><a href="g-f.xhtml#false">false</a></i>.
+
+If two <i>characters</i> differ 
+in any <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attributes</a></i>,
+then they are not <a href="#DictEntry_char_char_888"><b>char=</b></a>.
+
+
+</p><p>
+<a href="#DictEntry_char_char_888"><b>char/=</b></a> returns <i><a href="g-t.xhtml#true">true</a></i> if all <i>characters</i> are different;
+otherwise, it returns <i><a href="g-f.xhtml#false">false</a></i>.
+
+</p><p>
+<a href="#DictEntry_char_char_888"><b>char&lt;</b></a> returns <i><a href="g-t.xhtml#true">true</a></i> if the <i>characters</i> are monotonically increasing; 
+otherwise, it returns <i><a href="g-f.xhtml#false">false</a></i>.
+
+If two <i><a href="g-c.xhtml#character">characters</a></i> 
+have <i><a href="g-i.xhtml#identical">identical</a></i> <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attributes</a></i>, 
+then their ordering by <a href="#DictEntry_char_char_888"><b>char&lt;</b></a> is 
+consistent with the numerical ordering by the predicate <code>&lt;</code> on their <i><a href="g-c.xhtml#code">codes</a></i>.
+
+
+</p><p>
+<a href="#DictEntry_char_char_888"><b>char&gt;</b></a> returns <i><a href="g-t.xhtml#true">true</a></i> if the <i>characters</i> are monotonically decreasing; 
+otherwise, it returns <i><a href="g-f.xhtml#false">false</a></i>.
+
+If two <i><a href="g-c.xhtml#character">characters</a></i> have 
+<i><a href="g-i.xhtml#identical">identical</a></i> <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attributes</a></i>,
+then their ordering by <a href="#DictEntry_char_char_888"><b>char&gt;</b></a> is 
+consistent with the numerical ordering by the predicate <code>&gt;</code> on their <i><a href="g-c.xhtml#code">codes</a></i>. 
+
+
+</p><p>
+<a href="#DictEntry_char_char_888"><b>char&lt;=</b></a> returns <i><a href="g-t.xhtml#true">true</a></i> 
+if the <i>characters</i> are monotonically nondecreasing; 
+otherwise, it returns <i><a href="g-f.xhtml#false">false</a></i>.
+
+If two <i><a href="g-c.xhtml#character">characters</a></i> have
+
+
+
+
+
+
+
+
+
+<i><a href="g-i.xhtml#identical">identical</a></i> <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attributes</a></i>,
+then their ordering by <a href="#DictEntry_char_char_888"><b>char&lt;=</b></a> is
+consistent with the numerical ordering by the predicate <code>&lt;=</code> on their <i><a href="g-c.xhtml#code">codes</a></i>. 
+
+
+</p><p>
+<a href="#DictEntry_char_char_888"><b>char&gt;=</b></a> returns <i><a href="g-t.xhtml#true">true</a></i> 
+if the <i>characters</i> are monotonically nonincreasing; 
+otherwise, it returns <i><a href="g-f.xhtml#false">false</a></i>.
+
+If two <i><a href="g-c.xhtml#character">characters</a></i> have
+<i><a href="g-i.xhtml#identical">identical</a></i> <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attributes</a></i>,
+then their ordering by <a href="#DictEntry_char_char_888"><b>char&gt;=</b></a> is 
+consistent with the numerical ordering by the predicate <code>&gt;=</code> on their <i><a href="g-c.xhtml#code">codes</a></i>. 
+
+
+</p><p>
+    <a href="#DictEntry_char_char_888"><b>char-equal</b></a>,
+    <a href="#DictEntry_char_char_888"><b>char-not-equal</b></a>,
+    <a href="#DictEntry_char_char_888"><b>char-lessp</b></a>,
+    <a href="#DictEntry_char_char_888"><b>char-greaterp</b></a>,
+    <a href="#DictEntry_char_char_888"><b>char-not-greaterp</b></a>,
+and <a href="#DictEntry_char_char_888"><b>char-not-lessp</b></a>
+are similar to 
+    <a href="#DictEntry_char_char_888"><b>char=</b></a>,
+    <a href="#DictEntry_char_char_888"><b>char/=</b></a>,
+    <a href="#DictEntry_char_char_888"><b>char&lt;</b></a>,
+    <a href="#DictEntry_char_char_888"><b>char&gt;</b></a>,
+    <a href="#DictEntry_char_char_888"><b>char&lt;=</b></a>,
+    <a href="#DictEntry_char_char_888"><b>char&gt;=</b></a>,
+respectively,
+except that they ignore differences in <i><a href="g-c.xhtml#case">case</a></i> and
+
+
+
+
+might have an <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> behavior 
+for <i><a href="g-n.xhtml#nonsimple">non-simple</a></i> <i><a href="g-c.xhtml#character">characters</a></i>.
+For example, an <i><a href="g-i.xhtml#implementation">implementation</a></i> might define that 
+<a href="#DictEntry_char_char_888"><b>char-equal</b></a>, <i>etc.</i> ignore certain 
+<i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attributes</a></i>.
+The effect, if any, 
+of each <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attribute</a></i>
+upon these functions must be specified as part of the definition of that <i><a href="g-a.xhtml#attribute">attribute</a></i>.
+
+
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (char= #\d #\d) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char= #\A #\a) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char= #\d #\x) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char= #\d #\D) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char/= #\d #\d) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char/= #\d #\x) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char/= #\d #\D) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char= #\d #\d #\d #\d) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char/= #\d #\d #\d #\d) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char= #\d #\d #\x #\d) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char/= #\d #\d #\x #\d) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char= #\d #\y #\x #\c) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char/= #\d #\y #\x #\c) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char= #\d #\c #\d) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char/= #\d #\c #\d) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char&lt; #\d #\x) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char&lt;= #\d #\x) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char&lt; #\d #\d) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char&lt;= #\d #\d) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char&lt; #\a #\e #\y #\z) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char&lt;= #\a #\e #\y #\z) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char&lt; #\a #\e #\e #\y) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char&lt;= #\a #\e #\e #\y) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char&gt; #\e #\d) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char&gt;= #\e #\d) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char&gt; #\d #\c #\b #\a) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char&gt;= #\d #\c #\b #\a) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char&gt; #\d #\d #\c #\a) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char&gt;= #\d #\d #\c #\a) → <i><a href="g-t.xhtml#true">true</a></i>
+ (char&gt; #\e #\d #\b #\c #\a) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char&gt;= #\e #\d #\b #\c #\a) → <i><a href="g-f.xhtml#false">false</a></i>
+ (char&gt; #\z #\A) → <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (char&gt; #\Z #\a) → <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (char-equal #\A #\a) → <i><a href="g-t.xhtml#true">true</a></i>
+ (stable-sort (list #\b #\A #\B #\a #\c #\C) #'char-lessp)
+→ (#\A #\a #\b #\B #\c #\C)
+ (stable-sort (list #\b #\A #\B #\a #\c #\C) #'char&lt;)
+→ (#\A #\B #\C #\a #\b #\c) ;Implementation A
+→ (#\a #\b #\c #\A #\B #\C) ;Implementation B
+→ (#\a #\A #\b #\B #\c #\C) ;Implementation C
+→ (#\A #\a #\B #\b #\C #\c) ;Implementation D
+→ (#\A #\B #\a #\b #\C #\c) ;Implementation E
+</pre>
+
+
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e5-3-68.xhtml#DictEntry_program_erro_454"><b>program-error</b></a> if at least one <i>character</i> is not supplied.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="s2-1.xhtml#Section_Character_Sy_108">2.1 Character Syntax</a>,
+Section <a href="s13-1.xhtml#SubSection_Documentatio_882">13.1.10 Documentation of Implementation-Defined Scripts</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+If characters differ in their <i><a href="g-c.xhtml#code">code</a></i> <i><a href="g-a.xhtml#attribute">attribute</a></i> 
+or any <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attribute</a></i>,
+they are considered to be different by <a href="#DictEntry_char_char_888"><b>char=</b></a>.
+
+<p>
+
+There is no requirement that <code>(eq c1 c2)</code> be true merely because
+<code>(char= c1 c2)</code> is <i><a href="g-t.xhtml#true">true</a></i>.  While <a href="e5-3-33.xhtml#DictEntry_eq_419"><b>eq</b></a> can distinguish two 
+<i><a href="g-c.xhtml#character">characters</a></i>
+that <a href="#DictEntry_char_char_888"><b>char=</b></a> does not, it is distinguishing them not
+as <i><a href="g-c.xhtml#character">characters</a></i>, but in some sense on the basis of a lower level
+implementation characteristic.
+If <code>(eq c1 c2)</code> is <i><a href="g-t.xhtml#true">true</a></i>,
+then <code>(char= c1 c2)</code> is also true.
+<a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a> and <a href="e5-3-35.xhtml#DictEntry_equal_421"><b>equal</b></a>
+compare <i><a href="g-c.xhtml#character">characters</a></i> in the same
+way that <a href="#DictEntry_char_char_888"><b>char=</b></a> does.
+
+</p><p>
+The manner in which <i><a href="g-c.xhtml#case">case</a></i> is used by 
+     <a href="#DictEntry_char_char_888"><b>char-equal</b></a>,
+     <a href="#DictEntry_char_char_888"><b>char-not-equal</b></a>,
+     <a href="#DictEntry_char_char_888"><b>char-lessp</b></a>,
+     <a href="#DictEntry_char_char_888"><b>char-greaterp</b></a>,
+     <a href="#DictEntry_char_char_888"><b>char-not-greaterp</b></a>,
+ and <a href="#DictEntry_char_char_888"><b>char-not-lessp</b></a>
+implies an ordering for <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i> such that
+<code>A=a</code>, <code>B=b</code>, and so on, up to <code>Z=z</code>, and furthermore either
+<code>9&lt;A</code> or <code>Z&lt;0</code>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

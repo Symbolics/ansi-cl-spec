@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.21 write-char — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_write_char_1212" class="entry"><span class="secno">21.2.21</span> <span class="names">write-char</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>write-char</b>
+<i>character <code>&amp;optional</code> output-stream</i>
+  → <i>character</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>character</i>—a <i><a href="g-c.xhtml#character">character</a></i>.
+
+<p>
+<i>output-stream</i> -- an <i><a href="g-o.xhtml#output">output</a></i> <i><a href="g-s.xhtml#streamdesignator">stream designator</a></i>.
+ The default is <i><a href="g-s.xhtml#standardoutput">standard output</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_write_char_1212"><b>write-char</b></a> outputs <i>character</i> to <i>output-stream</i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (write-char #\a)
+▷ a
+→ #\a
+ (with-output-to-string (s) 
+   (write-char #\a s)
+   (write-char #\Space s)
+   (write-char #\b s))
+→ "a b"
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The <i>output-stream</i> is modified.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a>,
+<a href="e21-2-54.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e21-2-17.xhtml#DictEntry_read_char_1208"><b>read-char</b></a>,
+<a href="e21-2-15.xhtml#DictEntry_write_byte_1206"><b>write-byte</b></a>,
+
+<a href="e21-2-25.xhtml#DictEntry_write_sequen_1216"><b>write-sequence</b></a>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

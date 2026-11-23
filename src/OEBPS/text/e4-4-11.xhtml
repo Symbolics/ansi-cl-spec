@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>4.4.11 method — System Class</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_method_346" class="entry"><span class="secno">4.4.11</span> <span class="names">method</span> <span class="kind">System Class</span></h3>
+<dl>
+
+
+<dt><b>Class Precedence List:</b></dt><dd>
+
+<a href="#DictEntry_method_346"><b>method</b></a>,
+<a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+
+
+</dd><dt><b>Description:</b></dt><dd>
+
+A <i><a href="g-m.xhtml#method">method</a></i> is an <i><a href="g-o.xhtml#object">object</a></i> that represents a modular part of the behavior
+of a <i><a href="g-g.xhtml#genericfunction">generic function</a></i>.
+
+<p>
+A <i><a href="g-m.xhtml#method">method</a></i> contains <i><a href="g-c.xhtml#code">code</a></i> to implement the <i><a href="g-m.xhtml#method">method</a></i>'s
+behavior, a sequence of <i><a href="g-p.xhtml#parameterspecializer">parameter specializers</a></i> that specify when the
+given <i><a href="g-m.xhtml#method">method</a></i> is applicable, and a sequence of <i><a href="g-q.xhtml#qualifier">qualifiers</a></i>
+that is used by the method combination facility to distinguish among
+<i><a href="g-m.xhtml#method">methods</a></i>.  Each required parameter of each 
+<i><a href="g-m.xhtml#method">method</a></i> has an associated <i><a href="g-p.xhtml#parameterspecializer">parameter specializer</a></i>, and the 
+<i><a href="g-m.xhtml#method">method</a></i> will be invoked only on arguments that satisfy its 
+<i><a href="g-p.xhtml#parameterspecializer">parameter specializers</a></i>.
+
+</p><p>
+The method combination facility controls the selection of 
+<i><a href="g-m.xhtml#method">methods</a></i>, the order in which they are run, and the values that are
+returned by the generic function.  The object system offers a default method
+combination type and provides a facility for declaring new types of
+method combination.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="s7-6.xhtml#Section_Generic_Func_540">7.6 Generic Functions and Methods</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

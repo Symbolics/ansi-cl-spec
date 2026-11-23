@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.7.4 reinitialize-instance — Standard Generic Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_reinitialize_560" class="entry"><span class="secno">7.7.4</span> <span class="names">reinitialize-instance</span> <span class="kind">Standard Generic Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>reinitialize-instance</b>
+<i>instance <code>&amp;rest</code> initargs <code>&amp;key</code> <code>&amp;allow-other-keys</code></i>
+  → <i>instance</i>
+</dd><dt><b>Method Signatures:</b></dt><dd>
+
+<b>reinitialize-instance</b>
+<i>(<i>instance</i> <a href="e4-4-14.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>) <code>&amp;rest</code> initargs</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>instance</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+<p>
+<i>initargs</i>—an <i><a href="g-i.xhtml#initializationargumentlist">initialization argument list</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The <i><a href="g-g.xhtml#genericfunction">generic function</a></i> <a href="#DictEntry_reinitialize_560"><b>reinitialize-instance</b></a> can be used to change
+the values of <i><a href="g-l.xhtml#localslot">local slots</a></i> of an <i>instance</i> according to 
+<i>initargs</i>.
+
+
+This <i><a href="g-g.xhtml#genericfunction">generic function</a></i> can be called by users.
+
+<p>
+The system-supplied primary <i><a href="g-m.xhtml#method">method</a></i> for <a href="#DictEntry_reinitialize_560"><b>reinitialize-instance</b></a>
+checks the validity of <i>initargs</i> and signals an error if
+an <i>initarg</i> is supplied that is not declared as valid.
+The <i><a href="g-m.xhtml#method">method</a></i> then calls the generic function <a href="e7-7-5.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a>
+with the following arguments:  the <i>instance</i>, 
+<a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> (which means no <i><a href="g-s.xhtml#slot">slots</a></i>
+should be initialized according to their initforms), and the
+<i>initargs</i> it received.
+
+</p></dd><dt><b>Side Effects:</b></dt><dd>
+
+The <i><a href="g-g.xhtml#genericfunction">generic function</a></i> <a href="#DictEntry_reinitialize_560"><b>reinitialize-instance</b></a> changes the values of <i><a href="g-l.xhtml#localslot">local slots</a></i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+The system-supplied primary <i><a href="g-m.xhtml#method">method</a></i> for <a href="#DictEntry_reinitialize_560"><b>reinitialize-instance</b></a>
+signals an error if an <i>initarg</i> is supplied that is not declared as valid.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e7-7-36.xhtml#DictEntry_initialize_i_592"><b>initialize-instance</b></a>,
+<a href="e7-7-5.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a>,
+<a href="e7-7-7.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a>,
+<a href="e7-7-6.xhtml#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a>,
+<a href="e7-7-9.xhtml#DictEntry_slot_boundp_565"><b>slot-boundp</b></a>,
+<a href="e7-7-11.xhtml#DictEntry_slot_makunbo_567"><b>slot-makunbound</b></a>,
+Section <a href="s7-3.xhtml#Section_Reinitializi_532">7.3 Reinitializing an Instance</a>,
+Section <a href="s7-1.xhtml#SubSection_Rules_for_In_524">7.1.4 Rules for Initialization Arguments</a>,
+Section <a href="s7-1.xhtml#SubSection_Declaring_th_522">7.1.2 Declaring the Validity of Initialization Arguments</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<i>Initargs</i> are declared as valid by using the
+<code>:initarg</code> option to <a href="e7-7-25.xhtml#DictEntry_defclass_581"><b>defclass</b></a>, or by defining 
+<i><a href="g-m.xhtml#method">methods</a></i> for <a href="#DictEntry_reinitialize_560"><b>reinitialize-instance</b></a>
+or <a href="e7-7-5.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a>.  The keyword name
+of each keyword parameter specifier in the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i> of any 
+<i><a href="g-m.xhtml#method">method</a></i>
+defined on <a href="#DictEntry_reinitialize_560"><b>reinitialize-instance</b></a> or <a href="e7-7-5.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a> is
+declared as a valid initialization argument name for all 
+<i>classes</i> for
+which that <i><a href="g-m.xhtml#method">method</a></i> is applicable.
+
+</dd></dl>
+</section>
+</body>
+</html>

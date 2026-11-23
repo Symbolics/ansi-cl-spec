@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.18 let, let* — Special Operator</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_let_let_404" class="entry"><span class="secno">5.3.18</span> <span class="names">let, let*</span> <span class="kind">Special Operator</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>let</b>
+<i>(<code>{</code><i>var</i> | (<i>var</i> <i>[</i><i>init-form</i> <i>]</i>)<code>}</code><sup>*</sup>) {<i>declaration</i>}* {<i>form</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+<p>
+<b>let*</b>
+<i>(<code>{</code><i>var</i> | (<i>var</i> <i>[</i><i>init-form</i> <i>]</i>)<code>}</code><sup>*</sup>) {<i>declaration</i>}* {<i>form</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>var</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+<p>
+
+
+<i>init-form</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+
+
+
+<i>declaration</i>—a <a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="g-e.xhtml#expression">expression</a></i>; not evaluated.
+
+</p><p>
+<i>form</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+<i>results</i>—the <i><a href="g-v.xhtml#value">values</a></i> returned by the <i><a href="g-f.xhtml#form">forms</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_let_let_404"><b>let</b></a> and <a href="#DictEntry_let_let_404"><b>let*</b></a>
+create new variable <i><a href="g-b.xhtml#binding">bindings</a></i> and
+execute a series of <i>forms</i> that use these <i><a href="g-b.xhtml#binding">bindings</a></i>.
+<a href="#DictEntry_let_let_404"><b>let</b></a> performs the <i><a href="g-b.xhtml#binding">bindings</a></i> in parallel and 
+<a href="#DictEntry_let_let_404"><b>let*</b></a> does them sequentially.
+
+<p>
+
+
+The form
+
+</p><pre> (let ((<i>var1</i> <i>init-form-1</i>)
+       (<i>var2</i> <i>init-form-2</i>)
+       ...
+       (<i>varm</i> <i>init-form-m</i>))
+   <i>declaration1</i>
+   <i>declaration2</i>
+   ...
+   <i>declarationp</i>
+   <i>form1</i>
+   <i>form2</i>
+   ...
+   <i>formn</i>)
+</pre>
+first evaluates the expressions <i>init-form-1</i>, <i>init-form-2</i>, and so on,
+
+in that order, saving the resulting values.
+Then all of the variables <i>varj</i> are bound to the corresponding
+values; each <i><a href="g-b.xhtml#binding">binding</a></i> is lexical unless
+there is a <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a> declaration to the contrary.
+The expressions <i>formk</i> are then evaluated
+in order; the values of all but the last are discarded
+(that is, the body of a <a href="#DictEntry_let_let_404"><b>let</b></a> 
+is an <i><a href="g-i.xhtml#implicitprogn">implicit progn</a></i>).
+
+<p>
+
+
+<a href="#DictEntry_let_let_404"><b>let*</b></a>
+is similar to <a href="#DictEntry_let_let_404"><b>let</b></a>, but the <i><a href="g-b.xhtml#binding">bindings</a></i> of variables
+are performed sequentially rather than in parallel.  
+The expression for the <i>init-form</i> of a 
+<i>var</i> can refer to <i>vars</i>
+previously bound in the <a href="#DictEntry_let_let_404"><b>let*</b></a>.
+
+</p><p>
+
+The form
+
+</p><pre> (let* ((<i>var1</i> <i>init-form-1</i>)
+        (<i>var2</i> <i>init-form-2</i>)
+        ...
+        (<i>varm</i> <i>init-form-m</i>))
+   <i>declaration1</i>
+   <i>declaration2</i>
+   ...
+   <i>declarationp</i>
+   <i>form1</i>
+   <i>form2</i>
+   ...
+   <i>formn</i>)
+</pre>
+first evaluates the expression <i>init-form-1</i>, then binds the variable
+<i>var1</i> to that value; then it evaluates <i>init-form-2</i> and binds 
+
+<i>var2</i>, and so on.
+The expressions <i>formj</i> are then evaluated
+in order; the values of all but the last are discarded
+(that is, the body of <a href="#DictEntry_let_let_404"><b>let*</b></a> is an implicit <a href="e5-3-59.xhtml#DictEntry_progn_445"><b>progn</b></a>).
+
+<p>
+For both <a href="#DictEntry_let_let_404"><b>let</b></a> and <a href="#DictEntry_let_let_404"><b>let*</b></a>,
+if there is not an <i>init-form</i> associated with a <i>var</i>,
+<i>var</i> is initialized to <a href="e5-3-30.xhtml#DictEntry_nil_416"><b>nil</b></a>.  
+
+</p><p>
+The special form <a href="#DictEntry_let_let_404"><b>let</b></a> 
+has the property that the <i><a href="g-s.xhtml#scope">scope</a></i> 
+of the name binding does not include any
+initial value form.
+For <a href="#DictEntry_let_let_404"><b>let*</b></a>, a variable's <i><a href="g-s.xhtml#scope">scope</a></i> also includes the 
+     remaining initial value forms for subsequent variable bindings.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq a 'top) →  TOP
+ (defun -function () a) →  DUMMY-FUNCTION
+ (let ((a 'inside) (b a))
+    (format nil "~S ~S ~S" a b (-function))) → "INSIDE TOP TOP" 
+ (let* ((a 'inside) (b a))
+    (format nil "~S ~S ~S" a b (-function))) → "INSIDE INSIDE TOP" 
+ (let ((a 'inside) (b a))
+    (declare (special a))
+    (format nil "~S ~S ~S" a b (-function))) → "INSIDE TOP INSIDE"
+</pre>
+
+<p>
+
+The code
+
+</p><pre> (let (x)
+   (declare (integer x))
+   (setq x (gcd y z))
+   ...)
+</pre>
+is incorrect; although <code>x</code> is indeed set before it is used,
+and is set to a value of the declared type <i><a href="g-i.xhtml#integer">integer</a></i>, nevertheless
+<code>x</code> initially takes on the value <a href="e5-3-30.xhtml#DictEntry_nil_416"><b>nil</b></a> in violation of the type
+declaration.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-19.xhtml#DictEntry_progv_405"><b>progv</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>13.1 Character Concepts</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Character_Co_860"><span class="secno">13.1</span> Character Concepts</h2>
+<section>
+<h3 id="SubSection_Introduction_861"><span class="secno">13.1.1</span> Introduction to Characters</h3>
+<p>
+
+
+A <b><i>character</i></b> is an <i><a href="g-o.xhtml#object">object</a></i> that represents a unitary token 
+(<i>e.g.</i>,  a letter, a special symbol, or a "control character")
+in an aggregate quantity of text
+(<i>e.g.</i>,  a <i><a href="g-s.xhtml#string">string</a></i> or a text <i><a href="g-s.xhtml#stream">stream</a></i>).
+
+</p><p>
+
+<i>Common Lisp</i> allows an implementation to provide support 
+for international language <i><a href="g-c.xhtml#character">characters</a></i> as well
+as <i><a href="g-c.xhtml#character">characters</a></i> used in specialized arenas (<i>e.g.</i>,  mathematics).
+
+
+</p><p>
+The following figures contain lists of <i><a href="g-d.xhtml#definedname">defined names</a></i> applicable to 
+<i><a href="g-c.xhtml#character">characters</a></i>.
+
+</p><p>
+The next figure lists some <i><a href="g-d.xhtml#definedname">defined names</a></i> relating to 
+<i><a href="g-c.xhtml#character">character</a></i> <i><a href="g-a.xhtml#attribute">attributes</a></i> and <i><a href="g-c.xhtml#character">character</a></i> <i><a href="g-p.xhtml#predicate">predicates</a></i>.
+
+</p><table id="fig-13-1" class="fig">
+<caption><span class="figlabel">Figure 13-1.</span> Character defined names -- 1</caption>
+
+  <tbody><tr>
+    <td>alpha-char-p</td>
+    <td>char-not-equal</td>
+    <td>char&gt;</td>
+  </tr>
+  <tr>
+    <td>alphanumericp</td>
+    <td>char-not-greaterp</td>
+    <td>char&gt;=</td>
+  </tr>
+  <tr>
+    <td>both-case-p</td>
+    <td>char-not-lessp</td>
+    <td>digit-char-p</td>
+  </tr>
+  <tr>
+    <td>char-code-limit</td>
+    <td>char/=</td>
+    <td>graphic-char-p</td>
+  </tr>
+  <tr>
+    <td>char-equal</td>
+    <td>char&lt;</td>
+    <td>lower-case-p</td>
+  </tr>
+  <tr>
+    <td>char-greaterp</td>
+    <td>char&lt;=</td>
+    <td>standard-char-p</td>
+  </tr>
+  <tr>
+    <td>char-lessp</td>
+    <td>char=</td>
+    <td>upper-case-p</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+The next figure lists some <i><a href="g-c.xhtml#character">character</a></i> construction and conversion <i><a href="g-d.xhtml#definedname">defined names</a></i>.
+
+</p><table id="fig-13-2" class="fig">
+<caption><span class="figlabel">Figure 13-2.</span> Character defined names -- 2</caption>
+
+  <tbody><tr>
+    <td>char-code</td>
+    <td>char-name</td>
+    <td>code-char</td>
+  </tr>
+  <tr>
+    <td>char-downcase</td>
+    <td>char-upcase</td>
+    <td>digit-char</td>
+  </tr>
+  <tr>
+    <td>char-int</td>
+    <td>character</td>
+    <td>name-char</td>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h3 id="SubSection_Introduction_862"><span class="secno">13.1.2</span> Introduction to Scripts and Repertoires</h3>
+<section>
+<h4 id="SubSubSectio_Character_Sc_863"><span class="secno">13.1.2.1</span> Character Scripts</h4>
+<p>
+
+
+A <i><a href="g-s.xhtml#script">script</a></i> is one of possibly several sets that form an <i><a href="g-e.xhtml#exhaustivepartition">exhaustive partition</a></i>
+of the type <a href="e13-2-1.xhtml#DictEntry_character_884"><b>character</b></a>.
+
+</p><p>
+The number of such sets and boundaries between them is <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>.
+<i>Common Lisp</i> does not require these sets to be <i><a href="g-t.xhtml#type">types</a></i>, but an <i><a href="g-i.xhtml#implementation">implementation</a></i>
+is permitted to define such <i><a href="g-t.xhtml#type">types</a></i> as an extension.  Since no <i><a href="g-c.xhtml#character">character</a></i>
+from one <i><a href="g-s.xhtml#script">script</a></i> can ever be a member of another <i><a href="g-s.xhtml#script">script</a></i>, it is generally
+more useful to speak about <i><a href="g-c.xhtml#character">character</a></i> <i><a href="g-r.xhtml#repertoire">repertoires</a></i>.
+
+</p><p>
+
+
+
+
+Although
+the term "<i><a href="g-s.xhtml#script">script</a></i>" is chosen for 
+
+definitional 
+compatibility with ISO terminology, no <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> 
+is required to use any particular <i><a href="g-s.xhtml#script">scripts</a></i> standardized by ISO
+or by any other standards organization.
+
+
+</p><p>
+
+Whether and how the <i><a href="g-s.xhtml#script">script</a></i> or <i><a href="g-s.xhtml#script">scripts</a></i> used by any given
+<i><a href="g-i.xhtml#implementation">implementation</a></i> are named is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Character_Re_864"><span class="secno">13.1.2.2</span> Character Repertoires</h4>
+<p>
+
+
+
+A <b><i>repertoire</i></b> is a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> for a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e13-2-1.xhtml#DictEntry_character_884"><b>character</b></a>.
+
+This term is generally used when describing a collection of <i><a href="g-c.xhtml#character">characters</a></i>
+independent of their coding.
+<i><a href="g-c.xhtml#character">Characters</a></i> in <i><a href="g-r.xhtml#repertoire">repertoires</a></i> are only identified
+    by name,
+    by <i><a href="g-g.xhtml#glyph">glyph</a></i>, or
+    by character description.
+
+</p><p>
+A <i><a href="g-r.xhtml#repertoire">repertoire</a></i> can contain <i><a href="g-c.xhtml#character">characters</a></i> from several
+<i><a href="g-s.xhtml#script">scripts</a></i>, and a <i><a href="g-c.xhtml#character">character</a></i> can appear in more than
+one <i><a href="g-r.xhtml#repertoire">repertoire</a></i>.
+
+</p><p>
+
+For some examples of <i><a href="g-r.xhtml#repertoire">repertoires</a></i>, see the coded character standards
+ISO 8859/1, ISO 8859/2, and ISO 6937/2.
+Note, however, that although
+
+the term "<i><a href="g-r.xhtml#repertoire">repertoire</a></i>" is chosen for 
+
+definitional 
+compatibility with ISO terminology, no <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> 
+is required to use <i><a href="g-r.xhtml#repertoire">repertoires</a></i> standardized by ISO or any other 
+standards organization.
+
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Character_At_865"><span class="secno">13.1.3</span> Character Attributes</h3>
+<p><i><a href="g-c.xhtml#character">Characters</a></i> have only one <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-a.xhtml#attribute">attribute</a></i>:
+a <i><a href="g-c.xhtml#code">code</a></i>.  A <i><a href="g-c.xhtml#character">character</a></i>'s <i><a href="g-c.xhtml#code">code</a></i> is a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+This <i><a href="g-c.xhtml#code">code</a></i> is composed from a character <i><a href="g-s.xhtml#script">script</a></i> and a character label
+in an <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> way.  See the <i><a href="g-f.xhtml#function">functions</a></i> <a href="e13-2-16.xhtml#DictEntry_char_code_899"><b>char-code</b></a> and <a href="e13-2-18.xhtml#DictEntry_code_char_901"><b>code-char</b></a>.
+
+
+</p><p>
+Additional, <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attributes</a></i> of <i><a href="g-c.xhtml#character">characters</a></i>
+are also permitted
+so that, for example, 
+two <i><a href="g-c.xhtml#character">characters</a></i> with the same <i><a href="g-c.xhtml#code">code</a></i> may differ 
+in some other, <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> way.
+
+</p><p>
+For any <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attribute</a></i>
+there is a distinguished value
+called the <b><i>null</i></b> value for that <i><a href="g-a.xhtml#attribute">attribute</a></i>. 
+A <i><a href="g-c.xhtml#character">character</a></i> for which each <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attribute</a></i>
+has the null value for that <i><a href="g-a.xhtml#attribute">attribute</a></i> is called a <i><a href="g-s.xhtml#simple">simple</a></i> <i><a href="g-c.xhtml#character">character</a></i>.
+If the <i><a href="g-i.xhtml#implementation">implementation</a></i> has no <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attributes</a></i>,
+then all <i><a href="g-c.xhtml#character">characters</a></i> are <i><a href="g-s.xhtml#simple">simple</a></i> <i><a href="g-c.xhtml#character">characters</a></i>.
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Character_Ca_866"><span class="secno">13.1.4</span> Character Categories</h3>
+<p>
+
+There are several (overlapping) categories of <i><a href="g-c.xhtml#character">characters</a></i> that have no formally
+associated <i><a href="g-t.xhtml#type">type</a></i> but that are nevertheless useful to name. 
+They include
+     <i><a href="g-g.xhtml#graphic">graphic</a></i> <i><a href="g-c.xhtml#character">characters</a></i>, 
+     <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>1</sub> <i><a href="g-c.xhtml#character">characters</a></i>,
+     <i><a href="g-c.xhtml#character">characters</a></i> with <i><a href="g-c.xhtml#case">case</a></i> 
+       (<i><a href="g-u.xhtml#uppercase">uppercase</a></i> and <i><a href="g-l.xhtml#lowercase">lowercase</a></i> <i><a href="g-c.xhtml#character">characters</a></i>),
+     <i><a href="g-n.xhtml#numeric">numeric</a></i> <i><a href="g-c.xhtml#character">characters</a></i>,
+     <i><a href="g-a.xhtml#alphanumeric">alphanumeric</a></i> <i><a href="g-c.xhtml#character">characters</a></i>,
+ and <i><a href="g-d.xhtml#digit">digits</a></i> (in a given <i><a href="g-r.xhtml#radix">radix</a></i>).
+
+</p><p>
+For each <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attribute</a></i> of a <i><a href="g-c.xhtml#character">character</a></i>,
+the documentation for that <i><a href="g-i.xhtml#implementation">implementation</a></i> must specify whether 
+<i><a href="g-c.xhtml#character">characters</a></i> that differ only in that <i><a href="g-a.xhtml#attribute">attribute</a></i> are permitted to differ
+in whether are not they are members of one of the aforementioned categories.
+
+</p><p>
+Note that these terms are defined independently of any special syntax 
+which might have been enabled in the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i>.
+</p>
+<section>
+<h4 id="SubSubSectio_Graphic_Char_867"><span class="secno">13.1.4.1</span> Graphic Characters</h4>
+<p><i><a href="g-c.xhtml#character">Characters</a></i> that are classified as <b><i>graphic</i></b>, or displayable, are each
+associated with a glyph, a visual representation of the <i><a href="g-c.xhtml#character">character</a></i>.
+
+
+</p><p>
+A <i><a href="g-g.xhtml#graphic">graphic</a></i> <i><a href="g-c.xhtml#character">character</a></i> is one that has a standard textual 
+representation as a single <i><a href="g-g.xhtml#glyph">glyph</a></i>, such as <code>A</code> or <code>*</code> or <code>=</code>.
+<i><a href="g-s.xhtml#space">Space</a></i>, which effectively has a blank <i><a href="g-g.xhtml#glyph">glyph</a></i>, is defined
+to be a <i><a href="g-g.xhtml#graphic">graphic</a></i>.
+
+</p><p>
+Of the <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>,
+     <i><a href="g-n.xhtml#newline">newline</a></i> is <i><a href="g-n.xhtml#nongraphic">non-graphic</a></i> 
+ and all others are <i><a href="g-g.xhtml#graphic">graphic</a></i>; see Section <a href="s2-1.xhtml#SubSection_Standard_Cha_114">2.1.3 Standard Characters</a>.
+
+</p><p>
+
+<i><a href="g-c.xhtml#character">Characters</a></i> that are not <i><a href="g-g.xhtml#graphic">graphic</a></i> are called <b><i>non-graphic</i></b>.
+
+<i><a href="g-n.xhtml#nongraphic">Non-graphic</a></i> <i><a href="g-c.xhtml#character">characters</a></i> are sometimes informally called
+    "formatting characters" 
+ or "control characters."
+
+</p><p>
+<code>#\Backspace</code>,
+<code>#\Tab</code>,
+<code>#\Rubout</code>,
+<code>#\Linefeed</code>, 
+<code>#\Return</code>, and
+<code>#\Page</code>,
+if they are supported by the <i><a href="g-i.xhtml#implementation">implementation</a></i>,
+are <i><a href="g-n.xhtml#nongraphic">non-graphic</a></i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Alphabetic_C_868"><span class="secno">13.1.4.2</span> Alphabetic Characters</h4>
+<p>
+
+The <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>1</sub> <i><a href="g-c.xhtml#character">characters</a></i> are
+a subset of the <i><a href="g-g.xhtml#graphic">graphic</a></i> <i><a href="g-c.xhtml#character">characters</a></i>.
+Of the <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>, only these are the <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>1</sub> <i><a href="g-c.xhtml#character">characters</a></i>:
+
+</p><p>
+<code>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code>
+
+</p><p>
+<code>a b c d e f g h i j k l m n o p q r s t u v w x y z</code>
+
+</p><p>
+
+Any <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-c.xhtml#character">character</a></i> that has <i><a href="g-c.xhtml#case">case</a></i> 
+must be <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>1</sub>.
+For each <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-g.xhtml#graphic">graphic</a></i> <i><a href="g-c.xhtml#character">character</a></i> 
+that has no <i><a href="g-c.xhtml#case">case</a></i>,
+it is <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> whether 
+that <i><a href="g-c.xhtml#character">character</a></i> is <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>1</sub>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Characters_W_869"><span class="secno">13.1.4.3</span> Characters With Case</h4>
+<p>
+
+
+The <i><a href="g-c.xhtml#character">characters</a></i> with <i><a href="g-c.xhtml#case">case</a></i> are 
+a subset of the <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>1</sub> <i><a href="g-c.xhtml#character">characters</a></i>.
+A <i><a href="g-c.xhtml#character">character</a></i> with <i><a href="g-c.xhtml#case">case</a></i> has the property of being either
+<i><a href="g-u.xhtml#uppercase">uppercase</a></i> or <i><a href="g-l.xhtml#lowercase">lowercase</a></i>.
+Every <i><a href="g-c.xhtml#character">character</a></i> with <i><a href="g-c.xhtml#case">case</a></i> is in one-to-one correspondence
+with some other <i><a href="g-c.xhtml#character">character</a></i> with the opposite <i><a href="g-c.xhtml#case">case</a></i>.
+</p>
+<section>
+<h5 id="SubSubSubSec_Uppercase_Ch_870"><span class="secno">13.1.4.3.1</span> Uppercase Characters</h5>
+<p>
+
+An uppercase <i><a href="g-c.xhtml#character">character</a></i> is one that has a corresponding
+<i><a href="g-l.xhtml#lowercase">lowercase</a></i> <i><a href="g-c.xhtml#character">character</a></i> that is <i><a href="g-d.xhtml#different">different</a></i> 
+(and can be obtained using <a href="e13-2-14.xhtml#DictEntry_char_upcase_897"><b>char-downcase</b></a>).
+
+</p><p>
+Of the <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>, only these are <i><a href="g-u.xhtml#uppercase">uppercase</a></i> <i><a href="g-c.xhtml#character">characters</a></i>:
+
+</p><p>
+<code>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code>
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Lowercase_Ch_871"><span class="secno">13.1.4.3.2</span> Lowercase Characters</h5>
+<p>
+
+A lowercase <i><a href="g-c.xhtml#character">character</a></i> is one that has a corresponding 
+<i><a href="g-u.xhtml#uppercase">uppercase</a></i> <i><a href="g-c.xhtml#character">character</a></i> that is <i><a href="g-d.xhtml#different">different</a></i> 
+(and can be obtained using <a href="e13-2-14.xhtml#DictEntry_char_upcase_897"><b>char-upcase</b></a>).
+
+</p><p>
+Of the <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>, only these are <i><a href="g-l.xhtml#lowercase">lowercase</a></i> <i><a href="g-c.xhtml#character">characters</a></i>:
+
+</p><p>
+<code>a b c d e f g h i j k l m n o p q r s t u v w x y z</code>
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Correspondin_872"><span class="secno">13.1.4.3.3</span> Corresponding Characters in the Other Case</h5>
+<p>
+
+The <i><a href="g-u.xhtml#uppercase">uppercase</a></i> <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i> <code>A</code> through <code>Z</code> mentioned above
+respectively correspond to
+the <i><a href="g-l.xhtml#lowercase">lowercase</a></i> <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i> <code>a</code> through <code>z</code> mentioned above.
+For example, the <i><a href="g-u.xhtml#uppercase">uppercase</a></i> <i><a href="g-c.xhtml#character">character</a></i> <code>E</code> 
+corresponds to the <i><a href="g-l.xhtml#lowercase">lowercase</a></i> <i><a href="g-c.xhtml#character">character</a></i> <code>e</code>, and vice versa.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Case_of_Impl_873"><span class="secno">13.1.4.3.4</span> Case of Implementation-Defined Characters</h5>
+<p>
+
+An <i><a href="g-i.xhtml#implementation">implementation</a></i> may define that other <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>
+<i><a href="g-g.xhtml#graphic">graphic</a></i> <i><a href="g-c.xhtml#character">characters</a></i> have <i><a href="g-c.xhtml#case">case</a></i>.  Such definitions must always
+be done in pairs—one <i><a href="g-u.xhtml#uppercase">uppercase</a></i> <i><a href="g-c.xhtml#character">character</a></i> in one-to-one 
+<i>correspondence</i> with one <i><a href="g-l.xhtml#lowercase">lowercase</a></i> <i><a href="g-c.xhtml#character">character</a></i>.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Numeric_Char_874"><span class="secno">13.1.4.4</span> Numeric Characters</h4>
+<p>
+
+The <i><a href="g-n.xhtml#numeric">numeric</a></i> <i><a href="g-c.xhtml#character">characters</a></i> are
+a subset of the <i><a href="g-g.xhtml#graphic">graphic</a></i> <i><a href="g-c.xhtml#character">characters</a></i>.
+Of the <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>, only these are <i><a href="g-n.xhtml#numeric">numeric</a></i> <i><a href="g-c.xhtml#character">characters</a></i>:
+
+</p><p>
+<code>0 1 2 3 4 5 6 7 8 9</code>
+
+</p><p>
+For each <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-g.xhtml#graphic">graphic</a></i> <i><a href="g-c.xhtml#character">character</a></i> 
+that has no <i><a href="g-c.xhtml#case">case</a></i>, the <i><a href="g-i.xhtml#implementation">implementation</a></i> must define whether
+or not it is a <i><a href="g-n.xhtml#numeric">numeric</a></i> <i><a href="g-c.xhtml#character">character</a></i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Alphanumeric_875"><span class="secno">13.1.4.5</span> Alphanumeric Characters</h4>
+<p>
+
+The set of <i><a href="g-a.xhtml#alphanumeric">alphanumeric</a></i> <i><a href="g-c.xhtml#character">characters</a></i> is the union of 
+    the set of <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>1</sub> <i><a href="g-c.xhtml#character">characters</a></i> 
+and the set of <i><a href="g-n.xhtml#numeric">numeric</a></i> <i><a href="g-c.xhtml#character">characters</a></i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Digits_in_a__876"><span class="secno">13.1.4.6</span> Digits in a Radix</h4>
+<p>
+
+
+What qualifies as a <i><a href="g-d.xhtml#digit">digit</a></i> depends on the <i><a href="g-r.xhtml#radix">radix</a></i> 
+(an <i><a href="g-i.xhtml#integer">integer</a></i> between <code>2</code> and <code>36</code>, inclusive).
+The potential <i><a href="g-d.xhtml#digit">digits</a></i> are:
+
+</p><p>
+<code>0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code>
+
+</p><p>
+Their respective weights are <code>0</code>, <code>1</code>, <code>2</code>, <i> ... </i> <code>35</code>.
+In any given radix <i>n</i>, only the first <i>n</i> potential <i><a href="g-d.xhtml#digit">digits</a></i> 
+are considered to be <i><a href="g-d.xhtml#digit">digits</a></i>.
+For example,
+the digits in radix <code>2</code>  are <code>0</code> and <code>1</code>, 
+the digits in radix <code>10</code> are <code>0</code> through <code>9</code>, and
+the digits in radix <code>16</code> are <code>0</code> through <code>F</code>.
+
+</p><p>
+<i><a href="g-c.xhtml#case">Case</a></i> is not significant in <i><a href="g-d.xhtml#digit">digits</a></i>; 
+for example, in radix <code>16</code>, both <code>F</code> and <code>f</code> 
+are <i><a href="g-d.xhtml#digit">digits</a></i> with weight <code>15</code>.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Identity_of__877"><span class="secno">13.1.5</span> Identity of Characters</h3>
+<p>
+
+Two <i><a href="g-c.xhtml#character">characters</a></i> that are <a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a>, <a href="e13-2-5.xhtml#DictEntry_char_char_888"><b>char=</b></a>, or <a href="e13-2-5.xhtml#DictEntry_char_char_888"><b>char-equal</b></a> 
+are not necessarily <a href="e5-3-33.xhtml#DictEntry_eq_419"><b>eq</b></a>.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Ordering_of__878"><span class="secno">13.1.6</span> Ordering of Characters</h3>
+<p>
+
+The total ordering on <i><a href="g-c.xhtml#character">characters</a></i> is guaranteed to have 
+the following properties: 
+
+</p><ul>
+
+<li> 
+If two <i><a href="g-c.xhtml#character">characters</a></i> have the same <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attributes</a></i>,
+then their ordering by <a href="e13-2-5.xhtml#DictEntry_char_char_888"><b>char&lt;</b></a> is consistent with the numerical
+ordering by the predicate <a href="e12-2-15.xhtml#DictEntry___lt_789"><b>&lt;</b></a> on their code <i><a href="g-a.xhtml#attribute">attributes</a></i>.
+
+</li><li> If two <i><a href="g-c.xhtml#character">characters</a></i> differ in any <i><a href="g-a.xhtml#attribute">attribute</a></i>, then they
+
+are not <a href="e13-2-5.xhtml#DictEntry_char_char_888"><b>char=</b></a>.
+
+
+</li><li>
+  The total ordering is not necessarily the same as the total ordering
+  on the <i><a href="g-i.xhtml#integer">integers</a></i> produced by applying <a href="e13-2-17.xhtml#DictEntry_char_int_900"><b>char-int</b></a> to the
+  <i><a href="g-c.xhtml#character">characters</a></i>.
+
+</li><li> 
+  While <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>1</sub> <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i> of a given <i><a href="g-c.xhtml#case">case</a></i>
+  must    
+
+  obey a partial ordering,
+  they need not be contiguous; it is permissible for 
+  <i><a href="g-u.xhtml#uppercase">uppercase</a></i> and <i><a href="g-l.xhtml#lowercase">lowercase</a></i> <i><a href="g-c.xhtml#character">characters</a></i> to be interleaved. 
+  Thus <code>(char&lt;= #\a x #\z)</code> 
+  is not a valid way of determining whether or not <code>x</code> is a
+  <i><a href="g-l.xhtml#lowercase">lowercase</a></i> <i><a href="g-c.xhtml#character">character</a></i>.  
+
+
+</li></ul>
+
+<p>
+
+
+
+
+Of the <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>, 
+those which are <i><a href="g-a.xhtml#alphanumeric">alphanumeric</a></i> obey the following partial ordering:
+
+
+</p><pre> A&lt;B&lt;C&lt;D&lt;E&lt;F&lt;G&lt;H&lt;I&lt;J&lt;K&lt;L&lt;M&lt;N&lt;O&lt;P&lt;Q&lt;R&lt;S&lt;T&lt;U&lt;V&lt;W&lt;X&lt;Y&lt;Z
+ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;q&lt;r&lt;s&lt;t&lt;u&lt;v&lt;w&lt;x&lt;y&lt;z
+ 0&lt;1&lt;2&lt;3&lt;4&lt;5&lt;6&lt;7&lt;8&lt;9
+ either 9&lt;A or Z&lt;0
+ either 9&lt;a or z&lt;0                                                      
+</pre><p>
+
+This implies that, for <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>, <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>1</sub> 
+ordering holds within each <i><a href="g-c.xhtml#case">case</a></i> (<i><a href="g-u.xhtml#uppercase">uppercase</a></i> and <i><a href="g-l.xhtml#lowercase">lowercase</a></i>), 
+and that the <i><a href="g-n.xhtml#numeric">numeric</a></i> <i><a href="g-c.xhtml#character">characters</a></i> as a group are not interleaved
+with <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i> <i><a href="g-c.xhtml#character">characters</a></i>.
+However, the ordering or possible interleaving of <i><a href="g-u.xhtml#uppercase">uppercase</a></i> <i><a href="g-c.xhtml#character">characters</a></i>
+and <i><a href="g-l.xhtml#lowercase">lowercase</a></i> <i><a href="g-c.xhtml#character">characters</a></i> is <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>.
+
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Character_Na_879"><span class="secno">13.1.7</span> Character Names</h3>
+<p>
+
+
+The following <i><a href="g-c.xhtml#character">character</a></i> <i><a href="g-n.xhtml#name">names</a></i> must be present in all 
+<i><a href="g-c.xhtml#conformingimplementation">conforming implementations</a></i>:
+
+</p><ul>
+<li><code>Newline</code>
+
+<p>
+
+The character that represents the division between lines.
+An implementation must translate between <code>#\Newline</code>, 
+a single-character representation, and whatever external representation(s)
+may be used.
+
+</p></li><li><code>Space</code>
+
+<p>
+The space or blank character.
+</p></li></ul>
+
+<p>
+The following names are <i><a href="g-s.xhtml#semistandard">semi-standard</a></i>; 
+if an <i><a href="g-i.xhtml#implementation">implementation</a></i> supports them,
+they should be used for the described <i><a href="g-c.xhtml#character">characters</a></i> and no others.
+
+</p><ul>         
+<li><code>Rubout</code>
+
+<p>
+The rubout or delete character.
+
+</p></li><li><code>Page</code>
+
+<p>
+The form-feed or page-separator character.
+
+</p></li><li><code>Tab</code>
+
+<p>
+The tabulate character.
+
+</p></li><li><code>Backspace</code>
+
+<p>
+The backspace character.
+
+</p></li><li><code>Return</code>
+
+<p>
+The carriage return character.
+
+</p></li><li><code>Linefeed</code>
+
+<p>
+The line-feed character.
+</p></li></ul>
+
+<p>
+In some <i><a href="g-i.xhtml#implementation">implementations</a></i>,
+one or more of these <i><a href="g-c.xhtml#character">character</a></i> <i><a href="g-n.xhtml#name">names</a></i> 
+might denote a <i><a href="g-s.xhtml#standardcharacter">standard character</a></i>; 
+for example,
+<code>#\Linefeed</code> and <code>#\Newline</code> might be the <i><a href="g-s.xhtml#same">same</a></i> <i><a href="g-c.xhtml#character">character</a></i>
+in some <i><a href="g-i.xhtml#implementation">implementations</a></i>.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Treatment_of_880"><span class="secno">13.1.8</span> Treatment of Newline during Input and Output</h3>
+<p>
+
+
+
+When the character <code>#\Newline</code> is written to an output file,
+the implementation must take the appropriate action
+to produce a line division.  This might involve writing out a
+record or translating <code>#\Newline</code> to a CR/LF sequence.
+When reading, a corresponding reverse transformation must take place.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Character_En_881"><span class="secno">13.1.9</span> Character Encodings</h3>
+<p>
+
+
+
+
+
+
+A <i><a href="g-c.xhtml#character">character</a></i> is sometimes represented merely by its <i><a href="g-c.xhtml#code">code</a></i>, and sometimes
+by another <i><a href="g-i.xhtml#integer">integer</a></i> value which is composed from the <i><a href="g-c.xhtml#code">code</a></i> and all 
+<i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-a.xhtml#attribute">attributes</a></i>
+(in an <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> way
+that might vary between <i>Lisp images</i> even in the same <i><a href="g-i.xhtml#implementation">implementation</a></i>).
+This <i><a href="g-i.xhtml#integer">integer</a></i>, returned by the function <a href="e13-2-17.xhtml#DictEntry_char_int_900"><b>char-int</b></a>, is called the
+character's "encoding."
+There is no corresponding function
+from a character's encoding back to the <i><a href="g-c.xhtml#character">character</a></i>, 
+since its primary intended uses include things like hashing where an inverse operation
+is not really called for.
+
+
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Documentatio_882"><span class="secno">13.1.10</span> Documentation of Implementation-Defined Scripts</h3>
+<p>
+
+
+ 
+   An <i><a href="g-i.xhtml#implementation">implementation</a></i> must document the <i><a href="g-c.xhtml#character">character</a></i> <i><a href="g-s.xhtml#script">scripts</a></i> 
+   it supports. For each <i><a href="g-c.xhtml#character">character</a></i> <i><a href="g-s.xhtml#script">script</a></i> supported,
+   the documentation must describe at least the following:
+</p><ul>
+<li>
+   Character labels, glyphs, and descriptions.
+   Character labels must be uniquely named using only Latin capital letters A--Z,
+   hyphen (-), and digits 0--9.
+</li><li>
+   Reader canonicalization.
+   Any mechanisms by which <a href="e23-2-4.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> treats
+   <i><a href="g-d.xhtml#different">different</a></i> characters as equivalent must be documented.
+</li><li>
+   The impact on <a href="e13-2-14.xhtml#DictEntry_char_upcase_897"><b>char-upcase</b></a>,
+		 <a href="e13-2-14.xhtml#DictEntry_char_upcase_897"><b>char-downcase</b></a>,
+	     and the case-sensitive <i><a href="g-f.xhtml#formatdirective">format directives</a></i>.
+   In particular, for each <i><a href="g-c.xhtml#character">character</a></i> with <i><a href="g-c.xhtml#case">case</a></i>,
+   whether it is <i><a href="g-u.xhtml#uppercase">uppercase</a></i> or <i><a href="g-l.xhtml#lowercase">lowercase</a></i>,
+   and which <i><a href="g-c.xhtml#character">character</a></i> is its equivalent in the opposite case.
+</li><li>
+   The behavior of the case-insensitive <i><a href="g-f.xhtml#function">functions</a></i>
+     <a href="e13-2-5.xhtml#DictEntry_char_char_888"><b>char-equal</b></a>, <a href="e13-2-5.xhtml#DictEntry_char_char_888"><b>char-not-equal</b></a>,
+     <a href="e13-2-5.xhtml#DictEntry_char_char_888"><b>char-lessp</b></a>, <a href="e13-2-5.xhtml#DictEntry_char_char_888"><b>char-greaterp</b></a>, 
+     <a href="e13-2-5.xhtml#DictEntry_char_char_888"><b>char-not-greaterp</b></a>, and <a href="e13-2-5.xhtml#DictEntry_char_char_888"><b>char-not-lessp</b></a>.
+</li><li>
+   The behavior of any <i><a href="g-c.xhtml#character">character</a></i> <i><a href="g-p.xhtml#predicate">predicates</a></i>;
+   in particular, the effects of
+   <a href="e13-2-8.xhtml#DictEntry_alpha_char_p_891"><b>alpha-char-p</b></a>,
+   <a href="e13-2-15.xhtml#DictEntry_upper_case_p_898"><b>lower-case-p</b></a>,
+   <a href="e13-2-15.xhtml#DictEntry_upper_case_p_898"><b>upper-case-p</b></a>,
+   <a href="e13-2-15.xhtml#DictEntry_upper_case_p_898"><b>both-case-p</b></a>,
+   <a href="e13-2-12.xhtml#DictEntry_graphic_char_895"><b>graphic-char-p</b></a>, 
+   and
+   <a href="e13-2-9.xhtml#DictEntry_alphanumeric_892"><b>alphanumericp</b></a>.
+</li><li>
+   The interaction with file I/O, in particular,
+   the supported coded character sets (for example, ISO8859/1-1987)
+   and external encoding schemes supported are documented.
+</li></ul>
+</section>
+</section>
+</section>
+</body>
+</html>

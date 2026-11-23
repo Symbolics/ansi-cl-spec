@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.6 flet, labels, macrolet — Special Operator</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_flet_labels_392" class="entry"><span class="secno">5.3.6</span> <span class="names">flet, labels, macrolet</span> <span class="kind">Special Operator</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>flet</b>
+<i>({(<i>function-name</i> 
+				                  <i>lambda-list</i>
+				      		  [[{<i>local-declaration</i>}* <i>|</i> <i>local-documentation</i>]]
+				      		  {<i>local-form</i>}*)}*)
+			  {<i>declaration</i>}* {<i>form</i>}*</i><br/> 
+  → <i>{<i>result</i>}*</i>
+<p>
+<b>labels</b>
+<i>({(<i>function-name</i> 
+				                  <i>lambda-list</i>
+				      		  [[{<i>local-declaration</i>}* <i>|</i> <i>local-documentation</i>]]
+				      		  {<i>local-form</i>}*)}*)
+			  {<i>declaration</i>}* {<i>form</i>}*</i><br/> 
+  → <i>{<i>result</i>}*</i>
+</p><p>
+<b>macrolet</b>
+<i>({(<i>name</i> 
+				                  <i>lambda-list</i>
+				      		  [[{<i>local-declaration</i>}* <i>|</i> <i>local-documentation</i>]]
+				      		  {<i>local-form</i>}*)}*)
+			  {<i>declaration</i>}* {<i>form</i>}*</i><br/> 
+  → <i>{<i>result</i>}*</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>function-name</i>—a <i><a href="g-f.xhtml#functionname">function name</a></i>.
+
+
+<p>
+<i>name</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+
+</p><p>
+<i>lambda-list</i>—a <i><a href="g-l.xhtml#lambdalist">lambda list</a></i>; 
+		      for <a href="#DictEntry_flet_labels_392"><b>flet</b></a> and <a href="#DictEntry_flet_labels_392"><b>labels</b></a>,
+			 it is an <i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i>;
+		      for <a href="#DictEntry_flet_labels_392"><b>macrolet</b></a>,
+			 it is a <i><a href="g-m.xhtml#macrolambdalist">macro lambda list</a></i>.
+
+</p><p>
+<i>local-declaration</i>—a <a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="g-e.xhtml#expression">expression</a></i>; not evaluated.
+
+</p><p>
+<i>declaration</i>—a <a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="g-e.xhtml#expression">expression</a></i>; not evaluated.
+
+</p><p>
+<i>local-documentation</i>—a <i><a href="g-s.xhtml#string">string</a></i>; not evaluated.
+
+</p><p>
+<i>local-forms</i>, <i>forms</i>—an <i><a href="g-i.xhtml#implicitprogn">implicit progn</a></i>.
+
+</p><p>
+<i>results</i>—the <i><a href="g-v.xhtml#value">values</a></i> of the <i>forms</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_flet_labels_392"><b>flet</b></a>, <a href="#DictEntry_flet_labels_392"><b>labels</b></a>, and <a href="#DictEntry_flet_labels_392"><b>macrolet</b></a>
+define local <i><a href="g-f.xhtml#function">functions</a></i> and <i><a href="g-m.xhtml#macro">macros</a></i>, and execute
+<i>forms</i> using the local definitions.
+<i>Forms</i> are executed  in order of occurrence.
+
+<p>
+
+
+
+The body forms (but not the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i>)
+
+of each <i><a href="g-f.xhtml#function">function</a></i> created by <a href="#DictEntry_flet_labels_392"><b>flet</b></a> and <a href="#DictEntry_flet_labels_392"><b>labels</b></a> 
+and each <i><a href="g-m.xhtml#macro">macro</a></i> created by <a href="#DictEntry_flet_labels_392"><b>macrolet</b></a>
+are enclosed in an <i><a href="g-i.xhtml#implicitblock">implicit block</a></i> whose name 
+is the <i><a href="g-f.xhtml#functionblockname">function block name</a></i> of the <i>function-name</i> or <i>name</i>, 
+as appropriate.
+
+
+
+</p><p>
+
+The scope of the <i>declarations</i>
+between
+the list of local function/macro definitions and the body <i>forms</i>
+in <a href="#DictEntry_flet_labels_392"><b>flet</b></a> and <a href="#DictEntry_flet_labels_392"><b>labels</b></a> 
+does not include the bodies of the
+locally defined <i><a href="g-f.xhtml#function">functions</a></i>, except that for <a href="#DictEntry_flet_labels_392"><b>labels</b></a>,
+any <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>inline</b></a>, <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>notinline</b></a>, or <a href="e3-8-23.xhtml#DictEntry_ftype_305"><b>ftype</b></a> declarations
+that refer to the locally defined functions do apply to the local function
+bodies. That is, their <i><a href="g-s.xhtml#scope">scope</a></i> 
+is the same as the function name that they
+affect.  
+
+
+
+The scope of these <i>declarations</i> 
+does not include the bodies of the macro expander
+functions defined by <a href="#DictEntry_flet_labels_392"><b>macrolet</b></a>.  
+
+
+</p><ul>
+<li><b>flet</b>
+
+<p>
+
+<a href="#DictEntry_flet_labels_392"><b>flet</b></a> defines locally named <i><a href="g-f.xhtml#function">functions</a></i> and executes a series of
+<i>forms</i> with these definition <i><a href="g-b.xhtml#binding">bindings</a></i>.  Any number of
+such local <i><a href="g-f.xhtml#function">functions</a></i> can be defined.  
+
+</p><p>
+The <i><a href="g-s.xhtml#scope">scope</a></i> of the name <i><a href="g-b.xhtml#binding">binding</a></i> encompasses only the body.
+Within the
+body of <a href="#DictEntry_flet_labels_392"><b>flet</b></a>, 
+<i>function-names</i> matching those defined
+by <a href="#DictEntry_flet_labels_392"><b>flet</b></a> 
+refer to the locally defined <i><a href="g-f.xhtml#function">functions</a></i> 
+rather than to
+the global function definitions of the same name.
+
+
+Also, within the scope of <a href="#DictEntry_flet_labels_392"><b>flet</b></a>, 
+global <i><a href="g-s.xhtml#setfexpander">setf expander</a></i> definitions of the <i>function-name</i>
+defined by <a href="#DictEntry_flet_labels_392"><b>flet</b></a> do not apply. 
+
+
+Note that this applies to 
+<code>(defsetf <i>f</i> ...)</code>, not
+<code>(defmethod (setf <i>f</i>) ...)</code>.
+
+
+
+</p><p>
+The names of <i><a href="g-f.xhtml#function">functions</a></i> defined by <a href="#DictEntry_flet_labels_392"><b>flet</b></a> 
+are in the <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>; they retain
+their local definitions only within the body of <a href="#DictEntry_flet_labels_392"><b>flet</b></a>.
+The function definition bindings are visible only in
+the body of <a href="#DictEntry_flet_labels_392"><b>flet</b></a>, not the definitions themselves.  Within the
+function definitions, local function names
+that match those being
+defined refer to <i><a href="g-f.xhtml#function">functions</a></i> or 
+<i><a href="g-m.xhtml#macro">macros</a></i> defined outside the <a href="#DictEntry_flet_labels_392"><b>flet</b></a>.
+<a href="#DictEntry_flet_labels_392"><b>flet</b></a> can locally <i><a href="g-s.xhtml#shadow">shadow</a></i> a global function name,
+and the new definition can refer to the global definition.
+
+</p><p>
+Any <i>local-documentation</i> is attached to the corresponding local <i>function</i>
+(if one is actually created) as a <i><a href="g-d.xhtml#documentationstring">documentation string</a></i>.
+
+</p></li><li><b>labels</b>
+
+<p>
+
+<a href="#DictEntry_flet_labels_392"><b>labels</b></a> is equivalent to <a href="#DictEntry_flet_labels_392"><b>flet</b></a> except that
+the scope of the defined function names for <a href="#DictEntry_flet_labels_392"><b>labels</b></a> 
+encompasses the function definitions themselves as well as the body.
+
+
+
+
+
+
+
+</p></li><li><b>macrolet</b>
+
+<p>
+
+<a href="#DictEntry_flet_labels_392"><b>macrolet</b></a> 
+establishes local <i><a href="g-m.xhtml#macro">macro</a></i> definitions,
+using the same format used by <a href="e3-8-10.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a>.
+
+</p><p>
+
+
+
+
+
+Within the body of <a href="#DictEntry_flet_labels_392"><b>macrolet</b></a>, 
+global <i><a href="g-s.xhtml#setfexpander">setf expander</a></i> definitions of the <i>names</i> defined by the 
+<a href="#DictEntry_flet_labels_392"><b>macrolet</b></a> do not apply; rather, <a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> expands the
+<i><a href="g-m.xhtml#macroform">macro form</a></i> and recursively process the resulting <i><a href="g-f.xhtml#form">form</a></i>.
+
+
+
+
+
+
+</p><p>
+
+The macro-expansion functions defined by <a href="#DictEntry_flet_labels_392"><b>macrolet</b></a> 
+are defined in the 
+
+<i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> in which the <a href="#DictEntry_flet_labels_392"><b>macrolet</b></a> form appears.
+
+Declarations and <a href="#DictEntry_flet_labels_392"><b>macrolet</b></a> and 
+<a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a> definitions
+affect the local macro definitions in a <a href="#DictEntry_flet_labels_392"><b>macrolet</b></a>, but the
+consequences are undefined if the local macro definitions reference
+any local <i><a href="g-v.xhtml#variable">variable</a></i> or <i><a href="g-f.xhtml#function">function</a></i> <i><a href="g-b.xhtml#binding">bindings</a></i> that are visible in that
+<i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>.
+
+
+
+</p><p>
+Any <i>local-documentation</i> is attached to the corresponding local <i>macro function</i>
+as a <i><a href="g-d.xhtml#documentationstring">documentation string</a></i>.
+
+</p></li></ul>
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defun foo (x flag)
+   (macrolet ((fudge (z)
+                 ;The parameters x and flag are not accessible
+                 ; at this point; a reference to flag would be to
+                 ; the global variable of that name.
+                 ` (if flag (* ,z ,z) ,z)))
+    ;The parameters x and flag are accessible here.
+     (+ x
+        (fudge x)
+        (fudge (+ x 1)))))
+ ==
+ (defun foo (x flag)
+   (+ x
+      (if flag (* x x) x)
+      (if flag (* (+ x 1) (+ x 1)) (+ x 1))))
+</pre>
+after macro expansion.  The occurrences of <code>x</code> and <code>flag</code> legitimately
+refer to the parameters of the function <code>foo</code> because those parameters are
+visible at the site of the macro call which produced the expansion.
+
+<pre> (flet ((flet1 (n) (+ n n)))
+    (flet ((flet1 (n) (+ 2 (flet1 n))))
+      (flet1 2))) → 6
+
+ (defun -function () 'top-level) →  DUMMY-FUNCTION 
+ (funcall #'-function) →  TOP-LEVEL 
+ (flet ((-function () 'shadow)) 
+      (funcall #'-function)) →  SHADOW 
+ (eq (funcall #'-function) (funcall '-function))
+→ <i><a href="g-t.xhtml#true">true</a></i> 
+ (flet ((-function () 'shadow))
+   (eq (funcall #'-function)
+       (funcall '-function)))
+→ <i><a href="g-f.xhtml#false">false</a></i> 
+
+ (defun recursive-times (k n)
+   (labels ((temp (n) 
+              (if (zerop n) 0 (+ k (temp (1- n))))))
+     (temp n))) →  RECURSIVE-TIMES
+ (recursive-times 2 3) → 6
+
+ (defmacro mlets (x &amp;environment env) 
+    (let ((form `(babbit ,x)))
+      (macroexpand form env))) →  MLETS
+ (macrolet ((babbit (z) `(+ ,z ,z))) (mlets 5)) → 10
+</pre>
+
+<pre> (flet ((safesqrt (x) (sqrt (abs x))))
+  ;; The safesqrt function is used in two places.
+   (safesqrt (apply #'+ (map 'list #'safesqrt '(1 2 3 4 5 6)))))
+→ 3.291173
+</pre>
+
+<pre> (defun integer-power (n k)     
+   (declare (integer n))         
+   (declare (type (integer 0 *) k))
+   (labels ((expt0 (x k a)
+              (declare (integer x a) (type (integer 0 *) k))
+              (cond ((zerop k) a)
+                    ((evenp k) (expt1 (* x x) (floor k 2) a))
+                    (t (expt0 (* x x) (floor k 2) (* x a)))))
+            (expt1 (x k a)
+              (declare (integer x a) (type (integer 0 *) k))
+              (cond ((evenp k) (expt1 (* x x) (floor k 2) a))
+                    (t (expt0 (* x x) (floor k 2) (* x a))))))
+    (expt0 n k 1))) →  INTEGER-POWER
+</pre>
+
+<pre> (defun example (y l)
+   (flet ((attach (x)
+            (setq l (append l (list x)))))
+     (declare (inline attach))
+     (dolist (x y)
+       (unless (null (cdr x))
+         (attach x)))
+     l))
+
+ (example '((a apple apricot) (b banana) (c cherry) (d) (e))
+          '((1) (2) (3) (4 2) (5) (6 3 2)))
+→ ((1) (2) (3) (4 2) (5) (6 3 2) (A APPLE APRICOT) (B BANANA) (C CHERRY))
+</pre>
+
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a>,
+<a href="e3-8-10.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a>,
+<a href="e5-3-2.xhtml#DictEntry_defun_388"><b>defun</b></a>,
+<a href="e25-2-15.xhtml#DictEntry_documentatio_1442"><b>documentation</b></a>,
+<a href="e5-3-18.xhtml#DictEntry_let_let_404"><b>let</b></a>,
+Section <a href="s3-1.xhtml#Section_Evaluation_187">3.1 Evaluation</a>,
+Section <a href="s3-4.xhtml#SubSection_Syntactic_In_265">3.4.11 Syntactic Interaction of Documentation Strings and Declarations</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+It is not possible to define recursive <i><a href="g-f.xhtml#function">functions</a></i> with <a href="#DictEntry_flet_labels_392"><b>flet</b></a>.
+<a href="#DictEntry_flet_labels_392"><b>labels</b></a> can be used to define mutually recursive <i><a href="g-f.xhtml#function">functions</a></i>.
+
+<p>
+If a <a href="#DictEntry_flet_labels_392"><b>macrolet</b></a> <i><a href="g-f.xhtml#form">form</a></i> is a <i><a href="g-t.xhtml#toplevelform">top level form</a></i>,
+the body <i>forms</i> are also processed as <i><a href="g-t.xhtml#toplevelform">top level forms</a></i>.
+See Section <a href="s3-2.xhtml#SubSection_File_Compila_223">3.2.3 File Compilation</a>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

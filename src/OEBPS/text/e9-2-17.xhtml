@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.17 signal — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_signal_642" class="entry"><span class="secno">9.2.17</span> <span class="names">signal</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>signal</b>
+<i>datum <code>&amp;rest</code> arguments</i>
+  → <i><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i><p><i></i>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>datum</i>, <i>arguments</i>—<i><a href="g-d.xhtml#designator">designators</a></i> for a <i><a href="g-c.xhtml#condition">condition</a></i> 
+ of default type <a href="e9-2-18.xhtml#DictEntry_simple_condi_643"><b>simple-condition</b></a>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+<i><a href="g-s.xhtml#signal">Signals</a></i> the <i><a href="g-c.xhtml#condition">condition</a></i> denoted by the given <i>datum</i> and <i>arguments</i>.
+If the <i><a href="g-c.xhtml#condition">condition</a></i> is not handled, <a href="#DictEntry_signal_642"><b>signal</b></a> returns <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defun handle-division-conditions (condition)
+   (format t "Considering condition for division condition handling~%")
+   (when (and (typep condition 'arithmetic-error)
+              (eq '/ (arithmetic-error-operation condition)))
+     (invoke-debugger condition)))
+HANDLE-DIVISION-CONDITIONS
+ (defun handle-other-arithmetic-errors (condition)
+   (format t "Considering condition for arithmetic condition handling~%")
+   (when (typep condition 'arithmetic-error)
+     (abort)))
+HANDLE-OTHER-ARITHMETIC-ERRORS
+ (define-condition a-condition-with-no-handler (condition) ())
+A-CONDITION-WITH-NO-HANDLER
+ (signal 'a-condition-with-no-handler)
+NIL
+ (handler-bind ((condition #'handle-division-conditions)
+                  (condition #'handle-other-arithmetic-errors))
+   (signal 'a-condition-with-no-handler))
+Considering condition for division condition handling
+Considering condition for arithmetic condition handling
+NIL
+ (handler-bind ((arithmetic-error #'handle-division-conditions)
+                  (arithmetic-error #'handle-other-arithmetic-errors))
+   (signal 'arithmetic-error :operation '* :operands '(1.2 b)))
+Considering condition for division condition handling
+Considering condition for arithmetic condition handling
+Back to Lisp Toplevel
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The debugger might be entered due to <a href="e9-2-25.xhtml#DictEntry_break_on_si_650"><b>*break-on-signals*</b></a>.
+
+<p>
+Handlers for the condition being signaled might transfer control.
+
+</p></dd><dt><b>Affected By:</b></dt><dd>
+
+Existing handler bindings.
+
+<p>
+<a href="e9-2-25.xhtml#DictEntry_break_on_si_650"><b>*break-on-signals*</b></a>
+
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e9-2-25.xhtml#DictEntry_break_on_si_650"><b>*break-on-signals*</b></a>,
+<a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>,
+<a href="e9-2-18.xhtml#DictEntry_simple_condi_643"><b>simple-condition</b></a>,
+Section <a href="s9-1.xhtml#SubSection_Signaling_an_615">9.1.4 Signaling and Handling Conditions</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+If <code>(typep <i>datum</i> *break-on-signals*)</code> <i><a href="g-y.xhtml#yield">yields</a></i> <i><a href="g-t.xhtml#true">true</a></i>,
+the debugger is entered prior to beginning the signaling process.  
+The <a href="e9-2-42.xhtml#DictEntry_continue_667"><b>continue</b></a> <i><a href="g-r.xhtml#restart">restart</a></i> can be used to continue with the signaling process.
+This is also true for all other <i><a href="g-f.xhtml#function">functions</a></i> and <i><a href="g-m.xhtml#macro">macros</a></i> that
+should, might, or must <i><a href="g-s.xhtml#signal">signal</a></i> <i><a href="g-c.xhtml#condition">conditions</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

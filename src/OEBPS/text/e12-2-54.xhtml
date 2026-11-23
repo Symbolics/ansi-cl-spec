@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.54 rational, rationalize — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_rational_ra_828" class="entry"><span class="secno">12.2.54</span> <span class="names">rational, rationalize</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>rational</b>
+<i>number</i>
+  → <i>rational</i>
+<p>
+<b>rationalize</b>
+<i>number</i>
+  → <i>rational</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>number</i>—a <i>real</i>.
+
+<p>
+<i>rational</i>—a <i><a href="g-r.xhtml#rational">rational</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_rational_ra_828"><b>rational</b></a> and <a href="#DictEntry_rational_ra_828"><b>rationalize</b></a> convert 
+
+<i>reals</i>
+
+to <i><a href="g-r.xhtml#rational">rationals</a></i>.
+
+<p>
+If <i>number</i> is already <i><a href="g-r.xhtml#rational">rational</a></i>, it is returned.
+
+</p><p>
+If <i>number</i> is a <i><a href="g-f.xhtml#float">float</a></i>, 
+<a href="#DictEntry_rational_ra_828"><b>rational</b></a> returns a <i><a href="g-r.xhtml#rational">rational</a></i> 
+that is mathematically equal in value to the <i><a href="g-f.xhtml#float">float</a></i>. 
+<a href="#DictEntry_rational_ra_828"><b>rationalize</b></a> returns a <i><a href="g-r.xhtml#rational">rational</a></i> that
+approximates the <i><a href="g-f.xhtml#float">float</a></i> to the accuracy of 
+the underlying floating-point representation. 
+
+</p><p>
+<a href="#DictEntry_rational_ra_828"><b>rational</b></a> assumes that the <i><a href="g-f.xhtml#float">float</a></i> is completely accurate.
+
+</p><p>
+
+<a href="#DictEntry_rational_ra_828"><b>rationalize</b></a> assumes that the
+<i><a href="g-f.xhtml#float">float</a></i> is accurate only to the precision of the
+floating-point representation.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (rational 0) → 0
+ (rationalize -11/100) → -11/100
+ (rational .1) → 13421773/134217728 ;implementation-dependent
+ (rationalize .1) → 1/10
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The <i><a href="g-i.xhtml#implementation">implementation</a></i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>number</i> is not a <i>real</i>.
+Might signal <a href="e12-2-78.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a>.
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+It is always the case that
+
+<pre> (float (rational x) x) == x
+</pre>
+and
+
+<pre> (float (rationalize x) x) == x
+</pre>
+That is, rationalizing a <i><a href="g-f.xhtml#float">float</a></i> by either method
+and then converting it back
+to a <i><a href="g-f.xhtml#float">float</a></i> 
+of the same format produces the original <i>number</i>.
+</dd></dl>
+</section>
+</body>
+</html>

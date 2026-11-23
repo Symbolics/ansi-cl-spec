@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>4.4.8 built-in-class — System Class</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_built_in_cla_343" class="entry"><span class="secno">4.4.8</span> <span class="names">built-in-class</span> <span class="kind">System Class</span></h3>
+<dl>
+
+
+<dt><b>Class Precedence List:</b></dt><dd>
+
+<a href="#DictEntry_built_in_cla_343"><b>built-in-class</b></a>,
+<a href="e4-4-7.xhtml#DictEntry_class_342"><b>class</b></a>,
+
+<a href="e4-4-14.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>,
+
+<a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+A <i><a href="g-b.xhtml#builtinclass">built-in class</a></i> is a <i><a href="g-c.xhtml#class">class</a></i> whose <i><a href="g-i.xhtml#instance">instances</a></i> have 
+restricted capabilities or special representations.
+
+Attempting to use
+<a href="e7-7-25.xhtml#DictEntry_defclass_581"><b>defclass</b></a> to define <i>subclasses</i> of a <i><a href="g-b.xhtml#builtinclass">built-in class</a></i>
+signals an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>.
+Calling <a href="e7-7-19.xhtml#DictEntry_make_instanc_575"><b>make-instance</b></a> to create an <i><a href="g-i.xhtml#instance">instance</a></i> 
+of a <i><a href="g-b.xhtml#builtinclass">built-in class</a></i> signals an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>.
+Calling <a href="e7-7-14.xhtml#DictEntry_slot_value_570"><b>slot-value</b></a> on an <i><a href="g-i.xhtml#instance">instance</a></i> of a <i><a href="g-b.xhtml#builtinclass">built-in class</a></i>
+signals an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>.  Redefining a <i><a href="g-b.xhtml#builtinclass">built-in class</a></i>
+or using <a href="e7-7-8.xhtml#DictEntry_change_class_564"><b>change-class</b></a> to change the <i><a href="g-c.xhtml#class">class</a></i> of an <i><a href="g-i.xhtml#instance">instance</a></i>
+to or from a <i><a href="g-b.xhtml#builtinclass">built-in class</a></i> signals an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>.
+However, <i>built-in classes</i> can be used as <i><a href="g-p.xhtml#parameterspecializer">parameter specializers</a></i>
+in <i><a href="g-m.xhtml#method">methods</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

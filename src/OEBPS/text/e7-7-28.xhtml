@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.7.28 find-class — Accessor</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_find_class_584" class="entry"><span class="secno">7.7.28</span> <span class="names">find-class</span> <span class="kind">Accessor</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>find-class</b>
+<i>symbol <code>&amp;optional</code> errorp environment</i>
+  → <i>class</i>
+<p>
+(<b>setf</b>
+(<b>find-class</b> <i>symbol <code>&amp;optional</code> errorp environment</i>) <i>new-class</i>)
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>symbol</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+<p>
+<i>errorp</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+ The default is <i><a href="g-t.xhtml#true">true</a></i>.
+
+</p><p>
+<i>environment</i> -- same as the <a href="s3-4.xhtml#SubSection_Macro_Lambda_254"><b>&amp;environment</b></a> argument to
+  macro expansion functions and is used to distinguish between 
+  compile-time and run-time environments.
+
+  The <a href="s3-4.xhtml#SubSection_Macro_Lambda_254"><b>&amp;environment</b></a> argument has 
+  <i><a href="g-d.xhtml#dynamicextent">dynamic extent</a></i>; the consequences are undefined if 
+  the <a href="s3-4.xhtml#SubSection_Macro_Lambda_254"><b>&amp;environment</b></a> argument is 
+  referred to outside the <i><a href="g-d.xhtml#dynamicextent">dynamic extent</a></i> 
+  of the macro expansion function.
+
+
+
+</p><p>
+<i>class</i>—a <i><a href="g-c.xhtml#class">class</a></i> <i><a href="g-o.xhtml#object">object</a></i>, or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Returns the <i><a href="g-c.xhtml#class">class</a></i> <i><a href="g-o.xhtml#object">object</a></i> named by the <i>symbol</i>
+in the <i>environment</i>.  If there is no such <i><a href="g-c.xhtml#class">class</a></i>,
+<a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is returned if <i>errorp</i> is <i><a href="g-f.xhtml#false">false</a></i>; otherwise,
+if <i>errorp</i> is <i><a href="g-t.xhtml#true">true</a></i>, an error is signaled.
+
+<p>
+The <i><a href="g-c.xhtml#class">class</a></i> associated with a particular <i><a href="g-s.xhtml#symbol">symbol</a></i> can be changed by using
+<a href="e7-7-38.xhtml#DictEntry_setf_class__594"><b>setf</b></a> with <a href="#DictEntry_find_class_584"><b>find-class</b></a>;
+
+or, if the new <i><a href="g-c.xhtml#class">class</a></i> given to <a href="e7-7-38.xhtml#DictEntry_setf_class__594"><b>setf</b></a> is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+the <i><a href="g-c.xhtml#class">class</a></i> association is removed 
+(but the <i><a href="g-c.xhtml#class">class</a></i> <i><a href="g-o.xhtml#object">object</a></i> itself is not affected).
+
+The results are undefined if the user attempts to change
+
+or remove
+
+the <i><a href="g-c.xhtml#class">class</a></i> associated with a 
+<i><a href="g-s.xhtml#symbol">symbol</a></i> that is defined as a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> in this standard.
+See Section <a href="s4-3.xhtml#SubSection_Integrating__334">4.3.7 Integrating Types and Classes</a>.
+
+</p><p>
+When using <a href="e7-7-38.xhtml#DictEntry_setf_class__594"><b>setf</b></a> of <a href="#DictEntry_find_class_584"><b>find-class</b></a>, any <i>errorp</i> argument is <i>evaluated</i>
+for effect, but any <i><a href="g-v.xhtml#value">values</a></i> it returns are ignored; the <i>errorp</i>
+<i><a href="g-p.xhtml#parameter">parameter</a></i> is permitted primarily so that the <i>environment</i> <i><a href="g-p.xhtml#parameter">parameter</a></i>
+can be used.
+
+</p><p>
+The <i>environment</i> might be used to distinguish between a compile-time and a
+run-time environment.
+
+</p></dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+If there is no such <i><a href="g-c.xhtml#class">class</a></i> and <i>errorp</i> is <i><a href="g-t.xhtml#true">true</a></i>,
+<a href="#DictEntry_find_class_584"><b>find-class</b></a> signals an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e3-8-10.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a>,
+Section <a href="s4-3.xhtml#SubSection_Integrating__334">4.3.7 Integrating Types and Classes</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

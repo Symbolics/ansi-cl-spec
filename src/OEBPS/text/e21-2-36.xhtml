@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.36 finish-output, force-output, clear-output — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_finish_outpu_1227" class="entry"><span class="secno">21.2.36</span> <span class="names">finish-output, force-output, clear-output</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>finish-output</b>
+<i><code>&amp;optional</code> output-stream</i>
+  → <i><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i><p><i></i>
+<b>force-output</b>
+<i><code>&amp;optional</code> output-stream</i>
+  → <i><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i></p><p>
+<b>clear-output</b>
+<i><code>&amp;optional</code> output-stream</i>
+  → <i><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i></p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>output-stream</i>—an <i><a href="g-o.xhtml#output">output</a></i> <i><a href="g-s.xhtml#streamdesignator">stream designator</a></i>.
+ The default is <i><a href="g-s.xhtml#standardoutput">standard output</a></i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_finish_outpu_1227"><b>finish-output</b></a>, <a href="#DictEntry_finish_outpu_1227"><b>force-output</b></a>, and <a href="#DictEntry_finish_outpu_1227"><b>clear-output</b></a>
+exercise control over the internal handling of buffered stream output.  
+
+<p>
+<a href="#DictEntry_finish_outpu_1227"><b>finish-output</b></a> attempts to ensure that any buffered output
+sent to <i>output-stream</i> has reached its destination, and then returns.
+
+</p><p>
+<a href="#DictEntry_finish_outpu_1227"><b>force-output</b></a> initiates the emptying of any
+internal buffers but does not wait for completion
+or acknowledgment to return.
+
+</p><p>
+
+<a href="#DictEntry_finish_outpu_1227"><b>clear-output</b></a> attempts to abort any
+outstanding output operation in progress in order
+to allow as little output as possible
+to continue to the destination.  
+
+</p><p>
+
+
+If any of these operations does not make sense for <i>output-stream</i>, 
+then it does nothing. 
+
+The precise actions of these <i><a href="g-f.xhtml#function">functions</a></i> are <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+ <pre>;; Implementation A
+ (progn (princ "am i seen?") (clear-output))
+→  NIL
+
+
+;; Implementation B
+ (progn (princ "am i seen?") (clear-output))
+▷ am i seen?
+→  NIL
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>output-stream</i> is not a <i><a href="g-s.xhtml#streamdesignator">stream designator</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e21-2-35.xhtml#DictEntry_clear_input_1226"><b>clear-input</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

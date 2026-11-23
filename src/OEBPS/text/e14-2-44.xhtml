@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.44 adjoin — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_adjoin_957" class="entry"><span class="secno">14.2.44</span> <span class="names">adjoin</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>adjoin</b>
+<i>item list <code>&amp;key</code> key test test-not</i>
+  → <i>new-list</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>item</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+<p>
+<i>list</i>—a <i><a href="g-p.xhtml#properlist">proper list</a></i>.
+
+</p><p>
+<i>test</i>—a <i><a href="g-d.xhtml#designator">designator</a></i> for a <i><a href="g-f.xhtml#function">function</a></i> of two <i><a href="g-a.xhtml#argument">arguments</a></i>
+  that returns a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>test-not</i>—a <i><a href="g-d.xhtml#designator">designator</a></i> for 
+  a <i><a href="g-f.xhtml#function">function</a></i> of two <i><a href="g-a.xhtml#argument">arguments</a></i>
+  that returns a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>key</i>—a <i><a href="g-d.xhtml#designator">designator</a></i> for a <i><a href="g-f.xhtml#function">function</a></i> of one argument,
+  or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+
+<i>new-list</i>—a <i><a href="g-l.xhtml#list">list</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Tests whether <i>item</i> is the same as an existing element of <i>list</i>.
+If the <i>item</i> is not an existing element,
+<a href="#DictEntry_adjoin_957"><b>adjoin</b></a> adds it to <i>list</i> (as if by <a href="e14-2-3.xhtml#DictEntry_cons_916"><b>cons</b></a>)
+and returns the resulting <i><a href="g-l.xhtml#list">list</a></i>; 
+otherwise, nothing is added and the original <i>list</i> is returned.
+
+<p>
+The <i>test</i>, <i>test-not</i> and <i>key</i> affect how it is determined whether item is the same as an <i><a href="g-e.xhtml#element">element</a></i> of 
+<i>list</i>. For details, see Section <a href="s17-2.xhtml#SubSection_Satisfying_a_1036">17.2.1 Satisfying a Two-Argument Test</a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq slist '()) →  NIL 
+ (adjoin 'a slist) → (A) 
+ slist →  NIL 
+ (setq slist (adjoin '(test-item 1) slist)) → ((TEST-ITEM 1)) 
+ (adjoin '(test-item 1) slist) → ((TEST-ITEM 1) (TEST-ITEM 1)) 
+ (adjoin '(test-item 1) slist :test 'equal) → ((TEST-ITEM 1)) 
+ (adjoin '(new-test-item 1) slist :key #'cadr) → ((TEST-ITEM 1)) 
+ (adjoin '(new-test-item 1) slist) → ((NEW-TEST-ITEM 1) (TEST-ITEM 1)) 
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should be prepared to signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>list</i> is not a <i><a href="g-p.xhtml#properlist">proper list</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e14-2-45.xhtml#DictEntry_pushnew_958"><b>pushnew</b></a>,
+
+Section <a href="s3-6.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+The <code>:test-not</code> parameter is deprecated.
+
+
+<pre> (adjoin item list :key fn)
+   ==(if (member (fn item) list :key fn) list (cons item list))
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

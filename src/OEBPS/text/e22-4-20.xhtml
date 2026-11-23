@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>22.4.20 *print-escape* — Variable</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_print_escap_1360" class="entry"><span class="secno">22.4.20</span> <span class="names">*print-escape*</span> <span class="kind">Variable</span></h3>
+<dl>
+
+
+<dt><b>Value Type:</b></dt><dd>
+
+a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</dd><dt><b>Initial Value:</b></dt><dd>
+
+
+<i><a href="g-t.xhtml#true">true</a></i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+If <i><a href="g-f.xhtml#false">false</a></i>,
+escape characters and <i>package prefixes</i> are not output
+when an expression is printed.
+
+<p>
+
+If <i><a href="g-t.xhtml#true">true</a></i>, an attempt is made to print an <i><a href="g-e.xhtml#expression">expression</a></i>
+in such a way that it can be read again to produce an <a href="e5-3-35.xhtml#DictEntry_equal_421"><b>equal</b></a> <i><a href="g-e.xhtml#expression">expression</a></i>.
+(This is only a guideline; not a requirement.  See <a href="e22-4-27.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a>.)
+
+</p><p>
+For more specific details of how the <i><a href="g-v.xhtml#value">value</a></i> of <a href="#DictEntry_print_escap_1360"><b>*print-escape*</b></a>
+affects the printing of certain <i><a href="g-t.xhtml#type">types</a></i>,
+see Section <a href="s22-1.xhtml#SubSection_Default_Prin_1255">22.1.3 Default Print-Object Methods</a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (let ((*print-escape* t)) (write #\a))
+▷#\a
+→ #\a
+ (let ((*print-escape* nil)) (write #\a))
+▷ a
+→ #\a
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>princ</b></a>, <a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>prin1</b></a>, <a href="e22-4-31.xhtml#DictEntry_format_1371"><b>format</b></a>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>write</b></a>, <a href="e23-2-7.xhtml#DictEntry_readtable_ca_1387"><b>readtable-case</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>princ</b></a> effectively binds <a href="#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="g-f.xhtml#false">false</a></i>.
+<a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>prin1</b></a> effectively binds <a href="#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="g-t.xhtml#true">true</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.52 with-output-to-string — Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_with_output__1243" class="entry"><span class="secno">21.2.52</span> <span class="names">with-output-to-string</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>with-output-to-string</b>
+<i>(var <code>&amp;optional</code> string-form <code>&amp;key</code> element-type)
+ 			  {<i>declaration</i>}*
+ 			  {<i>form</i>}*</i><br/>   
+  → <i>{<i>result</i>}*</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>var</i>—a <i><a href="g-v.xhtml#variable">variable</a></i> <i><a href="g-n.xhtml#name">name</a></i>.
+
+<p>
+<i>string-form</i>—a <i><a href="g-f.xhtml#form">form</a></i> or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>;
+		      if <i><a href="g-n.xhtml#nonnil">non-nil</a></i>, evaluated to produce <i>string</i>.
+
+</p><p>
+<i>string</i>—a <i><a href="g-s.xhtml#string">string</a></i> that has a <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i>.
+
+</p><p>
+
+<i>element-type</i>—a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>; evaluated.
+
+  The default is <a href="e13-2-1.xhtml#DictEntry_character_884"><b>character</b></a>.
+
+
+
+</p><p>
+<i>declaration</i>—a <a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="g-e.xhtml#expression">expression</a></i>; not evaluated.
+
+</p><p>
+<i>forms</i>—an <i><a href="g-i.xhtml#implicitprogn">implicit progn</a></i>.
+
+</p><p>
+<i>results</i>—If a <i>string-form</i> is not supplied or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+		  a <i><a href="g-s.xhtml#string">string</a></i>; otherwise, 
+		  the <i><a href="g-v.xhtml#value">values</a></i> returned by the <i>forms</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_with_output__1243"><b>with-output-to-string</b></a> creates a
+
+character <i><a href="g-o.xhtml#output">output</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>, performs a series of operations
+that may send results to this <i><a href="g-s.xhtml#stream">stream</a></i>, and then closes the <i><a href="g-s.xhtml#stream">stream</a></i>. 
+
+
+<p>
+
+The <i>element-type</i> names the <i><a href="g-t.xhtml#type">type</a></i> of the elements
+of the <i><a href="g-s.xhtml#stream">stream</a></i>; a <i><a href="g-s.xhtml#stream">stream</a></i> is constructed of the most specialized
+<i><a href="g-t.xhtml#type">type</a></i> that can accommodate elements of the given <i><a href="g-t.xhtml#type">type</a></i>.  
+
+
+</p><p>
+
+The body is executed as an <i><a href="g-i.xhtml#implicitprogn">implicit progn</a></i> with <i>var</i>
+bound to an <i><a href="g-o.xhtml#output">output</a></i> <i><a href="g-s.xhtml#stringstream">string stream</a></i>.  
+All output to that <i><a href="g-s.xhtml#stringstream">string stream</a></i> is saved in a <i><a href="g-s.xhtml#string">string</a></i>.  
+
+</p><p>
+
+
+If <i>string</i> is supplied, <i>element-type</i> is ignored, 
+and the output is incrementally appended to <i>string</i> as
+if by use of <a href="e15-2-31.xhtml#DictEntry_vector_push_1009"><b>vector-push-extend</b></a>.
+
+
+</p><p>
+
+
+
+The <i><a href="g-o.xhtml#output">output</a></i> <i><a href="g-s.xhtml#stream">stream</a></i> 
+is automatically closed on exit from <b>with-output-from-string</b>,
+no matter whether the exit is normal or abnormal.
+
+The <i><a href="g-o.xhtml#output">output</a></i> <i><a href="g-s.xhtml#stringstream">string stream</a></i> to which the <i><a href="g-v.xhtml#variable">variable</a></i> <i>var</i>
+is <i><a href="g-b.xhtml#bound">bound</a></i> has <i><a href="g-d.xhtml#dynamicextent">dynamic extent</a></i>;
+its <i><a href="g-e.xhtml#extent">extent</a></i> ends when the <i><a href="g-f.xhtml#form">form</a></i> is exited.
+
+
+</p><p>
+
+If no <i>string</i> is provided, then <b>with-output-from-string</b> 
+
+produces a <i><a href="g-s.xhtml#stream">stream</a></i> that accepts characters and returns a <i><a href="g-s.xhtml#string">string</a></i> 
+of the indicated <i>element-type</i>.
+
+If <i>string</i> is provided,
+<a href="#DictEntry_with_output__1243"><b>with-output-to-string</b></a> returns the results of evaluating the last <i>form</i>.
+
+</p><p>
+
+The consequences are undefined if an attempt is made to <i><a href="g-a.xhtml#assign">assign</a></i>
+the <i><a href="g-v.xhtml#variable">variable</a></i> <i>var</i>.
+
+
+
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq fstr (make-array '(0) :element-type 'base-char
+                             :fill-pointer 0 :adjustable t)) → ""
+ (with-output-to-string (s fstr)
+    (format s "here's some output")
+    (input-stream-p s)) → <i><a href="g-f.xhtml#false">false</a></i>
+ fstr → "here's some output"
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The <i>string</i> is modified.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+The consequences are undefined if destructive modifications are performed
+directly on the <i>string</i> during the <i><a href="g-d.xhtml#dynamicextent">dynamic extent</a></i> of the call.
+
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e21-2-50.xhtml#DictEntry_make_string__1241"><b>make-string-output-stream</b></a>,
+<a href="e15-2-31.xhtml#DictEntry_vector_push_1009"><b>vector-push-extend</b></a>,
+
+Section <a href="s3-6.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

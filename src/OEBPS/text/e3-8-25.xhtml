@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.8.25 optimize — Declaration</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_optimize_307" class="entry"><span class="secno">3.8.25</span> <span class="names">optimize</span> <span class="kind">Declaration</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<code>(optimize <code>{</code><i>quality</i> | (<i>quality</i> <i>value</i>)<code>}</code><sup>*</sup>)</code>
+
+
+
+
+
+
+</dd><dt><b>Arguments:</b></dt><dd>
+
+<i>quality</i>—an <i><a href="g-o.xhtml#optimizequality">optimize quality</a></i>.
+
+<p>
+<i>value</i>—one of the <i><a href="g-i.xhtml#integer">integers</a></i> <code>0</code>, <code>1</code>, <code>2</code>, or <code>3</code>.
+
+</p></dd><dt><b>Valid Context:</b></dt><dd>
+
+<i><a href="g-d.xhtml#declaration">declaration</a></i> or <i><a href="g-p.xhtml#proclamation">proclamation</a></i>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+Advises the compiler that each <i>quality</i> should be given attention
+according to the specified corresponding <i>value</i>.
+Each <i>quality</i> must be a <i><a href="g-s.xhtml#symbol">symbol</a></i> naming an <i><a href="g-o.xhtml#optimizequality">optimize quality</a></i>; 
+the names and meanings of the standard <i>optimize qualities</i> are shown in 
+the next figure.
+
+<table id="fig-3-25" class="fig">
+<caption><span class="figlabel">Figure 3-25.</span> Optimize qualities</caption>
+<tbody><tr><th>Name</th>
+<th>Meaning</th>
+</tr>
+
+  <tr>
+    <td><b>compilation-speed</b></td>
+    <td>speed of the compilation process</td>
+  </tr>
+  <tr>
+    <td><b>debug</b></td>
+    <td>ease of debugging</td>
+  </tr>
+  <tr>
+    <td><b>safety</b>	</td>
+    <td>run-time error checking</td>
+  </tr>
+  <tr>
+    <td><b>space</b></td>
+    <td>both code size and run-time space</td>
+  </tr>
+  <tr>
+    <td><b>speed</b></td>
+    <td>speed of the object code		</td>
+  </tr>
+</tbody></table>
+
+
+
+<p>
+There may be other, <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i>optimize qualities</i>.
+
+</p><p>
+A <i>value</i> <code>0</code> means that the corresponding <i>quality</i> is totally
+unimportant, and <code>3</code> that the <i>quality</i> is extremely important;
+<code>1</code> and <code>2</code> are intermediate values, with <code>1</code> the 
+
+
+neutral value.
+<code>(<i>quality</i> 3)</code> can be abbreviated to <i>quality</i>.
+
+
+</p><p>
+Note that <i><a href="g-c.xhtml#code">code</a></i> which has the optimization <code>(safety 3)</code>,
+or just <b>safety</b>,
+is called <i><a href="g-s.xhtml#safe">safe</a></i> <i><a href="g-c.xhtml#code">code</a></i>.
+
+</p><p>
+
+The consequences are unspecified if a <i>quality</i> appears more than once
+with <i><a href="g-d.xhtml#different">different</a></i> <i>values</i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defun often-used-subroutine (x y)
+   (declare (optimize (safety 2)))
+   (error-check x y)
+   (hairy-setup x)
+   (do ((i 0 (+ i 1))
+        (z x (cdr z)))
+       ((null z))
+     ;; This inner loop really needs to burn.
+     (declare (optimize speed))
+     (declare (fixnum i))
+     ))
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a>,
+<a href="e3-8-17.xhtml#DictEntry_declaim_299"><b>declaim</b></a>,
+<a href="e3-8-16.xhtml#DictEntry_proclaim_298"><b>proclaim</b></a>,
+Section <a href="s3-3.xhtml#SubSection_Declaration__240">3.3.4 Declaration Scope</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+An <a href="#DictEntry_optimize_307"><b>optimize</b></a> declaration never applies to either a <i><a href="g-v.xhtml#variable">variable</a></i> or
+a <i><a href="g-f.xhtml#function">function</a></i> <i><a href="g-b.xhtml#binding">binding</a></i>.  An <a href="#DictEntry_optimize_307"><b>optimize</b></a> declaration can only
+be a <i><a href="g-f.xhtml#freedeclaration">free declaration</a></i>.  For more information, see Section <a href="s3-3.xhtml#SubSection_Declaration__240">3.3.4 Declaration Scope</a>.
+
+</dd></dl>
+</section>
+</body>
+</html>

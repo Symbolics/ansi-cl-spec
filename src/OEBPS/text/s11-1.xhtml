@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>11.1 Package Concepts</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Package_Conc_696"><span class="secno">11.1</span> Package Concepts</h2>
+<section>
+<h3 id="SubSection_Introduction_697"><span class="secno">11.1.1</span> Introduction to Packages</h3>
+<p>
+
+A <b><i>package</i></b> establishes a mapping from names to <i><a href="g-s.xhtml#symbol">symbols</a></i>. 
+At any given time, one <i><a href="g-p.xhtml#package">package</a></i> is current.
+The <b><i>current package</i></b> is the one that is the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e11-2-28.xhtml#DictEntry_package_743"><b>*package*</b></a>.
+When using the <i>Lisp reader</i>,
+it is possible to refer to <i><a href="g-s.xhtml#symbol">symbols</a></i> in <i><a href="g-p.xhtml#package">packages</a></i> 
+other than the current one through the use of <i>package prefixes</i> in the 
+printed representation of the <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+</p><p>
+
+The next figure lists some <i><a href="g-d.xhtml#definedname">defined names</a></i> that are applicable
+to <i><a href="g-p.xhtml#package">packages</a></i>.
+
+
+
+Where an <i><a href="g-o.xhtml#operator">operator</a></i> 
+takes an argument that is either a <i><a href="g-s.xhtml#symbol">symbol</a></i> or a <i><a href="g-l.xhtml#list">list</a></i> 
+of <i><a href="g-s.xhtml#symbol">symbols</a></i>,
+an argument of <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is treated as an empty <i><a href="g-l.xhtml#list">list</a></i> of <i><a href="g-s.xhtml#symbol">symbols</a></i>.
+Any <i>package</i> argument may be either a <i><a href="g-s.xhtml#string">string</a></i>, a <i><a href="g-s.xhtml#symbol">symbol</a></i>, or
+a <i><a href="g-p.xhtml#package">package</a></i>.  If a <i><a href="g-s.xhtml#symbol">symbol</a></i> is supplied, its name will be used
+as the <i><a href="g-p.xhtml#package">package</a></i> name.
+
+</p><table id="fig-11-1" class="fig">
+<caption><span class="figlabel">Figure 11-1.</span> Some Defined Names related to Packages</caption>
+
+  <tbody><tr>
+    <td>*modules*</td>
+    <td>import</td>
+    <td>provide</td>
+  </tr>
+  <tr>
+    <td>*package*</td>
+    <td>in-package</td>
+    <td>rename-package</td>
+  </tr>
+  <tr>
+    <td>defpackage</td>
+    <td>intern</td>
+    <td>require</td>
+  </tr>
+  <tr>
+    <td>do-all-symbols</td>
+    <td>list-all-packages</td>
+    <td>shadow</td>
+  </tr>
+  <tr>
+    <td>do-external-symbols</td>
+    <td>make-package</td>
+    <td>shadowing-import</td>
+  </tr>
+  <tr>
+    <td>do-symbols</td>
+    <td>package-name</td>
+    <td>unexport</td>
+  </tr>
+  <tr>
+    <td>export</td>
+    <td>package-nicknames</td>
+    <td>unintern</td>
+  </tr>
+  <tr>
+    <td>find-all-symbols</td>
+    <td>package-shadowing-symbols</td>
+    <td>unuse-package</td>
+  </tr>
+  <tr>
+    <td>find-package</td>
+    <td>package-use-list</td>
+    <td>use-package</td>
+  </tr>
+  <tr>
+    <td>find-symbol</td>
+    <td>package-used-by-list</td>
+    <td/>
+  </tr>
+</tbody></table>
+<section>
+<h4 id="SubSubSectio_Package_Name_698"><span class="secno">11.1.1.1</span> Package Names and Nicknames</h4>
+<p>
+
+Each <i><a href="g-p.xhtml#package">package</a></i> has a <i><a href="g-n.xhtml#name">name</a></i> (a <i><a href="g-s.xhtml#string">string</a></i>) and perhaps some <i><a href="g-n.xhtml#nickname">nicknames</a></i>
+(also <i><a href="g-s.xhtml#string">strings</a></i>).
+These are assigned when the <i><a href="g-p.xhtml#package">package</a></i> is created and can be changed later.  
+
+</p><p>
+
+There is a single namespace for <i><a href="g-p.xhtml#package">packages</a></i>.  
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="e11-2-4.xhtml#DictEntry_find_package_719"><b>find-package</b></a> translates a package
+<i><a href="g-n.xhtml#name">name</a></i> or <i><a href="g-n.xhtml#nickname">nickname</a></i> into the associated <i><a href="g-p.xhtml#package">package</a></i>.  
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="e11-2-22.xhtml#DictEntry_package_name_737"><b>package-name</b></a> returns the <i><a href="g-n.xhtml#name">name</a></i> of a <i><a href="g-p.xhtml#package">package</a></i>.  
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="e11-2-23.xhtml#DictEntry_package_nick_738"><b>package-nicknames</b></a> returns 
+a <i><a href="g-l.xhtml#list">list</a></i> of all <i><a href="g-n.xhtml#nickname">nicknames</a></i> for a <i><a href="g-p.xhtml#package">package</a></i>.
+<a href="e11-2-8.xhtml#DictEntry_rename_packa_723"><b>rename-package</b></a> removes a <i><a href="g-p.xhtml#package">package</a></i>'s
+current <i><a href="g-n.xhtml#name">name</a></i> and <i><a href="g-n.xhtml#nickname">nicknames</a></i> and replaces them with new ones
+specified by the caller.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Symbols_in_a_699"><span class="secno">11.1.1.2</span> Symbols in a Package</h4>
+<section>
+<h5 id="SubSubSubSec_Internal_and_700"><span class="secno">11.1.1.2.1</span> Internal and External Symbols</h5>
+<p>
+
+The mappings in a <i><a href="g-p.xhtml#package">package</a></i> are divided into two classes, external and internal.
+The <i><a href="g-s.xhtml#symbol">symbols</a></i> targeted by these different mappings 
+are called <i><a href="g-e.xhtml#externalsymbol">external symbols</a></i> and <i><a href="g-i.xhtml#internalsymbol">internal symbols</a></i> of the
+<i><a href="g-p.xhtml#package">package</a></i>. Within a <i><a href="g-p.xhtml#package">package</a></i>, a name refers to one
+<i><a href="g-s.xhtml#symbol">symbol</a></i> or to none; if it does refer
+to a <i><a href="g-s.xhtml#symbol">symbol</a></i>, then it is either external or internal in that
+<i><a href="g-p.xhtml#package">package</a></i>, but not both.
+
+<b><i>External symbols</i></b>
+are part of the package's public interface to other <i><a href="g-p.xhtml#package">packages</a></i>.
+<i><a href="g-s.xhtml#symbol">Symbols</a></i> become <i><a href="g-e.xhtml#externalsymbol">external symbols</a></i> of a given
+<i><a href="g-p.xhtml#package">package</a></i> if they have been <i><a href="g-e.xhtml#exported">exported</a></i> from that <i><a href="g-p.xhtml#package">package</a></i>.
+
+</p><p>
+
+A <i><a href="g-s.xhtml#symbol">symbol</a></i> has the same <i><a href="g-n.xhtml#name">name</a></i> no matter what <i><a href="g-p.xhtml#package">package</a></i> 
+it is <i><a href="g-p.xhtml#present">present</a></i> in, but it might be an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of some <i><a href="g-p.xhtml#package">packages</a></i>
+and an <i><a href="g-i.xhtml#internalsymbol">internal symbol</a></i> of others. 
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Package_Inhe_701"><span class="secno">11.1.1.2.2</span> Package Inheritance</h5>
+<p><i><a href="g-p.xhtml#package">Packages</a></i> can be built up in layers.  From one point of view,
+a <i><a href="g-p.xhtml#package">package</a></i> is a single collection
+of mappings from <i><a href="g-s.xhtml#string">strings</a></i> into <i><a href="g-i.xhtml#internalsymbol">internal symbols</a></i> and 
+<i><a href="g-e.xhtml#externalsymbol">external symbols</a></i>.
+However, some of these mappings might be established within the <i><a href="g-p.xhtml#package">package</a></i> 
+itself, while other mappings are inherited from other <i><a href="g-p.xhtml#package">packages</a></i> 
+via <a href="e11-2-18.xhtml#DictEntry_use_package_733"><b>use-package</b></a>.
+A <i><a href="g-s.xhtml#symbol">symbol</a></i> is said to be <b><i>present</i></b> in a <i><a href="g-p.xhtml#package">package</a></i> 
+if the mapping is in the <i><a href="g-p.xhtml#package">package</a></i> itself and is
+not inherited from somewhere else.
+
+</p><p>
+
+There is no way to inherit the <i><a href="g-i.xhtml#internalsymbol">internal symbols</a></i> of another <i><a href="g-p.xhtml#package">package</a></i>;
+to refer to an <i><a href="g-i.xhtml#internalsymbol">internal symbol</a></i> using the <i>Lisp reader</i>, 
+    a <i><a href="g-p.xhtml#package">package</a></i> containing the <i><a href="g-s.xhtml#symbol">symbol</a></i> 
+     must be made to be the <i><a href="g-c.xhtml#currentpackage">current package</a></i>,
+    a <i><a href="g-p.xhtml#packageprefix">package prefix</a></i> must be used,
+ or the <i><a href="g-s.xhtml#symbol">symbol</a></i> must be <i>imported</i> into the <i><a href="g-c.xhtml#currentpackage">current package</a></i>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Accessibilit_702"><span class="secno">11.1.1.2.3</span> Accessibility of Symbols in a Package</h5>
+<p>
+
+A <i><a href="g-s.xhtml#symbol">symbol</a></i> becomes <b><i>accessible</i></b> in a <i><a href="g-p.xhtml#package">package</a></i> 
+    if that is its <i><a href="g-h.xhtml#homepackage">home package</a></i> when it is created,
+ or if it is <i>imported</i> into that <i><a href="g-p.xhtml#package">package</a></i>,
+ or by inheritance via <a href="e11-2-18.xhtml#DictEntry_use_package_733"><b>use-package</b></a>.
+
+</p><p>
+If a <i><a href="g-s.xhtml#symbol">symbol</a></i> is <i><a href="g-a.xhtml#accessible">accessible</a></i> in a <i><a href="g-p.xhtml#package">package</a></i>,
+it can be referred to when using the <i>Lisp reader</i>
+without a <i><a href="g-p.xhtml#packageprefix">package prefix</a></i> when that <i><a href="g-p.xhtml#package">package</a></i> is the <i><a href="g-c.xhtml#currentpackage">current package</a></i>,
+regardless of whether it is <i><a href="g-p.xhtml#present">present</a></i> or inherited.
+
+</p><p>
+
+<i><a href="g-s.xhtml#symbol">Symbols</a></i> from one <i><a href="g-p.xhtml#package">package</a></i> can be made <i><a href="g-a.xhtml#accessible">accessible</a></i> 
+in another <i><a href="g-p.xhtml#package">package</a></i> in two ways.
+
+</p><ul> 
+<li>--
+Any individual <i><a href="g-s.xhtml#symbol">symbol</a></i> can be added to a <i><a href="g-p.xhtml#package">package</a></i> by use
+of <a href="e11-2-6.xhtml#DictEntry_import_721"><b>import</b></a>.  After the call to <a href="e11-2-6.xhtml#DictEntry_import_721"><b>import</b></a> the
+<i><a href="g-s.xhtml#symbol">symbol</a></i> is <i><a href="g-p.xhtml#present">present</a></i> in the importing <i><a href="g-p.xhtml#package">package</a></i>.
+The status of the <i><a href="g-s.xhtml#symbol">symbol</a></i> in the <i><a href="g-p.xhtml#package">package</a></i> 
+it came from (if any) is unchanged, and the <i><a href="g-h.xhtml#homepackage">home package</a></i> for
+this <i><a href="g-s.xhtml#symbol">symbol</a></i> is unchanged.
+Once <i>imported</i>, a <i><a href="g-s.xhtml#symbol">symbol</a></i> is <i><a href="g-p.xhtml#present">present</a></i> in the
+importing <i><a href="g-p.xhtml#package">package</a></i>
+and can be removed only by calling <a href="e11-2-15.xhtml#DictEntry_unintern_730"><b>unintern</b></a>.
+
+<p>
+
+A <i><a href="g-s.xhtml#symbol">symbol</a></i> is <i>shadowed</i><sub>3</sub> by another <i><a href="g-s.xhtml#symbol">symbol</a></i> 
+in some <i><a href="g-p.xhtml#package">package</a></i> if the first <i><a href="g-s.xhtml#symbol">symbol</a></i> would be <i><a href="g-a.xhtml#accessible">accessible</a></i>
+by inheritance if not for the presence of the second <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+See <a href="e11-2-10.xhtml#DictEntry_shadowing_im_725"><b>shadowing-import</b></a>.
+
+</p></li><li>--
+The second mechanism for making <i><a href="g-s.xhtml#symbol">symbols</a></i> from one <i><a href="g-p.xhtml#package">package</a></i>
+<i><a href="g-a.xhtml#accessible">accessible</a></i> in another is provided by <a href="e11-2-18.xhtml#DictEntry_use_package_733"><b>use-package</b></a>.  
+All of the <i><a href="g-e.xhtml#externalsymbol">external symbols</a></i> of the used <i><a href="g-p.xhtml#package">package</a></i> are inherited
+by the using <i><a href="g-p.xhtml#package">package</a></i>.
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="e11-2-17.xhtml#DictEntry_unuse_packag_732"><b>unuse-package</b></a> undoes the effects of a previous <a href="e11-2-18.xhtml#DictEntry_use_package_733"><b>use-package</b></a>.  
+</li></ul>
+</section>
+<section>
+<h5 id="SubSubSubSec_Locating_a_S_703"><span class="secno">11.1.1.2.4</span> Locating a Symbol in a Package</h5>
+<p>
+
+When a <i><a href="g-s.xhtml#symbol">symbol</a></i> is to be located in a given <i><a href="g-p.xhtml#package">package</a></i> 
+the following occurs:
+</p><ul> 
+<li>-- The <i><a href="g-e.xhtml#externalsymbol">external symbols</a></i> and <i><a href="g-i.xhtml#internalsymbol">internal symbols</a></i> of the 
+<i><a href="g-p.xhtml#package">package</a></i> are searched for the <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+</li><li>-- The <i><a href="g-e.xhtml#externalsymbol">external symbols</a></i> of the used <i><a href="g-p.xhtml#package">packages</a></i> are 
+searched
+in some unspecified order.  The
+order does not matter; see the rules for handling name
+conflicts listed below. 
+</li></ul>
+</section>
+<section>
+<h5 id="SubSubSubSec_Prevention_o_704"><span class="secno">11.1.1.2.5</span> Prevention of Name Conflicts in Packages</h5>
+<p>
+
+Within one <i><a href="g-p.xhtml#package">package</a></i>, any particular name can refer to at most one
+<i><a href="g-s.xhtml#symbol">symbol</a></i>.  A name conflict is said to occur when there would be more than
+one candidate <i><a href="g-s.xhtml#symbol">symbol</a></i>.  Any time a name conflict is about to occur,
+a <i><a href="g-c.xhtml#correctable">correctable</a></i> <i><a href="g-e.xhtml#error">error</a></i> is signaled.  
+
+</p><p>
+The following rules apply to name conflicts:
+
+</p><ul>
+
+<li>--
+Name conflicts are detected when they become possible, that is, when the
+package structure is altered.  Name
+conflicts are not checked during every name lookup.
+
+</li><li>--
+If the <i><a href="g-s.xhtml#same">same</a></i> <i><a href="g-s.xhtml#symbol">symbol</a></i> is <i><a href="g-a.xhtml#accessible">accessible</a></i> to a <i><a href="g-p.xhtml#package">package</a></i> 
+through more than one path, there is no name conflict.
+A <i><a href="g-s.xhtml#symbol">symbol</a></i> cannot conflict with itself. 
+Name conflicts occur only between <i><a href="g-d.xhtml#distinct">distinct</a></i> <i><a href="g-s.xhtml#symbol">symbols</a></i> with
+the same name (under <a href="e16-2-10.xhtml#DictEntry_string_str_1029"><b>string=</b></a>).
+
+</li><li>-- Every <i><a href="g-p.xhtml#package">package</a></i> has a list of shadowing <i><a href="g-s.xhtml#symbol">symbols</a></i>.  
+A shadowing <i><a href="g-s.xhtml#symbol">symbol</a></i> takes precedence over any other <i><a href="g-s.xhtml#symbol">symbol</a></i> of
+the same name that would otherwise be <i><a href="g-a.xhtml#accessible">accessible</a></i> in the <i><a href="g-p.xhtml#package">package</a></i>.  
+A name conflict involving a shadowing symbol is always resolved in favor of
+the shadowing <i><a href="g-s.xhtml#symbol">symbol</a></i>, without signaling an error (except for one
+exception involving <a href="e11-2-6.xhtml#DictEntry_import_721"><b>import</b></a>).
+See <a href="e11-2-9.xhtml#DictEntry_shadow_724"><b>shadow</b></a> and <a href="e11-2-10.xhtml#DictEntry_shadowing_im_725"><b>shadowing-import</b></a>.
+
+</li><li>-- 
+The functions <a href="e11-2-18.xhtml#DictEntry_use_package_733"><b>use-package</b></a>, <a href="e11-2-6.xhtml#DictEntry_import_721"><b>import</b></a>, and 
+<a href="e11-2-2.xhtml#DictEntry_export_717"><b>export</b></a> check for name conflicts.  
+
+</li><li>-- 
+<a href="e11-2-9.xhtml#DictEntry_shadow_724"><b>shadow</b></a> and <a href="e11-2-10.xhtml#DictEntry_shadowing_im_725"><b>shadowing-import</b></a> 
+never signal a name-conflict error.
+
+</li><li>-- 
+<a href="e11-2-17.xhtml#DictEntry_unuse_packag_732"><b>unuse-package</b></a> and <a href="e11-2-14.xhtml#DictEntry_unexport_729"><b>unexport</b></a>
+do not need to do any name-conflict checking.
+<a href="e11-2-15.xhtml#DictEntry_unintern_730"><b>unintern</b></a> does name-conflict checking only when a <i><a href="g-s.xhtml#symbol">symbol</a></i> 
+being <i><a href="g-u.xhtml#uninterned">uninterned</a></i> is a <i><a href="g-s.xhtml#shadowingsymbol">shadowing symbol</a></i>.
+
+</li><li>-- 
+Giving a shadowing symbol to <a href="e11-2-15.xhtml#DictEntry_unintern_730"><b>unintern</b></a> 
+can uncover a name conflict that had
+previously been resolved by the shadowing.  
+
+</li><li>-- 
+  Package functions signal name-conflict errors of <i><a href="g-t.xhtml#type">type</a></i> <a href="e11-2-29.xhtml#DictEntry_package_erro_744"><b>package-error</b></a> before making any
+  change to the package structure.  When multiple changes are to be made,
+  it is
+  permissible for the implementation to process each change separately.
+  For example, when <a href="e11-2-2.xhtml#DictEntry_export_717"><b>export</b></a> is given a 
+<i><a href="g-l.xhtml#list">list</a></i> of 
+<i><a href="g-s.xhtml#symbol">symbols</a></i>,
+  aborting from a name
+  conflict caused by the second <i><a href="g-s.xhtml#symbol">symbol</a></i> 
+  in the <i><a href="g-l.xhtml#list">list</a></i> might still export the
+  first <i><a href="g-s.xhtml#symbol">symbol</a></i> in the <i><a href="g-l.xhtml#list">list</a></i>.  
+  However, a name-conflict error caused by <a href="e11-2-2.xhtml#DictEntry_export_717"><b>export</b></a>
+  of a single <i><a href="g-s.xhtml#symbol">symbol</a></i> will be signaled before
+  that <i><a href="g-s.xhtml#symbol">symbol</a></i>'s <i><a href="g-a.xhtml#accessibility">accessibility</a></i> in any <i><a href="g-p.xhtml#package">package</a></i> is changed.
+
+</li><li>-- 
+Continuing from a name-conflict error must offer the user a chance to
+resolve the name conflict in favor of either of the candidates.  The
+<i><a href="g-p.xhtml#package">package</a></i> 
+structure should be altered to reflect the resolution of the
+name conflict, via <a href="e11-2-10.xhtml#DictEntry_shadowing_im_725"><b>shadowing-import</b></a>, 
+<a href="e11-2-15.xhtml#DictEntry_unintern_730"><b>unintern</b></a>,
+
+or <a href="e11-2-14.xhtml#DictEntry_unexport_729"><b>unexport</b></a>.
+
+</li><li>-- 
+A name conflict in <a href="e11-2-18.xhtml#DictEntry_use_package_733"><b>use-package</b></a> between a <i><a href="g-s.xhtml#symbol">symbol</a></i> 
+
+<i><a href="g-p.xhtml#present">present</a></i> in the using <i><a href="g-p.xhtml#package">package</a></i> and an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of the used 
+<i><a href="g-p.xhtml#package">package</a></i> is resolved in favor of the first <i><a href="g-s.xhtml#symbol">symbol</a></i> by making it a
+shadowing <i><a href="g-s.xhtml#symbol">symbol</a></i>, or in favor of the second <i><a href="g-s.xhtml#symbol">symbol</a></i> by uninterning
+the first <i><a href="g-s.xhtml#symbol">symbol</a></i> from the using <i><a href="g-p.xhtml#package">package</a></i>. 
+
+</li><li>-- 
+A name conflict in <a href="e11-2-2.xhtml#DictEntry_export_717"><b>export</b></a> or <a href="e11-2-15.xhtml#DictEntry_unintern_730"><b>unintern</b></a> 
+due to a <i><a href="g-p.xhtml#package">package</a></i>'s inheriting two <i><a href="g-d.xhtml#distinct">distinct</a></i> <i><a href="g-s.xhtml#symbol">symbols</a></i> 
+with the <i><a href="g-s.xhtml#same">same</a></i> <i><a href="g-n.xhtml#name">name</a></i> (under <a href="e16-2-10.xhtml#DictEntry_string_str_1029"><b>string=</b></a>)
+from two other <i><a href="g-p.xhtml#package">packages</a></i> can be resolved in
+favor of either <i><a href="g-s.xhtml#symbol">symbol</a></i> by importing it into the using
+<i><a href="g-p.xhtml#package">package</a></i> and making it a <i><a href="g-s.xhtml#shadowingsymbol">shadowing symbol</a></i>,
+just as with <a href="e11-2-18.xhtml#DictEntry_use_package_733"><b>use-package</b></a>.
+</li></ul>
+</section>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Standardized_705"><span class="secno">11.1.2</span> Standardized Packages</h3>
+<p>
+
+This section describes the <i><a href="g-p.xhtml#package">packages</a></i> that are available
+in every <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i>.  A summary of the
+<i><a href="g-n.xhtml#name">names</a></i> and <i><a href="g-n.xhtml#nickname">nicknames</a></i> of those <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-p.xhtml#package">packages</a></i> 
+is given in the next figure.
+
+</p><table id="fig-11-2" class="fig">
+<caption><span class="figlabel">Figure 11-2.</span> Standardized Package Names</caption>
+<tbody><tr><th>Name</th>
+<th>Nicknames</th>
+</tr>
+
+  <tr>
+    <td><code>common-lisp</code></td>
+    <td><code>cl</code></td>
+  </tr>
+  <tr>
+    <td><code>common-lisp-user</code></td>
+    <td><code>cl-user</code></td>
+  </tr>
+  <tr>
+    <td><a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a></td>
+    <td><i>none</i></td>
+  </tr>
+</tbody></table>
+<section>
+<h4 id="SubSubSectio_The_COMMON_L_706"><span class="secno">11.1.2.1</span> The COMMON-LISP Package</h4>
+<p>
+The <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> contains the primitives of the <i>Common Lisp</i> system as
+defined by this specification.  Its <i>external</i> <i><a href="g-s.xhtml#symbol">symbols</a></i> include
+all of the <i><a href="g-d.xhtml#definedname">defined names</a></i> (except for <i><a href="g-d.xhtml#definedname">defined names</a></i> in
+the <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i>) that are present in the <i>Common Lisp</i> system, 
+such as <a href="e14-2-9.xhtml#DictEntry_car____cdr_922"><b>car</b></a>, <a href="e14-2-9.xhtml#DictEntry_car____cdr_922"><b>cdr</b></a>,  <a href="e11-2-28.xhtml#DictEntry_package_743"><b>*package*</b></a>, etc.
+The <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> has the <i><a href="g-n.xhtml#nickname">nickname</a></i> <code>cl</code>.
+
+</p><p>
+
+The <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> has as <i>external</i> <i><a href="g-s.xhtml#symbol">symbols</a></i> those 
+symbols enumerated in the figures in Section <a href="s1-9.xhtml#Section_Symbols_in_t_106">1.9 Symbols in the COMMON-LISP Package</a>, and no others.
+These <i>external</i> <i><a href="g-s.xhtml#symbol">symbols</a></i> are <i><a href="g-p.xhtml#present">present</a></i> in the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i>
+but their <i><a href="g-h.xhtml#homepackage">home package</a></i> need not be the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i>.
+
+</p><p>
+For example, the symbol <code>HELP</code> cannot be an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of
+the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> because it is not mentioned in Section <a href="s1-9.xhtml#Section_Symbols_in_t_106">1.9 Symbols in the COMMON-LISP Package</a>.
+In contrast, the <i><a href="g-s.xhtml#symbol">symbol</a></i> <b>variable</b>
+must be an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> 
+even though it has no definition
+because it is listed in that section
+(to support its use as a valid second <i><a href="g-a.xhtml#argument">argument</a></i> to the <i><a href="g-f.xhtml#function">function</a></i> <a href="e25-2-15.xhtml#DictEntry_documentatio_1442"><b>documentation</b></a>). 
+
+</p><p>
+
+The <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> can have additional <i><a href="g-i.xhtml#internalsymbol">internal symbols</a></i>.
+
+</p>
+<section>
+<h5 id="SubSubSubSec_Constraints__707"><span class="secno">11.1.2.1.1</span> Constraints on the COMMON-LISP Package for Conforming Implementations</h5>
+<p>
+
+
+In a <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i>,
+an <i>external</i> <i><a href="g-s.xhtml#symbol">symbol</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> can have
+   a <i><a href="g-f.xhtml#function">function</a></i>, <i><a href="g-m.xhtml#macro">macro</a></i>, or <i><a href="g-s.xhtml#specialoperator">special operator</a></i> definition, 
+
+   a <i><a href="g-g.xhtml#globalvariable">global variable</a></i> definition
+   (or other status as a <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i> 
+    due to a <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a> <i><a href="g-p.xhtml#proclamation">proclamation</a></i>),
+or a <i><a href="g-t.xhtml#type">type</a></i> definition
+only if explicitly permitted in this standard.
+
+
+For example,
+  <a href="e5-3-4.xhtml#DictEntry_fboundp_390"><b>fboundp</b></a> <i><a href="g-y.xhtml#yield">yields</a></i> <i><a href="g-f.xhtml#false">false</a></i> 
+  for any <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> 
+  that is not the <i><a href="g-n.xhtml#name">name</a></i> of a <i><a href="g-s.xhtml#standardized">standardized</a></i> 
+   <i><a href="g-f.xhtml#function">function</a></i>, <i><a href="g-m.xhtml#macro">macro</a></i> or <i><a href="g-s.xhtml#specialoperator">special operator</a></i>,
+and
+  <a href="e10-2-17.xhtml#DictEntry_boundp_691"><b>boundp</b></a> returns <i><a href="g-f.xhtml#false">false</a></i> 
+  for any <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> 
+  that is not the <i><a href="g-n.xhtml#name">name</a></i> of a <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-g.xhtml#globalvariable">global variable</a></i>.
+It also follows that
+  <i><a href="g-c.xhtml#conformingprogram">conforming programs</a></i> can use <i><a href="g-e.xhtml#externalsymbol">external symbols</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> 
+  as the <i><a href="g-n.xhtml#name">names</a></i> of local <i><a href="g-l.xhtml#lexicalvariable">lexical variables</a></i> 
+  with confidence that those <i><a href="g-n.xhtml#name">names</a></i> have not been <i>proclaimed</i> <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a> 
+  by the <i><a href="g-i.xhtml#implementation">implementation</a></i>
+  unless those <i><a href="g-s.xhtml#symbol">symbols</a></i> are
+    <i><a href="g-n.xhtml#name">names</a></i> of <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-g.xhtml#globalvariable">global variables</a></i>.
+
+</p><p>
+A <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> must not place any <i><a href="g-p.xhtml#property">property</a></i> on
+an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> using a <i><a href="g-p.xhtml#propertyindicator">property indicator</a></i>
+that is either an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of any <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-p.xhtml#package">package</a></i>
+or a <i><a href="g-s.xhtml#symbol">symbol</a></i> that is otherwise <i><a href="g-a.xhtml#accessible">accessible</a></i> in the <code>common-lisp-user</code> <i><a href="g-p.xhtml#package">package</a></i>.
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Constraints__708"><span class="secno">11.1.2.1.2</span> Constraints on the COMMON-LISP Package for Conforming Programs</h5>
+<p>
+
+
+
+Except where explicitly allowed, the consequences are undefined if any
+of the following actions are performed on an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> 
+of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i>:
+
+</p><ul>
+
+<li>1. <i><a href="g-b.xhtml#binding">Binding</a></i> or altering its value (lexically or dynamically).
+	      (Some exceptions are noted below.)
+
+</li><li>2. Defining, 
+
+	      undefining, 
+
+	  or <i><a href="g-b.xhtml#binding">binding</a></i> it as a <i><a href="g-f.xhtml#function">function</a></i>.
+	      (Some exceptions are noted below.)
+
+</li><li>3. Defining,
+
+	      undefining, 
+
+	   or <i><a href="g-b.xhtml#binding">binding</a></i> it as a <i><a href="g-m.xhtml#macro">macro</a></i>
+
+	      or <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i>.
+
+	      (Some exceptions are noted below.)
+
+</li><li>4. Defining it as a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> 
+	      (via <a href="e8-1-1.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a>, 
+		   <a href="e7-7-25.xhtml#DictEntry_defclass_581"><b>defclass</b></a>,
+		   <a href="e4-4-25.xhtml#DictEntry_deftype_360"><b>deftype</b></a>,
+		   <a href="e9-2-29.xhtml#DictEntry_define_condi_654"><b>define-condition</b></a>).
+
+</li><li>5. Defining it as a structure (via <a href="e8-1-1.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a>).
+
+</li><li>6. Defining it as a <i><a href="g-d.xhtml#declaration">declaration</a></i> 
+	      with a <a href="e3-8-24.xhtml#DictEntry_declaration_306"><b>declaration</b></a> <i><a href="g-p.xhtml#proclamation">proclamation</a></i>.
+
+</li><li>7. Defining it as a <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i>.
+
+</li><li>8. Altering its <i><a href="g-h.xhtml#homepackage">home package</a></i>.
+
+</li><li>9. Tracing it  (via <a href="e25-2-8.xhtml#DictEntry_trace_untra_1435"><b>trace</b></a>).
+
+</li><li>10. Declaring or proclaiming it
+
+
+	       <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a>
+	       (via <a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a>,
+
+		    <a href="e3-8-17.xhtml#DictEntry_declaim_299"><b>declaim</b></a>,
+
+		 or <a href="e3-8-16.xhtml#DictEntry_proclaim_298"><b>proclaim</b></a>).
+
+</li><li>11. Declaring or proclaiming its <a href="e3-8-21.xhtml#DictEntry_type_303"><b>type</b></a> or <a href="e3-8-23.xhtml#DictEntry_ftype_305"><b>ftype</b></a>
+	       (via <a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a>,
+
+		    <a href="e3-8-17.xhtml#DictEntry_declaim_299"><b>declaim</b></a>,
+
+		 or <a href="e3-8-16.xhtml#DictEntry_proclaim_298"><b>proclaim</b></a>).
+	       (Some exceptions are noted below.)
+
+</li><li>12. Removing it from the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i>.
+
+</li><li>13. Defining a <i><a href="g-s.xhtml#setfexpander">setf expander</a></i> for it 
+	       (via <a href="e5-3-61.xhtml#DictEntry_defsetf_447"><b>defsetf</b></a> or <b>define-setf-method</b>).
+
+</li><li>14. Defining, undefining, or binding its <i><a href="g-s.xhtml#setffunctionname">setf function name</a></i>.
+
+</li><li>15. Defining it as a <i><a href="g-m.xhtml#methodcombination">method combination</a></i> type 
+		(via <a href="e7-7-33.xhtml#DictEntry_define_metho_589"><b>define-method-combination</b></a>).
+
+</li><li>16. Using it as the class-name argument 
+	       to <a href="e25-2-15.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> of <a href="e7-7-28.xhtml#DictEntry_find_class_584"><b>find-class</b></a>.
+
+</li><li>17. Binding it as a <i><a href="g-c.xhtml#catchtag">catch tag</a></i>.
+
+</li><li>18. Binding it as a <i><a href="g-r.xhtml#restart">restart</a></i> <i><a href="g-n.xhtml#name">name</a></i>.
+
+</li><li>19. Defining a <i><a href="g-m.xhtml#method">method</a></i> 
+	       for a <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-g.xhtml#genericfunction">generic function</a></i> 
+	       which is <i><a href="g-a.xhtml#applicable">applicable</a></i> when all of the <i><a href="g-a.xhtml#argument">arguments</a></i>
+      	       are <i><a href="g-d.xhtml#directinstance">direct instances</a></i> of <i><a href="g-s.xhtml#standardized">standardized</a></i> <i>classes</i>.
+
+</li></ul>
+<section>
+<h6 id="SubSubSubSub_Some_Excepti_709"><span class="secno">11.1.2.1.2.1</span> Some Exceptions to Constraints on the COMMON-LISP Package for Conforming Programs</h6>
+<p>
+
+If an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i>
+is not globally defined as a <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i> 
+					      or <i><a href="g-c.xhtml#constantvariable">constant variable</a></i>,
+it is allowed to lexically <i><a href="g-b.xhtml#bind">bind</a></i> it 
+          and to declare the <a href="e3-8-21.xhtml#DictEntry_type_303"><b>type</b></a> of that <i><a href="g-b.xhtml#binding">binding</a></i>, 
+and
+it is allowed to locally <i><a href="g-e.xhtml#establish">establish</a></i> it as a <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i> 
+(<i>e.g.</i>,  with <a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>).
+
+</p><p>
+
+
+
+Unless explicitly specified otherwise,
+if an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> 
+is globally defined as a <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i>,
+it is permitted to <i><a href="g-b.xhtml#bind">bind</a></i> or <i><a href="g-a.xhtml#assign">assign</a></i> that <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i>
+provided that the "Value Type" constraints on the <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i> 
+are maintained, and that the new <i><a href="g-v.xhtml#value">value</a></i> of the <i><a href="g-v.xhtml#variable">variable</a></i> 
+is consistent with the stated purpose of the <i><a href="g-v.xhtml#variable">variable</a></i>.
+
+</p><p>
+If an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> is not defined
+as a <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-f.xhtml#function">function</a></i>, <i><a href="g-m.xhtml#macro">macro</a></i>, or <i><a href="g-s.xhtml#specialoperator">special operator</a></i>,
+it is allowed to lexically <i><a href="g-b.xhtml#bind">bind</a></i> it as a <i><a href="g-f.xhtml#function">function</a></i> (<i>e.g.</i>,  with <a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>flet</b></a>),
+              to declare the <a href="e3-8-23.xhtml#DictEntry_ftype_305"><b>ftype</b></a> of that <i><a href="g-b.xhtml#binding">binding</a></i>, 
+          and 
+
+
+              (in <i><a href="g-i.xhtml#implementation">implementations</a></i> which provide the ability to do so)
+	      to <a href="e25-2-8.xhtml#DictEntry_trace_untra_1435"><b>trace</b></a> that <i><a href="g-b.xhtml#binding">binding</a></i>.
+
+</p><p>
+If an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> is not defined
+as a <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-f.xhtml#function">function</a></i>, <i><a href="g-m.xhtml#macro">macro</a></i>, or <i><a href="g-s.xhtml#specialoperator">special operator</a></i>,
+it is allowed to lexically <i><a href="g-b.xhtml#bind">bind</a></i> it as a <i><a href="g-m.xhtml#macro">macro</a></i> (<i>e.g.</i>,  with <a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a>).
+
+
+</p><p>
+
+If an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> is not defined 
+as a <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-f.xhtml#function">function</a></i>, <i><a href="g-m.xhtml#macro">macro</a></i>, or <i><a href="g-s.xhtml#specialoperator">special operator</a></i>,
+it is allowed to lexically <i><a href="g-b.xhtml#bind">bind</a></i> its <i><a href="g-s.xhtml#setffunctionname">setf function name</a></i>
+as a <i><a href="g-f.xhtml#function">function</a></i>,
+and to declare the <a href="e3-8-23.xhtml#DictEntry_ftype_305"><b>ftype</b></a> of that <i><a href="g-b.xhtml#binding">binding</a></i>.
+
+
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_The_COMMON_L_710"><span class="secno">11.1.2.2</span> The COMMON-LISP-USER Package</h4>
+<p>
+The <code>common-lisp-user</code> <i><a href="g-p.xhtml#package">package</a></i> is the <i><a href="g-c.xhtml#currentpackage">current package</a></i> when 
+a <i>Common Lisp</i> system starts up.  This <i><a href="g-p.xhtml#package">package</a></i> <i><a href="g-u.xhtml#use">uses</a></i> the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i>.
+The <code>common-lisp-user</code> <i><a href="g-p.xhtml#package">package</a></i> has the <i><a href="g-n.xhtml#nickname">nickname</a></i> <code>cl-user</code>.
+
+The <code>common-lisp-user</code> <i><a href="g-p.xhtml#package">package</a></i> can have additional <i><a href="g-s.xhtml#symbol">symbols</a></i> <i><a href="g-i.xhtml#interned">interned</a></i> within it;
+it can <i><a href="g-u.xhtml#use">use</a></i> other <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-p.xhtml#package">packages</a></i>.
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_KEYWORD__711"><span class="secno">11.1.2.3</span> The KEYWORD Package</h4>
+<p>
+
+
+
+The <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i> contains <i><a href="g-s.xhtml#symbol">symbols</a></i>, called <i><a href="g-k.xhtml#keyword">keywords</a></i><sub>1</sub>,
+that are typically used as special markers in <i><a href="g-p.xhtml#program">programs</a></i> 
+and their associated data <i><a href="g-e.xhtml#expression">expressions</a></i><sub>1</sub>.
+
+</p><p>
+<i><a href="g-s.xhtml#symbol">Symbol</a></i> <i><a href="g-t.xhtml#token">tokens</a></i> that start with a <i><a href="g-p.xhtml#packagemarker">package marker</a></i> 
+are parsed by the <i>Lisp reader</i> as <i><a href="g-s.xhtml#symbol">symbols</a></i> 
+in the <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i>; see Section <a href="s2-3.xhtml#SubSection_Symbols_as_T_139">2.3.4 Symbols as Tokens</a>.
+This makes it notationally convenient to use <i><a href="g-k.xhtml#keyword">keywords</a></i>
+when communicating between programs in different <i><a href="g-p.xhtml#package">packages</a></i>.  
+For example, the mechanism for passing <i><a href="g-k.xhtml#keywordparameter">keyword parameters</a></i> in a <i><a href="g-c.xhtml#call">call</a></i> uses 
+<i><a href="g-k.xhtml#keyword">keywords</a></i><sub>1</sub> to name the corresponding <i><a href="g-a.xhtml#argument">arguments</a></i>;
+see Section <a href="s3-4.xhtml#SubSection_Ordinary_Lam_243">3.4.1 Ordinary Lambda Lists</a>.
+
+</p><p>
+<i><a href="g-s.xhtml#symbol">Symbols</a></i> in the <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i> are, by definition, of <i><a href="g-t.xhtml#type">type</a></i> <a href="e10-2-2.xhtml#DictEntry_keyword_676"><b>keyword</b></a>.
+</p>
+<section>
+<h5 id="SubSubSubSec_Interning_a__712"><span class="secno">11.1.2.3.1</span> Interning a Symbol in the KEYWORD Package</h5>
+<p>
+
+The <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i> is treated differently than other <i><a href="g-p.xhtml#package">packages</a></i>
+in that special actions are taken when a <i><a href="g-s.xhtml#symbol">symbol</a></i> is <i><a href="g-i.xhtml#interned">interned</a></i> in it.
+In particular, when a <i><a href="g-s.xhtml#symbol">symbol</a></i> is <i><a href="g-i.xhtml#interned">interned</a></i> in the <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="g-p.xhtml#package">package</a></i>,
+ it is automatically made to be an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> 
+and is automatically made to be a <i><a href="g-c.xhtml#constantvariable">constant variable</a></i> with itself as a <i><a href="g-v.xhtml#value">value</a></i>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Notes_about__713"><span class="secno">11.1.2.3.2</span> Notes about The KEYWORD Package</h5>
+<p>
+
+It is generally best to confine the use of <i><a href="g-k.xhtml#keyword">keywords</a></i> to situations in which
+there are a finitely enumerable set of names to be selected between.  For example,
+if there were two states of a light switch, they might be called <code>:on</code> and <code>:off</code>.
+
+</p><p>
+In situations where the set of names is not finitely enumerable
+(<i>i.e.</i>,  where name conflicts might arise)
+it is frequently best to use <i><a href="g-s.xhtml#symbol">symbols</a></i> in some <i><a href="g-p.xhtml#package">package</a></i>
+other than <a href="e10-2-2.xhtml#DictEntry_keyword_676"><code>keyword</code></a> so that conflicts will be naturally avoided.
+For example, it is generally not wise for a <i><a href="g-p.xhtml#program">program</a></i> to use a <i><a href="g-k.xhtml#keyword">keyword</a></i><sub>1</sub> 
+as a <i><a href="g-p.xhtml#propertyindicator">property indicator</a></i>, since if there were ever another <i><a href="g-p.xhtml#program">program</a></i>
+that did the same thing, each would clobber the other's data.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Implementati_714"><span class="secno">11.1.2.4</span> Implementation-Defined Packages</h4>
+<p>
+
+
+Other, <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="g-p.xhtml#package">packages</a></i> might be present
+in the initial <i>Common Lisp</i> environment.
+
+
+
+
+
+</p><p>
+It is recommended, but not required, that the documentation for a
+<i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> contain a full list of all <i><a href="g-p.xhtml#package">package</a></i> names
+initially present in that <i><a href="g-i.xhtml#implementation">implementation</a></i> but not specified in this specification.
+(See also the <i><a href="g-f.xhtml#function">function</a></i> <a href="e11-2-7.xhtml#DictEntry_list_all_pac_722"><b>list-all-packages</b></a>.)
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</section>
+</body>
+</html>

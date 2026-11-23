@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>4.4.30 type-error-datum, type-error-expected-type — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_type_error_d_365" class="entry"><span class="secno">4.4.30</span> <span class="names">type-error-datum, type-error-expected-type</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>type-error-datum</b>
+<i>condition</i>
+  → <i>datum</i>
+<p>
+<b>type-error-expected-type</b>
+<i>condition</i>
+  → <i>expected-type</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>condition</i>—a <i><a href="g-c.xhtml#condition">condition</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a>.
+
+<p>
+<i>datum</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+</p><p>
+<i>expected-type</i>—a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_type_error_d_365"><b>type-error-datum</b></a> returns the offending datum in the <i><a href="g-s.xhtml#situation">situation</a></i>
+represented by the <i>condition</i>.
+
+<p>
+<a href="#DictEntry_type_error_d_365"><b>type-error-expected-type</b></a> returns the expected type of the
+offending datum in the <i><a href="g-s.xhtml#situation">situation</a></i> represented by the <i>condition</i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defun fix-digits (condition)
+   (check-type condition type-error)
+   (let* ((digits '(zero one two three four
+                   five six seven eight nine))
+         (val (position (type-error-datum condition) digits)))
+     (if (and val (subtypep 'fixnum (type-error-expected-type condition)))
+         (store-value 7))))
+ 
+ (defun foo (x)
+   (handler-bind ((type-error #'fix-digits))
+     (check-type x number)
+     (+ x 3)))
+ 
+ (foo 'seven)
+→ 10
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a>,
+Conditions
+
+</dd></dl>
+</section>
+</body>
+</html>

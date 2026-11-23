@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>11.2.2 export — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_export_717" class="entry"><span class="secno">11.2.2</span> <span class="names">export</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>export</b>
+<i>symbols <code>&amp;optional</code> package</i>
+  → <i><a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+</i><p><i></i>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>symbols</i>—a <i><a href="g-d.xhtml#designator">designator</a></i> for a <i><a href="g-l.xhtml#list">list</a></i> of <i><a href="g-s.xhtml#symbol">symbols</a></i>.
+
+<p>
+
+<i>package</i>—a <i><a href="g-p.xhtml#packagedesignator">package designator</a></i>.
+
+  The default is the <i><a href="g-c.xhtml#currentpackage">current package</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+<a href="#DictEntry_export_717"><b>export</b></a> makes one or more <i>symbols</i> that are <i><a href="g-a.xhtml#accessible">accessible</a></i> 
+in <i>package</i> (whether directly or by inheritance) be <i><a href="g-e.xhtml#externalsymbol">external symbols</a></i>
+of that <i>package</i>. 
+
+<p>
+If any of the <i>symbols</i> is already <i><a href="g-a.xhtml#accessible">accessible</a></i> as 
+an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> of <i>package</i>,
+<a href="#DictEntry_export_717"><b>export</b></a> has no effect on that <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+If the <i>symbol</i> is 
+
+<i><a href="g-p.xhtml#present">present</a></i> in <i>package</i> 
+as an internal symbol, it is simply changed to external status.  
+If it is <i><a href="g-a.xhtml#accessible">accessible</a></i> as an <i><a href="g-i.xhtml#internalsymbol">internal symbol</a></i> via <a href="e11-2-18.xhtml#DictEntry_use_package_733"><b>use-package</b></a>, 
+
+it
+is first <i>imported</i> into <i>package</i>,
+then <i><a href="g-e.xhtml#exported">exported</a></i>.
+(The <i>symbol</i> is then <i><a href="g-p.xhtml#present">present</a></i> in the <i>package</i> 
+whether or not <i>package</i> continues to use the <i><a href="g-p.xhtml#package">package</a></i> through 
+which the <i><a href="g-s.xhtml#symbol">symbol</a></i> was originally inherited.)  
+
+</p><p>
+
+<a href="#DictEntry_export_717"><b>export</b></a> makes 
+
+each <i>symbol</i>
+<i><a href="g-a.xhtml#accessible">accessible</a></i> to all the <i><a href="g-p.xhtml#package">packages</a></i> that use <i>package</i>.
+All of these <i><a href="g-p.xhtml#package">packages</a></i> are checked for name conflicts:
+<code>(export <i>s</i> <i>p</i>)</code> does
+<code>(find-symbol (symbol-name <i>s</i>) <i>q</i>)</code> for each package <i>q</i>
+in <code>(package-used-by-list <i>p</i>)</code>.  Note that in the usual case of
+an <a href="#DictEntry_export_717"><b>export</b></a> during the initial definition of a <i><a href="g-p.xhtml#package">package</a></i>, 
+the
+result of <a href="e11-2-26.xhtml#DictEntry_package_used_741"><b>package-used-by-list</b></a>
+is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> and the name-conflict checking
+takes negligible time.
+When multiple changes are to be made,
+
+for example when <a href="#DictEntry_export_717"><b>export</b></a> 
+is given a <i>list</i> of <i>symbols</i>, it is
+permissible for the implementation to process each change separately,
+so that aborting from a name
+conflict caused by any but the first <i>symbol</i> in the 
+<i><a href="g-l.xhtml#list">list</a></i> does not unexport the
+first <i>symbol</i> in the <i>list</i>. 
+However, aborting from a name-conflict error
+caused by <a href="#DictEntry_export_717"><b>export</b></a> 
+of one of <i>symbols</i> does not leave that <i><a href="g-s.xhtml#symbol">symbol</a></i> 
+<i><a href="g-a.xhtml#accessible">accessible</a></i>
+to some <i><a href="g-p.xhtml#package">packages</a></i> 
+and <i><a href="g-i.xhtml#inaccessible">inaccessible</a></i> to others; with respect to
+each of <i>symbols</i> processed, <a href="#DictEntry_export_717"><b>export</b></a>
+behaves as if it were as an atomic operation.
+
+</p><p>
+
+A name conflict in <a href="#DictEntry_export_717"><b>export</b></a> between one of
+<i>symbols</i> being exported and a
+<i><a href="g-s.xhtml#symbol">symbol</a></i> already <i><a href="g-p.xhtml#present">present</a></i> in a <i><a href="g-p.xhtml#package">package</a></i> 
+that would inherit the
+newly-exported <i><a href="g-s.xhtml#symbol">symbol</a></i> 
+may be resolved in favor of the exported <i><a href="g-s.xhtml#symbol">symbol</a></i>
+by uninterning the other one, or in favor of the already-present
+<i><a href="g-s.xhtml#symbol">symbol</a></i> by making it a shadowing symbol.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (make-package 'temp :use nil) → #&lt;PACKAGE "TEMP"&gt;
+ (use-package 'temp) →  T
+ (intern "TEMP-SYM" 'temp) →  TEMP::TEMP-SYM, NIL
+ (find-symbol "TEMP-SYM") →  NIL, NIL
+ (export (find-symbol "TEMP-SYM" 'temp) 'temp) →  T
+ (find-symbol "TEMP-SYM") →  TEMP-SYM, :INHERITED
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The package system is modified.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<i><a href="g-a.xhtml#accessible">Accessible</a></i> <i><a href="g-s.xhtml#symbol">symbols</a></i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+If any of the <i>symbols</i> is not <i><a href="g-a.xhtml#accessible">accessible</a></i> at all in <i>package</i>,
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e11-2-29.xhtml#DictEntry_package_erro_744"><b>package-error</b></a> is signaled that is <i><a href="g-c.xhtml#correctable">correctable</a></i> 
+by permitting the <i><a href="g-u.xhtml#user">user</a></i>
+to interactively specify whether that <i><a href="g-s.xhtml#symbol">symbol</a></i> should be <i>imported</i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e11-2-6.xhtml#DictEntry_import_721"><b>import</b></a>,
+<a href="e11-2-14.xhtml#DictEntry_unexport_729"><b>unexport</b></a>,
+Section <a href="s11-1.xhtml#Section_Package_Conc_696">11.1 Package Concepts</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

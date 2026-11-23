@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>6.2.4 loop — Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_loop_517" class="entry"><span class="secno">6.2.4</span> <span class="names">loop</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+The "simple" <a href="#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i>:
+
+<p>
+<b>loop</b>
+<i>{<i>compound-form</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+</p><p>
+The "extended" <a href="#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i>:
+
+</p><p>
+<b>loop</b>
+<i>[↓name-clause]
+			{<i>variable-clause</i>}*
+		        {<i>main-clause</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+</p><p>
+
+name-clause::= <code>named</code> <i>name</i></p><p>
+
+variable-clause::= ↓with-clause | ↓initial-final | ↓for-as-clause</p><p>
+
+with-clause::= <code>with</code> <i>var1</i> [<i>type-spec</i>] [<i>=</i> <i>form1</i>]
+ <code>{</code><code>and</code> <i>var2</i> [<i>type-spec</i>] 
+		            [<i>=</i> <i>form2</i>]<code>}</code><sup>*</sup></p><p>
+
+main-clause::= ↓unconditional    |
+ ↓accumulation     |
+ ↓conditional      |
+ ↓termination-test |
+ ↓initial-final</p><p>
+
+initial-final::= <code>initially</code> {<i>compound-form</i>}<sup>+</sup> |  <code>finally</code> {<i>compound-form</i>}<sup>+</sup></p><p>
+
+unconditional::= <code>{</code><code>do</code> | <code>doing</code><code>}</code> {<i>compound-form</i>}<sup>+</sup> |
+ <code>return</code> <code>{</code><i>form</i> | <code>it</code><code>}</code></p><p>
+
+accumulation::= ↓list-accumulation | ↓numeric-accumulation</p><p>
+
+list-accumulation::= <code>{</code><code>collect</code> | <code>collecting</code> |
+	<code>append</code>  | <code>appending</code>  |
+	<code>nconc</code> | <code>nconcing</code><code>}</code> <code>{</code><i>form</i> | <code>it</code><code>}</code> <br/>
+ [<code>into</code> <i>simple-var</i>]</p><p>
+
+numeric-accumulation::= <code>{</code><code>count</code>    | <code>counting</code>   |
+	<code>sum</code>      | <code>summing</code>    | <br/>
+  <code>maximize</code> | <code>maximizing</code> |
+        <code>minimize</code> | <code>minimizing</code><code>}</code> <code>{</code><i>form</i> | <code>it</code><code>}</code> <br/>
+ [<code>into</code> <i>simple-var</i>] [<i>type-spec</i>]</p><p>
+
+conditional::= <code>{</code><code>if</code> | <code>when</code> | <code>unless</code><code>}</code> <i>form</i>
+         ↓selectable-clause <code>{</code><code>and</code> ↓selectable-clause<code>}</code><sup>*</sup> <br/>
+ [<code>else</code>
+         ↓selectable-clause <code>{</code><code>and</code> ↓selectable-clause<code>}</code><sup>*</sup>] <br/>
+ [<code>end</code>]</p><p>
+
+selectable-clause::= ↓unconditional | ↓accumulation | ↓conditional</p><p>
+
+termination-test::= <code>while</code>   <i>form</i>  | 
+ <code>until</code>   <i>form</i>  |
+ <code>repeat</code>  <i>form</i>  |
+ <code>always</code>  <i>form</i>  |
+ <code>never</code>   <i>form</i>  |
+ <code>thereis</code> <i>form</i></p><p>
+
+for-as-clause::= <code>{</code><code>for</code> | <code>as</code><code>}</code> ↓for-as-subclause
+ <code>{</code><code>and</code> ↓for-as-subclause<code>}</code><sup>*</sup></p><p>
+
+for-as-subclause::= ↓for-as-arithmetic  |
+ ↓for-as-in-list     |
+ ↓for-as-on-list     |
+ ↓for-as-equals-then |<br/>
+ ↓for-as-across      |
+ ↓for-as-hash        |
+ ↓for-as-package</p><p>
+
+for-as-arithmetic::= <i>var</i> [<i>type-spec</i>]
+			   ↓for-as-arithmetic-subclause</p><p>
+
+for-as-arithmetic-subclause::= ↓arithmetic-up | ↓arithmetic-downto | ↓arithmetic-downfrom</p><p>
+
+arithmetic-up::= [[<code>{</code><code>from</code> | <code>upfrom</code><code>}</code> <i>form1</i>               | 
+   <code>{</code><code>to</code> | <code>upto</code> | <code>below</code><code>}</code> <i>form2</i> | 
+   <code>by</code> <i>form3</i>]]<sup>+</sup></p><p>
+
+arithmetic-downto::= [[<code>{</code><code>from</code> <i>form1</i><code>}</code><sup>1</sup> 				| 
+   <code>{</code><code>{</code><code>downto</code> | <code>above</code><code>}</code> <i>form2</i><code>}</code><sup>1</sup> | 
+   <code>by</code> <i>form3</i>]]</p><p>
+
+arithmetic-downfrom::= [[<code>{</code><code>downfrom</code> <i>form1</i><code>}</code><sup>1</sup> 			 | 
+   <code>{</code><code>to</code> | <code>downto</code> | <code>above</code><code>}</code> <i>form2</i> | 
+   <code>by</code> <i>form3</i>]]</p><p>
+
+for-as-in-list::= <i>var</i> [<i>type-spec</i>]
+ <code>in</code> <i>form1</i> [<code>by</code> <i>step-fun</i>]</p><p>
+
+for-as-on-list::= <i>var</i> [<i>type-spec</i>]
+ <code>on</code> <i>form1</i> [<code>by</code> <i>step-fun</i>]</p><p>
+
+for-as-equals-then::= <i>var</i> [<i>type-spec</i>]
+ <i>=</i> <i>form1</i> [<code>then</code> <i>form2</i>]</p><p>
+
+for-as-across::= <i>var</i> [<i>type-spec</i>]
+ <code>across</code> <i>vector</i></p><p>
+
+for-as-hash::= <i>var</i> [<i>type-spec</i>]
+ <code>being</code> <code>{</code><code>each</code> | <code>the</code><code>}</code> <br/>
+ {<code>{</code><code>hash-key</code> | <code>hash-keys</code><code>}</code>
+        <code>{</code><code>in</code> | <code>of</code><code>}</code> <i>hash-table</i> <br/>
+  [<code>using</code> (<code>hash-value</code> <i>other-var</i>)] | <br/>
+  <code>{</code><code>hash-value</code> | <code>hash-values</code><code>}</code>
+        <code>{</code><code>in</code> | <code>of</code><code>}</code> <i>hash-table</i> <br/>
+  [<code>using</code> (<code>hash-key</code> <i>other-var</i>)]}</p><p>
+
+for-as-package::= <i>var</i> [<i>type-spec</i>]
+ <code>being</code> <code>{</code><code>each</code> | <code>the</code><code>}</code> 	        <br/>
+ {<code>symbol</code> | <code>symbols</code>		               |<br/>
+  <code>present-symbol</code> | <code>present-symbols</code>           |<br/>
+  <code>external-symbol</code> | <code>external-symbols</code>}  <br/>
+ [<code>{</code><code>in</code> | <code>of</code><code>}</code> <i>package</i>]</p><p>
+
+type-spec::= ↓simple-type-spec | ↓destructured-type-spec</p><p>
+
+simple-type-spec::= <a href="e12-2-13.xhtml#DictEntry_fixnum_787"><b>fixnum</b></a> | <a href="e12-2-4.xhtml#DictEntry_float_778"><b>float</b></a> | <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a> | <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a></p><p>
+
+destructured-type-spec::= <code>of-type</code> <i>d-type-spec</i></p><p>
+
+d-type-spec::= <i>type-specifier</i> | <code>(<i>d-type-spec</i> . <i>d-type-spec</i>)</code></p><p>
+
+var::= ↓d-var-spec</p><p>
+
+var1::= ↓d-var-spec</p><p>
+
+var2::= ↓d-var-spec</p><p>
+
+other-var::= ↓d-var-spec</p><p>
+
+d-var-spec::= <i>simple-var</i> | 
+		    <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> |
+		    (↓d-var-spec <code>.</code> ↓d-var-spec)</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>compound-form</i>—a <i><a href="g-c.xhtml#compoundform">compound form</a></i>.
+
+<p>
+<i>name</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+</p><p>
+
+
+
+<i>simple-var</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i> (a <i><a href="g-v.xhtml#variable">variable</a></i> name).
+
+</p><p>
+<i>form</i>, <i>form1</i>, <i>form2</i>, <i>form3</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+
+<i>step-fun</i>—a <i><a href="g-f.xhtml#form">form</a></i> that evaluates to a <i><a href="g-f.xhtml#function">function</a></i> of one <i><a href="g-a.xhtml#argument">argument</a></i>.
+
+
+</p><p>
+<i>vector</i>—a <i><a href="g-f.xhtml#form">form</a></i> that evaluates to a <i><a href="g-v.xhtml#vector">vector</a></i>.
+
+</p><p>
+<i>hash-table</i>—a <i><a href="g-f.xhtml#form">form</a></i> that evaluates to a <i><a href="g-h.xhtml#hashtable">hash table</a></i>.
+
+</p><p>
+<i>package</i>—a <i><a href="g-f.xhtml#form">form</a></i> that evaluates to a <i><a href="g-p.xhtml#packagedesignator">package designator</a></i>.
+
+</p><p>
+<i>type-specifier</i>—a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>.
+  This might be either an <i><a href="g-a.xhtml#atomictypespecifier">atomic type specifier</a></i> or a <i><a href="g-c.xhtml#compoundtypespecifier">compound type specifier</a></i>,
+  which introduces some additional complications to proper parsing in the face of 
+  destructuring; for further information, see Section <a href="s6-1.xhtml#SubSubSectio_Destructurin_473">6.1.1.7 Destructuring</a>.
+
+</p><p>
+<i>result</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+For details, see Section <a href="s6-1.xhtml#Section_The_LOOP_Fac_457">6.1 The LOOP Facility</a>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre>;; An example of the simple form of LOOP.
+ (defun sqrt-advisor ()
+   (loop (format t "~&amp;Number: ")
+         (let ((n (parse-integer (read-line) :junk-allowed t)))
+           (when (not n) (return))
+           (format t "~&amp;The square root of ~D is ~D.~%" n (sqrt n)))))
+→  SQRT-ADVISOR
+ (sqrt-advisor)
+▷ Number: <span class="user">5[Return]</span>
+▷ The square root of 5 is 2.236068.
+▷ Number: <span class="user">4[Return]</span>
+▷ The square root of 4 is 2.
+▷ Number: <span class="user">done[Return]</span>
+→  NIL
+
+;; An example of the extended form of LOOP.
+ (defun square-advisor ()
+   (loop as n = (progn (format t "~&amp;Number: ")
+
+                       (parse-integer (read-line) :junk-allowed t))
+         while n
+         do (format t "~&amp;The square of ~D is ~D.~%" n (* n n))))
+→  SQUARE-ADVISOR
+ (square-advisor)
+▷ Number: <span class="user">4[Return]</span>
+▷ The square of 4 is 16.
+▷ Number: <span class="user">23[Return]</span>
+▷ The square of 23 is 529.
+▷ Number: <span class="user">done[Return]</span>
+→  NIL
+
+;; Another example of the extended form of LOOP.
+ (loop for n from 1 to 10
+       when (oddp n)
+         collect n)
+→ (1 3 5 7 9)
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e6-2-1.xhtml#DictEntry_do_do_514"><b>do</b></a>, <a href="e6-2-3.xhtml#DictEntry_dolist_516"><b>dolist</b></a>, <a href="e6-2-2.xhtml#DictEntry_dotimes_515"><b>dotimes</b></a>, 
+<a href="e5-3-26.xhtml#DictEntry_return_412"><b>return</b></a>, <a href="e5-3-24.xhtml#DictEntry_go_410"><b>go</b></a>, <a href="e5-3-28.xhtml#DictEntry_throw_414"><b>throw</b></a>,
+Section <a href="s6-1.xhtml#SubSubSectio_Destructurin_473">6.1.1.7 Destructuring</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+
+
+Except that <a href="e6-2-5.xhtml#DictEntry_loop_finish_518"><b>loop-finish</b></a> cannot be used within a simple <a href="#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i>,
+a simple <a href="#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> is related to an extended <a href="#DictEntry_loop_517"><b>loop</b></a> <i><a href="g-f.xhtml#form">form</a></i> 
+in the following way:
+
+<pre> (loop {<i>compound-form</i>}*) ==(loop do {<i>compound-form</i>}*)
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

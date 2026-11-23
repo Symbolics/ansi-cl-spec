@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>17.3.9 reduce — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_reduce_1049" class="entry"><span class="secno">17.3.9</span> <span class="names">reduce</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>reduce</b>
+<i>function sequence <code>&amp;key</code> key from-end start end initial-value</i>
+  → <i>result</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>function</i>—a <i><a href="g-d.xhtml#designator">designator</a></i> for a <i><a href="g-f.xhtml#function">function</a></i>
+   that might be called with either zero or two <i><a href="g-a.xhtml#argument">arguments</a></i>.
+
+<p>
+<i>sequence</i>—a <i><a href="g-p.xhtml#propersequence">proper sequence</a></i>.
+
+</p><p>
+
+<i>key</i>—a <i><a href="g-d.xhtml#designator">designator</a></i> for a <i><a href="g-f.xhtml#function">function</a></i> of one argument,
+  or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+
+</p><p>
+<i>from-end</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+  The default is <i><a href="g-f.xhtml#false">false</a></i>.
+
+</p><p>
+
+
+<i>start</i>, <i>end</i>—<i><a href="g-b.xhtml#boundingindexdesignator">bounding index designators</a></i> of <i>sequence</i>.
+ The defaults for <i>start</i> and <i>end</i> are <code>0</code> and <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, respectively.
+
+
+
+</p><p>
+<i>initial-value</i>—an <i><a href="g-o.xhtml#object">object</a></i>. 
+
+</p><p>
+<i>result</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+<a href="#DictEntry_reduce_1049"><b>reduce</b></a> uses a binary operation, <i>function</i>,
+to combine the <i><a href="g-e.xhtml#element">elements</a></i> of <i>sequence</i> 
+<i><a href="g-b.xhtml#bounded">bounded</a></i> by <i>start</i> and <i>end</i>.
+
+<p>
+The <i>function</i> must accept as <i><a href="g-a.xhtml#argument">arguments</a></i> two <i><a href="g-e.xhtml#element">elements</a></i>
+of <i>sequence</i> or the results from combining those <i><a href="g-e.xhtml#element">elements</a></i>.
+The <i>function</i> must also be able to accept no arguments.
+
+</p><p>
+
+If <i>key</i> is supplied, it is used is used to extract the values to reduce.
+The <i>key</i> function is applied exactly once to each element of <i>sequence</i>
+in the order implied by the reduction order but not to the value of
+<i>initial-value</i>, if supplied.
+
+The <i>key</i> function typically returns part of the <i><a href="g-e.xhtml#element">element</a></i> of <i>sequence</i>.
+If <i>key</i> is not supplied or is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, the <i>sequence</i> <i><a href="g-e.xhtml#element">element</a></i> itself is used.
+
+</p><p>
+The reduction is left-associative,
+unless <i>from-end</i> is <i><a href="g-t.xhtml#true">true</a></i> in which case it is right-associative.  
+
+</p><p>
+If <i>initial-value</i> is supplied, 
+it is logically placed before the subsequence
+(or after it if <i>from-end</i> is <i><a href="g-t.xhtml#true">true</a></i>)
+and included in the reduction operation.
+
+</p><p>
+In the normal case, the result of <a href="#DictEntry_reduce_1049"><b>reduce</b></a> is the combined 
+result of <i>function</i>'s being applied to successive pairs of <i><a href="g-e.xhtml#element">elements</a></i> 
+of <i>sequence</i>.
+
+If the subsequence contains exactly one <i><a href="g-e.xhtml#element">element</a></i> 
+and no <i>initial-value</i> is given,
+then that <i><a href="g-e.xhtml#element">element</a></i> is returned and <i>function</i> is not called.
+If the subsequence is empty and an <i>initial-value</i> is given,
+then the <i>initial-value</i> is returned and <i>function</i> is not called.
+
+If the subsequence is empty and no <i>initial-value</i> is given,
+then the <i>function</i> is called with zero arguments,
+and <a href="#DictEntry_reduce_1049"><b>reduce</b></a> returns whatever <i>function</i> does.
+This is the only case where the
+<i>function</i> is called with other than two arguments.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (reduce #'* '(1 2 3 4 5)) → 120
+ (reduce #'append '((1) (2)) :initial-value '(i n i t)) → (I N I T 1 2)
+ (reduce #'append '((1) (2)) :from-end t                  
+                             :initial-value '(i n i t)) → (1 2 I N I T) 
+ (reduce #'- '(1 2 3 4)) ==(- (- (- 1 2) 3) 4) → -8
+ (reduce #'- '(1 2 3 4) :from-end t)    ;Alternating sum.
+==(- 1 (- 2 (- 3 4))) → -2
+ (reduce #'+ '()) → 0
+ (reduce #'+ '(3)) → 3
+ (reduce #'+ '(foo)) →  FOO
+ (reduce #'list '(1 2 3 4)) → (((1 2) 3) 4)
+ (reduce #'list '(1 2 3 4) :from-end t) → (1 (2 (3 4)))
+ (reduce #'list '(1 2 3 4) :initial-value 'foo) → ((((foo 1) 2) 3) 4)
+ (reduce #'list '(1 2 3 4)
+        :from-end t :initial-value 'foo) → (1 (2 (3 (4 foo))))
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should be prepared to signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>sequence</i> is not a <i><a href="g-p.xhtml#propersequence">proper sequence</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+
+Section <a href="s3-6.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

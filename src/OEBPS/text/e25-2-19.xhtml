@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>25.2.19 dribble — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_dribble_1446" class="entry"><span class="secno">25.2.19</span> <span class="names">dribble</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>dribble</b>
+<i><code>&amp;optional</code> pathname</i>
+  → <i><i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i></i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>pathname</i>—a <i><a href="g-p.xhtml#pathnamedesignator">pathname designator</a></i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+Either <i><a href="g-b.xhtml#bind">binds</a></i> <a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*standard-input*</b></a> and <a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a> 
+or takes other appropriate action, 
+so as to send a record of the input/output interaction to a file 
+named by <i>pathname</i>.  <a href="#DictEntry_dribble_1446"><b>dribble</b></a> is intended to create
+a readable record of an interactive session.
+
+<p>
+
+If <i>pathname</i> is a <i><a href="g-l.xhtml#logicalpathname">logical pathname</a></i>, it is translated
+into a physical pathname as if by calling <a href="e19-4-15.xhtml#DictEntry_translate_lo_1158"><b>translate-logical-pathname</b></a>.
+
+
+</p><p>
+
+<code>(dribble)</code> terminates the recording of input and output 
+and closes the dribble file.
+
+</p><p>
+
+
+
+If <a href="#DictEntry_dribble_1446"><b>dribble</b></a> is <i>called</i> while a <i><a href="g-s.xhtml#stream">stream</a></i> to a "dribble file" 
+is still open from a previous <i><a href="g-c.xhtml#call">call</a></i> to <a href="#DictEntry_dribble_1446"><b>dribble</b></a>,
+the effect is <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>.  For example, 
+    the already-<i><a href="g-o.xhtml#open">open</a></i> <i><a href="g-s.xhtml#stream">stream</a></i> might be <i><a href="g-c.xhtml#closed">closed</a></i>, 
+ or dribbling might occur both to the old <i><a href="g-s.xhtml#stream">stream</a></i> and to a new one,
+ or the old <i><a href="g-s.xhtml#stream">stream</a></i> might stay open but not receive any further output,
+ or the new request might be ignored,
+ or some other action might be taken.
+
+
+</p></dd><dt><b>Affected By:</b></dt><dd>
+
+The <i><a href="g-i.xhtml#implementation">implementation</a></i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+If a failure occurs when performing some operation on the <i><a href="g-f.xhtml#filesystem">file system</a></i>
+while creating the dribble file, 
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e20-2-9.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> is signaled.
+
+
+<p>
+
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e20-2-9.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> might be signaled if <i>pathname</i>
+is a <i><a href="g-d.xhtml#designator">designator</a></i> for a <i><a href="g-w.xhtml#wild">wild</a></i> <i><a href="g-p.xhtml#pathname">pathname</a></i>.
+
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+
+Section <a href="s19-1.xhtml#SubSection_Pathnames_as_1095">19.1.2 Pathnames as Filenames</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+
+
+<p>
+<a href="#DictEntry_dribble_1446"><b>dribble</b></a> can return before subsequent 
+<i><a href="g-f.xhtml#form">forms</a></i> are executed. It also
+can enter a recursive interaction loop, 
+returning only when <code>(dribble)</code> is done.
+
+</p><p>
+
+<a href="#DictEntry_dribble_1446"><b>dribble</b></a> is intended primarily for interactive debugging;
+its effect cannot be relied upon when used in a program.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

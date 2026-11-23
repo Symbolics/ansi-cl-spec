@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>1.5 Conformance</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Conformance_86"><span class="secno">1.5</span> Conformance</h2>
+<p>
+
+This standard presents the syntax and semantics to be implemented by a
+<i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> (and its accompanying documentation).
+In addition, it imposes requirements on <i><a href="g-c.xhtml#conformingprogram">conforming programs</a></i>.
+</p>
+<section>
+<h3 id="SubSection_Conforming_I_87"><span class="secno">1.5.1</span> Conforming Implementations</h3>
+<p>
+
+A <b><i>conforming implementation</i></b> shall adhere to the requirements outlined
+in this section.
+</p>
+<section>
+<h4 id="SubSubSectio_Required_Lan_88"><span class="secno">1.5.1.1</span> Required Language Features</h4>
+<p>
+
+
+A <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> shall accept all features 
+(including deprecated features)
+of the language specified in this standard,
+with the meanings defined in this standard.
+
+</p><p>
+A <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> shall not require the inclusion of substitute
+or additional language elements in code in order to accomplish a feature of
+the language that is specified in this standard.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Documentatio_89"><span class="secno">1.5.1.2</span> Documentation of Implementation-Dependent Features</h4>
+<p>
+
+A <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> shall be accompanied by a document
+that provides a definition of all <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>
+aspects of the language defined by this specification.
+
+</p><p>
+In addition, a <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> is encouraged (but not required) 
+to document items in this standard that are identified as
+<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>, although in some cases
+such documentation might simply identify the item as "undefined."
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Documentatio_90"><span class="secno">1.5.1.3</span> Documentation of Extensions</h4>
+<p>
+
+A <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> shall be accompanied by a
+document that separately describes any features accepted by the
+<i><a href="g-i.xhtml#implementation">implementation</a></i> that are not specified in this standard, but that do not
+cause any ambiguity or contradiction when added to the language
+standard.  Such extensions shall be described as being "extensions to
+<i>Common Lisp</i> as specified by ANSI &lt;&lt;<i>standard number</i>&gt;&gt;."
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Treatment_of_91"><span class="secno">1.5.1.4</span> Treatment of Exceptional Situations</h4>
+<p>
+
+A <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> shall treat exceptional situations 
+in a manner consistent with this specification.
+</p>
+<section>
+<h5 id="SubSubSubSec_Resolution_o_92"><span class="secno">1.5.1.4.1</span> Resolution of Apparent Conflicts in Exceptional Situations</h5>
+<p>
+
+If more than one passage in this specification appears to apply to the
+same situation but in conflicting ways, the passage that appears
+to describe the situation in the most specific way (not necessarily the
+passage that provides the most constrained kind of error detection) 
+takes precedence.
+</p>
+<section>
+<h6 id="SubSubSubSub_Examples_of__93"><span class="secno">1.5.1.4.1.1</span> Examples of Resolution of Apparent Conflicts in Exceptional Situations</h6>
+<p>
+
+Suppose that function <code>foo</code> is a member of a set <i>S</i> of <i><a href="g-f.xhtml#function">functions</a></i> that
+operate on numbers.  Suppose that one passage states that an error must be
+signaled if any <i><a href="g-f.xhtml#function">function</a></i> in <i>S</i> is ever given an argument of <code>17</code>.
+Suppose that an apparently conflicting passage states that the consequences 
+are undefined if <code>foo</code> receives an argument of <code>17</code>.  Then the second passage
+(the one specifically about <code>foo</code>) would dominate because the description of
+the situational context is the most specific, and it would not be required that
+<code>foo</code> signal an error on an argument of <code>17</code> even though other functions in 
+the set <i>S</i> would be required to do so.
+
+
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Conformance__94"><span class="secno">1.5.1.5</span> Conformance Statement</h4>
+<p>
+
+A <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> shall produce a conformance statement 
+as a consequence of using the implementation, or that statement
+shall be included in the accompanying documentation.  If the implementation
+conforms in all respects with this standard, the conformance statement
+shall be
+
+</p><ul>
+<li> "&lt;&lt;<i>Implementation</i>&gt;&gt; conforms with the requirements 
+	  of ANSI &lt;&lt;<i>standard number</i>&gt;&gt;"
+</li></ul>
+
+<p>
+If the <i><a href="g-i.xhtml#implementation">implementation</a></i> conforms with some but not all of the requirements of this
+standard, then the conformance statement shall be
+
+</p><ul>
+<li> "&lt;&lt;<i>Implementation</i>&gt;&gt; conforms with the requirements of
+	  ANSI &lt;&lt;<i>standard number</i>&gt;&gt; with the following exceptions: 
+	  &lt;&lt;<i>reference to or complete list of the requirements of
+		   the standard with which the implementation does not conform</i>&gt;&gt;."
+</li></ul>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Conforming_P_95"><span class="secno">1.5.2</span> Conforming Programs</h3>
+<p>
+Code conforming with the requirements of this standard shall adhere to the
+following:
+
+</p><ul>
+ <li>1. <i><a href="g-c.xhtml#conformingcode">Conforming code</a></i> shall use only those features of the
+               language syntax and semantics that are 
+	       either specified in this standard
+		   or defined using the extension mechanisms 
+		      specified in the standard.
+</li><li>2. <i><a href="g-c.xhtml#conformingcode">Conforming code</a></i> may use
+	      <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> features and values, 
+	      but shall not rely upon
+	      any particular interpretation of these features and values 
+	      other than those that are discovered by the execution of <i><a href="g-c.xhtml#code">code</a></i>.
+
+</li><li>3. <i><a href="g-c.xhtml#conformingcode">Conforming code</a></i> shall not depend on the consequences
+	      of undefined or unspecified situations.
+
+</li><li>4. <i><a href="g-c.xhtml#conformingcode">Conforming code</a></i> does not use any constructions 
+	      that are prohibited by the standard.
+
+</li><li>5. <i><a href="g-c.xhtml#conformingcode">Conforming code</a></i> does not depend on extensions 
+	      included in an implementation.
+</li></ul>
+<section>
+<h4 id="SubSubSectio_Use_of_Imple_96"><span class="secno">1.5.2.1</span> Use of Implementation-Defined Language Features</h4>
+<p>
+
+Note that <i><a href="g-c.xhtml#conformingcode">conforming code</a></i> may rely on particular
+<i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> values or features. Also note that the
+requirements for <i><a href="g-c.xhtml#conformingcode">conforming code</a></i> and <i><a href="g-c.xhtml#conformingimplementation">conforming implementations</a></i> do not
+require that the results produced by conforming code always be the
+same when processed by a <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i>. The results may be the
+same, or they may differ.
+
+</p><p>
+Conforming code may run in all conforming implementations, but might
+have allowable <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> behavior that makes it
+non-portable code.
+
+For example, the following are examples of <i><a href="g-f.xhtml#form">forms</a></i> that are conforming, but
+that might return different <i><a href="g-v.xhtml#value">values</a></i> in different implementations:
+
+</p><pre> (evenp most-positive-fixnum) → <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (random) → <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (&gt; lambda-parameters-limit 93) → <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (char-name #\A) → <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>
+</pre>
+<section>
+<h5 id="SubSubSubSec_Use_of_Read__97"><span class="secno">1.5.2.1.1</span> Use of Read-Time Conditionals</h5>
+<p>
+
+
+Use of <code>#+</code> and <code>#-</code> does not automatically disqualify a program
+from being conforming.  A program which uses <code>#+</code> and <code>#-</code> is 
+considered conforming if there is no set of <i><a href="g-f.xhtml#feature">features</a></i> in which the
+program would not be conforming.  Of course, <i><a href="g-c.xhtml#conformingprogram">conforming programs</a></i> are
+not necessarily working programs.  The following program is conforming:
+
+</p><pre>(defun foo ()
+  #+ACME (acme:initialize-something)
+  (print 'hello-there))
+</pre>
+
+<p>
+However, this program might or might not work, depending on whether the
+presence of the feature <code>ACME</code> really implies that a function named
+<code>acme:initialize-something</code> is present in the environment.  In effect,
+using <code>#+</code> or <code>#-</code> in a <i><a href="g-c.xhtml#conformingprogram">conforming program</a></i> means that the variable
+<a href="e24-2-5.xhtml#DictEntry_features_1410"><b>*features*</b></a>
+becomes just one more piece of input data to that 
+program.  Like any other data coming into a program, the programmer
+is responsible for assuring that the program does not make unwarranted
+assumptions on the basis of input data.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Character_Se_98"><span class="secno">1.5.2.2</span> Character Set for Portable Code</h4>
+<p><i>Portable code</i> is written using only <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>.
+
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</section>
+</body>
+</html>

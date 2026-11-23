@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.51 multiple-value-prog1 — Special Operator</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_multiple_val_437" class="entry"><span class="secno">5.3.51</span> <span class="names">multiple-value-prog1</span> <span class="kind">Special Operator</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>multiple-value-prog1</b>
+<i>first-form {<i>form</i>}*</i>
+  → <i>first-form-results</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>first-form</i>—a <i><a href="g-f.xhtml#form">form</a></i>; evaluated as described below.
+
+<p>
+<i>form</i>—a <i><a href="g-f.xhtml#form">form</a></i>; evaluated as described below.
+
+</p><p>
+
+<i>first-form-results</i>—the <i><a href="g-v.xhtml#value">values</a></i> resulting from
+			     the <i><a href="g-e.xhtml#evaluation">evaluation</a></i> of <i>first-form</i>.      
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_multiple_val_437"><b>multiple-value-prog1</b></a> evaluates <i>first-form</i> and saves
+all the values produced by that <i><a href="g-f.xhtml#form">form</a></i>. It then evaluates each 
+<i>form</i> from left to right, discarding their values.  
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq temp '(1 2 3)) → (1 2 3)
+ (multiple-value-prog1
+    (values-list temp)
+    (setq temp nil)
+    (values-list temp)) → 1, 2, 3
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-58.xhtml#DictEntry_prog1_prog2_444"><b>prog1</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.9 signed-byte — Type</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_signed_byte_783" class="entry"><span class="secno">12.2.9</span> <span class="names">signed-byte</span> <span class="kind">Type</span></h3>
+<dl>
+
+
+<dt><b>Supertypes:</b></dt><dd>
+
+<a href="#DictEntry_signed_byte_783"><b>signed-byte</b></a>,
+<a href="e12-2-8.xhtml#DictEntry_integer_782"><b>integer</b></a>,
+<a href="e12-2-54.xhtml#DictEntry_rational_ra_828"><b>rational</b></a>,
+
+<a href="e12-2-3.xhtml#DictEntry_real_777"><b>real</b></a>,
+
+<a href="e12-2-1.xhtml#DictEntry_number_775"><b>number</b></a>,
+<a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+The atomic <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> <a href="#DictEntry_signed_byte_783"><b>signed-byte</b></a> denotes the same 
+type as is denoted by the <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> <a href="e12-2-8.xhtml#DictEntry_integer_782"><b>integer</b></a>;
+however, the list forms of these two <i><a href="g-t.xhtml#typespecifier">type specifiers</a></i> have different semantics.
+
+</dd><dt><b>Compound Type Specifier Kind:</b></dt><dd>
+
+Abbreviating.
+
+</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+
+<code>(signed-byte <code>[</code>s | <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a><code>]</code>)</code>
+
+</dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+
+<i>s</i>—a positive <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+
+This denotes the set of <i><a href="g-i.xhtml#integer">integers</a></i> that can be represented
+in two's-complement form in a <i><a href="g-b.xhtml#byte">byte</a></i> of <i>s</i> bits.  This is
+equivalent to <code>(</code>integer -2<sup>s-1</sup> 2<sup>s-1</sup>-1<code>)</code>.  The type
+<a href="#DictEntry_signed_byte_783"><b>signed-byte</b></a> or the type <code>(signed-byte *)</code> is the same
+as the <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-8.xhtml#DictEntry_integer_782"><b>integer</b></a>.
+
+</dd></dl>
+</section>
+</body>
+</html>

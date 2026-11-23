@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>17.3.21 merge — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_merge_1061" class="entry"><span class="secno">17.3.21</span> <span class="names">merge</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>merge</b>
+<i>result-type sequence-1 sequence-2 predicate <code>&amp;key</code> key</i>
+  → <i>result-sequence</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>result-type</i>—a <a href="e17-3-1.xhtml#DictEntry_sequence_1041"><b>sequence</b></a> <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>.
+
+
+<p>
+<i>sequence-1</i>—a <i><a href="g-s.xhtml#sequence">sequence</a></i>.
+
+</p><p>
+<i>sequence-2</i>—a <i><a href="g-s.xhtml#sequence">sequence</a></i>.
+
+</p><p>
+<i>predicate</i>—a <i><a href="g-d.xhtml#designator">designator</a></i> for
+  a <i><a href="g-f.xhtml#function">function</a></i> of two arguments that returns a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+
+<i>key</i>—a <i><a href="g-d.xhtml#designator">designator</a></i> for a <i><a href="g-f.xhtml#function">function</a></i> of one argument,
+  or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>result-sequence</i>—a <i><a href="g-p.xhtml#propersequence">proper sequence</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <i>result-type</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Destructively merges <i>sequence-1</i> with <i>sequence-2</i> according
+to an order determined by the <i>predicate</i>.  <a href="#DictEntry_merge_1061"><b>merge</b></a> determines
+the relationship between two elements by giving keys extracted from the
+sequence elements to the <i>predicate</i>.
+
+<p>
+The first argument to the <i>predicate</i> function is an element of
+<i>sequence-1</i> as returned by the <i>key</i> (if supplied); 
+the second argument is an element of <i>sequence-2</i> as returned by 
+the <i>key</i> (if supplied). 
+<i>Predicate</i> should return <i><a href="g-t.xhtml#true">true</a></i> if and only if its first 
+argument is strictly less than the second (in some appropriate sense). 
+If the first argument is greater than or equal to the second
+(in the appropriate sense), then <i>predicate</i> should return <i><a href="g-f.xhtml#false">false</a></i>.
+<a href="#DictEntry_merge_1061"><b>merge</b></a>
+considers two elements <code>x</code> and <code>y</code> to be equal if
+<code>(funcall predicate x y)</code> and
+<code>(funcall predicate y x)</code> both <i><a href="g-y.xhtml#yield">yield</a></i> <i><a href="g-f.xhtml#false">false</a></i>.
+
+</p><p>
+
+
+The argument to the <i>key</i> is the <i>sequence</i> element.
+Typically, the return value of the <i>key</i> 
+becomes the argument to <i>predicate</i>.
+If <i>key</i> is not supplied or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, the sequence element itself is used.
+The <i>key</i> may be executed more than once for each <i><a href="g-s.xhtml#sequence">sequence</a></i> <i><a href="g-e.xhtml#element">element</a></i>,
+and its side effects may occur in any order.
+
+</p><p>
+
+If <i>key</i> and <i>predicate</i> return, then the merging operation 
+will terminate.  The result of merging two <i><a href="g-s.xhtml#sequence">sequences</a></i> <code>x</code> and <code>y</code>
+is a new <i><a href="g-s.xhtml#sequence">sequence</a></i> of type <i>result-type</i> <code>z</code>, 
+such that the length of <code>z</code> is the sum of the lengths of <code>x</code>
+and <code>y</code>, and <code>z</code> contains all the elements of <code>x</code> and <code>y</code>.
+If <code>x1</code> and <code>x2</code> are two elements of <code>x</code>, and <code>x1</code> precedes
+<code>x2</code> in <code>x</code>, then <code>x1</code> precedes <code>x2</code> in <code>z</code>, and similarly for
+elements of <code>y</code>.  In short, <code>z</code> is an interleaving of <code>x</code> and <code>y</code>.
+
+</p><p>
+
+If <code>x</code> and <code>y</code> were correctly sorted according to the
+<i>predicate</i>, then <code>z</code> will also be correctly sorted.
+If <code>x</code> or <code>y</code> is not so sorted, then <code>z</code> will not be sorted,
+but will nevertheless be an interleaving of <code>x</code> and <code>y</code>.
+
+</p><p>
+
+The merging operation is guaranteed stable;
+if two or more elements are considered equal by the <i>predicate</i>, 
+then the elements from <i>sequence-1</i> will
+precede those from <i>sequence-2</i> in the result.
+
+</p><p>
+<i>sequence-1</i> and/or <i>sequence-2</i> may be destroyed.
+
+</p><p>
+
+If the <i>result-type</i> is a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <a href="e14-2-1.xhtml#DictEntry_list_914"><b>list</b></a>,
+the result will be a <i><a href="g-l.xhtml#list">list</a></i>.
+
+</p><p>
+If the <i>result-type</i> is a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <a href="e15-2-3.xhtml#DictEntry_vector_981"><b>vector</b></a>,
+then if the implementation can determine the element type specified
+for the <i>result-type</i>, the element type of the resulting array 
+is the result of <i>upgrading</i> that element type; or, if the
+implementation can determine that the element type is unspecified (or <code>*</code>),
+the element type of the resulting array is <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>;
+otherwise, an error is signaled.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+                               
+<pre> (setq test1 (list 1 3 4 6 7))
+ (setq test2 (list 2 5 8))
+ (merge 'list test1 test2 #'&lt;) → (1 2 3 4 5 6 7 8)
+ (setq test1 (copy-seq "BOY"))
+ (setq test2 (copy-seq :nosy"))
+ (merge 'string test1 test2 #'char-lessp) → "BnOosYy"
+ (setq test1 (vector ((red . 1) (blue . 4))))
+ (setq test2 (vector ((yellow . 2) (green . 7))))
+ (merge 'vector test1 test2 #'&lt; :key #'cdr) 
+→ #((RED . 1) (YELLOW . 2) (BLUE . 4) (GREEN . 7)) 
+</pre>
+
+<pre> (merge '(vector * 4) '(1 5) '(2 4 6) #'&lt;) should signal an error
+</pre>
+
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+An error must be signaled if the <i>result-type</i> is neither
+     a <i><a href="g-r.xhtml#recognizablesubtype">recognizable subtype</a></i> of <a href="e14-2-1.xhtml#DictEntry_list_914"><b>list</b></a>,
+ nor a <i><a href="g-r.xhtml#recognizablesubtype">recognizable subtype</a></i> of <a href="e15-2-3.xhtml#DictEntry_vector_981"><b>vector</b></a>.
+
+
+<p>
+
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> should be signaled
+if <i>result-type</i> specifies the number of elements 
+and the sum of the lengths of <i>sequence-1</i> and <i>sequence-2</i> 
+is different from that number.
+
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e17-3-13.xhtml#DictEntry_sort_stable_1053"><b>sort</b></a>,
+<a href="e17-3-13.xhtml#DictEntry_sort_stable_1053"><b>stable-sort</b></a>,
+
+Section <a href="s3-2.xhtml#SubSection_Compiler_Ter_214">3.2.1 Compiler Terminology</a>,
+
+
+Section <a href="s3-6.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

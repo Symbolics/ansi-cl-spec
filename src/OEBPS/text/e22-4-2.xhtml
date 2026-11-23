@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>22.4.2 formatter — Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_formatter_1342" class="entry"><span class="secno">22.4.2</span> <span class="names">formatter</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>formatter</b>
+<i>control-string</i>
+  → <i>function</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>control-string</i>—a <i><a href="g-f.xhtml#formatstring">format string</a></i>; not evaluated.
+
+<p>
+<i>function</i>—a <i><a href="g-f.xhtml#function">function</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Returns a <i><a href="g-f.xhtml#function">function</a></i> which has behavior equivalent to:
+
+<pre>  #'(lambda (*standard-output* &amp;rest arguments)
+      (apply #'format t <i>control-string</i> arguments)
+      <i>arguments-tail</i>)
+</pre>
+
+<p>
+where <i>arguments-tail</i> is either the tail of <i>arguments</i> 
+which has as its <i><a href="g-c.xhtml#car">car</a></i> the argument that would be processed next 
+if there were more format directives in the <i>control-string</i>, 
+or else <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> if no more <i>arguments</i> follow the most recently
+processed argument.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre>(funcall (formatter "~&amp;~A~A") *standard-output* 'a 'b 'c)
+▷ AB
+→ (C)
+
+(format t (formatter "~&amp;~A~A") 'a 'b 'c)
+▷ AB
+→  NIL
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Might signal an error (at macro expansion time or at run time) if the argument
+is not a valid <i><a href="g-f.xhtml#formatstring">format string</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e22-4-31.xhtml#DictEntry_format_1371"><b>format</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

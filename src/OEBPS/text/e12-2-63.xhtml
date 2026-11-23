@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.63 logbitp — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_logbitp_837" class="entry"><span class="secno">12.2.63</span> <span class="names">logbitp</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>logbitp</b>
+<i>index integer</i>
+  → <i>generalized-boolean</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>index</i>—a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+
+<p>
+<i>integer</i>—an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>generalized-boolean</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_logbitp_837"><b>logbitp</b></a> is used to test the value of a particular bit 
+in <i>integer</i>, that is treated as if it were binary.
+
+The value of <a href="#DictEntry_logbitp_837"><b>logbitp</b></a> is <i><a href="g-t.xhtml#true">true</a></i> if the bit in <i>integer</i> 
+whose index is <i>index</i> (that is, its weight is <i>2<sup><i>index</i></sup></i>) 
+is a one-bit; otherwise it is <i><a href="g-f.xhtml#false">false</a></i>.
+
+<p>
+Negative <i>integers</i> are treated as if they were in 
+two's-complement notation.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (logbitp 1 1) → <i><a href="g-f.xhtml#false">false</a></i>
+ (logbitp 0 1) → <i><a href="g-t.xhtml#true">true</a></i>
+ (logbitp 3 10) → <i><a href="g-t.xhtml#true">true</a></i>
+ (logbitp 1000000 -1) → <i><a href="g-t.xhtml#true">true</a></i>
+ (logbitp 2 6) → <i><a href="g-t.xhtml#true">true</a></i>
+ (logbitp 0 6) → <i><a href="g-f.xhtml#false">false</a></i>
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>index</i> is not a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>integer</i> is not an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (logbitp <i>k</i> <i>n</i>) ==(ldb-test (byte 1 <i>k</i>) <i>n</i>)
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

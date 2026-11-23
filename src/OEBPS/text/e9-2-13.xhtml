@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.13 check-type — Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_check_type_638" class="entry"><span class="secno">9.2.13</span> <span class="names">check-type</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>check-type</b> <i>place typespec</i> 
+[<i>string</i>]  →  <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>place</i>—a <i><a href="g-p.xhtml#place">place</a></i>.
+
+<p>
+<i>typespec</i>—a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>.
+
+</p><p>
+<i>string</i>—a <i><a href="g-s.xhtml#string">string</a></i>; evaluated. 
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_check_type_638"><b>check-type</b></a> signals a <i><a href="g-c.xhtml#correctable">correctable</a></i> <i><a href="g-e.xhtml#error">error</a></i> 
+of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if the contents of <i>place</i> are not 
+of the type <i>typespec</i>.
+
+<p>
+<a href="#DictEntry_check_type_638"><b>check-type</b></a> can return only if the <a href="e9-2-44.xhtml#DictEntry_store_value_669"><b>store-value</b></a> <i><a href="g-r.xhtml#restart">restart</a></i> is invoked,
+either explicitly from a handler 
+    or implicitly as one of the options offered by the debugger.
+If the <a href="e9-2-44.xhtml#DictEntry_store_value_669"><b>store-value</b></a> <i><a href="g-r.xhtml#restart">restart</a></i> is invoked,
+<a href="#DictEntry_check_type_638"><b>check-type</b></a> stores the new value 
+that is the argument to the <i><a href="g-r.xhtml#restart">restart</a></i> invocation 
+(or that is prompted for interactively by the debugger)
+in <i>place</i> and starts over, 
+checking the type of the new value
+and signaling another error if it is still not of the desired <i><a href="g-t.xhtml#type">type</a></i>.
+
+</p><p>
+The first time <i>place</i> is <i>evaluated</i>, 
+it is <i>evaluated</i> by normal evaluation rules.
+It is later <i>evaluated</i> as a <i><a href="g-p.xhtml#place">place</a></i> 
+if the type check fails and the <a href="e9-2-44.xhtml#DictEntry_store_value_669"><b>store-value</b></a> <i><a href="g-r.xhtml#restart">restart</a></i> is used;
+see Section <a href="s5-1.xhtml#SubSubSectio_Evaluation_o_370">5.1.1.1 Evaluation of Subforms to Places</a>.
+
+</p><p>
+<i><a href="g-s.xhtml#string">string</a></i> should be an English description of the type, 
+starting with an indefinite article ("a" or "an").
+If <i><a href="g-s.xhtml#string">string</a></i> is not supplied,
+it is computed automatically from <i>typespec</i>.
+The automatically generated message mentions
+      <i>place</i>,
+      its contents,
+  and the desired type.
+An implementation may choose to generate 
+a somewhat differently worded error message 
+if it recognizes that <i>place</i> is of a particular form, 
+such as one of the arguments to the function that called <a href="#DictEntry_check_type_638"><b>check-type</b></a>.
+<i><a href="g-s.xhtml#string">string</a></i> is allowed because some applications of <a href="#DictEntry_check_type_638"><b>check-type</b></a> 
+may require a more specific description of what is wanted
+than can be generated automatically from <i>typespec</i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq aardvarks '(sam harry fred))
+→ (SAM HARRY FRED)
+ (check-type aardvarks (array * (3)))
+▷ Error: The value of AARDVARKS, (SAM HARRY FRED),
+▷       is not a 3-long array.
+▷ To continue, type :CONTINUE followed by an option number:
+▷ 1: Specify a value to use instead.
+▷ 2: Return to Lisp Toplevel.
+▷ Debug&gt; <span class="user">:CONTINUE 1</span>
+▷ Use Value: <span class="user">#(SAM FRED HARRY)</span>
+→  NIL
+ aardvarks
+→ #&lt;ARRAY-T-3 13571&gt;
+ (map 'list #'identity aardvarks)
+→ (SAM FRED HARRY)
+ (setq aardvark-count 'foo)
+→  FOO
+ (check-type aardvark-count (integer 0 *) "A positive integer")
+▷ Error: The value of AARDVARK-COUNT, FOO, is not a positive integer.
+▷ To continue, type :CONTINUE followed by an option number:
+▷ 1: Specify a value to use instead.
+▷ 2: Top level.
+▷ Debug&gt; <span class="user">:CONTINUE 2</span>
+</pre>
+
+<pre> (defmacro define-adder (name amount)
+   (check-type name (and symbol (not null)) "a name for an adder function")
+   (check-type amount integer)
+   `(defun ,name (x) (+ x ,amount)))
+  
+ (macroexpand '(define-adder add3 3))
+→ (defun add3 (x) (+ x 3))
+ 
+ (macroexpand '(define-adder 7 7))
+▷ Error: The value of NAME, 7, is not a name for an adder function.
+▷ To continue, type :CONTINUE followed by an option number:
+▷ 1: Specify a value to use instead.
+▷ 2: Top level.
+▷ Debug&gt; <span class="user">:Continue 1</span>
+▷ Specify a value to use instead.
+▷ Type a form to be evaluated and used instead: <span class="user">'ADD7</span>
+→ (defun add7 (x) (+ x 7))
+ 
+ (macroexpand '(define-adder add5 something))
+▷ Error: The value of AMOUNT, SOMETHING, is not an integer.
+▷ To continue, type :CONTINUE followed by an option number:
+▷ 1: Specify a value to use instead.
+▷ 2: Top level.
+▷ Debug&gt; <span class="user">:Continue 1</span>
+▷ Type a form to be evaluated and used instead: <span class="user">5</span>
+→ (defun add5 (x) (+ x 5))
+ 
+</pre>
+
+<p>
+Control is transferred to a handler.
+
+</p></dd><dt><b>Side Effects:</b></dt><dd>
+
+The debugger might be entered.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e9-2-25.xhtml#DictEntry_break_on_si_650"><b>*break-on-signals*</b></a>
+
+
+<p>
+The implementation.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="s9-1.xhtml#Section_Condition_Sy_603">9.1 Condition System Concepts</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (check-type <i>place</i> <i>typespec</i>)
+ ==(assert (typep <i>place</i> '<i>typespec</i>) (<i>place</i>)
+            'type-error :datum <i>place</i> :expected-type '<i>typespec</i>)
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

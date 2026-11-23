@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>2.2 Reader Algorithm</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Reader_Algor_126"><span class="secno">2.2</span> Reader Algorithm</h2>
+<p>
+
+This section describes the algorithm used by the <i>Lisp reader</i>
+to parse <i><a href="g-o.xhtml#object">objects</a></i> from an <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-c.xhtml#character">character</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>,
+including how the <i>Lisp reader</i> processes <i><a href="g-m.xhtml#macrocharacter">macro characters</a></i>.
+
+</p><p>
+When dealing with <i><a href="g-t.xhtml#token">tokens</a></i>, the reader's basic function is to distinguish
+representations of <i><a href="g-s.xhtml#symbol">symbols</a></i> from those of <i><a href="g-n.xhtml#number">numbers</a></i>.
+When a <i><a href="g-t.xhtml#token">token</a></i> is accumulated, it is assumed to represent a <i><a href="g-n.xhtml#number">number</a></i> if it
+satisfies the syntax for numbers listed in <a href="s2-3.xhtml#fig-2-9">Figure 2-9</a>.
+If it does not represent a <i><a href="g-n.xhtml#number">number</a></i>,
+it is then assumed to be a <i><a href="g-p.xhtml#potentialnumber">potential number</a></i> 
+if it satisfies the rules governing the syntax for a <i><a href="g-p.xhtml#potentialnumber">potential number</a></i>.
+If a valid <i><a href="g-t.xhtml#token">token</a></i> is neither a representation of a <i><a href="g-n.xhtml#number">number</a></i> 
+			       nor a <i><a href="g-p.xhtml#potentialnumber">potential number</a></i>,
+it represents a <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+</p><p>
+The algorithm performed by the <i>Lisp reader</i> is as follows:
+
+</p><ul>
+<li>1.            
+If at end of file, end-of-file processing is performed as specified
+in <a href="e23-2-4.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>.
+Otherwise,
+one <i><a href="g-c.xhtml#character">character</a></i>, <i>x</i>,  is read from the <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>, and
+dispatched according to the <i><a href="g-s.xhtml#syntaxtype">syntax type</a></i> of <i>x</i> to one
+of steps 2 to 7.
+
+</li><li>2.                                          
+If <i>x</i> is an <i><a href="g-i.xhtml#invalid">invalid</a></i> <i><a href="g-c.xhtml#character">character</a></i>,
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e23-2-18.xhtml#DictEntry_reader_error_1398"><b>reader-error</b></a> is signaled.
+
+</li><li>3.
+If <i>x</i> is a <i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub> <i><a href="g-c.xhtml#character">character</a></i>,
+then it is discarded and step 1 is re-entered.
+
+</li><li>4.
+If <i>x</i> is a <i><a href="g-t.xhtml#terminating">terminating</a></i> or <i><a href="g-n.xhtml#nonterminating">non-terminating</a></i> <i><a href="g-m.xhtml#macrocharacter">macro character</a></i>
+then its associated <i><a href="g-r.xhtml#readermacrofunction">reader macro function</a></i> is called with two <i><a href="g-a.xhtml#argument">arguments</a></i>,
+the <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-s.xhtml#stream">stream</a></i> and <i>x</i>.
+
+<p>
+
+The <i><a href="g-r.xhtml#readermacrofunction">reader macro function</a></i> may read <i><a href="g-c.xhtml#character">characters</a></i> 
+from the <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>; 
+if it does, it will see those <i><a href="g-c.xhtml#character">characters</a></i> following the <i><a href="g-m.xhtml#macrocharacter">macro character</a></i>.
+The <i>Lisp reader</i> may be invoked recursively from the <i><a href="g-r.xhtml#readermacrofunction">reader macro function</a></i>.
+
+</p><p>
+
+The <i><a href="g-r.xhtml#readermacrofunction">reader macro function</a></i> must not have any side effects other than on the
+<i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>;
+because of backtracking and restarting of the <a href="e23-2-4.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> operation,
+front ends to the <i>Lisp reader</i> (<i>e.g.</i>,  "editors" and "rubout handlers") 
+may cause the <i><a href="g-r.xhtml#readermacrofunction">reader macro function</a></i> to be called repeatedly during the
+reading of a single <i><a href="g-e.xhtml#expression">expression</a></i> in which <i>x</i> only appears once.
+
+</p><p>
+
+The <i><a href="g-r.xhtml#readermacrofunction">reader macro function</a></i> may return zero values or one value.
+If one value is returned,
+then that value is returned as the result of the read operation;
+the algorithm is done.
+If zero values are returned, then step 1 is re-entered.
+
+</p></li><li>5.
+If <i>x</i> is a <i><a href="g-s.xhtml#singleescape">single escape</a></i> <i><a href="g-c.xhtml#character">character</a></i>
+then the next <i><a href="g-c.xhtml#character">character</a></i>, <i>y</i>, is read, or an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e21-2-57.xhtml#DictEntry_end_of_file_1248"><b>end-of-file</b></a> 
+is signaled if at the end of file.
+<i>y</i> is treated as if it is a <i><a href="g-c.xhtml#constituent">constituent</a></i> 
+whose only <i><a href="g-c.xhtml#constituenttrait">constituent trait</a></i> is <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>2</sub>.
+<i>y</i> is used to begin a <i><a href="g-t.xhtml#token">token</a></i>, and step 8 is entered.
+
+</li><li>6.
+If <i>x</i> is a <i><a href="g-m.xhtml#multipleescape">multiple escape</a></i> <i><a href="g-c.xhtml#character">character</a></i>
+then a <i><a href="g-t.xhtml#token">token</a></i> (initially
+containing no <i><a href="g-c.xhtml#character">characters</a></i>) is  begun and step 9 is entered.
+
+</li><li>7.
+If <i>x</i> is a <i><a href="g-c.xhtml#constituent">constituent</a></i> <i><a href="g-c.xhtml#character">character</a></i>, then it begins a <i><a href="g-t.xhtml#token">token</a></i>.
+After the <i><a href="g-t.xhtml#token">token</a></i> is read in, it will be interpreted
+either as a <i>Lisp</i> <i><a href="g-o.xhtml#object">object</a></i> or as being of invalid syntax.
+If the <i><a href="g-t.xhtml#token">token</a></i> represents an <i><a href="g-o.xhtml#object">object</a></i>,
+that <i><a href="g-o.xhtml#object">object</a></i> is returned as the result of the read operation.
+If the <i><a href="g-t.xhtml#token">token</a></i> is of invalid syntax, an error is signaled.
+
+
+
+If <i>x</i> is a <i><a href="g-c.xhtml#character">character</a></i> with <i><a href="g-c.xhtml#case">case</a></i>,
+it might be replaced with the corresponding <i><a href="g-c.xhtml#character">character</a></i> of the opposite <i><a href="g-c.xhtml#case">case</a></i>, 
+depending on the <i><a href="g-r.xhtml#readtablecase">readtable case</a></i> of the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i>,
+as outlined in Section <a href="s23-1.xhtml#SubSection_Effect_of_Re_1375">23.1.2 Effect of Readtable Case on the Lisp Reader</a>.
+<i>X</i> is used to begin a <i><a href="g-t.xhtml#token">token</a></i>, and step 8 is entered.
+
+</li><li>8.
+At this point a <i><a href="g-t.xhtml#token">token</a></i> is being accumulated, and an even number
+of <i><a href="g-m.xhtml#multipleescape">multiple escape</a></i> <i><a href="g-c.xhtml#character">characters</a></i> have been encountered.
+If at end of file, step 10 is entered.
+Otherwise, a <i><a href="g-c.xhtml#character">character</a></i>, <i>y</i>, is read, and
+one of the following actions is performed according to its <i><a href="g-s.xhtml#syntaxtype">syntax type</a></i>:
+
+<ul>
+<li>
+If <i>y</i> is a <i><a href="g-c.xhtml#constituent">constituent</a></i> or <i><a href="g-n.xhtml#nonterminating">non-terminating</a></i> <i><a href="g-m.xhtml#macrocharacter">macro character</a></i>:
+<ul>
+<li>--
+
+
+
+If <i>y</i> is a <i><a href="g-c.xhtml#character">character</a></i> with <i><a href="g-c.xhtml#case">case</a></i>,
+it might be replaced with the corresponding <i><a href="g-c.xhtml#character">character</a></i> of the opposite <i><a href="g-c.xhtml#case">case</a></i>, 
+depending on the <i><a href="g-r.xhtml#readtablecase">readtable case</a></i> of the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i>,
+as outlined in Section <a href="s23-1.xhtml#SubSection_Effect_of_Re_1375">23.1.2 Effect of Readtable Case on the Lisp Reader</a>.
+</li><li>--
+<i>Y</i> is appended to the <i><a href="g-t.xhtml#token">token</a></i> being built.
+</li><li>--
+Step 8 is repeated.
+</li></ul>
+
+</li><li>
+If <i>y</i> is a <i><a href="g-s.xhtml#singleescape">single escape</a></i> <i><a href="g-c.xhtml#character">character</a></i>, then the next <i><a href="g-c.xhtml#character">character</a></i>,
+<i>z</i>, is read, or an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e21-2-57.xhtml#DictEntry_end_of_file_1248"><b>end-of-file</b></a> is signaled if at end of file.
+<i>Z</i> is treated as if it is a <i><a href="g-c.xhtml#constituent">constituent</a></i> 
+whose only <i><a href="g-c.xhtml#constituenttrait">constituent trait</a></i> is <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>2</sub>.
+<i>Z</i> is appended to the <i><a href="g-t.xhtml#token">token</a></i> being built,
+and step 8 is repeated.
+
+</li><li>
+If <i>y</i> is a <i><a href="g-m.xhtml#multipleescape">multiple escape</a></i> <i><a href="g-c.xhtml#character">character</a></i>,
+then step 9 is entered.
+
+</li><li>
+If <i>y</i> is an <i><a href="g-i.xhtml#invalid">invalid</a></i> <i><a href="g-c.xhtml#character">character</a></i>,
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e23-2-18.xhtml#DictEntry_reader_error_1398"><b>reader-error</b></a> is signaled.
+
+</li><li>
+If <i>y</i> is a <i><a href="g-t.xhtml#terminating">terminating</a></i> <i><a href="g-m.xhtml#macrocharacter">macro character</a></i>,
+then it terminates the <i><a href="g-t.xhtml#token">token</a></i>.
+First the <i><a href="g-c.xhtml#character">character</a></i> <i>y</i> is unread (see <a href="e21-2-20.xhtml#DictEntry_unread_char_1211"><b>unread-char</b></a>),
+and then step 10 is entered.
+
+</li><li>
+If <i>y</i> is a <i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub> <i><a href="g-c.xhtml#character">character</a></i>, then it terminates
+the <i><a href="g-t.xhtml#token">token</a></i>.  First the <i><a href="g-c.xhtml#character">character</a></i> <i>y</i> is unread
+if appropriate (see <a href="e23-2-4.xhtml#DictEntry_read_read_p_1384"><b>read-preserving-whitespace</b></a>),
+and then step 10 is entered.
+</li></ul>
+
+</li><li>9.
+At this point a <i><a href="g-t.xhtml#token">token</a></i> is being accumulated, and an odd number
+of <i><a href="g-m.xhtml#multipleescape">multiple escape</a></i> <i><a href="g-c.xhtml#character">characters</a></i> have been encountered.
+If at end of file, an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e21-2-57.xhtml#DictEntry_end_of_file_1248"><b>end-of-file</b></a> is signaled.
+Otherwise, a <i><a href="g-c.xhtml#character">character</a></i>, <i>y</i>, is read, and
+one of the following actions is performed according to its <i><a href="g-s.xhtml#syntaxtype">syntax type</a></i>:
+
+<ul>
+<li>
+If <i>y</i> is a <i><a href="g-c.xhtml#constituent">constituent</a></i>, macro, or <i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub> <i><a href="g-c.xhtml#character">character</a></i>,
+<i>y</i> is treated as a <i><a href="g-c.xhtml#constituent">constituent</a></i> 
+whose only <i><a href="g-c.xhtml#constituenttrait">constituent trait</a></i> is <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>2</sub>.             
+<i>Y</i> is appended to the <i><a href="g-t.xhtml#token">token</a></i> being built, and step 9 is repeated.
+
+</li><li>
+If <i>y</i> is a <i><a href="g-s.xhtml#singleescape">single escape</a></i> <i><a href="g-c.xhtml#character">character</a></i>, then the next <i><a href="g-c.xhtml#character">character</a></i>,
+<i>z</i>, is read, or an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e21-2-57.xhtml#DictEntry_end_of_file_1248"><b>end-of-file</b></a> is signaled if at end of file.
+<i>Z</i> is treated as a <i><a href="g-c.xhtml#constituent">constituent</a></i>
+whose only <i><a href="g-c.xhtml#constituenttrait">constituent trait</a></i> is <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>2</sub>.
+<i>Z</i> is appended to the <i><a href="g-t.xhtml#token">token</a></i> being built,
+and step 9 is repeated.
+
+</li><li>
+If <i>y</i> is a <i><a href="g-m.xhtml#multipleescape">multiple escape</a></i> <i><a href="g-c.xhtml#character">character</a></i>,
+then step 8 is entered.
+
+</li><li>
+If <i>y</i> is an <i><a href="g-i.xhtml#invalid">invalid</a></i> <i><a href="g-c.xhtml#character">character</a></i>,
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e23-2-18.xhtml#DictEntry_reader_error_1398"><b>reader-error</b></a> is signaled.
+</li></ul>
+
+</li><li>10.
+An entire <i><a href="g-t.xhtml#token">token</a></i> has been accumulated.
+The <i><a href="g-o.xhtml#object">object</a></i> represented by the <i><a href="g-t.xhtml#token">token</a></i> is returned 
+as the result of the read operation,
+or an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e23-2-18.xhtml#DictEntry_reader_error_1398"><b>reader-error</b></a> is signaled if the <i><a href="g-t.xhtml#token">token</a></i> is not of valid syntax.
+</li></ul>
+</section>
+</section>
+</body>
+</html>

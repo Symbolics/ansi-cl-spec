@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>10.2.7 gensym — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_gensym_681" class="entry"><span class="secno">10.2.7</span> <span class="names">gensym</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>gensym</b>
+<i><code>&amp;optional</code> x</i>
+  → <i>new-symbol</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>x</i>—a <i><a href="g-s.xhtml#string">string</a></i> or a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+	    Complicated defaulting behavior; see below.
+
+<p>
+<i>new-symbol</i>—a <i><a href="g-f.xhtml#fresh">fresh</a></i>, <i><a href="g-u.xhtml#uninterned">uninterned</a></i> <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Creates and returns a <i><a href="g-f.xhtml#fresh">fresh</a></i>, <i><a href="g-u.xhtml#uninterned">uninterned</a></i> <i><a href="g-s.xhtml#symbol">symbol</a></i>,
+as if by calling <a href="e10-2-5.xhtml#DictEntry_make_symbol_679"><b>make-symbol</b></a>.  (The only difference between
+<a href="#DictEntry_gensym_681"><b>gensym</b></a> and <a href="e10-2-5.xhtml#DictEntry_make_symbol_679"><b>make-symbol</b></a> is in how the <i>new-symbol</i>'s 
+<i><a href="g-n.xhtml#name">name</a></i> is determined.)
+
+<p>
+The <i><a href="g-n.xhtml#name">name</a></i> of the <i>new-symbol</i> is the concatenation 
+of a prefix, which defaults to <code>"G"</code>, and
+
+a suffix, which is the decimal representation of a number that
+defaults to the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e10-2-8.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a>.
+
+</p><p>
+If <i>x</i> is supplied, and is a <i><a href="g-s.xhtml#string">string</a></i>, then that <i><a href="g-s.xhtml#string">string</a></i> 
+is used as a prefix instead of <code>"G"</code> for this call to <a href="#DictEntry_gensym_681"><b>gensym</b></a> only.
+
+</p><p>
+If <i>x</i> is supplied, and is an <i><a href="g-i.xhtml#integer">integer</a></i>, then that <i><a href="g-i.xhtml#integer">integer</a></i>,
+instead of the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e10-2-8.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a>, is used as the suffix
+for this call to <a href="#DictEntry_gensym_681"><b>gensym</b></a> only.
+
+</p><p>
+If and only if no explicit suffix is supplied,
+<a href="e10-2-8.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a> is incremented after it is used.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq sym1 (gensym)) → #:G3142
+ (symbol-package sym1) →  NIL
+ (setq sym2 (gensym 100)) → #:G100
+ (setq sym3 (gensym 100)) → #:G100
+ (eq sym2 sym3) → <i><a href="g-f.xhtml#false">false</a></i>
+ (find-symbol "G100") →  NIL, NIL
+ (gensym "T") → #:T3143
+ (gensym) → #:G3144
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+Might increment <a href="e10-2-8.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a>.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e10-2-8.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>x</i> is not a <i><a href="g-s.xhtml#string">string</a></i> or a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e10-2-9.xhtml#DictEntry_gentemp_683"><b>gentemp</b></a>,
+<a href="e10-2-8.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The ability to pass a numeric argument to <a href="#DictEntry_gensym_681"><b>gensym</b></a> has been deprecated;
+explicitly <i><a href="g-b.xhtml#binding">binding</a></i> <a href="e10-2-8.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a> is now stylistically preferred.
+(The somewhat baroque conventions for the optional argument are historical
+in nature, and supported primarily for compatibility with older dialects
+of <i>Lisp</i>.   In modern code, it is recommended that the only kind of argument
+used be a string prefix.  In general, though, to obtain more flexible control
+of the <i>new-symbol</i>'s <i><a href="g-n.xhtml#name">name</a></i>, consider using <a href="e10-2-5.xhtml#DictEntry_make_symbol_679"><b>make-symbol</b></a> instead.)
+
+</dd></dl>
+</section>
+</body>
+</html>

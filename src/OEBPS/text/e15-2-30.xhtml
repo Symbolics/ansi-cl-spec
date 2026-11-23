@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>15.2.30 vector-pop — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_vector_pop_1008" class="entry"><span class="secno">15.2.30</span> <span class="names">vector-pop</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>vector-pop</b>
+<i>vector</i>
+  → <i>element</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>vector</i>—a <i><a href="g-v.xhtml#vector">vector</a></i> with a <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i>.
+
+<p>
+<i>element</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Decreases the <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i> of <i>vector</i> by one, 
+and retrieves the <i><a href="g-e.xhtml#element">element</a></i> of <i>vector</i> that is
+designated by the new <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (vector-push (setq fable (list 'fable))
+              (setq fa (make-array 8
+                                   :fill-pointer 2
+                                   :initial-element 'sisyphus))) → 2 
+ (fill-pointer fa) → 3 
+ (eq (vector-pop fa) fable) → <i><a href="g-t.xhtml#true">true</a></i>
+ (vector-pop fa) →  SISYPHUS 
+ (fill-pointer fa) → 1 
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i> is decreased by one.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The value of the <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> is signaled if <i>vector</i> does not have a <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i>.
+
+<p>
+If the <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i> is zero, <a href="#DictEntry_vector_pop_1008"><b>vector-pop</b></a> signals an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e15-2-31.xhtml#DictEntry_vector_push_1009"><b>vector-push</b></a>, <a href="e15-2-31.xhtml#DictEntry_vector_push_1009"><b>vector-push-extend</b></a>, <a href="e15-2-21.xhtml#DictEntry_fill_pointer_999"><b>fill-pointer</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,1289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.2 Compilation</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Compilation_213"><span class="secno">3.2</span> Compilation</h2>
+<section>
+<h3 id="SubSection_Compiler_Ter_214"><span class="secno">3.2.1</span> Compiler Terminology</h3>
+<p>
+
+
+The following terminology is used in this section.
+
+</p><p>
+
+The <b><i>compiler</i></b> is a utility that translates code into an
+<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> form that might be represented or
+executed efficiently.
+
+The term <b><i>compiler</i></b> refers to both of the <i><a href="g-f.xhtml#function">functions</a></i>
+<a href="e3-8-3.xhtml#DictEntry_compile_285"><b>compile</b></a> and <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>.
+
+</p><p>
+
+
+The term <b><i>compiled code</i></b> refers to 
+<i><a href="g-o.xhtml#object">objects</a></i> representing compiled programs, such as <i><a href="g-o.xhtml#object">objects</a></i> constructed
+by <a href="e3-8-3.xhtml#DictEntry_compile_285"><b>compile</b></a> or by <a href="e24-2-3.xhtml#DictEntry_load_1408"><b>load</b></a> when <i>loading</i> a <i><a href="g-c.xhtml#compiledfile">compiled file</a></i>.
+
+</p><p>
+
+The term <b><i>implicit compilation</i></b> refers to <i><a href="g-c.xhtml#compilation">compilation</a></i>
+performed during <i><a href="g-e.xhtml#evaluation">evaluation</a></i>.
+
+</p><p>
+
+
+
+The term <b><i>literal object</i></b> refers to 
+     a quoted <i><a href="g-o.xhtml#object">object</a></i> 
+  or a <i><a href="g-s.xhtml#selfevaluatingobject">self-evaluating object</a></i> 
+  or an <i><a href="g-o.xhtml#object">object</a></i> that is a substructure of such an <i><a href="g-o.xhtml#object">object</a></i>.
+
+A <i><a href="g-c.xhtml#constantvariable">constant variable</a></i> is not itself a <i>literal object</i>.
+
+
+
+</p><p>
+The term <b><i>coalesce</i></b> is defined as follows.
+Suppose <code>A</code> and <code>B</code> are two <i>literal constants</i> in the <i><a href="g-s.xhtml#sourcecode">source code</a></i>,
+and that <code>A'</code> and <code>B'</code> are the corresponding <i><a href="g-o.xhtml#object">objects</a></i> in the <i><a href="g-c.xhtml#compiledcode">compiled code</a></i>.
+If <code>A'</code> and <code>B'</code> are <a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a> but
+<code>A</code> and <code>B</code> are not <a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a>, then it is said
+that <code>A</code> and <code>B</code> have been coalesced by the compiler.
+
+</p><p>
+
+The term <b><i>minimal compilation</i></b> refers to actions the compiler
+must take at <i><a href="g-c.xhtml#compiletime">compile time</a></i>. These actions are specified in 
+Section <a href="#SubSection_Compilation__215">3.2.2 Compilation Semantics</a>.
+
+</p><p>
+
+The verb <b><i>process</i></b> refers to performing <i><a href="g-m.xhtml#minimalcompilation">minimal compilation</a></i>,
+determining the time of evaluation for a <i><a href="g-f.xhtml#form">form</a></i>,
+and possibly <i>evaluating</i> that <i><a href="g-f.xhtml#form">form</a></i> (if required).
+
+</p><p>
+
+The term <b><i>further compilation</i></b> refers to
+<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> compilation beyond <i><a href="g-m.xhtml#minimalcompilation">minimal compilation</a></i>.
+
+That is, <i>processing</i> does not imply complete compilation.
+Block compilation and generation of machine-specific instructions are 
+examples of further compilation.
+Further compilation is permitted to take place at <i><a href="g-r.xhtml#runtime">run time</a></i>.
+
+</p><p>
+
+Four different <i><a href="g-e.xhtml#environment">environments</a></i> relevant to compilation are
+distinguished:
+  the <i><a href="g-s.xhtml#startupenvironment">startup environment</a></i>,
+  the <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i>,
+  the <i><a href="g-e.xhtml#evaluationenvironment">evaluation environment</a></i>, and
+  the <i><a href="g-r.xhtml#runtimeenvironment">run-time environment</a></i>.
+
+</p><p>
+
+The <b><i>startup environment</i></b> is
+the <i><a href="g-e.xhtml#environment">environment</a></i> of the <i>Lisp image</i> 
+from which the <i><a href="g-c.xhtml#compiler">compiler</a></i> was invoked.
+
+</p><p>
+
+
+The <b><i>compilation environment</i></b> is maintained by the compiler
+and is used to hold definitions and declarations to be used internally
+by the compiler.  Only those parts of a definition needed for correct
+compilation are saved. The <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> is used
+as the <i><a href="g-e.xhtml#environment">environment</a></i> <i><a href="g-a.xhtml#argument">argument</a></i> to macro expanders called by
+the compiler. It is unspecified whether a definition available in the
+<i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> can be used in an <i><a href="g-e.xhtml#evaluation">evaluation</a></i>
+initiated in the <i><a href="g-s.xhtml#startupenvironment">startup environment</a></i> or <i><a href="g-e.xhtml#evaluationenvironment">evaluation environment</a></i>.
+
+</p><p>
+
+The <b><i>evaluation environment</i></b> is a <i><a href="g-r.xhtml#runtimeenvironment">run-time environment</a></i>
+in which macro expanders and code specified by <a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a>
+to be evaluated are evaluated.  All evaluations initiated by the
+<i><a href="g-c.xhtml#compiler">compiler</a></i> take place in the <i><a href="g-e.xhtml#evaluationenvironment">evaluation environment</a></i>.
+
+</p><p>
+
+The <b><i>run-time environment</i></b> is the 
+<i><a href="g-e.xhtml#environment">environment</a></i> in which the program being compiled will be executed.
+
+</p><p>
+
+The <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> inherits from
+the <i><a href="g-e.xhtml#evaluationenvironment">evaluation environment</a></i>,
+and the <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> and <i><a href="g-e.xhtml#evaluationenvironment">evaluation environment</a></i> 
+might be <i><a href="g-i.xhtml#identical">identical</a></i>.
+The <i><a href="g-e.xhtml#evaluationenvironment">evaluation environment</a></i> inherits from
+the <i><a href="g-s.xhtml#startupenvironment">startup environment</a></i>, 
+and the <i><a href="g-s.xhtml#startupenvironment">startup environment</a></i> and <i><a href="g-e.xhtml#evaluationenvironment">evaluation environment</a></i> 
+might be <i><a href="g-i.xhtml#identical">identical</a></i>.
+
+</p><p>
+
+The term <b><i>compile time</i></b> refers to the duration of time that
+the compiler is processing <i><a href="g-s.xhtml#sourcecode">source code</a></i>.
+At <i><a href="g-c.xhtml#compiletime">compile time</a></i>,
+only the <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> 
+and  the <i><a href="g-e.xhtml#evaluationenvironment">evaluation environment</a></i>
+are available.
+
+</p><p>
+
+The term <b><i>compile-time definition</i></b> refers to a definition in
+the <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i>.
+For example, when compiling a file, 
+the definition of a function might be retained in the <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> 
+if it is declared <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>inline</b></a>. 
+This definition might not be available in the <i><a href="g-e.xhtml#evaluationenvironment">evaluation environment</a></i>.
+
+</p><p>
+
+The term <b><i>run time</i></b> refers to the duration of time that the
+loader is loading compiled code or compiled code is being executed.
+
+At run time, only the <i><a href="g-r.xhtml#runtimeenvironment">run-time environment</a></i> is available.
+
+</p><p>
+
+The term <b><i>run-time definition</i></b> refers to a definition in the
+<i><a href="g-r.xhtml#runtimeenvironment">run-time environment</a></i>.
+
+</p><p>
+
+The term <b><i>run-time compiler</i></b> refers to the <i><a href="g-f.xhtml#function">function</a></i> <a href="e3-8-3.xhtml#DictEntry_compile_285"><b>compile</b></a>
+or <i><a href="g-i.xhtml#implicitcompilation">implicit compilation</a></i>, for which the compilation and run-time 
+<i><a href="g-e.xhtml#environment">environments</a></i> are maintained in the same <i>Lisp image</i>.
+
+Note that when the <i><a href="g-r.xhtml#runtimecompiler">run-time compiler</a></i> is used,
+the <i><a href="g-r.xhtml#runtimeenvironment">run-time environment</a></i> 
+and <i><a href="g-s.xhtml#startupenvironment">startup environment</a></i> 
+are the same.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Compilation__215"><span class="secno">3.2.2</span> Compilation Semantics</h3>
+<p>
+
+
+Conceptually, compilation is a process that traverses code, performs
+certain kinds of syntactic and semantic analyses using information
+(such as proclamations and <i><a href="g-m.xhtml#macro">macro</a></i> definitions) present in the
+<i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i>, and produces equivalent, possibly
+more efficient code.
+
+</p>
+<section>
+<h4 id="SubSubSectio_Compiler_Mac_216"><span class="secno">3.2.2.1</span> Compiler Macros</h4>
+<p>
+
+
+A <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i> can be defined for a <i><a href="g-n.xhtml#name">name</a></i>
+that also names a <i><a href="g-f.xhtml#function">function</a></i> or <i><a href="g-m.xhtml#macro">macro</a></i>.
+
+
+
+That is, it is possible for a
+<i><a href="g-f.xhtml#functionname">function name</a></i> to name both a <i><a href="g-f.xhtml#function">function</a></i> and a <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i>.
+
+</p><p>
+A <i><a href="g-f.xhtml#functionname">function name</a></i> names a <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i> if <a href="e3-8-8.xhtml#DictEntry_compiler_mac_290"><b>compiler-macro-function</b></a>
+is <i><a href="g-t.xhtml#true">true</a></i> of the <i><a href="g-f.xhtml#functionname">function name</a></i> in the <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> in which
+it appears.  Creating a <i><a href="g-l.xhtml#lexicalbinding">lexical binding</a></i> for the <i><a href="g-f.xhtml#functionname">function name</a></i>
+not only creates a new local <i><a href="g-f.xhtml#function">function</a></i> or
+<i><a href="g-m.xhtml#macro">macro</a></i> definition, but also <i><a href="g-s.xhtml#shadow">shadows</a></i><sub>2</sub> the <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i>.
+
+</p><p>
+The <i><a href="g-f.xhtml#function">function</a></i> returned by <a href="e3-8-8.xhtml#DictEntry_compiler_mac_290"><b>compiler-macro-function</b></a>
+is a <i><a href="g-f.xhtml#function">function</a></i> of two arguments, called the
+expansion function.  To expand a <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i>,
+the expansion function is invoked by calling the <i><a href="g-m.xhtml#macroexpandhook">macroexpand hook</a></i> with
+      the expansion function as its first argument,
+      the entire compiler macro <i><a href="g-f.xhtml#form">form</a></i> as its second argument,
+  and the current compilation <i><a href="g-e.xhtml#environment">environment</a></i> 
+       (or with the current lexical <i><a href="g-e.xhtml#environment">environment</a></i>,
+ 	 if the <i><a href="g-f.xhtml#form">form</a></i> is being processed by something
+	 other than <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>) 
+       as its third argument.
+The <i><a href="g-m.xhtml#macroexpandhook">macroexpand hook</a></i>, in turn, calls the expansion function with the
+<i><a href="g-f.xhtml#form">form</a></i> as its first argument and the <i><a href="g-e.xhtml#environment">environment</a></i> as its second argument.
+The return value from the expansion function, which is passed through
+by the <i><a href="g-m.xhtml#macroexpandhook">macroexpand hook</a></i>, might either be the <i><a href="g-s.xhtml#same">same</a></i> <i><a href="g-f.xhtml#form">form</a></i>, 
+or else a form that can, at the discretion of the <i><a href="g-c.xhtml#code">code</a></i> doing the expansion, 
+be used in place of the original <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><table id="fig-3-6" class="fig">
+<caption><span class="figlabel">Figure 3-6.</span> Defined names applicable to compiler macros</caption>
+
+  <tbody><tr>
+    <td>*macroexpand-hook*</td>
+    <td>compiler-macro-function</td>
+    <td>define-compiler-macro</td>
+  </tr>
+</tbody></table>
+<section>
+<h5 id="SubSubSubSec_Purpose_of_C_217"><span class="secno">3.2.2.1.1</span> Purpose of Compiler Macros</h5>
+<p>
+
+The purpose of the <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i> facility is to permit 
+selective source code transformations as optimization advice 
+to the <i><a href="g-c.xhtml#compiler">compiler</a></i>.  When a <i><a href="g-c.xhtml#compoundform">compound form</a></i> is being
+processed (as by the compiler), if the <i><a href="g-o.xhtml#operator">operator</a></i> names a
+<i><a href="g-c.xhtml#compilermacro">compiler macro</a></i> then the <i><a href="g-c.xhtml#compilermacrofunction">compiler macro function</a></i> may be
+invoked on the form, and the resulting expansion recursively processed
+in preference to performing the usual processing on the original <i><a href="g-f.xhtml#form">form</a></i>
+according to its normal interpretation as a <i><a href="g-f.xhtml#functionform">function form</a></i> or
+<i><a href="g-m.xhtml#macroform">macro form</a></i>.
+
+</p><p>
+A <i><a href="g-c.xhtml#compilermacrofunction">compiler macro function</a></i>, like a <i><a href="g-m.xhtml#macrofunction">macro function</a></i>,
+is a <i><a href="g-f.xhtml#function">function</a></i> of two <i><a href="g-a.xhtml#argument">arguments</a></i>: the entire call <i><a href="g-f.xhtml#form">form</a></i>
+and the <i><a href="g-e.xhtml#environment">environment</a></i>. Unlike an ordinary <i><a href="g-m.xhtml#macrofunction">macro function</a></i>, a 
+<i><a href="g-c.xhtml#compilermacrofunction">compiler macro function</a></i> can decline to provide an expansion merely by
+returning a value that is the <i><a href="g-s.xhtml#same">same</a></i> as the original <i><a href="g-f.xhtml#form">form</a></i>.
+The consequences are undefined if a <i><a href="g-c.xhtml#compilermacrofunction">compiler macro function</a></i>
+destructively modifies any part of its <i><a href="g-f.xhtml#form">form</a></i> argument.
+
+</p><p>
+The <i><a href="g-f.xhtml#form">form</a></i> passed to the compiler macro function can either be a <i><a href="g-l.xhtml#list">list</a></i>
+whose <i><a href="g-c.xhtml#car">car</a></i> is the function name, or a <i><a href="g-l.xhtml#list">list</a></i> whose <i><a href="g-c.xhtml#car">car</a></i> is
+<a href="e5-3-7.xhtml#DictEntry_funcall_393"><b>funcall</b></a> and whose <i><a href="g-c.xhtml#cadr">cadr</a></i> is a list <code>(function <i>name</i>)</code>;
+note that this affects destructuring of the form argument by the 
+<i><a href="g-c.xhtml#compilermacrofunction">compiler macro function</a></i>.
+<a href="e3-8-9.xhtml#DictEntry_define_compi_291"><b>define-compiler-macro</b></a> arranges for destructuring of arguments to be
+performed correctly for both possible formats.
+
+</p><p>
+When <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> chooses to expand a <i><a href="g-t.xhtml#toplevelform">top level form</a></i> that is
+a <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i> <i><a href="g-f.xhtml#form">form</a></i>, the expansion is also treated as a <i><a href="g-t.xhtml#toplevelform">top level form</a></i>
+for the purposes of <a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a> processing; see Section <a href="#SubSubSectio_Processing_o_224">3.2.3.1 Processing of Top Level Forms</a>.
+
+
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Naming_of_Co_218"><span class="secno">3.2.2.1.2</span> Naming of Compiler Macros</h5>
+<p><i><a href="g-c.xhtml#compilermacro">Compiler macros</a></i> may be defined for <i><a href="g-f.xhtml#functionname">function names</a></i> that name
+<i><a href="g-m.xhtml#macro">macros</a></i> as well as <i><a href="g-f.xhtml#function">functions</a></i>.  
+
+
+</p><p>
+<i><a href="g-c.xhtml#compilermacro">Compiler macro</a></i> definitions are strictly global.  There is no provision
+for defining local <i><a href="g-c.xhtml#compilermacro">compiler macros</a></i> in the way that <a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a>
+defines local <i><a href="g-m.xhtml#macro">macros</a></i>.  Lexical bindings of a function name shadow any
+compiler macro definition associated with the name as well as its 
+global <i><a href="g-f.xhtml#function">function</a></i> or <i><a href="g-m.xhtml#macro">macro</a></i> definition.
+
+</p><p>
+Note that the presence of a compiler macro definition does not affect
+the values returned by
+
+
+
+functions that access <i><a href="g-f.xhtml#function">function</a></i> definitions (<i>e.g.</i>,  <a href="e5-3-4.xhtml#DictEntry_fboundp_390"><b>fboundp</b></a>)
+or <i><a href="g-m.xhtml#macro">macro</a></i> definitions (<i>e.g.</i>,  <a href="e3-8-12.xhtml#DictEntry_macroexpand_294"><b>macroexpand</b></a>).
+Compiler macros are global, and the function
+<a href="e3-8-8.xhtml#DictEntry_compiler_mac_290"><b>compiler-macro-function</b></a> is sufficient to resolve their interaction
+with other lexical and global definitions.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_When_Compile_219"><span class="secno">3.2.2.1.3</span> When Compiler Macros Are Used</h5>
+<p>
+
+The presence of a <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i> definition for a <i><a href="g-f.xhtml#function">function</a></i> or <i><a href="g-m.xhtml#macro">macro</a></i>
+indicates that it is desirable for the <i><a href="g-c.xhtml#compiler">compiler</a></i> to use the expansion
+of the <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i> instead of the original <i><a href="g-f.xhtml#functionform">function form</a></i> or
+<i><a href="g-m.xhtml#macroform">macro form</a></i>.  However, no language processor
+(compiler, evaluator, or other code walker) is ever required to actually
+invoke <i><a href="g-c.xhtml#compilermacrofunction">compiler macro functions</a></i>, or to 
+make use of the resulting expansion if it does invoke 
+a <i><a href="g-c.xhtml#compilermacrofunction">compiler macro function</a></i>.
+
+</p><p>
+When the <i><a href="g-c.xhtml#compiler">compiler</a></i> encounters a <i><a href="g-f.xhtml#form">form</a></i> during processing that represents
+a call to a <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i> <i><a href="g-n.xhtml#name">name</a></i> (that is not declared <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>notinline</b></a>),
+the <i><a href="g-c.xhtml#compiler">compiler</a></i> might expand the <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i>, 
+and might use the expansion in place of the original <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+When <a href="e3-8-4.xhtml#DictEntry_eval_286"><b>eval</b></a> encounters a <i><a href="g-f.xhtml#form">form</a></i> during processing that represents 
+a call to a <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i> <i><a href="g-n.xhtml#name">name</a></i> (that is not declared <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>notinline</b></a>),
+<a href="e3-8-4.xhtml#DictEntry_eval_286"><b>eval</b></a> might expand the <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i>,
+and might use the expansion in place of the original <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+There are two situations in which a <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i> definition must not be
+applied by any language processor:
+
+</p><ul>
+<li>
+ The global function name binding associated with the compiler
+ macro is shadowed by a lexical binding of the function name.
+
+</li><li>
+ The function name has been declared or proclaimed <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>notinline</b></a> and
+ the call form appears within the scope of the declaration.
+</li></ul>
+
+<p>
+It is unspecified whether <i><a href="g-c.xhtml#compilermacro">compiler macros</a></i> are expanded or used in any other
+situations.
+</p>
+<section>
+<h6 id="SubSubSubSub_Notes_about__220"><span class="secno">3.2.2.1.3.1</span> Notes about the Implementation of Compiler Macros</h6>
+<p>
+
+Although it is technically permissible, as described above,
+for <a href="e3-8-4.xhtml#DictEntry_eval_286"><b>eval</b></a> to treat <i><a href="g-c.xhtml#compilermacro">compiler macros</a></i> in the same situations
+as <i><a href="g-c.xhtml#compiler">compiler</a></i> might, this is not necessarily a good idea in
+<i><a href="g-i.xhtml#interpretedimplementation">interpreted implementations</a></i>.
+
+</p><p>
+<i><a href="g-c.xhtml#compilermacro">Compiler macros</a></i> exist for the purpose of trading compile-time speed
+for run-time speed.  Programmers who write <i><a href="g-c.xhtml#compilermacro">compiler macros</a></i> tend to
+assume that the <i><a href="g-c.xhtml#compilermacro">compiler macros</a></i> can take more time than normal <i><a href="g-f.xhtml#function">functions</a></i>
+and <i><a href="g-m.xhtml#macro">macros</a></i> in order to produce code which is especially optimal for use
+at run time.  Since <a href="e3-8-4.xhtml#DictEntry_eval_286"><b>eval</b></a> in an <i><a href="g-i.xhtml#interpretedimplementation">interpreted implementation</a></i>
+might perform semantic analysis of the same form multiple times, it might be 
+inefficient in general for the <i><a href="g-i.xhtml#implementation">implementation</a></i> to choose to call
+<i><a href="g-c.xhtml#compilermacro">compiler macros</a></i> on every such <i><a href="g-e.xhtml#evaluation">evaluation</a></i>.
+
+</p><p>
+Nevertheless, the decision about what to do in these situations is left to
+each <i><a href="g-i.xhtml#implementation">implementation</a></i>.
+
+
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Minimal_Comp_221"><span class="secno">3.2.2.2</span> Minimal Compilation</h4>
+<p><i><a href="g-m.xhtml#minimalcompilation">Minimal compilation</a></i> is defined as follows:
+
+</p><ul> 
+
+<li> All <i><a href="g-c.xhtml#compilermacro">compiler macro</a></i> calls appearing in the
+<i><a href="g-s.xhtml#sourcecode">source code</a></i> being compiled are expanded, if at all, at compile time;
+they will not be expanded at run time.
+
+
+</li><li> All <i><a href="g-m.xhtml#macro">macro</a></i> and 
+<i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i> calls
+appearing in the source code being compiled are expanded at compile time
+in such a way that they will not be expanded again at run time.
+<a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a>
+and
+<a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>
+are effectively replaced by
+<i><a href="g-f.xhtml#form">forms</a></i> corresponding to their bodies in which calls to 
+<i><a href="g-m.xhtml#macro">macros</a></i> are replaced by their expansions.
+
+</li><li> 
+The first <i><a href="g-a.xhtml#argument">argument</a></i> in a <a href="e3-8-6.xhtml#DictEntry_load_time_va_288"><b>load-time-value</b></a>
+<i><a href="g-f.xhtml#form">form</a></i> 
+in <i><a href="g-s.xhtml#sourcecode">source code</a></i> processed by <a href="e3-8-3.xhtml#DictEntry_compile_285"><b>compile</b></a>
+is <i>evaluated</i> at <i><a href="g-c.xhtml#compiletime">compile time</a></i>;
+in <i><a href="g-s.xhtml#sourcecode">source code</a></i> processed by <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>, 
+the compiler arranges for it to be <i>evaluated</i> at <i><a href="g-l.xhtml#loadtime">load time</a></i>.
+In either case, the result of the <i><a href="g-e.xhtml#evaluation">evaluation</a></i>
+is remembered and used later as the value of the 
+<a href="e3-8-6.xhtml#DictEntry_load_time_va_288"><b>load-time-value</b></a> <i><a href="g-f.xhtml#form">form</a></i> at <i><a href="g-e.xhtml#executiontime">execution time</a></i>.
+
+</li></ul>
+</section>
+<section>
+<h4 id="SubSubSectio_Semantic_Con_222"><span class="secno">3.2.2.3</span> Semantic Constraints</h4>
+<p>
+
+
+All <i><a href="g-c.xhtml#conformingprogram">conforming programs</a></i> must obey the following constraints,
+which are designed to minimize the observable differences 
+between compiled and interpreted programs:
+
+</p><ul>
+
+
+
+ <li> Definitions of any referenced <i><a href="g-m.xhtml#macro">macros</a></i>
+must be present in the <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i>.  
+Any <i><a href="g-f.xhtml#form">form</a></i> that is a <i><a href="g-l.xhtml#list">list</a></i>
+beginning with a <i><a href="g-s.xhtml#symbol">symbol</a></i> that does not name a
+<i><a href="g-s.xhtml#specialoperator">special operator</a></i> or a <i><a href="g-m.xhtml#macro">macro</a></i> defined in the 
+<i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> is treated by the compiler as a 
+function call.
+
+</li><li> <b>Special</b> proclamations for <i><a href="g-d.xhtml#dynamicvariable">dynamic variables</a></i>
+must be made in the <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i>.  Any <i><a href="g-b.xhtml#binding">binding</a></i>
+for which there is no <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a> declaration or proclamation in
+the <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> is treated by the compiler as
+a <i><a href="g-l.xhtml#lexicalbinding">lexical binding</a></i>.
+
+</li><li> The definition of a function that is defined and
+declared <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>inline</b></a> in the <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> must be
+the same at run time.
+
+</li><li> Within a <i><a href="g-f.xhtml#function">function</a></i> named <i>F</i>, the compiler may
+(but is not required to)
+assume that an apparent recursive call to a <i><a href="g-f.xhtml#function">function</a></i> named <i>F</i> 
+refers to the same definition of <i>F</i>,
+unless that function has been declared <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>notinline</b></a>.
+The consequences of redefining such a recursively defined <i><a href="g-f.xhtml#function">function</a></i> <i>F</i> 
+while it is executing are undefined.
+
+</li><li> A call within a file to a named function that is
+defined in the same file refers to that function, unless that function
+has been declared <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>notinline</b></a>.  The consequences are unspecified
+if functions are redefined individually at run time or multiply
+defined in the same file.
+
+</li><li> The argument syntax and number of return values for
+all functions whose <a href="e3-8-23.xhtml#DictEntry_ftype_305"><b>ftype</b></a> is declared at compile time must
+remain the same at run time.
+
+</li><li> <i><a href="g-c.xhtml#constantvariable">Constant variables</a></i> defined in
+the <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> must have a <i><a href="g-s.xhtml#similar">similar</a></i> value at
+run time.  A reference to 
+
+a <i><a href="g-c.xhtml#constantvariable">constant variable</a></i> 
+in <i><a href="g-s.xhtml#sourcecode">source code</a></i> is equivalent to a reference to 
+
+a <i><a href="g-l.xhtml#literal">literal</a></i> <i><a href="g-o.xhtml#object">object</a></i> that is the <i><a href="g-v.xhtml#value">value</a></i> of the <i><a href="g-c.xhtml#constantvariable">constant variable</a></i>.
+
+</li><li> Type definitions made with <a href="e4-4-25.xhtml#DictEntry_deftype_360"><b>deftype</b></a> or
+<a href="e8-1-1.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> in the <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> must
+retain the same definition at run time.  Classes defined by <a href="e7-7-25.xhtml#DictEntry_defclass_581"><b>defclass</b></a>
+in the <i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> must be defined
+at run time to have the same <i>superclasses</i> and same 
+<i><a href="g-m.xhtml#metaclass">metaclass</a></i>.
+
+<p>
+This implies that <i><a href="g-s.xhtml#subtype">subtype</a></i>/<i><a href="g-s.xhtml#supertype">supertype</a></i> relationships of 
+<i><a href="g-t.xhtml#typespecifier">type specifiers</a></i> must not change between <i><a href="g-c.xhtml#compiletime">compile time</a></i> and <i><a href="g-r.xhtml#runtime">run time</a></i>.  
+
+</p></li><li> Type declarations present in the compilation 
+<i><a href="g-e.xhtml#environment">environment</a></i> must accurately describe the corresponding values at run time;
+otherwise, the consequences are undefined.  It is permissible
+for an unknown <i><a href="g-t.xhtml#type">type</a></i> to appear in a declaration at 
+compile time, though a warning might be signaled in such a case.
+
+</li><li> Except in the situations explicitly listed above, a
+<i><a href="g-f.xhtml#function">function</a></i> defined in the <i><a href="g-e.xhtml#evaluationenvironment">evaluation environment</a></i>
+is permitted to have a different definition or a different <i><a href="g-s.xhtml#signature">signature</a></i>
+at run time, and the run-time definition prevails.
+
+</li></ul> 
+
+<p>
+<i><a href="g-c.xhtml#conformingprogram">Conforming programs</a></i> should not be written using any additional
+assumptions about consistency between the run-time 
+<i><a href="g-e.xhtml#environment">environment</a></i> and the startup, evaluation, and compilation 
+<i><a href="g-e.xhtml#environment">environments</a></i>.
+
+</p><p>
+Except where noted, when a compile-time and a run-time definition are
+different, one of the following occurs at run time:
+
+</p><ul>
+
+<li> an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> is signaled
+</li><li> the compile-time definition prevails
+</li><li> the run-time definition prevails
+
+</li></ul>
+
+<p>
+If the <i><a href="g-c.xhtml#compiler">compiler</a></i> processes a <i><a href="g-f.xhtml#functionform">function form</a></i> whose <i><a href="g-o.xhtml#operator">operator</a></i> 
+is not defined at compile time, no error is signaled at compile time.
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_File_Compila_223"><span class="secno">3.2.3</span> File Compilation</h3>
+<p>
+
+
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> performs compilation of 
+<i><a href="g-f.xhtml#form">forms</a></i> in a file following the rules specified in Section <a href="#SubSection_Compilation__215">3.2.2 Compilation Semantics</a>,
+and produces an output file that can be loaded by using <a href="e24-2-3.xhtml#DictEntry_load_1408"><b>load</b></a>.
+
+</p><p>
+Normally, the <i><a href="g-t.xhtml#toplevelform">top level forms</a></i> appearing in a file compiled with
+<a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> are evaluated only when the resulting
+compiled file is loaded, and not when the file is compiled.  However,
+
+
+it is typically the case that some forms in the file need to be evaluated
+at compile time so the
+remainder of the file can be read and compiled correctly.
+
+</p><p>
+The <a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a> <i><a href="g-s.xhtml#specialform">special form</a></i> can be used to control
+whether a <i><a href="g-t.xhtml#toplevelform">top level form</a></i> is evaluated at compile time, load
+time, or both.  It is possible to specify any of three situations with
+<a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a>, denoted by the symbols <code>:compile-toplevel</code>,
+<code>:load-toplevel</code>, and <code>:execute</code>.  For top level 
+<a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a> forms, <code>:compile-toplevel</code> specifies that the
+compiler must evaluate the body at compile time, and <code>
+:load-toplevel</code> specifies that the compiler must arrange to evaluate
+the body at load time. For non-top level <a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a> forms,
+<code>:execute</code> specifies that the body must be executed in the run-time
+<i><a href="g-e.xhtml#environment">environment</a></i>.
+
+</p><p>
+The behavior of this <i><a href="g-f.xhtml#form">form</a></i> can be more precisely understood in
+terms of a model of how <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> processes forms in
+a file to be compiled. There are two processing modes, called
+"not-compile-time" and "compile-time-too".
+
+</p><p>
+Successive forms are read from the file by <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>
+and processed in not-compile-time mode; in this mode, 
+<a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> arranges for forms to be evaluated only at load time
+and not at compile time.  When <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> is in
+compile-time-too mode, forms are evaluated both at compile time and
+load time.
+</p>
+<section>
+<h4 id="SubSubSectio_Processing_o_224"><span class="secno">3.2.3.1</span> Processing of Top Level Forms</h4>
+<p>
+
+
+Processing of <i><a href="g-t.xhtml#toplevelform">top level forms</a></i> in the file compiler is defined
+as follows:
+
+</p><ul>
+
+ <li>1. If the <i><a href="g-f.xhtml#form">form</a></i> is a <i><a href="g-c.xhtml#compilermacroform">compiler macro form</a></i>
+(not disabled by a <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>notinline</b></a> <i><a href="g-d.xhtml#declaration">declaration</a></i>),
+
+
+the <i><a href="g-i.xhtml#implementation">implementation</a></i> might or might not choose to compute
+the <i><a href="g-c.xhtml#compilermacroexpansion">compiler macro expansion</a></i> of the <i><a href="g-f.xhtml#form">form</a></i> and,
+having performed the expansion, might or might not choose to process the result
+as a <i><a href="g-t.xhtml#toplevelform">top level form</a></i> in the same processing mode
+(compile-time-too or not-compile-time).
+
+If it declines to obtain or use the expansion, it must process the original <i><a href="g-f.xhtml#form">form</a></i>.
+
+
+</li><li>2. If the form is a <i><a href="g-m.xhtml#macroform">macro form</a></i>,
+
+
+its <i><a href="g-m.xhtml#macroexpansion">macro expansion</a></i> is computed and processed as a 
+<i><a href="g-t.xhtml#toplevelform">top level form</a></i> in
+the same processing mode (compile-time-too or not-compile-time).
+
+</li><li>3. If the form is a <a href="e5-3-59.xhtml#DictEntry_progn_445"><b>progn</b></a> form, each of its
+body <i><a href="g-f.xhtml#form">forms</a></i> is sequentially processed as a 
+<i><a href="g-t.xhtml#toplevelform">top level form</a></i> in the same processing mode.
+
+</li><li>4. If the form is a <a href="e3-8-27.xhtml#DictEntry_locally_309"><b>locally</b></a>, 
+<a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a>, or <a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>, 
+<a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> establishes the appropriate bindings and processes the
+body forms as <i><a href="g-t.xhtml#toplevelform">top level forms</a></i> with those bindings in effect
+in the same processing mode.  (Note that this implies that the lexical
+<i><a href="g-e.xhtml#environment">environment</a></i> in which <i><a href="g-t.xhtml#toplevelform">top level forms</a></i> are processed
+is not necessarily the <i><a href="g-n.xhtml#nulllexicalenvironment">null lexical environment</a></i>.)
+
+</li><li>5. If the form is an <a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a> form, it is
+handled according to the next figure.
+
+<table id="fig-3-7" class="fig">
+<caption><span class="figlabel">Figure 3-7.</span> <b>EVAL-WHEN processing</b></caption>
+<tbody><tr><th>CT</th><th>LT</th><th>E</th><th>Mode</th><th>Action</th><th>New Mode</th></tr>
+
+<tr><td>Yes</td><td>Yes</td><td>---</td><td>---</td><td>Process</td><td>compile-time-too</td></tr>
+<tr><td>No</td><td>Yes</td><td>Yes</td><td> CTT</td><td>Process</td><td>compile-time-too</td></tr>
+<tr><td>No</td><td>Yes</td><td>Yes</td><td> NCT</td><td>Process</td><td>not-compile-time</td></tr>
+<tr><td>No</td><td>Yes</td><td>No</td><td>---</td><td>Process</td><td>not-compile-time</td></tr>
+<tr><td>Yes</td><td>No</td><td>---</td><td>---</td><td>Evaluate</td><td>---</td></tr>
+<tr><td>No</td><td>No</td><td>Yes</td><td> CTT</td><td>Evaluate</td><td>---</td></tr>
+<tr><td>No</td><td>No</td><td>Yes</td><td> NCT</td><td>Discard</td><td>---</td></tr>
+<tr><td>No</td><td>No</td><td>No</td><td>---</td><td>Discard</td><td>---</td></tr>
+</tbody></table>
+
+<p>
+Column <b>CT</b>   indicates whether <code>:compile-toplevel</code> is specified.
+Column <b>LT</b>   indicates whether <code>:load-toplevel</code> is specified.
+Column <b>E</b>    indicates whether <code>:execute</code> is specified.  
+Column <b>Mode</b> indicates the processing mode; 
+		a dash (—) indicates that the processing mode is not relevant.
+
+</p><p>
+The <b>Action</b> column specifies one of three actions:
+
+
+
+
+
+
+
+
+
+
+</p><ul>
+
+<li><b>Process:</b> process the body as <i><a href="g-t.xhtml#toplevelform">top level forms</a></i> in the
+specified mode.
+
+</li><li><b>Evaluate:</b> evaluate the body in the dynamic execution
+context of the compiler, using the <i><a href="g-e.xhtml#evaluationenvironment">evaluation environment</a></i> as
+the global environment and the <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> in which
+the <a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a> appears.
+
+</li><li><b>Discard:</b> ignore the <i><a href="g-f.xhtml#form">form</a></i>.
+</li></ul>
+
+<p>
+The <b>New Mode</b> column indicates the new processing mode. 
+A dash (—) indicates the compiler remains in its current mode.
+
+</p></li><li>6. Otherwise, the form is a <i><a href="g-t.xhtml#toplevelform">top level form</a></i> that
+is not one of the special cases.  In compile-time-too mode, the
+compiler first evaluates the form in the evaluation 
+<i><a href="g-e.xhtml#environment">environment</a></i> and then minimally compiles it.  In not-compile-time
+mode, the <i><a href="g-f.xhtml#form">form</a></i> is simply minimally compiled.  All <i><a href="g-s.xhtml#subform">subforms</a></i>
+are treated as <i><a href="g-n.xhtml#nontoplevelform">non-top-level forms</a></i>.
+
+<p>
+Note that <i><a href="g-t.xhtml#toplevelform">top level forms</a></i> are processed in the order in
+which they textually appear in the file and that each 
+<i><a href="g-t.xhtml#toplevelform">top level form</a></i> read by the compiler is processed before the next is
+read.  However, the order of processing (including macro expansion) of
+<i><a href="g-s.xhtml#subform">subforms</a></i> that are not <i><a href="g-t.xhtml#toplevelform">top level forms</a></i> and the order of
+further compilation is unspecified as long as Common Lisp semantics
+are preserved.
+
+</p></li></ul> 
+
+<p>
+<a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a> forms cause compile-time evaluation only at
+top level.  Both <code>:compile-toplevel</code> and <code>:load-toplevel</code> situation specifications
+are ignored for <i><a href="g-n.xhtml#nontoplevelform">non-top-level forms</a></i>. For <i><a href="g-n.xhtml#nontoplevelform">non-top-level forms</a></i>, 
+an <a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a>
+specifying the <code>:execute</code> situation is treated as an <i><a href="g-i.xhtml#implicitprogn">implicit progn</a></i>
+including the <i><a href="g-f.xhtml#form">forms</a></i> in the body of the <a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a> <i><a href="g-f.xhtml#form">form</a></i>;
+otherwise, the <i><a href="g-f.xhtml#form">forms</a></i> in the body are ignored.
+</p>
+<section>
+<h5 id="SubSubSubSec_Processing_o_225"><span class="secno">3.2.3.1.1</span> Processing of Defining Macros</h5>
+<p>
+Defining <i><a href="g-m.xhtml#macro">macros</a></i> (such as <a href="e3-8-10.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a> or <a href="e5-3-16.xhtml#DictEntry_defparameter_402"><b>defvar</b></a>)
+appearing within a file being processed by <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>
+normally have compile-time side effects which affect how subsequent <i><a href="g-f.xhtml#form">forms</a></i>
+in the same <i><a href="g-f.xhtml#file">file</a></i> are compiled.  A convenient model for explaining how these
+side effects happen is that the defining macro expands into one or
+more <a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a> <i><a href="g-f.xhtml#form">forms</a></i>, and that the calls which cause the compile-time
+side effects to happen appear 
+in the body of an <code>(eval-when (:compile-toplevel) ...)</code> <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+
+The compile-time side effects may cause information about the definition to
+be stored differently than if the defining macro had been processed in the
+`normal' way (either interpretively or by loading the compiled file).
+
+</p><p>
+In particular, the information stored by the defining <i><a href="g-m.xhtml#macro">macros</a></i> at compile time
+might or might not be available to the interpreter (either during or after compilation),
+or during subsequent calls to the <i><a href="g-c.xhtml#compiler">compiler</a></i>.  For example,
+the following code is nonportable because it assumes that the <i><a href="g-c.xhtml#compiler">compiler</a></i>
+stores the macro definition of <code>foo</code> where it is available to the interpreter:
+
+</p><pre> (defmacro foo (x) `(car ,x))
+ (eval-when (:execute :compile-toplevel :load-toplevel)
+   (print (foo '(a b c))))
+</pre>
+
+<p>
+A portable way to do the same thing would be to include the macro
+definition inside the <a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a> <i><a href="g-f.xhtml#form">form</a></i>, as in:
+
+</p><pre> (eval-when (:execute :compile-toplevel :load-toplevel)
+   (defmacro foo (x) `(car ,x))
+   (print (foo '(a b c))))
+</pre>
+
+<p>
+The next figure lists macros that make definitions
+available both in the compilation and run-time <i><a href="g-e.xhtml#environment">environments</a></i>.
+It is not specified whether definitions made available in the
+<i><a href="g-c.xhtml#compilationenvironment">compilation environment</a></i> are available in the evaluation
+<i><a href="g-e.xhtml#environment">environment</a></i>, nor is it specified whether they are available
+in subsequent compilation units or subsequent invocations of the
+compiler.  As with <a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a>, these compile-time side
+effects happen only when the defining macros appear at 
+top level.
+
+</p><table id="fig-3-8" class="fig">
+<caption><span class="figlabel">Figure 3-8.</span> Defining Macros That Affect the Compile-Time Environment</caption>
+
+  <tbody><tr>
+    <td>declaim</td>
+    <td>define-modify-macro</td>
+    <td>defsetf</td>
+  </tr>
+  <tr>
+    <td>defclass</td>
+    <td>define-setf-expander</td>
+    <td>defstruct</td>
+  </tr>
+  <tr>
+    <td>defconstant</td>
+    <td>defmacro</td>
+    <td>deftype</td>
+  </tr>
+  <tr>
+    <td>define-compiler-macro</td>
+    <td>defpackage</td>
+    <td>defvar</td>
+  </tr>
+  <tr>
+    <td>define-condition</td>
+    <td>defparameter</td>
+    <td/>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h5 id="SubSubSubSec_Constraints__226"><span class="secno">3.2.3.1.2</span> Constraints on Macros and Compiler Macros</h5>
+<p>
+Except where explicitly stated otherwise, no <i><a href="g-m.xhtml#macro">macro</a></i> defined in
+the <i>Common Lisp</i> standard produces an expansion that could cause any of the
+<i><a href="g-s.xhtml#subform">subforms</a></i> of the <i><a href="g-m.xhtml#macroform">macro form</a></i> to be treated as 
+<i><a href="g-t.xhtml#toplevelform">top level forms</a></i>.  If an <i><a href="g-i.xhtml#implementation">implementation</a></i> also provides a
+<i><a href="g-s.xhtml#specialoperator">special operator</a></i> definition of a <i>Common Lisp</i> <i><a href="g-m.xhtml#macro">macro</a></i>, 
+the <i><a href="g-s.xhtml#specialoperator">special operator</a></i> definition must be semantically equivalent
+in this respect.
+
+</p><p>
+<i><a href="g-c.xhtml#compilermacro">Compiler macro</a></i> expansions must also have the same
+top level evaluation semantics as the <i><a href="g-f.xhtml#form">form</a></i> which they replace.
+This is of concern both to <i><a href="g-c.xhtml#conformingimplementation">conforming implementations</a></i> and to
+<i><a href="g-c.xhtml#conformingprogram">conforming programs</a></i>.
+
+</p>
+</section>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Literal_Obje_227"><span class="secno">3.2.4</span> Literal Objects in Compiled Files</h3>
+<p>
+
+
+The functions <a href="e3-8-4.xhtml#DictEntry_eval_286"><b>eval</b></a> and <a href="e3-8-3.xhtml#DictEntry_compile_285"><b>compile</b></a> are
+required to ensure that <i>literal objects</i> referenced within the resulting
+interpreted or compiled code objects are the <i><a href="g-s.xhtml#same">same</a></i> as the
+corresponding <i><a href="g-o.xhtml#object">objects</a></i> in the <i><a href="g-s.xhtml#sourcecode">source code</a></i>.
+<a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>, on the other hand, 
+must produce a <i><a href="g-c.xhtml#compiledfile">compiled file</a></i> that, when loaded with
+<a href="e24-2-3.xhtml#DictEntry_load_1408"><b>load</b></a>, constructs the <i><a href="g-o.xhtml#object">objects</a></i> defined by the
+<i><a href="g-s.xhtml#sourcecode">source code</a></i> and produces references to them.
+
+</p><p>
+In the case of <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>, <i><a href="g-o.xhtml#object">objects</a></i>
+constructed by <a href="e24-2-3.xhtml#DictEntry_load_1408"><b>load</b></a> of the <i><a href="g-c.xhtml#compiledfile">compiled file</a></i> cannot be spoken
+of as being the <i><a href="g-s.xhtml#same">same</a></i> as the <i><a href="g-o.xhtml#object">objects</a></i> constructed at
+compile time, because the <i><a href="g-c.xhtml#compiledfile">compiled file</a></i> may be loaded into a different
+<i>Lisp image</i> than the one in which it was compiled.  This section
+defines the concept of <i><a href="g-s.xhtml#similarity">similarity</a></i> which relates
+<i><a href="g-o.xhtml#object">objects</a></i> in the <i><a href="g-e.xhtml#evaluationenvironment">evaluation environment</a></i> to the
+corresponding <i><a href="g-o.xhtml#object">objects</a></i> in the <i><a href="g-r.xhtml#runtimeenvironment">run-time environment</a></i>.
+
+</p><p>
+The constraints on <i>literal objects</i> described in this section
+apply only to <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>;
+<a href="e3-8-4.xhtml#DictEntry_eval_286"><b>eval</b></a> and <a href="e3-8-3.xhtml#DictEntry_compile_285"><b>compile</b></a> do not copy or coalesce constants.
+</p>
+<section>
+<h4 id="SubSubSectio_Externalizab_228"><span class="secno">3.2.4.1</span> Externalizable Objects</h4>
+<p>
+
+
+
+The fact that the <i><a href="g-f.xhtml#filecompiler">file compiler</a></i> represents <i><a href="g-l.xhtml#literal">literal</a></i> <i><a href="g-o.xhtml#object">objects</a></i> 
+externally in a <i><a href="g-c.xhtml#compiledfile">compiled file</a></i> and must later reconstruct suitable 
+equivalents of those <i><a href="g-o.xhtml#object">objects</a></i> when that <i><a href="g-f.xhtml#file">file</a></i> is loaded
+imposes a need for constraints on the nature of the <i><a href="g-o.xhtml#object">objects</a></i> that can be 
+used as <i><a href="g-l.xhtml#literal">literal</a></i> <i><a href="g-o.xhtml#object">objects</a></i> in <i><a href="g-c.xhtml#code">code</a></i> to be processed 
+by the <i><a href="g-f.xhtml#filecompiler">file compiler</a></i>.
+
+</p><p>
+An <i><a href="g-o.xhtml#object">object</a></i> that can be used as a <i><a href="g-l.xhtml#literal">literal</a></i> <i><a href="g-o.xhtml#object">object</a></i> 
+in <i><a href="g-c.xhtml#code">code</a></i> to be processed by the <i><a href="g-f.xhtml#filecompiler">file compiler</a></i> is called an
+<b><i>externalizable object</i></b>.
+
+</p><p>
+We define that two <i><a href="g-o.xhtml#object">objects</a></i> are <b><i>similar</i></b> if they satisfy
+a two-place conceptual equivalence predicate (defined below), which is
+independent of the <i>Lisp image</i> so that the two <i><a href="g-o.xhtml#object">objects</a></i> in
+different <i>Lisp images</i> can be understood to be equivalent under
+this predicate.  Further, by inspecting the definition of this conceptual
+predicate, the programmer can anticipate what aspects of an <i><a href="g-o.xhtml#object">object</a></i>
+are reliably preserved by <i>file compilation</i>.
+
+</p><p>
+The <i><a href="g-f.xhtml#filecompiler">file compiler</a></i> must cooperate with the <i><a href="g-l.xhtml#loader">loader</a></i> in order to
+assure that in each case where an <i><a href="g-e.xhtml#externalizableobject">externalizable object</a></i> is processed
+as a <i>literal object</i>, the <i><a href="g-l.xhtml#loader">loader</a></i> will construct a <i><a href="g-s.xhtml#similar">similar</a></i>
+<i><a href="g-o.xhtml#object">object</a></i>.
+
+</p><p>
+The set of <i><a href="g-o.xhtml#object">objects</a></i> that are <b><i>externalizable objects</i></b> are those
+for which the new conceptual term "<i><a href="g-s.xhtml#similar">similar</a></i>" is defined, such that
+when a <i><a href="g-c.xhtml#compiledfile">compiled file</a></i> is <i>loaded</i>, an <i><a href="g-o.xhtml#object">object</a></i> can be constructed
+which can be shown to be <i><a href="g-s.xhtml#similar">similar</a></i> to the original <i><a href="g-o.xhtml#object">object</a></i> which
+existed at the time the <i><a href="g-f.xhtml#filecompiler">file compiler</a></i> was operating.
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Similarity_o_229"><span class="secno">3.2.4.2</span> Similarity of Literal Objects</h4>
+<section>
+<h5 id="SubSubSubSec_Similarity_o_230"><span class="secno">3.2.4.2.1</span> Similarity of Aggregate Objects</h5>
+<p>
+
+Of the <i><a href="g-t.xhtml#type">types</a></i> over which <i><a href="g-s.xhtml#similarity">similarity</a></i> is defined, 
+some are treated as aggregate objects.  For these types, 
+<i><a href="g-s.xhtml#similarity">similarity</a></i> is defined recursively.  
+We say that an <i><a href="g-o.xhtml#object">object</a></i> of these types has certain "basic qualities"
+and to satisfy the <i><a href="g-s.xhtml#similarity">similarity</a></i> relationship, the values of the
+corresponding qualities of the two <i><a href="g-o.xhtml#object">objects</a></i> must also be similar.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Definition_o_231"><span class="secno">3.2.4.2.2</span> Definition of Similarity</h5>
+<p>
+
+Two <i><a href="g-o.xhtml#object">objects</a></i> <i>S</i> (in <i><a href="g-s.xhtml#sourcecode">source code</a></i>) and <i>C</i> (in <i><a href="g-c.xhtml#compiledcode">compiled code</a></i>)
+     are defined to be <i><a href="g-s.xhtml#similar">similar</a></i> if and only if 
+     they are both of one of the <i><a href="g-t.xhtml#type">types</a></i> listed here
+      (or defined by the <i><a href="g-i.xhtml#implementation">implementation</a></i>) 
+ and they both satisfy all additional requirements of <i><a href="g-s.xhtml#similarity">similarity</a></i> 
+      indicated for that <i><a href="g-t.xhtml#type">type</a></i>.
+
+</p><ul>
+
+<li><a href="e12-2-1.xhtml#DictEntry_number_775"><b>number</b></a>
+
+<p>
+Two <i><a href="g-n.xhtml#number">numbers</a></i> <i>S</i> and <i>C</i> are <i><a href="g-s.xhtml#similar">similar</a></i> if they are of the same <i><a href="g-t.xhtml#type">type</a></i>
+and represent the same mathematical value.
+
+</p></li><li><a href="e13-2-1.xhtml#DictEntry_character_884"><b>character</b></a>
+
+<p>
+Two <i><a href="g-s.xhtml#simple">simple</a></i> <i><a href="g-c.xhtml#character">characters</a></i> <i>S</i> and <i>C</i> are <i><a href="g-s.xhtml#similar">similar</a></i> 
+if they have <i><a href="g-s.xhtml#similar">similar</a></i> <i><a href="g-c.xhtml#code">code</a></i> <i><a href="g-a.xhtml#attribute">attributes</a></i>.
+
+</p><p>
+<i><a href="g-i.xhtml#implementation">Implementations</a></i> providing additional, <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> 
+<i><a href="g-a.xhtml#attribute">attributes</a></i> must define whether and how <i><a href="g-n.xhtml#nonsimple">non-simple</a></i> <i><a href="g-c.xhtml#character">characters</a></i> 
+can be regarded as <i><a href="g-s.xhtml#similar">similar</a></i>.
+
+</p></li><li><a href="e10-2-1.xhtml#DictEntry_symbol_675"><b>symbol</b></a>
+
+<p>
+Two <i><a href="g-a.xhtml#apparentlyuninterned">apparently uninterned</a></i> <i><a href="g-s.xhtml#symbol">symbols</a></i> <i>S</i> and <i>C</i> are <i><a href="g-s.xhtml#similar">similar</a></i>
+if their
+
+
+<i><a href="g-n.xhtml#name">names</a></i>
+are <i><a href="g-s.xhtml#similar">similar</a></i>.
+
+</p><p>
+
+Two <i><a href="g-i.xhtml#interned">interned</a></i> symbols <i>S</i> and <i>C</i> are <i><a href="g-s.xhtml#similar">similar</a></i> 
+if their <i><a href="g-n.xhtml#name">names</a></i> are <i><a href="g-s.xhtml#similar">similar</a></i>,
+and if either <i>S</i> is accessible in the <i><a href="g-c.xhtml#currentpackage">current package</a></i> at compile time
+          and <i>C</i> is accessible in the <i><a href="g-c.xhtml#currentpackage">current package</a></i> at load time,
+       or <i>C</i> is accessible in the <i><a href="g-p.xhtml#package">package</a></i> that is <i><a href="g-s.xhtml#similar">similar</a></i> to
+          the <i><a href="g-h.xhtml#homepackage">home package</a></i> of <i>S</i>.
+
+</p><p>
+(Note that <i><a href="g-s.xhtml#similarity">similarity</a></i> of
+
+
+<i><a href="g-s.xhtml#symbol">symbols</a></i> is dependent
+on neither the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i> nor how the <i><a href="g-f.xhtml#function">function</a></i> <a href="e23-2-4.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> would
+parse the <i><a href="g-c.xhtml#character">characters</a></i> in the <i><a href="g-n.xhtml#name">name</a></i> of the <i><a href="g-s.xhtml#symbol">symbol</a></i>.)
+
+
+</p></li><li><a href="e11-2-1.xhtml#DictEntry_package_716"><b>package</b></a>
+
+<p>
+Two <i><a href="g-p.xhtml#package">packages</a></i> <i>S</i> and <i>C</i> are <i><a href="g-s.xhtml#similar">similar</a></i> if their <i><a href="g-n.xhtml#name">names</a></i> are <i><a href="g-s.xhtml#similar">similar</a></i>.
+
+</p><p>
+Note that although a <i><a href="g-p.xhtml#package">package</a></i> <i><a href="g-o.xhtml#object">object</a></i> is an <i><a href="g-e.xhtml#externalizableobject">externalizable object</a></i>,
+the programmer is responsible for ensuring that the corresponding <i><a href="g-p.xhtml#package">package</a></i> is
+already in existence when code referencing it as a <i><a href="g-l.xhtml#literal">literal</a></i> <i><a href="g-o.xhtml#object">object</a></i> 
+is <i>loaded</i>.  The <i><a href="g-l.xhtml#loader">loader</a></i> finds the corresponding <i><a href="g-p.xhtml#package">package</a></i> <i><a href="g-o.xhtml#object">object</a></i>
+as if by calling <a href="e11-2-4.xhtml#DictEntry_find_package_719"><b>find-package</b></a> with that <i><a href="g-n.xhtml#name">name</a></i> as an <i><a href="g-a.xhtml#argument">argument</a></i>.
+An error is signaled by the <i><a href="g-l.xhtml#loader">loader</a></i> if no <i><a href="g-p.xhtml#package">package</a></i> exists at load time.
+
+</p></li><li><a href="e12-2-39.xhtml#DictEntry_random_state_813"><b>random-state</b></a>
+
+<p>
+Two <i><a href="g-r.xhtml#randomstate">random states</a></i> <i>S</i> and <i>C</i> are <i><a href="g-s.xhtml#similar">similar</a></i> if <i>S</i>
+would always produce the same sequence of pseudo-random numbers 
+as a <i><a href="g-c.xhtml#copy">copy</a></i><sub>5</sub> of <i>C</i>
+when given as the <i>random-state</i> <i><a href="g-a.xhtml#argument">argument</a></i> to the <i><a href="g-f.xhtml#function">function</a></i> <a href="e12-2-41.xhtml#DictEntry_random_815"><b>random</b></a>, 
+assuming equivalent <i>limit</i> <i><a href="g-a.xhtml#argument">arguments</a></i> in each case.
+
+</p><p>
+(Note that since <i>C</i> has been processed by the <i><a href="g-f.xhtml#filecompiler">file compiler</a></i>,
+it cannot be used directly as an <i><a href="g-a.xhtml#argument">argument</a></i> to <a href="e12-2-41.xhtml#DictEntry_random_815"><b>random</b></a>
+because <a href="e12-2-41.xhtml#DictEntry_random_815"><b>random</b></a> would perform a side effect.)
+
+</p></li><li><a href="e14-2-3.xhtml#DictEntry_cons_916"><b>cons</b></a> 
+
+<p>
+Two <i>conses</i>, <i>S</i> and <i>C</i>, are <i><a href="g-s.xhtml#similar">similar</a></i> if
+    the <i><a href="g-c.xhtml#car">car</a></i><sub>2</sub> of <i>S</i> is <i><a href="g-s.xhtml#similar">similar</a></i> to the <i><a href="g-c.xhtml#car">car</a></i><sub>2</sub> of <i>C</i>,
+and the <i><a href="g-c.xhtml#cdr">cdr</a></i><sub>2</sub> of <i>S</i> is <i><a href="g-s.xhtml#similar">similar</a></i> to the <i><a href="g-c.xhtml#cdr">cdr</a></i><sub>2</sub> of <i>C</i>.
+
+</p></li><li><a href="e15-2-1.xhtml#DictEntry_array_979"><b>array</b></a>
+
+<p>
+Two one-dimensional <i><a href="g-a.xhtml#array">arrays</a></i>, <i>S</i> and <i>C</i>, are <i><a href="g-s.xhtml#similar">similar</a></i> if
+     the <i><a href="g-l.xhtml#length">length</a></i> of <i>S</i> is <i><a href="g-s.xhtml#similar">similar</a></i> to the <i><a href="g-l.xhtml#length">length</a></i> of <i>C</i>,
+     the <i><a href="g-a.xhtml#actualarrayelementtype">actual array element type</a></i> of <i>S</i> is <i><a href="g-s.xhtml#similar">similar</a></i> to
+     the <i><a href="g-a.xhtml#actualarrayelementtype">actual array element type</a></i> of <i>C</i>,
+ and each <i><a href="g-a.xhtml#active">active</a></i> <i><a href="g-e.xhtml#element">element</a></i> of <i>S</i> is <i><a href="g-s.xhtml#similar">similar</a></i> to
+      the corresponding <i><a href="g-e.xhtml#element">element</a></i> of <i>C</i>.
+
+</p><p>
+Two <i><a href="g-a.xhtml#array">arrays</a></i> of <i><a href="g-r.xhtml#rank">rank</a></i> other than one, <i>S</i> and <i>C</i>, are <i><a href="g-s.xhtml#similar">similar</a></i> if
+     the <i><a href="g-r.xhtml#rank">rank</a></i> of <i>S</i> is <i><a href="g-s.xhtml#similar">similar</a></i> to the <i><a href="g-r.xhtml#rank">rank</a></i> of <i>C</i>,
+     each <i><a href="g-d.xhtml#dimension">dimension</a></i><sub>1</sub> of <i>S</i> is <i><a href="g-s.xhtml#similar">similar</a></i> to 
+      the corresponding <i><a href="g-d.xhtml#dimension">dimension</a></i><sub>1</sub> of <i>C</i>,
+     the <i><a href="g-a.xhtml#actualarrayelementtype">actual array element type</a></i> of <i>S</i> is <i><a href="g-s.xhtml#similar">similar</a></i> to
+     the <i><a href="g-a.xhtml#actualarrayelementtype">actual array element type</a></i> of <i>C</i>,
+ and each <i><a href="g-e.xhtml#element">element</a></i> of <i>S</i> is <i><a href="g-s.xhtml#similar">similar</a></i> to
+      the corresponding <i><a href="g-e.xhtml#element">element</a></i> of <i>C</i>.
+
+</p><p>
+In addition,
+if <i>S</i> is a <i><a href="g-s.xhtml#simplearray">simple array</a></i>, then <i>C</i> must also be a <i><a href="g-s.xhtml#simplearray">simple array</a></i>.
+If <i>S</i> is a <i><a href="g-d.xhtml#displacedarray">displaced array</a></i>,
+       has a <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i>,
+    or is <i><a href="g-a.xhtml#actuallyadjustable">actually adjustable</a></i>, 
+<i>C</i> is permitted to lack any or all of these qualities.
+
+</p></li><li><a href="e18-2-1.xhtml#DictEntry_hash_table_1078"><b>hash-table</b></a>
+
+<p>
+Two <i><a href="g-h.xhtml#hashtable">hash tables</a></i> <i>S</i> and <i>C</i> are <i><a href="g-s.xhtml#similar">similar</a></i> if they meet the following
+three requirements:
+
+</p><ul>
+<li>1.  They both have the same test 
+ 	    (<i>e.g.</i>,  they are both <a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a> <i><a href="g-h.xhtml#hashtable">hash tables</a></i>).
+
+</li><li>2.  There is a unique one-to-one correspondence between the keys of
+           the two <i><a href="g-h.xhtml#hashtable">hash tables</a></i>, such that the corresponding keys are 
+	   <i><a href="g-s.xhtml#similar">similar</a></i>.
+
+</li><li>3.  For all keys, the values associated with two corresponding keys
+           are <i><a href="g-s.xhtml#similar">similar</a></i>.
+</li></ul>
+
+<p>
+If there is more than one possible one-to-one correspondence between
+the keys of <i>S</i> and <i>C</i>, the consequences are unspecified.  
+A <i><a href="g-c.xhtml#conformingprogram">conforming program</a></i> cannot use a table such as <i>S</i> as an
+<i>externalizable constant</i>.
+
+</p></li><li><a href="e19-4-1.xhtml#DictEntry_pathname_1144"><b>pathname</b></a>
+
+<p>
+Two <i><a href="g-p.xhtml#pathname">pathnames</a></i> <i>S</i> and <i>C</i> are <i><a href="g-s.xhtml#similar">similar</a></i> if all corresponding 
+<i>pathname components</i> are <i><a href="g-s.xhtml#similar">similar</a></i>.
+
+</p></li><li><a href="e4-4-3.xhtml#DictEntry_function_338"><b>function</b></a>
+
+<p>
+
+<i><a href="g-f.xhtml#function">Functions</a></i> are not <i><a href="g-e.xhtml#externalizableobject">externalizable objects</a></i>.
+
+
+</p></li><li><a href="e4-4-13.xhtml#DictEntry_structure_ob_348"><b>structure-object</b></a> and <a href="e4-4-14.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>
+
+<p>
+
+A general-purpose concept of <i><a href="g-s.xhtml#similarity">similarity</a></i> does not exist for <i><a href="g-s.xhtml#structure">structures</a></i>
+and <i><a href="g-s.xhtml#standardobject">standard objects</a></i>.
+However, a <i><a href="g-c.xhtml#conformingprogram">conforming program</a></i> is permitted to define a <a href="e7-7-21.xhtml#DictEntry_make_load_fo_577"><b>make-load-form</b></a>
+<i><a href="g-m.xhtml#method">method</a></i> for any <i><a href="g-c.xhtml#class">class</a></i> <i>K</i> defined by that <i><a href="g-p.xhtml#program">program</a></i> that is
+a <i><a href="g-s.xhtml#subclass">subclass</a></i> of either <a href="e4-4-13.xhtml#DictEntry_structure_ob_348"><b>structure-object</b></a> or <a href="e4-4-14.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>.
+The effect of such a <i><a href="g-m.xhtml#method">method</a></i> is to define that an <i><a href="g-o.xhtml#object">object</a></i> <i>S</i> of <i><a href="g-t.xhtml#type">type</a></i> <i>K</i>
+in <i><a href="g-s.xhtml#sourcecode">source code</a></i> is <i><a href="g-s.xhtml#similar">similar</a></i> to an <i><a href="g-o.xhtml#object">object</a></i> <i>C</i> of <i><a href="g-t.xhtml#type">type</a></i> <i>K</i>
+in <i><a href="g-c.xhtml#compiledcode">compiled code</a></i> if <i>C</i> was constructed from <i><a href="g-c.xhtml#code">code</a></i> produced by 
+calling <a href="e7-7-21.xhtml#DictEntry_make_load_fo_577"><b>make-load-form</b></a> on <i>S</i>.
+
+
+</p></li></ul>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Extensions_t_232"><span class="secno">3.2.4.3</span> Extensions to Similarity Rules</h4>
+<p>
+
+Some <i><a href="g-o.xhtml#object">objects</a></i>, such as <i><a href="g-s.xhtml#stream">streams</a></i>, <b>readtables</b>, and <b>methods</b>
+are not <i><a href="g-e.xhtml#externalizableobject">externalizable objects</a></i> under the definition of similarity given above.
+That is, such <i><a href="g-o.xhtml#object">objects</a></i> may not portably appear as <i><a href="g-l.xhtml#literal">literal</a></i> <i><a href="g-o.xhtml#object">objects</a></i> 
+in <i><a href="g-c.xhtml#code">code</a></i> to be processed by the <i><a href="g-f.xhtml#filecompiler">file compiler</a></i>. 
+
+</p><p>
+An <i><a href="g-i.xhtml#implementation">implementation</a></i> is permitted to extend the rules of similarity, 
+so that other kinds of <i><a href="g-o.xhtml#object">objects</a></i> are <i><a href="g-e.xhtml#externalizableobject">externalizable objects</a></i>
+for that <i><a href="g-i.xhtml#implementation">implementation</a></i>.
+
+</p><p>
+If for some kind of <i><a href="g-o.xhtml#object">object</a></i>, <i><a href="g-s.xhtml#similarity">similarity</a></i> is
+neither defined by this specification 
+	    nor by the <i><a href="g-i.xhtml#implementation">implementation</a></i>, 
+then the <i><a href="g-f.xhtml#filecompiler">file compiler</a></i> must signal an error upon encountering such 
+an <i><a href="g-o.xhtml#object">object</a></i> as a <i>literal constant</i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Additional_C_233"><span class="secno">3.2.4.4</span> Additional Constraints on Externalizable Objects</h4>
+<p>
+
+If two <i>literal objects</i> appearing in the source code for a single file
+processed with
+
+the <i><a href="g-f.xhtml#filecompiler">file compiler</a></i> 
+are the <i><a href="g-i.xhtml#identical">identical</a></i>,
+the corresponding <i><a href="g-o.xhtml#object">objects</a></i> in the <i><a href="g-c.xhtml#compiledcode">compiled code</a></i> 
+must also be the <i><a href="g-i.xhtml#identical">identical</a></i>.
+
+
+
+
+With the exception of <i><a href="g-s.xhtml#symbol">symbols</a></i> and <i><a href="g-p.xhtml#package">packages</a></i>, any two
+
+<i>literal objects</i>
+in <i><a href="g-c.xhtml#code">code</a></i> being processed by
+
+the <i><a href="g-f.xhtml#filecompiler">file compiler</a></i>
+may be <i>coalesced</i> 
+if and only if they are <i><a href="g-s.xhtml#similar">similar</a></i>; 
+if they are either both <i><a href="g-s.xhtml#symbol">symbols</a></i> or both <i><a href="g-p.xhtml#package">packages</a></i>,
+they may only be <i>coalesced</i> if and only if they are <i><a href="g-i.xhtml#identical">identical</a></i>.
+
+
+</p><p>
+
+<i><a href="g-o.xhtml#object">Objects</a></i> containing circular references can 
+
+be <i><a href="g-e.xhtml#externalizableobject">externalizable objects</a></i>.
+The <i><a href="g-f.xhtml#filecompiler">file compiler</a></i> is required to preserve <a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a>ness of 
+substructures within a <i><a href="g-f.xhtml#file">file</a></i>.
+
+Preserving <a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a>ness means that subobjects that are
+
+the <i><a href="g-s.xhtml#same">same</a></i>
+in the <i><a href="g-s.xhtml#sourcecode">source code</a></i> must 
+
+be
+
+the <i><a href="g-s.xhtml#same">same</a></i>
+
+in the corresponding <i><a href="g-c.xhtml#compiledcode">compiled code</a></i>.
+
+
+
+
+
+</p><p>
+In addition, the following are constraints on the handling of
+<i>literal objects</i> by the <i><a href="g-f.xhtml#filecompiler">file compiler</a></i>:
+
+</p><ul>
+
+<li><b>array:</b> If an <i><a href="g-a.xhtml#array">array</a></i> in the source code is a
+<i><a href="g-s.xhtml#simplearray">simple array</a></i>, then the corresponding <i><a href="g-a.xhtml#array">array</a></i>
+in the compiled code will also be a <i><a href="g-s.xhtml#simplearray">simple array</a></i>.  If
+an <i><a href="g-a.xhtml#array">array</a></i> in the source code is displaced, has a 
+<i><a href="g-f.xhtml#fillpointer">fill pointer</a></i>, or is <i><a href="g-a.xhtml#actuallyadjustable">actually adjustable</a></i>, the corresponding 
+<i><a href="g-a.xhtml#array">array</a></i> in the compiled code might lack any or all of these
+qualities. If an <i><a href="g-a.xhtml#array">array</a></i> in the source code has a fill
+pointer, then the corresponding <i><a href="g-a.xhtml#array">array</a></i> in the compiled
+code might be only the size implied by the fill pointer.
+
+</li><li><b>packages:</b> The loader is required to find the
+corresponding <i><a href="g-p.xhtml#package">package</a></i> <i><a href="g-o.xhtml#object">object</a></i> as if by calling 
+<a href="e11-2-4.xhtml#DictEntry_find_package_719"><b>find-package</b></a> with the package name as an argument.  
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e11-2-29.xhtml#DictEntry_package_erro_744"><b>package-error</b></a> is signaled if no 
+<i><a href="g-p.xhtml#package">package</a></i> of that name exists at load time.
+
+</li><li><b>random-state:</b> A constant <i><a href="g-r.xhtml#randomstate">random state</a></i>
+object cannot be used as the state argument 
+to the <i><a href="g-f.xhtml#function">function</a></i> <a href="e12-2-41.xhtml#DictEntry_random_815"><b>random</b></a> because <a href="e12-2-41.xhtml#DictEntry_random_815"><b>random</b></a> modifies this data structure.
+
+</li><li><b>structure, standard-object:</b>
+<i><a href="g-o.xhtml#object">Objects</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-13.xhtml#DictEntry_structure_ob_348"><b>structure-object</b></a> and <a href="e4-4-14.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>
+may appear in compiled constants if there is an
+appropriate <a href="e7-7-21.xhtml#DictEntry_make_load_fo_577"><b>make-load-form</b></a> method defined for that
+<i><a href="g-t.xhtml#type">type</a></i>.
+
+<p>
+
+
+
+
+The <i><a href="g-f.xhtml#filecompiler">file compiler</a></i> calls <a href="e7-7-21.xhtml#DictEntry_make_load_fo_577"><b>make-load-form</b></a> on any <i><a href="g-o.xhtml#object">object</a></i>
+that is referenced as a <i>literal object</i> if the <i><a href="g-o.xhtml#object">object</a></i> is a
+<i><a href="g-g.xhtml#generalizedinstance">generalized instance</a></i> of <a href="e4-4-14.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>,
+<a href="e4-4-13.xhtml#DictEntry_structure_ob_348"><b>structure-object</b></a>, <a href="e9-2-1.xhtml#DictEntry_condition_626"><b>condition</b></a>, or any of a 
+(possibly empty) <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> set of other <i>classes</i>.
+The <i><a href="g-f.xhtml#filecompiler">file compiler</a></i> only calls <a href="e7-7-21.xhtml#DictEntry_make_load_fo_577"><b>make-load-form</b></a> once for
+any given <i><a href="g-o.xhtml#object">object</a></i> within a single <i><a href="g-f.xhtml#file">file</a></i>.
+
+ 
+
+</p></li><li><b>symbol:</b> In order to guarantee that <i><a href="g-c.xhtml#compiledfile">compiled files</a></i> can be <i>loaded</i>
+  correctly, users must ensure that the <i><a href="g-p.xhtml#package">packages</a></i> referenced in those <i><a href="g-f.xhtml#file">files</a></i>
+  are defined consistently at compile time and load time.  <i><a href="g-c.xhtml#conformingprogram">Conforming programs</a></i>
+  must satisfy the following requirements:
+
+<ul>
+<li>1. The <i><a href="g-c.xhtml#currentpackage">current package</a></i> when a <i><a href="g-t.xhtml#toplevelform">top level form</a></i> in the <i><a href="g-f.xhtml#file">file</a></i>
+      is processed by <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> must be the same as the <i><a href="g-c.xhtml#currentpackage">current package</a></i>
+      when the <i><a href="g-c.xhtml#code">code</a></i> corresponding to that <i><a href="g-t.xhtml#toplevelform">top level form</a></i> in the
+      <i><a href="g-c.xhtml#compiledfile">compiled file</a></i> is executed by <a href="e24-2-3.xhtml#DictEntry_load_1408"><b>load</b></a>.  In particular:
+
+<ul>
+
+<li>a. Any <i><a href="g-t.xhtml#toplevelform">top level form</a></i> in a <i><a href="g-f.xhtml#file">file</a></i> that alters
+	  the <i><a href="g-c.xhtml#currentpackage">current package</a></i> must change it to a <i><a href="g-p.xhtml#package">package</a></i>
+	  of the same <i><a href="g-n.xhtml#name">name</a></i> both at compile time and at load time.
+
+</li><li>b. If the first <i><a href="g-n.xhtml#nonatomic">non-atomic</a></i> <i><a href="g-t.xhtml#toplevelform">top level form</a></i> in the <i><a href="g-f.xhtml#file">file</a></i>
+	  is not an <a href="e11-2-16.xhtml#DictEntry_in_package_731"><b>in-package</b></a> <i><a href="g-f.xhtml#form">form</a></i>, then the <i><a href="g-c.xhtml#currentpackage">current package</a></i>
+	  at the time <a href="e24-2-3.xhtml#DictEntry_load_1408"><b>load</b></a> is called must be a <i><a href="g-p.xhtml#package">package</a></i> with the 
+	  same <i><a href="g-n.xhtml#name">name</a></i> as the package that was the <i><a href="g-c.xhtml#currentpackage">current package</a></i>
+	  at the time <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> was called.
+</li></ul>
+
+</li><li>2. For all <i><a href="g-s.xhtml#symbol">symbols</a></i> 
+      appearing lexically within a <i><a href="g-t.xhtml#toplevelform">top level form</a></i> that
+      were <i><a href="g-a.xhtml#accessible">accessible</a></i> in the <i><a href="g-p.xhtml#package">package</a></i> that was the <i><a href="g-c.xhtml#currentpackage">current package</a></i>
+      during processing of that <i><a href="g-t.xhtml#toplevelform">top level form</a></i> at compile time, but
+      whose <i><a href="g-h.xhtml#homepackage">home package</a></i> was another <i><a href="g-p.xhtml#package">package</a></i>, at load time there must
+      be a <i><a href="g-s.xhtml#symbol">symbol</a></i> with the same <i><a href="g-n.xhtml#name">name</a></i> that is <i><a href="g-a.xhtml#accessible">accessible</a></i> in both the
+      load-time <i><a href="g-c.xhtml#currentpackage">current package</a></i> and in the <i><a href="g-p.xhtml#package">package</a></i>
+      with the same <i><a href="g-n.xhtml#name">name</a></i> as the
+      compile-time <i><a href="g-h.xhtml#homepackage">home package</a></i>. 
+
+</li><li>3. For all <i><a href="g-s.xhtml#symbol">symbols</a></i> represented in the <i><a href="g-c.xhtml#compiledfile">compiled file</a></i> 
+      that were <i><a href="g-e.xhtml#externalsymbol">external symbols</a></i> in
+      their <i><a href="g-h.xhtml#homepackage">home package</a></i> at compile time, there must be a <i><a href="g-s.xhtml#symbol">symbol</a></i> with the
+      same <i><a href="g-n.xhtml#name">name</a></i> that is an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i> in the <i><a href="g-p.xhtml#package">package</a></i> 
+      with the same <i><a href="g-n.xhtml#name">name</a></i> at load time.
+</li></ul>
+
+<p>
+  If any of these conditions do not hold, the <i><a href="g-p.xhtml#package">package</a></i> in which the <i><a href="g-l.xhtml#loader">loader</a></i> looks
+  for the affected <i><a href="g-s.xhtml#symbol">symbols</a></i> is unspecified.  <i><a href="g-i.xhtml#implementation">Implementations</a></i> are permitted 
+  to signal an error or to define this behavior.
+
+
+</p></li></ul>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Exceptional__234"><span class="secno">3.2.5</span> Exceptional Situations in the Compiler</h3>
+<p>
+<a href="e3-8-3.xhtml#DictEntry_compile_285"><b>compile</b></a> and <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> are permitted to
+signal errors and warnings, including errors due to compile-time
+processing of <code>(eval-when (:compile-toplevel) ...)</code> forms,
+macro expansion, and conditions signaled by the compiler itself.
+
+</p><p>
+<i><a href="g-c.xhtml#condition">Conditions</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> might be signaled by the compiler
+in situations where the compilation cannot proceed without intervention.  
+
+</p><p>
+In addition to situations for which the standard specifies that
+<i><a href="g-c.xhtml#condition">conditions</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-2.xhtml#DictEntry_warning_627"><b>warning</b></a> must or might be signaled,
+warnings might be signaled in situations where the compiler can
+determine that the consequences are undefined or that a run-time
+error will be signaled.  Examples of this situation are as follows: 
+    violating type declarations,
+    altering or assigning the value of a constant defined with <a href="e5-3-15.xhtml#DictEntry_defconstant_401"><b>defconstant</b></a>,
+    calling built-in Lisp functions with a wrong number of arguments or malformed keyword
+      argument lists, 
+and using unrecognized declaration specifiers.
+
+</p><p>
+The compiler is permitted to issue warnings about matters of
+programming style as conditions of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-3.xhtml#DictEntry_style_warnin_628"><b>style-warning</b></a>.
+Examples of this situation are as follows:
+      redefining a function using a different argument list,
+      calling a function with a wrong number of arguments,
+      not declaring <a href="e3-8-19.xhtml#DictEntry_ignore_igno_301"><b>ignore</b></a> of a local variable that is not referenced,
+  and referencing a variable declared <a href="e3-8-19.xhtml#DictEntry_ignore_igno_301"><b>ignore</b></a>.
+
+</p><p>
+Both <a href="e3-8-3.xhtml#DictEntry_compile_285"><b>compile</b></a> and <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> are permitted
+(but not required) to <i><a href="g-e.xhtml#establish">establish</a></i> a <i><a href="g-h.xhtml#handler">handler</a></i>
+for <i><a href="g-c.xhtml#condition">conditions</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>.  For example, they
+might signal a warning, and restart compilation from some
+<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> point in order to let the 
+compilation proceed without manual intervention.
+
+</p><p>
+Both <a href="e3-8-3.xhtml#DictEntry_compile_285"><b>compile</b></a> and <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> return three
+values, the second two indicating whether the source code being compiled
+contained errors and whether style warnings were issued.
+
+</p><p>
+Some warnings might be deferred until the end of compilation. 
+See <a href="e24-2-4.xhtml#DictEntry_with_compila_1409"><b>with-compilation-unit</b></a>.
+
+
+
+</p>
+</section>
+</section>
+</section>
+</body>
+</html>

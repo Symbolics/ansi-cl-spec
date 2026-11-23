@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>18.2.8 hash-table-test — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_hash_table_t_1085" class="entry"><span class="secno">18.2.8</span> <span class="names">hash-table-test</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>hash-table-test</b>
+<i>hash-table</i>
+  → <i>test</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>hash-table</i>—a <i><a href="g-h.xhtml#hashtable">hash table</a></i>.
+
+<p>
+<i>test</i>—a <i><a href="g-f.xhtml#functiondesignator">function designator</a></i>.
+ For the four <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-h.xhtml#hashtable">hash table</a></i> test <i><a href="g-f.xhtml#function">functions</a></i>
+ (see <a href="e18-2-2.xhtml#DictEntry_make_hash_ta_1079"><b>make-hash-table</b></a>), the <i>test</i> value returned
+ is always a <i><a href="g-s.xhtml#symbol">symbol</a></i>.  If an <i><a href="g-i.xhtml#implementation">implementation</a></i> permits additional 
+ tests, it is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> whether such tests are
+ returned as <i><a href="g-f.xhtml#function">function</a></i> <i><a href="g-o.xhtml#object">objects</a></i> or <i><a href="g-f.xhtml#functionname">function names</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Returns the test used for comparing <i><a href="g-k.xhtml#key">keys</a></i> in <i>hash-table</i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>hash-table</i> is not a <i><a href="g-h.xhtml#hashtable">hash table</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e18-2-2.xhtml#DictEntry_make_hash_ta_1079"><b>make-hash-table</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

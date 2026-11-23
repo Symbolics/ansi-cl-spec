@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>13.2.2 base-char — Type</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_base_char_885" class="entry"><span class="secno">13.2.2</span> <span class="names">base-char</span> <span class="kind">Type</span></h3>
+<dl>
+
+
+<dt><b>Supertypes:</b></dt><dd>
+
+<a href="#DictEntry_base_char_885"><b>base-char</b></a>,
+<a href="e13-2-6.xhtml#DictEntry_character_889"><b>character</b></a>,
+<a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+The <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_base_char_885"><b>base-char</b></a> is defined as the <i><a href="g-u.xhtml#upgradedarrayelementtype">upgraded array element type</a></i> 
+of <a href="e13-2-3.xhtml#DictEntry_standard_cha_886"><b>standard-char</b></a>.
+An <i><a href="g-i.xhtml#implementation">implementation</a></i> can support additional <i><a href="g-s.xhtml#subtype">subtypes</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e13-2-6.xhtml#DictEntry_character_889"><b>character</b></a>
+(besides the ones listed in this standard) 
+that might or might not be <i><a href="g-s.xhtml#supertype">supertypes</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_base_char_885"><b>base-char</b></a>.
+In addition, an <i><a href="g-i.xhtml#implementation">implementation</a></i> can define <a href="#DictEntry_base_char_885"><b>base-char</b></a>
+to be the <i><a href="g-s.xhtml#same">same</a></i> <i><a href="g-t.xhtml#type">type</a></i> as <a href="e13-2-6.xhtml#DictEntry_character_889"><b>character</b></a>.
+
+<p>
+<i><a href="g-b.xhtml#basecharacter">Base characters</a></i> are distinguished in the following respects:
+</p><ul>
+<li>1. The <i><a href="g-t.xhtml#type">type</a></i> <a href="e13-2-3.xhtml#DictEntry_standard_cha_886"><b>standard-char</b></a> is a <i><a href="g-s.xhtml#subrepertoire">subrepertoire</a></i> of the <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_base_char_885"><b>base-char</b></a>.
+</li><li>2. The selection of <i><a href="g-b.xhtml#basecharacter">base characters</a></i> that are not <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>
+	      is implementation defined.
+</li><li>3. Only <i><a href="g-o.xhtml#object">objects</a></i> of the <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_base_char_885"><b>base-char</b></a> can be 
+	     <i><a href="g-e.xhtml#element">elements</a></i> of a <i><a href="g-b.xhtml#basestring">base string</a></i>.
+</li><li>4.
+No upper bound is specified for the number of characters in the 
+<a href="#DictEntry_base_char_885"><b>base-char</b></a> <i><a href="g-r.xhtml#repertoire">repertoire</a></i>; the size of that <i><a href="g-r.xhtml#repertoire">repertoire</a></i>
+is 
+<i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>.
+The lower bound is 96, the number of <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>.
+
+</li></ul>
+
+<p>
+Whether a character is a <i><a href="g-b.xhtml#basecharacter">base character</a></i> depends on the way 
+that an <i><a href="g-i.xhtml#implementation">implementation</a></i> represents <i><a href="g-s.xhtml#string">strings</a></i>, 
+and not any other properties of the <i><a href="g-i.xhtml#implementation">implementation</a></i> or the host operating system.  
+For example, one implementation might encode all <i><a href="g-s.xhtml#string">strings</a></i> 
+as characters having 16-bit encodings, and another might have
+two kinds of <i><a href="g-s.xhtml#string">strings</a></i>: those with characters having 8-bit 
+encodings and those with characters having 16-bit encodings.  In the
+first <i><a href="g-i.xhtml#implementation">implementation</a></i>, the <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_base_char_885"><b>base-char</b></a> is equivalent to
+the <i><a href="g-t.xhtml#type">type</a></i> <a href="e13-2-6.xhtml#DictEntry_character_889"><b>character</b></a>: there is only one kind of <i><a href="g-s.xhtml#string">string</a></i>.
+In the second <i><a href="g-i.xhtml#implementation">implementation</a></i>, the <i><a href="g-b.xhtml#basecharacter">base characters</a></i> might be 
+those <i><a href="g-c.xhtml#character">characters</a></i> that could be stored in a <i><a href="g-s.xhtml#string">string</a></i> of <i><a href="g-c.xhtml#character">characters</a></i>
+having 8-bit encodings.  In such an implementation,
+the <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_base_char_885"><b>base-char</b></a> is a <i><a href="g-p.xhtml#propersubtype">proper subtype</a></i> of the <i><a href="g-t.xhtml#type">type</a></i> <a href="e13-2-6.xhtml#DictEntry_character_889"><b>character</b></a>.
+
+
+
+</p><p>
+
+The <i><a href="g-t.xhtml#type">type</a></i> <a href="e13-2-3.xhtml#DictEntry_standard_cha_886"><b>standard-char</b></a> is a 
+
+<i><a href="g-s.xhtml#subtype">subtype</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_base_char_885"><b>base-char</b></a>.
+
+
+
+
+
+</p></dd></dl>
+</section>
+</body>
+</html>

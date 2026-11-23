@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>16.1 String Concepts</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_String_Conce_1016"><span class="secno">16.1</span> String Concepts</h2>
+<section>
+<h3 id="SubSection_Implications_1017"><span class="secno">16.1.1</span> Implications of Strings Being Arrays</h3>
+<p>
+
+
+Since all <i><a href="g-s.xhtml#string">strings</a></i> are <i><a href="g-a.xhtml#array">arrays</a></i>, all rules which apply
+generally to <i><a href="g-a.xhtml#array">arrays</a></i> also apply to <i><a href="g-s.xhtml#string">strings</a></i>.
+See Section <a href="s15-1.xhtml#Section_Array_Concep_964">15.1 Array Concepts</a>.
+
+</p><p>
+For example,
+     <i><a href="g-s.xhtml#string">strings</a></i> can have <i><a href="g-f.xhtml#fillpointer">fill pointers</a></i>,
+ and <i><a href="g-s.xhtml#string">strings</a></i> are also subject to the rules of <i><a href="g-e.xhtml#elementtype">element type</a></i> <i>upgrading</i>
+        that apply to <i><a href="g-a.xhtml#array">arrays</a></i>.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Subtypes_of__1018"><span class="secno">16.1.2</span> Subtypes of STRING</h3>
+<p>
+
+
+
+
+
+All functions that operate on <i><a href="g-s.xhtml#string">strings</a></i> 
+will operate on <i><a href="g-s.xhtml#subtype">subtypes</a></i> of <i><a href="g-s.xhtml#string">string</a></i> as well.
+
+</p><p>
+However,
+the consequences are undefined if a <i><a href="g-c.xhtml#character">character</a></i> is inserted into a <i><a href="g-s.xhtml#string">string</a></i>
+for which the <i><a href="g-e.xhtml#elementtype">element type</a></i> of the <i><a href="g-s.xhtml#string">string</a></i> does not include that <i><a href="g-c.xhtml#character">character</a></i>.
+
+</p>
+</section>
+</section>
+</section>
+</body>
+</html>

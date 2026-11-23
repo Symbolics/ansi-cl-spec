@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.46 abort, continue, muffle-warning, store-value, use-value — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_abort_conti_671" class="entry"><span class="secno">9.2.46</span> <span class="names">abort, continue, muffle-warning, store-value, use-value</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>abort</b>
+<i><code>&amp;optional</code> condition</i>
+  →  <b>|</b> 
+<p>
+<b>continue</b>
+<i><code>&amp;optional</code> condition</i>
+  → <i><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i></p><p>
+<b>muffle-warning</b>
+<i><code>&amp;optional</code> condition</i>
+  →  <b>|</b> 
+</p><p>
+<b>store-value</b>
+<i>value <code>&amp;optional</code> condition</i>
+  → <i><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i></p><p>
+<b>use-value</b>
+<i>value <code>&amp;optional</code> condition</i>
+  → <i><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i></p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>value</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+<p>
+
+
+<i>condition</i>—a <i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-o.xhtml#object">object</a></i>, or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Transfers control to the most recently established <i><a href="g-a.xhtml#applicablerestart">applicable restart</a></i>
+having the same name as the function.  That is,
+  the <i><a href="g-f.xhtml#function">function</a></i> <a href="#DictEntry_abort_conti_671"><b>abort</b></a>    searches for an <i><a href="g-a.xhtml#applicable">applicable</a></i> <a href="#DictEntry_abort_conti_671"><b>abort</b></a>    <i><a href="g-r.xhtml#restart">restart</a></i>, 
+  the <i><a href="g-f.xhtml#function">function</a></i> <a href="#DictEntry_abort_conti_671"><b>continue</b></a> searches for an <i><a href="g-a.xhtml#applicable">applicable</a></i> <a href="#DictEntry_abort_conti_671"><b>continue</b></a> <i><a href="g-r.xhtml#restart">restart</a></i>,
+and so on.
+
+<p>
+If no such <i><a href="g-r.xhtml#restart">restart</a></i> exists, 
+the functions
+     <a href="#DictEntry_abort_conti_671"><b>continue</b></a>,
+     <a href="#DictEntry_abort_conti_671"><b>store-value</b></a>, 
+ and <a href="#DictEntry_abort_conti_671"><b>use-value</b></a>
+return <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, and 
+the functions
+     <a href="#DictEntry_abort_conti_671"><b>abort</b></a>
+ and <a href="#DictEntry_abort_conti_671"><b>muffle-warning</b></a>
+signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e5-3-67.xhtml#DictEntry_control_erro_453"><b>control-error</b></a>.
+
+</p><p>
+
+When <i>condition</i> is <i><a href="g-n.xhtml#nonnil">non-nil</a></i>,
+only those <i><a href="g-r.xhtml#restart">restarts</a></i> are considered that are 
+  either explicitly associated with that <i>condition</i>,
+      or not associated with any <i><a href="g-c.xhtml#condition">condition</a></i>;
+that is, the excluded <i><a href="g-r.xhtml#restart">restarts</a></i> are 
+those that are associated with a non-empty set of <i><a href="g-c.xhtml#condition">conditions</a></i>
+of which the given <i>condition</i> is not an <i><a href="g-e.xhtml#element">element</a></i>.
+If <i>condition</i> is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, all <i><a href="g-r.xhtml#restart">restarts</a></i> are considered.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre>;;; Example of the ABORT retart
+
+ (defmacro abort-on-error (&amp;body forms)
+   `(handler-bind ((error #'abort))
+      ,@forms)) →  ABORT-ON-ERROR
+ (abort-on-error (+ 3 5)) → 8
+ (abort-on-error (error "You lose."))
+▷ Returned to Lisp Top Level.
+
+;;; Example of the CONTINUE restart
+
+ (defun real-sqrt (n)
+   (when (minusp n)
+     (setq n (- n))
+     (cerror "Return sqrt(~D) instead." "Tried to take sqrt(-~D)." n))
+   (sqrt n))
+
+ (real-sqrt 4) → 2
+ (real-sqrt -9)
+▷ Error: Tried to take sqrt(-9).
+▷ To continue, type :CONTINUE followed by an option number:
+▷ 1: Return sqrt(9) instead.
+▷ 2: Return to Lisp Toplevel.
+▷ Debug&gt; <span class="user">(continue)</span>
+▷ Return sqrt(9) instead.
+→ 3
+ 
+ (handler-bind ((error #'(lambda (c) (continue))))
+   (real-sqrt -9)) → 3
+
+;;; Example of the MUFFLE-WARNING restart
+
+ (defun count-down (x)
+   (do ((counter x (1- counter)))
+       ((= counter 0) 'done)
+     (when (= counter 1)
+       (warn "Almost done"))
+     (format t "~&amp;~D~%" counter)))
+→  COUNT-DOWN
+ (count-down 3)
+▷3
+▷2
+▷ Warning: Almost done
+▷1
+→  DONE
+
+
+
+
+
+
+
+
+
+ (defun ignore-warnings-while-counting (x)
+   (handler-bind ((warning #'ignore-warning))
+     (count-down x)))
+→  IGNORE-WARNINGS-WHILE-COUNTING
+ (defun ignore-warning (condition)
+   (declare (ignore condition))
+   (muffle-warning))
+→  IGNORE-WARNING
+ (ignore-warnings-while-counting 3)
+▷3
+▷2
+▷1
+→  DONE
+
+;;; Example of the STORE-VALUE and USE-VALUE restarts
+
+ (defun careful-symbol-value (symbol)
+   (check-type symbol symbol)
+   (restart-case (if (boundp symbol)
+                     (return-from careful-symbol-value 
+                                  (symbol-value symbol))
+                     (error 'unbound-variable
+                            :name symbol))
+     (use-value (value)
+       :report "Specify a value to use this time."
+       value)
+     (store-value (value)
+       :report "Specify a value to store and use in the future."
+       (setf (symbol-value symbol) value))))
+ (setq a 1234) → 1234
+ (careful-symbol-value 'a) → 1234
+ (makunbound 'a) →  A
+ (careful-symbol-value 'a)
+▷ Error: A is not bound.
+▷ To continue, type :CONTINUE followed by an option number.
+▷ 1: Specify a value to use this time.
+▷ 2: Specify a value to store and use in the future.
+▷ 3: Return to Lisp Toplevel.
+▷ Debug&gt; <span class="user">(use-value 12)</span>
+→ 12
+ (careful-symbol-value 'a)
+▷ Error: A is not bound.
+▷ To continue, type :CONTINUE followed by an option number.
+▷  1: Specify a value to use this time.
+▷  2: Specify a value to store and use in the future.
+▷  3: Return to Lisp Toplevel.
+▷ Debug&gt; <span class="user">(store-value 24)</span>
+→ 24
+ (careful-symbol-value 'a)
+→ 24
+
+;;; Example of the USE-VALUE restart
+
+ (defun add-symbols-with-default (default &amp;rest symbols)
+   (handler-bind ((sys:unbound-symbol
+                    #'(lambda (c)
+                        (declare (ignore c)) 
+                        (use-value default))))
+     (apply #'+ (mapcar #'careful-symbol-value symbols))))
+→  ADD-SYMBOLS-WITH-DEFAULT
+ (setq x 1 y 2) → 2
+ (add-symbols-with-default 3 'x 'y 'z) → 6
+
+
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+A transfer of control may occur if an appropriate <i><a href="g-r.xhtml#restart">restart</a></i> is available,
+or (in the case of the <i><a href="g-f.xhtml#function">function</a></i> <a href="#DictEntry_abort_conti_671"><b>abort</b></a> or the <i><a href="g-f.xhtml#function">function</a></i> <a href="#DictEntry_abort_conti_671"><b>muffle-warning</b></a>)
+execution may be stopped.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+Each of these functions can be affected by 
+the presence of a <i><a href="g-r.xhtml#restart">restart</a></i> having the same name.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+If an appropriate <a href="#DictEntry_abort_conti_671"><b>abort</b></a> <i><a href="g-r.xhtml#restart">restart</a></i>
+ is not available for the <i><a href="g-f.xhtml#function">function</a></i> <a href="#DictEntry_abort_conti_671"><b>abort</b></a>,
+or an appropriate <a href="#DictEntry_abort_conti_671"><b>muffle-warning</b></a> <i><a href="g-r.xhtml#restart">restart</a></i> 
+ is not available for the <i><a href="g-f.xhtml#function">function</a></i> <a href="#DictEntry_abort_conti_671"><b>muffle-warning</b></a>,
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e5-3-67.xhtml#DictEntry_control_erro_453"><b>control-error</b></a> is signaled.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e9-2-34.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a>,
+Section <a href="s9-1.xhtml#SubSubSectio_Restarts_618">9.1.4.2 Restarts</a>,
+Section <a href="s9-1.xhtml#SubSubSubSec_Interfaces_t_620">9.1.4.2.2 Interfaces to Restarts</a>,
+<a href="e9-2-10.xhtml#DictEntry_assert_635"><b>assert</b></a>,
+<a href="e5-3-46.xhtml#DictEntry_case_ccase_432"><b>ccase</b></a>,
+<a href="e9-2-12.xhtml#DictEntry_cerror_637"><b>cerror</b></a>,
+<a href="e9-2-13.xhtml#DictEntry_check_type_638"><b>check-type</b></a>,
+<a href="e5-3-47.xhtml#DictEntry_typecase_ct_433"><b>ctypecase</b></a>,
+<a href="#DictEntry_abort_conti_671"><b>use-value</b></a>,
+<a href="e9-2-20.xhtml#DictEntry_warn_645"><b>warn</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (abort condition) ==(invoke-restart 'abort)
+ (muffle-warning)  ==(invoke-restart 'muffle-warning)
+ (continue)        ==(let ((r (find-restart 'continue))) (if r (invoke-restart r)))
+ (use-value <i>x</i>) ==(let ((r (find-restart 'use-value))) (if r (invoke-restart r <i>x</i>)))
+ (store-value x) ==(let ((r (find-restart 'store-value))) (if r (invoke-restart r <i>x</i>)))
+</pre>
+
+<p>
+No functions defined in this specification are required to provide
+a <a href="#DictEntry_abort_conti_671"><b>use-value</b></a> <i><a href="g-r.xhtml#restart">restart</a></i>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

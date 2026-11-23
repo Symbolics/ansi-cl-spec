@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.7.33 define-method-combination — Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_define_metho_589" class="entry"><span class="secno">7.7.33</span> <span class="names">define-method-combination</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>define-method-combination</b>
+<i>name [[↓short-form-option]]</i><br/>   
+  → <i>name</i>
+<p>
+<b>define-method-combination</b>
+<i>name lambda-list
+                                ({<i>method-group-specifier</i>}*)
+                                [(<code>:arguments</code> . args-lambda-list)]
+                                [(<code>:generic-function</code> 
+                                                   generic-function-symbol)]
+                                [[{<i>declaration</i>}* 
+                                         <i>|</i> <i>documentation</i>]]
+                                {<i>form</i>}*</i><br/>   
+  → <i>name</i>
+
+
+</p><p>
+
+short-form-option::= <code>:documentation</code> <i>documentation</i> | <br/>
+			   <code>:identity-with-one-argument</code>
+			   <i>identity-with-one-argument</i> |<br/>
+			   <code>:operator</code> <i>operator</i></p><p>
+
+method-group-specifier::= (name 
+				       <code>{</code>{<i>qualifier-pattern</i>}<sup>+</sup> <i>|</i> predicate<code>}</code>
+			               [[↓long-form-option]])</p><p>
+
+long-form-option::= <code>:description</code> <i>description</i> |<br/>
+			  <code>:order</code> <i>order</i> 		|<br/>
+			  <code>:required</code> <i>required-p</i></p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>args-lambda-list</i>—
+
+
+
+a <i><a href="g-d.xhtml#definemethodcombinationargumentslambdalist">define-method-combination arguments lambda list</a></i>.
+
+<p>
+<i>declaration</i>—a <a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="g-e.xhtml#expression">expression</a></i>; not evaluated.
+
+</p><p>
+<i>description</i>—a <i><a href="g-f.xhtml#formatcontrol">format control</a></i>.
+
+</p><p>
+<i>documentation</i>—a <i><a href="g-s.xhtml#string">string</a></i>; not evaluated.
+
+</p><p>
+<i>forms</i>—an <i><a href="g-i.xhtml#implicitprogn">implicit progn</a></i> 
+  that must compute and return the <i><a href="g-f.xhtml#form">form</a></i> that specifies how
+  the <i><a href="g-m.xhtml#method">methods</a></i> are combined, that is, the <i><a href="g-e.xhtml#effectivemethod">effective method</a></i>.
+
+</p><p>
+<i>generic-function-symbol</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+</p><p>
+<i>identity-with-one-argument</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>lambda-list</i>—<i><a href="g-o.xhtml#ordinarylambdalist">ordinary lambda list</a></i>.
+
+</p><p>
+<i>name</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i>. 
+  Non-<i><a href="g-k.xhtml#keyword">keyword</a></i>, <i><a href="g-n.xhtml#nonnil">non-nil</a></i> <i><a href="g-s.xhtml#symbol">symbols</a></i> are usually used.
+
+</p><p>
+<i>operator</i>—an <i><a href="g-o.xhtml#operator">operator</a></i>.
+  <i>Name</i> and <i>operator</i> are often the <i><a href="g-s.xhtml#same">same</a></i> <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+  This is the default, but it is not required.
+
+</p><p>
+<i>order</i>—<code>:most-specific-first</code> or <code>:most-specific-last</code>; evaluated.
+
+</p><p>
+
+<i>predicate</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i> that names a <i><a href="g-f.xhtml#function">function</a></i> of one argument
+		    that returns a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>qualifier-pattern</i>—a <i><a href="g-l.xhtml#list">list</a></i>,
+			 or the <i><a href="g-s.xhtml#symbol">symbol</a></i> <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a>.
+
+</p><p>
+<i>required-p</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The macro <a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a> is used to define new types
+of method combination.
+
+<p>
+There are two forms of <a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a>.  The short
+form is a simple facility for the cases that are expected
+to be most commonly needed.  The long form is more powerful but more
+verbose.  It resembles <a href="e3-8-10.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a> in that the body is an
+expression, usually using backquote, that computes a <i><a href="g-f.xhtml#form">form</a></i>.  Thus
+arbitrary control structures can be implemented.  The long form also
+allows arbitrary processing of method <i><a href="g-q.xhtml#qualifier">qualifiers</a></i>.
+
+</p><ul>
+<li><b>Short Form</b>
+
+<p>
+The short form syntax of <a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a> is recognized
+when the second <i><a href="g-s.xhtml#subform">subform</a></i> is a <i><a href="g-n.xhtml#nonnil">non-nil</a></i> symbol or is not present.
+When the short form is used, <i>name</i> is defined as a type of
+method combination that produces a Lisp form
+<code>(<i>operator</i> <i>method-call</i> <i>method-call</i> <i> ... </i>)</code>.
+The <i>operator</i> is a <i><a href="g-s.xhtml#symbol">symbol</a></i> that can be the <i><a href="g-n.xhtml#name">name</a></i> of a 
+<i><a href="g-f.xhtml#function">function</a></i>, <i><a href="g-m.xhtml#macro">macro</a></i>, or <i><a href="g-s.xhtml#specialoperator">special operator</a></i>.  
+The <i>operator</i> can be supplied by a keyword option;
+it defaults to <i>name</i>.
+
+</p><p>
+Keyword options for the short form are the following:
+
+</p><ul>
+
+<li>
+The <code>:documentation</code> option is used to document the method-combination type;
+see description of long form below.
+
+</li><li>
+The <code>:identity-with-one-argument</code> option enables an optimization
+when its value is <i><a href="g-t.xhtml#true">true</a></i> (the default is <i><a href="g-f.xhtml#false">false</a></i>).  If there is
+exactly one applicable method and it is a primary method, that method
+serves as the effective method and <i>operator</i> is not called.
+This optimization avoids the need to create a new effective method and
+avoids the overhead of a <i><a href="g-f.xhtml#function">function</a></i> call.  This option is designed to be
+used with operators such as <a href="e5-3-59.xhtml#DictEntry_progn_445"><b>progn</b></a>, <a href="e4-4-20.xhtml#DictEntry_and_355"><b>and</b></a>, <b>+</b>, and
+<a href="e12-2-16.xhtml#DictEntry_max_min_790"><b>max</b></a>.
+
+</li><li>
+The <code>:operator</code> option specifies the <i><a href="g-n.xhtml#name">name</a></i> of the operator.  The
+<i>operator</i> argument is a <i><a href="g-s.xhtml#symbol">symbol</a></i> that can be the 
+<i><a href="g-n.xhtml#name">name</a></i> of a <i><a href="g-f.xhtml#function">function</a></i>,
+<i><a href="g-m.xhtml#macro">macro</a></i>, or 
+<i><a href="g-s.xhtml#specialform">special form</a></i>.  
+
+</li></ul>
+
+<p>
+These types of method combination require exactly one <i><a href="g-q.xhtml#qualifier">qualifier</a></i> per
+method.  An error is signaled if there are applicable methods with no
+<i><a href="g-q.xhtml#qualifier">qualifiers</a></i> or with <i><a href="g-q.xhtml#qualifier">qualifiers</a></i> that are not supported by 
+the method combination type. 
+
+</p><p>
+A method combination procedure defined in this way recognizes two
+roles for methods.  A method whose one <i><a href="g-q.xhtml#qualifier">qualifier</a></i> is the symbol naming
+this type of method combination is defined to be a primary method.  At
+least one primary method must be applicable or an error is signaled.
+A method with <code>:around</code> as its one <i><a href="g-q.xhtml#qualifier">qualifier</a></i> is an auxiliary
+method that behaves the same as an <i><a href="g-a.xhtml#aroundmethod">around method</a></i> in standard
+method combination.  The <i><a href="g-f.xhtml#function">function</a></i> <a href="e7-7-31.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> can only be
+used in <i><a href="g-a.xhtml#aroundmethod">around methods</a></i>; it cannot be used in primary methods
+defined by the short form of the <a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a> macro.
+
+</p><p>
+A method combination procedure defined in this way accepts an optional
+argument named <i>order</i>, which defaults to 
+<code>:most-specific-first</code>.  A value of <code>:most-specific-last</code> reverses
+the order of the primary methods without affecting the order of the
+auxiliary methods.
+
+</p><p>
+The short form automatically includes error checking and support for
+<i><a href="g-a.xhtml#aroundmethod">around methods</a></i>.
+
+</p><p>
+For a discussion of built-in method combination types, 
+see Section <a href="s7-6.xhtml#SubSubSectio_Built_in_Met_554">7.6.6.4 Built-in Method Combination Types</a>.
+
+</p></li><li><b>Long Form</b>
+
+<p>
+The long form syntax of <a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a> is recognized 
+when the second <i><a href="g-s.xhtml#subform">subform</a></i> is a list.  
+
+</p><p>
+The <i>lambda-list</i> 
+receives any arguments provided after the <i><a href="g-n.xhtml#name">name</a></i> of the method
+combination type in the <code>:method-combination</code> option to
+<a href="e7-7-26.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a>.
+
+</p><p>
+A list of method group specifiers follows.  Each specifier selects a subset
+of the applicable methods to play a particular role, either by matching
+their <i><a href="g-q.xhtml#qualifier">qualifiers</a></i> against some patterns or by testing their <i><a href="g-q.xhtml#qualifier">qualifiers</a></i> with
+a <i>predicate</i>.   
+These method group specifiers define all method <i><a href="g-q.xhtml#qualifier">qualifiers</a></i>
+that can be used with this type of method combination.
+
+</p><p>
+
+
+The <i><a href="g-c.xhtml#car">car</a></i> of each <i>method-group-specifier</i> is a <i><a href="g-s.xhtml#symbol">symbol</a></i>
+which <i><a href="g-n.xhtml#name">names</a></i> a <i><a href="g-v.xhtml#variable">variable</a></i>.
+During the execution of
+the <i><a href="g-f.xhtml#form">forms</a></i> in the body of <a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a>, this
+<i><a href="g-v.xhtml#variable">variable</a></i> is bound to a list of the <i><a href="g-m.xhtml#method">methods</a></i> in the method group.  The
+<i><a href="g-m.xhtml#method">methods</a></i> in this list occur in the order specified by the 
+<code>:order</code> option.
+
+</p><p>
+If <i>qualifier-pattern</i> is a <i><a href="g-s.xhtml#symbol">symbol</a></i> it must be <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a>.  
+A method matches
+a <i>qualifier-pattern</i> if the method's 
+list of <i><a href="g-q.xhtml#qualifier">qualifiers</a></i> is <a href="e5-3-35.xhtml#DictEntry_equal_421"><b>equal</b></a>
+to the <i>qualifier-pattern</i> (except that the symbol <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a> in a 
+<i>qualifier-pattern</i> matches anything).  Thus 
+a <i>qualifier-pattern</i> can be one of the
+following:
+ the <i><a href="g-e.xhtml#emptylist">empty list</a></i>, which matches <i><a href="g-u.xhtml#unqualifiedmethod">unqualified methods</a></i>;
+ the symbol <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a>, which matches all methods;
+ a true list, which matches methods with the same number of <i><a href="g-q.xhtml#qualifier">qualifiers</a></i> 
+   as the length of the list when each <i><a href="g-q.xhtml#qualifier">qualifier</a></i> matches 
+   the corresponding list element; or
+ a dotted list that ends in the symbol <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a> 
+   (the <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a> matches any number of additional <i><a href="g-q.xhtml#qualifier">qualifiers</a></i>).
+
+</p><p>
+ 
+Each applicable method is tested against the <i>qualifier-patterns</i> and
+<i>predicates</i> in left-to-right order.  
+As soon as a <i>qualifier-pattern</i> matches
+or a <i>predicate</i> returns true, the method becomes a member of the
+corresponding method group and no further tests are made.  Thus if a method
+could be a member of more than one method group, it joins only the first
+such group.  If a method group has more than one 
+<i>qualifier-pattern</i>, a
+method need only satisfy one of the <i>qualifier-patterns</i> to be a member of
+the group.
+
+</p><p>
+The <i><a href="g-n.xhtml#name">name</a></i> of a <i>predicate</i> function can appear instead of 
+<i>qualifier-patterns</i> in a method group specifier.  
+The <i>predicate</i> is called for
+each method that has not been assigned to an earlier method group; it
+is called with one argument, the method's <i><a href="g-q.xhtml#qualifier">qualifier</a></i> <i><a href="g-l.xhtml#list">list</a></i>.
+The <i>predicate</i> should return true if the method is to be a member of the
+method group.  A <i>predicate</i> can be distinguished from a 
+<i>qualifier-pattern</i>
+because it is a <i><a href="g-s.xhtml#symbol">symbol</a></i> other than <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> or <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a>.
+
+</p><p>
+If there is an applicable method that does not fall into any method group,
+the <i><a href="g-f.xhtml#function">function</a></i> <a href="e9-2-15.xhtml#DictEntry_invalid_meth_640"><b>invalid-method-error</b></a> is called.
+
+</p><p>
+Method group specifiers can have keyword options following the
+<i><a href="g-q.xhtml#qualifier">qualifier</a></i> patterns or predicate.  Keyword options can be distinguished from
+additional <i><a href="g-q.xhtml#qualifier">qualifier</a></i> patterns because they are neither lists nor the symbol
+<a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a>.  The keyword options are as follows:
+
+</p><ul>
+
+<li>
+The <code>:description</code> option is used to provide a description of the
+role of methods in the method group.  Programming environment tools
+use
+ <code>(apply #'format stream <i>format-control</i> (method-qualifiers <i>method</i>))</code>
+to print this description, which
+is expected to be concise.  This keyword
+option allows the description of a method <i><a href="g-q.xhtml#qualifier">qualifier</a></i> to be defined in
+the same module that defines the meaning of the 
+method <i><a href="g-q.xhtml#qualifier">qualifier</a></i>.  In most cases, <i>format-control</i> will not contain any
+<a href="e22-4-31.xhtml#DictEntry_format_1371"><b>format</b></a> directives, but they are available for generality.  
+If <code>:description</code> is not supplied, a default description is generated
+based on the variable name and the <i><a href="g-q.xhtml#qualifier">qualifier</a></i> patterns and on whether
+this method group includes the <i><a href="g-u.xhtml#unqualifiedmethod">unqualified methods</a></i>.  
+
+</li><li>
+The <code>:order</code> option specifies the order of methods.  The <i>order</i>
+argument is a <i><a href="g-f.xhtml#form">form</a></i> that evaluates to 
+<code>:most-specific-first</code> or <code>:most-specific-last</code>.  If it evaluates
+to any other value, an error is signaled.  
+
+
+If <code>:order</code> is not supplied, it defaults to 
+<code>:most-specific-first</code>.
+
+</li><li>
+The <code>:required</code> option specifies whether at least one method in
+this method group is required.
+If its value is <i><a href="g-t.xhtml#true">true</a></i> and the method group is empty 
+(that is, no applicable methods match the <i><a href="g-q.xhtml#qualifier">qualifier</a></i> patterns
+or satisfy the predicate), 
+an error is signaled.  
+
+
+If <code>:required</code> is not supplied,
+it defaults to <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.  
+
+</li></ul>
+
+<p>
+The use of method group specifiers provides a convenient syntax to
+select methods, to divide them among the possible roles, and to perform the
+necessary error checking.  It is possible to perform further filtering
+of methods in the body <i><a href="g-f.xhtml#form">forms</a></i> by using normal list-processing operations
+and the functions <a href="e7-7-15.xhtml#DictEntry_method_quali_571"><b>method-qualifiers</b></a> and 
+<a href="e9-2-15.xhtml#DictEntry_invalid_meth_640"><b>invalid-method-error</b></a>.  It is permissible to use <a href="e5-3-20.xhtml#DictEntry_setq_406"><b>setq</b></a> on the
+variables named in the method group specifiers and to bind additional
+variables.  It is also possible to bypass the method group specifier
+mechanism and do everything in the body <i><a href="g-f.xhtml#form">forms</a></i>.  This is accomplished
+by writing a single method group with <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a> as its only 
+<i>qualifier-pattern</i>; 
+the variable is then bound to a <i><a href="g-l.xhtml#list">list</a></i> of all of the
+<i><a href="g-a.xhtml#applicablemethod">applicable methods</a></i>, in most-specific-first order.
+
+</p><p>
+The body <i>forms</i> compute and return the <i><a href="g-f.xhtml#form">form</a></i> that specifies
+how the methods are combined, that is, the effective method.
+The effective method is evaluated in
+the <i><a href="g-n.xhtml#nulllexicalenvironment">null lexical environment</a></i> augmented with a local macro definition
+for <a href="e7-7-30.xhtml#DictEntry_call_method_586"><b>call-method</b></a> and with bindings named by
+symbols not <i><a href="g-a.xhtml#accessible">accessible</a></i> from the <code>common-lisp-user</code> <i><a href="g-p.xhtml#package">package</a></i>.
+Given a method object in one of the 
+<i><a href="g-l.xhtml#list">lists</a></i> produced by the method group
+specifiers and a <i><a href="g-l.xhtml#list">list</a></i> of next methods,
+<a href="e7-7-30.xhtml#DictEntry_call_method_586"><b>call-method</b></a>
+will invoke the method such that <a href="e7-7-31.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> has available
+the next methods.
+
+</p><p>
+When an effective method has no effect other than to call a single
+method, some implementations employ an optimization that uses the
+single method directly as the effective method, thus avoiding the need
+to create a new effective method.  This optimization is active when
+the effective method form consists entirely of an invocation of
+the <a href="e7-7-30.xhtml#DictEntry_call_method_586"><b>call-method</b></a> macro whose first <i><a href="g-s.xhtml#subform">subform</a></i> is a method object and
+whose second <i><a href="g-s.xhtml#subform">subform</a></i> is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> or unsupplied.  Each
+<a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a> body is responsible for stripping off
+redundant invocations of <a href="e5-3-59.xhtml#DictEntry_progn_445"><b>progn</b></a>, <a href="e4-4-20.xhtml#DictEntry_and_355"><b>and</b></a>,
+<a href="e5-3-51.xhtml#DictEntry_multiple_val_437"><b>multiple-value-prog1</b></a>, and the like, if this optimization is desired.
+
+</p><p>
+The list <code>(:arguments . <i>lambda-list</i>)</code> can appear before
+any declarations or <i><a href="g-d.xhtml#documentationstring">documentation string</a></i>.  This form is useful when
+the method combination type performs some specific behavior as part of
+the combined method and that behavior needs access to the arguments to
+the <i><a href="g-g.xhtml#genericfunction">generic function</a></i>.  Each parameter variable defined by 
+<i>lambda-list</i> is bound to a <i><a href="g-f.xhtml#form">form</a></i> that can be inserted into the
+effective method.  When this <i><a href="g-f.xhtml#form">form</a></i> is evaluated during execution of the
+effective method, its value is the corresponding argument to the
+<i><a href="g-g.xhtml#genericfunction">generic function</a></i>; the consequences of using such a <i><a href="g-f.xhtml#form">form</a></i> as
+the <i>place</i> in a <a href="e7-7-38.xhtml#DictEntry_setf_class__594"><b>setf</b></a> <i><a href="g-f.xhtml#form">form</a></i> are undefined.
+
+
+Argument correspondence is computed by dividing the <code>:arguments</code> <i>lambda-list</i>
+and the <i><a href="g-g.xhtml#genericfunction">generic function</a></i> <i>lambda-list</i> into three sections:
+     the <i><a href="g-r.xhtml#requiredparameter">required parameters</a></i>,
+     the <i><a href="g-o.xhtml#optionalparameter">optional parameters</a></i>,
+ and the <i><a href="g-k.xhtml#keyword">keyword</a></i> and <i><a href="g-r.xhtml#restparameter">rest parameters</a></i>.
+The <i><a href="g-a.xhtml#argument">arguments</a></i> supplied to the <i><a href="g-g.xhtml#genericfunction">generic function</a></i> for a particular <i><a href="g-c.xhtml#call">call</a></i>
+are also divided into three sections;
+     the required <i><a href="g-a.xhtml#argument">arguments</a></i> section contains as many <i><a href="g-a.xhtml#argument">arguments</a></i>
+      as the <i><a href="g-g.xhtml#genericfunction">generic function</a></i> has <i><a href="g-r.xhtml#requiredparameter">required parameters</a></i>,
+     the optional <i><a href="g-a.xhtml#argument">arguments</a></i> section contains as many arguments
+      as the <i><a href="g-g.xhtml#genericfunction">generic function</a></i> has <i><a href="g-o.xhtml#optionalparameter">optional parameters</a></i>,
+     and the keyword/rest <i><a href="g-a.xhtml#argument">arguments</a></i> section contains the remaining arguments.
+Each <i><a href="g-p.xhtml#parameter">parameter</a></i> in the required and optional sections of the 
+<code>:arguments</code> <i>lambda-list</i> accesses the argument at the same position
+in the corresponding section of the <i><a href="g-a.xhtml#argument">arguments</a></i>.
+If the section of the <code>:arguments</code> <i>lambda-list</i> is shorter,
+ extra <i><a href="g-a.xhtml#argument">arguments</a></i> are ignored. 
+If the section of the <code>:arguments</code> <i>lambda-list</i> is longer,
+ excess <i><a href="g-r.xhtml#requiredparameter">required parameters</a></i> are bound to forms that evaluate to <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> 
+ and excess <i><a href="g-o.xhtml#optionalparameter">optional parameters</a></i> are <i><a href="g-b.xhtml#bound">bound</a></i> to their initforms.
+The <i><a href="g-k.xhtml#keywordparameter">keyword parameters</a></i> and <i><a href="g-r.xhtml#restparameter">rest parameters</a></i> in the <code>:arguments</code>
+<i>lambda-list</i> access the keyword/rest section of the <i><a href="g-a.xhtml#argument">arguments</a></i>.
+If the <code>:arguments</code> <i>lambda-list</i> contains <a href="s3-4.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a>, it behaves as
+if it also contained <a href="s3-4.xhtml#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a>.
+
+</p><p>
+In addition, <a href="s3-4.xhtml#SubSection_Macro_Lambda_254"><b>&amp;whole</b></a> <i>var</i> can be placed first in the <code>:arguments</code>
+<i>lambda-list</i>.  It causes <i>var</i> to be <i><a href="g-b.xhtml#bound">bound</a></i> to a <i><a href="g-f.xhtml#form">form</a></i>
+that <i><a href="g-e.xhtml#evaluate">evaluates</a></i> to a <i><a href="g-l.xhtml#list">list</a></i> of all of the <i><a href="g-a.xhtml#argument">arguments</a></i> supplied
+to the <i><a href="g-g.xhtml#genericfunction">generic function</a></i>.  This is different from <a href="s3-4.xhtml#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a> because it
+accesses all of the arguments, not just the keyword/rest <i><a href="g-a.xhtml#argument">arguments</a></i>.
+
+</p><p>
+Erroneous conditions detected by the body should be reported with
+<a href="e9-2-16.xhtml#DictEntry_method_combi_641"><b>method-combination-error</b></a> or <a href="e9-2-15.xhtml#DictEntry_invalid_meth_640"><b>invalid-method-error</b></a>; these
+<i><a href="g-f.xhtml#function">functions</a></i>
+add any necessary contextual information to the error message and will
+signal the appropriate error.
+
+</p><p>
+The body <i>forms</i> are evaluated inside of the <i><a href="g-b.xhtml#binding">bindings</a></i> created by
+the
+<i><a href="g-l.xhtml#lambdalist">lambda list</a></i> and method group specifiers. 
+
+Declarations at the head of
+the body are positioned directly inside of <i><a href="g-b.xhtml#binding">bindings</a></i> created by the
+<i><a href="g-l.xhtml#lambdalist">lambda list</a></i> and outside of the <i><a href="g-b.xhtml#binding">bindings</a></i> of the method group variables. 
+Thus method group variables cannot be declared in this way.  <a href="e3-8-27.xhtml#DictEntry_locally_309"><b>locally</b></a> may be used
+around the body, however.
+
+</p><p>
+Within the body <i>forms</i>, <i>generic-function-symbol</i>
+is bound to the <i><a href="g-g.xhtml#genericfunction">generic function</a></i> <i><a href="g-o.xhtml#object">object</a></i>.
+
+</p><p>
+
+<i>Documentation</i> is attached as a <i><a href="g-d.xhtml#documentationstring">documentation string</a></i> 
+    to <i>name</i> (as kind <a href="e4-4-15.xhtml#DictEntry_method_combi_350"><b>method-combination</b></a>)
+and to the <i><a href="g-m.xhtml#methodcombination">method combination</a></i> <i><a href="g-o.xhtml#object">object</a></i>.
+
+
+</p><p>
+Note that two methods with identical specializers, but with different
+<i><a href="g-q.xhtml#qualifier">qualifiers</a></i>, are not ordered by the algorithm described in Step 2 of
+the method selection and combination process described in 
+Section <a href="s7-6.xhtml#SubSection_Method_Selec_547">7.6.6 Method Selection and Combination</a>.  Normally the two methods play
+different roles in the effective method because they have different
+<i><a href="g-q.xhtml#qualifier">qualifiers</a></i>, and no matter how they are ordered in the result of Step
+2, the effective method is the same.  If the two methods play the same
+role and their order matters, 
+
+an error is signaled.  This happens as
+part of the <i><a href="g-q.xhtml#qualifier">qualifier</a></i> pattern matching in
+<a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a>.
+
+</p></li></ul>
+
+<p>
+
+If a <a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a> <i><a href="g-f.xhtml#form">form</a></i> appears as a
+<i><a href="g-t.xhtml#toplevelform">top level form</a></i>, the <i><a href="g-c.xhtml#compiler">compiler</a></i> must make the
+<i><a href="g-m.xhtml#methodcombination">method combination</a></i> <i><a href="g-n.xhtml#name">name</a></i> be recognized as a valid
+
+<i><a href="g-m.xhtml#methodcombination">method combination</a></i> <i><a href="g-n.xhtml#name">name</a></i> in subsequent <a href="e7-7-26.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a>
+<i><a href="g-f.xhtml#form">forms</a></i>.  However, the <i><a href="g-m.xhtml#methodcombination">method combination</a></i> is executed
+no earlier than when the <a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a> <i><a href="g-f.xhtml#form">form</a></i>
+is executed, and possibly as late as the time that <i><a href="g-g.xhtml#genericfunction">generic functions</a></i>
+that use the <i><a href="g-m.xhtml#methodcombination">method combination</a></i> are executed.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+Most examples of the long form of <a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a> also
+illustrate the use of the related <i><a href="g-f.xhtml#function">functions</a></i> that are provided as part
+of the declarative method combination facility.
+
+<pre>;;; Examples of the short form of define-method-combination
+ 
+ (define-method-combination and :identity-with-one-argument t) 
+  
+ (defmethod func and ((x class1) y) ...)
+ 
+;;; The equivalent of this example in the long form is:
+ 
+ (define-method-combination and 
+         (&amp;optional (order :most-specific-first))
+         ((around (:around))
+          (primary (and) :order order :required t))
+   (let ((form (if (rest primary)
+                   `(and ,@(mapcar #'(lambda (method)
+                                       `(call-method ,method))
+                                   primary))
+                   `(call-method ,(first primary)))))
+     (if around
+         `(call-method ,(first around)
+                       (,@(rest around)
+                        (make-method ,form)))
+         form)))
+  
+;;; Examples of the long form of define-method-combination
+ 
+;The default method-combination technique
+ (define-method-combination standard ()
+         ((around (:around))
+          (before (:before))
+          (primary () :required t)
+          (after (:after)))
+   (flet ((call-methods (methods)
+            (mapcar #'(lambda (method)
+                        `(call-method ,method))
+                    methods)))
+     (let ((form (if (or before after (rest primary))
+                     `(multiple-value-prog1
+                        (progn ,@(call-methods before)
+                               (call-method ,(first primary)
+                                            ,(rest primary)))
+                        ,@(call-methods (reverse after)))
+                     `(call-method ,(first primary)))))
+       (if around
+           `(call-method ,(first around)
+                         (,@(rest around)
+                          (make-method ,form)))
+           form))))
+  
+;A simple way to try several methods until one returns non-nil
+ (define-method-combination or ()
+         ((methods (or)))
+   `(or ,@(mapcar #'(lambda (method)
+                      `(call-method ,method))
+                  methods)))
+  
+;A more complete version of the preceding
+ (define-method-combination or 
+         (&amp;optional (order ':most-specific-first))
+         ((around (:around))
+          (primary (or)))
+   ;; Process the order argument
+   (case order
+     (:most-specific-first)
+     (:most-specific-last (setq primary (reverse primary)))
+     (otherwise (method-combination-error "~S is an invalid order.~@
+     :most-specific-first and :most-specific-last are the possible values."
+                                          order)))
+   ;; Must have a primary method
+   (unless primary
+     (method-combination-error "A primary method is required."))
+   ;; Construct the form that calls the primary methods
+   (let ((form (if (rest primary)
+                   `(or ,@(mapcar #'(lambda (method)
+                                      `(call-method ,method))
+                                  primary))
+                   `(call-method ,(first primary)))))
+     ;; Wrap the around methods around that form
+     (if around
+         `(call-method ,(first around)
+                       (,@(rest around)
+                        (make-method ,form)))
+         form)))
+  
+;The same thing, using the :order and :required keyword options
+ (define-method-combination or 
+         (&amp;optional (order ':most-specific-first))
+         ((around (:around))
+          (primary (or) :order order :required t))
+   (let ((form (if (rest primary)
+                   `(or ,@(mapcar #'(lambda (method)
+                                      `(call-method ,method))
+                                  primary))
+                   `(call-method ,(first primary)))))
+     (if around
+         `(call-method ,(first around)
+                       (,@(rest around)
+                        (make-method ,form)))
+         form)))
+  
+;This short-form call is behaviorally identical to the preceding
+ (define-method-combination or :identity-with-one-argument t)
+ 
+;Order methods by positive integer qualifiers
+;:around methods are disallowed to keep the example small
+ (define-method-combination example-method-combination ()
+         ((methods positive-integer-qualifier-p))
+   `(progn ,@(mapcar #'(lambda (method)
+                         `(call-method ,method))
+                     (stable-sort methods #'&lt;
+                       :key #'(lambda (method)
+                                (first (method-qualifiers method)))))))
+ 
+ (defun positive-integer-qualifier-p (method-qualifiers)
+   (and (= (length method-qualifiers) 1)
+        (typep (first method-qualifiers) '(integer 0 *))))
+  
+;;; Example of the use of :arguments
+ (define-method-combination progn-with-lock ()
+         ((methods ()))
+   (:arguments object)
+   `(unwind-protect
+        (progn (lock (object-lock ,object))
+               ,@(mapcar #'(lambda (method)
+                             `(call-method ,method))
+                         methods))
+      (unlock (object-lock ,object))))
+  
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+
+The <i><a href="g-c.xhtml#compiler">compiler</a></i> is not required to perform any compile-time side-effects.
+
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Method combination types defined with the short form require exactly
+one <i><a href="g-q.xhtml#qualifier">qualifier</a></i> per method.  
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> is signaled if there are
+applicable methods with no <i><a href="g-q.xhtml#qualifier">qualifiers</a></i> or with <i><a href="g-q.xhtml#qualifier">qualifiers</a></i> that are not
+supported by the method combination type.
+At least one primary method must be applicable or 
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> is signaled.
+
+<p>
+If an applicable method does not fall into any method group, the
+system signals an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>
+indicating that the method is invalid for the kind of
+method combination in use.
+
+</p><p>
+If the value of the <code>:required</code> option is <i><a href="g-t.xhtml#true">true</a></i>
+and the method group is empty (that is, no applicable
+methods match the <i><a href="g-q.xhtml#qualifier">qualifier</a></i> patterns or satisfy the predicate), 
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> is signaled.
+
+</p><p>
+If the <code>:order</code> option evaluates to a value other than 
+<code>:most-specific-first</code> or <code>:most-specific-last</code>, 
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> is signaled.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e7-7-30.xhtml#DictEntry_call_method_586"><b>call-method</b></a>,
+<a href="e7-7-31.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a>,
+<a href="e25-2-15.xhtml#DictEntry_documentatio_1442"><b>documentation</b></a>,
+<a href="e7-7-15.xhtml#DictEntry_method_quali_571"><b>method-qualifiers</b></a>,
+<a href="e9-2-16.xhtml#DictEntry_method_combi_641"><b>method-combination-error</b></a>,
+<a href="e9-2-15.xhtml#DictEntry_invalid_meth_640"><b>invalid-method-error</b></a>,
+<a href="e7-7-26.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a>,
+Section <a href="s7-6.xhtml#SubSection_Method_Selec_547">7.6.6 Method Selection and Combination</a>,
+Section <a href="s7-6.xhtml#SubSubSectio_Built_in_Met_554">7.6.6.4 Built-in Method Combination Types</a>,
+Section <a href="s3-4.xhtml#SubSection_Syntactic_In_265">3.4.11 Syntactic Interaction of Documentation Strings and Declarations</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The <code>:method-combination</code> option of <a href="e7-7-26.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> is used to
+specify that a <i><a href="g-g.xhtml#genericfunction">generic function</a></i> should use a particular method
+combination type.  The first argument to the <code>:method-combination</code>
+option is the <i><a href="g-n.xhtml#name">name</a></i> of a method combination type and the remaining
+arguments are options for that type.
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>4.4.17 satisfies — Type Specifier</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_satisfies_352" class="entry"><span class="secno">4.4.17</span> <span class="names">satisfies</span> <span class="kind">Type Specifier</span></h3>
+<dl>
+
+
+<dt><b>Compound Type Specifier Kind:</b></dt><dd>
+
+Predicating.
+
+</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+
+<code>(satisfies predicate-name)</code>
+
+</dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+
+<i>predicate-name</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+</dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+
+This denotes the set of all <i><a href="g-o.xhtml#object">objects</a></i> that satisfy the
+<i><a href="g-p.xhtml#predicate">predicate</a></i> <i>predicate-name</i>, which must be a <i><a href="g-s.xhtml#symbol">symbol</a></i>
+whose global <i><a href="g-f.xhtml#function">function</a></i> definition is a one-argument
+predicate.  A name is required for <i>predicate-name</i>; 
+<i><a href="g-l.xhtml#lambdaexpression">lambda expressions</a></i> are not allowed.
+For example, the <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> <code>(and integer (satisfies evenp))</code>
+denotes the set of all even integers.
+The form <code>(typep <i>x</i> '(satisfies <i>p</i>))</code> is equivalent to
+<code>(if (<i>p</i> <i>x</i>) t nil)</code>.
+<p>
+
+The argument is required.
+The <i><a href="g-s.xhtml#symbol">symbol</a></i> <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a> can be the argument, but it
+denotes itself (the <i><a href="g-s.xhtml#symbol">symbol</a></i> <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a>),
+and does not represent an unspecified value.
+
+</p><p>
+The symbol <a href="#DictEntry_satisfies_352"><b>satisfies</b></a> is not valid as a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>.
+
+
+</p></dd></dl>
+</section>
+</body>
+</html>

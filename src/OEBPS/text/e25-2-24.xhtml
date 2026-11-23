@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>25.2.24 lisp-implementation-type, lisp-implementation-version — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_lisp_impleme_1451" class="entry"><span class="secno">25.2.24</span> <span class="names">lisp-implementation-type, lisp-implementation-version</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>lisp-implementation-type</b>
+<i> &lt; <i>no arguments</i> &gt; </i>
+  → <i>description</i>
+<p>
+<b>lisp-implementation-version</b>
+<i> &lt; <i>no arguments</i> &gt; </i>
+  → <i>description</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>description</i>—a <i><a href="g-s.xhtml#string">string</a></i> or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_lisp_impleme_1451"><b>lisp-implementation-type</b></a> and <a href="#DictEntry_lisp_impleme_1451"><b>lisp-implementation-version</b></a> 
+identify the current implementation of <i>Common Lisp</i>.
+
+<p>
+
+<a href="#DictEntry_lisp_impleme_1451"><b>lisp-implementation-type</b></a> returns a <i><a href="g-s.xhtml#string">string</a></i> 
+that identifies the generic name of
+the particular <i>Common Lisp</i> implementation.
+
+</p><p>
+
+<a href="#DictEntry_lisp_impleme_1451"><b>lisp-implementation-version</b></a> 
+returns a <i><a href="g-s.xhtml#string">string</a></i> that identifies the version of
+the particular <i>Common Lisp</i> implementation.
+
+</p><p>
+
+If no appropriate
+and relevant result can be produced, <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is returned instead
+of a <i><a href="g-s.xhtml#string">string</a></i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (lisp-implementation-type)
+→ "ACME Lisp"
+OR→"Joe's Common Lisp"
+ (lisp-implementation-version)
+→ "1.3a"
+→ "V2"
+OR→"Release 17.3, ECO #6"
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>10.2.19 set — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_set_693" class="entry"><span class="secno">10.2.19</span> <span class="names">set</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>set</b>
+<i>symbol value</i>
+  → <i>value</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>symbol</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+<p>
+
+
+<i>value</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_set_693"><b>set</b></a> changes the contents of the <i><a href="g-v.xhtml#valuecell">value cell</a></i> of <i><a href="g-s.xhtml#symbol">symbol</a></i>
+to the given <i><a href="g-v.xhtml#value">value</a></i>.
+
+<pre>(set <i>symbol</i> <i>value</i>) ==(setf (symbol-value <i>symbol</i>) <i>value</i>)
+</pre>
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setf (symbol-value 'n) 1) → 1
+ (set 'n 2) → 2
+ (symbol-value 'n) → 2
+ (let ((n 3))
+   (declare (special n))
+   (setq n (+ n 1))
+   (setf (symbol-value 'n) (* n 10))
+   (set 'n (+ (symbol-value 'n) n))
+   n) → 80
+ n → 2
+ (let ((n 3))
+   (setq n (+ n 1))
+   (setf (symbol-value 'n) (* n 10))
+   (set 'n (+ (symbol-value 'n) n))
+   n) → 4
+ n → 44
+ (defvar *n* 2)
+ (let ((*n* 3))
+   (setq *n* (+ *n* 1))
+   (setf (symbol-value '*n*) (* *n* 10))
+   (set '*n* (+ (symbol-value '*n*) *n*))
+   *n*) → 80
+  *n* → 2
+ (defvar *even-count* 0) → *EVEN-COUNT*
+ (defvar *odd-count* 0) → *ODD-COUNT*
+ (defun tally-list (list)
+   (dolist (element list)
+     (set (if (evenp element) '*even-count* '*odd-count*)
+          (+ element (if (evenp element) *even-count* *odd-count*)))))
+ (tally-list '(1 9 4 3 2 7)) →  NIL
+ *even-count* → 6
+ *odd-count* → 20
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The <i><a href="g-v.xhtml#value">value</a></i> of <i>symbol</i> is changed.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-20.xhtml#DictEntry_setq_406"><b>setq</b></a>, <a href="e5-3-19.xhtml#DictEntry_progv_405"><b>progv</b></a>, <a href="e10-2-14.xhtml#DictEntry_symbol_value_688"><b>symbol-value</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The function <a href="#DictEntry_set_693"><b>set</b></a> is deprecated.
+
+<p>
+
+<a href="#DictEntry_set_693"><b>set</b></a> cannot change the value of a <i><a href="g-l.xhtml#lexicalvariable">lexical variable</a></i>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

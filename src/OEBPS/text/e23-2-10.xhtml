@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>23.2.10 set-macro-character, get-macro-character — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_set_macro_ch_1390" class="entry"><span class="secno">23.2.10</span> <span class="names">set-macro-character, get-macro-character</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>get-macro-character</b>
+<i>char <code>&amp;optional</code> readtable</i>
+  → <i>function, non-terminating-p</i>
+<p>
+<b>set-macro-character</b>
+<i>char new-function <code>&amp;optional</code> non-terminating-p readtable</i>
+  → <i><a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+</i></p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>char</i>—a <i><a href="g-c.xhtml#character">character</a></i>.
+
+<p>
+<i>non-terminating-p</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+ The default is <i><a href="g-f.xhtml#false">false</a></i>.
+
+</p><p>
+
+<i>readtable</i>—a <i><a href="g-r.xhtml#readtabledesignator">readtable designator</a></i>.
+
+ The default is the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i>.
+
+</p><p>
+<i>function</i>—<a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, 
+		   or a <i><a href="g-d.xhtml#designator">designator</a></i> for a <i><a href="g-f.xhtml#function">function</a></i> of two <i><a href="g-a.xhtml#argument">arguments</a></i>.
+
+</p><p>
+<i>new-function</i>—a <i><a href="g-f.xhtml#functiondesignator">function designator</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_set_macro_ch_1390"><b>get-macro-character</b></a> returns as its <i><a href="g-p.xhtml#primaryvalue">primary value</a></i>, <i>function</i>,
+the <i><a href="g-r.xhtml#readermacrofunction">reader macro function</a></i> associated with <i>char</i> in <i>readtable</i> (if any),
+or else <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> if <i>char</i> is not a <i><a href="g-m.xhtml#macrocharacter">macro character</a></i> in <i>readtable</i>.
+The <i><a href="g-s.xhtml#secondaryvalue">secondary value</a></i>, <i>non-terminating-p</i>, is <i><a href="g-t.xhtml#true">true</a></i> 
+if <i>char</i> is a <i><a href="g-n.xhtml#nonterminating">non-terminating</a></i> <i><a href="g-m.xhtml#macrocharacter">macro character</a></i>;
+otherwise, it is <i><a href="g-f.xhtml#false">false</a></i>.
+
+<p>
+<a href="#DictEntry_set_macro_ch_1390"><b>set-macro-character</b></a> causes <i>char</i> to be a <i><a href="g-m.xhtml#macrocharacter">macro character</a></i>
+associated with the <i><a href="g-r.xhtml#readermacrofunction">reader macro function</a></i> <i>new-function</i> 
+(or the <i><a href="g-d.xhtml#designator">designator</a></i> for <i>new-function</i>) in <i>readtable</i>.
+If <i>non-terminating-p</i> is <i><a href="g-t.xhtml#true">true</a></i>,
+<i>char</i> becomes a <i><a href="g-n.xhtml#nonterminating">non-terminating</a></i> <i><a href="g-m.xhtml#macrocharacter">macro character</a></i>;
+otherwise it becomes a     <i><a href="g-t.xhtml#terminating">terminating</a></i> <i><a href="g-m.xhtml#macrocharacter">macro character</a></i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (get-macro-character #\{) →  NIL, <i><a href="g-f.xhtml#false">false</a></i>
+ (not (get-macro-character #\;)) → <i><a href="g-f.xhtml#false">false</a></i>
+</pre>
+
+<p>
+The following is a possible definition for the <i><a href="g-s.xhtml#singlequote">single-quote</a></i> <i><a href="g-r.xhtml#readermacro">reader macro</a></i> 
+in <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i>:
+
+</p><pre> (defun single-quote-reader (stream char)
+   (declare (ignore char))
+   (list 'quote (read stream t nil t))) →  SINGLE-QUOTE-READER
+ (set-macro-character #\' #'single-quote-reader) →  T
+</pre>
+
+<p>
+Here <code>single-quote-reader</code> reads an <i><a href="g-o.xhtml#object">object</a></i> following the <i><a href="g-s.xhtml#singlequote">single-quote</a></i>
+and returns a <i><a href="g-l.xhtml#list">list</a></i> of <a href="e3-8-7.xhtml#DictEntry_quote_289"><b>quote</b></a> and that <i><a href="g-o.xhtml#object">object</a></i>.
+The <i>char</i> argument is ignored.
+
+</p><p>
+The following is a possible definition for the <i><a href="g-s.xhtml#semicolon">semicolon</a></i> <i><a href="g-r.xhtml#readermacro">reader macro</a></i>
+in <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i>:
+
+</p><pre> (defun semicolon-reader (stream char)
+   (declare (ignore char))
+   ;; First swallow the rest of the current input line.
+   ;; End-of-file is acceptable for terminating the comment.
+   (do () ((char= (read-char stream nil #\Newline t) #\Newline)))
+   ;; Return zero values.
+   (values)) →  SEMICOLON-READER
+ (set-macro-character #\; #'semicolon-reader) →  T
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The <i>readtable</i> is modified.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e23-2-17.xhtml#DictEntry_readtable_1397"><b>*readtable*</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

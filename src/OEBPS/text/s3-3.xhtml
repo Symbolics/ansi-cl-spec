@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.3 Declarations</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Declarations_235"><span class="secno">3.3</span> Declarations</h2>
+<p>
+<b><i>Declarations</i></b> provide a way of specifying information for use by
+program processors, such as the evaluator or the compiler.
+
+</p><p>
+<b><i>Local declarations</i></b>
+can be embedded in executable code using <a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a>.
+<b><i>Global declarations</i></b>, 
+or <b><i>proclamations</i></b>,
+are established by <a href="e3-8-16.xhtml#DictEntry_proclaim_298"><b>proclaim</b></a> or <a href="e3-8-17.xhtml#DictEntry_declaim_299"><b>declaim</b></a>.
+
+</p><p>
+
+The <a href="e3-8-28.xhtml#DictEntry_the_310"><b>the</b></a> <i><a href="g-s.xhtml#specialform">special form</a></i> provides a shorthand notation for 
+making a <i><a href="g-l.xhtml#localdeclaration">local declaration</a></i> about the <i><a href="g-t.xhtml#type">type</a></i> of the
+<i><a href="g-v.xhtml#value">value</a></i> of a given <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+
+The consequences are undefined if a program violates a <i><a href="g-d.xhtml#declaration">declaration</a></i>
+or a <i><a href="g-p.xhtml#proclamation">proclamation</a></i>.
+
+</p>
+<section>
+<h3 id="SubSection_Minimal_Decl_236"><span class="secno">3.3.1</span> Minimal Declaration Processing Requirements</h3>
+<p>
+
+In general, an <i><a href="g-i.xhtml#implementation">implementation</a></i> is free to ignore
+<i><a href="g-d.xhtml#declarationspecifier">declaration specifiers</a></i> except for the
+     <a href="e3-8-24.xhtml#DictEntry_declaration_306"><b>declaration</b></a>,
+     <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>notinline</b></a>,
+     <b>safety</b>,
+ and <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a> <i><a href="g-d.xhtml#declarationspecifier">declaration specifiers</a></i>.
+
+</p><p>
+A <a href="e3-8-24.xhtml#DictEntry_declaration_306"><b>declaration</b></a> <i><a href="g-d.xhtml#declaration">declaration</a></i> must suppress warnings
+about unrecognized <i><a href="g-d.xhtml#declaration">declarations</a></i> of the kind that it declares.
+If an <i><a href="g-i.xhtml#implementation">implementation</a></i> does not produce warnings about
+unrecognized declarations, it may safely ignore this <i><a href="g-d.xhtml#declaration">declaration</a></i>.
+
+</p><p>
+A <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>notinline</b></a> <i><a href="g-d.xhtml#declaration">declaration</a></i> must be recognized by any <i><a href="g-i.xhtml#implementation">implementation</a></i>
+that supports inline functions or <i><a href="g-c.xhtml#compilermacro">compiler macros</a></i> in order to disable those facilities.
+An <i><a href="g-i.xhtml#implementation">implementation</a></i> that does not use inline functions or <i><a href="g-c.xhtml#compilermacro">compiler macros</a></i>
+may safely ignore this <i><a href="g-d.xhtml#declaration">declaration</a></i>.
+
+</p><p>
+A <b>safety</b> <i><a href="g-d.xhtml#declaration">declaration</a></i> that increases the current safety level 
+must always be recognized.  An <i><a href="g-i.xhtml#implementation">implementation</a></i> that always processes 
+code as if safety were high may safely ignore this <i><a href="g-d.xhtml#declaration">declaration</a></i>.
+
+</p><p>
+A <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a> <i><a href="g-d.xhtml#declaration">declaration</a></i> must be processed by all <i><a href="g-i.xhtml#implementation">implementations</a></i>.
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Declaration__237"><span class="secno">3.3.2</span> Declaration Specifiers</h3>
+<p>
+
+A <b><i>declaration specifier</i></b> is an <i><a href="g-e.xhtml#expression">expression</a></i> that can appear at
+top level of a <a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a> expression or a <a href="e3-8-17.xhtml#DictEntry_declaim_299"><b>declaim</b></a> form, or as 
+the argument to <a href="e3-8-16.xhtml#DictEntry_proclaim_298"><b>proclaim</b></a>.
+It is a <i><a href="g-l.xhtml#list">list</a></i> whose <i><a href="g-c.xhtml#car">car</a></i> is a <i><a href="g-d.xhtml#declarationidentifier">declaration identifier</a></i>,
+and whose <i><a href="g-c.xhtml#cdr">cdr</a></i> is data interpreted according to rules specific to
+the <i><a href="g-d.xhtml#declarationidentifier">declaration identifier</a></i>.
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Declaration__238"><span class="secno">3.3.3</span> Declaration Identifiers</h3>
+<p>
+
+The next figure shows a list of all 
+<i><a href="g-d.xhtml#declarationidentifier">declaration identifiers</a></i> 
+defined by this standard.
+
+</p><table id="fig-3-9" class="fig">
+<caption><span class="figlabel">Figure 3-9.</span> Common Lisp Declaration Identifiers</caption>
+
+  <tbody><tr>
+    <td>declaration</td>
+    <td>ignore</td>
+    <td>special</td>
+  </tr>
+  <tr>
+    <td>dynamic-extent</td>
+    <td>inline</td>
+    <td>type</td>
+  </tr>
+  <tr>
+    <td>ftype</td>
+    <td>notinline</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>ignorable</td>
+    <td>optimize</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+
+
+<p>
+
+An implementation is free to support other (<i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>)
+<i><a href="g-d.xhtml#declarationidentifier">declaration identifiers</a></i> as well.  
+
+
+
+A warning might be issued
+if a <i><a href="g-d.xhtml#declarationidentifier">declaration identifier</a></i> 
+is not among those defined above,
+
+is not defined by the <i><a href="g-i.xhtml#implementation">implementation</a></i>,
+is not a <i><a href="g-t.xhtml#type">type</a></i> <i><a href="g-n.xhtml#name">name</a></i>, 
+and has not been declared in a <a href="e3-8-24.xhtml#DictEntry_declaration_306"><b>declaration</b></a> <i><a href="g-p.xhtml#proclamation">proclamation</a></i>.
+</p>
+<section>
+<h4 id="SubSubSectio_Shorthand_no_239"><span class="secno">3.3.3.1</span> Shorthand notation for Type Declarations</h4>
+<p>
+
+A <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> can be used as a <i><a href="g-d.xhtml#declarationidentifier">declaration identifier</a></i>.
+<code>(<i>type-specifier</i> {<i>var</i>}*)</code> is taken as shorthand for
+<code>(type <i>type-specifier</i> {<i>var</i>}*)</code>.
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Declaration__240"><span class="secno">3.3.4</span> Declaration Scope</h3>
+<p><i><a href="g-d.xhtml#declaration">Declarations</a></i> can be divided into two kinds: those that apply to the
+<i><a href="g-b.xhtml#binding">bindings</a></i> of <i><a href="g-v.xhtml#variable">variables</a></i> or <i><a href="g-f.xhtml#function">functions</a></i>; and those that
+do not apply to <i><a href="g-b.xhtml#binding">bindings</a></i>.
+
+</p><p>
+A <i><a href="g-d.xhtml#declaration">declaration</a></i> that appears at the head of a binding <i><a href="g-f.xhtml#form">form</a></i> 
+and applies to a <i><a href="g-v.xhtml#variable">variable</a></i> or <i><a href="g-f.xhtml#function">function</a></i> <i><a href="g-b.xhtml#binding">binding</a></i> 
+made by that <i><a href="g-f.xhtml#form">form</a></i> is called a <b><i>bound declaration</i></b>; 
+such a <i><a href="g-d.xhtml#declaration">declaration</a></i> affects both the <i><a href="g-b.xhtml#binding">binding</a></i> and
+any references within the <i><a href="g-s.xhtml#scope">scope</a></i> of the <i><a href="g-d.xhtml#declaration">declaration</a></i>.  
+
+</p><p>
+<i><a href="g-d.xhtml#declaration">Declarations</a></i> that are not <i><a href="g-b.xhtml#bounddeclaration">bound declarations</a></i> are called
+<b><i>free declarations</i></b>.
+
+</p><p>
+
+
+A <i><a href="g-f.xhtml#freedeclaration">free declaration</a></i> in a <i><a href="g-f.xhtml#form">form</a></i> <i>F1</i> that applies to a <i><a href="g-b.xhtml#binding">binding</a></i>
+for a <i><a href="g-n.xhtml#name">name</a></i> <i>N</i> <i>established</i> by some <i><a href="g-f.xhtml#form">form</a></i> <i>F2</i>
+of which <i>F1</i> is a <i><a href="g-s.xhtml#subform">subform</a></i>
+affects only references to <i>N</i> within <i>F1</i>; it does not to apply to
+other references to <i>N</i> outside of <i>F1</i>, nor does it affect the manner
+in which the <i><a href="g-b.xhtml#binding">binding</a></i> of <i>N</i> by <i>F2</i> is <i>established</i>.
+
+</p><p>
+<i><a href="g-d.xhtml#declaration">Declarations</a></i> that do not apply to <i><a href="g-b.xhtml#binding">bindings</a></i> can only appear 
+as <i><a href="g-f.xhtml#freedeclaration">free declarations</a></i>.
+
+</p><p>
+
+
+
+The <i><a href="g-s.xhtml#scope">scope</a></i> of a <i><a href="g-b.xhtml#bounddeclaration">bound declaration</a></i> is the same as the
+
+
+<i><a href="g-l.xhtml#lexicalscope">lexical scope</a></i>
+of the <i><a href="g-b.xhtml#binding">binding</a></i> to which it applies;
+
+for <i><a href="g-s.xhtml#specialvariable">special variables</a></i>,
+this means the <i><a href="g-s.xhtml#scope">scope</a></i> that the <i><a href="g-b.xhtml#binding">binding</a></i> 
+would have had had it been a <i><a href="g-l.xhtml#lexicalbinding">lexical binding</a></i>.
+
+</p><p>
+Unless explicitly stated otherwise, the <i><a href="g-s.xhtml#scope">scope</a></i> of a 
+<i><a href="g-f.xhtml#freedeclaration">free declaration</a></i> includes only the body <i><a href="g-s.xhtml#subform">subforms</a></i> of 
+the <i><a href="g-f.xhtml#form">form</a></i> at whose head it appears, and no other <i><a href="g-s.xhtml#subform">subforms</a></i>.
+The <i><a href="g-s.xhtml#scope">scope</a></i> of <i><a href="g-f.xhtml#freedeclaration">free declarations</a></i> specifically does not
+include <i><a href="g-i.xhtml#initializationform">initialization forms</a></i> for <i><a href="g-b.xhtml#binding">bindings</a></i> established
+by the <i><a href="g-f.xhtml#form">form</a></i> containing the <i><a href="g-d.xhtml#declaration">declarations</a></i>.
+
+</p><p>
+Some <i><a href="g-i.xhtml#iterationform">iteration forms</a></i> include step, end-test, or result 
+<i><a href="g-s.xhtml#subform">subforms</a></i> that are also included in the <i><a href="g-s.xhtml#scope">scope</a></i>
+of <i><a href="g-d.xhtml#declaration">declarations</a></i> that appear in the <i><a href="g-i.xhtml#iterationform">iteration form</a></i>.
+Specifically, the <i><a href="g-i.xhtml#iterationform">iteration forms</a></i> and <i><a href="g-s.xhtml#subform">subforms</a></i> involved
+are:
+
+</p><ul>
+<li> <a href="e6-2-1.xhtml#DictEntry_do_do_514"><b>do</b></a>, <a href="e6-2-1.xhtml#DictEntry_do_do_514"><b>do*</b></a>:  
+  <i>step-forms</i>, <i>end-test-form</i>, and <i>result-forms</i>.
+</li><li> <a href="e6-2-3.xhtml#DictEntry_dolist_516"><b>dolist</b></a>, <a href="e6-2-2.xhtml#DictEntry_dotimes_515"><b>dotimes</b></a>:
+  <i>result-form</i>
+</li><li> <a href="e11-2-20.xhtml#DictEntry_do_symbols__735"><b>do-all-symbols</b></a>, <a href="e11-2-20.xhtml#DictEntry_do_symbols__735"><b>do-external-symbols</b></a>, <a href="e11-2-20.xhtml#DictEntry_do_symbols__735"><b>do-symbols</b></a>:
+  <i>result-form</i>
+</li></ul>
+<section>
+<h4 id="SubSubSectio_Examples_of__241"><span class="secno">3.3.4.1</span> Examples of Declaration Scope</h4>
+<p>
+
+Here is an example illustrating the <i><a href="g-s.xhtml#scope">scope</a></i> of <i><a href="g-b.xhtml#bounddeclaration">bound declarations</a></i>.
+
+</p><pre> (let ((x 1))                ;[1] 1st occurrence of x
+   (declare (special x))     ;[2] 2nd occurrence of x
+   (let ((x 2))              ;[3] 3rd occurrence of x
+     (let ((old-x x)         ;[4] 4th occurrence of x
+           (x 3))            ;[5] 5th occurrence of x
+       (declare (special x)) ;[6] 6th occurrence of x
+       (list old-x x))))     ;[7] 7th occurrence of x
+→ (2 3)
+</pre>
+
+<p>
+The first occurrence of <code>x</code> <i>establishes</i> a <i><a href="g-d.xhtml#dynamicbinding">dynamic binding</a></i>
+of <code>x</code> because of the <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a> <i><a href="g-d.xhtml#declaration">declaration</a></i> for <code>x</code>
+in the second line.  The third occurrence of <code>x</code> <i>establishes</i> a
+<i><a href="g-l.xhtml#lexicalbinding">lexical binding</a></i> of <code>x</code> (because there is no <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a>
+<i><a href="g-d.xhtml#declaration">declaration</a></i> in the corresponding <a href="e5-3-18.xhtml#DictEntry_let_let_404"><b>let</b></a> <i><a href="g-f.xhtml#form">form</a></i>).
+The fourth occurrence of <code>x</code> <i>x</i> is a reference to the
+<i><a href="g-l.xhtml#lexicalbinding">lexical binding</a></i> of <code>x</code> established in the third line.
+The fifth occurrence of <code>x</code> <i>establishes</i> a <i><a href="g-d.xhtml#dynamicbinding">dynamic binding</a></i>
+of <i>x</i> for the body of the <a href="e5-3-18.xhtml#DictEntry_let_let_404"><b>let</b></a> <i><a href="g-f.xhtml#form">form</a></i> that begins on
+that line because of the <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a> <i><a href="g-d.xhtml#declaration">declaration</a></i> for <code>x</code>
+in the sixth line. The reference to <code>x</code> in the fourth line is not
+affected by the <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a> <i><a href="g-d.xhtml#declaration">declaration</a></i> in the sixth line 
+because that reference is not within the "would-be <i><a href="g-l.xhtml#lexicalscope">lexical scope</a></i>"
+of the <i><a href="g-v.xhtml#variable">variable</a></i> <code>x</code> in the fifth line.  The reference to <code>x</code>
+in the seventh line is a reference to the <i><a href="g-d.xhtml#dynamicbinding">dynamic binding</a></i> of <i>x</i>
+<i>established</i> in the fifth line.
+
+</p><p>
+Here is another example, to illustrate the <i><a href="g-s.xhtml#scope">scope</a></i> of a
+<i><a href="g-f.xhtml#freedeclaration">free declaration</a></i>.  In the following:
+
+</p><pre> (lambda (&amp;optional (x (foo 1))) ;[1]
+   (declare (notinline foo))     ;[2]
+   (foo x))                      ;[3]
+</pre>
+
+<p>
+the <i><a href="g-c.xhtml#call">call</a></i> to <code>foo</code> in the first line might be 
+compiled inline even though the <i><a href="g-c.xhtml#call">call</a></i> to <code>foo</code> in
+the third line must not be.  This is because
+the <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>notinline</b></a> <i><a href="g-d.xhtml#declaration">declaration</a></i>
+for <code>foo</code> in the second line applies only to the body on the
+third line.  In order to suppress inlining for both <i><a href="g-c.xhtml#call">calls</a></i>, 
+one might write:
+
+</p><pre> (locally (declare (notinline foo)) ;[1]
+   (lambda (&amp;optional (x (foo 1)))  ;[2]
+     (foo x)))                      ;[3]
+</pre>
+
+<p>
+or, alternatively:
+
+</p><pre> (lambda (&amp;optional                               ;[1]
+            (x (locally (declare (notinline foo)) ;[2]
+                 (foo 1))))                       ;[3]
+   (declare (notinline foo))                      ;[4]
+   (foo x))                                       ;[5]
+</pre>
+
+<p>
+Finally, here is an example that shows the <i><a href="g-s.xhtml#scope">scope</a></i> of
+<i><a href="g-d.xhtml#declaration">declarations</a></i> in an <i><a href="g-i.xhtml#iterationform">iteration form</a></i>.
+
+</p><pre> (let ((x  1))                     ;[1]
+   (declare (special x))           ;[2]
+     (let ((x 2))                  ;[3]
+       (dotimes (i x x)            ;[4]
+         (declare (special x)))))  ;[5]
+→ 1
+</pre>
+
+<p>
+In this example, the first reference to <code>x</code> on the fourth line is to
+the <i><a href="g-l.xhtml#lexicalbinding">lexical binding</a></i> of <code>x</code> established on the third line.
+However, the second occurrence of <code>x</code> on the fourth line lies within
+the <i><a href="g-s.xhtml#scope">scope</a></i> of the <i><a href="g-f.xhtml#freedeclaration">free declaration</a></i> on the fifth line
+(because this is the <i>result-form</i> of the <a href="e6-2-2.xhtml#DictEntry_dotimes_515"><b>dotimes</b></a>)
+and therefore refers to the <i><a href="g-d.xhtml#dynamicbinding">dynamic binding</a></i> of <code>x</code>.
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</section>
+</body>
+</html>

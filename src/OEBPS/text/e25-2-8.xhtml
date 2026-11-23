@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>25.2.8 trace, untrace — Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_trace_untra_1435" class="entry"><span class="secno">25.2.8</span> <span class="names">trace, untrace</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>trace</b>
+<i>{<i>function-name</i>}*</i>
+  → <i>trace-result</i>
+<p>
+<b>untrace</b>
+<i>{<i>function-name</i>}*</i>
+  → <i>untrace-result</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>function-name</i>—a <i><a href="g-f.xhtml#functionname">function name</a></i>.
+
+
+<p>
+<i>trace-result</i>—<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>,
+  unless no <i>function-names</i> are supplied, 
+
+  in which case <i>trace-result</i> is a <i><a href="g-l.xhtml#list">list</a></i> of <i><a href="g-f.xhtml#functionname">function names</a></i>.
+
+</p><p>
+<i>untrace-result</i>—<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_trace_untra_1435"><b>trace</b></a> and <a href="#DictEntry_trace_untra_1435"><b>untrace</b></a> control the invocation of the trace facility.  
+
+<p>
+Invoking <a href="#DictEntry_trace_untra_1435"><b>trace</b></a> with one or more <i>function-names</i> causes
+the denoted <i><a href="g-f.xhtml#function">functions</a></i> to be "traced."
+Whenever a traced <i><a href="g-f.xhtml#function">function</a></i> is invoked, information
+     about the call,
+     about the arguments passed,
+ and about any eventually returned values
+is printed to <i><a href="g-t.xhtml#traceoutput">trace output</a></i>.
+If <a href="#DictEntry_trace_untra_1435"><b>trace</b></a> is used with no <i>function-names</i>,
+no tracing action is performed; 
+instead, a list of the <i><a href="g-f.xhtml#function">functions</a></i> currently being traced is returned.
+
+</p><p>
+
+Invoking <a href="#DictEntry_trace_untra_1435"><b>untrace</b></a> with one or more function names causes those
+functions to be "untraced" (<i>i.e.</i>,  no longer traced).
+
+If <a href="#DictEntry_trace_untra_1435"><b>untrace</b></a> is used with no <i>function-names</i>,
+all <i><a href="g-f.xhtml#function">functions</a></i> currently being traced are untraced.
+
+</p><p>
+If a <i><a href="g-f.xhtml#function">function</a></i> to be traced has been open-coded
+(<i>e.g.</i>,  because it was declared <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>inline</b></a>),
+a call to that <i><a href="g-f.xhtml#function">function</a></i> might not produce trace output.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defun fact (n) (if (zerop n) 1 (* n (fact (- n 1)))))
+→  FACT
+ (trace fact)
+→ (FACT)
+;; Of course, the format of traced output is implementation-dependent.
+ (fact 3)
+▷1 Enter FACT 3
+▷| 2 Enter FACT 2
+▷|   3 Enter FACT 1
+▷|   | 4 Enter FACT 0
+▷|   | 4 Exit FACT 1
+▷|   3 Exit FACT 1
+▷| 2 Exit FACT 2
+▷1 Exit FACT 6
+→ 6
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+Might change the definitions of the <i><a href="g-f.xhtml#function">functions</a></i> named by <i>function-names</i>.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+Whether the functions named are defined or already being traced.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+   Tracing an already traced function,
+or untracing a function not currently being traced,
+should produce no harmful effects, but might signal a warning.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*trace-output*</b></a>,
+<a href="e25-2-9.xhtml#DictEntry_step_1436"><b>step</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+<a href="#DictEntry_trace_untra_1435"><b>trace</b></a> and <a href="#DictEntry_trace_untra_1435"><b>untrace</b></a> may also accept additional
+<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> argument formats.  The format of the trace
+output is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+<p>
+Although <a href="#DictEntry_trace_untra_1435"><b>trace</b></a> can be extended to permit non-standard options,
+<i><a href="g-i.xhtml#implementation">implementations</a></i> are nevertheless encouraged (but not required)
+to warn about the use of syntax or options 
+that are neither specified by this standard 
+nor added as an extension by the <i><a href="g-i.xhtml#implementation">implementation</a></i>,
+since they could be symptomatic of typographical errors
+or of reliance on features supported in <i><a href="g-i.xhtml#implementation">implementations</a></i> 
+other than the current <i><a href="g-i.xhtml#implementation">implementation</a></i>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

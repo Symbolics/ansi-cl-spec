@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>4.4.21 or — Type Specifier</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_or_356" class="entry"><span class="secno">4.4.21</span> <span class="names">or</span> <span class="kind">Type Specifier</span></h3>
+<dl>
+
+
+<dt><b>Compound Type Specifier Kind:</b></dt><dd>
+
+Combining.
+
+</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+
+
+<code>(or {<i>typespec</i>}*)</code>
+
+</dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+
+<i>typespec</i>—a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>.
+
+</dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+
+This denotes the set of all <i><a href="g-o.xhtml#object">objects</a></i> of the
+<i><a href="g-t.xhtml#type">type</a></i> determined by the union of the <i>typespecs</i>.
+For example, the <i><a href="g-t.xhtml#type">type</a></i> <a href="e14-2-1.xhtml#DictEntry_list_914"><b>list</b></a> by definition is the same as <code>(or null cons)</code>.
+Also, the value returned by <a href="e17-3-15.xhtml#DictEntry_position_po_1055"><b>position</b></a> is an <i><a href="g-o.xhtml#object">object</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <code>(or null (integer 0 *))</code>;
+<i>i.e.</i>,  either <a href="e5-3-30.xhtml#DictEntry_nil_416"><b>nil</b></a> or a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+<p>
+
+<a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a> is not permitted as an argument.
+
+</p><p>
+The <i><a href="g-t.xhtml#typespecifier">type specifiers</a></i> <code>(or)</code> and <a href="e5-3-30.xhtml#DictEntry_nil_416"><b>nil</b></a> are equivalent.
+The symbol <a href="#DictEntry_or_356"><b>or</b></a> is not valid as a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i>;
+and, specifically, it is not an abbreviation for <code>(or)</code>.
+
+
+</p></dd></dl>
+</section>
+</body>
+</html>

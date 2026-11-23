@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>15.2.11 array-dimension — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_array_dimens_989" class="entry"><span class="secno">15.2.11</span> <span class="names">array-dimension</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>array-dimension</b>
+<i>array axis-number</i>
+  → <i>dimension</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>array</i>—an <i><a href="g-a.xhtml#array">array</a></i>.
+
+<p>
+<i>axis-number</i>—an <i><a href="g-i.xhtml#integer">integer</a></i> greater than or equal to zero
+		      and less than the <i><a href="g-r.xhtml#rank">rank</a></i> of the <i>array</i>.
+
+</p><p>
+
+
+
+<i>dimension</i>—a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_array_dimens_989"><b>array-dimension</b></a> returns the <i>axis-number</i> 
+<i><a href="g-d.xhtml#dimension">dimension</a></i><sub>1</sub> of <i>array</i>.
+
+(Any <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i> is ignored.)
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (array-dimension (make-array 4) 0) → 4
+ (array-dimension (make-array '(2 3)) 1) → 3
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+    
+None.
+
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e15-2-12.xhtml#DictEntry_array_dimens_990"><b>array-dimensions</b></a>, <a href="e17-3-11.xhtml#DictEntry_length_1051"><b>length</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (array-dimension array n) ==(nth n (array-dimensions array))
+</pre>
+</dd></dl>
+</section>
+</body>
+</html>

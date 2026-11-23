@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.7.5 shared-initialize — Standard Generic Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_shared_initi_561" class="entry"><span class="secno">7.7.5</span> <span class="names">shared-initialize</span> <span class="kind">Standard Generic Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>shared-initialize</b>
+<i>instance slot-names <code>&amp;rest</code> initargs <code>&amp;key</code> <code>&amp;allow-other-keys</code></i>
+  → <i>instance</i>
+</dd><dt><b>Method Signatures:</b></dt><dd>
+
+<b>shared-initialize</b>
+<i>(<i>instance</i> <a href="e4-4-14.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>) slot-names <code>&amp;rest</code> initargs</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>instance</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+<p>
+<i>slot-names</i>—a <i><a href="g-l.xhtml#list">list</a></i> or <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>.
+
+</p><p>
+<i>initargs</i>—a <i><a href="g-l.xhtml#list">list</a></i> of <i><a href="g-k.xhtml#keywordvaluepair">keyword/value pairs</a></i>
+		   (of initialization argument <i><a href="g-n.xhtml#name">names</a></i> and <i><a href="g-v.xhtml#value">values</a></i>).
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The generic function <a href="#DictEntry_shared_initi_561"><b>shared-initialize</b></a> is used to fill the 
+<i><a href="g-s.xhtml#slot">slots</a></i>                        
+of an <i>instance</i> 
+using <i>initargs</i> and <code>:initform</code>
+forms.  It is called when an instance is created, when an instance is
+re-initialized, when an instance is updated to conform to a redefined
+<i><a href="g-c.xhtml#class">class</a></i>, and when an instance is updated to conform to a different
+<i><a href="g-c.xhtml#class">class</a></i>. The generic function <a href="#DictEntry_shared_initi_561"><b>shared-initialize</b></a> is called by the
+system-supplied primary <i><a href="g-m.xhtml#method">method</a></i> for <a href="e7-7-36.xhtml#DictEntry_initialize_i_592"><b>initialize-instance</b></a>,
+<a href="e7-7-4.xhtml#DictEntry_reinitialize_560"><b>reinitialize-instance</b></a>, <a href="e7-7-7.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a>, and
+<a href="e7-7-6.xhtml#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a>.
+
+<p>
+The generic function <a href="#DictEntry_shared_initi_561"><b>shared-initialize</b></a> takes the following
+arguments: the <i>instance</i> to be initialized, a specification of a set of
+<i>slot-names</i> <i><a href="g-a.xhtml#accessible">accessible</a></i> in that <i>instance</i>, 
+and any number of <i>initargs</i>.
+The arguments after the first two must form an 
+<i><a href="g-i.xhtml#initializationargumentlist">initialization argument list</a></i>.  The system-supplied primary <i><a href="g-m.xhtml#method">method</a></i> on 
+<a href="#DictEntry_shared_initi_561"><b>shared-initialize</b></a> initializes the <i><a href="g-s.xhtml#slot">slots</a></i> with values according to the
+<i>initargs</i> and supplied <code>:initform</code> forms.  <i>Slot-names</i>
+indicates which <i><a href="g-s.xhtml#slot">slots</a></i> should be initialized according
+to their <code>:initform</code> forms if no <i>initargs</i> are
+provided for those <i><a href="g-s.xhtml#slot">slots</a></i>. 
+
+</p><p>
+The system-supplied primary <i><a href="g-m.xhtml#method">method</a></i> behaves as follows, 
+regardless of whether the <i><a href="g-s.xhtml#slot">slots</a></i> are local or shared: 
+
+</p><ul>
+
+<li>
+ If an <i>initarg</i> in the <i><a href="g-i.xhtml#initializationargumentlist">initialization argument list</a></i> 
+ specifies a value for that <i><a href="g-s.xhtml#slot">slot</a></i>, that
+ value is stored into the <i><a href="g-s.xhtml#slot">slot</a></i>, even if a value has
+ already been stored in the <i><a href="g-s.xhtml#slot">slot</a></i> before the <i><a href="g-m.xhtml#method">method</a></i> is run.
+
+</li><li>
+ Any <i><a href="g-s.xhtml#slot">slots</a></i> indicated by <i>slot-names</i> that are still unbound
+ at this point are initialized according to their <code>:initform</code> forms.
+ For any such <i><a href="g-s.xhtml#slot">slot</a></i> that has an <code>:initform</code> form,
+ that <i><a href="g-f.xhtml#form">form</a></i> is evaluated in the lexical environment of its defining 
+ <a href="e7-7-25.xhtml#DictEntry_defclass_581"><b>defclass</b></a> <i><a href="g-f.xhtml#form">form</a></i> and the result is stored into the <i><a href="g-s.xhtml#slot">slot</a></i>.
+ For example, if a <i><a href="g-b.xhtml#beforemethod">before method</a></i> stores a value in the <i><a href="g-s.xhtml#slot">slot</a></i>, 
+ the <code>:initform</code> form will not be used to supply a value for the <i><a href="g-s.xhtml#slot">slot</a></i>.
+
+</li><li> 
+ The rules mentioned in Section <a href="s7-1.xhtml#SubSection_Rules_for_In_524">7.1.4 Rules for Initialization Arguments</a> are obeyed.
+
+</li></ul>
+
+<p>
+The <i>slots-names</i> argument specifies the <i><a href="g-s.xhtml#slot">slots</a></i> that are to be
+initialized according to their <code>:initform</code> forms if no
+initialization arguments apply.  It can be a <i><a href="g-l.xhtml#list">list</a></i> of slot <i><a href="g-n.xhtml#name">names</a></i>, 
+which specifies the set of those slot <i><a href="g-n.xhtml#name">names</a></i>; or it can be the <i><a href="g-s.xhtml#symbol">symbol</a></i> <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>, 
+which specifies the set of all of the <i><a href="g-s.xhtml#slot">slots</a></i>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e7-7-36.xhtml#DictEntry_initialize_i_592"><b>initialize-instance</b></a>,
+<a href="e7-7-4.xhtml#DictEntry_reinitialize_560"><b>reinitialize-instance</b></a>,
+<a href="e7-7-7.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a>,
+<a href="e7-7-6.xhtml#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a>,
+<a href="e7-7-9.xhtml#DictEntry_slot_boundp_565"><b>slot-boundp</b></a>,
+<a href="e7-7-11.xhtml#DictEntry_slot_makunbo_567"><b>slot-makunbound</b></a>,
+Section <a href="s7-1.xhtml#Section_Object_Creat_520">7.1 Object Creation and Initialization</a>,
+Section <a href="s7-1.xhtml#SubSection_Rules_for_In_524">7.1.4 Rules for Initialization Arguments</a>,
+Section <a href="s7-1.xhtml#SubSection_Declaring_th_522">7.1.2 Declaring the Validity of Initialization Arguments</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<i>Initargs</i> are declared as valid by using the <code>:initarg</code>
+option to <a href="e7-7-25.xhtml#DictEntry_defclass_581"><b>defclass</b></a>, or by defining 
+<i><a href="g-m.xhtml#method">methods</a></i> for <a href="#DictEntry_shared_initi_561"><b>shared-initialize</b></a>. 
+The keyword name of each keyword parameter
+specifier in the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i> of any <i><a href="g-m.xhtml#method">method</a></i> defined on 
+<a href="#DictEntry_shared_initi_561"><b>shared-initialize</b></a> is declared as a valid <i>initarg</i>
+name for all <i>classes</i> for which that <i><a href="g-m.xhtml#method">method</a></i> is applicable.
+
+<p>
+Implementations are permitted to optimize <code>:initform</code> forms that 
+neither produce nor depend on side effects, by evaluating these <i><a href="g-f.xhtml#form">forms</a></i>
+and storing them into slots before running any 
+<a href="e7-7-36.xhtml#DictEntry_initialize_i_592"><b>initialize-instance</b></a> methods, rather than by handling them in the
+primary <a href="e7-7-36.xhtml#DictEntry_initialize_i_592"><b>initialize-instance</b></a> method.  (This optimization might
+be implemented by having the <a href="e7-7-3.xhtml#DictEntry_allocate_ins_559"><b>allocate-instance</b></a> method copy a
+prototype instance.)
+
+</p><p>
+Implementations are permitted to optimize default initial value forms
+for <i>initargs</i> associated with slots by not actually
+creating the complete initialization argument 
+<i><a href="g-l.xhtml#list">list</a></i> when the only <i><a href="g-m.xhtml#method">method</a></i>
+that would receive the complete <i><a href="g-l.xhtml#list">list</a></i> is the 
+<i><a href="g-m.xhtml#method">method</a></i> on <a href="e4-4-14.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>.
+In this case default initial value forms can be 
+treated like <code>:initform</code> forms.  This optimization has no visible
+effects other than a performance improvement.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

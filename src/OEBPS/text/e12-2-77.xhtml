@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.77 short-float-epsilon, short-float-negative-epsilon, … — Constant Variable</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_short_float__851" class="entry"><span class="secno">12.2.77</span> <span class="names">short-float-epsilon, short-float-negative-epsilon, single-float-epsilon, single-float-negative-epsilon, double-float-epsilon, double-float-negative-epsilon, long-float-epsilon, long-float-negative-epsilon</span> <span class="kind">Constant Variable</span></h3>
+<dl>
+
+
+<dt><b>Constant Value:</b></dt><dd>
+
+
+<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+The value of each of the constants <a href="#DictEntry_short_float__851"><b>short-float-epsilon</b></a>, 
+<a href="#DictEntry_short_float__851"><b>single-float-epsilon</b></a>,
+<a href="#DictEntry_short_float__851"><b>double-float-epsilon</b></a>, and <a href="#DictEntry_short_float__851"><b>long-float-epsilon</b></a> is 
+the smallest positive <i><a href="g-f.xhtml#float">float</a></i> <i>ε</i> of the given format, 
+such that the following expression is <i><a href="g-t.xhtml#true">true</a></i> when evaluated:
+
+<p>
+<code>(not (= (float 1 <i>epsilon</i>) (+ (float 1 <i>epsilon</i>) 
+<i><i>epsilon</i>))) </i></code><i>
+
+</i></p><p><i>
+The value of each of the constants <a href="#DictEntry_short_float__851"><b>short-float-negative-epsilon</b></a>, 
+<a href="#DictEntry_short_float__851"><b>single-float-negative-epsilon</b></a>,
+<a href="#DictEntry_short_float__851"><b>double-float-negative-epsilon</b></a>, and  
+<a href="#DictEntry_short_float__851"><b>long-float-negative-epsilon</b></a> is the smallest positive
+<i><a href="g-f.xhtml#float">float</a></i> <i>ε</i> of the given format, such that the following
+expression is <i><a href="g-t.xhtml#true">true</a></i> when evaluated:
+
+</i></p><p><i>
+<code>(not (= (float 1 <i>epsilon</i>) (- (float 1 <i>epsilon</i>) 
+<i>epsilon</i>))) </code>
+
+</i></p><p><i>
+</i></p></dd></dl>
+</section>
+</body>
+</html>

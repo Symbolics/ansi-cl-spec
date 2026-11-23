@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>24.2.11 provide, require — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_provide_req_1416" class="entry"><span class="secno">24.2.11</span> <span class="names">provide, require</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>provide</b>
+<i>module-name</i>
+  → <i><i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i></i>
+<p>
+
+
+<b>require</b>
+<i>module-name <code>&amp;optional</code> pathname-list</i>
+  → <i><i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i></i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+
+<i>module-name</i>—a <i><a href="g-s.xhtml#stringdesignator">string designator</a></i>.
+
+<p>
+
+<i>pathname-list</i>—<a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, or
+			a <i><a href="g-d.xhtml#designator">designator</a></i> 
+			  for a <i><a href="g-n.xhtml#nonempty">non-empty</a></i> <i><a href="g-l.xhtml#list">list</a></i> of <i><a href="g-p.xhtml#pathnamedesignator">pathname designators</a></i>.
+ The default is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_provide_req_1416"><b>provide</b></a> adds the <i>module-name</i> to the <i><a href="g-l.xhtml#list">list</a></i> held by
+<a href="e24-2-10.xhtml#DictEntry_modules_1415"><b>*modules*</b></a>, if such a name is not already present.
+
+<p>
+
+<a href="#DictEntry_provide_req_1416"><b>require</b></a> tests for the presence of the <i>module-name</i> in the
+<i><a href="g-l.xhtml#list">list</a></i> held by <a href="e24-2-10.xhtml#DictEntry_modules_1415"><b>*modules*</b></a>.
+If it is present, <a href="#DictEntry_provide_req_1416"><b>require</b></a> immediately returns.
+
+Otherwise, an attempt is made to load an appropriate set of <i><a href="g-f.xhtml#file">files</a></i> as follows:
+The <i>pathname-list</i> argument, if <i><a href="g-n.xhtml#nonnil">non-nil</a></i>, 
+ specifies a list of <i><a href="g-p.xhtml#pathname">pathnames</a></i> to be loaded in order, from left to right.
+If the <i>pathname-list</i> is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+an <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> mechanism will be invoked in an attempt
+to load the module named <i>module-name</i>;
+if no such module can be loaded, an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> is signaled.
+
+
+
+</p><p>
+Both functions use <a href="e16-2-10.xhtml#DictEntry_string_str_1029"><b>string=</b></a> to test for the presence of a <i>module-name</i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+
+
+
+<pre>;;; This illustrates a nonportable use of REQUIRE, because it
+;;; depends on the implementation-dependent file-loading mechanism.
+
+(require "CALCULUS")
+
+;;; This use of REQUIRE is nonportable because of the literal 
+;;; physical pathname.  
+
+(require "CALCULUS" "/usr/lib/lisp/calculus")
+
+;;; One form of portable usage involves supplying a logical pathname,
+;;; with appropriate translations defined elsewhere.
+
+(require "CALCULUS" "lib:calculus")
+
+;;; Another form of portable usage involves using a variable or
+;;; table lookup function to determine the pathname, which again
+;;; must be initialized elsewhere.
+
+(require "CALCULUS" *calculus-module-pathname*)
+</pre>
+
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+<a href="#DictEntry_provide_req_1416"><b>provide</b></a> modifies <a href="e24-2-10.xhtml#DictEntry_modules_1415"><b>*modules*</b></a>.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The specific action taken by <a href="#DictEntry_provide_req_1416"><b>require</b></a> is affected by calls to <a href="#DictEntry_provide_req_1416"><b>provide</b></a>
+(or, in general, any changes to the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e24-2-10.xhtml#DictEntry_modules_1415"><b>*modules*</b></a>).
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>module-name</i> is not a <i><a href="g-s.xhtml#stringdesignator">string designator</a></i>.
+
+<p>
+
+If <a href="#DictEntry_provide_req_1416"><b>require</b></a> fails to perform the requested operation 
+due to a problem while interacting with the <i><a href="g-f.xhtml#filesystem">file system</a></i>,
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e20-2-9.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> is signaled.
+
+
+</p><p>
+
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e20-2-9.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> might be signaled if any <i><a href="g-p.xhtml#pathname">pathname</a></i> 
+in <i>pathname-list</i> is a <i><a href="g-d.xhtml#designator">designator</a></i> for a <i><a href="g-w.xhtml#wild">wild</a></i> <i><a href="g-p.xhtml#pathname">pathname</a></i>.
+
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e24-2-10.xhtml#DictEntry_modules_1415"><b>*modules*</b></a>,
+
+Section <a href="s19-1.xhtml#SubSection_Pathnames_as_1095">19.1.2 Pathnames as Filenames</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+The functions <a href="#DictEntry_provide_req_1416"><b>provide</b></a> and <a href="#DictEntry_provide_req_1416"><b>require</b></a> are deprecated.
+
+<p>
+
+If a module consists of a single <i><a href="g-p.xhtml#package">package</a></i>,
+it is customary for the package and module names to be the same.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

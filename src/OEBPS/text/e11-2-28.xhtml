@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>11.2.28 *package* — Variable</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_package_743" class="entry"><span class="secno">11.2.28</span> <span class="names">*package*</span> <span class="kind">Variable</span></h3>
+<dl>
+
+
+<dt><b>Value Type:</b></dt><dd>
+
+a <i><a href="g-p.xhtml#package">package</a></i> <i><a href="g-o.xhtml#object">object</a></i>.
+
+</dd><dt><b>Initial Value:</b></dt><dd>
+
+the <code>common-lisp-user</code> <i><a href="g-p.xhtml#package">package</a></i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+Whatever <i><a href="g-p.xhtml#package">package</a></i> <i><a href="g-o.xhtml#object">object</a></i> is currently 
+the <i><a href="g-v.xhtml#value">value</a></i> of <a href="#DictEntry_package_743"><b>*package*</b></a> is referred to as the <i><a href="g-c.xhtml#currentpackage">current package</a></i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (in-package "COMMON-LISP-USER") → #&lt;PACKAGE "COMMON-LISP-USER"&gt;
+ *package* → #&lt;PACKAGE "COMMON-LISP-USER"&gt;
+ (make-package "SAMPLE-PACKAGE" :use '("COMMON-LISP"))
+→ #&lt;PACKAGE "SAMPLE-PACKAGE"&gt;
+ (list 
+   (symbol-package
+     (let ((*package* (find-package 'sample-package)))
+       (setq *some-symbol* (read-from-string "just-testing"))))
+   *package*)
+→ (#&lt;PACKAGE "SAMPLE-PACKAGE"&gt; #&lt;PACKAGE "COMMON-LISP-USER"&gt;)
+ (list (symbol-package (read-from-string "just-testing"))
+       *package*)
+→ (#&lt;PACKAGE "COMMON-LISP-USER"&gt; #&lt;PACKAGE "COMMON-LISP-USER"&gt;)
+ (eq 'foo (intern "FOO")) → <i><a href="g-t.xhtml#true">true</a></i>
+ (eq 'foo (let ((*package* (find-package 'sample-package)))
+            (intern "FOO")))
+→ <i><a href="g-f.xhtml#false">false</a></i>
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e24-2-3.xhtml#DictEntry_load_1408"><b>load</b></a>,
+<a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>,
+<a href="e11-2-16.xhtml#DictEntry_in_package_731"><b>in-package</b></a>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>,
+<a href="e11-2-16.xhtml#DictEntry_in_package_731"><b>in-package</b></a>,
+<a href="e24-2-3.xhtml#DictEntry_load_1408"><b>load</b></a>,
+<a href="e11-2-1.xhtml#DictEntry_package_716"><b>package</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

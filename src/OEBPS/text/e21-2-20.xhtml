@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.20 unread-char — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_unread_char_1211" class="entry"><span class="secno">21.2.20</span> <span class="names">unread-char</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>unread-char</b>
+<i>character <code>&amp;optional</code> input-stream</i>
+  → <i><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i><p><i></i>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>character</i>—a <i><a href="g-c.xhtml#character">character</a></i>;
+  must be the last <i><a href="g-c.xhtml#character">character</a></i> that was read from <i>input-stream</i>.
+
+<p>
+<i>input-stream</i>—an <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-s.xhtml#streamdesignator">stream designator</a></i>.
+ The default is <i><a href="g-s.xhtml#standardinput">standard input</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_unread_char_1211"><b>unread-char</b></a> places <i>character</i> back onto the front of
+<i>input-stream</i> so that it will again be the next character
+in <i>input-stream</i>.
+
+<p>
+
+When <i>input-stream</i> is an <i><a href="g-e.xhtml#echostream">echo stream</a></i>,
+no attempt is made to undo any echoing of the character that might already
+have been done on <i>input-stream</i>. However, characters placed on 
+<i>input-stream</i> by <a href="#DictEntry_unread_char_1211"><b>unread-char</b></a> are marked in such a way 
+as to inhibit later re-echo by <a href="e21-2-17.xhtml#DictEntry_read_char_1208"><b>read-char</b></a>.
+
+
+</p><p>
+It is an error to invoke <a href="#DictEntry_unread_char_1211"><b>unread-char</b></a> 
+twice consecutively on the same <i><a href="g-s.xhtml#stream">stream</a></i>
+without an intervening call to <a href="e21-2-17.xhtml#DictEntry_read_char_1208"><b>read-char</b></a> 
+(or some other input operation which implicitly reads characters)
+on that <i><a href="g-s.xhtml#stream">stream</a></i>.
+
+</p><p>
+
+Invoking <a href="e21-2-16.xhtml#DictEntry_peek_char_1207"><b>peek-char</b></a> or <a href="e21-2-17.xhtml#DictEntry_read_char_1208"><b>read-char</b></a> commits all previous characters.
+The consequences of invoking <a href="#DictEntry_unread_char_1211"><b>unread-char</b></a>
+on any character preceding that which is returned by 
+<a href="e21-2-16.xhtml#DictEntry_peek_char_1207"><b>peek-char</b></a> (including those passed over by 
+<a href="e21-2-16.xhtml#DictEntry_peek_char_1207"><b>peek-char</b></a> that has a <i><a href="g-n.xhtml#nonnil">non-nil</a></i> <i>peek-type</i>)
+are unspecified.
+In particular, the consequences of 
+invoking <a href="#DictEntry_unread_char_1211"><b>unread-char</b></a> after <a href="e21-2-16.xhtml#DictEntry_peek_char_1207"><b>peek-char</b></a>
+are unspecified.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (with-input-from-string (is "0123")
+    (dotimes (i 6)
+      (let ((c (read-char is)))
+        (if (evenp i) (format t "~&amp;~S ~S~%" i c) (unread-char c is)))))
+▷0 #\0
+▷2 #\1
+▷4 #\2
+→  NIL
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*standard-input*</b></a>,
+<a href="e21-2-54.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e21-2-16.xhtml#DictEntry_peek_char_1207"><b>peek-char</b></a>,
+<a href="e21-2-17.xhtml#DictEntry_read_char_1208"><b>read-char</b></a>,
+Section <a href="s21-1.xhtml#Section_Stream_Conce_1179">21.1 Stream Concepts</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+<a href="#DictEntry_unread_char_1211"><b>unread-char</b></a> is intended to be an efficient mechanism for allowing
+the <i>Lisp reader</i> and other parsers to perform one-character lookahead
+in <i>input-stream</i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

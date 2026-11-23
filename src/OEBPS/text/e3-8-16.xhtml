@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.8.16 proclaim — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_proclaim_298" class="entry"><span class="secno">3.8.16</span> <span class="names">proclaim</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>proclaim</b>
+<i>declaration-specifier</i>
+  → <i><i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i></i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>declaration-specifier</i>—a <i><a href="g-d.xhtml#declarationspecifier">declaration specifier</a></i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+<i>Establishes</i> the <i><a href="g-d.xhtml#declaration">declaration</a></i> specified by <i>declaration-specifier</i>
+in the <i><a href="g-g.xhtml#globalenvironment">global environment</a></i>.
+
+<p>
+
+Such a <i><a href="g-d.xhtml#declaration">declaration</a></i>, sometimes called a <i><a href="g-g.xhtml#globaldeclaration">global declaration</a></i> 
+or a <i><a href="g-p.xhtml#proclamation">proclamation</a></i>, is always in force unless locally <i>shadowed</i>.
+
+</p><p>
+
+<i><a href="g-n.xhtml#name">Names</a></i> of <i><a href="g-v.xhtml#variable">variables</a></i> and <i><a href="g-f.xhtml#function">functions</a></i> within 
+<i>declaration-specifier</i> refer to <i><a href="g-d.xhtml#dynamicvariable">dynamic variables</a></i> 
+and global <i><a href="g-f.xhtml#function">function</a></i> definitions, respectively.
+
+</p><p>
+The next figure shows a list of <i>declaration identifiers</i> 
+that can be used with <a href="#DictEntry_proclaim_298"><b>proclaim</b></a>.
+
+</p><table id="fig-3-22" class="fig">
+<caption><span class="figlabel">Figure 3-22.</span> Global Declaration Specifiers</caption>
+
+  <tbody><tr>
+    <td>declaration</td>
+    <td>inline</td>
+    <td>optimize</td>
+    <td>type</td>
+  </tr>
+  <tr>
+    <td>ftype</td>
+    <td>notinline</td>
+    <td>special</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+
+
+
+<p>
+
+An implementation is free to support other (<i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>)
+<i><a href="g-d.xhtml#declarationidentifier">declaration identifiers</a></i> as well.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defun declare-variable-types-globally (type vars)
+   (proclaim `(type ,type ,@vars))
+   type)
+
+ ;; Once this form is executed, the dynamic variable *TOLERANCE*
+ ;; must always contain a float.
+ (declare-variable-types-globally 'float '(*tolerance*))
+→  FLOAT
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e3-8-17.xhtml#DictEntry_declaim_299"><b>declaim</b></a>,
+<a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a>,
+Section <a href="s3-2.xhtml#Section_Compilation_213">3.2 Compilation</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+Although the <i>execution</i> of a <a href="#DictEntry_proclaim_298"><b>proclaim</b></a> <i><a href="g-f.xhtml#form">form</a></i> 
+has effects that might affect compilation, the compiler does not make
+any attempt to recognize and specially process <a href="#DictEntry_proclaim_298"><b>proclaim</b></a> <i><a href="g-f.xhtml#form">forms</a></i>.
+A <i><a href="g-p.xhtml#proclamation">proclamation</a></i> such as the following, even if a <i><a href="g-t.xhtml#toplevelform">top level form</a></i>,
+does not have any effect until it is executed:
+
+<pre>(proclaim '(special *x*))
+</pre>
+
+<p>
+If compile time side effects are desired, <a href="e3-8-5.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a> may be useful.
+For example:
+
+</p><pre> (eval-when (:execute :compile-toplevel :load-toplevel)
+   (proclaim '(special *x*)))
+</pre>
+
+<p>
+In most such cases, however, it is preferrable to use <a href="e3-8-17.xhtml#DictEntry_declaim_299"><b>declaim</b></a> for
+this purpose.
+
+</p><p>
+
+Since <a href="#DictEntry_proclaim_298"><b>proclaim</b></a> <i><a href="g-f.xhtml#form">forms</a></i> are ordinary <i><a href="g-f.xhtml#functionform">function forms</a></i>,
+<i><a href="g-m.xhtml#macroform">macro forms</a></i> can expand into them.
+
+
+
+
+</p></dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>20.2.5 file-author — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_file_author_1172" class="entry"><span class="secno">20.2.5</span> <span class="names">file-author</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>file-author</b>
+<i>pathspec</i>
+  → <i>author</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>pathspec</i>—a <i><a href="g-p.xhtml#pathnamedesignator">pathname designator</a></i>.
+
+
+<p>
+<i>author</i>—a <i><a href="g-s.xhtml#string">string</a></i> or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns a <i><a href="g-s.xhtml#string">string</a></i> naming the author of the <i><a href="g-f.xhtml#file">file</a></i> specified by <i>pathspec</i>,
+or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> if the author's name cannot be determined.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (with-open-file (stream "&gt;relativity&gt;general.text")
+   (file-author s))
+→ "albert"
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The host computer's file system.
+
+<p>
+Other users of the <i><a href="g-f.xhtml#file">file</a></i> named by <i>pathspec</i>.
+</p></dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e20-2-9.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> is signaled if <i>pathspec</i> is <i><a href="g-w.xhtml#wild">wild</a></i>.
+
+
+
+<p>
+
+
+
+
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e20-2-9.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> is signaled
+if the <i><a href="g-f.xhtml#filesystem">file system</a></i> cannot perform the requested operation.
+
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+
+<a href="e19-4-1.xhtml#DictEntry_pathname_1144"><b>pathname</b></a>,
+<a href="e19-4-2.xhtml#DictEntry_logical_path_1145"><b>logical-pathname</b></a>,
+Section <a href="s20-1.xhtml#Section_File_System__1162">20.1 File System Concepts</a>,
+
+
+Section <a href="s19-1.xhtml#SubSection_Pathnames_as_1095">19.1.2 Pathnames as Filenames</a>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

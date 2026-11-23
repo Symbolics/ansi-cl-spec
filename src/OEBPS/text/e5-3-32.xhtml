@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.32 t — Constant Variable</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_t_418" class="entry"><span class="secno">5.3.32</span> <span class="names">t</span> <span class="kind">Constant Variable</span></h3>
+<dl>
+
+
+<dt><b>Constant Value:</b></dt><dd>
+
+
+<a href="#DictEntry_t_418"><b>t</b></a>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+The <i><a href="g-b.xhtml#boolean">boolean</a></i> representing true, 
+and the canonical <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i> representing true.
+Although any <i><a href="g-o.xhtml#object">object</a></i> 
+other than <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is considered <i><a href="g-t.xhtml#true">true</a></i>,
+<a href="#DictEntry_t_418"><b>t</b></a> is generally used when there is no special reason 
+to prefer one such <i><a href="g-o.xhtml#object">object</a></i> over another.
+
+<p>
+The <i><a href="g-s.xhtml#symbol">symbol</a></i> <a href="#DictEntry_t_418"><b>t</b></a> is also sometimes used for other purposes as well.
+For example,
+    as the <i><a href="g-n.xhtml#name">name</a></i> of a <i><a href="g-c.xhtml#class">class</a></i>,
+    as a <i><a href="g-d.xhtml#designator">designator</a></i> (<i>e.g.</i>,  a <i><a href="g-s.xhtml#streamdesignator">stream designator</a></i>)
+ or as a special symbol for some syntactic reason 
+      (<i>e.g.</i>,  in <a href="e5-3-46.xhtml#DictEntry_case_ccase_432"><b>case</b></a> and <a href="e5-3-47.xhtml#DictEntry_typecase_ct_433"><b>typecase</b></a> to label the <i>otherwise-clause</i>).
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> t →  T 
+ (eq t 't) → <i><a href="g-t.xhtml#true">true</a></i>
+ (find-class 't) → #&lt;CLASS T 610703333&gt;
+ (case 'a (a 1) (t 2)) → 1
+ (case 'b (a 1) (t 2)) → 2
+ (prin1 'hello t)
+▷ HELLO
+→  HELLO
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

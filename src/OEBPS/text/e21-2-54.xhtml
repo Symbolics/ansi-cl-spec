@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.54 *terminal-io* — Variable</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_terminal_io_1245" class="entry"><span class="secno">21.2.54</span> <span class="names">*terminal-io*</span> <span class="kind">Variable</span></h3>
+<dl>
+
+
+<dt><b>Value Type:</b></dt><dd>
+
+a <i><a href="g-b.xhtml#bidirectional">bidirectional</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>.
+
+</dd><dt><b>Initial Value:</b></dt><dd>
+
+<i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>, but
+it must be an <i><a href="g-o.xhtml#open">open</a></i> <i><a href="g-s.xhtml#stream">stream</a></i> 
+that is not a  <i><a href="g-g.xhtml#generalizedsynonymstream">generalized synonym stream</a></i>
+to an <i>I/O customization variables</i>
+but that might be a <i><a href="g-g.xhtml#generalizedsynonymstream">generalized synonym stream</a></i> to 
+the <i><a href="g-v.xhtml#value">value</a></i> of some <i>I/O customization variable</i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+The <i><a href="g-v.xhtml#value">value</a></i> of <a href="#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>, called  <i>terminal I/O</i>, is ordinarily 
+a <i><a href="g-b.xhtml#bidirectional">bidirectional</a></i> <i><a href="g-s.xhtml#stream">stream</a></i> that connects to the user's console.
+Typically, writing to this <i><a href="g-s.xhtml#stream">stream</a></i> 
+would cause the output to appear
+on a display screen, for example, and reading from the <i><a href="g-s.xhtml#stream">stream</a></i> would
+accept input from a keyboard.  It is intended
+that standard input functions such as <a href="e23-2-4.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> and <a href="e21-2-17.xhtml#DictEntry_read_char_1208"><b>read-char</b></a>,
+when used with this <i><a href="g-s.xhtml#stream">stream</a></i>, cause echoing of the input
+into the output side of the <i><a href="g-s.xhtml#stream">stream</a></i>. The means by which this is
+accomplished are <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+<p>
+
+The effect of changing the <i><a href="g-v.xhtml#value">value</a></i> of <a href="#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>,
+either by <i><a href="g-b.xhtml#binding">binding</a></i> or <i>assignment</i>,
+is <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (progn (prin1 'foo) (prin1 'bar *terminal-io*))
+▷ FOOBAR
+→  BAR
+ (with-output-to-string (*standard-output*)
+   (prin1 'foo) 
+   (prin1 'bar *terminal-io*))
+▷ BAR
+→ "FOO"
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*debug-io*</b></a>,
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*error-output*</b></a>,
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*query-io*</b></a>,
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*standard-input*</b></a>,
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a>,
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*trace-output*</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

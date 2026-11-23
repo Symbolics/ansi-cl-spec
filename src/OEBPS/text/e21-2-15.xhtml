@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.15 write-byte — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_write_byte_1206" class="entry"><span class="secno">21.2.15</span> <span class="names">write-byte</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>write-byte</b>
+<i>byte stream</i>
+  → <i>byte</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>byte</i>—an <i><a href="g-i.xhtml#integer">integer</a></i> of the <i><a href="g-s.xhtml#streamelementtype">stream element type</a></i>
+		  of <i><a href="g-s.xhtml#stream">stream</a></i>.
+
+<p>
+<i>stream</i>—a <i><a href="g-b.xhtml#binary">binary</a></i> <i><a href="g-o.xhtml#output">output</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_write_byte_1206"><b>write-byte</b></a> writes one byte, <i>byte</i>, to <i>stream</i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (with-open-file (s "temp-bytes" 
+                    :direction :output
+                    :element-type 'unsigned-byte)
+    (write-byte 101 s)) → 101
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+<i>stream</i> is modified.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The <i><a href="g-e.xhtml#elementtype">element type</a></i> of the <i>stream</i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>stream</i> is not a <i><a href="g-s.xhtml#stream">stream</a></i>.
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a> 
+if <i>stream</i> is not  a <i><a href="g-b.xhtml#binary">binary</a></i> <i><a href="g-o.xhtml#output">output</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>.
+
+<p>
+Might signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>byte</i> is not
+an <i><a href="g-i.xhtml#integer">integer</a></i> of the <i><a href="g-s.xhtml#streamelementtype">stream element type</a></i> of <i><a href="g-s.xhtml#stream">stream</a></i>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e21-2-14.xhtml#DictEntry_read_byte_1205"><b>read-byte</b></a>,
+<a href="e21-2-21.xhtml#DictEntry_write_char_1212"><b>write-char</b></a>,
+
+<a href="e21-2-25.xhtml#DictEntry_write_sequen_1216"><b>write-sequence</b></a>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

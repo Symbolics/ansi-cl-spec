@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.52 multiple-value-setq — Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_multiple_val_438" class="entry"><span class="secno">5.3.52</span> <span class="names">multiple-value-setq</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>multiple-value-setq</b>
+<i>vars form</i>
+  → <i>result</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>vars</i>—a <i><a href="g-l.xhtml#list">list</a></i> of <i><a href="g-s.xhtml#symbol">symbols</a></i>
+	       that are either <i><a href="g-v.xhtml#variable">variable</a></i> <i><a href="g-n.xhtml#name">names</a></i>
+	       or <i><a href="g-n.xhtml#name">names</a></i> of <i><a href="g-s.xhtml#symbolmacro">symbol macros</a></i>.
+
+<p>
+<i>form</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+
+<i>result</i>—The <i><a href="g-p.xhtml#primaryvalue">primary value</a></i> returned by the <i>form</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_multiple_val_438"><b>multiple-value-setq</b></a> assigns values to <i>vars</i>.
+
+<p>
+
+The <i>form</i> is evaluated,
+and each <i>var</i> is <i>assigned</i> 
+to the corresponding <i><a href="g-v.xhtml#value">value</a></i> returned by that <i><a href="g-f.xhtml#form">form</a></i>. 
+If there are more <i>vars</i> than <i><a href="g-v.xhtml#value">values</a></i> returned,
+<a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is <i>assigned</i> to the extra <i>vars</i>.
+If there are more <i><a href="g-v.xhtml#value">values</a></i> than <i>vars</i>,
+the extra <i><a href="g-v.xhtml#value">values</a></i> are discarded.
+
+</p><p>
+
+If any <i>var</i> is the <i><a href="g-n.xhtml#name">name</a></i> of a <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i>,
+then it is <i>assigned</i> as if by <a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a>.  Specifically,
+
+</p><pre> (multiple-value-setq (<i>symbol</i><sub>1</sub> ... <i>symbol</i><sub>N</sub>) <i>value-producing-form</i>)
+</pre>
+is defined to always behave in the same way as
+
+<pre> (values (setf (values <i>symbol</i><sub>1</sub> ... <i>symbol</i><sub>N</sub>) <i>value-producing-form</i>))
+</pre>
+in order that the rules for order of evaluation and side-effects be consistent
+with those used by <a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a>.
+
+See Section <a href="s5-1.xhtml#SubSubSectio_VALUES_Forms_377">5.1.2.3 VALUES Forms as Places</a>.
+
+
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (multiple-value-setq (quotient remainder) (truncate 3.2 2)) → 1
+ quotient → 1
+ remainder → 1.2
+ (multiple-value-setq (a b c) (values 1 2)) → 1
+ a → 1
+ b → 2
+ c →  NIL
+ (multiple-value-setq (a b) (values 4 5 6)) → 4
+ a → 4
+ b → 5
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-20.xhtml#DictEntry_setq_406"><b>setq</b></a>,
+<a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

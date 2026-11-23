@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.65 shiftf — Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_shiftf_451" class="entry"><span class="secno">5.3.65</span> <span class="names">shiftf</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>shiftf</b>
+<i>{<i>place</i>}<sup>+</sup> newvalue</i>
+  → <i>old-value-1</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>place</i>—a <i><a href="g-p.xhtml#place">place</a></i>.
+
+<p>
+<i>newvalue</i>—a <i><a href="g-f.xhtml#form">form</a></i>; evaluated.
+
+</p><p>
+<i>old-value-1</i>—an <i><a href="g-o.xhtml#object">object</a></i> (the old <i><a href="g-v.xhtml#value">value</a></i> of the first <i>place</i>).
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_shiftf_451"><b>shiftf</b></a> modifies the values of each
+<i>place</i> by storing <i>newvalue</i>
+into the last <i>place</i>, and shifting the 
+values of the second through the last <i>place</i>
+into the remaining <i>places</i>.
+
+<p>
+
+If <i>newvalue</i> produces more values than there
+are store variables, the extra values are ignored. If <i>newvalue</i>
+produces fewer values than there are store variables, the missing values
+are set to <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+
+</p><p>
+In the form <code>(shiftf <i>place1</i> <i>place2</i> ... <i>placen</i> <i>newvalue</i>)</code>, 
+the values in <i>place1</i> through <i>placen</i> are <i><a href="g-r.xhtml#read">read</a></i> and saved,
+and <i>newvalue</i> is evaluated, for a total of <code>n</code>+1 values in all.
+Values 2 through <code>n</code>+1 are then stored into <i>place1</i> through <i>placen</i>, respectively.
+It is as if all the <i>places</i> form a shift register; the <i>newvalue</i>
+is shifted in from the right, all values shift over to the left one place,
+and the value shifted out of <i>place1</i> is returned. 
+
+</p><p>
+
+For information about the <i><a href="g-e.xhtml#evaluation">evaluation</a></i> of <i><a href="g-s.xhtml#subform">subforms</a></i> of <i>places</i>,
+see Section <a href="s5-1.xhtml#SubSubSectio_Evaluation_o_370">5.1.1.1 Evaluation of Subforms to Places</a>.  
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq x (list 1 2 3) y 'trash) →  TRASH
+ (shiftf y x (cdr x) '(hi there)) →  TRASH
+ x → (2 3)
+ y → (1 HI THERE)
+
+ (setq x (list 'a 'b 'c)) → (A B C)
+ (shiftf (cadr x) 'z) →  B
+ x → (A Z C)
+ (shiftf (cadr x) (cddr x) 'q) →  Z
+ x → (A (C) . Q)
+ (setq n 0) → 0
+ (setq x (list 'a 'b 'c 'd)) → (A B C D)
+ (shiftf (nth (setq n (+ n 1)) x) 'z) →  B
+ x → (A Z C D)
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e5-3-62.xhtml#DictEntry_define_setf__448"><b>define-setf-expander</b></a>,
+<a href="e5-3-61.xhtml#DictEntry_defsetf_447"><b>defsetf</b></a>,
+<a href="e3-8-15.xhtml#DictEntry_macroexpand_297"><b>*macroexpand-hook*</b></a>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e7-7-38.xhtml#DictEntry_setf_class__594"><b>setf</b></a>, <a href="e5-3-66.xhtml#DictEntry_rotatef_452"><b>rotatef</b></a>, Section <a href="s5-1.xhtml#Section_Generalized__368">5.1 Generalized Reference</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The effect of
+ <code>(shiftf <i>place1</i> <i>place2</i> ... <i>placen</i> <i>newvalue</i>)</code>
+is roughly equivalent to
+
+<pre> (let ((var1 <i>place1</i>)
+       (var2 <i>place2</i>)
+       ...
+       (varn <i>placen</i>)
+       (var0 <i>newvalue</i>))
+   (setf <i>place1</i> var2)
+   (setf <i>place2</i> var3)
+   ...
+   (setf <i>placen</i> var0)
+   var1)
+</pre>
+except that the latter would evaluate any <i><a href="g-s.xhtml#subform">subforms</a></i> 
+of each <code>place</code> twice, whereas <a href="#DictEntry_shiftf_451"><b>shiftf</b></a> evaluates them once.
+For example, 
+
+<pre> (setq n 0) → 0
+ (setq x (list 'a 'b 'c 'd)) → (A B C D)
+ (prog1 (nth (setq n (+ n 1)) x)
+        (setf (nth (setq n (+ n 1)) x) 'z)) →  B
+ x → (A B Z D)
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

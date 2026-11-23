@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.41 abort — Restart</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_abort_666" class="entry"><span class="secno">9.2.41</span> <span class="names">abort</span> <span class="kind">Restart</span></h3>
+<dl>
+
+
+<dt><b>Data Arguments Required:</b></dt><dd>
+
+None.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+The intent of the <a href="#DictEntry_abort_666"><b>abort</b></a> restart is to allow return to the
+innermost "command level."  Implementors are encouraged to make 
+sure that there is always a restart named <a href="#DictEntry_abort_666"><b>abort</b></a> 
+around any user code so that user code can call <a href="#DictEntry_abort_666"><b>abort</b></a> 
+at any time and expect something reasonable to happen;
+exactly what the reasonable thing is may vary somewhat.  Typically,
+in an interactive listener, the invocation of <a href="#DictEntry_abort_666"><b>abort</b></a>
+returns to the <i>Lisp reader</i> phase of the <i>Lisp read-eval-print loop</i>,
+though in some batch or multi-processing
+situations there may be situations in which having it kill the running 
+process is more appropriate.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="s9-1.xhtml#SubSubSectio_Restarts_618">9.1.4.2 Restarts</a>,
+Section <a href="s9-1.xhtml#SubSubSubSec_Interfaces_t_620">9.1.4.2.2 Interfaces to Restarts</a>,
+<a href="e9-2-34.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a>,
+<a href="e9-2-46.xhtml#DictEntry_abort_conti_671"><b>abort</b></a> (<i><a href="g-f.xhtml#function">function</a></i>)
+
+</dd></dl>
+</section>
+</body>
+</html>

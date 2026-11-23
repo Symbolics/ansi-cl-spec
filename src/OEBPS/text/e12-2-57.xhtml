@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.57 integer-length — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_integer_leng_831" class="entry"><span class="secno">12.2.57</span> <span class="names">integer-length</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>integer-length</b>
+<i>integer</i>
+  → <i>number-of-bits</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>integer</i>—an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+<p>
+<i>number-of-bits</i>—a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns the number of bits needed to represent <i>integer</i>
+in binary two's-complement format.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (integer-length 0) → 0
+ (integer-length 1) → 1
+ (integer-length 3) → 2
+ (integer-length 4) → 3
+ (integer-length 7) → 3
+ (integer-length -1) → 0
+ (integer-length -4) → 2
+ (integer-length -7) → 3
+ (integer-length -8) → 3
+ (integer-length (expt 2 9)) → 10
+ (integer-length (1- (expt 2 9))) → 9
+ (integer-length (- (expt 2 9))) → 9
+ (integer-length (- (1+ (expt 2 9)))) → 10
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>integer</i> is not an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+This function could have been defined by:
+
+<pre>(defun integer-length (integer)
+  (ceiling (log (if (minusp integer)
+                    (- integer)
+                    (1+ integer))
+                2)))
+</pre>
+
+<p>
+If <i>integer</i> is non-negative, then its value can be represented
+in unsigned binary form in a field whose width in bits is
+no smaller than <code>(integer-length <i>integer</i>)</code>.
+Regardless of the sign of <i>integer</i>, its value can be
+represented in signed binary two's-complement form in a field
+whose width in bits is no smaller than <code>(+ (integer-length <i>integer</i>) 1)</code>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

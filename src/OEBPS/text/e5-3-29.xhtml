@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.29 unwind-protect — Special Operator</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_unwind_prote_415" class="entry"><span class="secno">5.3.29</span> <span class="names">unwind-protect</span> <span class="kind">Special Operator</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>unwind-protect</b>
+<i><i>protected-form</i> {<i>cleanup-form</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>protected-form</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+<p>
+<i>cleanup-form</i>—a <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+
+<i>results</i>—the <i><a href="g-v.xhtml#value">values</a></i> of the <i>protected-form</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+<a href="#DictEntry_unwind_prote_415"><b>unwind-protect</b></a> evaluates <i>protected-form</i>
+and guarantees that <i>cleanup-forms</i> are executed
+before <a href="#DictEntry_unwind_prote_415"><b>unwind-protect</b></a> exits,
+whether it terminates
+normally or is aborted by a control transfer of some kind. 
+<a href="#DictEntry_unwind_prote_415"><b>unwind-protect</b></a> is intended to be used
+to make sure that
+certain side effects take place after the evaluation of 
+<i>protected-form</i>.
+
+<p>
+
+If a <i><a href="g-n.xhtml#nonlocalexit">non-local exit</a></i> occurs during execution of <i>cleanup-forms</i>,
+no special action is taken.  The <i>cleanup-forms</i> of 
+<a href="#DictEntry_unwind_prote_415"><b>unwind-protect</b></a>
+are not protected by that <a href="#DictEntry_unwind_prote_415"><b>unwind-protect</b></a>.
+
+</p><p>
+
+<a href="#DictEntry_unwind_prote_415"><b>unwind-protect</b></a> protects against all attempts to exit 
+from <i>protected-form</i>, including
+     <a href="e5-3-24.xhtml#DictEntry_go_410"><b>go</b></a>,
+     <a href="e9-2-27.xhtml#DictEntry_handler_case_652"><b>handler-case</b></a>,
+     <a href="e9-2-28.xhtml#DictEntry_ignore_error_653"><b>ignore-errors</b></a>,
+     <a href="e9-2-37.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a>,
+     <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a>,
+     <a href="e5-3-28.xhtml#DictEntry_throw_414"><b>throw</b></a>,
+ and <a href="e9-2-40.xhtml#DictEntry_with_simple__665"><b>with-simple-restart</b></a>.
+
+</p><p>
+
+
+
+Undoing of <i><a href="g-h.xhtml#handler">handler</a></i> and <i><a href="g-r.xhtml#restart">restart</a></i> <i><a href="g-b.xhtml#binding">bindings</a></i> during an exit
+happens in parallel with the undoing of the bindings of <i><a href="g-d.xhtml#dynamicvariable">dynamic variables</a></i>
+and <a href="e5-3-23.xhtml#DictEntry_catch_409"><b>catch</b></a> tags, in the reverse order in which they were established.
+The effect of this is that <i>cleanup-form</i> sees the same <i><a href="g-h.xhtml#handler">handler</a></i>
+and <i><a href="g-r.xhtml#restart">restart</a></i> <i><a href="g-b.xhtml#binding">bindings</a></i>, as well as <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i> <i><a href="g-b.xhtml#binding">bindings</a></i>
+and <a href="e5-3-23.xhtml#DictEntry_catch_409"><b>catch</b></a> tags, as were visible when the <a href="#DictEntry_unwind_prote_415"><b>unwind-protect</b></a> was entered.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (tagbody
+   (let ((x 3))
+     (unwind-protect
+       (if (numberp x) (go out))
+       (print x)))
+  out
+   ...)
+</pre>
+When <a href="e5-3-24.xhtml#DictEntry_go_410"><b>go</b></a> is executed, the call to <a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>print</b></a> is executed first,
+and then the transfer of control to the tag <code>out</code> is completed.
+
+<pre> (defun -function (x)
+    (setq state 'running)
+    (unless (numberp x) (throw 'abort 'not-a-number))
+    (setq state (1+ x))) →  DUMMY-FUNCTION
+ (catch 'abort (-function 1)) → 2
+ state → 2
+ (catch 'abort (-function 'trash)) →  NOT-A-NUMBER
+ state →  RUNNING
+ (catch 'abort (unwind-protect (-function 'trash) 
+                  (setq state 'aborted))) →  NOT-A-NUMBER
+ state →  ABORTED
+</pre>
+
+<p>
+
+The following code
+is not correct:
+
+</p><pre> (unwind-protect
+   (progn (incf *access-count*)
+          (perform-access))
+   (decf *access-count*))
+</pre>
+If an exit occurs before completion of <a href="e12-2-33.xhtml#DictEntry_incf_decf_807"><b>incf</b></a>,
+the <a href="e12-2-33.xhtml#DictEntry_incf_decf_807"><b>decf</b></a> <i><a href="g-f.xhtml#form">form</a></i> is executed anyway, resulting in an
+incorrect value for <code>*access-count*</code>.
+The correct way to code this is as follows:
+
+<pre> (let ((old-count *access-count*))
+   (unwind-protect
+     (progn (incf *access-count*)
+            (perform-access))
+     (setq *access-count* old-count)))
+</pre>
+
+<pre>;;; The following returns 2.
+ (block nil   
+   (unwind-protect (return 1)
+     (return 2)))
+ 
+;;; The following has undefined consequences.
+ (block a    
+   (block b
+     (unwind-protect (return-from a 1)
+       (return-from b 2))))
+ 
+;;; The following returns 2.
+ (catch nil 
+   (unwind-protect (throw nil 1)
+     (throw nil 2)))
+ 
+;;; The following has undefined consequences because the catch of B is 
+;;; passed over by the first THROW, hence portable programs must assume 
+;;; its dynamic extent is terminated.  The binding of the catch tag is not
+;;; yet disestablished and therefore it is the target of the second throw.
+ (catch 'a
+   (catch 'b
+     (unwind-protect (throw 'a 1)
+       (throw 'b 2))))
+ 
+;;; The following prints "The inner catch returns :SECOND-THROW"
+;;; and then returns :OUTER-CATCH.
+ (catch 'foo
+         (format t "The inner catch returns ~s.~%"
+                 (catch 'foo
+                     (unwind-protect (throw 'foo :first-throw)
+                         (throw 'foo :second-throw))))
+         :outer-catch)
+ 
+ 
+;;; The following returns 10. The inner CATCH of A is passed over, but 
+;;; because that CATCH is disestablished before the THROW to A is executed,
+;;; it isn't seen.
+ (catch 'a
+   (catch 'b
+     (unwind-protect (1+ (catch 'a (throw 'b 1)))
+       (throw 'a 10))))
+ 
+ 
+;;; The following has undefined consequences because the extent of
+;;; the (CATCH 'BAR ...) exit ends when the (THROW 'FOO ...)
+;;; commences.
+ (catch 'foo
+   (catch 'bar
+       (unwind-protect (throw 'foo 3)
+         (throw 'bar 4)
+         (print 'xxx))))
+ 
+ 
+;;; The following returns 4; XXX is not printed.
+;;; The (THROW 'FOO ...) has no effect on the scope of the BAR
+;;; catch tag or the extent of the (CATCH 'BAR ...) exit.
+ (catch 'bar
+   (catch 'foo
+       (unwind-protect (throw 'foo 3)
+         (throw 'bar 4)
+         (print 'xxx))))
+ 
+ 
+;;; The following prints 5.
+ (block nil
+   (let ((x 5))
+     (declare (special x))
+     (unwind-protect (return)
+       (print x))))          
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-23.xhtml#DictEntry_catch_409"><b>catch</b></a>,
+<a href="e5-3-24.xhtml#DictEntry_go_410"><b>go</b></a>,
+<a href="e9-2-27.xhtml#DictEntry_handler_case_652"><b>handler-case</b></a>,
+<a href="e9-2-37.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a>,
+<a href="e5-3-26.xhtml#DictEntry_return_412"><b>return</b></a>, 
+<a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a>,
+<a href="e5-3-28.xhtml#DictEntry_throw_414"><b>throw</b></a>,
+Section <a href="s3-1.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.3 style-warning — Condition Type</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_style_warnin_628" class="entry"><span class="secno">9.2.3</span> <span class="names">style-warning</span> <span class="kind">Condition Type</span></h3>
+<dl>
+
+
+<dt><b>Class Precedence List:</b></dt><dd>
+
+<a href="#DictEntry_style_warnin_628"><b>style-warning</b></a>,
+<a href="e9-2-2.xhtml#DictEntry_warning_627"><b>warning</b></a>,
+<a href="e9-2-1.xhtml#DictEntry_condition_626"><b>condition</b></a>,
+<a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+The <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_style_warnin_628"><b>style-warning</b></a> includes those <i><a href="g-c.xhtml#condition">conditions</a></i> 
+that represent <i><a href="g-s.xhtml#situation">situations</a></i> involving <i><a href="g-c.xhtml#code">code</a></i> 
+that is <i><a href="g-c.xhtml#conformingcode">conforming code</a></i> but that is nevertheless 
+considered to be faulty or substandard.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e9-2-43.xhtml#DictEntry_muffle_warni_668"><b>muffle-warning</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+An <i><a href="g-i.xhtml#implementation">implementation</a></i> might signal such a <i><a href="g-c.xhtml#condition">condition</a></i>
+if it encounters <i><a href="g-c.xhtml#code">code</a></i>
+     that uses deprecated features 
+  or that appears unaesthetic or inefficient.
+
+<p>
+An `unused variable' warning must be of <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_style_warnin_628"><b>style-warning</b></a>.
+
+</p><p>
+In general, the question of whether <i><a href="g-c.xhtml#code">code</a></i> is faulty or substandard
+is a subjective decision to be made by the facility processing that <i><a href="g-c.xhtml#code">code</a></i>.
+The intent is that whenever such a facility wishes to complain about
+<i><a href="g-c.xhtml#code">code</a></i> on such subjective grounds, it should use this 
+<i><a href="g-c.xhtml#condition">condition</a></i> <i><a href="g-t.xhtml#type">type</a></i> so that any clients who wish to redirect or
+muffle superfluous warnings can do so without risking that they will be
+redirecting or muffling other, more serious warnings.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

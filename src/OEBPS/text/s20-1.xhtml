@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>20.1 File System Concepts</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_File_System__1162"><span class="secno">20.1</span> File System Concepts</h2>
+<p>
+This section describes the <i>Common Lisp</i> interface to file systems.
+
+The model used by this interface assumes 
+     that <b><i>files</i></b> are named by <b><i>filenames</i></b>,
+     that a <i><a href="g-f.xhtml#filename">filename</a></i> can be represented by a <i><a href="g-p.xhtml#pathname">pathname</a></i> <i><a href="g-o.xhtml#object">object</a></i>, 
+ and that given a <i><a href="g-p.xhtml#pathname">pathname</a></i> a <b><i>stream</i></b> can be constructed 
+      that connects to a <i><a href="g-f.xhtml#file">file</a></i> whose <i><a href="g-f.xhtml#filename">filename</a></i> it represents.
+
+</p><p>
+For information about opening and closing <i><a href="g-f.xhtml#file">files</a></i>,
+and manipulating their contents, see Chapter <a href="c21.xhtml#Chapter_Streams_1178">21 Streams</a>.
+
+</p><p>
+The next figure lists some <i><a href="g-o.xhtml#operator">operators</a></i> 
+that are applicable to <i><a href="g-f.xhtml#file">files</a></i> and directories.
+
+</p><table id="fig-20-1" class="fig">
+<caption><span class="figlabel">Figure 20-1.</span> File and Directory Operations</caption>
+
+  <tbody><tr>
+    <td>compile-file</td>
+    <td>file-length</td>
+    <td>open</td>
+  </tr>
+  <tr>
+    <td>delete-file</td>
+    <td>file-position</td>
+    <td>probe-file</td>
+  </tr>
+  <tr>
+    <td>directory</td>
+    <td>file-write-date</td>
+    <td>rename-file</td>
+  </tr>
+  <tr>
+    <td>file-author</td>
+    <td>load</td>
+    <td>with-open-file</td>
+  </tr>
+</tbody></table>
+<section>
+<h3 id="SubSection_Coercion_of__1163"><span class="secno">20.1.1</span> Coercion of Streams to Pathnames</h3>
+<p>
+
+
+A <b><i>stream associated with a file</i></b> is either a <i><a href="g-f.xhtml#filestream">file stream</a></i>
+or a <i><a href="g-s.xhtml#synonymstream">synonym stream</a></i> whose target is a <b><i>stream associated with a file</i></b>.
+Such streams can be used as <i><a href="g-p.xhtml#pathnamedesignator">pathname designators</a></i>.
+
+</p><p>
+Normally, when a <i><a href="g-s.xhtml#streamassociatedwithafile">stream associated with a file</a></i> is used as a
+<i><a href="g-p.xhtml#pathnamedesignator">pathname designator</a></i>, it denotes the <i><a href="g-p.xhtml#pathname">pathname</a></i> used to 
+open the <i><a href="g-f.xhtml#file">file</a></i>; this may be, but is not required to be, the
+actual name of the <i><a href="g-f.xhtml#file">file</a></i>.
+
+</p><p>
+Some functions, such as <a href="e20-2-4.xhtml#DictEntry_truename_1171"><b>truename</b></a> and <a href="e20-2-8.xhtml#DictEntry_delete_file_1175"><b>delete-file</b></a>,
+coerce <i><a href="g-s.xhtml#stream">streams</a></i> to <i><a href="g-p.xhtml#pathname">pathnames</a></i> in a different way that 
+involves referring to the actual <i><a href="g-f.xhtml#file">file</a></i> that is open, which might
+or might not be the file whose name was opened originally.  Such special
+situations are always notated specifically and are not the default.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_File_Operati_1164"><span class="secno">20.1.2</span> File Operations on Open and Closed Streams</h3>
+<p>
+Many <i><a href="g-f.xhtml#function">functions</a></i> that perform <i><a href="g-f.xhtml#file">file</a></i> operations accept either
+<i><a href="g-o.xhtml#open">open</a></i> or <i><a href="g-c.xhtml#closed">closed</a></i> <i><a href="g-s.xhtml#stream">streams</a></i> as <i><a href="g-a.xhtml#argument">arguments</a></i>;
+see Section <a href="s21-1.xhtml#SubSection_Stream_Argum_1189">21.1.3 Stream Arguments to Standardized Functions</a>.
+
+</p><p>
+Of these, the <i><a href="g-f.xhtml#function">functions</a></i> in the next figure treat <i><a href="g-o.xhtml#open">open</a></i> and 
+<i><a href="g-c.xhtml#closed">closed</a></i> <i><a href="g-s.xhtml#stream">streams</a></i> differently.
+
+</p><table id="fig-20-2" class="fig">
+<caption><span class="figlabel">Figure 20-2.</span> File Functions that Treat Open and Closed Streams Differently</caption>
+
+  <tbody><tr>
+    <td>delete-file</td>
+    <td>file-author</td>
+    <td>probe-file</td>
+  </tr>
+  <tr>
+    <td>directory</td>
+    <td>file-write-date</td>
+    <td>truename</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+Since treatment of <i><a href="g-o.xhtml#open">open</a></i> <i><a href="g-s.xhtml#stream">streams</a></i> by the <i><a href="g-f.xhtml#filesystem">file system</a></i> 
+may vary considerably between <i><a href="g-i.xhtml#implementation">implementations</a></i>, however, 
+a <i><a href="g-c.xhtml#closed">closed</a></i> <i><a href="g-s.xhtml#stream">stream</a></i> might be the most reliable kind of
+<i><a href="g-a.xhtml#argument">argument</a></i> for some of these functions—in particular, those in
+the next figure.  For example, in some <i><a href="g-f.xhtml#filesystem">file systems</a></i>, 
+<i><a href="g-o.xhtml#open">open</a></i> <i><a href="g-f.xhtml#file">files</a></i> are written under temporary names 
+and not renamed until <i><a href="g-c.xhtml#closed">closed</a></i>
+and/or are held invisible until <i><a href="g-c.xhtml#closed">closed</a></i>.
+In general, any code that is intended to be portable should
+use such <i><a href="g-f.xhtml#function">functions</a></i> carefully.
+
+</p><table id="fig-20-3" class="fig">
+<caption><span class="figlabel">Figure 20-3.</span> File Functions where Closed Streams Might Work Best</caption>
+
+  <tbody><tr>
+    <td>directory</td>
+    <td>probe-file</td>
+    <td>truename</td>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h3 id="SubSection_Truenames_1165"><span class="secno">20.1.3</span> Truenames</h3>
+<p>
+
+
+Many <i><a href="g-f.xhtml#filesystem">file systems</a></i> permit more than one <i><a href="g-f.xhtml#filename">filename</a></i> to designate 
+a particular <i><a href="g-f.xhtml#file">file</a></i>.
+
+</p><p>
+Even where multiple names are possible, most <i><a href="g-f.xhtml#filesystem">file systems</a></i> have a convention
+for generating a canonical <i><a href="g-f.xhtml#filename">filename</a></i> in such situations.  Such a canonical
+<i><a href="g-f.xhtml#filename">filename</a></i> (or the <i><a href="g-p.xhtml#pathname">pathname</a></i> representing such a <i><a href="g-f.xhtml#filename">filename</a></i>) is
+called a <b><i>truename</i></b>.  
+
+</p><p>
+
+The <i><a href="g-t.xhtml#truename">truename</a></i> of a <i><a href="g-f.xhtml#file">file</a></i> may differ from other <i><a href="g-f.xhtml#filename">filenames</a></i>
+for the file because of
+     symbolic links,
+     version numbers,
+
+     logical device translations in the <i><a href="g-f.xhtml#filesystem">file system</a></i>,
+
+     <i><a href="g-l.xhtml#logicalpathname">logical pathname</a></i> translations within <i>Common Lisp</i>,
+  or other artifacts of the <i><a href="g-f.xhtml#filesystem">file system</a></i>.
+
+</p><p>
+The <i><a href="g-t.xhtml#truename">truename</a></i> for a <i><a href="g-f.xhtml#file">file</a></i> is often, but not necessarily, unique for
+each <i><a href="g-f.xhtml#file">file</a></i>.  For instance, a Unix <i><a href="g-f.xhtml#file">file</a></i> with multiple hard links 
+could have several <i><a href="g-t.xhtml#truename">truenames</a></i>.
+</p>
+<section>
+<h4 id="SubSubSectio_Examples_of__1166"><span class="secno">20.1.3.1</span> Examples of Truenames</h4>
+<p>
+
+For example, a DEC TOPS-20 system with <i><a href="g-f.xhtml#file">files</a></i> <code>PS:&lt;JOE&gt;FOO.TXT.1</code> 
+and <code>PS:&lt;JOE&gt;FOO.TXT.2</code> might permit the second <i><a href="g-f.xhtml#file">file</a></i> to be referred
+to as <code>PS:&lt;JOE&gt;FOO.TXT.0</code>, since the "<code>.0</code>" notation denotes "newest"
+version of several <i><a href="g-f.xhtml#file">files</a></i>.
+In the same <i><a href="g-f.xhtml#filesystem">file system</a></i>, a "logical device" "<code>JOE:</code>" might be 
+taken to refer to <code>PS:&lt;JOE&gt;</code>" and so the names <code>JOE:FOO.TXT.2</code> or
+<code>JOE:FOO.TXT.0</code> might refer to <code>PS:&lt;JOE&gt;FOO.TXT.2</code>.
+In all of these cases, the <i><a href="g-t.xhtml#truename">truename</a></i> of the file would probably be
+<code>PS:&lt;JOE&gt;FOO.TXT.2</code>.
+
+</p><p>
+If a <i><a href="g-f.xhtml#file">file</a></i> is a symbolic link to another <i><a href="g-f.xhtml#file">file</a></i> (in a <i><a href="g-f.xhtml#filesystem">file system</a></i>
+permitting such a thing), it is conventional for the <i><a href="g-t.xhtml#truename">truename</a></i> to be
+the canonical name of the <i><a href="g-f.xhtml#file">file</a></i> after any symbolic links have been followed;
+that is, it is the canonical name of the <i><a href="g-f.xhtml#file">file</a></i> whose contents would
+become available if an <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-s.xhtml#stream">stream</a></i> to that <i><a href="g-f.xhtml#file">file</a></i> were 
+opened.
+
+</p><p>
+In the case of a <i><a href="g-f.xhtml#file">file</a></i> still being created (that is, of an <i><a href="g-o.xhtml#output">output</a></i>
+<i><a href="g-s.xhtml#stream">stream</a></i> open to such a <i><a href="g-f.xhtml#file">file</a></i>), the exact <i><a href="g-t.xhtml#truename">truename</a></i> of the file
+might not be known until the <i><a href="g-s.xhtml#stream">stream</a></i> is closed.  In this case, 
+the <i><a href="g-f.xhtml#function">function</a></i> <a href="e20-2-4.xhtml#DictEntry_truename_1171"><b>truename</b></a> might return different values for such a <i><a href="g-s.xhtml#stream">stream</a></i>
+before and after it was closed.  In fact, before it is closed, the name returned
+might not even be a valid name in the <i><a href="g-f.xhtml#filesystem">file system</a></i>—for example, while a
+file is being written, it might have version <code>:newest</code> and might only take on 
+a specific numeric value later when the file is closed even in a <i><a href="g-f.xhtml#filesystem">file system</a></i>
+where all files have numeric versions.
+
+
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</section>
+</body>
+</html>

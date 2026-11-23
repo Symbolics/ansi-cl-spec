@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>11.2.3 find-symbol — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_find_symbol_718" class="entry"><span class="secno">11.2.3</span> <span class="names">find-symbol</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>find-symbol</b>
+<i>string <code>&amp;optional</code> package</i>
+  → <i>symbol, status</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>string</i>—a <i><a href="g-s.xhtml#string">string</a></i>.
+
+<p>
+
+<i>package</i>—a <i><a href="g-p.xhtml#packagedesignator">package designator</a></i>.
+
+  The default is the <i><a href="g-c.xhtml#currentpackage">current package</a></i>.
+
+</p><p>
+<i>symbol</i>—a <i><a href="g-s.xhtml#symbol">symbol</a></i> accessible in the <i>package</i>, 
+		 or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>status</i>—one of <code>:inherited</code>, <code>:external</code>, <code>:internal</code>, or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_find_symbol_718"><b>find-symbol</b></a> locates a <i><a href="g-s.xhtml#symbol">symbol</a></i> whose <i><a href="g-n.xhtml#name">name</a></i> is
+<i>string</i> in a <i><a href="g-p.xhtml#package">package</a></i>.
+If a <i><a href="g-s.xhtml#symbol">symbol</a></i> named <i>string</i> is found in <i>package</i>,
+directly or by inheritance, the <i><a href="g-s.xhtml#symbol">symbol</a></i> 
+found is returned as the first
+value; the second value is as follows:
+
+<ul>
+<li><code>:internal</code>
+
+<p>
+If the <i><a href="g-s.xhtml#symbol">symbol</a></i> is <i><a href="g-p.xhtml#present">present</a></i> in <i>package</i>
+as an <i><a href="g-i.xhtml#internalsymbol">internal symbol</a></i>.
+
+</p></li><li><code>:external</code>
+
+<p>
+If the <i><a href="g-s.xhtml#symbol">symbol</a></i> is <i><a href="g-p.xhtml#present">present</a></i> in <i>package</i>
+as an <i><a href="g-e.xhtml#externalsymbol">external symbol</a></i>.
+
+</p></li><li><code>:inherited</code>
+
+<p>
+If the <i><a href="g-s.xhtml#symbol">symbol</a></i> is inherited by <i>package</i> 
+through <a href="e11-2-18.xhtml#DictEntry_use_package_733"><b>use-package</b></a>,
+
+but is not <i><a href="g-p.xhtml#present">present</a></i> in <i>package</i>.
+
+</p></li></ul>
+
+<p>
+If no such <i><a href="g-s.xhtml#symbol">symbol</a></i> is <i><a href="g-a.xhtml#accessible">accessible</a></i> in <i>package</i>,
+both values are <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (find-symbol "NEVER-BEFORE-USED") →  NIL, NIL
+ (find-symbol "NEVER-BEFORE-USED") →  NIL, NIL
+ (intern "NEVER-BEFORE-USED") →  NEVER-BEFORE-USED, NIL
+ (intern "NEVER-BEFORE-USED") →  NEVER-BEFORE-USED, :INTERNAL
+ (find-symbol "NEVER-BEFORE-USED") →  NEVER-BEFORE-USED, :INTERNAL
+ (find-symbol "never-before-used") →  NIL, NIL
+ (find-symbol "CAR" 'common-lisp-user) →  CAR, :INHERITED
+ (find-symbol "CAR" 'common-lisp) →  CAR, :EXTERNAL
+ (find-symbol "NIL" 'common-lisp-user) →  NIL, :INHERITED
+ (find-symbol "NIL" 'common-lisp) →  NIL, :EXTERNAL
+ (find-symbol "NIL" (prog1 (make-package "JUST-TESTING" :use '())
+                           (intern "NIL" "JUST-TESTING")))
+→  JUST-TESTING::NIL, :INTERNAL
+ (export 'just-testing::nil 'just-testing)
+ (find-symbol "NIL" 'just-testing) →  JUST-TESTING:NIL, :EXTERNAL
+ (find-symbol "NIL" "KEYWORD")
+→  NIL, NIL
+OR→:NIL, :EXTERNAL
+ (find-symbol (symbol-name :nil) "KEYWORD") → :NIL, :EXTERNAL
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e11-2-21.xhtml#DictEntry_intern_736"><b>intern</b></a>,
+<a href="e11-2-6.xhtml#DictEntry_import_721"><b>import</b></a>,
+<a href="e11-2-2.xhtml#DictEntry_export_717"><b>export</b></a>,
+<a href="e11-2-18.xhtml#DictEntry_use_package_733"><b>use-package</b></a>,
+<a href="e11-2-15.xhtml#DictEntry_unintern_730"><b>unintern</b></a>,
+<a href="e11-2-14.xhtml#DictEntry_unexport_729"><b>unexport</b></a>,
+<a href="e11-2-17.xhtml#DictEntry_unuse_packag_732"><b>unuse-package</b></a>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e11-2-21.xhtml#DictEntry_intern_736"><b>intern</b></a>, <a href="e11-2-5.xhtml#DictEntry_find_all_sym_720"><b>find-all-symbols</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<a href="#DictEntry_find_symbol_718"><b>find-symbol</b></a> is operationally equivalent to <a href="e11-2-21.xhtml#DictEntry_intern_736"><b>intern</b></a>, 
+except that it never creates a new <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

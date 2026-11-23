@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.28 throw — Special Operator</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_throw_414" class="entry"><span class="secno">5.3.28</span> <span class="names">throw</span> <span class="kind">Special Operator</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>throw</b>
+<i>tag result-form</i>
+  →  <b>|</b> 
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>tag</i>—a <i><a href="g-c.xhtml#catchtag">catch tag</a></i>; evaluated.
+
+<p>
+<i>result-form</i>—a <i><a href="g-f.xhtml#form">form</a></i>; evaluated as described below.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_throw_414"><b>throw</b></a> causes a non-local control transfer
+to a <a href="e5-3-23.xhtml#DictEntry_catch_409"><b>catch</b></a> whose tag is <a href="e5-3-33.xhtml#DictEntry_eq_419"><b>eq</b></a> to <i>tag</i>. 
+
+<p>
+<i>Tag</i> is evaluated first to produce an <i><a href="g-o.xhtml#object">object</a></i>
+called the throw tag; then <i>result-form</i> is evaluated,
+and its results are saved. If the <i>result-form</i> produces
+multiple values, then all the values are saved.
+The most recent outstanding <a href="e5-3-23.xhtml#DictEntry_catch_409"><b>catch</b></a> 
+whose <i>tag</i> is <a href="e5-3-33.xhtml#DictEntry_eq_419"><b>eq</b></a> to the throw tag
+is exited; the saved results are returned as the value or 
+values of <a href="e5-3-23.xhtml#DictEntry_catch_409"><b>catch</b></a>.
+
+</p><p>
+The transfer of control initiated by <a href="#DictEntry_throw_414"><b>throw</b></a> is performed
+as described in Section <a href="s5-2.xhtml#Section_Transfer_of__385">5.2 Transfer of Control to an Exit Point</a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (catch 'result
+    (setq i 0 j 0)
+    (loop (incf j 3) (incf i)
+          (if (= i 3) (throw 'result (values i j))))) → 3, 9
+
+</pre>
+
+<pre> (catch nil 
+   (unwind-protect (throw nil 1)
+     (throw nil 2))) → 2
+</pre>
+
+<p>
+The consequences of the following are undefined 
+because the <a href="e5-3-23.xhtml#DictEntry_catch_409"><b>catch</b></a> of <code>b</code> 
+is passed over by the first <a href="#DictEntry_throw_414"><b>throw</b></a>, 
+hence portable programs must assume that 
+its <i><a href="g-d.xhtml#dynamicextent">dynamic extent</a></i> is terminated. 
+The <i><a href="g-b.xhtml#binding">binding</a></i> of the <i><a href="g-c.xhtml#catchtag">catch tag</a></i> is not yet <i>disestablished</i>
+and therefore it is the target of the second <a href="#DictEntry_throw_414"><b>throw</b></a>.
+</p><pre> (catch 'a
+   (catch 'b
+     (unwind-protect (throw 'a 1)
+       (throw 'b 2))))
+</pre>
+
+<p>
+The following prints "<code>The inner catch returns :SECOND-THROW</code>"
+and then returns <code>:outer-catch</code>.
+
+</p><pre> (catch 'foo
+         (format t "The inner catch returns ~s.~%"
+                 (catch 'foo
+                     (unwind-protect (throw 'foo :first-throw)
+                         (throw 'foo :second-throw))))
+         :outer-catch)
+▷ The inner catch returns :SECOND-THROW
+→ :OUTER-CATCH
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+If there is no outstanding <i><a href="g-c.xhtml#catchtag">catch tag</a></i> that matches the throw tag,
+no unwinding of the stack is performed,
+and an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e5-3-67.xhtml#DictEntry_control_erro_453"><b>control-error</b></a> is signaled.
+When the error is signaled, 
+
+
+
+the <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i> is that which was
+in force at the point of the <a href="#DictEntry_throw_414"><b>throw</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-22.xhtml#DictEntry_block_408"><b>block</b></a>,
+<a href="e5-3-23.xhtml#DictEntry_catch_409"><b>catch</b></a>,
+<a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a>,
+<a href="e5-3-29.xhtml#DictEntry_unwind_prote_415"><b>unwind-protect</b></a>,
+Section <a href="s3-1.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<a href="e5-3-23.xhtml#DictEntry_catch_409"><b>catch</b></a> and <a href="#DictEntry_throw_414"><b>throw</b></a> are normally used when the <i><a href="g-e.xhtml#exitpoint">exit point</a></i>
+must have <i><a href="g-d.xhtml#dynamicscope">dynamic scope</a></i> (<i>e.g.</i>,  the <a href="#DictEntry_throw_414"><b>throw</b></a> is not lexically enclosed
+by the <a href="e5-3-23.xhtml#DictEntry_catch_409"><b>catch</b></a>), while <a href="e5-3-22.xhtml#DictEntry_block_408"><b>block</b></a> and <a href="e5-3-26.xhtml#DictEntry_return_412"><b>return</b></a> are used 
+when <i><a href="g-l.xhtml#lexicalscope">lexical scope</a></i> is sufficient.
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.43 muffle-warning — Restart</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_muffle_warni_668" class="entry"><span class="secno">9.2.43</span> <span class="names">muffle-warning</span> <span class="kind">Restart</span></h3>
+<dl>
+
+
+<dt><b>Data Arguments Required:</b></dt><dd>
+
+None.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+This <i><a href="g-r.xhtml#restart">restart</a></i> is established by <a href="e9-2-20.xhtml#DictEntry_warn_645"><b>warn</b></a> so that <i><a href="g-h.xhtml#handler">handlers</a></i>
+of <a href="e9-2-2.xhtml#DictEntry_warning_627"><b>warning</b></a> <i><a href="g-c.xhtml#condition">conditions</a></i> have a way to tell <a href="e9-2-20.xhtml#DictEntry_warn_645"><b>warn</b></a> 
+that a warning has already been dealt with and that no further action is warranted.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defvar *all-quiet* nil) → *ALL-QUIET*
+ (defvar *saved-warnings* '()) → *SAVED-WARNINGS*
+ (defun quiet-warning-handler (c)
+   (when *all-quiet*
+     (let ((r (find-restart 'muffle-warning c)))
+       (when r 
+         (push c *saved-warnings*)
+         (invoke-restart r)))))
+→  CUSTOM-WARNING-HANDLER
+ (defmacro with-quiet-warnings (&amp;body forms)
+   `(let ((*all-quiet* t)
+          (*saved-warnings* '()))
+      (handler-bind ((warning #'quiet-warning-handler))
+        ,@forms
+        *saved-warnings*)))
+→  WITH-QUIET-WARNINGS
+ (setq saved
+   (with-quiet-warnings
+     (warn "Situation #1.")
+     (let ((*all-quiet* nil))
+       (warn "Situation #2."))
+     (warn "Situation #3.")))
+▷ Warning: Situation #2.
+→ (#&lt;SIMPLE-WARNING 42744421&gt; #&lt;SIMPLE-WARNING 42744365&gt;)
+ (dolist (s saved) (format t "~&amp;~A~%" s))
+▷ Situation #3.
+▷ Situation #1.
+→  NIL
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="s9-1.xhtml#SubSubSectio_Restarts_618">9.1.4.2 Restarts</a>,
+Section <a href="s9-1.xhtml#SubSubSubSec_Interfaces_t_620">9.1.4.2.2 Interfaces to Restarts</a>,
+<a href="e9-2-34.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a>,
+<a href="#DictEntry_muffle_warni_668"><b>muffle-warning</b></a> (<i><a href="g-f.xhtml#function">function</a></i>),
+<a href="e9-2-20.xhtml#DictEntry_warn_645"><b>warn</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

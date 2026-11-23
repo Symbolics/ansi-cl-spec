@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.3 real — System Class</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_real_777" class="entry"><span class="secno">12.2.3</span> <span class="names">real</span> <span class="kind">System Class</span></h3>
+<dl>
+
+
+<dt><b>Class Precedence List:</b></dt><dd>
+
+<a href="#DictEntry_real_777"><b>real</b></a>,
+<a href="e12-2-1.xhtml#DictEntry_number_775"><b>number</b></a>,
+<a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+The <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_real_777"><b>real</b></a> includes all <i><a href="g-n.xhtml#number">numbers</a></i> that
+represent mathematical real numbers, though there are mathematical real
+numbers (<i>e.g.</i>,  irrational numbers) that do not have an exact representation 
+in <i>Common Lisp</i>.  Only <i>reals</i> can be ordered using the
+<a href="e12-2-15.xhtml#DictEntry___lt_789"><b>&lt;</b></a>, <a href="e12-2-15.xhtml#DictEntry___lt_789"><b>&gt;</b></a>, <a href="e12-2-15.xhtml#DictEntry___lt_789"><b>&lt;=</b></a>, and <a href="e12-2-15.xhtml#DictEntry___lt_789"><b>&gt;=</b></a> functions.
+
+<p>
+
+The <i><a href="g-t.xhtml#type">types</a></i> <a href="e12-2-6.xhtml#DictEntry_rational_780"><b>rational</b></a> and <a href="e12-2-4.xhtml#DictEntry_float_778"><b>float</b></a> are <i><a href="g-d.xhtml#disjoint">disjoint</a></i>
+<i><a href="g-s.xhtml#subtype">subtypes</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_real_777"><b>real</b></a>.
+
+
+</p></dd><dt><b>Compound Type Specifier Kind:</b></dt><dd>
+
+
+Abbreviating.
+
+</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+
+
+<code>(real <code>[</code>lower-limit [upper-limit)</code><code>]</code>]
+
+</dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+
+
+<i>lower-limit</i>, <i>upper-limit</i>—<i><a href="g-i.xhtml#intervaldesignator">interval designators</a></i> 
+					   for <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_real_777"><b>real</b></a>.
+The defaults for each of <i>lower-limit</i> and <i>upper-limit</i> is the <i><a href="g-s.xhtml#symbol">symbol</a></i> <a href="e12-2-24.xhtml#DictEntry__798"><b>*</b></a>.
+
+</dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+
+
+This denotes the <i>reals</i> on the interval described by
+<i>lower-limit</i> and <i>upper-limit</i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

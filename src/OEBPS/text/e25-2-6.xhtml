@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>25.2.6 describe — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_describe_1433" class="entry"><span class="secno">25.2.6</span> <span class="names">describe</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>describe</b>
+<i>object <code>&amp;optional</code> stream</i>
+  → <i> &lt; <i>no values</i> &gt; </i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>object</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+<p>
+
+<i>stream</i>—an <i><a href="g-o.xhtml#output">output</a></i> <i><a href="g-s.xhtml#streamdesignator">stream designator</a></i>.
+ The default is <i><a href="g-s.xhtml#standardoutput">standard output</a></i>.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_describe_1433"><b>describe</b></a> displays information about <i>object</i>
+
+to <i>stream</i>.
+
+
+<p>
+For example, <a href="#DictEntry_describe_1433"><b>describe</b></a> of a <i><a href="g-s.xhtml#symbol">symbol</a></i> might show the
+<i><a href="g-s.xhtml#symbol">symbol</a></i>'s value, its definition, and each of its properties. 
+<a href="#DictEntry_describe_1433"><b>describe</b></a> of a <i><a href="g-f.xhtml#float">float</a></i> might show the number's
+internal representation in a way that is useful for tracking
+down round-off errors.  In all cases, however, the nature and format of the
+output of <a href="#DictEntry_describe_1433"><b>describe</b></a> is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</p><p>
+
+<a href="#DictEntry_describe_1433"><b>describe</b></a> can describe something that it finds inside the <i>object</i>;
+in such cases, a notational device such as increased indentation or positioning in a
+table is typically used in order to visually distinguish such recursive descriptions 
+from descriptions of the argument <i>object</i>.
+
+</p><p>
+
+The actual act of describing the object is implemented by <a href="e25-2-7.xhtml#DictEntry_describe_obj_1434"><b>describe-object</b></a>.
+<a href="#DictEntry_describe_1433"><b>describe</b></a> exists as an interface primarily to manage argument defaulting (including
+conversion of arguments <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a> and <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> into <i><a href="g-s.xhtml#stream">stream</a></i> <i><a href="g-o.xhtml#object">objects</a></i>) and to inhibit
+any return values from <a href="e25-2-7.xhtml#DictEntry_describe_obj_1434"><b>describe-object</b></a>.
+
+
+</p><p>
+
+<a href="#DictEntry_describe_1433"><b>describe</b></a> is not intended to be an interactive function.  In a 
+<i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i>, <a href="#DictEntry_describe_1433"><b>describe</b></a> must not, by default, 
+prompt for user input.  User-defined methods for <a href="e25-2-7.xhtml#DictEntry_describe_obj_1434"><b>describe-object</b></a>
+are likewise restricted.  
+
+
+</p></dd><dt><b>Side Effects:</b></dt><dd>
+
+Output to <i><a href="g-s.xhtml#standardoutput">standard output</a></i> or <i>terminal I/O</i>.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a> and <a href="e21-2-54.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>,
+methods on <a href="e25-2-7.xhtml#DictEntry_describe_obj_1434"><b>describe-object</b></a> and <a href="e22-4-11.xhtml#DictEntry_print_object_1351"><b>print-object</b></a>
+for <i><a href="g-o.xhtml#object">objects</a></i> having user-defined <i>classes</i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e25-2-18.xhtml#DictEntry_inspect_1445"><b>inspect</b></a>, <a href="e25-2-7.xhtml#DictEntry_describe_obj_1434"><b>describe-object</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>22.4.3 pprint-dispatch — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_pprint_dispa_1343" class="entry"><span class="secno">22.4.3</span> <span class="names">pprint-dispatch</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>pprint-dispatch</b>
+<i>object <code>&amp;optional</code> table</i>
+  → <i>function, found-p</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>object</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+<p>
+
+<i>table</i>—a <i><a href="g-p.xhtml#pprintdispatchtable">pprint dispatch table</a></i>, or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+ The default is the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e22-4-25.xhtml#DictEntry_print_pprin_1365"><b>*print-pprint-dispatch*</b></a>.
+
+</p><p>
+<i>function</i>—a <i><a href="g-f.xhtml#functiondesignator">function designator</a></i>.
+
+</p><p>
+<i>found-p</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Retrieves the highest priority function in <i>table</i> that is
+associated with a <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> that matches <i>object</i>.
+The function is chosen by finding all of the <i><a href="g-t.xhtml#typespecifier">type specifiers</a></i> in <i>table</i>
+that match the <i>object</i> and 
+selecting the highest priority function associated with any of these
+<i><a href="g-t.xhtml#typespecifier">type specifiers</a></i>.  If there is more than one highest priority function,
+an arbitrary choice is made.  If no <i><a href="g-t.xhtml#typespecifier">type specifiers</a></i> match the 
+<i>object</i>, a function is returned that prints <i>object</i> 
+
+
+using <a href="e22-4-11.xhtml#DictEntry_print_object_1351"><b>print-object</b></a>.
+
+
+<p>
+The <i><a href="g-s.xhtml#secondaryvalue">secondary value</a></i>, <i>found-p</i>, is <i><a href="g-t.xhtml#true">true</a></i> if a matching
+<i><a href="g-t.xhtml#typespecifier">type specifier</a></i> was found in <i>table</i>, or <i><a href="g-f.xhtml#false">false</a></i> otherwise.
+
+</p><p>
+If <i>table</i> is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+retrieval is done in the
+
+<i><a href="g-i.xhtml#initialpprintdispatchtable">initial pprint dispatch table</a></i>.
+
+</p></dd><dt><b>Affected By:</b></dt><dd>
+
+The state of the <i>table</i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>table</i> is neither a
+<i>pprint-dispatch-table</i> nor <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre>(let ((*print-pretty* t))
+  (write object :stream s))
+==(funcall (pprint-dispatch object) s object)
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

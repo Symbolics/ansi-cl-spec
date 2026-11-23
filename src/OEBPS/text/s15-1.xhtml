@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>15.1 Array Concepts</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Array_Concep_964"><span class="secno">15.1</span> Array Concepts</h2>
+<section>
+<h3 id="SubSection_Array_Elemen_965"><span class="secno">15.1.1</span> Array Elements</h3>
+<p>
+
+
+An <i><a href="g-a.xhtml#array">array</a></i> contains a set of <i><a href="g-o.xhtml#object">objects</a></i> called <i><a href="g-e.xhtml#element">elements</a></i>
+that can be referenced individually according to a rectilinear coordinate system.
+</p>
+<section>
+<h4 id="SubSubSectio_Array_Indice_966"><span class="secno">15.1.1.1</span> Array Indices</h4>
+<p>
+
+An <i><a href="g-a.xhtml#array">array</a></i> <i><a href="g-e.xhtml#element">element</a></i> is referred to by a (possibly empty) series of indices.
+The length of the series must equal the <i><a href="g-r.xhtml#rank">rank</a></i> of the <i><a href="g-a.xhtml#array">array</a></i>.
+
+Each index must be a non-negative <i><a href="g-f.xhtml#fixnum">fixnum</a></i> 
+
+
+less than the corresponding <i><a href="g-a.xhtml#array">array</a></i> <i><a href="g-d.xhtml#dimension">dimension</a></i>.
+<i><a href="g-a.xhtml#array">Array</a></i> indexing is zero-origin.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Array_Dimens_967"><span class="secno">15.1.1.2</span> Array Dimensions</h4>
+<p>
+
+An axis of an <i><a href="g-a.xhtml#array">array</a></i> is called a <b><i>dimension</i></b>.
+
+</p><p>
+Each <i><a href="g-d.xhtml#dimension">dimension</a></i> is a non-negative 
+
+<i><a href="g-f.xhtml#fixnum">fixnum</a></i>;
+
+ if any dimension of an <i><a href="g-a.xhtml#array">array</a></i> is zero, the <i><a href="g-a.xhtml#array">array</a></i> has no elements.
+
+
+It is permissible for a <i><a href="g-d.xhtml#dimension">dimension</a></i> to be zero, 
+in which case the <i><a href="g-a.xhtml#array">array</a></i> has no elements, 
+and any attempt to <i><a href="g-a.xhtml#access">access</a></i> an <i><a href="g-e.xhtml#element">element</a></i>
+is an error.  However, other properties of the <i><a href="g-a.xhtml#array">array</a></i>,  
+such as the <i><a href="g-d.xhtml#dimension">dimensions</a></i> themselves, may be used.
+</p>
+<section>
+<h5 id="SubSubSubSec_Implementati_968"><span class="secno">15.1.1.2.1</span> Implementation Limits on Individual Array Dimensions</h5>
+<p>
+
+An <i><a href="g-i.xhtml#implementation">implementation</a></i> may impose a limit on <i><a href="g-d.xhtml#dimension">dimensions</a></i> of an <i><a href="g-a.xhtml#array">array</a></i>,
+but there is a minimum requirement on that limit.  See the <i><a href="g-v.xhtml#variable">variable</a></i> <a href="e15-2-24.xhtml#DictEntry_array_dimens_1002"><b>array-dimension-limit</b></a>.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Array_Rank_969"><span class="secno">15.1.1.3</span> Array Rank</h4>
+<p>
+
+An <i><a href="g-a.xhtml#array">array</a></i> can have any number of <i><a href="g-d.xhtml#dimension">dimensions</a></i> (including zero).
+The number of <i><a href="g-d.xhtml#dimension">dimensions</a></i> is called the <b><i>rank</i></b>.
+
+</p><p>
+If the rank of an <i><a href="g-a.xhtml#array">array</a></i> is zero then the <i><a href="g-a.xhtml#array">array</a></i> is said to have
+no <i><a href="g-d.xhtml#dimension">dimensions</a></i>, and the product of the dimensions (see <a href="e15-2-19.xhtml#DictEntry_array_total__997"><b>array-total-size</b></a>)
+is then 1; a zero-rank <i><a href="g-a.xhtml#array">array</a></i> therefore has a single element.
+</p>
+<section>
+<h5 id="SubSubSubSec_Vectors_970"><span class="secno">15.1.1.3.1</span> Vectors</h5>
+<p>
+
+An <i><a href="g-a.xhtml#array">array</a></i> of <i><a href="g-r.xhtml#rank">rank</a></i> one (<i>i.e.</i>,  a one-dimensional <i><a href="g-a.xhtml#array">array</a></i>)
+is called a <b><i>vector</i></b>.
+</p>
+<section>
+<h6 id="SubSubSubSub_Fill_Pointer_971"><span class="secno">15.1.1.3.1.1</span> Fill Pointers</h6>
+<p>
+
+A <b><i>fill pointer</i></b> is a non-negative <i><a href="g-i.xhtml#integer">integer</a></i> no
+larger than the total number of <i><a href="g-e.xhtml#element">elements</a></i> in a <i><a href="g-v.xhtml#vector">vector</a></i>.
+Not all <i><a href="g-v.xhtml#vector">vectors</a></i> have <i><a href="g-f.xhtml#fillpointer">fill pointers</a></i>.
+See the <i><a href="g-f.xhtml#function">functions</a></i> <a href="e15-2-7.xhtml#DictEntry_make_array_985"><b>make-array</b></a> and <a href="e15-2-8.xhtml#DictEntry_adjust_array_986"><b>adjust-array</b></a>.
+
+</p><p>
+An <i><a href="g-e.xhtml#element">element</a></i> of a <i><a href="g-v.xhtml#vector">vector</a></i> is said to be <b><i>active</i></b> if it has
+an index that is greater than or equal to zero, 
+but less than the <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i> (if any).
+For an <i><a href="g-a.xhtml#array">array</a></i> that has no <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i>,
+all <i><a href="g-e.xhtml#element">elements</a></i> are considered <i><a href="g-a.xhtml#active">active</a></i>.
+
+</p><p>
+
+Only <i><a href="g-v.xhtml#vector">vectors</a></i> may have <i><a href="g-f.xhtml#fillpointer">fill pointers</a></i>; 
+multidimensional <i><a href="g-a.xhtml#array">arrays</a></i> may not.
+A multidimensional <i><a href="g-a.xhtml#array">array</a></i> that is displaced to a <i><a href="g-v.xhtml#vector">vector</a></i> 
+that has a <i><a href="g-f.xhtml#fillpointer">fill pointer</a></i> can be created.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h5 id="SubSubSubSec_Multidimensi_972"><span class="secno">15.1.1.3.2</span> Multidimensional Arrays</h5>
+<section>
+<h6 id="SubSubSubSub_Storage_Layo_973"><span class="secno">15.1.1.3.2.1</span> Storage Layout for Multidimensional Arrays</h6>
+<p>
+
+Multidimensional <i><a href="g-a.xhtml#array">arrays</a></i> store their components in row-major order;
+that is, internally a multidimensional <i><a href="g-a.xhtml#array">array</a></i> is stored as a
+one-dimensional <i><a href="g-a.xhtml#array">array</a></i>, with the multidimensional index sets
+ordered lexicographically, last index varying fastest.  
+
+
+</p>
+</section>
+<section>
+<h6 id="SubSubSubSub_Implementati_974"><span class="secno">15.1.1.3.2.2</span> Implementation Limits on Array Rank</h6>
+<p>
+
+An <i><a href="g-i.xhtml#implementation">implementation</a></i> may impose a limit on the <i><a href="g-r.xhtml#rank">rank</a></i> of an <i><a href="g-a.xhtml#array">array</a></i>,
+but there is a minimum requirement on that limit.  See the <i><a href="g-v.xhtml#variable">variable</a></i> <a href="e15-2-25.xhtml#DictEntry_array_rank_l_1003"><b>array-rank-limit</b></a>.
+
+
+
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Specialized__975"><span class="secno">15.1.2</span> Specialized Arrays</h3>
+<p>
+
+An <i><a href="g-a.xhtml#array">array</a></i> can be a <i><a href="g-g.xhtml#general">general</a></i> <i><a href="g-a.xhtml#array">array</a></i>, 
+    meaning each <i><a href="g-e.xhtml#element">element</a></i> may be any <i><a href="g-o.xhtml#object">object</a></i>,
+or it may be a <i><a href="g-s.xhtml#specialized">specialized</a></i> <i><a href="g-a.xhtml#array">array</a></i>,
+    meaning that each <i><a href="g-e.xhtml#element">element</a></i> must be of a restricted <i><a href="g-t.xhtml#type">type</a></i>.
+
+</p><p>
+The phrasing "an <i><a href="g-a.xhtml#array">array</a></i> <i><a href="g-s.xhtml#specialized">specialized</a></i> to <i><a href="g-t.xhtml#type">type</a></i> &lt;&lt;<i>type</i>&gt;&gt;"
+is sometimes used to emphasize the <i><a href="g-e.xhtml#elementtype">element type</a></i> of an <i><a href="g-a.xhtml#array">array</a></i>.
+This phrasing is tolerated even when the &lt;&lt;<i>type</i>&gt;&gt; is <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>,
+even though an <i><a href="g-a.xhtml#array">array</a></i> <i><a href="g-s.xhtml#specialized">specialized</a></i> to <i><a href="g-t.xhtml#type">type</a></i> <i><a href="g-t.xhtml#t">t</a></i>
+is a <i><a href="g-g.xhtml#general">general</a></i> <i><a href="g-a.xhtml#array">array</a></i>, not a <i><a href="g-s.xhtml#specialized">specialized</a></i> <i><a href="g-a.xhtml#array">array</a></i>.
+
+</p><p>
+The next figure lists some <i><a href="g-d.xhtml#definedname">defined names</a></i> that are applicable to <i><a href="g-a.xhtml#array">array</a></i> 
+creation, <i><a href="g-a.xhtml#access">access</a></i>, and information operations.
+
+</p><table id="fig-15-1" class="fig">
+<caption><span class="figlabel">Figure 15-1.</span> General Purpose Array-Related Defined Names</caption>
+
+  <tbody><tr>
+    <td>adjust-array</td>
+    <td>array-has-fill-pointer-p</td>
+    <td>make-array</td>
+  </tr>
+  <tr>
+    <td>adjustable-array-p</td>
+    <td>array-in-bounds-p</td>
+    <td>svref</td>
+  </tr>
+  <tr>
+    <td>aref</td>
+    <td>array-rank</td>
+    <td>upgraded-array-element-type</td>
+  </tr>
+  <tr>
+    <td>array-dimension</td>
+    <td>array-rank-limit</td>
+    <td>upgraded-complex-part-type</td>
+  </tr>
+  <tr>
+    <td>array-dimension-limit</td>
+    <td>array-row-major-index</td>
+    <td>vector</td>
+  </tr>
+  <tr>
+    <td>array-dimensions</td>
+    <td>array-total-size</td>
+    <td>vector-pop</td>
+  </tr>
+  <tr>
+    <td>array-displacement</td>
+    <td>array-total-size-limit</td>
+    <td>vector-push</td>
+  </tr>
+  <tr>
+    <td>array-element-type</td>
+    <td>fill-pointer</td>
+    <td>vector-push-extend</td>
+  </tr>
+</tbody></table>
+<section>
+<h4 id="SubSubSectio_Array_Upgrad_976"><span class="secno">15.1.2.1</span> Array Upgrading</h4>
+<p>
+The <b><i>upgraded array element type</i></b> of a <i><a href="g-t.xhtml#type">type</a></i> <i>T<sub>1</sub></i>
+is a <i><a href="g-t.xhtml#type">type</a></i> <i>T<sub>2</sub></i> that is a <i><a href="g-s.xhtml#supertype">supertype</a></i> of <i>T<sub>1</sub></i>
+and that is used instead of <i>T<sub>1</sub></i> whenever <i>T<sub>1</sub></i>
+is used as an <i><a href="g-a.xhtml#arrayelementtype">array element type</a></i> 
+for object creation or type discrimination.
+
+</p><p>
+During creation of an <i><a href="g-a.xhtml#array">array</a></i>,
+the <i><a href="g-e.xhtml#elementtype">element type</a></i> that was requested 
+is called the <b><i>expressed array element type</i></b>.
+The <i><a href="g-u.xhtml#upgradedarrayelementtype">upgraded array element type</a></i> of the <i><a href="g-e.xhtml#expressedarrayelementtype">expressed array element type</a></i>
+becomes the <b><i>actual array element type</i></b> of the <i><a href="g-a.xhtml#array">array</a></i> that is created.
+
+</p><p>
+
+<i><a href="g-t.xhtml#type">Type</a></i> <i>upgrading</i> implies a movement upwards in the type hierarchy lattice.
+A <i><a href="g-t.xhtml#type">type</a></i> is always a <i><a href="g-s.xhtml#subtype">subtype</a></i> of its <i><a href="g-u.xhtml#upgradedarrayelementtype">upgraded array element type</a></i>.
+Also, if a <i><a href="g-t.xhtml#type">type</a></i> <i>T<sub>x</sub></i> is a <i><a href="g-s.xhtml#subtype">subtype</a></i> of another <i><a href="g-t.xhtml#type">type</a></i> <i>T<sub>y</sub></i>,
+then
+the <i><a href="g-u.xhtml#upgradedarrayelementtype">upgraded array element type</a></i> of <i>T<sub>x</sub></i> 
+must be a <i><a href="g-s.xhtml#subtype">subtype</a></i> of
+the <i><a href="g-u.xhtml#upgradedarrayelementtype">upgraded array element type</a></i> of <i>T<sub>y</sub></i>.
+Two <i><a href="g-d.xhtml#disjoint">disjoint</a></i> <i><a href="g-t.xhtml#type">types</a></i> can be <i>upgraded</i> to the same <i><a href="g-t.xhtml#type">type</a></i>.
+
+</p><p>
+The <i><a href="g-u.xhtml#upgradedarrayelementtype">upgraded array element type</a></i> <i>T<sub>2</sub></i> of a <i><a href="g-t.xhtml#type">type</a></i> <i>T<sub>1</sub></i>
+is a function only of <i>T<sub>1</sub></i> itself;
+that is, it is independent of any other property of the <i><a href="g-a.xhtml#array">array</a></i> 
+for which <i>T<sub>2</sub></i> will be used,
+such as <i><a href="g-r.xhtml#rank">rank</a></i>, <i><a href="g-a.xhtml#adjustability">adjustability</a></i>, <i><a href="g-f.xhtml#fillpointer">fill pointers</a></i>, or displacement.
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="e15-2-23.xhtml#DictEntry_upgraded_arr_1001"><b>upgraded-array-element-type</b></a> 
+can be used by <i><a href="g-c.xhtml#conformingprogram">conforming programs</a></i> to predict how the <i><a href="g-i.xhtml#implementation">implementation</a></i>
+will <i><a href="g-u.xhtml#upgrade">upgrade</a></i> a given <i><a href="g-t.xhtml#type">type</a></i>.
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Required_Kin_977"><span class="secno">15.1.2.2</span> Required Kinds of Specialized Arrays</h4>
+<p><i><a href="g-v.xhtml#vector">Vectors</a></i> whose <i><a href="g-e.xhtml#element">elements</a></i> are restricted to <i><a href="g-t.xhtml#type">type</a></i>
+
+<a href="e13-2-1.xhtml#DictEntry_character_884"><b>character</b></a> or a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <a href="e13-2-1.xhtml#DictEntry_character_884"><b>character</b></a>
+
+are called <b><i>strings</i></b>. 
+<i><a href="g-s.xhtml#string">Strings</a></i> are of <i><a href="g-t.xhtml#type">type</a></i> <a href="e16-2-1.xhtml#DictEntry_string_1020"><b>string</b></a>.
+
+
+The next figure lists some <i><a href="g-d.xhtml#definedname">defined names</a></i> related to <i><a href="g-s.xhtml#string">strings</a></i>.
+
+</p><p>
+<i><a href="g-s.xhtml#string">Strings</a></i> are <i><a href="g-s.xhtml#specialized">specialized</a></i> <i><a href="g-a.xhtml#array">arrays</a></i> 
+and might logically have been included in this chapter.
+However, for purposes of readability
+most information about <i><a href="g-s.xhtml#string">strings</a></i> does not appear in this chapter;
+see instead Chapter <a href="c16.xhtml#Chapter_Strings_1015">16 Strings</a>.
+
+</p><table id="fig-15-2" class="fig">
+<caption><span class="figlabel">Figure 15-2.</span> Operators that Manipulate Strings</caption>
+
+  <tbody><tr>
+    <td>char</td>
+    <td>string-equal</td>
+    <td>string-upcase</td>
+  </tr>
+  <tr>
+    <td>make-string</td>
+    <td>string-greaterp</td>
+    <td>string<code>/=</code></td>
+  </tr>
+  <tr>
+    <td>nstring-capitalize</td>
+    <td>string-left-trim</td>
+    <td>string<code>&lt;</code></td>
+  </tr>
+  <tr>
+    <td>nstring-downcase</td>
+    <td>string-lessp</td>
+    <td>string<code>&lt;=</code></td>
+  </tr>
+  <tr>
+    <td>nstring-upcase</td>
+    <td>string-not-equal</td>
+    <td>string<code>=</code></td>
+  </tr>
+  <tr>
+    <td>schar</td>
+    <td>string-not-greaterp</td>
+    <td>string<code>&gt;</code></td>
+  </tr>
+  <tr>
+    <td>string</td>
+    <td>string-not-lessp</td>
+    <td>string<code>&gt;=</code></td>
+  </tr>
+  <tr>
+    <td>string-capitalize</td>
+    <td>string-right-trim</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>string-downcase</td>
+    <td>string-trim</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+<i><a href="g-v.xhtml#vector">Vectors</a></i> whose <i><a href="g-e.xhtml#element">elements</a></i> are restricted to <i><a href="g-t.xhtml#type">type</a></i>
+<a href="e15-2-33.xhtml#DictEntry_bit_sbit_1011"><b>bit</b></a> are called <b><i>bit vectors</i></b>.
+<i><a href="g-b.xhtml#bitvector">Bit vectors</a></i> are of <i><a href="g-t.xhtml#type">type</a></i> <a href="e15-2-5.xhtml#DictEntry_bit_vector_983"><b>bit-vector</b></a>.
+The next figure lists some <i><a href="g-d.xhtml#definedname">defined names</a></i> for operations on <i><a href="g-b.xhtml#bitarray">bit arrays</a></i>.
+
+</p><table id="fig-15-3" class="fig">
+<caption><span class="figlabel">Figure 15-3.</span> Operators that Manipulate Bit Arrays</caption>
+
+  <tbody><tr>
+    <td>bit</td>
+    <td>bit-ior</td>
+    <td>bit-orc2</td>
+  </tr>
+  <tr>
+    <td>bit-and</td>
+    <td>bit-nand</td>
+    <td>bit-xor</td>
+  </tr>
+  <tr>
+    <td>bit-andc1</td>
+    <td>bit-nor</td>
+    <td>sbit</td>
+  </tr>
+  <tr>
+    <td>bit-andc2</td>
+    <td>bit-not</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>bit-eqv</td>
+    <td>bit-orc1</td>
+    <td/>
+  </tr>
+</tbody></table>
+</section>
+</section>
+</section>
+</section>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.53 values — Accessor</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_values_439" class="entry"><span class="secno">5.3.53</span> <span class="names">values</span> <span class="kind">Accessor</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>values</b>
+<i><code>&amp;rest</code> object</i>
+  → <i>{<i>object</i>}*</i>
+<p>
+
+(<b>setf</b>
+(<b>values</b> <i><code>&amp;rest</code> place</i>) <i>new-values</i>)
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>object</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+<p>
+
+<i>place</i>—a <i><a href="g-p.xhtml#place">place</a></i>.
+
+</p><p>
+<i>new-value</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+<a href="#DictEntry_values_439"><b>values</b></a> 
+returns the <i>objects</i> as <i><a href="g-m.xhtml#multiplevalues">multiple values</a></i><sub>2</sub>.
+
+<p>
+
+<a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> of <a href="#DictEntry_values_439"><b>values</b></a> is used to store the
+<i><a href="g-m.xhtml#multiplevalues">multiple values</a></i><sub>2</sub> <i>new-values</i> into the <i>places</i>.  
+See Section <a href="s5-1.xhtml#SubSubSectio_VALUES_Forms_377">5.1.2.3 VALUES Forms as Places</a>.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (values) →  &lt; <i>no values</i> &gt; 
+ (values 1) → 1
+ (values 1 2) → 1, 2
+ (values 1 2 3) → 1, 2, 3
+ (values (values 1 2 3) 4 5) → 1, 4, 5
+ (defun polar (x y)
+   (values (sqrt (+ (* x x) (* y y))) (atan y x))) →  POLAR
+ (multiple-value-bind (r theta) (polar 3.0 4.0)
+   (vector r theta))
+→ #(5.0 0.927295)
+</pre>
+
+<p>
+
+Sometimes it is desirable to indicate explicitly that a function returns
+exactly one value.  For example, the function
+
+</p><pre> (defun foo (x y)
+   (floor (+ x y) y)) →  FOO
+</pre>
+returns two values because <a href="e12-2-19.xhtml#DictEntry_floor_ffloo_793"><b>floor</b></a> returns
+two values.  It may be that the second value makes no sense,
+or that for efficiency reasons it is desired not to compute the
+second value.  <a href="#DictEntry_values_439"><b>values</b></a> is the standard idiom
+for indicating that only one value is to be returned:
+
+<pre> (defun foo (x y)
+   (values (floor (+ x y) y))) →  FOO
+</pre>
+This works because <a href="#DictEntry_values_439"><b>values</b></a> 
+returns exactly one value for each of
+<i>args</i>; as for any function call,
+if any of <i>args</i> produces more than one value, all but the
+first are discarded.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-54.xhtml#DictEntry_values_list_440"><b>values-list</b></a>,
+<a href="e5-3-48.xhtml#DictEntry_multiple_val_434"><b>multiple-value-bind</b></a>,
+<a href="e5-3-55.xhtml#DictEntry_multiple_val_441"><b>multiple-values-limit</b></a>,
+Section <a href="s3-1.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+Since <a href="#DictEntry_values_439"><b>values</b></a> is a <i><a href="g-f.xhtml#function">function</a></i>, not a <i><a href="g-m.xhtml#macro">macro</a></i> or <i><a href="g-s.xhtml#specialform">special form</a></i>,
+it receives as <i><a href="g-a.xhtml#argument">arguments</a></i> only the <i><a href="g-p.xhtml#primaryvalue">primary values</a></i> of 
+its <i><a href="g-a.xhtml#argument">argument</a></i> <i><a href="g-f.xhtml#form">forms</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

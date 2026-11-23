@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.68 dpb — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_dpb_842" class="entry"><span class="secno">12.2.68</span> <span class="names">dpb</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>dpb</b>
+<i>newbyte bytespec integer</i>
+  → <i>result-integer</i>
+</dd><dt><b>Pronunciation:</b></dt><dd>
+
+    <span class="pron">[ ˌdεˈpib ]</span>
+ or <span class="pron">[ ˌdεˈpεb ]</span>
+ or <span class="pron">[ ˈdēˈpēˈbē ]</span>
+
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>newbyte</i>—an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+<p>
+<i>bytespec</i>—a <i><a href="g-b.xhtml#bytespecifier">byte specifier</a></i>.
+
+</p><p>
+<i>integer</i>—an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>result-integer</i>—an <i><a href="g-i.xhtml#integer">integer</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_dpb_842"><b>dpb</b></a> (deposit byte) is used to 
+replace a field of bits within <i>integer</i>.  
+<a href="#DictEntry_dpb_842"><b>dpb</b></a> returns an <i><a href="g-i.xhtml#integer">integer</a></i> that is 
+the same as <i>integer</i> except in the bits specified by <i>bytespec</i>.
+
+<p>
+Let <code>s</code> be the size specified
+by <i>bytespec</i>; then the low <code>s</code> bits of <i>newbyte</i> appear in
+the result in the byte specified by <i>bytespec</i>.
+<i>Newbyte</i> is interpreted as
+being right-justified, as if it were the result of <a href="e12-2-69.xhtml#DictEntry_ldb_843"><b>ldb</b></a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (dpb 1 (byte 1 10) 0) → 1024
+ (dpb -2 (byte 2 10) 0) → 2048
+ (dpb 1 (byte 2 10) 2048) → 1024
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e12-2-66.xhtml#DictEntry_byte_byte_s_840"><b>byte</b></a>, <a href="e12-2-67.xhtml#DictEntry_deposit_fiel_841"><b>deposit-field</b></a>, <a href="e12-2-69.xhtml#DictEntry_ldb_843"><b>ldb</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (logbitp <i>j</i> (dpb <i>m</i> (byte <i>s</i> <i>p</i>) <i>n</i>))
+ ==(if (and (&gt;= <i>j</i> <i>p</i>) (&lt; <i>j</i> (+ <i>p</i> <i>s</i>)))
+        (logbitp (- <i>j</i> <i>p</i>) <i>m</i>)
+        (logbitp <i>j</i> <i>n</i>))
+</pre>
+
+<p>
+In general,
+
+</p><pre> (dpb <i>x</i> (byte 0 <i>y</i>) <i>z</i>) → <i>z</i>
+</pre>
+
+<p>
+for all valid values of <i>x</i>, <i>y</i>, and <i>z</i>.
+
+</p><p>
+Historically, the name "dpb" comes from a DEC PDP-10 assembly language
+instruction meaning "deposit byte."
+
+</p></dd></dl>
+</section>
+</body>
+</html>

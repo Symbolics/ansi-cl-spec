@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>15.2.9 adjustable-array-p — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_adjustable_a_987" class="entry"><span class="secno">15.2.9</span> <span class="names">adjustable-array-p</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>adjustable-array-p</b>
+<i>array</i>
+  → <i>generalized-boolean</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>array</i>—an <i><a href="g-a.xhtml#array">array</a></i>.
+
+<p>
+<i>generalized-boolean</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+<p>
+
+Returns true if and only if <a href="e15-2-8.xhtml#DictEntry_adjust_array_986"><b>adjust-array</b></a> could return a <i><a href="g-v.xhtml#value">value</a></i>
+which is <i><a href="g-i.xhtml#identical">identical</a></i> to <i>array</i> when given that <i><a href="g-a.xhtml#array">array</a></i> as its
+first <i><a href="g-a.xhtml#argument">argument</a></i>.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (adjustable-array-p 
+   (make-array 5
+               :element-type 'character 
+               :adjustable t 
+               :fill-pointer 3)) → <i><a href="g-t.xhtml#true">true</a></i>
+ (adjustable-array-p (make-array 4)) → <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if its argument is not an <i><a href="g-a.xhtml#array">array</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e15-2-8.xhtml#DictEntry_adjust_array_986"><b>adjust-array</b></a>, <a href="e15-2-7.xhtml#DictEntry_make_array_985"><b>make-array</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

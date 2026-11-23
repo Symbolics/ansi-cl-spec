@@ -1,0 +1,1656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>1.4 Definitions</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Definitions_23"><span class="secno">1.4</span> Definitions</h2>
+<p>
+
+This section contains notational conventions and definitions of terms
+used in this manual.
+</p>
+<section>
+<h3 id="SubSection_Notational_C_37"><span class="secno">1.4.1</span> Notational Conventions</h3>
+<p>
+The following notational conventions are used throughout this document.
+</p>
+<section>
+<h4 id="SubSubSectio_Font_Key_38"><span class="secno">1.4.1.1</span> Font Key</h4>
+<p>
+Fonts are used in this document to convey information.
+
+</p><ul>
+
+<li><i><a href="g-n.xhtml#name">name</a></i> 
+
+<p>
+Denotes a formal term whose meaning is defined in the Glossary.
+When this font is used, the Glossary definition takes precedence 
+over normal English usage.
+
+</p><p>
+Sometimes a glossary term appears subscripted, 
+as in "<i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub>."  
+Such a notation selects one particular Glossary definition out of several,
+in this case the second.
+The subscript notation for Glossary terms is generally used where the
+context might be insufficient to disambiguate among the available definitions.
+
+</p></li><li><b><i>name</i></b> 
+
+<p>
+Denotes the introduction of a formal term locally to the current text.
+There is still a corresponding glossary entry, and is formally equivalent
+to a use of "<i><a href="g-n.xhtml#name">name</a></i>," but the hope is that making such uses 
+conspicuous will save the reader a trip to the glossary in some cases.
+
+</p></li><li><a href="#SubSubSectio_Font_Key_38"><b>name</b></a>
+
+<p>
+Denotes a symbol in the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i>.
+For information about <i><a href="g-c.xhtml#case">case</a></i> conventions,
+see Section <a href="#SubSubSubSec_Case_in_Symb_45">1.4.1.4.1 Case in Symbols</a>.
+
+</p></li><li><code>name</code> 
+
+<p>
+Denotes a sample <i><a href="g-n.xhtml#name">name</a></i> or piece of <i><a href="g-c.xhtml#code">code</a></i> that a programmer
+might write in <i>Common Lisp</i>.
+
+</p><p>
+This font is also used for certain <i><a href="g-s.xhtml#standardized">standardized</a></i> names that are not
+names of <i><a href="g-e.xhtml#externalsymbol">external symbols</a></i> of the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i>, 
+such as <i><a href="g-k.xhtml#keyword">keywords</a></i><sub>1</sub>,
+        <i><a href="g-p.xhtml#package">package</a></i> <i><a href="g-n.xhtml#name">names</a></i>,
+    and <i><a href="g-l.xhtml#loopkeyword">loop keywords</a></i>.
+
+</p></li><li><i>name</i> 
+
+<p>
+Denotes the name of a <i><a href="g-p.xhtml#parameter">parameter</a></i> or <i><a href="g-v.xhtml#value">value</a></i>.
+
+</p><p>
+In some situations the notation "&lt;&lt;name&gt;&gt;" (<i>i.e.</i>,  the same font,
+but with surrounding "angle brackets") is used instead in order to
+provide better visual separation from surrounding characters.  These
+"angle brackets" are metasyntactic, and never actually appear in program
+input or output.
+
+</p></li></ul>
+</section>
+<section>
+<h4 id="SubSubSectio_Modified_BNF_39"><span class="secno">1.4.1.2</span> Modified BNF Syntax</h4>
+<p>
+
+
+
+This specification uses an extended Backus Normal Form (BNF) to
+describe the syntax of <i>Common Lisp</i> <i><a href="g-m.xhtml#macroform">macro forms</a></i> and <i><a href="g-s.xhtml#specialform">special forms</a></i>.
+This section discusses the syntax of BNF expressions.
+</p>
+<section>
+<h5 id="SubSubSubSec_Splicing_in__40"><span class="secno">1.4.1.2.1</span> Splicing in Modified BNF Syntax</h5>
+<p>
+
+The primary extension used is the following:
+
+</p><p><i>[[<i>O</i>]]</i>
+
+</p><p>
+An expression of this form appears whenever a list of elements is
+to be spliced into a larger structure and the elements can appear in
+any order. The symbol <i>O</i> represents a description of the syntax of
+some number of syntactic elements to be spliced; that description must
+be of the form
+
+</p><p><i>O<sub>1</sub> |  ...  | O<sub>l</sub></i>
+
+</p><p>
+
+ where each <i>O<sub>i</sub></i> can be of the form <i>S</i> or of
+the form <i>S</i><sup>*</sup> or of the form <i>S</i><sup>1</sup>.
+
+The expression [[<i>O</i>]] means that a list of the form
+
+</p><p><i>(O<sub>i<sub>1</sub></sub> ...  O<sub>i<sub>j</sub></sub>)  1 &lt;=  j</i>
+
+</p><p>
+ is spliced into the enclosing expression,
+such that if <i>n  &lt;&gt;  m</i> and <i>1 &lt;=  n,m &lt;=  j</i>,
+then either <i>O<sub>i<sub>n</sub></sub> &lt;&gt;  O<sub>i<sub>m</sub></sub></i>
+         or <i>O<sub>i<sub>n</sub></sub> = O<sub>i<sub>m</sub></sub> = Q<sub>k</sub></i>, 
+where for some <i>1 &lt;=  k  &lt;=  n</i>, <i>O<sub>k</sub></i> is of the form <i>Q<sub>k</sub></i><sup>*</sup>.
+
+
+Furthermore, for each <i>O<sub>i<sub>n</sub></sub></i> that is of the form <i>Q<sub>k</sub></i><sup>1</sup>,
+that element is required to appear somewhere in the list to be spliced.
+
+
+</p><p>
+For example, the expression
+
+</p><p>
+<code>(x [[A | B<sup>*</sup> | C]] y)</code>
+
+</p><p>
+ means that at most one <code>A</code>, any number of <code>B</code>'s, and
+at most one <code>C</code> can occur in any order.
+It is a description of any of these:
+
+</p><pre> (x y)
+ (x B A C y)
+ (x A B B B B B C y)
+ (x C B A B B B y)
+</pre>
+
+<p>
+ but not any of these:
+
+</p><pre> (x B B A A C C y)
+ (x C B C y)
+</pre>
+
+<p>
+ In the first case, both <code>A</code> and <code>C</code> appear too often,
+and in the second case <code>C</code> appears too often.
+
+</p><p>
+The notation [[<i>O<sub>1</sub></i> | <i>O<sub>2</sub></i> | <i> ... </i>]]+ 
+adds the additional restriction that at least one item from among the possible
+choices must be used.  For example:
+
+</p><p>
+<code>(x [[A | B<sup>*</sup> | C]]+ y)</code>
+
+</p><p>
+ means that at most one <code>A</code>, any number of <code>B</code>'s, and
+at most one <code>C</code> can occur in any order, but that in any case at least
+one of these options must be selected.
+It is a description of any of these:
+
+</p><pre> (x B y)
+ (x B A C y)
+ (x A B B B B B C y)
+ (x C B A B B B y)
+</pre>
+
+<p>
+ but not any of these:
+
+</p><pre> (x y)
+ (x B B A A C C y)
+ (x C B C y)
+</pre>
+
+<p>
+ In the first case, no item was used;
+in the second case, both <code>A</code> and <code>C</code> appear too often;
+and in the third case <code>C</code> appears too often.
+
+</p><p>
+Also, the expression:
+
+</p><p>
+<code>(x [[A<sup>1</sup> | B<sup>1</sup> | C]] y)</code>
+
+</p><p>
+ can generate exactly these and no others:
+
+</p><pre> (x A B C y)
+ (x A C B y)
+ (x A B y)
+ (x B A C y)
+ (x B C A y)
+ (x B A y)
+ (x C A B y)
+ (x C B A y)
+</pre>
+</section>
+<section>
+<h5 id="SubSubSubSec_Indirection__41"><span class="secno">1.4.1.2.2</span> Indirection in Modified BNF Syntax</h5>
+<p>
+
+An indirection extension is introduced in order to make this
+new syntax more readable:
+
+</p><p><i>↓O</i>
+
+</p><p>
+ If <i>O</i> is a non-terminal symbol, the right-hand side
+of its definition is substituted for the entire expression 
+↓O.  For example, the following BNF is equivalent to
+the BNF in the previous example:
+
+</p><p>
+<code>(x [[↓O]] y)</code>
+
+
+O::= <code>A</code> | <code>B</code><sup>*</sup> | <code>C</code></p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Additional_U_42"><span class="secno">1.4.1.2.3</span> Additional Uses for Indirect Definitions in Modified BNF Syntax</h5>
+<p>
+
+In some cases, an auxiliary definition in the BNF might appear to be unused
+within the BNF, but might still be useful elsewhere.  For example, consider the
+following definitions:
+
+</p><p>
+<b>case</b>
+<i>keyform  {<i>normal-clause</i>}* [↓otherwise-clause]</i>
+  → <i>{<i>result</i>}*</i>
+</p><p>
+<b>ccase</b>
+<i>keyplace {<i>normal-clause</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+</p><p>
+<b>ecase</b>
+<i>keyform  {<i>normal-clause</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+</p><p>
+
+normal-clause::= (keys {<i>form</i>}*)</p><p>
+
+otherwise-clause::= (<code>{</code>otherwise | t<code>}</code> {<i>form</i>}*)</p><p>
+
+clause::= normal-clause | otherwise-clause</p><p>
+Here the term "<i>clause</i>" might appear to be "dead" in that it
+is not used in the BNF.  However, the purpose of the BNF is not just to guide parsing,
+but also to define useful terms for reference in the descriptive text which follows.
+As such, the term "<i>clause</i>" might appear in text that follows,
+as shorthand for "<i>normal-clause</i> or <i>otherwise-clause</i>."
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Special_Symb_43"><span class="secno">1.4.1.3</span> Special Symbols</h4>
+<p>
+
+The special symbols described here are used as a notational convenience
+within this document, and are part of neither the <i>Common Lisp</i> language nor
+its environment.
+
+</p><ul>
+<li>→ 
+
+<p>
+This indicates evaluation.
+For example:
+
+</p><pre> (+ 4 5) → 9 
+</pre>
+This means that the result of
+evaluating the <i><a href="g-f.xhtml#form">form</a></i> <code>(+ 4 5)</code> is <code>9</code>.
+
+<p>
+
+If a <i><a href="g-f.xhtml#form">form</a></i> returns <i><a href="g-m.xhtml#multiplevalues">multiple values</a></i>, those values might
+be shown separated by spaces, line breaks, or commas.
+For example:
+
+</p><pre> (truncate 7 5)
+→ 1 2
+ (truncate 7 5) 
+→ 1
+   2
+ (truncate 7 5)
+→ 1, 2
+</pre>
+
+<p>
+Each of the above three examples is equivalent, and specifies
+that <code>(truncate 7 5)</code> returns two values, which are <code>1</code> and <code>2</code>.
+
+</p><p>
+Some <i><a href="g-c.xhtml#conformingimplementation">conforming implementations</a></i> actually type an arrow (or some
+other indicator) before showing return values, while others do not.
+
+</p></li><li>OR→
+
+<p>
+The notation "OR→" is used to denote one of several possible
+alternate results.  The example
+
+</p><pre> (char-name #\a)
+→  NIL
+OR→"LOWERCASE-a"
+OR→"Small-A"
+OR→"LA01"
+</pre>
+
+<p>
+indicates that <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, <code>"LOWERCASE-a"</code>, <code>"Small-A"</code>, <code>"LA01"</code> are
+among the possible results of <code>(char-name #\a)</code>—each with equal preference.
+Unless explicitly specified otherwise, it should not be assumed that the set of possible 
+results shown is exhaustive.
+Formally, the above example is equivalent to
+
+</p><pre> (char-name #\a) → <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>
+</pre>
+
+<p>
+but it is intended to provide additional information to illustrate some
+of the ways in which it is permitted for implementations to diverge.
+
+</p></li><li>NOT→
+
+<p>
+The notation "NOT→" is used to denote a result which is not possible.
+This might be used, for example, in order to emphasize a situation where
+some anticipated misconception might lead the reader to falsely believe
+that the result might be possible.  For example,
+
+</p><pre> (function-lambda-expression 
+    (funcall #'(lambda (x) #'(lambda () x)) nil))
+→  NIL, <i><a href="g-t.xhtml#true">true</a></i>, NIL
+OR→(LAMBDA () X), <i><a href="g-t.xhtml#true">true</a></i>, NIL
+NOT→ NIL, <i><a href="g-f.xhtml#false">false</a></i>, NIL
+NOT→(LAMBDA () X), <i><a href="g-f.xhtml#false">false</a></i>, NIL
+</pre>
+
+</li><li>== 
+
+<p>
+This indicates code equivalence. For example:
+
+</p><pre> (gcd x (gcd y z)) ==(gcd (gcd x y) z)
+</pre>
+This means that the results and observable side-effects of evaluating
+the <i><a href="g-f.xhtml#form">form</a></i>
+<code>(gcd x (gcd y z))</code>  are always the same as the results
+and observable side-effects of
+<code>(gcd (gcd x y) z)</code>  for any 
+<code>x</code>, <code>y</code>, and <code>z</code>.
+
+</li><li>▷
+
+<p>
+<i>Common Lisp</i> specifies input and output with respect to a non-interactive stream model.
+The specific details of how interactive input and output are mapped onto that
+non-interactive model are <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>.
+
+</p><p>
+For example, <i><a href="g-c.xhtml#conformingimplementation">conforming implementations</a></i> are permitted to differ in issues 
+of how interactive input is terminated.  For example, the <i><a href="g-f.xhtml#function">function</a></i> <a href="e23-2-4.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>
+terminates when the final delimiter is typed on a non-interactive stream.
+In some <i><a href="g-i.xhtml#implementation">implementations</a></i>, an interactive call to <a href="e23-2-4.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> returns
+as soon as the final delimiter is typed, even if that delimiter is not a <i><a href="g-n.xhtml#newline">newline</a></i>.
+In other <i><a href="g-i.xhtml#implementation">implementations</a></i>, a final <i><a href="g-n.xhtml#newline">newline</a></i> is always required.
+In still other <i><a href="g-i.xhtml#implementation">implementations</a></i>, there might be a command which "activates"
+a buffer full of input without the command itself being visible on the program's
+input stream.
+
+</p><p>
+In the examples in this document, the notation "▷" precedes 
+lines where interactive input and output occurs.  Within such a scenario,
+"<span class="user">this notation</span>" notates user input.
+
+</p><p>
+For example, the notation
+
+</p><pre> (+ 1 (print (+ (sqrt (read)) (sqrt (read)))))
+▷<span class="user">9 16 </span>
+▷7
+→ 8
+</pre>
+
+<p>
+shows an interaction in which
+  "<code>(+ 1 (print (+ (sqrt (read)) (sqrt (read)))))</code>"
+    is a <i><a href="g-f.xhtml#form">form</a></i> to be <i>evaluated</i>,
+  "<code>9 16 </code>" is interactive input,
+  "<code>7</code>" is interactive output, and 
+  "<code>8</code>" is the <i><a href="g-v.xhtml#value">value</a></i> <i>yielded</i> from the <i><a href="g-e.xhtml#evaluation">evaluation</a></i>.
+
+</p><p>
+The use of this notation is intended to disguise small differences 
+in interactive input and output behavior between <i><a href="g-i.xhtml#implementation">implementations</a></i>.
+
+</p><p>
+Sometimes, the non-interactive stream model calls for a <i><a href="g-n.xhtml#newline">newline</a></i>.
+How that <i><a href="g-n.xhtml#newline">newline</a></i> character is interactively entered is an 
+<i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> detail of the user interface, but in that
+case, either the notation "<i>&lt;Newline&gt;</i>" or "[Return]" might be used.
+
+</p><pre> (progn (format t "~&amp;Who? ") (read-line))
+▷ Who? <span class="user">Fred, Mary, and Sally[Return]</span>
+→ "Fred, Mary, and Sally", <i><a href="g-f.xhtml#false">false</a></i>
+</pre>
+
+</li></ul>
+</section>
+<section>
+<h4 id="SubSubSectio_Objects_with_44"><span class="secno">1.4.1.4</span> Objects with Multiple Notations</h4>
+<p>
+
+Some <i><a href="g-o.xhtml#object">objects</a></i> in <i>Common Lisp</i> can be notated in more than one way.
+In such situations, the choice of which notation to use is technically arbitrary,
+but conventions may exist which convey a "point of view" or "sense of intent."
+</p>
+<section>
+<h5 id="SubSubSubSec_Case_in_Symb_45"><span class="secno">1.4.1.4.1</span> Case in Symbols</h5>
+<p>
+
+
+
+While <i><a href="g-c.xhtml#case">case</a></i> is significant in the process of <i>interning</i> a <i><a href="g-s.xhtml#symbol">symbol</a></i>,
+the <i>Lisp reader</i>, by default, attempts to canonicalize the case of a
+<i><a href="g-s.xhtml#symbol">symbol</a></i> prior to interning; see Section <a href="s23-1.xhtml#SubSection_Effect_of_Re_1375">23.1.2 Effect of Readtable Case on the Lisp Reader</a>.
+As such, case in <i><a href="g-s.xhtml#symbol">symbols</a></i> is not, by default, significant.
+Throughout this document, except as explicitly noted otherwise,
+the case in which a <i><a href="g-s.xhtml#symbol">symbol</a></i> appears is not significant; 
+that is, <code>HELLO</code>, <code>Hello</code>, <code>hElLo</code>, and <code>hello</code> are
+all equivalent ways to denote a symbol whose name is <code>"HELLO"</code>.
+
+</p><p>
+The characters <i><a href="g-b.xhtml#backslash">backslash</a></i> and <i><a href="g-v.xhtml#verticalbar">vertical-bar</a></i> are used to explicitly
+quote the <i><a href="g-c.xhtml#case">case</a></i> and other parsing-related 
+
+
+aspects
+of characters.  As such,
+the notations <code>|hello|</code> and <code>\h\e\l\l\o</code> are equivalent ways
+to refer to a symbol whose name is <code>"hello"</code>, and which is <i><a href="g-d.xhtml#distinct">distinct</a></i> from
+any symbol whose name is <code>"HELLO"</code>.
+
+</p><p>
+The <i><a href="g-s.xhtml#symbol">symbols</a></i> that correspond to <i>Common Lisp</i> <i><a href="g-d.xhtml#definedname">defined names</a></i>
+have <i><a href="g-u.xhtml#uppercase">uppercase</a></i> names even though their names generally appear
+in <i><a href="g-l.xhtml#lowercase">lowercase</a></i> in this document.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Numbers_46"><span class="secno">1.4.1.4.2</span> Numbers</h5>
+<p>
+
+Although <i>Common Lisp</i> provides a variety of ways for programs to manipulate the
+input and output radix for rational numbers, all numbers in this document
+are in decimal notation unless explicitly noted otherwise.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Use_of_the_D_47"><span class="secno">1.4.1.4.3</span> Use of the Dot Character</h5>
+<p>
+
+The dot appearing by itself in an <i><a href="g-e.xhtml#expression">expression</a></i> such as
+
+</p><p>
+<code>(<i>item1</i> <i>item2</i> . <i>tail</i>)</code>
+
+</p><p>
+means that <i>tail</i> represents a <i><a href="g-l.xhtml#list">list</a></i> of <i><a href="g-o.xhtml#object">objects</a></i> 
+at the end of a list.  For example,
+
+</p><p>
+<code>(A B C . (D E F))</code>
+
+</p><p>
+is notationally equivalent to:
+
+</p><p>
+<code>(A B C D E F)</code>
+
+</p><p>
+Although <i><a href="g-d.xhtml#dot">dot</a></i> is a valid constituent character in a symbol, no 
+<i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-s.xhtml#symbol">symbols</a></i> contain the character <i><a href="g-d.xhtml#dot">dot</a></i>,
+so a period that follows a reference to a <i><a href="g-s.xhtml#symbol">symbol</a></i> at the end of
+a sentence in this document should always be interpreted as a period
+and never as part of the <i><a href="g-s.xhtml#symbol">symbol</a></i>'s <i><a href="g-n.xhtml#name">name</a></i>.
+For example, within this document, a sentence such as
+ "This sample sentence refers to the symbol <a href="e14-2-9.xhtml#DictEntry_car____cdr_922"><b>car</b></a>." 
+refers to a symbol whose name is <code>"CAR"</code> (with three letters),
+and never to a four-letter symbol <code>"CAR."</code>
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_NIL_48"><span class="secno">1.4.1.4.4</span> NIL</h5>
+<p>
+<a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> has a variety of meanings.
+It is a <i><a href="g-s.xhtml#symbol">symbol</a></i> in the <code>common-lisp</code> <i><a href="g-p.xhtml#package">package</a></i> with the <i><a href="g-n.xhtml#name">name</a></i> <code>"NIL"</code>,
+it is <i><a href="g-b.xhtml#boolean">boolean</a></i> (and <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>) <i><a href="g-f.xhtml#false">false</a></i>,
+it is the <i><a href="g-e.xhtml#emptylist">empty list</a></i>,
+and it is the <i><a href="g-n.xhtml#name">name</a></i> of the <i><a href="g-e.xhtml#emptytype">empty type</a></i> (a <i><a href="g-s.xhtml#subtype">subtype</a></i> of all <i><a href="g-t.xhtml#type">types</a></i>).
+
+</p><p>
+Within <i>Common Lisp</i>, <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> can be notated interchangeably as either <code>NIL</code> or <code>()</code>.
+By convention, the choice of notation offers a hint as to which of its many
+roles it is playing.
+
+</p><table id="fig-1-1" class="fig">
+<caption><span class="figlabel">Figure 1-1.</span> Notations for NIL</caption>
+
+  <tbody><tr>
+    <td><b>For Evaluation?</b></td>
+    <td><b>Notation</b></td>
+    <td><b>Typically Implied Role</b></td>
+  </tr>
+  <tr>
+    <td>
+Yes</td>
+    <td><code>nil</code></td>
+    <td>use as a <i><a href="g-b.xhtml#boolean">boolean</a></i>.</td>
+  </tr>
+  <tr>
+    <td>Yes</td>
+    <td><code>'nil</code></td>
+    <td>use as a <i><a href="g-s.xhtml#symbol">symbol</a></i>.</td>
+  </tr>
+  <tr>
+    <td>Yes</td>
+    <td><code>'()</code></td>
+    <td>use as an <i><a href="g-e.xhtml#emptylist">empty list</a></i></td>
+  </tr>
+  <tr>
+    <td>No</td>
+    <td><code>nil</code></td>
+    <td>use as a <i><a href="g-s.xhtml#symbol">symbol</a></i> or <i><a href="g-b.xhtml#boolean">boolean</a></i>.</td>
+  </tr>
+  <tr>
+    <td>No</td>
+    <td><code>()</code></td>
+    <td>use as an <i><a href="g-e.xhtml#emptylist">empty list</a></i>.</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+Within this document only, <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> is also sometimes notated as <i><a href="g-f.xhtml#false">false</a></i> to
+emphasize its role as a <i><a href="g-b.xhtml#boolean">boolean</a></i>.
+
+</p><p>
+For example:
+
+</p><pre> (print ())                          ;avoided
+ (defun three nil 3)                 ;avoided 
+ '(nil nil)                          ;list of two symbols
+ '(() ())                            ;list of empty lists
+ (defun three () 3)                  ;Emphasize empty parameter list.
+ (append '() '()) → ()              ;Emphasize use of empty lists
+ (not nil) → <i><a href="g-t.xhtml#true">true</a></i>                   ;Emphasize use as Boolean false
+ (get 'nil 'color)                   ;Emphasize use as a symbol
+</pre>
+
+<p>
+A <i><a href="g-f.xhtml#function">function</a></i> is sometimes said to "be <i><a href="g-f.xhtml#false">false</a></i>" or "be <i><a href="g-t.xhtml#true">true</a></i>"
+in some circumstance.
+Since no <i><a href="g-f.xhtml#function">function</a></i> object can be the same as <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> 
+and all <i><a href="g-f.xhtml#function">function</a></i> <i><a href="g-o.xhtml#object">objects</a></i> represent <i><a href="g-t.xhtml#true">true</a></i> when viewed as <i><a href="g-b.xhtml#boolean">booleans</a></i>,
+it would be meaningless to say that the <i><a href="g-f.xhtml#function">function</a></i> was literally <i><a href="g-f.xhtml#false">false</a></i> 
+and uninteresting to say that it was literally <i><a href="g-t.xhtml#true">true</a></i>.
+Instead, these phrases are just traditional alternative ways of saying that the
+<i><a href="g-f.xhtml#function">function</a></i> "returns <i><a href="g-f.xhtml#false">false</a></i>" or "returns <i><a href="g-t.xhtml#true">true</a></i>," respectively.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Designators_49"><span class="secno">1.4.1.5</span> Designators</h4>
+<p>
+
+
+A <b><i>designator</i></b> is an <i><a href="g-o.xhtml#object">object</a></i> that denotes another <i><a href="g-o.xhtml#object">object</a></i>.
+
+</p><p>
+
+Where a <i><a href="g-p.xhtml#parameter">parameter</a></i> of an <i><a href="g-o.xhtml#operator">operator</a></i> is described as a <i><a href="g-d.xhtml#designator">designator</a></i>,
+the description of the <i><a href="g-o.xhtml#operator">operator</a></i> is written in a way that assumes that
+the value of the <i><a href="g-p.xhtml#parameter">parameter</a></i> is the denoted <i><a href="g-o.xhtml#object">object</a></i>;
+that is, that the <i><a href="g-p.xhtml#parameter">parameter</a></i> is already of the denoted <i><a href="g-t.xhtml#type">type</a></i>.
+(The specific nature of the <i><a href="g-o.xhtml#object">object</a></i> denoted by
+   a "&lt;&lt;<i>type</i>&gt;&gt; <i><a href="g-d.xhtml#designator">designator</a></i>"
+or a "<i><a href="g-d.xhtml#designator">designator</a></i> for a &lt;&lt;<i>type</i>&gt;&gt;" 
+can be found in the Glossary entry for "&lt;&lt;<i>type</i>&gt;&gt; <i><a href="g-d.xhtml#designator">designator</a></i>.")
+
+</p><p>
+For example, "<a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>" and "the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e21-2-53.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a>" are operationally
+indistinguishable as <i><a href="g-s.xhtml#streamdesignator">stream designators</a></i>.  Similarly, 
+the <i><a href="g-s.xhtml#symbol">symbol</a></i> <code>foo</code> and the <i><a href="g-s.xhtml#string">string</a></i> <code>"FOO"</code> 
+are operationally indistinguishable as <i><a href="g-s.xhtml#stringdesignator">string designators</a></i>.  
+
+</p><p>
+Except as otherwise noted, in a situation where the denoted <i><a href="g-o.xhtml#object">object</a></i> 
+might be used multiple times, it is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>
+whether the <i><a href="g-o.xhtml#object">object</a></i> is coerced only once or whether the coercion occurs
+each time the <i><a href="g-o.xhtml#object">object</a></i> must be used.
+
+</p><p>
+For example, <a href="e14-2-34.xhtml#DictEntry_mapc_mapcar_947"><b>mapcar</b></a> receives a <i><a href="g-f.xhtml#functiondesignator">function designator</a></i> as an argument,
+and its description is written as if this were simply a function.  In fact, it
+is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> whether the <i><a href="g-f.xhtml#functiondesignator">function designator</a></i> is 
+coerced right away or whether it is carried around internally in the form that
+it was given as an <i><a href="g-a.xhtml#argument">argument</a></i> and re-coerced each time it is needed.  In most
+cases, <i><a href="g-c.xhtml#conformingprogram">conforming programs</a></i> cannot detect the distinction, but there are some 
+pathological situations (particularly those involving self-redefining or 
+mutually-redefining functions) which do conform and which can detect this difference.
+The following program is a <i><a href="g-c.xhtml#conformingprogram">conforming program</a></i>, but might or might not have
+portably correct results, depending on whether its correctness depends on one or
+the other of the results:
+
+</p><pre> (defun add-some (x) 
+   (defun add-some (x) (+ x 2))
+   (+ x 1)) →  ADD-SOME
+ (mapcar 'add-some '(1 2 3 4))
+→ (2 3 4 5)
+OR→(2 4 5 6)
+</pre>
+
+<p>
+In a few rare situations, there may be a need in a dictionary entry
+to refer to the <i><a href="g-o.xhtml#object">object</a></i> that was the original <i><a href="g-d.xhtml#designator">designator</a></i>
+for a <i><a href="g-p.xhtml#parameter">parameter</a></i>.
+Since naming the <i><a href="g-p.xhtml#parameter">parameter</a></i> would refer to the denoted <i><a href="g-o.xhtml#object">object</a></i>,
+the phrase "the &lt;&lt;<i>parameter-name</i>&gt;&gt; <i><a href="g-d.xhtml#designator">designator</a></i>" 
+can be used to refer to the <i><a href="g-d.xhtml#designator">designator</a></i> which was the <i><a href="g-a.xhtml#argument">argument</a></i>
+from which the <i><a href="g-v.xhtml#value">value</a></i> of &lt;&lt;<i>parameter-name</i>&gt;&gt; was computed.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Nonsense_Wor_50"><span class="secno">1.4.1.6</span> Nonsense Words</h4>
+<p>
+When a word having no pre-attached semantics is required (<i>e.g.</i>,  in an
+example), it is common in the Lisp community to use one of the words
+"foo," "bar," "baz," and "quux."  For example, in
+
+</p><pre> (defun foo (x) (+ x 1))
+</pre><p>
+the use of the name <code>foo</code> is just a shorthand way of saying 
+"please substitute your favorite name here."
+
+</p><p>
+These nonsense words have gained such prevalance of usage, that it is
+commonplace for newcomers to the community to begin to wonder if there
+is an attached semantics which they are overlooking—there is not.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Error_Termin_51"><span class="secno">1.4.2</span> Error Terminology</h3>
+<p>
+
+
+
+Situations in which errors might, should, or must be signaled are described
+in the standard.  The wording used to describe such situations is intended
+to have precise meaning. The following list is a glossary of those meanings.
+
+</p><ul>
+<li><b>Safe code</b>
+
+<p>
+This is <i><a href="g-c.xhtml#code">code</a></i> processed with the <b>safety</b> optimization 
+at its highest setting (<code>3</code>).  <b>safety</b> is a lexical property
+of code.  The phrase "the function <code>F</code> should signal an error" 
+means that if <code>F</code> is invoked from code processed with the highest
+<b>safety</b> optimization, an error is signaled.
+It is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i> whether <code>F</code> or the calling 
+code signals the error.
+
+</p></li><li><b>Unsafe code</b>
+
+<p>
+This is code processed with lower safety levels.
+
+</p><p>
+Unsafe code might do error checking.  Implementations are permitted to
+treat all code as safe code all the time.
+
+</p></li><li><b>An error is signaled</b>
+
+
+<p>
+This means that an error is signaled in both safe and unsafe code.
+<i><a href="g-c.xhtml#conformingcode">Conforming code</a></i> may rely on the fact that the error is signaled
+in both safe and unsafe code.  Every implementation is required to
+detect the error in both safe and unsafe code. For example, "an error
+is signaled if <a href="e11-2-14.xhtml#DictEntry_unexport_729"><b>unexport</b></a> is given a <i><a href="g-s.xhtml#symbol">symbol</a></i>
+not <i><a href="g-a.xhtml#accessible">accessible</a></i> in the <i><a href="g-c.xhtml#currentpackage">current package</a></i>."
+
+</p><p>
+If an explicit error type is not specified, the default is <a href="e9-2-5.xhtml#DictEntry_error_630"><b>error</b></a>.
+
+</p></li><li><b>An error should be signaled</b>
+
+
+<p>
+This means that an error is signaled in safe code, and an error
+might be signaled in unsafe code.  <i><a href="g-c.xhtml#conformingcode">Conforming code</a></i> may rely on the
+fact that the error is signaled in safe code.  Every
+implementation is required to detect the error at least in safe code.
+When the error is not signaled, the "consequences are undefined"
+(see below).  For example, "<a href="e12-2-25.xhtml#DictEntry__799"><b>+</b></a> should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a>
+if any argument is not of <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-1.xhtml#DictEntry_number_775"><b>number</b></a>."
+
+</p></li><li><b>Should be prepared to signal an error</b>
+
+
+<p>
+This is similar to "should be signaled" except that it does not
+imply that `extra effort' has to be taken on the part of an <i><a href="g-o.xhtml#operator">operator</a></i>
+to discover an erroneous situation if the normal action of that <i><a href="g-o.xhtml#operator">operator</a></i>
+can be performed successfully with only `lazy' checking.
+An <i><a href="g-i.xhtml#implementation">implementation</a></i> is always permitted to signal an error,
+but even in <i><a href="g-s.xhtml#safe">safe</a></i> <i><a href="g-c.xhtml#code">code</a></i>, it is only required to signal the error
+when failing to signal it might lead to incorrect results.
+In <i><a href="g-u.xhtml#unsafe">unsafe</a></i> <i><a href="g-c.xhtml#code">code</a></i>, the consequences are undefined.
+
+</p><p>
+For example, defining that 
+ "<a href="e17-3-14.xhtml#DictEntry_find_find_i_1054"><b>find</b></a> should be prepared to signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a>
+   if its second <i><a href="g-a.xhtml#argument">argument</a></i> is not a <i><a href="g-p.xhtml#properlist">proper list</a></i>"
+does not imply that an error is always signaled.  The <i><a href="g-f.xhtml#form">form</a></i>
+
+</p><pre> (find 'a '(a b . c))
+</pre>
+
+<p>
+must either signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> in <i><a href="g-s.xhtml#safe">safe</a></i> <i><a href="g-c.xhtml#code">code</a></i>,
+else return <code>A</code>.
+In <i><a href="g-u.xhtml#unsafe">unsafe</a></i> <i><a href="g-c.xhtml#code">code</a></i>, the consequences are undefined.
+By contrast,
+
+</p><pre> (find 'd '(a b . c))
+</pre>
+
+<p>
+must signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> in <i><a href="g-s.xhtml#safe">safe</a></i> <i><a href="g-c.xhtml#code">code</a></i>.
+In <i><a href="g-u.xhtml#unsafe">unsafe</a></i> <i><a href="g-c.xhtml#code">code</a></i>, the consequences are undefined.
+Also,
+
+</p><pre> (find 'd '#1=(a b . #1#))
+</pre>
+
+<p>
+in <i>safe code</i>
+   might return <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> (as an <i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> extension),
+   might never return,
+or might signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a>.
+In <i><a href="g-u.xhtml#unsafe">unsafe</a></i> <i><a href="g-c.xhtml#code">code</a></i>, the consequences are undefined.
+
+</p><p>
+Typically, the "should be prepared to signal" terminology is used in
+type checking situations where there are efficiency considerations that
+make it impractical to detect errors that are not relevant to the
+correct operation of the <i><a href="g-o.xhtml#operator">operator</a></i>.
+
+</p></li><li><b>The consequences are unspecified</b>
+
+
+<p>
+This means that the consequences are unpredictable but harmless.
+Implementations are permitted to specify the consequences of this
+situation. No <i><a href="g-c.xhtml#conformingcode">conforming code</a></i> may depend on the results or effects of
+this situation, and all <i><a href="g-c.xhtml#conformingcode">conforming code</a></i> is required to treat the
+results and effects of this situation as unpredictable but harmless.
+For example, "if the second argument to <a href="e7-7-5.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a>
+specifies a name that does not correspond to any <i><a href="g-s.xhtml#slot">slots</a></i>
+<i><a href="g-a.xhtml#accessible">accessible</a></i> in the <i><a href="g-o.xhtml#object">object</a></i>, the results are unspecified."
+
+</p></li><li><b>The consequences are undefined</b>
+
+
+<p>
+This means that the consequences are unpredictable. The consequences
+may range from harmless to fatal.  No <i><a href="g-c.xhtml#conformingcode">conforming code</a></i> may depend on
+the results or effects. <i><a href="g-c.xhtml#conformingcode">Conforming code</a></i> must treat the consequences as
+unpredictable.  In places where the words "must," "must not," or
+"may not" are used, then "the consequences are undefined" if the
+stated requirement is not met and no specific consequence is
+explicitly stated.  An implementation is permitted to signal an error
+in this case.
+
+</p><p>
+For example: "Once a name has been declared by <a href="e5-3-15.xhtml#DictEntry_defconstant_401"><b>defconstant</b></a>
+to be constant, any further assignment or binding of that
+variable has undefined consequences."
+
+</p></li><li><b>An error might be signaled</b>
+
+
+<p>
+This means that the situation has undefined consequences;
+however, if an error is signaled, it is of the specified <i><a href="g-t.xhtml#type">type</a></i>.
+For example, "<a href="e21-2-29.xhtml#DictEntry_open_1220"><b>open</b></a> might signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e20-2-9.xhtml#DictEntry_file_error_1176"><b>file-error</b></a>."
+
+</p></li><li><b>The return values are unspecified</b>
+
+
+<p>
+This means that only the number and nature of the return values of a
+<i><a href="g-f.xhtml#form">form</a></i> are not specified.  However, the issue of whether or not
+any side-effects or transfer of control occurs is still well-specified.
+
+
+</p><p>
+A program can be well-specified even if it uses a function whose
+returns values are unspecified.  For example, even if the return
+values of some function <code>F</code> are unspecified, an expression such as
+<code>(length (list (F)))</code> is still well-specified because it does not
+rely on any particular aspect of the value or values returned by <code>F</code>.
+
+</p></li><li><b>Implementations may be extended to cover this situation</b>
+
+
+<p>
+This means that the <i><a href="g-s.xhtml#situation">situation</a></i> has undefined consequences;
+however, a <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> is free to treat
+the situation in a more specific way.  
+For example, an <i><a href="g-i.xhtml#implementation">implementation</a></i> might define 
+    that      an error is signaled,
+ or that      an error should be signaled,
+ or even that a certain well-defined non-error behavior occurs.
+
+</p><p>
+
+No <i><a href="g-c.xhtml#conformingcode">conforming code</a></i> may depend on the consequences of such a <i><a href="g-s.xhtml#situation">situation</a></i>;
+all <i><a href="g-c.xhtml#conformingcode">conforming code</a></i> must treat the consequences of the situation
+as undefined. <i><a href="g-i.xhtml#implementation">Implementations</a></i> are required to document how the
+situation is treated.
+
+</p><p>
+For example, "implementations may be extended to define other type
+specifiers to have a corresponding <i><a href="g-c.xhtml#class">class</a></i>."
+
+</p></li><li><b>Implementations are free to extend the syntax</b>
+
+
+<p>
+This means that in this situation implementations are permitted to
+define unambiguous extensions to the syntax of the <i><a href="g-f.xhtml#form">form</a></i> being
+described.  No <i><a href="g-c.xhtml#conformingcode">conforming code</a></i> may depend on this extension.
+Implementations are required to document each such extension. All
+<i><a href="g-c.xhtml#conformingcode">conforming code</a></i> is required to treat the syntax as meaningless. The
+standard might disallow certain extensions while allowing others. For
+example, "no implementation is free to extend the syntax of
+<a href="e7-7-25.xhtml#DictEntry_defclass_581"><b>defclass</b></a>."
+
+</p></li><li><b>A warning might be issued</b>
+
+
+<p>
+This means that <i><a href="g-i.xhtml#implementation">implementations</a></i> are encouraged to issue a warning
+if the context is appropriate (<i>e.g.</i>,  when compiling).  However, a
+<i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> is not required to issue a warning.
+
+
+</p></li></ul>
+</section>
+<section>
+<h3 id="SubSection_Sections_Not_52"><span class="secno">1.4.3</span> Sections Not Formally Part Of This Standard</h3>
+<p>
+
+
+Front matter and back matter, such as the "Table of Contents," 
+"Index," "Figures," "Credits," and "Appendix" are not considered formally 
+part of this standard, so that we retain the flexibility needed to update
+these sections even at the last minute without fear of needing a formal 
+vote to change those parts of the document.  These items are quite short 
+and very useful, however, and it is not recommended that they be removed 
+even in an abridged version of this document.
+
+</p><p>
+Within the concept sections, subsections whose names begin with 
+the words "Note" or "Notes" or "Example" or "Examples" 
+are provided for illustration purposes only, and are not considered
+part of the standard.
+
+</p><p>
+An attempt has been made to place these sections last in their parent section,
+so that they could be removed without disturbing the contiguous numbering of the 
+surrounding sections in order to produce a document of smaller size.
+
+</p><p>
+Likewise, the "Examples" and "Notes" sections in a dictionary entry
+are not considered part of the standard and could be removed if necessary.
+
+</p><p>
+Nevertheless, the examples provide important clarifications and consistency 
+checks for the rest of the material, and such abridging is not recommended
+unless absolutely unavoidable.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Interpreting_53"><span class="secno">1.4.4</span> Interpreting Dictionary Entries</h3>
+<p>
+
+
+The dictionary entry for each <i><a href="g-d.xhtml#definedname">defined name</a></i> is partitioned into
+sections.  Except as explicitly indicated otherwise below, each section
+is introduced by a label identifying that section.  The omission of a
+section implies that the section is either not applicable, or would
+provide no interesting information.
+
+</p><p>
+This section defines the significance of each potential section in a
+dictionary entry.
+</p>
+<section>
+<h4 id="SubSubSectio_The_Affecte_54"><span class="secno">1.4.4.1</span> The &quot;Affected By&quot; Section of a Dictionary Entry</h4>
+<p>
+
+For an <i><a href="g-o.xhtml#operator">operator</a></i>, anything that can affect the side effects of
+or <i><a href="g-v.xhtml#value">values</a></i> returned by the <i><a href="g-o.xhtml#operator">operator</a></i>.
+
+</p><p>
+For a <i><a href="g-v.xhtml#variable">variable</a></i>, anything that can affect the <i><a href="g-v.xhtml#value">value</a></i> of the <i><a href="g-v.xhtml#variable">variable</a></i>
+including <i><a href="g-f.xhtml#function">functions</a></i> that bind or assign it.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Argumen_55"><span class="secno">1.4.4.2</span> The &quot;Arguments&quot; Section of a Dictionary Entry</h4>
+<p>
+
+This information describes the syntax information of entries such as those for
+<i><a href="g-d.xhtml#declaration">declarations</a></i> and special <i><a href="g-e.xhtml#expression">expressions</a></i> which are never <i>evaluated</i>
+as <i><a href="g-f.xhtml#form">forms</a></i>, and so do not return <i><a href="g-v.xhtml#value">values</a></i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Argumen_56"><span class="secno">1.4.4.3</span> The &quot;Arguments and Values&quot; Section of a Dictionary Entry</h4>
+<p>
+
+An English language description of what <i><a href="g-a.xhtml#argument">arguments</a></i> the <i><a href="g-o.xhtml#operator">operator</a></i> accepts
+and what <i><a href="g-v.xhtml#value">values</a></i> it returns, including information about defaults for <i><a href="g-p.xhtml#parameter">parameters</a></i>
+corresponding to omittable <i><a href="g-a.xhtml#argument">arguments</a></i>
+(such as <i><a href="g-o.xhtml#optionalparameter">optional parameters</a></i> and <i><a href="g-k.xhtml#keywordparameter">keyword parameters</a></i>).
+For <i><a href="g-s.xhtml#specialoperator">special operators</a></i> and <i><a href="g-m.xhtml#macro">macros</a></i>,
+their <i><a href="g-a.xhtml#argument">arguments</a></i> are not <i>evaluated</i> unless it is explicitly stated in their
+descriptions that they are <i>evaluated</i>.
+
+</p><p>
+
+
+
+Except as explicitly specified otherwise,
+
+the consequences are undefined if these type restrictions are violated.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Binding_57"><span class="secno">1.4.4.4</span> The &quot;Binding Types Affected&quot; Section of a Dictionary Entry</h4>
+<p>
+
+This information alerts the reader to the kinds of <i><a href="g-b.xhtml#binding">bindings</a></i> that might 
+potentially be affected by a declaration.  Whether in fact any particular such
+<i><a href="g-b.xhtml#binding">binding</a></i> is actually affected is dependent on additional factors as well.
+See the "Description" section of the declaration in question for details.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Class_P_58"><span class="secno">1.4.4.5</span> The &quot;Class Precedence List&quot; Section of a Dictionary Entry</h4>
+<p>
+
+This appears in the dictionary entry for a <i><a href="g-c.xhtml#class">class</a></i>,
+and contains an ordered list of the <i>classes</i> defined 
+by <i>Common Lisp</i> that must be in the <i><a href="g-c.xhtml#classprecedencelist">class precedence list</a></i> of this <i><a href="g-c.xhtml#class">class</a></i>.
+
+</p><p>
+It is permissible for other (<i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i>) <i>classes</i>
+to appear in the <i><a href="g-i.xhtml#implementation">implementation</a></i>'s <i><a href="g-c.xhtml#classprecedencelist">class precedence list</a></i> for the <i><a href="g-c.xhtml#class">class</a></i>.
+
+</p><p>
+It is permissible for 
+  either <a href="e4-4-14.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>
+      or <a href="e4-4-13.xhtml#DictEntry_structure_ob_348"><b>structure-object</b></a>
+to appear in the <i><a href="g-i.xhtml#implementation">implementation</a></i>'s <i><a href="g-c.xhtml#classprecedencelist">class precedence list</a></i>;
+for details, see Section <a href="s4-2.xhtml#SubSection_Type_Relatio_317">4.2.2 Type Relationships</a>.
+
+</p><p>
+Except as explicitly indicated otherwise somewhere in this specification,
+no additional <i><a href="g-s.xhtml#standardized">standardized</a></i> <i>classes</i> may appear in 
+the <i><a href="g-i.xhtml#implementation">implementation</a></i>'s <i><a href="g-c.xhtml#classprecedencelist">class precedence list</a></i>.
+
+</p><p>
+By definition of the relationship between <i>classes</i> and <i><a href="g-t.xhtml#type">types</a></i>,
+the <i>classes</i> listed in this section are also <i><a href="g-s.xhtml#supertype">supertypes</a></i> of 
+the <i><a href="g-t.xhtml#type">type</a></i> denoted by the <i><a href="g-c.xhtml#class">class</a></i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Dictionary_E_59"><span class="secno">1.4.4.6</span> Dictionary Entries for Type Specifiers</h4>
+<p>
+
+
+The <i><a href="g-a.xhtml#atomictypespecifier">atomic type specifiers</a></i> are those <i><a href="g-d.xhtml#definedname">defined names</a></i> 
+listed in <a href="s4-2.xhtml#fig-4-2">Figure 4-2</a>.
+Such dictionary entries are of kind 
+"Class," "Condition Type," "System Class," or "Type."
+A description of how to interpret 
+a <i><a href="g-s.xhtml#symbol">symbol</a></i> naming one of these <i><a href="g-t.xhtml#type">types</a></i> or <i>classes</i> 
+as an <i><a href="g-a.xhtml#atomictypespecifier">atomic type specifier</a></i>
+is found in the "Description" section of such dictionary entries.
+
+</p><p>
+The <i><a href="g-c.xhtml#compoundtypespecifier">compound type specifiers</a></i> are those <i><a href="g-d.xhtml#definedname">defined names</a></i> 
+listed in <a href="s4-2.xhtml#fig-4-3">Figure 4-3</a>.
+Such dictionary entries are of kind "Class," "System Class,"
+"Type," or "Type Specifier."
+A description of how to interpret as a <i><a href="g-c.xhtml#compoundtypespecifier">compound type specifier</a></i>
+a <i><a href="g-l.xhtml#list">list</a></i> whose <i><a href="g-c.xhtml#car">car</a></i> is such a <i><a href="g-s.xhtml#symbol">symbol</a></i>
+is found in the 
+     "Compound Type Specifier Kind,"
+     "Compound Type Specifier Syntax,"
+     "Compound Type Specifier Arguments,"
+ and "Compound Type Specifier Description"
+sections of such dictionary entries.
+</p>
+<section>
+<h5 id="SubSubSubSec_The_Compoun_60"><span class="secno">1.4.4.6.1</span> The &quot;Compound Type Specifier Kind&quot; Section of a Dictionary Entry</h5>
+<p>
+
+An "abbreviating" <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> is one that describes a <i><a href="g-s.xhtml#subtype">subtype</a></i>
+for which it is in principle possible to enumerate the <i><a href="g-e.xhtml#element">elements</a></i>,
+but for which in practice it is impractical to do so.
+
+</p><p>
+A "specializing" <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> is one that describes a <i><a href="g-s.xhtml#subtype">subtype</a></i>
+by restricting the <i><a href="g-t.xhtml#type">type</a></i> of one or more components of the <i><a href="g-t.xhtml#type">type</a></i>,
+such as <i><a href="g-e.xhtml#elementtype">element type</a></i> or <i><a href="g-c.xhtml#complexparttype">complex part type</a></i>.
+
+</p><p>
+A "predicating" <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> is one that describes a <i><a href="g-s.xhtml#subtype">subtype</a></i>
+containing only those <i><a href="g-o.xhtml#object">objects</a></i> that satisfy a given <i><a href="g-p.xhtml#predicate">predicate</a></i>.
+
+</p><p>
+A "combining" <i><a href="g-t.xhtml#typespecifier">type specifier</a></i> is one that describes a <i><a href="g-s.xhtml#subtype">subtype</a></i>
+in a compositional way, using combining operations (such as "and," "or," and
+"not") on other <i><a href="g-t.xhtml#type">types</a></i>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_Compoun_61"><span class="secno">1.4.4.6.2</span> The &quot;Compound Type Specifier Syntax&quot; Section of a Dictionary Entry</h5>
+<p>
+
+This information about a <i><a href="g-t.xhtml#type">type</a></i> describes the syntax of a 
+<i><a href="g-c.xhtml#compoundtypespecifier">compound type specifier</a></i> for that <i><a href="g-t.xhtml#type">type</a></i>.
+
+</p><p>
+Whether or not the <i><a href="g-t.xhtml#type">type</a></i> is acceptable as an <i><a href="g-a.xhtml#atomictypespecifier">atomic type specifier</a></i>
+is not represented here; see Section <a href="#SubSubSectio_Dictionary_E_59">1.4.4.6 Dictionary Entries for Type Specifiers</a>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_Compoun_62"><span class="secno">1.4.4.6.3</span> The &quot;Compound Type Specifier Arguments&quot; Section of a Dictionary Entry</h5>
+<p>
+
+This information describes <i><a href="g-t.xhtml#type">type</a></i> information for the structures defined in
+the "Compound Type Specifier Syntax" section.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_Compoun_63"><span class="secno">1.4.4.6.4</span> The &quot;Compound Type Specifier Description&quot; Section of a Dictionary Entry</h5>
+<p>
+
+This information describes the meaning of the structures defined in
+the "Compound Type Specifier Syntax" section.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Constan_64"><span class="secno">1.4.4.7</span> The &quot;Constant Value&quot; Section of a Dictionary Entry</h4>
+<p>
+
+This information describes the unchanging <i><a href="g-t.xhtml#type">type</a></i> and <i><a href="g-v.xhtml#value">value</a></i> of 
+a <i><a href="g-c.xhtml#constantvariable">constant variable</a></i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Descrip_65"><span class="secno">1.4.4.8</span> The &quot;Description&quot; Section of a Dictionary Entry</h4>
+<p>
+
+A summary of the <i><a href="g-o.xhtml#operator">operator</a></i> and all intended aspects of the <i><a href="g-o.xhtml#operator">operator</a></i>, 
+but does not necessarily include all the fields referenced below it 
+("Side Effects," "Exceptional Situations," <i>etc.</i>)
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Example_66"><span class="secno">1.4.4.9</span> The &quot;Examples&quot; Section of a Dictionary Entry</h4>
+<p>
+
+Examples of use of the <i><a href="g-o.xhtml#operator">operator</a></i>.
+These examples are not considered part of the standard;
+see Section <a href="#SubSection_Sections_Not_52">1.4.3 Sections Not Formally Part Of This Standard</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Excepti_67"><span class="secno">1.4.4.10</span> The &quot;Exceptional Situations&quot; Section of a Dictionary Entry</h4>
+<p>
+
+Three kinds of information may appear here:
+</p><ul>
+<li>
+Situations that are detected by the <i><a href="g-f.xhtml#function">function</a></i> and formally signaled.
+</li><li>
+Situations that are handled by the <i><a href="g-f.xhtml#function">function</a></i>.
+</li><li>
+Situations that may be detected by the <i><a href="g-f.xhtml#function">function</a></i>.
+</li></ul><p>
+This field does not include conditions that could
+be signaled by <i><a href="g-f.xhtml#function">functions</a></i> passed to and called by this <i><a href="g-o.xhtml#operator">operator</a></i>
+as arguments or through dynamic variables, nor by executing subforms of this
+operator if it is a <i><a href="g-m.xhtml#macro">macro</a></i> or <i><a href="g-s.xhtml#specialoperator">special operator</a></i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Initial_68"><span class="secno">1.4.4.11</span> The &quot;Initial Value&quot; Section of a Dictionary Entry</h4>
+<p>
+
+This information describes the initial <i><a href="g-v.xhtml#value">value</a></i> of a <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i>.
+Since this variable might change, see <i><a href="g-t.xhtml#type">type</a></i> restrictions in the "Value Type" section.
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Argumen_69"><span class="secno">1.4.4.12</span> The &quot;Argument Precedence Order&quot; Section of a Dictionary Entry</h4>
+<p>
+
+This information describes the <i><a href="g-a.xhtml#argumentprecedenceorder">argument precedence order</a></i>.
+If it is omitted, the <i><a href="g-a.xhtml#argumentprecedenceorder">argument precedence order</a></i> is the default (left to right).
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Method__70"><span class="secno">1.4.4.13</span> The &quot;Method Signature&quot; Section of a Dictionary Entry</h4>
+<p>
+
+The description of a <i><a href="g-g.xhtml#genericfunction">generic function</a></i> includes descriptions of the
+<i><a href="g-m.xhtml#method">methods</a></i> that are defined on that <i><a href="g-g.xhtml#genericfunction">generic function</a></i> by the standard.  
+A method signature is used to describe the <i><a href="g-p.xhtml#parameter">parameters</a></i> and 
+<i><a href="g-p.xhtml#parameterspecializer">parameter specializers</a></i> for each <i><a href="g-m.xhtml#method">method</a></i>. 
+<i><a href="g-m.xhtml#method">Methods</a></i> defined for the <i><a href="g-g.xhtml#genericfunction">generic function</a></i> must be of the form described
+by the <i><a href="g-m.xhtml#method">method</a></i> <i><a href="g-s.xhtml#signature">signature</a></i>. 
+
+</p><p>
+<b>F</b>
+<i>(<i>x</i> <i>class</i>)
+	      (<i>y</i> t)
+	      <code>&amp;optional</code> <i>z</i> <code>&amp;key</code> <i>k</i></i>
+</p><p>
+ This <i><a href="g-s.xhtml#signature">signature</a></i> indicates that this method on the <i><a href="g-g.xhtml#genericfunction">generic function</a></i>
+<b>F</b> has two <i><a href="g-r.xhtml#requiredparameter">required parameters</a></i>:
+     <i>x</i>, which must be a <i><a href="g-g.xhtml#generalizedinstance">generalized instance</a></i> of the <i><a href="g-c.xhtml#class">class</a></i> <i>class</i>;
+ and <i>y</i>, which can  be any <i><a href="g-o.xhtml#object">object</a></i> 
+       (<i>i.e.</i>,  a <i><a href="g-g.xhtml#generalizedinstance">generalized instance</a></i> of the <i><a href="g-c.xhtml#class">class</a></i> <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>).
+In addition, there is an <i><a href="g-o.xhtml#optionalparameter">optional parameter</a></i> <i>z</i> and a
+<i><a href="g-k.xhtml#keywordparameter">keyword parameter</a></i> <i>k</i>.  This <i><a href="g-s.xhtml#signature">signature</a></i> also indicates that this
+method on <code>F</code> is a <i><a href="g-p.xhtml#primarymethod">primary method</a></i> and has no <i><a href="g-q.xhtml#qualifier">qualifiers</a></i>.
+
+</p><p>
+For each <i><a href="g-p.xhtml#parameter">parameter</a></i>, the <i><a href="g-a.xhtml#argument">argument</a></i> supplied must be in the
+intersection of the <i><a href="g-t.xhtml#type">type</a></i> specified in the description of the
+corresponding <i><a href="g-g.xhtml#genericfunction">generic function</a></i> and the <i><a href="g-t.xhtml#type">type</a></i> given in 
+the <i><a href="g-s.xhtml#signature">signature</a></i> of some <i><a href="g-m.xhtml#method">method</a></i> (including not only those 
+<i><a href="g-m.xhtml#method">methods</a></i> defined in this specification, but also
+<i><a href="g-i.xhtml#implementationdefined">implementation-defined</a></i> or user-defined <i><a href="g-m.xhtml#method">methods</a></i> in situations
+where the definition of such <i><a href="g-m.xhtml#method">methods</a></i> is permitted).
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Name_S_71"><span class="secno">1.4.4.14</span> The &quot;Name&quot; Section of a Dictionary Entry</h4>
+<p>
+
+This section introduces the dictionary entry.  It is not explicitly labeled.
+It appears preceded and followed by a horizontal bar.
+
+</p><p>
+In large print at left, the <i><a href="g-d.xhtml#definedname">defined name</a></i> appears; if more than one
+<i><a href="g-d.xhtml#definedname">defined name</a></i> is to be described by the entry, all such <i><a href="g-n.xhtml#name">names</a></i> 
+are shown separated by commas.
+
+</p><p>
+In somewhat smaller italic print at right is an indication of what kind
+of dictionary entry this is.  Possible values are:
+
+</p><ul>
+
+<li><i>Accessor</i>
+
+<p>
+This is an <i><a href="g-a.xhtml#accessor">accessor</a></i> <i><a href="g-f.xhtml#function">function</a></i>.
+
+</p></li><li><i>Class</i>
+
+<p>
+This is a <i><a href="g-c.xhtml#class">class</a></i>.
+
+</p></li><li><i>Condition Type</i>
+
+<p>
+This is a <i><a href="g-s.xhtml#subtype">subtype</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e9-2-1.xhtml#DictEntry_condition_626"><b>condition</b></a>.
+
+</p></li><li><i>Constant Variable</i>
+
+<p>
+This is a <i><a href="g-c.xhtml#constantvariable">constant variable</a></i>.
+
+</p></li><li><i>Declaration</i>
+
+<p>
+This is a <i><a href="g-d.xhtml#declarationidentifier">declaration identifier</a></i>.
+
+</p></li><li><i>Function</i>
+
+<p>
+This is a <i><a href="g-f.xhtml#function">function</a></i>.
+
+</p></li><li><i>Local Function</i>
+
+<p>
+This is a <i><a href="g-f.xhtml#function">function</a></i> that is defined only lexically within the scope of some
+other <i><a href="g-m.xhtml#macroform">macro form</a></i>.
+
+</p></li><li><i>Local Macro</i>
+
+<p>
+This is a <i><a href="g-m.xhtml#macro">macro</a></i> that is defined only lexically within the scope of some
+other <i><a href="g-m.xhtml#macroform">macro form</a></i>.
+
+</p></li><li><i>Macro</i>
+
+<p>
+This is a <i><a href="g-m.xhtml#macro">macro</a></i>.
+
+</p></li><li><i>Restart</i>
+
+<p>
+This is a <i><a href="g-r.xhtml#restart">restart</a></i>.
+
+</p></li><li><i>Special Operator</i>
+
+<p>
+This is a <i><a href="g-s.xhtml#specialoperator">special operator</a></i>.
+
+</p></li><li><i>Standard Generic Function</i>
+
+<p>
+This is a <i><a href="g-s.xhtml#standardgenericfunction">standard generic function</a></i>.
+
+</p></li><li><i>Symbol</i>
+
+<p>
+This is a <i><a href="g-s.xhtml#symbol">symbol</a></i> that is specially recognized in some particular situation,
+such as the syntax of a <i><a href="g-m.xhtml#macro">macro</a></i>.
+
+</p></li><li><i>System Class</i>
+
+<p>
+This is like <i><a href="g-c.xhtml#class">class</a></i>, but it identifies a <i><a href="g-c.xhtml#class">class</a></i> that is potentially
+a <i><a href="g-b.xhtml#builtinclass">built-in class</a></i>.  (No <i><a href="g-c.xhtml#class">class</a></i> is actually required to be a
+<i><a href="g-b.xhtml#builtinclass">built-in class</a></i>.)
+
+</p></li><li><i>Type</i>
+
+<p>
+This is an <i><a href="g-a.xhtml#atomictypespecifier">atomic type specifier</a></i>,
+and depending on information for each particular entry,
+may subject to form other <i><a href="g-t.xhtml#typespecifier">type specifiers</a></i>.
+
+</p></li><li><i>Type Specifier</i>
+
+<p>
+This is a <i><a href="g-d.xhtml#definedname">defined name</a></i> that is not an <i><a href="g-a.xhtml#atomictypespecifier">atomic type specifier</a></i>,
+but that can be used in constructing valid <i><a href="g-t.xhtml#typespecifier">type specifiers</a></i>.
+
+</p></li><li><i>Variable</i>
+
+<p>
+This is a <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i>.
+
+</p></li></ul>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Notes__72"><span class="secno">1.4.4.15</span> The &quot;Notes&quot; Section of a Dictionary Entry</h4>
+<p>
+
+Information not found elsewhere in this description
+which pertains to this <i><a href="g-o.xhtml#operator">operator</a></i>.
+Among other things, this might include 
+ cross reference information,
+ code equivalences, 
+ stylistic hints,
+ implementation hints,
+ typical uses.
+This information is not considered part of the standard;
+any <i><a href="g-c.xhtml#conformingimplementation">conforming implementation</a></i> or <i><a href="g-c.xhtml#conformingprogram">conforming program</a></i>
+is permitted to ignore the presence of this information.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Pronunc_73"><span class="secno">1.4.4.16</span> The &quot;Pronunciation&quot; Section of a Dictionary Entry</h4>
+<p>
+
+This offers a suggested pronunciation for <i><a href="g-d.xhtml#definedname">defined names</a></i> 
+so that people not in verbal communication with the original designers
+can figure out how to pronounce words that are not in normal English usage.
+This information is advisory only, and is not considered part of the standard.
+
+For brevity, it is only provided for entries with names that are specific to
+<i>Common Lisp</i> and would not be found in <i>Webster's Third New International Dictionary the English Language, Unabridged</i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_See_Als_74"><span class="secno">1.4.4.17</span> The &quot;See Also&quot; Section of a Dictionary Entry</h4>
+<p>
+
+List of references to other parts of this standard
+that offer information relevant to this <i><a href="g-o.xhtml#operator">operator</a></i>. 
+This list is not part of the standard.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Side_Ef_75"><span class="secno">1.4.4.18</span> The &quot;Side Effects&quot; Section of a Dictionary Entry</h4>
+<p>
+
+Anything that is changed as a result of the
+evaluation of the <i><a href="g-f.xhtml#form">form</a></i> containing this <i><a href="g-o.xhtml#operator">operator</a></i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Superty_76"><span class="secno">1.4.4.19</span> The &quot;Supertypes&quot; Section of a Dictionary Entry</h4>
+<p>
+
+This appears in the dictionary entry for a <i><a href="g-t.xhtml#type">type</a></i>,
+and contains a list of the <i><a href="g-s.xhtml#standardized">standardized</a></i> <i><a href="g-t.xhtml#type">types</a></i> 
+that must be <i><a href="g-s.xhtml#supertype">supertypes</a></i> of this <i><a href="g-t.xhtml#type">type</a></i>.
+
+</p><p>
+
+
+In <i><a href="g-i.xhtml#implementation">implementations</a></i> where there is a corresponding <i><a href="g-c.xhtml#class">class</a></i>,
+the order of the <i>classes</i> in the <i><a href="g-c.xhtml#classprecedencelist">class precedence list</a></i> 
+is consistent with the order presented in this section.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Syntax_77"><span class="secno">1.4.4.20</span> The &quot;Syntax&quot; Section of a Dictionary Entry</h4>
+<p>
+
+This section describes how to use the <i><a href="g-d.xhtml#definedname">defined name</a></i> in code.
+The "Syntax" description for a <i><a href="g-g.xhtml#genericfunction">generic function</a></i> 
+describes the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i> of the <i><a href="g-g.xhtml#genericfunction">generic function</a></i> itself, 
+while the "Method Signatures" describe the <i><a href="g-l.xhtml#lambdalist">lambda lists</a></i> 
+of the defined <i><a href="g-m.xhtml#method">methods</a></i>.
+The "Syntax" description for 
+     an <i><a href="g-o.xhtml#ordinaryfunction">ordinary function</a></i>,
+     a <i><a href="g-m.xhtml#macro">macro</a></i>,
+  or a <i><a href="g-s.xhtml#specialoperator">special operator</a></i>
+describes its <i><a href="g-p.xhtml#parameter">parameters</a></i>.
+
+</p><p>
+For example, an <i><a href="g-o.xhtml#operator">operator</a></i> description might say:
+
+</p><p>
+<b>F</b>
+<i>x y <code>&amp;optional</code> z <code>&amp;key</code> k</i>
+</p><p>
+ This description indicates that the function <b>F</b> 
+has two required parameters, <i>x</i> and <i>y</i>.  In addition,
+there is an optional parameter <i>z</i> and a keyword parameter <i>k</i>.
+
+</p><p>
+For <i><a href="g-m.xhtml#macro">macros</a></i> and <i><a href="g-s.xhtml#specialoperator">special operators</a></i>, syntax is given 
+in modified BNF notation; see Section <a href="#SubSubSectio_Modified_BNF_39">1.4.1.2 Modified BNF Syntax</a>.
+For <i><a href="g-f.xhtml#function">functions</a></i> a <i><a href="g-l.xhtml#lambdalist">lambda list</a></i> is given.
+
+In both cases, however, the outermost parentheses are omitted,
+and default value information is omitted.
+</p>
+<section>
+<h5 id="SubSubSubSec_Special_Syn_78"><span class="secno">1.4.4.20.1</span> Special &quot;Syntax&quot; Notations for Overloaded Operators</h5>
+<p>
+
+If two descriptions exist for the same operation but with different numbers of
+arguments, then the extra arguments are to be treated as optional.  For example,
+this pair of lines:
+
+</p><p>
+<b>file-position</b>
+<i>stream</i>
+  → <i>position</i>
+</p><p>
+<b>file-position</b>
+<i>stream position-spec</i>
+  → <i>success-p</i>
+</p><p>
+ is operationally equivalent to this line:
+
+</p><p>
+<b>file-position</b>
+<i>stream <code>&amp;optional</code> position-spec</i>
+  → <i>result</i>
+</p><p>
+ and differs only in that it provides on opportunity to introduce different
+names for <i><a href="g-p.xhtml#parameter">parameter</a></i> and <i><a href="g-v.xhtml#value">values</a></i> for each case.
+The separated (multi-line) notation is used when an <i><a href="g-o.xhtml#operator">operator</a></i> is overloaded in
+such a way that the <i><a href="g-p.xhtml#parameter">parameters</a></i> are used in different ways
+depending on how many <i><a href="g-a.xhtml#argument">arguments</a></i> are supplied (<i>e.g.</i>,  for the <i><a href="g-f.xhtml#function">function</a></i> <a href="e12-2-27.xhtml#DictEntry__801"><b>/</b></a>)
+or the return values are different in the two cases (<i>e.g.</i>,  for the <i><a href="g-f.xhtml#function">function</a></i> <a href="e21-2-27.xhtml#DictEntry_file_positio_1218"><b>file-position</b></a>).
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Naming_Conve_79"><span class="secno">1.4.4.20.2</span> Naming Conventions for Rest Parameters</h5>
+<p>
+
+Within this specification, 
+if the name of a <i><a href="g-r.xhtml#restparameter">rest parameter</a></i> is chosen to be a plural noun,
+use of that name in <i>parameter</i> font refers
+to the <i><a href="g-l.xhtml#list">list</a></i> to which the <i><a href="g-r.xhtml#restparameter">rest parameter</a></i> is bound.
+Use of the singular form of that name in <i>parameter</i> font refers 
+to an <i><a href="g-e.xhtml#element">element</a></i> of that <i><a href="g-l.xhtml#list">list</a></i>.
+
+</p><p>
+For example, given a syntax description such as:
+
+</p><p>
+<b>F</b>
+<i><code>&amp;rest</code> <i>arguments</i></i>
+</p><p>
+ it is appropriate to refer either to the <i><a href="g-r.xhtml#restparameter">rest parameter</a></i> named
+<i>arguments</i> by name, or to one of its elements by speaking of "an <i>argument</i>,"
+"some <i>argument</i>," "each <i>argument</i>" <i>etc.</i>
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Requiring_No_80"><span class="secno">1.4.4.20.3</span> Requiring Non-Null Rest Parameters in the &quot;Syntax&quot; Section</h5>
+<p>
+
+In some cases it is useful to refer to all arguments equally as a single
+aggregation using a <i><a href="g-r.xhtml#restparameter">rest parameter</a></i> while at the same time
+requiring at least one argument.  A variety of imperative and
+declarative means are available in <i><a href="g-c.xhtml#code">code</a></i> for expressing such a
+restriction, however they generally do not manifest themselves in a
+<i><a href="g-l.xhtml#lambdalist">lambda list</a></i>.  For descriptive purposes within this specification,
+
+</p><p>
+<b>F</b>
+<i><code>&amp;rest</code> arguments+</i>
+</p><p>
+ means the same as
+
+</p><p>
+<b>F</b>
+<i><code>&amp;rest</code> arguments</i>
+</p><p>
+ but introduces the additional requirement that there be 
+at least one <i>argument</i>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Return_value_81"><span class="secno">1.4.4.20.4</span> Return values in the &quot;Syntax&quot; Section</h5>
+<p>
+
+An evaluation arrow "→ " precedes a list of <i><a href="g-v.xhtml#value">values</a></i> to be returned.
+For example:
+
+</p><p>
+<b>F</b>
+<i>a b c</i>
+  → <i>x</i>
+</p><p>
+ indicates that <code>F</code> is an operator that has three <i><a href="g-r.xhtml#requiredparameter">required parameters</a></i>
+(<i>i.e.</i>,  <i>a</i>, <i>b</i>, and <i>c</i>) and that returns one <i><a href="g-v.xhtml#value">value</a></i> (<i>i.e.</i>,  <i>x</i>).
+If more than one <i><a href="g-v.xhtml#value">value</a></i> is returned by an operator, the <i><a href="g-n.xhtml#name">names</a></i> of the
+<i><a href="g-v.xhtml#value">values</a></i> are separated by commas, as in:
+
+</p><p>
+<b>F</b>
+<i>a b c</i>
+  → <i>x, y, z</i>
+</p>
+<section>
+<h6 id="SubSubSubSub_No_Arguments_82"><span class="secno">1.4.4.20.4.1</span> No Arguments or Values in the &quot;Syntax&quot; Section</h6>
+<p>
+
+If no <i><a href="g-a.xhtml#argument">arguments</a></i> are permitted, or no <i><a href="g-v.xhtml#value">values</a></i> are returned, 
+a special notation is used to make this more visually apparent.  For example,
+
+</p><p>
+<b>F</b>
+<i> &lt; <i>no arguments</i> &gt; </i>
+  → <i> &lt; <i>no values</i> &gt; </i>
+</p><p>
+indicates that <code>F</code> is an operator that accepts no <i><a href="g-a.xhtml#argument">arguments</a></i> and returns
+no <i><a href="g-v.xhtml#value">values</a></i>.
+
+
+</p>
+</section>
+<section>
+<h6 id="SubSubSubSub_Unconditiona_83"><span class="secno">1.4.4.20.4.2</span> Unconditional Transfer of Control in the &quot;Syntax&quot; Section</h6>
+<p>
+
+Some <i><a href="g-o.xhtml#operator">operators</a></i> perform an unconditional transfer of control, and
+so never have any return values.  Such <i><a href="g-o.xhtml#operator">operators</a></i> are notated using
+a notation such as the following:
+
+</p><p>
+<b>F</b>
+<i>a b c</i>
+  →  <b>|</b> 
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Valid_C_84"><span class="secno">1.4.4.21</span> The &quot;Valid Context&quot; Section of a Dictionary Entry</h4>
+<p>
+
+This information is used by dictionary entries such as "Declarations"
+in order to restrict the context in which the declaration may appear.
+
+</p><p>
+A given "Declaration" might appear in 
+     a <i><a href="g-d.xhtml#declaration">declaration</a></i> (<i>i.e.</i>,  a <a href="e3-8-18.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="g-e.xhtml#expression">expression</a></i>),
+     a <i><a href="g-p.xhtml#proclamation">proclamation</a></i> (<i>i.e.</i>,  a <a href="e3-8-17.xhtml#DictEntry_declaim_299"><b>declaim</b></a> or <a href="e3-8-16.xhtml#DictEntry_proclaim_298"><b>proclaim</b></a> <i><a href="g-f.xhtml#form">form</a></i>),
+  or both.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Value_T_85"><span class="secno">1.4.4.22</span> The &quot;Value Type&quot; Section of a Dictionary Entry</h4>
+<p>
+
+This information describes any <i><a href="g-t.xhtml#type">type</a></i> restrictions on a <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i>.
+
+</p><p>
+
+
+
+Except as explicitly specified otherwise,
+
+the consequences are undefined if this type restriction is violated.
+
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</section>
+</body>
+</html>

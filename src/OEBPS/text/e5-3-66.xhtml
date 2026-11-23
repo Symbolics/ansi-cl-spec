@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.66 rotatef — Macro</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_rotatef_452" class="entry"><span class="secno">5.3.66</span> <span class="names">rotatef</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>rotatef</b>
+<i>{<i>place</i>}*</i>
+  → <i><a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i><p><i></i>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>place</i>—a <i><a href="g-p.xhtml#place">place</a></i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_rotatef_452"><b>rotatef</b></a> modifies the values of each <i>place</i> by
+rotating values from one <i>place</i> into another.
+
+<p>
+
+If a <i>place</i> produces more values than there
+are store variables, the extra values are ignored. If a <i>place</i>
+produces fewer values than there are store variables, the missing values
+are set to <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+
+</p><p>
+
+In the form <code>(rotatef <i>place1</i> <i>place2</i> ... <i>placen</i>)</code>, 
+the values in <i>place1</i> through <i>placen</i> are <i><a href="g-r.xhtml#read">read</a></i> and <i>written</i>.
+Values 2 through <i>n</i> 
+and value 1 are then stored into <i>place1</i> through <i>placen</i>.
+It is as if all the places form an end-around shift register
+that is rotated one place to the left, with the value of <i>place1</i>
+being shifted around the end to <i>placen</i>.
+
+</p><p>
+
+For information about the <i><a href="g-e.xhtml#evaluation">evaluation</a></i> of <i><a href="g-s.xhtml#subform">subforms</a></i> of <i>places</i>,
+see Section <a href="s5-1.xhtml#SubSubSectio_Evaluation_o_370">5.1.1.1 Evaluation of Subforms to Places</a>.  
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (let ((n 0)
+        (x (list 'a 'b 'c 'd 'e 'f 'g)))
+    (rotatef (nth (incf n) x)
+             (nth (incf n) x)
+             (nth (incf n) x))
+    x) → (A C D B E F G)
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-62.xhtml#DictEntry_define_setf__448"><b>define-setf-expander</b></a>,
+<a href="e5-3-61.xhtml#DictEntry_defsetf_447"><b>defsetf</b></a>,
+<a href="e7-7-38.xhtml#DictEntry_setf_class__594"><b>setf</b></a>,
+<a href="e5-3-65.xhtml#DictEntry_shiftf_451"><b>shiftf</b></a>,
+<a href="e3-8-15.xhtml#DictEntry_macroexpand_297"><b>*macroexpand-hook*</b></a>,
+Section <a href="s5-1.xhtml#Section_Generalized__368">5.1 Generalized Reference</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+The effect of
+ <code>(rotatef <i>place1</i> <i>place2</i> ... <i>placen</i>)</code>
+is roughly equivalent to
+
+<pre> (psetf <i>place1</i> <i>place2</i>
+        <i>place2</i> <i>place3</i>
+        ...
+        <i>placen</i> <i>place1</i>)
+</pre>
+except that the latter would evaluate any <i><a href="g-s.xhtml#subform">subforms</a></i>
+of each <code>place</code> twice, whereas <a href="#DictEntry_rotatef_452"><b>rotatef</b></a> evaluates them once.
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.16 list-length — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_list_length_929" class="entry"><span class="secno">14.2.16</span> <span class="names">list-length</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>list-length</b>
+<i>list</i>
+  → <i>length</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>list</i>—a <i><a href="g-p.xhtml#properlist">proper list</a></i> or a <i><a href="g-c.xhtml#circularlist">circular list</a></i>.
+
+<p>
+<i>length</i>—a non-negative <i><a href="g-i.xhtml#integer">integer</a></i>, or <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns the <i><a href="g-l.xhtml#length">length</a></i> of <i>list</i> if <i>list</i> is a <i><a href="g-p.xhtml#properlist">proper list</a></i>.
+Returns <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> if <i>list</i> is a <i><a href="g-c.xhtml#circularlist">circular list</a></i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (list-length '(a b c d)) → 4
+ (list-length '(a (b c) d)) → 3
+ (list-length '()) → 0
+ (list-length nil) → 0
+ (defun circular-list (&amp;rest elements)
+   (let ((cycle (copy-list elements))) 
+     (nconc cycle cycle)))
+ (list-length (circular-list 'a 'b)) →  NIL
+ (list-length (circular-list 'a)) →  NIL
+ (list-length (circular-list)) → 0
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>list</i> is not a <i><a href="g-p.xhtml#properlist">proper list</a></i> or a <i><a href="g-c.xhtml#circularlist">circular list</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e17-3-11.xhtml#DictEntry_length_1051"><b>length</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<a href="#DictEntry_list_length_929"><b>list-length</b></a> could be implemented as follows:
+
+<pre> (defun list-length (x)  
+   (do ((n 0 (+ n 2))           ;Counter.
+        (fast x (cddr fast))    ;Fast pointer: leaps by 2.
+        (slow x (cdr slow)))    ;Slow pointer: leaps by 1.
+       (nil)
+     ;; If fast pointer hits the end, return the count.
+     (when (endp fast) (return n))
+     (when (endp (cdr fast)) (return (+ n 1)))
+     ;; If fast pointer eventually equals slow pointer,
+     ;;  then we must be stuck in a circular list.
+     ;; (A deeper property is the converse: if we are
+     ;;  stuck in a circular list, then eventually the
+     ;;  fast pointer will equal the slow pointer.
+     ;;  That fact justifies this implementation.)
+     (when (and (eq fast slow) (&gt; n 0)) (return nil))))
+ 
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

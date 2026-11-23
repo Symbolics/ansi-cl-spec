@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>23.2.17 *readtable* — Variable</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_readtable_1397" class="entry"><span class="secno">23.2.17</span> <span class="names">*readtable*</span> <span class="kind">Variable</span></h3>
+<dl>
+
+
+<dt><b>Value Type:</b></dt><dd>
+
+a <i><a href="g-r.xhtml#readtable">readtable</a></i>.
+
+</dd><dt><b>Initial Value:</b></dt><dd>
+
+A <i><a href="g-r.xhtml#readtable">readtable</a></i> that conforms to the description of <i>Common Lisp</i> syntax in Chapter <a href="c02.xhtml#Chapter_Syntax_107">2 Syntax</a>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+The <i><a href="g-v.xhtml#value">value</a></i> of <a href="#DictEntry_readtable_1397"><b>*readtable*</b></a> is called the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i>.
+It controls the parsing behavior of the <i>Lisp reader</i>,
+and can also influence the <i>Lisp printer</i> (<i>e.g.</i>,  see the <i><a href="g-f.xhtml#function">function</a></i> <a href="e23-2-7.xhtml#DictEntry_readtable_ca_1387"><b>readtable-case</b></a>).
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (readtablep *readtable*) → <i><a href="g-t.xhtml#true">true</a></i>
+ (setq zvar 123) → 123
+ (set-syntax-from-char #\z #\' (setq table2 (copy-readtable))) →  T
+ zvar → 123
+ (setq *readtable* table2) → #&lt;READTABLE&gt;
+ zvar →  VAR
+ (setq *readtable* (copy-readtable nil)) → #&lt;READTABLE&gt;
+ zvar → 123
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>,
+<a href="e24-2-3.xhtml#DictEntry_load_1408"><b>load</b></a>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>,
+<a href="e24-2-3.xhtml#DictEntry_load_1408"><b>load</b></a>,
+<a href="e23-2-1.xhtml#DictEntry_readtable_1381"><b>readtable</b></a>,
+Section <a href="s2-1.xhtml#SubSubSectio_The_Current__110">2.1.1.1 The Current Readtable</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

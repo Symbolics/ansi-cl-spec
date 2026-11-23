@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.79 arithmetic-error-operands, arithmetic-error-operation — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_arithmetic_e_853" class="entry"><span class="secno">12.2.79</span> <span class="names">arithmetic-error-operands, arithmetic-error-operation</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>arithmetic-error-operands</b>
+<i>condition</i>
+  → <i>operands</i>
+<p>
+<b>arithmetic-error-operation</b>
+<i>condition</i>
+  → <i>operation</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>condition</i>—a <i><a href="g-c.xhtml#condition">condition</a></i> of <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-78.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a>.
+
+<p>
+<i>operands</i>—a <i><a href="g-l.xhtml#list">list</a></i>.
+
+</p><p>
+<i>operation</i>—a <i><a href="g-f.xhtml#functiondesignator">function designator</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_arithmetic_e_853"><b>arithmetic-error-operands</b></a> returns a <i><a href="g-l.xhtml#list">list</a></i> of the operands 
+which were used in the offending call to the operation that signaled 
+the <i>condition</i>.
+
+<p>
+<a href="#DictEntry_arithmetic_e_853"><b>arithmetic-error-operation</b></a> returns a <i><a href="g-l.xhtml#list">list</a></i> of 
+the offending operation in the offending call that signaled the <i>condition</i>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e12-2-78.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a>,
+Chapter <a href="c09.xhtml#Chapter_Conditions_602">9 Conditions</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

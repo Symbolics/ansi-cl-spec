@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.1 number — System Class</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_number_775" class="entry"><span class="secno">12.2.1</span> <span class="names">number</span> <span class="kind">System Class</span></h3>
+<dl>
+
+
+<dt><b>Class Precedence List:</b></dt><dd>
+
+<a href="#DictEntry_number_775"><b>number</b></a>,
+<a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+
+The <i><a href="g-t.xhtml#type">type</a></i> <a href="#DictEntry_number_775"><b>number</b></a> contains <i><a href="g-o.xhtml#object">objects</a></i> which represent
+mathematical numbers.
+
+The <i><a href="g-t.xhtml#type">types</a></i> <a href="e12-2-3.xhtml#DictEntry_real_777"><b>real</b></a> and <a href="e12-2-2.xhtml#DictEntry_complex_776"><b>complex</b></a> are <i><a href="g-d.xhtml#disjoint">disjoint</a></i> 
+<i><a href="g-s.xhtml#subtype">subtypes</a></i> of <a href="#DictEntry_number_775"><b>number</b></a>.
+
+
+<p>
+
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="e12-2-15.xhtml#DictEntry___lt_789"><b>=</b></a> tests for numerical equality.
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a>, when its arguments are both <i><a href="g-n.xhtml#number">numbers</a></i>, 
+tests that they have both the same <i><a href="g-t.xhtml#type">type</a></i> and numerical value.
+
+Two <i><a href="g-n.xhtml#number">numbers</a></i> that are the <i><a href="g-s.xhtml#same">same</a></i> under <a href="e4-4-23.xhtml#DictEntry_eql_358"><b>eql</b></a> or <a href="e12-2-15.xhtml#DictEntry___lt_789"><b>=</b></a>
+are not necessarily the <i><a href="g-s.xhtml#same">same</a></i> under <a href="e5-3-33.xhtml#DictEntry_eq_419"><b>eq</b></a>.
+
+</p></dd><dt><b>Notes:</b></dt><dd>
+
+<i>Common Lisp</i> differs from mathematics on some naming issues.  In mathematics,
+the set of real numbers is traditionally described as a subset of the
+complex numbers, but in <i>Common Lisp</i>, the <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-3.xhtml#DictEntry_real_777"><b>real</b></a> and the <i><a href="g-t.xhtml#type">type</a></i> <a href="e12-2-2.xhtml#DictEntry_complex_776"><b>complex</b></a> are
+disjoint.  The <i>Common Lisp</i> type which includes all mathematical complex
+numbers is called <a href="#DictEntry_number_775"><b>number</b></a>.  The reasons for these differences
+include historical precedent, compatibility with most other popular
+computer languages, and various issues of time and space efficiency.
+
+</dd></dl>
+</section>
+</body>
+</html>

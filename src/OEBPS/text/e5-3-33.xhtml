@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.33 eq — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_eq_419" class="entry"><span class="secno">5.3.33</span> <span class="names">eq</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>eq</b>
+<i>x y</i>
+  → <i>generalized-boolean</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>x</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+<p>
+<i>y</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+</p><p>
+<i>generalized-boolean</i>—a <i><a href="g-g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns <i><a href="g-t.xhtml#true">true</a></i> if its <i><a href="g-a.xhtml#argument">arguments</a></i> are the same, identical <i><a href="g-o.xhtml#object">object</a></i>;
+otherwise, returns <i><a href="g-f.xhtml#false">false</a></i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (eq 'a 'b) → <i><a href="g-f.xhtml#false">false</a></i>
+ (eq 'a 'a) → <i><a href="g-t.xhtml#true">true</a></i>
+ (eq 3 3)
+→ <i><a href="g-t.xhtml#true">true</a></i>
+OR→<i><a href="g-f.xhtml#false">false</a></i>
+ (eq 3 3.0) → <i><a href="g-f.xhtml#false">false</a></i>
+ (eq 3.0 3.0)
+→ <i><a href="g-t.xhtml#true">true</a></i>
+OR→<i><a href="g-f.xhtml#false">false</a></i>
+ (eq #c(3 -4) #c(3 -4))
+→ <i><a href="g-t.xhtml#true">true</a></i>
+OR→<i><a href="g-f.xhtml#false">false</a></i>
+ (eq #c(3 -4.0) #c(3 -4)) → <i><a href="g-f.xhtml#false">false</a></i>
+ (eq (cons 'a 'b) (cons 'a 'c)) → <i><a href="g-f.xhtml#false">false</a></i>
+ (eq (cons 'a 'b) (cons 'a 'b)) → <i><a href="g-f.xhtml#false">false</a></i>
+ (eq '(a . b) '(a . b))
+→ <i><a href="g-t.xhtml#true">true</a></i>
+OR→<i><a href="g-f.xhtml#false">false</a></i>
+ (progn (setq x (cons 'a 'b)) (eq x x)) → <i><a href="g-t.xhtml#true">true</a></i>
+ (progn (setq x '(a . b)) (eq x x)) → <i><a href="g-t.xhtml#true">true</a></i>
+ (eq #\A #\A)
+→ <i><a href="g-t.xhtml#true">true</a></i>
+OR→<i><a href="g-f.xhtml#false">false</a></i>
+ (let ((x "Foo")) (eq x x)) → <i><a href="g-t.xhtml#true">true</a></i>
+ (eq "Foo" "Foo")
+→ <i><a href="g-t.xhtml#true">true</a></i>
+OR→<i><a href="g-f.xhtml#false">false</a></i>
+ (eq "Foo" (copy-seq "Foo")) → <i><a href="g-f.xhtml#false">false</a></i>
+ (eq "FOO" "foo") → <i><a href="g-f.xhtml#false">false</a></i>
+ (eq "string-seq" (copy-seq "string-seq")) → <i><a href="g-f.xhtml#false">false</a></i>
+ (let ((x 5)) (eq x x))
+→ <i><a href="g-t.xhtml#true">true</a></i>
+OR→<i><a href="g-f.xhtml#false">false</a></i>
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-34.xhtml#DictEntry_eql_420"><b>eql</b></a>,
+<a href="e5-3-35.xhtml#DictEntry_equal_421"><b>equal</b></a>,
+<a href="e5-3-36.xhtml#DictEntry_equalp_422"><b>equalp</b></a>,
+<a href="e12-2-15.xhtml#DictEntry___lt_789"><b>=</b></a>,
+Section <a href="s3-2.xhtml#Section_Compilation_213">3.2 Compilation</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+<i><a href="g-o.xhtml#object">Objects</a></i> that appear the same when printed are not necessarily
+<a href="#DictEntry_eq_419"><b>eq</b></a> to each other.  <i><a href="g-s.xhtml#symbol">Symbols</a></i> that print the same 
+usually are <a href="#DictEntry_eq_419"><b>eq</b></a> to each other because of the use of the
+<a href="e11-2-21.xhtml#DictEntry_intern_736"><b>intern</b></a> function.  However, <i><a href="g-n.xhtml#number">numbers</a></i> with the 
+same value need not be <a href="#DictEntry_eq_419"><b>eq</b></a>, and two similar
+<i><a href="g-l.xhtml#list">lists</a></i> are usually not <i><a href="g-i.xhtml#identical">identical</a></i>.
+
+<p>
+An implementation is permitted to make "copies" of 
+<i><a href="g-c.xhtml#character">characters</a></i> and <i><a href="g-n.xhtml#number">numbers</a></i> at any time.  
+The effect is that <i>Common Lisp</i> makes no guarantee that <a href="#DictEntry_eq_419"><b>eq</b></a> 
+is true even when both its arguments are "the same thing" if 
+that thing is a <i><a href="g-c.xhtml#character">character</a></i> or <i><a href="g-n.xhtml#number">number</a></i>.
+
+</p><p>
+Most <i>Common Lisp</i> <i><a href="g-o.xhtml#operator">operators</a></i> use <a href="e5-3-34.xhtml#DictEntry_eql_420"><b>eql</b></a> rather than
+<a href="#DictEntry_eq_419"><b>eq</b></a> to compare objects, or else they default to <a href="e5-3-34.xhtml#DictEntry_eql_420"><b>eql</b></a>
+and only use <a href="#DictEntry_eq_419"><b>eq</b></a> if specifically requested to do so.
+However, the following <i><a href="g-o.xhtml#operator">operators</a></i> are defined to use <a href="#DictEntry_eq_419"><b>eq</b></a>
+rather than <a href="e5-3-34.xhtml#DictEntry_eql_420"><b>eql</b></a> in a way that cannot be overridden by the
+<i><a href="g-c.xhtml#code">code</a></i> which employs them:
+
+</p><table id="fig-5-11" class="fig">
+<caption><span class="figlabel">Figure 5-11.</span> Operators that always prefer EQ over EQL</caption>
+
+  <tbody><tr>
+    <td>catch</td>
+    <td>getf</td>
+    <td>throw</td>
+  </tr>
+  <tr>
+    <td>get</td>
+    <td>remf</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>get-properties</td>
+    <td>remprop</td>
+  </tr>
+</tbody></table>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

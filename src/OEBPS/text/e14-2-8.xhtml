@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.8 rplaca, rplacd — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_rplaca_rpla_921" class="entry"><span class="secno">14.2.8</span> <span class="names">rplaca, rplacd</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<table>
+<tbody><tr><td><b>rplaca</b> <i>cons object</i></td><td>→  <i>cons</i></td></tr>
+<tr><td><b>rplacd</b> <i>cons object</i></td><td>→ <i>cons</i></td></tr>
+</tbody></table>
+
+</dd><dt><b>Pronunciation:</b></dt><dd>
+
+<a href="#DictEntry_rplaca_rpla_921"><b>rplaca</b></a>: <span class="pron">[ ˌrēˈplakε ]</span>
+	      or <span class="pron">[ ˌrεˈplakε ]</span>
+
+<p>
+<a href="#DictEntry_rplaca_rpla_921"><b>rplacd</b></a>: <span class="pron">[ ˌrēˈplakdε ]</span>
+	      or <span class="pron">[ ˌrεˈplakdε ]</span>
+	      or <span class="pron">[ ˌrēˈplakdē ]</span>
+	      or <span class="pron">[ ˌrεˈplakdē ]</span>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>cons</i>—a <i><a href="g-c.xhtml#cons">cons</a></i>.
+
+<p>
+<i>object</i>—an <i><a href="g-o.xhtml#object">object</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_rplaca_rpla_921"><b>rplaca</b></a> replaces the <i><a href="g-c.xhtml#car">car</a></i> of the <i>cons</i> with <i>object</i>.
+
+
+<p>
+<a href="#DictEntry_rplaca_rpla_921"><b>rplacd</b></a> replaces the <i><a href="g-c.xhtml#cdr">cdr</a></i> of the <i>cons</i> with <i>object</i>.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (defparameter *some-list* (list* 'one 'two 'three 'four)) → *some-list*
+ *some-list* → (ONE TWO THREE . FOUR)
+ (rplaca *some-list* 'uno) → (UNO TWO THREE . FOUR)
+ *some-list* → (UNO TWO THREE . FOUR)
+ (rplacd (last *some-list*) (list 'IV)) → (THREE IV)
+ *some-list* → (UNO TWO THREE IV)
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The <i>cons</i> is modified. 
+
+<p>
+Should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>cons</i> is not a <i><a href="g-c.xhtml#cons">cons</a></i>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

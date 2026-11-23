@@ -1,0 +1,1151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>2.1 Character Syntax</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Character_Sy_108"><span class="secno">2.1</span> Character Syntax</h2>
+<p>
+The <i>Lisp reader</i> takes <i><a href="g-c.xhtml#character">characters</a></i> from a <i><a href="g-s.xhtml#stream">stream</a></i>, 
+interprets them as a printed representation of an <i><a href="g-o.xhtml#object">object</a></i>,
+constructs that <i><a href="g-o.xhtml#object">object</a></i>, and returns it.
+
+</p><p>
+
+The syntax described by this chapter is called the <b><i>standard syntax</i></b>.
+Operations are provided by <i>Common Lisp</i> so that
+various aspects of the syntax information represented by a <i><a href="g-r.xhtml#readtable">readtable</a></i> 
+can be modified under program control; see Chapter <a href="c23.xhtml#Chapter_Reader_1372">23 Reader</a>.
+Except as explicitly stated otherwise, 
+the syntax used throughout this document is <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i>.
+
+</p>
+<section>
+<h3 id="SubSection_Readtables_109"><span class="secno">2.1.1</span> Readtables</h3>
+<p>
+
+
+Syntax information for use by the <i>Lisp reader</i> is embodied in an
+<i><a href="g-o.xhtml#object">object</a></i> called a <b><i>readtable</i></b>.  Among other things, 
+the <i><a href="g-r.xhtml#readtable">readtable</a></i> contains the association between <i><a href="g-c.xhtml#character">characters</a></i> 
+and <i><a href="g-s.xhtml#syntaxtype">syntax types</a></i>.
+
+</p><p>
+The next figure lists some <i><a href="g-d.xhtml#definedname">defined names</a></i> that are applicable to
+<i><a href="g-r.xhtml#readtable">readtables</a></i>.
+
+</p><table id="fig-2-1" class="fig">
+<caption><span class="figlabel">Figure 2-1.</span> Readtable defined names</caption>
+
+  <tbody><tr>
+    <td>*readtable*</td>
+    <td>readtable-case</td>
+  </tr>
+  <tr>
+    <td>copy-readtable</td>
+    <td>readtablep</td>
+  </tr>
+  <tr>
+    <td>get-dispatch-macro-character</td>
+    <td>set-dispatch-macro-character</td>
+  </tr>
+  <tr>
+    <td>get-macro-character</td>
+    <td>set-macro-character</td>
+  </tr>
+  <tr>
+    <td>make-dispatch-macro-character</td>
+    <td>set-syntax-from-char</td>
+  </tr>
+</tbody></table>
+<section>
+<h4 id="SubSubSectio_The_Current__110"><span class="secno">2.1.1.1</span> The Current Readtable</h4>
+<p>
+
+
+Several <i><a href="g-r.xhtml#readtable">readtables</a></i> describing different syntaxes can exist,
+but at any given time only one, called the <b><i>current readtable</i></b>, 
+affects the way in which <i><a href="g-e.xhtml#expression">expressions</a></i><sub>2</sub> are parsed 
+into <i><a href="g-o.xhtml#object">objects</a></i> by the <i>Lisp reader</i>.
+The <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i> in a given <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i>
+is the <i><a href="g-v.xhtml#value">value</a></i> of <a href="e23-2-17.xhtml#DictEntry_readtable_1397"><b>*readtable*</b></a> in that <i><a href="g-e.xhtml#environment">environment</a></i>.
+To make a different <i><a href="g-r.xhtml#readtable">readtable</a></i> become the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i>,
+<a href="e23-2-17.xhtml#DictEntry_readtable_1397"><b>*readtable*</b></a> can be <i>assigned</i> or <i><a href="g-b.xhtml#bound">bound</a></i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Standard_111"><span class="secno">2.1.1.2</span> The Standard Readtable</h4>
+<p>
+
+The <b><i>standard readtable</i></b> conforms to <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i>.
+The consequences are undefined if an attempt is made
+to modify the <i><a href="g-s.xhtml#standardreadtable">standard readtable</a></i>.
+
+To achieve the effect of altering or extending <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i>,
+a copy of the <i><a href="g-s.xhtml#standardreadtable">standard readtable</a></i> can be created; see the <i><a href="g-f.xhtml#function">function</a></i> <a href="e23-2-2.xhtml#DictEntry_copy_readtab_1382"><b>copy-readtable</b></a>.
+
+</p><p>
+The <i><a href="g-r.xhtml#readtablecase">readtable case</a></i> of the <i><a href="g-s.xhtml#standardreadtable">standard readtable</a></i> is <code>:upcase</code>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_The_Initial__112"><span class="secno">2.1.1.3</span> The Initial Readtable</h4>
+<p>
+
+The <b><i>initial readtable</i></b> is
+the <i><a href="g-r.xhtml#readtable">readtable</a></i> that is the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i>
+at the time when the <i>Lisp image</i> starts.
+At that time, it conforms to <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i>.
+The <i><a href="g-i.xhtml#initialreadtable">initial readtable</a></i> is <i><a href="g-d.xhtml#distinct">distinct</a></i> 
+from the <i><a href="g-s.xhtml#standardreadtable">standard readtable</a></i>.
+It is permissible for a <i><a href="g-c.xhtml#conformingprogram">conforming program</a></i> 
+to modify the <i><a href="g-i.xhtml#initialreadtable">initial readtable</a></i>.
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Variables_th_113"><span class="secno">2.1.2</span> Variables that affect the Lisp Reader</h3>
+<p>
+
+
+The <i>Lisp reader</i> is influenced not only by the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i>,
+but also by various <i><a href="g-d.xhtml#dynamicvariable">dynamic variables</a></i>.  The next figure lists
+the <i><a href="g-v.xhtml#variable">variables</a></i> that influence the behavior of the <i>Lisp reader</i>.
+
+</p><table id="fig-2-2" class="fig">
+<caption><span class="figlabel">Figure 2-2.</span> Variables that influence the Lisp reader.</caption>
+
+  <tbody><tr>
+    <td>*package*</td>
+    <td>*read-default-float-format*</td>
+    <td>*readtable*</td>
+  </tr>
+  <tr>
+    <td>*read-base*</td>
+    <td>*read-suppress*</td>
+    <td/>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h3 id="SubSection_Standard_Cha_114"><span class="secno">2.1.3</span> Standard Characters</h3>
+<p>
+
+
+
+
+
+
+All <i><a href="g-i.xhtml#implementation">implementations</a></i> must support a <i><a href="g-c.xhtml#character">character</a></i> <i><a href="g-r.xhtml#repertoire">repertoire</a></i>
+called <a href="e13-2-3.xhtml#DictEntry_standard_cha_886"><b>standard-char</b></a>; <i><a href="g-c.xhtml#character">characters</a></i> that are members of that
+<i><a href="g-r.xhtml#repertoire">repertoire</a></i> are called <b><i>standard characters</i></b>.
+
+</p><p>
+The <a href="e13-2-3.xhtml#DictEntry_standard_cha_886"><b>standard-char</b></a> <i><a href="g-r.xhtml#repertoire">repertoire</a></i> consists of
+the <i><a href="g-n.xhtml#nongraphic">non-graphic</a></i> <i><a href="g-c.xhtml#character">character</a></i> <i><a href="g-n.xhtml#newline">newline</a></i>,
+the <i><a href="g-g.xhtml#graphic">graphic</a></i> <i><a href="g-c.xhtml#character">character</a></i> <i><a href="g-s.xhtml#space">space</a></i>,
+and the following additional
+ninety-four <i><a href="g-g.xhtml#graphic">graphic</a></i> <i><a href="g-c.xhtml#character">characters</a></i> or their equivalents:
+
+</p><table id="fig-2-3" class="fig">
+<caption><span class="figlabel">Figure 2-3.</span> Standard Character Subrepertoire (Part 1 of 3: Latin Characters)</caption>
+<tbody><tr><th>Graphic ID</th>
+<th>Glyph</th>
+<th>Description</th>
+<th>Graphic ID</th>
+<th>Glyph</th>
+<th>Description</th>
+</tr>
+
+  <tr>
+    <td>LA01</td>
+    <td><code>a</code></td>
+    <td>small a</td>
+    <td>
+  LN01</td>
+    <td><code>n</code></td>
+    <td>small n</td>
+  </tr>
+  <tr>
+    <td>LA02</td>
+    <td><code>A</code></td>
+    <td>capital A</td>
+    <td>
+  LN02</td>
+    <td><code>N</code></td>
+    <td>capital N</td>
+  </tr>
+  <tr>
+    <td>LB01</td>
+    <td><code>b</code></td>
+    <td>small b</td>
+    <td>
+  LO01</td>
+    <td><code>o</code></td>
+    <td>small o</td>
+  </tr>
+  <tr>
+    <td>LB02</td>
+    <td><code>B</code></td>
+    <td>capital B</td>
+    <td>
+  LO02</td>
+    <td><code>O</code></td>
+    <td>capital O</td>
+  </tr>
+  <tr>
+    <td>LC01</td>
+    <td><code>c</code></td>
+    <td>small c</td>
+    <td>
+  LP01</td>
+    <td><code>p</code></td>
+    <td>small p</td>
+  </tr>
+  <tr>
+    <td>LC02</td>
+    <td><code>C</code></td>
+    <td>capital C</td>
+    <td>
+  LP02</td>
+    <td><code>P</code></td>
+    <td>capital P</td>
+  </tr>
+  <tr>
+    <td>LD01</td>
+    <td><code>d</code></td>
+    <td>small d</td>
+    <td>
+  LQ01</td>
+    <td><code>q</code></td>
+    <td>small q</td>
+
+
+
+
+
+
+
+
+
+  </tr>
+  <tr>
+    <td>LD02</td>
+    <td><code>D</code></td>
+    <td>capital D</td>
+    <td>
+  LQ02</td>
+    <td><code>Q</code></td>
+    <td>capital Q</td>
+  </tr>
+  <tr>
+    <td>LE01</td>
+    <td><code>e</code></td>
+    <td>small e</td>
+    <td>
+  LR01</td>
+    <td><code>r</code></td>
+    <td>small r</td>
+  </tr>
+  <tr>
+    <td>LE02</td>
+    <td><code>E</code></td>
+    <td>capital E</td>
+    <td>
+  LR02</td>
+    <td><code>R</code></td>
+    <td>capital R</td>
+  </tr>
+  <tr>
+    <td>LF01</td>
+    <td><code>f</code></td>
+    <td>small f</td>
+    <td>
+  LS01</td>
+    <td><code>s</code></td>
+    <td>small s</td>
+  </tr>
+  <tr>
+    <td>LF02</td>
+    <td><code>F</code></td>
+    <td>capital F</td>
+    <td>
+  LS02</td>
+    <td><code>S</code></td>
+    <td>capital S</td>
+  </tr>
+  <tr>
+    <td>LG01</td>
+    <td><code>g</code></td>
+    <td>small g</td>
+    <td>
+  LT01</td>
+    <td><code>t</code></td>
+    <td>small t</td>
+  </tr>
+  <tr>
+    <td>LG02</td>
+    <td><code>G</code></td>
+    <td>capital G</td>
+    <td>
+  LT02</td>
+    <td><code>T</code></td>
+    <td>capital T</td>
+  </tr>
+  <tr>
+    <td>LH01</td>
+    <td><code>h</code></td>
+    <td>small h</td>
+    <td>
+  LU01</td>
+    <td><code>u</code></td>
+    <td>small u</td>
+  </tr>
+  <tr>
+    <td>LH02</td>
+    <td><code>H</code></td>
+    <td>capital H</td>
+    <td>
+  LU02</td>
+    <td><code>U</code></td>
+    <td>capital U</td>
+  </tr>
+  <tr>
+    <td>LI01</td>
+    <td><code>i</code></td>
+    <td>small i</td>
+    <td>
+  LV01</td>
+    <td><code>v</code></td>
+    <td>small v</td>
+  </tr>
+  <tr>
+    <td>LI02</td>
+    <td><code>I</code></td>
+    <td>capital I</td>
+    <td>
+  LV02</td>
+    <td><code>V</code></td>
+    <td>capital V</td>
+  </tr>
+  <tr>
+    <td>LJ01</td>
+    <td><code>j</code></td>
+    <td>small j</td>
+    <td>
+  LW01</td>
+    <td><code>w</code></td>
+    <td>small w</td>
+  </tr>
+  <tr>
+    <td>LJ02</td>
+    <td><code>J</code></td>
+    <td>capital J</td>
+    <td>
+  LW02</td>
+    <td><code>W</code></td>
+    <td>capital W</td>
+  </tr>
+  <tr>
+    <td>LK01</td>
+    <td><code>k</code></td>
+    <td>small k</td>
+    <td>
+  LX01</td>
+    <td><code>x</code></td>
+    <td>small x</td>
+  </tr>
+  <tr>
+    <td>LK02</td>
+    <td><code>K</code></td>
+    <td>capital K</td>
+    <td>
+  LX02</td>
+    <td><code>X</code></td>
+    <td>capital X</td>
+  </tr>
+  <tr>
+    <td>LL01</td>
+    <td><code>l</code></td>
+    <td>small l</td>
+    <td>
+  LY01</td>
+    <td><code>y</code></td>
+    <td>small y</td>
+  </tr>
+  <tr>
+    <td>LL02</td>
+    <td><code>L</code></td>
+    <td>capital L</td>
+    <td>
+  LY02</td>
+    <td><code>Y</code></td>
+    <td>capital Y</td>
+  </tr>
+  <tr>
+    <td>LM01</td>
+    <td><code>m</code></td>
+    <td>small m</td>
+    <td>
+  LZ01</td>
+    <td><code>z</code></td>
+    <td>small z</td>
+  </tr>
+  <tr>
+    <td>LM02</td>
+    <td><code>M</code></td>
+    <td>capital M</td>
+    <td>
+  LZ02</td>
+    <td><code>Z</code></td>
+    <td>capital Z</td>
+  </tr>
+</tbody></table>
+
+
+<table id="fig-2-4" class="fig">
+<caption><span class="figlabel">Figure 2-4.</span> Standard Character Subrepertoire (Part 2 of 3: Numeric Characters)</caption>
+<tbody><tr><th>Graphic ID</th>
+<th>Glyph</th>
+<th>Description</th>
+<th>Graphic ID</th>
+<th>Glyph</th>
+<th>Description</th>
+</tr>
+
+  <tr>
+    <td>ND01</td>
+    <td><code>1</code></td>
+    <td>digit 1</td>
+    <td>
+  ND06</td>
+    <td><code>6</code></td>
+    <td>digit 6</td>
+  </tr>
+  <tr>
+    <td>ND02</td>
+    <td><code>2</code></td>
+    <td>digit 2</td>
+    <td>
+  ND07</td>
+    <td><code>7</code></td>
+    <td>digit 7</td>
+  </tr>
+  <tr>
+    <td>ND03</td>
+    <td><code>3</code></td>
+    <td>digit 3</td>
+    <td>
+  ND08</td>
+    <td><code>8</code></td>
+    <td>digit 8</td>
+  </tr>
+  <tr>
+    <td>ND04</td>
+    <td><code>4</code></td>
+    <td>digit 4</td>
+    <td>
+  ND09</td>
+    <td><code>9</code></td>
+    <td>digit 9</td>
+  </tr>
+  <tr>
+    <td>ND05</td>
+    <td><code>5</code></td>
+    <td>digit 5</td>
+    <td>
+  ND10</td>
+    <td><code>0</code></td>
+    <td>digit 0</td>
+  </tr>
+</tbody></table>
+
+
+<table id="fig-2-5" class="fig">
+<caption><span class="figlabel">Figure 2-5.</span> Standard Character Subrepertoire (Part 3 of 3: Special Characters)</caption>
+<tbody><tr><th>Graphic ID</th>
+<th>Glyph</th>
+<th>Description</th>
+</tr>
+
+  <tr>
+    <td>SP02</td>
+    <td><code>!</code></td>
+    <td>exclamation mark</td>
+  </tr>
+  <tr>
+    <td>SC03</td>
+    <td><code>$</code></td>
+    <td>dollar sign</td>
+  </tr>
+  <tr>
+    <td>SP04</td>
+    <td><code>"</code></td>
+    <td>quotation mark, or double quote</td>
+  </tr>
+  <tr>
+    <td>SP05</td>
+    <td><code>'</code></td>
+    <td>apostrophe, or [single] quote</td>
+  </tr>
+  <tr>
+    <td>SP06</td>
+    <td><code>(</code></td>
+    <td>left parenthesis, or open parenthesis</td>
+  </tr>
+  <tr>
+    <td>SP07</td>
+    <td><code>)</code></td>
+    <td>right parenthesis, or close parenthesis</td>
+  </tr>
+  <tr>
+    <td>SP08</td>
+    <td><code>,</code></td>
+    <td>comma</td>
+  </tr>
+  <tr>
+    <td>SP09</td>
+    <td><code>_</code></td>
+    <td>low line, or underscore</td>
+  </tr>
+  <tr>
+    <td>SP10</td>
+    <td><code>-</code></td>
+    <td>hyphen, or minus [sign]</td>
+  </tr>
+  <tr>
+    <td>SP11</td>
+    <td><code>.</code></td>
+    <td>full stop, period, or dot</td>
+  </tr>
+  <tr>
+    <td>SP12</td>
+    <td><code>/</code></td>
+    <td>solidus, or slash</td>
+  </tr>
+  <tr>
+    <td>SP13</td>
+    <td><code>:</code></td>
+    <td>colon</td>
+  </tr>
+  <tr>
+    <td>SP14</td>
+    <td><code>;</code></td>
+    <td>semicolon</td>
+  </tr>
+  <tr>
+    <td>SP15</td>
+    <td><code>?</code></td>
+    <td>question mark</td>
+  </tr>
+  <tr>
+    <td>SA01</td>
+    <td><code>+</code></td>
+    <td>plus [sign]</td>
+  </tr>
+  <tr>
+    <td>SA03</td>
+    <td><code>&lt;</code></td>
+    <td>less-than [sign]</td>
+  </tr>
+  <tr>
+    <td>SA04</td>
+    <td><code>=</code></td>
+    <td>equals [sign]</td>
+  </tr>
+  <tr>
+    <td>SA05</td>
+    <td><code>&gt;</code></td>
+    <td>greater-than [sign]</td>
+  </tr>
+  <tr>
+    <td>SM01</td>
+    <td><code>#</code></td>
+    <td>number sign, or sharp[sign]</td>
+  </tr>
+  <tr>
+    <td>SM02</td>
+    <td><code>%</code></td>
+    <td>percent [sign]</td>
+  </tr>
+  <tr>
+    <td>SM03</td>
+    <td><code>&amp;</code></td>
+    <td>ampersand			</td>
+  </tr>
+  <tr>
+    <td>SM04</td>
+    <td><code>*</code></td>
+    <td>asterisk, or star</td>
+  </tr>
+  <tr>
+    <td>SM05</td>
+    <td><code>@</code></td>
+    <td>commercial at, or at-sign</td>
+  </tr>
+  <tr>
+    <td>SM06</td>
+    <td><code>[</code></td>
+    <td>left [square] bracket</td>
+  </tr>
+  <tr>
+    <td>SM07</td>
+    <td><code>\</code></td>
+    <td>reverse solidus, or backslash</td>
+  </tr>
+  <tr>
+    <td>SM08</td>
+    <td><code>]</code></td>
+    <td>right [square] bracket</td>
+  </tr>
+  <tr>
+    <td>SM11</td>
+    <td><code>{</code></td>
+    <td>left curly bracket, or left brace</td>
+  </tr>
+  <tr>
+    <td>SM13</td>
+    <td><code>|</code></td>
+    <td>vertical bar</td>
+  </tr>
+  <tr>
+    <td>SM14</td>
+    <td><code>}</code></td>
+    <td>right curly bracket, or right brace</td>
+  </tr>
+  <tr>
+    <td>SD13</td>
+    <td><code>`</code></td>
+    <td>grave accent, or backquote</td>
+  </tr>
+  <tr>
+    <td>SD15</td>
+    <td><code>^</code></td>
+    <td>circumflex accent</td>
+  </tr>
+  <tr>
+    <td>SD19</td>
+    <td><code>~</code></td>
+    <td>tilde</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+The graphic IDs are not used within <i>Common Lisp</i>,
+but are provided for cross reference purposes with <i>ISO 6937/2</i>.
+Note that the first letter of the graphic ID 
+categorizes the character as follows:
+L—Latin, N—Numeric, S—Special.
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Character_Sy_115"><span class="secno">2.1.4</span> Character Syntax Types</h3>
+<p>
+
+
+The <i>Lisp reader</i> constructs an <i><a href="g-o.xhtml#object">object</a></i> 
+from the input text by interpreting each <i><a href="g-c.xhtml#character">character</a></i> 
+according to its <i><a href="g-s.xhtml#syntaxtype">syntax type</a></i>.
+The <i>Lisp reader</i> cannot accept as input 
+everything that the <i>Lisp printer</i> produces,
+and the <i>Lisp reader</i> has features that are not used by the <i>Lisp printer</i>.
+The <i>Lisp reader</i> can be used as a lexical analyzer 
+for a more general user-written parser.
+
+</p><p>
+
+
+When the <i>Lisp reader</i> is invoked, it reads a single character from 
+the <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-s.xhtml#stream">stream</a></i> and dispatches according to the
+<b><i>syntax type</i></b> of that <i><a href="g-c.xhtml#character">character</a></i>.
+Every <i><a href="g-c.xhtml#character">character</a></i> that can appear in the <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>
+is of one of the <i><a href="g-s.xhtml#syntaxtype">syntax types</a></i> shown in <a href="#fig-2-6">Figure 2-6</a>.
+
+</p><table id="fig-2-6" class="fig">
+<caption><span class="figlabel">Figure 2-6.</span> Possible Character Syntax Types</caption>
+
+  <tbody><tr>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+    <td><i><a href="g-m.xhtml#macrocharacter">macro character</a></i></td>
+    <td><i><a href="g-s.xhtml#singleescape">single escape</a></i></td>
+  </tr>
+  <tr>
+    <td><i><a href="g-i.xhtml#invalid">invalid</a></i></td>
+    <td><i><a href="g-m.xhtml#multipleescape">multiple escape</a></i></td>
+    <td><i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub></td>
+  </tr>
+</tbody></table>
+
+
+<p>
+The <i><a href="g-s.xhtml#syntaxtype">syntax type</a></i> of a <i><a href="g-c.xhtml#character">character</a></i> in a <i><a href="g-r.xhtml#readtable">readtable</a></i>
+determines how that character is interpreted by the <i>Lisp reader</i>
+while that <i><a href="g-r.xhtml#readtable">readtable</a></i> is the <i><a href="g-c.xhtml#currentreadtable">current readtable</a></i>.
+At any given time, every character has exactly one <i><a href="g-s.xhtml#syntaxtype">syntax type</a></i>.
+
+</p><p>
+
+
+<a href="#fig-2-7">Figure 2-7</a> 
+lists the <i><a href="g-s.xhtml#syntaxtype">syntax type</a></i> of each <i><a href="g-c.xhtml#character">character</a></i> in <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i>.
+
+</p><table id="fig-2-7" class="fig">
+<caption><span class="figlabel">Figure 2-7.</span> Character Syntax Types in Standard Syntax</caption>
+<tbody><tr><th>character</th>
+<th>syntax type</th>
+<th>character</th>
+<th>syntax type</th>
+</tr>
+
+  <tr>
+    <td>Backspace</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+    <td>0--9</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+  <tr>
+    <td>Tab</td>
+    <td><i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub></td>
+    <td>:</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+  <tr>
+    <td>Newline</td>
+    <td><i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub></td>
+    <td>;</td>
+    <td><i><a href="g-t.xhtml#terminating">terminating</a></i> <i>macro char</i></td>
+  </tr>
+  <tr>
+    <td>Linefeed</td>
+    <td><i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub></td>
+    <td><code>&lt;</code></td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+  <tr>
+    <td>Page</td>
+    <td><i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub></td>
+    <td>=</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+  <tr>
+    <td>Return</td>
+    <td><i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub></td>
+    <td><code>&gt;</code></td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+  <tr>
+    <td>Space</td>
+    <td><i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub></td>
+    <td>?</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i>*</td>
+  </tr>
+  <tr>
+    <td>!</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i>*</td>
+    <td><code>@</code></td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+  <tr>
+    <td><code>"</code></td>
+    <td><i><a href="g-t.xhtml#terminating">terminating</a></i> <i>macro char</i></td>
+    <td>A--Z</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+  <tr>
+    <td>#</td>
+    <td><i><a href="g-n.xhtml#nonterminating">non-terminating</a></i> <i>macro char</i></td>
+    <td><code>[</code></td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i>*</td>
+  </tr>
+  <tr>
+    <td>$</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+    <td><code>\</code></td>
+    <td><i><a href="g-s.xhtml#singleescape">single escape</a></i></td>
+  </tr>
+  <tr>
+    <td>%</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+    <td><code>]</code></td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i>*</td>
+  </tr>
+  <tr>
+    <td>&amp;</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+    <td>^</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+  <tr>
+    <td>'</td>
+    <td><i><a href="g-t.xhtml#terminating">terminating</a></i> <i>macro char</i></td>
+    <td><code>_</code></td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+  <tr>
+    <td>(</td>
+    <td><i><a href="g-t.xhtml#terminating">terminating</a></i> <i>macro char</i></td>
+    <td>`</td>
+    <td><i><a href="g-t.xhtml#terminating">terminating</a></i> <i>macro char</i></td>
+  </tr>
+  <tr>
+    <td>)</td>
+    <td><i><a href="g-t.xhtml#terminating">terminating</a></i> <i>macro char</i></td>
+    <td>a--z</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+  <tr>
+    <td><code>*</code></td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+    <td><code>{</code></td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i>*</td>
+  </tr>
+  <tr>
+    <td>+</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+    <td><code>|</code></td>
+    <td><i><a href="g-m.xhtml#multipleescape">multiple escape</a></i></td>
+  </tr>
+  <tr>
+    <td>,</td>
+    <td><i><a href="g-t.xhtml#terminating">terminating</a></i> <i>macro char</i></td>
+    <td><code>}</code></td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i>*</td>
+  </tr>
+  <tr>
+    <td>-</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+    <td><code>~</code></td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+  <tr>
+    <td>.</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+    <td>Rubout</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+  <tr>
+    <td>/</td>
+    <td><i><a href="g-c.xhtml#constituent">constituent</a></i></td>
+  </tr>
+</tbody></table>
+
+
+<p>
+
+The characters marked with an asterisk (*) are initially <i><a href="g-c.xhtml#constituent">constituents</a></i>,
+but they are not used in any standard <i>Common Lisp</i> notations.
+These characters are explicitly reserved to the <i><a href="g-p.xhtml#programmer">programmer</a></i>.
+<code>~</code> is not used in <i>Common Lisp</i>, and reserved to implementors.
+<code>$</code> and <code>%</code> are <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>2</sub> <i><a href="g-c.xhtml#character">characters</a></i>,
+but are not used in the names of any standard <i>Common Lisp</i> <i><a href="g-d.xhtml#definedname">defined names</a></i>.
+
+</p><p>
+<i><a href="g-w.xhtml#whitespace">Whitespace</a></i><sub>2</sub> characters serve as separators but are otherwise
+ignored.  <i><a href="g-c.xhtml#constituent">Constituent</a></i> and <i><a href="g-e.xhtml#escape">escape</a></i> <i><a href="g-c.xhtml#character">characters</a></i> are accumulated
+to make a <i><a href="g-t.xhtml#token">token</a></i>, which is then interpreted as a <i><a href="g-n.xhtml#number">number</a></i> or <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+<i><a href="g-m.xhtml#macrocharacter">Macro characters</a></i> trigger the invocation of <i><a href="g-f.xhtml#function">functions</a></i> (possibly
+user-supplied) that can perform arbitrary parsing actions.
+<i><a href="g-m.xhtml#macrocharacter">Macro characters</a></i> are divided into two kinds,
+<i><a href="g-t.xhtml#terminating">terminating</a></i> and <i><a href="g-n.xhtml#nonterminating">non-terminating</a></i>,
+depending on whether or not they terminate a <i><a href="g-t.xhtml#token">token</a></i>.
+The following are descriptions of each kind of <i><a href="g-s.xhtml#syntaxtype">syntax type</a></i>.
+</p>
+<section>
+<h4 id="SubSubSectio_Constituent__116"><span class="secno">2.1.4.1</span> Constituent Characters</h4>
+<p><i><a href="g-c.xhtml#constituent">Constituent</a></i> <i><a href="g-c.xhtml#character">characters</a></i> are used in <i><a href="g-t.xhtml#token">tokens</a></i>.
+
+
+A <b><i>token</i></b> is a representation of a <i><a href="g-n.xhtml#number">number</a></i> or a <i><a href="g-s.xhtml#symbol">symbol</a></i>.  
+Examples of <i><a href="g-c.xhtml#constituent">constituent</a></i> <i><a href="g-c.xhtml#character">characters</a></i> are letters and digits.
+
+</p><p>
+
+Letters in symbol names are sometimes converted to 
+letters in the opposite <i><a href="g-c.xhtml#case">case</a></i> when the name is read;
+see Section <a href="s23-1.xhtml#SubSection_Effect_of_Re_1375">23.1.2 Effect of Readtable Case on the Lisp Reader</a>.
+<i><a href="g-c.xhtml#case">Case</a></i> conversion can be suppressed by the use 
+of <i><a href="g-s.xhtml#singleescape">single escape</a></i> or <i><a href="g-m.xhtml#multipleescape">multiple escape</a></i> characters.
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Constituent__117"><span class="secno">2.1.4.2</span> Constituent Traits</h4>
+<p>
+
+
+Every <i><a href="g-c.xhtml#character">character</a></i> has one or more <i><a href="g-c.xhtml#constituenttrait">constituent traits</a></i>
+that define how the <i><a href="g-c.xhtml#character">character</a></i> is to be interpreted by the <i>Lisp reader</i>
+when the <i><a href="g-c.xhtml#character">character</a></i> is a <i><a href="g-c.xhtml#constituent">constituent</a></i> <i><a href="g-c.xhtml#character">character</a></i>.
+These <i><a href="g-c.xhtml#constituenttrait">constituent traits</a></i> are 
+     <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>2</sub>,                  
+     digit,
+     <i><a href="g-p.xhtml#packagemarker">package marker</a></i>,
+     plus sign,
+     minus sign, 
+     dot,
+     decimal point,
+     <i><a href="g-r.xhtml#ratiomarker">ratio marker</a></i>,
+     <i><a href="g-e.xhtml#exponentmarker">exponent marker</a></i>,
+ and <i><a href="g-i.xhtml#invalid">invalid</a></i>.
+<a href="#fig-2-8">Figure 2-8</a> shows the <i><a href="g-c.xhtml#constituenttrait">constituent traits</a></i>
+of the <i><a href="g-s.xhtml#standardcharacter">standard characters</a></i>
+and of certain <i><a href="g-s.xhtml#semistandard">semi-standard</a></i> <i><a href="g-c.xhtml#character">characters</a></i>;
+
+
+no mechanism is provided for changing the <i><a href="g-c.xhtml#constituenttrait">constituent trait</a></i> of a <i><a href="g-c.xhtml#character">character</a></i>.
+Any <i><a href="g-c.xhtml#character">character</a></i> with the alphadigit <i><a href="g-c.xhtml#constituenttrait">constituent trait</a></i>
+in that figure is a digit if the <i><a href="g-c.xhtml#currentinputbase">current input base</a></i> is greater
+than that character's digit value,
+otherwise the <i><a href="g-c.xhtml#character">character</a></i> is <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>2</sub>.  
+
+
+Any <i><a href="g-c.xhtml#character">character</a></i> quoted by a <i><a href="g-s.xhtml#singleescape">single escape</a></i> 
+is treated as an <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>2</sub> constituent, regardless of its normal syntax.
+
+</p><table id="fig-2-8" class="fig">
+<caption><span class="figlabel">Figure 2-8.</span> Constituent Traits of Standard Characters and Semi-Standard Characters</caption>
+<tbody><tr><th>constituent<br/>character</th><th>traits</th><th>constituent<br/>character</th><th>traits</th></tr>
+<tr><td>Backspace</td><td><i>invalid</i></td><td>{</td><td><i>alphabetic<sub>2</sub></i></td></tr>
+<tr><td>Tab</td><td><i>invalid*</i></td><td>}</td><td><i>alphabetic<sub>2</sub></i></td></tr>
+<tr><td>Newline</td><td><i>invalid*</i></td><td>+</td><td><i>alphabetic<sub>2</sub></i>, plus sign</td></tr>
+<tr><td>Linefeed</td><td><i>invalid*</i></td><td>-</td><td><i>alphabetic<sub>2</sub></i>, minus sign</td></tr>
+<tr><td>Page</td><td><i>invalid*</i></td><td>.</td><td><i>alphabetic<sub>2</sub></i>, dot, decimal point</td></tr>
+<tr><td>Return</td><td><i>invalid*</i></td><td>/</td><td><i>alphabetic<sub>2</sub></i>, <i>ratio marker</i></td></tr>
+<tr><td>Space</td><td><i>invalid*</i></td><td>A, a</td><td>alphadigit</td></tr>
+<tr><td>! </td><td><i>alphabetic<sub>2</sub></i></td><td>B, b</td><td>alphadigit</td></tr>
+<tr><td>"</td><td><i>alphabetic<sub>2</sub></i>*</td><td>C, c</td><td>alphadigit</td></tr>
+<tr><td>#</td><td><i>alphabetic<sub>2</sub></i>*</td><td>D, d</td><td>alphadigit, double-float <i>exponent marker</i></td></tr>
+<tr><td>$</td><td><i>alphabetic<sub>2</sub></i></td><td>E, e</td><td>alphadigit, float <i>exponent marker</i></td></tr>
+<tr><td>%</td><td><i>alphabetic<sub>2</sub></i></td><td>F, f</td><td>alphadigit, single-float <i>exponent marker</i></td></tr>
+<tr><td>&amp;</td><td><i>alphabetic<sub>2</sub></i></td><td>G, g</td><td>alphadigit</td></tr>
+<tr><td>'</td><td><i>alphabetic<sub>2</sub></i>*</td><td>H, h</td><td>alphadigit</td></tr>
+<tr><td>(</td><td><i>alphabetic<sub>2</sub></i>*</td><td>I, i</td><td>alphadigit</td></tr>
+<tr><td>)</td><td><i>alphabetic<sub>2</sub></i>*</td><td>J, j</td><td>alphadigit</td></tr>
+<tr><td>*</td><td><i>alphabetic<sub>2</sub></i></td><td>K, k</td><td>alphadigit</td></tr>
+<tr><td>,</td><td><i>alphabetic<sub>2</sub></i>*</td><td>L, l</td><td>alphadigit, long-float <i>exponent marker</i></td></tr>
+<tr><td>0-9</td><td>alphadigit</td><td>M, m</td><td>alphadigit</td></tr>
+<tr><td/><td><i>package marker</i></td><td>N, n</td><td>alphadigit</td></tr>
+<tr><td>;</td><td><i>alphabetic<sub>2</sub></i>*</td><td>O, o</td><td>alphadigit</td></tr>
+<tr><td>&lt;</td><td><i>alphabetic<sub>2</sub></i></td><td>P, p</td><td>alphadigit</td></tr>
+<tr><td>=</td><td><i>alphabetic<sub>2</sub></i></td><td>Q, q</td><td>alphadigit</td></tr>
+<tr><td>&gt;</td><td><i>alphabetic<sub>2</sub></i></td><td>R, r</td><td>alphadigit</td></tr>
+<tr><td>?</td><td><i>alphabetic<sub>2</sub></i></td><td>S, s</td><td>alphadigit, short-float <i>exponent marker</i></td></tr>
+<tr><td><code>@</code></td><td><i>alphabetic<sub>2</sub></i></td><td>T, t</td><td>alphadigit</td></tr>
+<tr><td>]</td><td><i>alphabetic<sub>2</sub></i></td><td>U, u</td><td>alphadigit</td></tr>
+<tr><td>\</td><td><i>alphabetic<sub>2</sub></i>*</td><td>V, v</td><td>alphadigit</td></tr>
+<tr><td>[</td><td><i>alphabetic<sub>2</sub></i></td><td>W, w</td><td>alphadigit</td></tr>
+<tr><td>^</td><td><i>alphabetic<sub>2</sub></i></td><td>X, x</td><td>alphadigit</td></tr>
+<tr><td>_</td><td><i>alphabetic<sub>2</sub></i></td><td>Y, y</td><td>alphadigit</td></tr>
+<tr><td>`</td><td><i>alphabetic<sub>2</sub></i>*</td><td>Z, z</td><td>alphadigit</td></tr>
+<tr><td>|</td><td><i>alphabetic<sub>2</sub></i>*</td><td>Rubout</td><td><i>invalid</i></td></tr>
+<tr><td>~</td><td><i>alphabetic<sub>2</sub></i></td><td> </td><td> </td></tr>
+</tbody></table>
+
+<p>
+The interpretations in this table apply only to <i><a href="g-c.xhtml#character">characters</a></i>
+whose <i><a href="g-s.xhtml#syntaxtype">syntax type</a></i> is <i><a href="g-c.xhtml#constituent">constituent</a></i>.
+Entries marked with an asterisk (*) are normally <i>shadowed</i><sub>2</sub> 
+because the indicated <i><a href="g-c.xhtml#character">characters</a></i> are of <i><a href="g-s.xhtml#syntaxtype">syntax type</a></i>
+<i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub>,
+<i><a href="g-m.xhtml#macrocharacter">macro character</a></i>,
+<i><a href="g-s.xhtml#singleescape">single escape</a></i>,
+or <i><a href="g-m.xhtml#multipleescape">multiple escape</a></i>;
+these <i><a href="g-c.xhtml#constituenttrait">constituent traits</a></i> apply to them only if their <i><a href="g-s.xhtml#syntaxtype">syntax types</a></i> 
+are changed to <i><a href="g-c.xhtml#constituent">constituent</a></i>.
+
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Invalid_Char_118"><span class="secno">2.1.4.3</span> Invalid Characters</h4>
+<p><i><a href="g-c.xhtml#character">Characters</a></i> with the <i><a href="g-c.xhtml#constituenttrait">constituent trait</a></i> <i><a href="g-i.xhtml#invalid">invalid</a></i> 
+cannot ever appear in a <i><a href="g-t.xhtml#token">token</a></i> 
+except under the control of a <i><a href="g-s.xhtml#singleescape">single escape</a></i> <i><a href="g-c.xhtml#character">character</a></i>.
+If an <i><a href="g-i.xhtml#invalid">invalid</a></i> <i><a href="g-c.xhtml#character">character</a></i> is encountered while an <i><a href="g-o.xhtml#object">object</a></i> is
+being read, an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e23-2-18.xhtml#DictEntry_reader_error_1398"><b>reader-error</b></a> is signaled.
+If an <i><a href="g-i.xhtml#invalid">invalid</a></i> <i><a href="g-c.xhtml#character">character</a></i> is preceded by a <i><a href="g-s.xhtml#singleescape">single escape</a></i> <i><a href="g-c.xhtml#character">character</a></i>,
+it is treated as an <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>2</sub> <i><a href="g-c.xhtml#constituent">constituent</a></i> instead.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Macro_Charac_119"><span class="secno">2.1.4.4</span> Macro Characters</h4>
+<p>
+
+
+When the <i>Lisp reader</i> encounters a <i><a href="g-m.xhtml#macrocharacter">macro character</a></i> 
+on an <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>,
+special parsing of subsequent <i><a href="g-c.xhtml#character">characters</a></i> 
+on the <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-s.xhtml#stream">stream</a></i> 
+is performed.
+
+</p><p>
+A <i><a href="g-m.xhtml#macrocharacter">macro character</a></i> has an associated <i><a href="g-f.xhtml#function">function</a></i>
+called a <b><i>reader macro function</i></b> that implements its specialized parsing behavior.
+An association of this kind can be established or modified under control of
+a <i><a href="g-c.xhtml#conformingprogram">conforming program</a></i> by using 
+the <i><a href="g-f.xhtml#function">functions</a></i> <a href="e23-2-10.xhtml#DictEntry_set_macro_ch_1390"><b>set-macro-character</b></a> and <a href="e23-2-9.xhtml#DictEntry_set_dispatch_1389"><b>set-dispatch-macro-character</b></a>.
+
+</p><p>
+Upon encountering a <i><a href="g-m.xhtml#macrocharacter">macro character</a></i>, the <i>Lisp reader</i> calls its
+<i><a href="g-r.xhtml#readermacrofunction">reader macro function</a></i>, which parses one specially formatted object 
+from the <i><a href="g-i.xhtml#input">input</a></i> <i><a href="g-s.xhtml#stream">stream</a></i>.
+The <i><a href="g-f.xhtml#function">function</a></i> either returns the parsed <i><a href="g-o.xhtml#object">object</a></i>,
+or else it returns no <i><a href="g-v.xhtml#value">values</a></i> 
+    to indicate that the characters scanned by the <i><a href="g-f.xhtml#function">function</a></i>
+    are being ignored (<i>e.g.</i>,  in the case of a comment).
+Examples of <i><a href="g-m.xhtml#macrocharacter">macro characters</a></i>
+are <i><a href="g-b.xhtml#backquote">backquote</a></i>, <i><a href="g-s.xhtml#singlequote">single-quote</a></i>, <i><a href="g-l.xhtml#leftparenthesis">left-parenthesis</a></i>, and 
+<i><a href="g-r.xhtml#rightparenthesis">right-parenthesis</a></i>.
+
+</p><p>
+A <i><a href="g-m.xhtml#macrocharacter">macro character</a></i> is either <i><a href="g-t.xhtml#terminating">terminating</a></i> or <i><a href="g-n.xhtml#nonterminating">non-terminating</a></i>.
+The difference between <i><a href="g-t.xhtml#terminating">terminating</a></i> and <i><a href="g-n.xhtml#nonterminating">non-terminating</a></i> <i><a href="g-m.xhtml#macrocharacter">macro characters</a></i> 
+lies in what happens when such characters occur in the middle of a <i><a href="g-t.xhtml#token">token</a></i>.  
+If a <b><i>non-terminating</i></b> <i><a href="g-m.xhtml#macrocharacter">macro character</a></i> occurs in the middle of a <i><a href="g-t.xhtml#token">token</a></i>,
+the <i><a href="g-f.xhtml#function">function</a></i> associated 
+with the <i><a href="g-n.xhtml#nonterminating">non-terminating</a></i> <i><a href="g-m.xhtml#macrocharacter">macro character</a></i> is not called,
+and the
+<i><a href="g-n.xhtml#nonterminating">non-terminating</a></i> <i><a href="g-m.xhtml#macrocharacter">macro character</a></i> does not terminate the <i><a href="g-t.xhtml#token">token</a></i>'s name; it
+becomes part of the name as if the <i><a href="g-m.xhtml#macrocharacter">macro character</a></i> were really a constituent
+character.  A <b><i>terminating</i></b> <i><a href="g-m.xhtml#macrocharacter">macro character</a></i> terminates any <i><a href="g-t.xhtml#token">token</a></i>,
+and its associated <i><a href="g-r.xhtml#readermacrofunction">reader macro function</a></i>
+is called no matter where the <i><a href="g-c.xhtml#character">character</a></i> appears.
+The only <i><a href="g-n.xhtml#nonterminating">non-terminating</a></i> <i><a href="g-m.xhtml#macrocharacter">macro character</a></i> in <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i> 
+is <i><a href="g-s.xhtml#sharpsign">sharpsign</a></i>.
+
+</p><p>
+If a <i><a href="g-c.xhtml#character">character</a></i> is a <i><a href="g-d.xhtml#dispatchingmacrocharacter">dispatching macro character</a></i> <i>C<sub>1</sub></i>,
+its <i><a href="g-r.xhtml#readermacrofunction">reader macro function</a></i> is a <i><a href="g-f.xhtml#function">function</a></i> supplied by the <i><a href="g-i.xhtml#implementation">implementation</a></i>.
+This <i><a href="g-f.xhtml#function">function</a></i> reads decimal <i><a href="g-d.xhtml#digit">digit</a></i> <i><a href="g-c.xhtml#character">characters</a></i> until a non-<i><a href="g-d.xhtml#digit">digit</a></i>
+<i>C<sub>2</sub></i> is read.
+If any <i><a href="g-d.xhtml#digit">digits</a></i> were read,
+they are converted into a corresponding <i><a href="g-i.xhtml#integer">integer</a></i> infix parameter <i>P</i>;
+otherwise, the infix parameter <i>P</i> is <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>.  
+The terminating non-<i><a href="g-d.xhtml#digit">digit</a></i> <i>C<sub>2</sub></i> is a <i><a href="g-c.xhtml#character">character</a></i> 
+(sometimes called a "sub-character" to emphasize its subordinate role in the dispatching)
+that is looked up in the dispatch table associated with
+the <i><a href="g-d.xhtml#dispatchingmacrocharacter">dispatching macro character</a></i> <i>C<sub>1</sub></i>.
+The <i><a href="g-r.xhtml#readermacrofunction">reader macro function</a></i> associated with the sub-character <i>C<sub>2</sub></i> 
+is invoked with three arguments:
+     the <i><a href="g-s.xhtml#stream">stream</a></i>,
+     the sub-character <i>C<sub>2</sub></i>,
+ and the infix parameter <i>P</i>.
+For more information about dispatch characters,
+see the <i><a href="g-f.xhtml#function">function</a></i> <a href="e23-2-9.xhtml#DictEntry_set_dispatch_1389"><b>set-dispatch-macro-character</b></a>.
+
+</p><p>
+
+
+
+
+
+
+
+
+
+For information about the <i><a href="g-m.xhtml#macrocharacter">macro characters</a></i> 
+that are available in <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i>,
+see Section <a href="s2-4.xhtml#Section_Standard_Mac_142">2.4 Standard Macro Characters</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Multiple_Esc_120"><span class="secno">2.1.4.5</span> Multiple Escape Characters</h4>
+<p>
+
+
+A pair of <b><i>multiple escape</i></b> <i><a href="g-c.xhtml#character">characters</a></i>
+is used to indicate that an enclosed sequence of characters,
+including possible <i><a href="g-m.xhtml#macrocharacter">macro characters</a></i> and <i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub> <i><a href="g-c.xhtml#character">characters</a></i>,
+are to be treated as <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>2</sub> <i><a href="g-c.xhtml#character">characters</a></i> 
+with <i><a href="g-c.xhtml#case">case</a></i> preserved.
+Any <i><a href="g-s.xhtml#singleescape">single escape</a></i> and <i><a href="g-m.xhtml#multipleescape">multiple escape</a></i> <i><a href="g-c.xhtml#character">characters</a></i> 
+that are to appear in the sequence must be preceded by a <i><a href="g-s.xhtml#singleescape">single escape</a></i> 
+<i><a href="g-c.xhtml#character">character</a></i>.  
+
+</p><p>
+<i><a href="g-v.xhtml#verticalbar">Vertical-bar</a></i> is a <i><a href="g-m.xhtml#multipleescape">multiple escape</a></i> <i><a href="g-c.xhtml#character">character</a></i>
+in <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i>.
+</p>
+<section>
+<h5 id="SubSubSubSec_Examples_of__121"><span class="secno">2.1.4.5.1</span> Examples of Multiple Escape Characters</h5>
+<pre> ;; The following examples assume the readtable case of *readtable* 
+ ;; and *print-case* are both :upcase.
+ (eq 'abc 'ABC) → <i><a href="g-t.xhtml#true">true</a></i>
+ (eq 'abc '|ABC|) → <i><a href="g-t.xhtml#true">true</a></i>
+ (eq 'abc 'a|B|c) → <i><a href="g-t.xhtml#true">true</a></i>
+ (eq 'abc '|abc|) → <i><a href="g-f.xhtml#false">false</a></i>
+</pre>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Single_Escap_122"><span class="secno">2.1.4.6</span> Single Escape Character</h4>
+<p>
+
+
+A <b><i>single escape</i></b> is used to indicate that 
+the next <i><a href="g-c.xhtml#character">character</a></i> is to be treated as 
+an <i><a href="g-a.xhtml#alphabetic">alphabetic</a></i><sub>2</sub> <i><a href="g-c.xhtml#character">character</a></i>
+with its <i><a href="g-c.xhtml#case">case</a></i> preserved,
+no matter what the <i><a href="g-c.xhtml#character">character</a></i> is 
+or which <i><a href="g-c.xhtml#constituenttrait">constituent traits</a></i> it has.  
+
+</p><p>
+
+
+
+<i><a href="g-b.xhtml#backslash">Backslash</a></i> is a <i><a href="g-s.xhtml#singleescape">single escape</a></i> <i><a href="g-c.xhtml#character">character</a></i> in <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i>.
+</p>
+<section>
+<h5 id="SubSubSubSec_Examples_of__123"><span class="secno">2.1.4.6.1</span> Examples of Single Escape Characters</h5>
+<pre> ;; The following examples assume the readtable case of *readtable* 
+ ;; and *print-case* are both :upcase.
+ (eq 'abc '\A\B\C) → <i><a href="g-t.xhtml#true">true</a></i>
+ (eq 'abc 'a\Bc) → <i><a href="g-t.xhtml#true">true</a></i>
+ (eq 'abc '\ABC) → <i><a href="g-t.xhtml#true">true</a></i>
+ (eq 'abc '\abc) → <i><a href="g-f.xhtml#false">false</a></i>
+</pre>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Whitespace_C_124"><span class="secno">2.1.4.7</span> Whitespace Characters</h4>
+<p><i><a href="g-w.xhtml#whitespace">Whitespace</a></i><sub>2</sub> <i><a href="g-c.xhtml#character">characters</a></i> are used to separate <i><a href="g-t.xhtml#token">tokens</a></i>.
+
+</p><p>
+<i><a href="g-s.xhtml#space">Space</a></i> and <i><a href="g-n.xhtml#newline">newline</a></i> are <i><a href="g-w.xhtml#whitespace">whitespace</a></i><sub>2</sub> <i><a href="g-c.xhtml#character">characters</a></i>
+in <i><a href="g-s.xhtml#standardsyntax">standard syntax</a></i>.
+</p>
+<section>
+<h5 id="SubSubSubSec_Examples_of__125"><span class="secno">2.1.4.7.1</span> Examples of Whitespace Characters</h5>
+<pre> (length '(this-that)) → 1
+ (length '(this - that)) → 3
+ (length '(a
+           b)) → 2
+ (+ 34) → 34
+ (+ 3 4) → 7
+</pre>
+</section>
+</section>
+</section>
+</section>
+</section>
+</body>
+</html>

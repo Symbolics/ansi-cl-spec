@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>11.2.8 rename-package — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_rename_packa_723" class="entry"><span class="secno">11.2.8</span> <span class="names">rename-package</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>rename-package</b>
+<i>package new-name <code>&amp;optional</code> new-nicknames</i>
+  → <i>package-object</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>package</i>—a <i><a href="g-p.xhtml#packagedesignator">package designator</a></i>.
+
+
+<p>
+<i>new-name</i>—a <i><a href="g-p.xhtml#packagedesignator">package designator</a></i>.
+
+</p><p>
+<i>new-nicknames</i>—a <i><a href="g-l.xhtml#list">list</a></i> of <i><a href="g-s.xhtml#stringdesignator">string designators</a></i>.
+ The default is the <i><a href="g-e.xhtml#emptylist">empty list</a></i>.
+
+</p><p>
+
+<i>package-object</i>—the renamed <i>package</i> <i><a href="g-o.xhtml#object">object</a></i>.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Replaces the name and nicknames of <i>package</i>.
+
+The old name and all of the old nicknames of <i>package</i> are eliminated
+and are replaced by <i>new-name</i> and <i>new-nicknames</i>.
+
+<p>
+The consequences are undefined if <i>new-name</i> or any <i>new-nickname</i>
+conflicts with any existing package names.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (make-package 'temporary :nicknames '("TEMP")) → #&lt;PACKAGE "TEMPORARY"&gt;
+ (rename-package 'temp 'ephemeral) → #&lt;PACKAGE "EPHEMERAL"&gt;
+ (package-nicknames (find-package 'ephemeral)) → ()
+ (find-package 'temporary) →  NIL
+ (rename-package 'ephemeral 'temporary '(temp fleeting))
+→ #&lt;PACKAGE "TEMPORARY"&gt;
+ (package-nicknames (find-package 'temp)) → ("TEMP" "FLEETING")
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e11-2-12.xhtml#DictEntry_make_package_727"><b>make-package</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

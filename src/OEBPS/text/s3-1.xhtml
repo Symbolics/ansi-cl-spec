@@ -1,0 +1,1170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.1 Evaluation</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Evaluation_187"><span class="secno">3.1</span> Evaluation</h2>
+<p>
+<i>Execution</i> of <i><a href="g-c.xhtml#code">code</a></i> can be accomplished by a variety of means ranging
+from direct interpretation of a <i><a href="g-f.xhtml#form">form</a></i> representing a <i><a href="g-p.xhtml#program">program</a></i>
+to invocation of <i><a href="g-c.xhtml#compiledcode">compiled code</a></i> produced by a <i><a href="g-c.xhtml#compiler">compiler</a></i>.
+
+</p><p>
+<b><i>Evaluation</i></b> is the process by which a <i><a href="g-p.xhtml#program">program</a></i> is <i>executed</i> in <i>Common Lisp</i>.
+The mechanism of <i><a href="g-e.xhtml#evaluation">evaluation</a></i> is manifested
+ both implicitly through the effect of the <i>Lisp read-eval-print loop</i>,
+ and  explicitly through the presence of the <i><a href="g-f.xhtml#function">functions</a></i> 
+       <a href="e3-8-4.xhtml#DictEntry_eval_286"><b>eval</b></a>,
+       <a href="e3-8-3.xhtml#DictEntry_compile_285"><b>compile</b></a>,
+       <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>,
+   and <a href="e24-2-3.xhtml#DictEntry_load_1408"><b>load</b></a>.
+Any of these facilities might share the same execution strategy, 
+or each might use a different one.
+
+</p><p>
+The behavior of a <i><a href="g-c.xhtml#conformingprogram">conforming program</a></i> processed by <a href="e3-8-4.xhtml#DictEntry_eval_286"><b>eval</b></a>
+and by <a href="e24-2-1.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> might differ; see Section <a href="s3-2.xhtml#SubSubSectio_Semantic_Con_222">3.2.2.3 Semantic Constraints</a>.
+
+</p><p>
+<i><a href="g-e.xhtml#evaluation">Evaluation</a></i> can be understood in terms of a model in which an
+interpreter recursively traverses a <i><a href="g-f.xhtml#form">form</a></i> performing each
+step of the computation as it goes.  
+This model, which describes the semantics of <i>Common Lisp</i> <i><a href="g-p.xhtml#program">programs</a></i>,
+is described in Section <a href="#SubSection_The_Evaluati_194">3.1.2 The Evaluation Model</a>.
+</p>
+<section>
+<h3 id="SubSection_Introduction_188"><span class="secno">3.1.1</span> Introduction to Environments</h3>
+<p>
+
+
+A <b><i>binding</i></b> is an association between a <i><a href="g-n.xhtml#name">name</a></i> and
+that which the name denotes.  <i><a href="g-b.xhtml#binding">Bindings</a></i> are <i>established</i>
+in a <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> or a <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i>
+by particular <i><a href="g-s.xhtml#specialoperator">special operators</a></i>.
+
+</p><p>
+An <b><i>environment</i></b> is a set of <i><a href="g-b.xhtml#binding">bindings</a></i> and other information
+used during evaluation (<i>e.g.</i>,  to associate meanings with names).
+
+</p><p>
+<i><a href="g-b.xhtml#binding">Bindings</a></i> in an <i><a href="g-e.xhtml#environment">environment</a></i> are partitioned into <b><i>namespaces</i></b>.
+A single <i><a href="g-n.xhtml#name">name</a></i> can simultaneously have more than one
+associated <i><a href="g-b.xhtml#binding">binding</a></i> per <i><a href="g-e.xhtml#environment">environment</a></i>,
+but can have only one associated <i><a href="g-b.xhtml#binding">binding</a></i> per <i><a href="g-n.xhtml#namespace">namespace</a></i>.
+</p>
+<section>
+<h4 id="SubSubSectio_The_Global_E_189"><span class="secno">3.1.1.1</span> The Global Environment</h4>
+<p>
+
+The <b><i>global environment</i></b> is that part of an <i><a href="g-e.xhtml#environment">environment</a></i>
+that contains <i><a href="g-b.xhtml#binding">bindings</a></i> with both <i><a href="g-i.xhtml#indefinitescope">indefinite scope</a></i> 
+and <i><a href="g-i.xhtml#indefiniteextent">indefinite extent</a></i>.
+The <i><a href="g-g.xhtml#globalenvironment">global environment</a></i> contains, among other things, the following:
+
+</p><ul>
+<li> <i><a href="g-b.xhtml#binding">bindings</a></i> of <i><a href="g-d.xhtml#dynamicvariable">dynamic variables</a></i> and <i><a href="g-c.xhtml#constantvariable">constant variables</a></i>.
+</li><li> <i><a href="g-b.xhtml#binding">bindings</a></i> of <i><a href="g-f.xhtml#function">functions</a></i>, <i><a href="g-m.xhtml#macro">macros</a></i>, and <i><a href="g-s.xhtml#specialoperator">special operators</a></i>.
+</li><li>
+
+ <i><a href="g-b.xhtml#binding">bindings</a></i> of <i><a href="g-c.xhtml#compilermacro">compiler macros</a></i>.
+
+</li><li> <i><a href="g-b.xhtml#binding">bindings</a></i> of <i><a href="g-t.xhtml#type">type</a></i> and <i><a href="g-c.xhtml#class">class</a></i> <i><a href="g-n.xhtml#name">names</a></i>
+</li><li> information about <i><a href="g-p.xhtml#proclamation">proclamations</a></i>.
+</li></ul>
+</section>
+<section>
+<h4 id="SubSubSectio_Dynamic_Envi_190"><span class="secno">3.1.1.2</span> Dynamic Environments</h4>
+<p>
+
+A <b><i>dynamic environment</i></b> for <i><a href="g-e.xhtml#evaluation">evaluation</a></i> is that part of an
+<i><a href="g-e.xhtml#environment">environment</a></i> that contains <i><a href="g-b.xhtml#binding">bindings</a></i> whose duration
+is bounded by points of <i>establishment</i> and <i>disestablishment</i> 
+within the execution of the <i><a href="g-f.xhtml#form">form</a></i> that
+established the <i><a href="g-b.xhtml#binding">binding</a></i>.
+A <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i> contains, among other things, the following:
+
+</p><ul>
+<li> <i><a href="g-b.xhtml#binding">bindings</a></i> for <i><a href="g-d.xhtml#dynamicvariable">dynamic variables</a></i>.
+</li><li> information about <i><a href="g-a.xhtml#active">active</a></i> <i><a href="g-c.xhtml#catchtag">catch tags</a></i>.
+</li><li> information about <i><a href="g-e.xhtml#exitpoint">exit points</a></i> established by <a href="e5-3-29.xhtml#DictEntry_unwind_prote_415"><b>unwind-protect</b></a>.
+</li><li> information about <i><a href="g-a.xhtml#active">active</a></i> <i><a href="g-h.xhtml#handler">handlers</a></i> and <i><a href="g-r.xhtml#restart">restarts</a></i>.
+</li></ul>
+
+<p>
+The <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i> that is active at any given point 
+in the <i>execution</i> of a <i><a href="g-p.xhtml#program">program</a></i> is referred to by 
+definite reference as "the current <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i>,"
+or sometimes as just "the <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i>."
+
+</p><p>
+Within a given <i><a href="g-n.xhtml#namespace">namespace</a></i>,
+a <i><a href="g-n.xhtml#name">name</a></i> is said to be <i><a href="g-b.xhtml#bound">bound</a></i>
+in a <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i> if there is a <i><a href="g-b.xhtml#binding">binding</a></i> 
+
+associated with its <i><a href="g-n.xhtml#name">name</a></i> in the <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i> 
+or, if not, there is a <i><a href="g-b.xhtml#binding">binding</a></i> 
+
+associated with its name in the <i><a href="g-g.xhtml#globalenvironment">global environment</a></i>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Lexical_Envi_191"><span class="secno">3.1.1.3</span> Lexical Environments</h4>
+<p>
+
+A <b><i>lexical environment</i></b> for <i><a href="g-e.xhtml#evaluation">evaluation</a></i> at some position in a <i><a href="g-p.xhtml#program">program</a></i>
+is that part of the <i><a href="g-e.xhtml#environment">environment</a></i> that contains information having 
+<i><a href="g-l.xhtml#lexicalscope">lexical scope</a></i> within the <i><a href="g-f.xhtml#form">forms</a></i> containing that position.
+A <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> contains, among other things, the following:
+
+</p><ul>
+<li> <i><a href="g-b.xhtml#binding">bindings</a></i> of <i><a href="g-l.xhtml#lexicalvariable">lexical variables</a></i> and <i><a href="g-s.xhtml#symbolmacro">symbol macros</a></i>.
+</li><li> <i><a href="g-b.xhtml#binding">bindings</a></i> of <i><a href="g-f.xhtml#function">functions</a></i> and <i><a href="g-m.xhtml#macro">macros</a></i>.
+             (Implicit in this is information about those <i><a href="g-c.xhtml#compilermacro">compiler macros</a></i> 
+	      that are locally disabled.)
+</li><li> <i><a href="g-b.xhtml#binding">bindings</a></i> of <i><a href="g-b.xhtml#blocktag">block tags</a></i>.
+</li><li> <i><a href="g-b.xhtml#binding">bindings</a></i> of <i><a href="g-g.xhtml#gotag">go tags</a></i>.
+</li><li> information about <i><a href="g-d.xhtml#declaration">declarations</a></i>.
+</li></ul>
+
+<p>
+The <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> that is active at any given position
+in a <i><a href="g-p.xhtml#program">program</a></i> being semantically processed is referred to by
+definite reference as "the current <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>,"
+or sometimes as just "the <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>."  
+
+</p><p>
+Within a given <i><a href="g-n.xhtml#namespace">namespace</a></i>,
+a <i><a href="g-n.xhtml#name">name</a></i> is said to be <i><a href="g-b.xhtml#bound">bound</a></i> in a <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>
+if there is a <i><a href="g-b.xhtml#binding">binding</a></i> 
+
+associated with its <i><a href="g-n.xhtml#name">name</a></i>
+in the <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> or, if not, there is a <i><a href="g-b.xhtml#binding">binding</a></i> 
+
+associated with its name in the <i><a href="g-g.xhtml#globalenvironment">global environment</a></i>.
+</p>
+<section>
+<h5 id="SubSubSubSec_The_Null_Lex_192"><span class="secno">3.1.1.3.1</span> The Null Lexical Environment</h5>
+<p>
+
+
+The <b><i>null lexical environment</i></b> is equivalent to the <i><a href="g-g.xhtml#globalenvironment">global environment</a></i>.
+
+</p><p>
+Although in general the representation of an <i><a href="g-e.xhtml#environment">environment</a></i> <i><a href="g-o.xhtml#object">object</a></i>
+is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>, <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> can be used in any situation where an
+<i><a href="g-e.xhtml#environment">environment</a></i> <i><a href="g-o.xhtml#object">object</a></i> is called for in order to denote 
+the <i><a href="g-n.xhtml#nulllexicalenvironment">null lexical environment</a></i>.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Environment__193"><span class="secno">3.1.1.4</span> Environment Objects</h4>
+<p>
+
+
+Some <i><a href="g-o.xhtml#operator">operators</a></i> make use of an <i><a href="g-o.xhtml#object">object</a></i>, 
+called an <b><i>environment object</i></b>,
+that represents the set of <i><a href="g-l.xhtml#lexicalbinding">lexical bindings</a></i> needed to perform
+semantic analysis on a <i><a href="g-f.xhtml#form">form</a></i> in a given <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>.
+The set of <i><a href="g-b.xhtml#binding">bindings</a></i> in an <i><a href="g-e.xhtml#environmentobject">environment object</a></i>
+may be a subset of the <i><a href="g-b.xhtml#binding">bindings</a></i> that would be needed to actually 
+perform an <i><a href="g-e.xhtml#evaluation">evaluation</a></i>; for example, <i><a href="g-v.xhtml#value">values</a></i> associated with
+<i><a href="g-v.xhtml#variable">variable</a></i> <i><a href="g-n.xhtml#name">names</a></i> and <i><a href="g-f.xhtml#functionname">function names</a></i> in the corresponding
+<i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> might not be available in an <i><a href="g-e.xhtml#environmentobject">environment object</a></i>.
+
+</p><p>
+The <i><a href="g-t.xhtml#type">type</a></i> and nature of an <i><a href="g-e.xhtml#environmentobject">environment object</a></i> is <i><a href="g-i.xhtml#implementationdependent">implementation-dependent</a></i>.
+The <i><a href="g-v.xhtml#value">values</a></i> of <i><a href="g-e.xhtml#environmentparameter">environment parameters</a></i> to <i><a href="g-m.xhtml#macrofunction">macro functions</a></i>
+are examples of <i><a href="g-e.xhtml#environmentobject">environment objects</a></i>.
+
+</p><p>
+The <i><a href="g-o.xhtml#object">object</a></i> <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> when used as an <i><a href="g-e.xhtml#environmentobject">environment object</a></i>
+denotes the <i><a href="g-n.xhtml#nulllexicalenvironment">null lexical environment</a></i>;
+see Section <a href="#SubSubSubSec_The_Null_Lex_192">3.1.1.3.1 The Null Lexical Environment</a>.
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_The_Evaluati_194"><span class="secno">3.1.2</span> The Evaluation Model</h3>
+<p>
+
+
+A <i>Common Lisp</i> system evaluates <i><a href="g-f.xhtml#form">forms</a></i> with respect to lexical,
+dynamic, and global <i><a href="g-e.xhtml#environment">environments</a></i>.  The following sections
+describe the components of the <i>Common Lisp</i> evaluation model.
+</p>
+<section>
+<h4 id="SubSubSectio_Form_Evaluat_195"><span class="secno">3.1.2.1</span> Form Evaluation</h4>
+<p><i><a href="g-f.xhtml#form">Forms</a></i> fall into three categories:
+
+<i><a href="g-s.xhtml#symbol">symbols</a></i>, <i>conses</i>, and <i><a href="g-s.xhtml#selfevaluatingobject">self-evaluating objects</a></i>.
+The following sections explain these categories.
+</p>
+<section>
+<h5 id="SubSubSubSec_Symbols_as_F_196"><span class="secno">3.1.2.1.1</span> Symbols as Forms</h5>
+<p>
+
+
+If a <i><a href="g-f.xhtml#form">form</a></i> is a <i><a href="g-s.xhtml#symbol">symbol</a></i>,
+then it is either a <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i> or a <i><a href="g-v.xhtml#variable">variable</a></i>.
+
+</p><p>
+The <i><a href="g-s.xhtml#symbol">symbol</a></i> names a <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i> 
+if there is a <i><a href="g-b.xhtml#binding">binding</a></i> of the <i><a href="g-s.xhtml#symbol">symbol</a></i> as a <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i>
+in the current <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> 
+
+ (see <a href="e3-8-13.xhtml#DictEntry_define_symbo_295"><b>define-symbol-macro</b></a> and <a href="e3-8-14.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>).
+
+If the <i><a href="g-s.xhtml#symbol">symbol</a></i> is a <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i>,
+its expansion function is obtained.
+The expansion function is a function of two arguments, and is invoked
+by calling the <i><a href="g-m.xhtml#macroexpandhook">macroexpand hook</a></i> with 
+     the expansion function as its first argument,
+     the <i><a href="g-s.xhtml#symbol">symbol</a></i> as its second argument,
+ and an <i><a href="g-e.xhtml#environmentobject">environment object</a></i> (corresponding to the current <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>)
+      as its third argument.
+The <i><a href="g-m.xhtml#macroexpandhook">macroexpand hook</a></i>, in turn, calls the expansion function with the
+<i><a href="g-f.xhtml#form">form</a></i> as its first argument and the <i><a href="g-e.xhtml#environment">environment</a></i> as its second argument.
+The <i><a href="g-v.xhtml#value">value</a></i> of the expansion function, which is passed through
+by the <i><a href="g-m.xhtml#macroexpandhook">macroexpand hook</a></i>, is a <i><a href="g-f.xhtml#form">form</a></i>. 
+This resulting <i><a href="g-f.xhtml#form">form</a></i> is processed in place of the original <i><a href="g-s.xhtml#symbol">symbol</a></i>.
+
+</p><p>
+If a <i><a href="g-f.xhtml#form">form</a></i> is a <i><a href="g-s.xhtml#symbol">symbol</a></i> that is not a <i><a href="g-s.xhtml#symbolmacro">symbol macro</a></i>,
+then it is the <i><a href="g-n.xhtml#name">name</a></i> of a <i><a href="g-v.xhtml#variable">variable</a></i>, and the <i><a href="g-v.xhtml#value">value</a></i> of that
+<i><a href="g-v.xhtml#variable">variable</a></i> is returned. There are three kinds of variables:
+ <i><a href="g-l.xhtml#lexicalvariable">lexical variables</a></i>,
+ <i><a href="g-d.xhtml#dynamicvariable">dynamic variables</a></i>,
+and
+ <i><a href="g-c.xhtml#constantvariable">constant variables</a></i>.
+
+A <i><a href="g-v.xhtml#variable">variable</a></i> can store one <i><a href="g-o.xhtml#object">object</a></i>.
+The main operations on a <i><a href="g-v.xhtml#variable">variable</a></i> are 
+ to <i><a href="g-r.xhtml#read">read</a></i><sub>1</sub> and 
+ to <i><a href="g-w.xhtml#write">write</a></i><sub>1</sub>
+its <i><a href="g-v.xhtml#value">value</a></i>.
+
+</p><p>
+An error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e10-2-20.xhtml#DictEntry_unbound_vari_694"><b>unbound-variable</b></a> should be signaled if
+an <i><a href="g-u.xhtml#unboundvariable">unbound variable</a></i> is referenced.
+
+</p><p>
+<i><a href="g-n.xhtml#nonconstantvariable">Non-constant variables</a></i> can be <i>assigned</i> by using <a href="e5-3-20.xhtml#DictEntry_setq_406"><b>setq</b></a> 
+or <i><a href="g-b.xhtml#bound">bound</a></i><sub>3</sub> by using <a href="e5-3-18.xhtml#DictEntry_let_let_404"><b>let</b></a>.
+The next figure lists some <i><a href="g-d.xhtml#definedname">defined names</a></i> that
+are applicable to assigning, binding, and defining <i><a href="g-v.xhtml#variable">variables</a></i>.
+
+</p><table id="fig-3-1" class="fig">
+<caption><span class="figlabel">Figure 3-1.</span> Some Defined Names Applicable to Variables</caption>
+
+  <tbody><tr>
+    <td>boundp</td>
+    <td>let</td>
+    <td>progv</td>
+  </tr>
+  <tr>
+    <td>defconstant</td>
+    <td>let*</td>
+    <td>psetq</td>
+  </tr>
+  <tr>
+    <td>defparameter</td>
+    <td>makunbound</td>
+    <td>set</td>
+  </tr>
+  <tr>
+    <td>defvar</td>
+    <td>multiple-value-bind</td>
+    <td>setq</td>
+  </tr>
+  <tr>
+    <td>lambda</td>
+    <td>multiple-value-setq</td>
+    <td>symbol-value</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+The following is a description of each kind of variable.
+</p>
+<section>
+<h6 id="SubSubSubSub_Lexical_Vari_197"><span class="secno">3.1.2.1.1.1</span> Lexical Variables</h6>
+<p>
+
+A <i><a href="g-l.xhtml#lexicalvariable">lexical variable</a></i> is a <i><a href="g-v.xhtml#variable">variable</a></i> that can be referenced only within 
+the <i><a href="g-l.xhtml#lexicalscope">lexical scope</a></i> of the <i><a href="g-f.xhtml#form">form</a></i> that establishes that <i><a href="g-v.xhtml#variable">variable</a></i>;
+<i><a href="g-l.xhtml#lexicalvariable">lexical variables</a></i> have <i><a href="g-l.xhtml#lexicalscope">lexical scope</a></i>.
+Each time a <i><a href="g-f.xhtml#form">form</a></i> creates a <i><a href="g-l.xhtml#lexicalbinding">lexical binding</a></i> of a <i><a href="g-v.xhtml#variable">variable</a></i>,
+a <i><a href="g-f.xhtml#fresh">fresh</a></i> <i><a href="g-b.xhtml#binding">binding</a></i> is <i>established</i>.
+
+</p><p>
+Within the <i><a href="g-s.xhtml#scope">scope</a></i> of a <i><a href="g-b.xhtml#binding">binding</a></i> for a <i><a href="g-l.xhtml#lexicalvariable">lexical variable</a></i> <i><a href="g-n.xhtml#name">name</a></i>,
+uses of that <i><a href="g-n.xhtml#name">name</a></i> as a <i><a href="g-v.xhtml#variable">variable</a></i> are considered to be references
+to that <i><a href="g-b.xhtml#binding">binding</a></i> except where the <i><a href="g-v.xhtml#variable">variable</a></i> is <i>shadowed</i><sub>2</sub> 
+by a <i><a href="g-f.xhtml#form">form</a></i> that <i>establishes</i> a <i><a href="g-f.xhtml#fresh">fresh</a></i> <i><a href="g-b.xhtml#binding">binding</a></i> for that 
+<i><a href="g-v.xhtml#variable">variable</a></i> <i><a href="g-n.xhtml#name">name</a></i>,
+or by a <i><a href="g-f.xhtml#form">form</a></i> that locally <i><a href="g-d.xhtml#declare">declares</a></i> the <i><a href="g-n.xhtml#name">name</a></i> <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a>.
+
+</p><p>
+A <i><a href="g-l.xhtml#lexicalvariable">lexical variable</a></i> always has a <i><a href="g-v.xhtml#value">value</a></i>.
+There is no <i><a href="g-o.xhtml#operator">operator</a></i> that introduces a <i><a href="g-b.xhtml#binding">binding</a></i> for a
+<i><a href="g-l.xhtml#lexicalvariable">lexical variable</a></i> without giving it an initial <i><a href="g-v.xhtml#value">value</a></i>, nor
+is there any <i><a href="g-o.xhtml#operator">operator</a></i> that can make a <i><a href="g-l.xhtml#lexicalvariable">lexical variable</a></i> be <i><a href="g-u.xhtml#unbound">unbound</a></i>.
+
+</p><p>
+<i><a href="g-b.xhtml#binding">Bindings</a></i> of <i><a href="g-l.xhtml#lexicalvariable">lexical variables</a></i> are found in the <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>.
+
+
+</p>
+</section>
+<section>
+<h6 id="SubSubSubSub_Dynamic_Vari_198"><span class="secno">3.1.2.1.1.2</span> Dynamic Variables</h6>
+<p>
+
+A <i><a href="g-v.xhtml#variable">variable</a></i> is a <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i> if one of the following
+conditions hold:
+
+</p><ul>
+
+<li> It is locally declared or globally proclaimed <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a>.
+
+</li><li> It occurs textually within a <i><a href="g-f.xhtml#form">form</a></i> that
+creates a <i><a href="g-d.xhtml#dynamicbinding">dynamic binding</a></i> for a <i><a href="g-v.xhtml#variable">variable</a></i> of the <i><a href="g-s.xhtml#same">same</a></i> <i><a href="g-n.xhtml#name">name</a></i>,
+and the <i><a href="g-b.xhtml#binding">binding</a></i> is not <i>shadowed</i><sub>2</sub> by a <i><a href="g-f.xhtml#form">form</a></i>
+that creates a <i><a href="g-l.xhtml#lexicalbinding">lexical binding</a></i> of the same <i><a href="g-v.xhtml#variable">variable</a></i> <i><a href="g-n.xhtml#name">name</a></i>.
+
+</li></ul>
+
+<p>
+
+A <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i> can be referenced at any time in any <i><a href="g-p.xhtml#program">program</a></i>;
+there is no textual limitation on references to <i><a href="g-d.xhtml#dynamicvariable">dynamic variables</a></i>.
+At any given time, all <i><a href="g-d.xhtml#dynamicvariable">dynamic variables</a></i> with a given name refer to 
+exactly one <i><a href="g-b.xhtml#binding">binding</a></i>, either in the <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i>
+or in the <i><a href="g-g.xhtml#globalenvironment">global environment</a></i>.
+
+</p><p>
+
+The <i><a href="g-v.xhtml#value">value</a></i> part of the <i><a href="g-b.xhtml#binding">binding</a></i> for a <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i> might
+be empty; in this case, the <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i> is said to have no <i><a href="g-v.xhtml#value">value</a></i>,
+or to be <i><a href="g-u.xhtml#unbound">unbound</a></i>.  A <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i> can be made <i><a href="g-u.xhtml#unbound">unbound</a></i>
+by using <a href="e10-2-18.xhtml#DictEntry_makunbound_692"><b>makunbound</b></a>.
+
+</p><p>
+The effect of <i><a href="g-b.xhtml#binding">binding</a></i> a <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i> is to create
+a new <i><a href="g-b.xhtml#binding">binding</a></i> to which all references to that <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i>
+in any <i><a href="g-p.xhtml#program">program</a></i> refer for the duration of the <i><a href="g-e.xhtml#evaluation">evaluation</a></i> of the <i><a href="g-f.xhtml#form">form</a></i>
+that creates the <i><a href="g-d.xhtml#dynamicbinding">dynamic binding</a></i>.
+
+</p><p>
+A <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i> can be referenced outside the <i><a href="g-d.xhtml#dynamicextent">dynamic extent</a></i> of
+a <i><a href="g-f.xhtml#form">form</a></i> that <i><a href="g-b.xhtml#bind">binds</a></i> it.  Such a <i><a href="g-v.xhtml#variable">variable</a></i> is sometimes called 
+a "global variable" but is still in all respects just a <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i>
+whose <i><a href="g-b.xhtml#binding">binding</a></i> happens to exist in the <i><a href="g-g.xhtml#globalenvironment">global environment</a></i> rather than in some
+<i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i>.
+
+</p><p>
+
+A <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i> is <i><a href="g-u.xhtml#unbound">unbound</a></i>
+unless and until explicitly assigned a value, except for 
+those variables whose initial value is 
+defined in this specification or by an <i><a href="g-i.xhtml#implementation">implementation</a></i>.
+
+
+</p>
+</section>
+<section>
+<h6 id="SubSubSubSub_Constant_Var_199"><span class="secno">3.1.2.1.1.3</span> Constant Variables</h6>
+<p>
+
+
+
+
+Certain variables, called <i><a href="g-c.xhtml#constantvariable">constant variables</a></i>, are reserved as "named constants."  
+The consequences are undefined if an attempt is made to 
+    assign a value to,
+ or create
+a <i><a href="g-b.xhtml#binding">binding</a></i> for a <i><a href="g-c.xhtml#constantvariable">constant variable</a></i>, 
+except that a `compatible' redefinition of a <i><a href="g-c.xhtml#constantvariable">constant variable</a></i>
+using <a href="e5-3-15.xhtml#DictEntry_defconstant_401"><b>defconstant</b></a> is permitted; see the <i><a href="g-m.xhtml#macro">macro</a></i> <a href="e5-3-15.xhtml#DictEntry_defconstant_401"><b>defconstant</b></a>.
+
+</p><p>
+<i><a href="g-k.xhtml#keyword">Keywords</a></i>, 
+<i><a href="g-s.xhtml#symbol">symbols</a></i> defined by <i>Common Lisp</i> or the <i><a href="g-i.xhtml#implementation">implementation</a></i>
+  as constant (such as <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a>, <a href="e4-4-16.xhtml#DictEntry_t_351"><b>t</b></a>, and <a href="e12-2-22.xhtml#DictEntry_pi_796"><b>pi</b></a>),
+and <i><a href="g-s.xhtml#symbol">symbols</a></i> declared as constant using <a href="e5-3-15.xhtml#DictEntry_defconstant_401"><b>defconstant</b></a>
+are <i><a href="g-c.xhtml#constantvariable">constant variables</a></i>.
+
+
+</p>
+</section>
+<section>
+<h6 id="SubSubSubSub_Symbols_Nami_200"><span class="secno">3.1.2.1.1.4</span> Symbols Naming Both Lexical and Dynamic Variables</h6>
+<p>
+
+The same <i><a href="g-s.xhtml#symbol">symbol</a></i> can name both 
+    a <i><a href="g-l.xhtml#lexicalvariable">lexical variable</a></i> 
+and a <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i>,
+but never in the same <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>.
+
+</p><p>
+In the following example, the <i><a href="g-s.xhtml#symbol">symbol</a></i> <code>x</code> is used,
+at different times, 
+    as the <i><a href="g-n.xhtml#name">name</a></i> of a <i><a href="g-l.xhtml#lexicalvariable">lexical variable</a></i>
+and as the <i><a href="g-n.xhtml#name">name</a></i> of a <i><a href="g-d.xhtml#dynamicvariable">dynamic variable</a></i>.
+
+</p><pre> (let ((x 1))            ;Binds a special variable X
+   (declare (special x))
+   (let ((x 2))          ;Binds a lexical variable X
+     (+ x                ;Reads a lexical variable X
+        (locally (declare (special x))
+                 x))))   ;Reads a special variable X
+→ 3
+</pre>
+</section>
+</section>
+<section>
+<h5 id="SubSubSubSec_Conses_as_Fo_201"><span class="secno">3.1.2.1.2</span> Conses as Forms</h5>
+<p>
+
+A <i><a href="g-c.xhtml#cons">cons</a></i> that is used as a <i><a href="g-f.xhtml#form">form</a></i> is called a <i><a href="g-c.xhtml#compoundform">compound form</a></i>.
+
+</p><p>
+If the <i><a href="g-c.xhtml#car">car</a></i> of that <i><a href="g-c.xhtml#compoundform">compound form</a></i> is a <i><a href="g-s.xhtml#symbol">symbol</a></i>, 
+that <i><a href="g-s.xhtml#symbol">symbol</a></i> is the <i><a href="g-n.xhtml#name">name</a></i> of an <i><a href="g-o.xhtml#operator">operator</a></i>,
+and the <i><a href="g-f.xhtml#form">form</a></i> is either a <i><a href="g-s.xhtml#specialform">special form</a></i>, a <i><a href="g-m.xhtml#macroform">macro form</a></i>,
+or a <i><a href="g-f.xhtml#functionform">function form</a></i>, depending on the <i><a href="g-f.xhtml#function">function</a></i> <i><a href="g-b.xhtml#binding">binding</a></i> 
+of the <i><a href="g-o.xhtml#operator">operator</a></i> in the current <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>.
+If the <i><a href="g-o.xhtml#operator">operator</a></i> is neither a <i><a href="g-s.xhtml#specialoperator">special operator</a></i>
+nor a <i><a href="g-m.xhtml#macroname">macro name</a></i>, it is assumed to be a <i><a href="g-f.xhtml#functionname">function name</a></i>
+(even if there is no definition for such a <i><a href="g-f.xhtml#function">function</a></i>).
+
+</p><p>
+If the <i><a href="g-c.xhtml#car">car</a></i> of the <i><a href="g-c.xhtml#compoundform">compound form</a></i> is not a <i><a href="g-s.xhtml#symbol">symbol</a></i>,
+then that <i><a href="g-c.xhtml#car">car</a></i> must be a <i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i>,
+in which case the <i><a href="g-c.xhtml#compoundform">compound form</a></i> is a <i><a href="g-l.xhtml#lambdaform">lambda form</a></i>.
+
+</p><p>
+How a <i><a href="g-c.xhtml#compoundform">compound form</a></i> is processed depends on whether it is 
+classified as a <i><a href="g-s.xhtml#specialform">special form</a></i>, a <i><a href="g-m.xhtml#macroform">macro form</a></i>, 
+a <i><a href="g-f.xhtml#functionform">function form</a></i>, or a <i><a href="g-l.xhtml#lambdaform">lambda form</a></i>.
+</p>
+<section>
+<h6 id="SubSubSubSub_Special_Form_202"><span class="secno">3.1.2.1.2.1</span> Special Forms</h6>
+<p>
+
+A <i><a href="g-s.xhtml#specialform">special form</a></i> is a <i><a href="g-f.xhtml#form">form</a></i> with special syntax,
+special evaluation rules, or both, possibly manipulating the
+evaluation environment, control flow, or both.
+A <i><a href="g-s.xhtml#specialoperator">special operator</a></i> has access to
+    the current <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> 
+and the current <i><a href="g-d.xhtml#dynamicenvironment">dynamic environment</a></i>.
+Each <i><a href="g-s.xhtml#specialoperator">special operator</a></i> defines the manner in which its <i><a href="g-s.xhtml#subexpression">subexpressions</a></i>
+are treated—which are <i><a href="g-f.xhtml#form">forms</a></i>, which are special syntax, <i>etc.</i>
+
+</p><p>
+Some <i><a href="g-s.xhtml#specialoperator">special operators</a></i> create new 
+lexical or dynamic <i><a href="g-e.xhtml#environment">environments</a></i> for use during the 
+<i><a href="g-e.xhtml#evaluation">evaluation</a></i> of <i><a href="g-s.xhtml#subform">subforms</a></i>
+of the <i><a href="g-s.xhtml#specialform">special form</a></i>.  For example, <a href="e5-3-22.xhtml#DictEntry_block_408"><b>block</b></a> creates a
+new <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> that is the same as the one in force
+at the point of evaluation of the <a href="e5-3-22.xhtml#DictEntry_block_408"><b>block</b></a> <i><a href="g-f.xhtml#form">form</a></i>
+with the addition of a <i><a href="g-b.xhtml#binding">binding</a></i> of the <a href="e5-3-22.xhtml#DictEntry_block_408"><b>block</b></a> name
+to an <i><a href="g-e.xhtml#exitpoint">exit point</a></i> from the <a href="e5-3-22.xhtml#DictEntry_block_408"><b>block</b></a>.
+
+</p><p>
+The set of <i><a href="g-s.xhtml#specialoperator">special operator</a></i> <i><a href="g-n.xhtml#name">names</a></i> is fixed in <i>Common Lisp</i>; 
+no way is provided for the user to define a <i><a href="g-s.xhtml#specialoperator">special operator</a></i>.
+The next figure lists all of the <i>Common Lisp</i> <i><a href="g-s.xhtml#symbol">symbols</a></i>
+that have definitions as <i><a href="g-s.xhtml#specialoperator">special operators</a></i>.
+
+</p><table id="fig-3-2" class="fig">
+<caption><span class="figlabel">Figure 3-2.</span> Common Lisp Special Operators</caption>
+
+  <tbody><tr>
+    <td>block</td>
+    <td>let*</td>
+    <td>return-from</td>
+  </tr>
+  <tr>
+    <td>catch</td>
+    <td>load-time-value</td>
+    <td>setq</td>
+  </tr>
+  <tr>
+    <td>eval-when</td>
+    <td>locally</td>
+    <td>symbol-macrolet</td>
+  </tr>
+  <tr>
+    <td>flet</td>
+    <td>macrolet</td>
+    <td>tagbody</td>
+  </tr>
+  <tr>
+    <td>function</td>
+    <td>multiple-value-call</td>
+    <td>the</td>
+  </tr>
+  <tr>
+    <td>go</td>
+    <td>multiple-value-prog1</td>
+    <td>throw</td>
+  </tr>
+  <tr>
+    <td>if</td>
+    <td>progn</td>
+    <td>unwind-protect</td>
+  </tr>
+  <tr>
+    <td>labels</td>
+    <td>progv</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>let</td>
+    <td>quote</td>
+    <td/>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h6 id="SubSubSubSub_Macro_Forms_203"><span class="secno">3.1.2.1.2.2</span> Macro Forms</h6>
+<p>
+
+If the <i><a href="g-o.xhtml#operator">operator</a></i> names a <i><a href="g-m.xhtml#macro">macro</a></i>,
+its associated <i><a href="g-m.xhtml#macrofunction">macro function</a></i> is applied
+to the entire <i><a href="g-f.xhtml#form">form</a></i> and the result of that application is
+used in place of the original <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+Specifically, a <i><a href="g-s.xhtml#symbol">symbol</a></i> names a <i><a href="g-m.xhtml#macro">macro</a></i> in a given <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> if
+<a href="e3-8-11.xhtml#DictEntry_macro_functi_293"><b>macro-function</b></a> is <i><a href="g-t.xhtml#true">true</a></i> of the 
+<i><a href="g-s.xhtml#symbol">symbol</a></i> and that <i><a href="g-e.xhtml#environment">environment</a></i>.
+The <i><a href="g-f.xhtml#function">function</a></i> returned by <a href="e3-8-11.xhtml#DictEntry_macro_functi_293"><b>macro-function</b></a>
+is a <i><a href="g-f.xhtml#function">function</a></i> of two arguments, called the
+expansion function.
+The expansion function is invoked by calling the <i><a href="g-m.xhtml#macroexpandhook">macroexpand hook</a></i> with
+      the expansion function as its first argument,
+      the entire <i><a href="g-m.xhtml#macroform">macro form</a></i> as its second argument,
+
+    and an <i><a href="g-e.xhtml#environmentobject">environment object</a></i> (corresponding to the current <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>)
+      as its third argument.
+The <i><a href="g-m.xhtml#macroexpandhook">macroexpand hook</a></i>, in turn, calls the expansion function with the
+<i><a href="g-f.xhtml#form">form</a></i> as its first argument and the <i><a href="g-e.xhtml#environment">environment</a></i> as its second argument.
+The <i><a href="g-v.xhtml#value">value</a></i> of the expansion function, which is passed through
+by the <i><a href="g-m.xhtml#macroexpandhook">macroexpand hook</a></i>, is a <i><a href="g-f.xhtml#form">form</a></i>. 
+
+
+
+The returned <i><a href="g-f.xhtml#form">form</a></i> is <i>evaluated</i> in place of the original <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p><p>
+
+The consequences are undefined if a <i><a href="g-m.xhtml#macrofunction">macro function</a></i> destructively modifies
+any part of its <i><a href="g-f.xhtml#form">form</a></i> argument.
+
+
+</p><p>
+
+A <i><a href="g-m.xhtml#macroname">macro name</a></i> is not a <i><a href="g-f.xhtml#functiondesignator">function designator</a></i>,
+and cannot be used as the <i>function</i> argument to <i><a href="g-f.xhtml#function">functions</a></i> 
+such as <a href="e5-3-1.xhtml#DictEntry_apply_387"><b>apply</b></a>, <a href="e5-3-7.xhtml#DictEntry_funcall_393"><b>funcall</b></a>, or <a href="e17-3-7.xhtml#DictEntry_map_1047"><b>map</b></a>.
+
+</p><p>
+An <i><a href="g-i.xhtml#implementation">implementation</a></i> is free to implement a <i>Common Lisp</i> <i><a href="g-s.xhtml#specialoperator">special operator</a></i>
+as a <i><a href="g-m.xhtml#macro">macro</a></i>.  An <i><a href="g-i.xhtml#implementation">implementation</a></i> is free to implement any
+<i><a href="g-m.xhtml#macro">macro</a></i> <i><a href="g-o.xhtml#operator">operator</a></i> as a <i><a href="g-s.xhtml#specialoperator">special operator</a></i>, but only
+if an equivalent definition of the <i><a href="g-m.xhtml#macro">macro</a></i> is also provided.
+</p><p>
+The next figure lists some <i><a href="g-d.xhtml#definedname">defined names</a></i> that are applicable
+to <i><a href="g-m.xhtml#macro">macros</a></i>.
+
+</p><table id="fig-3-3" class="fig">
+<caption><span class="figlabel">Figure 3-3.</span> Defined names applicable to macros</caption>
+
+  <tbody><tr>
+    <td>*macroexpand-hook*</td>
+    <td>macro-function</td>
+    <td>macroexpand-1</td>
+  </tr>
+  <tr>
+    <td>defmacro</td>
+    <td>macroexpand</td>
+    <td>macrolet</td>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h6 id="SubSubSubSub_Function_For_204"><span class="secno">3.1.2.1.2.3</span> Function Forms</h6>
+<p>
+
+
+If the <i><a href="g-o.xhtml#operator">operator</a></i> is a <i><a href="g-s.xhtml#symbol">symbol</a></i> naming a <i><a href="g-f.xhtml#function">function</a></i>,
+the <i><a href="g-f.xhtml#form">form</a></i> represents a <i><a href="g-f.xhtml#functionform">function form</a></i>,
+and the <i><a href="g-c.xhtml#cdr">cdr</a></i> of the list contains the <i><a href="g-f.xhtml#form">forms</a></i> 
+which when evaluated will supply the arguments passed to the <i><a href="g-f.xhtml#function">function</a></i>.
+
+</p><p>
+When a <i><a href="g-f.xhtml#functionname">function name</a></i> is not defined, 
+an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e5-3-69.xhtml#DictEntry_undefined_fu_455"><b>undefined-function</b></a> should be signaled at run time;
+see Section <a href="s3-2.xhtml#SubSubSectio_Semantic_Con_222">3.2.2.3 Semantic Constraints</a>.
+
+</p><p>
+A <i><a href="g-f.xhtml#functionform">function form</a></i> is evaluated as follows:
+
+</p><p>
+The <i><a href="g-s.xhtml#subform">subforms</a></i> in the <i><a href="g-c.xhtml#cdr">cdr</a></i> of the original <i><a href="g-f.xhtml#form">form</a></i>
+are evaluated in left-to-right order in the current lexical and 
+dynamic <i><a href="g-e.xhtml#environment">environments</a></i>.  The <i><a href="g-p.xhtml#primaryvalue">primary value</a></i> of each
+such <i><a href="g-e.xhtml#evaluation">evaluation</a></i> becomes an <i><a href="g-a.xhtml#argument">argument</a></i> to the named <i><a href="g-f.xhtml#function">function</a></i>;
+
+any additional <i><a href="g-v.xhtml#value">values</a></i> returned by the <i><a href="g-s.xhtml#subform">subforms</a></i> are discarded.
+
+</p><p>
+The <i><a href="g-f.xhtml#functionalvalue">functional value</a></i> of the <i><a href="g-o.xhtml#operator">operator</a></i> 
+is retrieved from the <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>,
+and that <i><a href="g-f.xhtml#function">function</a></i> is invoked with the indicated arguments.
+
+</p><p>
+
+Although the order of <i><a href="g-e.xhtml#evaluation">evaluation</a></i> of 
+the <i><a href="g-a.xhtml#argument">argument</a></i> <i><a href="g-s.xhtml#subform">subforms</a></i> themselves is 
+strictly left-to-right, it is not specified whether 
+the definition of the <i><a href="g-o.xhtml#operator">operator</a></i> in a <i><a href="g-f.xhtml#functionform">function form</a></i> is looked up 
+before the <i><a href="g-e.xhtml#evaluation">evaluation</a></i> of the <i><a href="g-a.xhtml#argument">argument</a></i> <i><a href="g-s.xhtml#subform">subforms</a></i>,
+after the <i><a href="g-e.xhtml#evaluation">evaluation</a></i> of the <i><a href="g-a.xhtml#argument">argument</a></i> <i><a href="g-s.xhtml#subform">subforms</a></i>,
+or between the <i><a href="g-e.xhtml#evaluation">evaluation</a></i> of any two <i><a href="g-a.xhtml#argument">argument</a></i> <i><a href="g-s.xhtml#subform">subforms</a></i> 
+if there is more than one such <i><a href="g-a.xhtml#argument">argument</a></i> <i><a href="g-s.xhtml#subform">subform</a></i>.  
+For example, the following might return 23 or 24.
+
+</p><pre> (defun foo (x) (+ x 3))
+ (defun bar () (setf (symbol-function 'foo) #'(lambda (x) (+ x 4))))
+ (foo (progn (bar) 20))
+</pre>
+
+
+<p>
+A <i><a href="g-b.xhtml#binding">binding</a></i> for a <i><a href="g-f.xhtml#functionname">function name</a></i> can be <i>established</i> in 
+one of several ways.  A <i><a href="g-b.xhtml#binding">binding</a></i> for a <i><a href="g-f.xhtml#functionname">function name</a></i> in 
+the <i><a href="g-g.xhtml#globalenvironment">global environment</a></i> can be <i>established</i> by 
+ <a href="e5-3-2.xhtml#DictEntry_defun_388"><b>defun</b></a>,
+ <a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> of <a href="e5-3-3.xhtml#DictEntry_fdefinition_389"><b>fdefinition</b></a>,
+
+ <a href="e5-3-64.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> of <a href="e10-2-10.xhtml#DictEntry_symbol_funct_684"><b>symbol-function</b></a>,
+
+
+
+ <a href="e7-7-2.xhtml#DictEntry_ensure_gener_558"><b>ensure-generic-function</b></a>,
+ <a href="e7-7-27.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a> (implicitly, due to <a href="e7-7-2.xhtml#DictEntry_ensure_gener_558"><b>ensure-generic-function</b></a>),
+or
+ <a href="e7-7-26.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a>.
+A <i><a href="g-b.xhtml#binding">binding</a></i> for a <i><a href="g-f.xhtml#functionname">function name</a></i> in the <i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i>
+can be <i>established</i> by
+   <a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>flet</b></a>
+or <a href="e5-3-6.xhtml#DictEntry_flet_labels_392"><b>labels</b></a>.
+
+
+
+
+
+
+
+
+
+</p><p>
+The next figure lists some <i><a href="g-d.xhtml#definedname">defined names</a></i> that are applicable to <i><a href="g-f.xhtml#function">functions</a></i>.
+
+</p><table id="fig-3-4" class="fig">
+<caption><span class="figlabel">Figure 3-4.</span> Some function-related defined names</caption>
+
+  <tbody><tr>
+    <td>apply</td>
+    <td>fdefinition</td>
+    <td>mapcan</td>
+  </tr>
+  <tr>
+    <td>call-arguments-limit</td>
+    <td>flet</td>
+    <td>mapcar</td>
+  </tr>
+  <tr>
+    <td>complement</td>
+    <td>fmakunbound</td>
+    <td>mapcon</td>
+  </tr>
+  <tr>
+    <td>constantly</td>
+    <td>funcall</td>
+    <td>mapl</td>
+  </tr>
+  <tr>
+    <td>defgeneric</td>
+    <td>function</td>
+    <td>maplist</td>
+  </tr>
+  <tr>
+    <td>defmethod</td>
+    <td>functionp</td>
+    <td>multiple-value-call</td>
+  </tr>
+  <tr>
+    <td>defun</td>
+    <td>labels</td>
+    <td>reduce</td>
+  </tr>
+  <tr>
+    <td>fboundp</td>
+    <td>map</td>
+    <td>symbol-function</td>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h6 id="SubSubSubSub_Lambda_Forms_205"><span class="secno">3.1.2.1.2.4</span> Lambda Forms</h6>
+<p>
+
+
+A <i><a href="g-l.xhtml#lambdaform">lambda form</a></i> is similar to a <i><a href="g-f.xhtml#functionform">function form</a></i>, except that
+the <i><a href="g-f.xhtml#functionname">function name</a></i> is replaced by a <i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i>.
+
+</p><p>
+A <i><a href="g-l.xhtml#lambdaform">lambda form</a></i> is equivalent to using <i>funcall</i> of a
+<i><a href="g-l.xhtml#lexicalclosure">lexical closure</a></i> of the <i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i> on the given <i><a href="g-a.xhtml#argument">arguments</a></i>.
+(In practice, some compilers are more likely to produce inline code 
+for a <i><a href="g-l.xhtml#lambdaform">lambda form</a></i> than for an arbitrary named function 
+that has been declared <a href="e3-8-22.xhtml#DictEntry_inline_noti_304"><b>inline</b></a>; however, such a difference
+is not semantic.)
+
+</p><p>
+For further information, see Section <a href="#SubSection_Lambda_Expre_208">3.1.3 Lambda Expressions</a>.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h5 id="SubSubSubSec_Self_Evaluat_206"><span class="secno">3.1.2.1.3</span> Self-Evaluating Objects</h5>
+<p>
+
+
+A <i><a href="g-f.xhtml#form">form</a></i> that is neither a <i><a href="g-s.xhtml#symbol">symbol</a></i> nor a <i><a href="g-c.xhtml#cons">cons</a></i> is 
+defined to be a <i><a href="g-s.xhtml#selfevaluatingobject">self-evaluating object</a></i>.  <i>Evaluating</i>
+such an <i><a href="g-o.xhtml#object">object</a></i> <i><a href="g-y.xhtml#yield">yields</a></i> the <i><a href="g-s.xhtml#same">same</a></i> <i><a href="g-o.xhtml#object">object</a></i> 
+as a result.
+
+
+</p><p>
+Certain specific <i><a href="g-s.xhtml#symbol">symbols</a></i> and <i>conses</i> might also happen 
+to be "self-evaluating" but only as a special case of a more 
+general set of rules for the <i><a href="g-e.xhtml#evaluation">evaluation</a></i> of <i><a href="g-s.xhtml#symbol">symbols</a></i> and
+<i>conses</i>; such <i><a href="g-o.xhtml#object">objects</a></i> are not considered to be
+<i><a href="g-s.xhtml#selfevaluatingobject">self-evaluating objects</a></i>.
+
+</p><p>
+
+The consequences are undefined if <i>literal objects</i> (including
+<i><a href="g-s.xhtml#selfevaluatingobject">self-evaluating objects</a></i>) are destructively modified.
+</p>
+<section>
+<h6 id="SubSubSubSub_Examples_of__207"><span class="secno">3.1.2.1.3.1</span> Examples of Self-Evaluating Objects</h6>
+<p><i><a href="g-n.xhtml#number">Numbers</a></i>, <i><a href="g-p.xhtml#pathname">pathnames</a></i>, and <i><a href="g-a.xhtml#array">arrays</a></i> are examples of
+<i><a href="g-s.xhtml#selfevaluatingobject">self-evaluating objects</a></i>.
+
+</p><pre> 3 → 3
+ #c(2/3 5/8) → #C(2/3 5/8)
+ #p"S:[BILL]OTHELLO.TXT" → #P"S:[BILL]OTHELLO.TXT"
+ #(a b c) → #(A B C)
+ "fred smith" → "fred smith"
+</pre>
+</section>
+</section>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Lambda_Expre_208"><span class="secno">3.1.3</span> Lambda Expressions</h3>
+<p>
+
+
+In a <i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i>,
+the body is evaluated in a lexical <i><a href="g-e.xhtml#environment">environment</a></i> that is formed by
+adding the <i><a href="g-b.xhtml#binding">binding</a></i> of 
+each <i><a href="g-p.xhtml#parameter">parameter</a></i> in the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i>
+with the corresponding <i><a href="g-v.xhtml#value">value</a></i> from the <i><a href="g-a.xhtml#argument">arguments</a></i>
+to the current lexical <i><a href="g-e.xhtml#environment">environment</a></i>.
+
+</p><p>
+For further discussion of how <i><a href="g-b.xhtml#binding">bindings</a></i> are <i>established</i> 
+based on the <i><a href="g-l.xhtml#lambdalist">lambda list</a></i>, see Section <a href="s3-4.xhtml#Section_Lambda_Lists_242">3.4 Lambda Lists</a>.
+
+</p><p>
+The body of a <i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i> is an <i><a href="g-i.xhtml#implicitprogn">implicit progn</a></i>;
+the <i><a href="g-v.xhtml#value">values</a></i> it returns are returned by the <i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i>.
+
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Closures_and_209"><span class="secno">3.1.4</span> Closures and Lexical Binding</h3>
+<p>
+
+A <i><a href="g-l.xhtml#lexicalclosure">lexical closure</a></i> is a <i><a href="g-f.xhtml#function">function</a></i> that can refer to and alter
+the values of <i><a href="g-l.xhtml#lexicalbinding">lexical bindings</a></i> <i>established</i> by <i><a href="g-b.xhtml#binding">binding</a></i> <i><a href="g-f.xhtml#form">forms</a></i>
+that textually include the function definition.
+
+</p><p>
+Consider this code, where <code>x</code> is not declared <a href="e3-8-26.xhtml#DictEntry_special_308"><b>special</b></a>:
+
+</p><pre> (defun two-funs (x)
+   (list (function (lambda () x))
+         (function (lambda (y) (setq x y)))))
+ (setq funs (two-funs 6))
+ (funcall (car funs)) → 6
+ (funcall (cadr funs) 43) → 43
+ (funcall (car funs)) → 43
+</pre>
+
+<p>
+The <a href="e4-4-3.xhtml#DictEntry_function_338"><b>function</b></a> <i><a href="g-s.xhtml#specialform">special form</a></i> coerces a 
+<i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i> into a <i><a href="g-c.xhtml#closure">closure</a></i> in which the 
+<i><a href="g-l.xhtml#lexicalenvironment">lexical environment</a></i> in effect when the <i><a href="g-s.xhtml#specialform">special form</a></i> is
+evaluated is captured along with the <i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i>.
+
+</p><p>
+The function <code>two-funs</code> returns a <i><a href="g-l.xhtml#list">list</a></i> of two 
+<i><a href="g-f.xhtml#function">functions</a></i>, each of which refers to the <i><a href="g-b.xhtml#binding">binding</a></i> of the
+variable <code>x</code> created on entry to the function <code>two-funs</code> when it
+was called.
+
+
+This variable has the value <code>6</code>
+initially, but <a href="e5-3-20.xhtml#DictEntry_setq_406"><b>setq</b></a> can alter this <i><a href="g-b.xhtml#binding">binding</a></i>.
+The <i><a href="g-l.xhtml#lexicalclosure">lexical closure</a></i> created for the first 
+<i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i> does not "snapshot" the <i><a href="g-v.xhtml#value">value</a></i> <code>6</code> for <code>x</code>
+when the <i><a href="g-c.xhtml#closure">closure</a></i> is created; rather it captures the <i><a href="g-b.xhtml#binding">binding</a></i> of <code>x</code>.
+The second <i><a href="g-f.xhtml#function">function</a></i> can be used to alter the <i><a href="g-v.xhtml#value">value</a></i> in the same (captured)
+<i><a href="g-b.xhtml#binding">binding</a></i> (to <code>43</code>, in the example), and
+this altered variable binding then affects the value returned by the first <i><a href="g-f.xhtml#function">function</a></i>.
+
+</p><p>
+                     
+
+In situations where a <i><a href="g-c.xhtml#closure">closure</a></i> of a 
+<i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i> over the same set of <i><a href="g-b.xhtml#binding">bindings</a></i> may be
+produced more than once, the various resulting <i><a href="g-c.xhtml#closure">closures</a></i> may
+or may not be <i><a href="g-i.xhtml#identical">identical</a></i>, at the discretion of the <i><a href="g-i.xhtml#implementation">implementation</a></i>.
+That is, two <i><a href="g-f.xhtml#function">functions</a></i> that are behaviorally
+indistinguishable might or might not be <i><a href="g-i.xhtml#identical">identical</a></i>.
+Two <i><a href="g-f.xhtml#function">functions</a></i> that are behaviorally distinguishable are <i><a href="g-d.xhtml#distinct">distinct</a></i>.
+For example:
+
+</p><pre> (let ((x 5) (funs '()))
+   (dotimes (j 10)                          
+     (push #'(lambda (z)                        
+               (if (null z) (setq x 0) (+ x z)))
+           funs))
+   funs)
+</pre><p>
+The result of the above <i><a href="g-f.xhtml#form">form</a></i> is a <i><a href="g-l.xhtml#list">list</a></i> of ten <i><a href="g-c.xhtml#closure">closures</a></i>.
+Each requires only the <i><a href="g-b.xhtml#binding">binding</a></i> of <code>x</code>.
+It is the same <i><a href="g-b.xhtml#binding">binding</a></i> in each case, 
+but the ten <i><a href="g-c.xhtml#closure">closure</a></i> <i><a href="g-o.xhtml#object">objects</a></i> might or might not be <i><a href="g-i.xhtml#identical">identical</a></i>.
+On the other hand, the result of the <i><a href="g-f.xhtml#form">form</a></i>
+
+</p><pre> (let ((funs '()))     
+   (dotimes (j 10)
+     (let ((x 5))
+       (push (function (lambda (z)
+                        (if (null z) (setq x 0) (+ x z))))
+             funs)))
+  funs)
+</pre><p>
+is also a <i><a href="g-l.xhtml#list">list</a></i> of ten <i><a href="g-c.xhtml#closure">closures</a></i>.
+However, in this case no two of the <i><a href="g-c.xhtml#closure">closure</a></i> <i><a href="g-o.xhtml#object">objects</a></i> can
+be <i><a href="g-i.xhtml#identical">identical</a></i> because each <i><a href="g-c.xhtml#closure">closure</a></i> is closed over a distinct
+<i><a href="g-b.xhtml#binding">binding</a></i> of <code>x</code>, and these <i><a href="g-b.xhtml#binding">bindings</a></i> can be behaviorally
+distinguished because of the use of <a href="e5-3-20.xhtml#DictEntry_setq_406"><b>setq</b></a>.
+
+</p><p>
+
+The result of the <i><a href="g-f.xhtml#form">form</a></i>
+
+</p><pre> (let ((funs '()))
+   (dotimes (j 10)
+     (let ((x 5))
+       (push (function (lambda (z) (+ x z)))
+            funs)))
+   funs)
+</pre><p>
+is a <i><a href="g-l.xhtml#list">list</a></i> of ten <i><a href="g-c.xhtml#closure">closure</a></i> <i><a href="g-o.xhtml#object">objects</a></i> that
+might or might not be <i><a href="g-i.xhtml#identical">identical</a></i>.
+A different <i><a href="g-b.xhtml#binding">binding</a></i> of <code>x</code> is involved for
+each <i><a href="g-c.xhtml#closure">closure</a></i>, but the <i><a href="g-b.xhtml#binding">bindings</a></i> cannot be distinguished
+because their values are the <i><a href="g-s.xhtml#same">same</a></i> and immutable (there being no occurrence
+of <a href="e5-3-20.xhtml#DictEntry_setq_406"><b>setq</b></a> on <code>x</code>).  A compiler could internally
+transform the <i><a href="g-f.xhtml#form">form</a></i> to
+
+</p><pre> (let ((funs '()))
+   (dotimes (j 10)
+     (push (function (lambda (z) (+ 5 z)))
+           funs))
+  funs)
+</pre><p>
+where the <i><a href="g-c.xhtml#closure">closures</a></i> may be <i><a href="g-i.xhtml#identical">identical</a></i>.
+
+
+</p><p>
+
+It is possible that a <i><a href="g-c.xhtml#closure">closure</a></i> does not
+close over any variable bindings.
+In the code fragment
+
+</p><pre> (mapcar (function (lambda (x) (+ x 2))) y)
+</pre><p>
+the function <code>(lambda (x) (+ x 2))</code> contains no references to any outside
+object. In this case, the same <i><a href="g-c.xhtml#closure">closure</a></i> might be returned
+for all evaluations of the <a href="e4-4-3.xhtml#DictEntry_function_338"><b>function</b></a> <i><a href="g-f.xhtml#form">form</a></i>.
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Shadowing_210"><span class="secno">3.1.5</span> Shadowing</h3>
+<p>
+
+
+If two <i><a href="g-f.xhtml#form">forms</a></i> that <i><a href="g-e.xhtml#establish">establish</a></i> <i><a href="g-l.xhtml#lexicalbinding">lexical bindings</a></i> with
+the same <i><a href="g-n.xhtml#name">name</a></i> <i>N</i> are textually nested, then references to <i>N</i>
+within the inner <i><a href="g-f.xhtml#form">form</a></i> refer to the <i><a href="g-b.xhtml#binding">binding</a></i> established by
+the inner <i><a href="g-f.xhtml#form">form</a></i>; the inner <i><a href="g-b.xhtml#binding">binding</a></i> for <i>N</i>
+<b><i>shadows</i></b> the outer <i><a href="g-b.xhtml#binding">binding</a></i> for <i>N</i>.  Outside the inner
+<i><a href="g-f.xhtml#form">form</a></i> but inside the outer one, references to <i>N</i> refer to the
+<i><a href="g-b.xhtml#binding">binding</a></i> established by the outer <i><a href="g-f.xhtml#form">form</a></i>.  For example:
+
+</p><pre> (defun test (x z)
+   (let ((z (* x 2)))
+     (print z))
+   z)
+</pre><p>
+The <i><a href="g-b.xhtml#binding">binding</a></i> of the variable <code>z</code> by
+<a href="e5-3-18.xhtml#DictEntry_let_let_404"><b>let</b></a> shadows
+the <i><a href="g-p.xhtml#parameter">parameter</a></i> binding for the function <code>test</code>.  The reference to the
+variable <code>z</code> in the <a href="e22-4-14.xhtml#DictEntry_write_prin1_1354"><b>print</b></a> <i><a href="g-f.xhtml#form">form</a></i> refers to the <a href="e5-3-18.xhtml#DictEntry_let_let_404"><b>let</b></a> binding.
+The reference to <code>z</code> at the end of the function <code>test</code> 
+refers to the <i><a href="g-p.xhtml#parameter">parameter</a></i> named <code>z</code>.
+
+</p><p>
+
+
+Constructs that are lexically scoped act as if new names were
+generated for each <i><a href="g-o.xhtml#object">object</a></i> on each execution.  Therefore,
+dynamic shadowing cannot occur.  For example:
+
+</p><pre> (defun contorted-example (f g x)
+   (if (= x 0)
+       (funcall f)
+       (block here
+          (+ 5 (contorted-example g
+                                  #'(lambda () (return-from here 4))
+                                  (- x 1))))))
+</pre><p>
+Consider the call <code>(contorted-example nil nil 2)</code>.  This produces
+<code>4</code>.  During the course of execution, there are three
+calls to <code>contorted-example</code>, interleaved with two 
+blocks:
+
+</p><pre> (contorted-example nil nil 2)
+   (block here<i><sub>1</sub></i> ...)
+     (contorted-example nil #'(lambda () (return-from here<i><sub>1</sub></i> 4)) 1)
+       (block here<i><sub>2</sub></i> ...)
+         (contorted-example #'(lambda () (return-from here<i><sub>1</sub></i> 4))
+                            #'(lambda () (return-from here<i><sub>2</sub></i> 4))
+                            0)
+             (funcall f)
+                    where f → #'(lambda () (return-from here<i><sub>1</sub></i> 4))
+                 (return-from here<i><sub>1</sub></i> 4)
+</pre><p>
+At the time the <code>funcall</code> is executed
+there are two <a href="e5-3-22.xhtml#DictEntry_block_408"><b>block</b></a> <i><a href="g-e.xhtml#exitpoint">exit points</a></i> outstanding, each apparently
+named <code>here</code>.
+The <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a> <i><a href="g-f.xhtml#form">form</a></i> executed as a result of the <code>funcall</code>
+operation
+refers to the outer outstanding <i><a href="g-e.xhtml#exitpoint">exit point</a></i>
+(here<i><sub>1</sub></i>), not the
+inner one (here<i><sub>2</sub></i>).
+It
+refers to that <i><a href="g-e.xhtml#exitpoint">exit point</a></i> textually visible at the point of
+execution of <a href="e4-4-3.xhtml#DictEntry_function_338"><b>function</b></a>
+(here abbreviated by the <code>#'</code> syntax) that resulted
+in creation of the <i><a href="g-f.xhtml#function">function</a></i> <i><a href="g-o.xhtml#object">object</a></i> actually invoked by 
+<a href="e5-3-7.xhtml#DictEntry_funcall_393"><b>funcall</b></a>.                       
+
+</p><p>
+
+If, in this example, one were to change the <code>(funcall f)</code> to
+<code>(funcall g)</code>, then the value of the call <code>(contorted-example nil nil 2)</code>
+would be <code>9</code>.  The value would change because 
+<a href="e5-3-7.xhtml#DictEntry_funcall_393"><b>funcall</b></a> would cause the
+execution of <code>(return-from here<i><sub>2</sub></i> 4)</code>, thereby causing
+a return from the inner <i><a href="g-e.xhtml#exitpoint">exit point</a></i> (here<i><sub>2</sub></i>).
+When that occurs, the value <code>4</code> is returned from the
+middle invocation of <code>contorted-example</code>, <code>5</code> is added to that
+to get <code>9</code>, and that value is returned from the outer block
+and the outermost call to <code>contorted-example</code>.  The point
+is that the choice of <i><a href="g-e.xhtml#exitpoint">exit point</a></i>
+returned from has nothing to do with its
+being innermost or outermost; rather,
+it depends on the lexical environment
+that is packaged up with a <i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i> when
+<a href="e4-4-3.xhtml#DictEntry_function_338"><b>function</b></a> is executed.
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Extent_211"><span class="secno">3.1.6</span> Extent</h3>
+<p><code>Contorted-example</code> works only because the
+<i><a href="g-f.xhtml#function">function</a></i> named by <code>f</code> is invoked during the <i><a href="g-e.xhtml#extent">extent</a></i> of the 
+<i><a href="g-e.xhtml#exitpoint">exit point</a></i>.
+Once the flow of execution has left the block,
+the <i><a href="g-e.xhtml#exitpoint">exit point</a></i> is <i>disestablished</i>.  For example:
+
+</p><pre> (defun invalid-example ()
+   (let ((y (block here #'(lambda (z) (return-from here z)))))
+     (if (numberp y) y (funcall y 5))))
+</pre><p>
+One might expect the call <code>(invalid-example)</code> to produce <code>5</code>
+by the following incorrect reasoning:
+<a href="e5-3-18.xhtml#DictEntry_let_let_404"><b>let</b></a> binds <code>y</code> to the
+value of <a href="e5-3-22.xhtml#DictEntry_block_408"><b>block</b></a>; this value is a <i><a href="g-f.xhtml#function">function</a></i> resulting
+from the <i><a href="g-l.xhtml#lambdaexpression">lambda expression</a></i>.  Because <code>y</code> is not a number, it is
+invoked on the value <code>5</code>.  The <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a> should then
+return this value from the                      
+<i><a href="g-e.xhtml#exitpoint">exit point</a></i> named <code>here</code>, thereby
+exiting from the block again and giving <code>y</code> the value <code>5</code>
+which, being a number, is then returned as the value of the call
+to <code>invalid-example</code>.
+
+</p><p>
+
+The argument fails only because <i><a href="g-e.xhtml#exitpoint">exit points</a></i> have 
+<i><a href="g-d.xhtml#dynamicextent">dynamic extent</a></i>.  The argument is correct up to the execution of
+<a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a>.  The execution of <a href="e5-3-25.xhtml#DictEntry_return_from_411"><b>return-from</b></a>
+should signal an error of <i><a href="g-t.xhtml#type">type</a></i> <a href="e5-3-67.xhtml#DictEntry_control_erro_453"><b>control-error</b></a>, however, not
+because it cannot refer to the <i><a href="g-e.xhtml#exitpoint">exit point</a></i>, but because it
+does correctly refer to an <i><a href="g-e.xhtml#exitpoint">exit point</a></i> and that 
+<i><a href="g-e.xhtml#exitpoint">exit point</a></i> has been <i>disestablished</i>.
+
+</p><p>
+
+
+A reference by name to a dynamic <i><a href="g-e.xhtml#exitpoint">exit point</a></i> binding such as
+a <i><a href="g-c.xhtml#catchtag">catch tag</a></i> refers to the most recently 
+<i>established</i> <i><a href="g-b.xhtml#binding">binding</a></i> of that name that has not been 
+<i>disestablished</i>.  For example:
+
+</p><pre> (defun fun1 (x)
+   (catch 'trap (+ 3 (fun2 x))))
+ (defun fun2 (y)
+   (catch 'trap (* 5 (fun3 y))))
+ (defun fun3 (z)
+   (throw 'trap z))
+</pre><p>
+Consider the call <code>(fun1 7)</code>.  The result is <code>10</code>.  At the time
+the <a href="e5-3-28.xhtml#DictEntry_throw_414"><b>throw</b></a> is executed, there are two outstanding catchers with the
+name <code>trap</code>: one established within procedure <code>fun1</code>, and the other
+within procedure <code>fun2</code>.  The latter is the more recent, and so the
+value <code>7</code> is returned from <a href="e5-3-23.xhtml#DictEntry_catch_409"><b>catch</b></a> in <code>fun2</code>.
+Viewed from within <code>fun3</code>, the <a href="e5-3-23.xhtml#DictEntry_catch_409"><b>catch</b></a> 
+in <code>fun2</code> shadows the one in <code>fun1</code>.
+Had <code>fun2</code> been defined as
+
+</p><pre> (defun fun2 (y)
+   (catch 'snare (* 5 (fun3 y))))
+</pre><p>
+then the two <i><a href="g-e.xhtml#exitpoint">exit points</a></i> 
+would have different <i><a href="g-n.xhtml#name">names</a></i>, and therefore the one
+in <code>fun1</code> would not be shadowed.  The result would then have been <code>7</code>.
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Return_Value_212"><span class="secno">3.1.7</span> Return Values</h3>
+<p>
+
+Ordinarily the result of calling a <i><a href="g-f.xhtml#function">function</a></i> is a single <i><a href="g-o.xhtml#object">object</a></i>.
+Sometimes, however, it is convenient for a function to compute several
+<i><a href="g-o.xhtml#object">objects</a></i> and return them.
+
+</p><p>
+
+In order to receive other than exactly one value from a <i><a href="g-f.xhtml#form">form</a></i>,
+one of several <i><a href="g-s.xhtml#specialform">special forms</a></i> or <i><a href="g-m.xhtml#macro">macros</a></i> must be used to request those
+values.  If a <i><a href="g-f.xhtml#form">form</a></i> produces <i><a href="g-m.xhtml#multiplevalues">multiple values</a></i> which were not
+requested in this way, then the first value is given to the caller and
+all others are discarded; if the <i><a href="g-f.xhtml#form">form</a></i> produces zero values,
+then the caller receives <a href="e4-4-1.xhtml#DictEntry_nil_336"><b>nil</b></a> as a value.
+
+</p><p>
+The next figure lists 
+some <i><a href="g-o.xhtml#operator">operators</a></i> for receiving <i><a href="g-m.xhtml#multiplevalues">multiple values</a></i><sub>2</sub>.
+These <i><a href="g-o.xhtml#operator">operators</a></i> can be used to specify 
+    one or more <i><a href="g-f.xhtml#form">forms</a></i> to <i><a href="g-e.xhtml#evaluate">evaluate</a></i> 
+and where to put the <i><a href="g-v.xhtml#value">values</a></i> returned by those <i><a href="g-f.xhtml#form">forms</a></i>.
+
+</p><table id="fig-3-5" class="fig">
+<caption><span class="figlabel">Figure 3-5.</span> Some operators applicable to receiving multiple values</caption>
+
+  <tbody><tr>
+    <td>multiple-value-bind</td>
+    <td>multiple-value-prog1</td>
+    <td>return-from</td>
+  </tr>
+  <tr>
+    <td>multiple-value-call</td>
+    <td>multiple-value-setq</td>
+    <td>throw</td>
+  </tr>
+  <tr>
+    <td>multiple-value-list</td>
+    <td>return</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+The <i><a href="g-f.xhtml#function">function</a></i> <a href="e4-4-22.xhtml#DictEntry_values_357"><b>values</b></a> can produce <i><a href="g-m.xhtml#multiplevalues">multiple values</a></i><sub>2</sub>.
+<code>(values)</code> returns zero values;
+<code>(values <i>form</i>)</code> returns the <i><a href="g-p.xhtml#primaryvalue">primary value</a></i> returned by <i>form</i>;
+<code>(values <i>form1</i> <i>form2</i>)</code> returns two values,
+    the <i><a href="g-p.xhtml#primaryvalue">primary value</a></i> of <i>form1</i>
+and the <i><a href="g-p.xhtml#primaryvalue">primary value</a></i> of <i>form2</i>;
+and so on.
+
+</p><p>
+See <a href="e5-3-55.xhtml#DictEntry_multiple_val_441"><b>multiple-values-limit</b></a> and <a href="e5-3-54.xhtml#DictEntry_values_list_440"><b>values-list</b></a>.
+
+</p>
+</section>
+</section>
+</section>
+</body>
+</html>

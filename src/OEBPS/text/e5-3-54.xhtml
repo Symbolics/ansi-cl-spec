@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.54 values-list — Function</title>
+<link rel="stylesheet" type="text/css" href="../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_values_list_440" class="entry"><span class="secno">5.3.54</span> <span class="names">values-list</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>values-list</b>
+<i>list</i>
+  → <i>{<i>element</i>}*</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>list</i>—a <i><a href="g-l.xhtml#list">list</a></i>.
+
+<p>
+<i>elements</i>—the <i><a href="g-e.xhtml#element">elements</a></i> of the <i>list</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns the <i><a href="g-e.xhtml#element">elements</a></i> of the <i>list</i> as <i><a href="g-m.xhtml#multiplevalues">multiple values</a></i><sub>2</sub>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (values-list nil) →  &lt; <i>no values</i> &gt; 
+ (values-list '(1)) → 1
+ (values-list '(1 2)) → 1, 2
+ (values-list '(1 2 3)) → 1, 2, 3
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal <a href="e4-4-29.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if its argument is not a <i><a href="g-p.xhtml#properlist">proper list</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="e5-3-48.xhtml#DictEntry_multiple_val_434"><b>multiple-value-bind</b></a>,
+<a href="e5-3-50.xhtml#DictEntry_multiple_val_436"><b>multiple-value-list</b></a>,
+<a href="e5-3-55.xhtml#DictEntry_multiple_val_441"><b>multiple-values-limit</b></a>,
+<a href="e4-4-22.xhtml#DictEntry_values_357"><b>values</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (values-list <i>list</i>) ==(apply #'values <i>list</i>)
+</pre>
+
+<p>
+<code>(equal <i>x</i> (multiple-value-list (values-list <i>x</i>)))</code>
+returns <i><a href="g-t.xhtml#true">true</a></i> for all <i><a href="g-l.xhtml#list">lists</a></i> <i>x</i>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>
