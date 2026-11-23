@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid" xml:lang="en">
 <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+<!-- dc:date and dcterms:modified are placeholders for the build date; re-set them at the v1 tag. -->
 <dc:identifier id="bookid">urn:uuid:a0acb857-4ca5-5659-93f8-e5fd26b7304a</dc:identifier>
-<dc:title>ANSI Common Lisp</dc:title>
+<dc:title id="title">ANSI Common Lisp</dc:title>
+<meta refines="#title" property="title-type">main</meta>
+<dc:title id="subtitle">An edition of the draft proposed American National Standard for Programming Language Common Lisp</dc:title>
+<meta refines="#subtitle" property="title-type">subtitle</meta>
+<dc:creator id="x3j13">X3J13</dc:creator>
+<meta refines="#x3j13" property="role" scheme="marc:relators">aut</meta>
+<dc:contributor id="editor">Kent M. Pitman</dc:contributor>
+<meta refines="#editor" property="role" scheme="marc:relators">edt</meta>
+<dc:contributor id="producer">Symbolics Pte Ltd</dc:contributor>
+<meta refines="#producer" property="role" scheme="marc:relators">bkp</meta>
+<dc:publisher>Symbolics Pte Ltd</dc:publisher>
+<dc:date>2026-11-23</dc:date>
 <dc:language>en</dc:language>
+<dc:type>Text</dc:type>
 <dc:subject>Common Lisp</dc:subject>
 <dc:subject>Programming languages</dc:subject>
-<meta property="dcterms:modified">2026-11-21T08:14:20Z</meta>
+<dc:source>Draft proposed American National Standard for Information Systems, Programming Language Common Lisp, X3J13/94-101R (dpANS3R), 1994</dc:source>
+<dc:relation>ANSI X3.226-1994 (now INCITS 226-1994 [R2018])</dc:relation>
+<dc:description>A structured EPUB edition of the X3J13 draft proposed ANSI Common Lisp standard (dpANS3R), with per-symbol anchors and a machine-readable symbol inventory. This is not the ANSI standard; the published standard is definitive, and this edition has no formal standing.</dc:description>
+<dc:rights>Copyright © 2026 Symbolics Pte Ltd. All rights reserved. This edition may be copied and distributed only in complete and unmodified form, not for direct commercial advantage, and only with notice that copying, distribution, display or transmission is by permission of Symbolics Pte Ltd. Permission to make modified copies, to make partial copies, or to create derivative works is expressly not granted. Provided "as is", without warranty of any kind, express or implied.</dc:rights>
+<meta property="dcterms:rightsHolder">Symbolics Pte Ltd</meta>
+<meta property="dcterms:modified">2026-11-23T00:00:00Z</meta>
 <meta name="cover" content="cover-image"/>
 <meta property="schema:accessMode">textual</meta>
 <meta property="schema:accessModeSufficient">textual</meta>
@@ -22,6 +40,7 @@
 <item id="css" href="css/book.css" media-type="text/css"/>
 <item id="cover-image" href="images/cover.png" media-type="image/png" properties="cover-image"/>
 <item id="cover" href="text/cover.xhtml" media-type="application/xhtml+xml"/>
+<item id="legal" href="text/front/legal.xhtml" media-type="application/xhtml+xml"/>
 <item id="f0000" href="text/1-introduction/index.xhtml" media-type="application/xhtml+xml"/>
 <item id="f0001" href="text/1-introduction/1.1-scope-purpose-and-history.xhtml" media-type="application/xhtml+xml"/>
 <item id="f0002" href="text/1-introduction/1.2-organization-of-the-document.xhtml" media-type="application/xhtml+xml"/>
@@ -867,6 +886,7 @@
 </manifest>
 <spine toc="ncx">
 <itemref idref="cover" linear="yes"/>
+<itemref idref="legal"/>
 <itemref idref="nav" linear="yes"/>
 <itemref idref="f0000"/>
 <itemref idref="f0001"/>
