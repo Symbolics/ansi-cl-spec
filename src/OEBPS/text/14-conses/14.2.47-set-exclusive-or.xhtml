@@ -89,9 +89,9 @@ might share storage with one of <i>list-1</i> or <i>list-2</i>.
  (set-exclusive-or lst1 lst2 :test #'equal) → ("A" "a")
  (set-exclusive-or lst1 lst2 :test 'equalp) →  NIL 
  (nset-exclusive-or lst1 lst2) → ("a" "b" "A" "b") 
- (setq lst1 (list (("a" . "b") ("c" . "d") ("e" . "f"))))
+ (setq lst1 (copy-list '(("a" . "b") ("c" . "d") ("e" . "f"))))
 → (("a" . "b") ("c" . "d") ("e" . "f"))
- (setq lst2 (list (("c" . "a") ("e" . "b") ("d" . "a"))))
+ (setq lst2 (copy-list '(("c" . "a") ("e" . "b") ("d" . "a"))))
 → (("c" . "a") ("e" . "b") ("d" . "a")) 
  (nset-exclusive-or lst1 lst2 :test #'string= :key #'cdr)
 → (("c" . "d") ("e" . "f") ("c" . "a") ("d" . "a")) 

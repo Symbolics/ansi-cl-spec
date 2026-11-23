@@ -52,7 +52,7 @@ referred to outside the <i><a href="../26-glossary/d.xhtml#dynamicextent">dynami
  (defmacro machook (x y) `(/ (+ ,x ,y) 2)) →  MACHOOK 
  (macroexpand '(machook 1 2)) → (/ (+ 1 2) 2), <i><a href="../26-glossary/t.xhtml#true">true</a></i> 
  (let ((*macroexpand-hook* #'hook)) (macroexpand '(machook 1 2)))
-▷ Now expanding (MACHOOK 1 2) 
+▷ Now expanding: (MACHOOK 1 2) 
 → (/ (+ 1 2) 2), <i><a href="../26-glossary/t.xhtml#true">true</a></i>
 </pre>
 

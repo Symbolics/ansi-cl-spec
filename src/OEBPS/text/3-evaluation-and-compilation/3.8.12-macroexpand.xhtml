@@ -99,7 +99,7 @@ as established by <a href="3.8.10-defmacro.xhtml#DictEntry_defmacro_292"><b>defm
 
 <pre> (defmacro alpha (x y) `(beta ,x ,y)) →  ALPHA
  (defmacro beta (x y) `(gamma ,x ,y)) →  BETA
- (defmacro delta (x y) `(gamma ,x ,y)) →  EPSILON
+ (defmacro delta (x y) `(gamma ,x ,y)) →  DELTA
  (defmacro expand (form &amp;environment env)
    (multiple-value-bind (expansion expanded-p)
        (macroexpand form env)

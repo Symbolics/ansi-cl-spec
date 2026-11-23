@@ -56,7 +56,7 @@ Two values are returned:
  (defmethod gf2 ((a integer))
    (list a b c d e f))
 → #&lt;STANDARD-METHOD GF2 (INTEGER) 42701775&gt;
- (function-keywords (find-method #'gf1 '() (list (find-class 'integer))))
+ (function-keywords (find-method #'gf2 '() (list (find-class 'integer))))
 → (), <i><a href="../26-glossary/f.xhtml#false">false</a></i>
  (defmethod gf3 ((a integer) &amp;key b c d &amp;allow-other-keys)
    (list a b c d e f))

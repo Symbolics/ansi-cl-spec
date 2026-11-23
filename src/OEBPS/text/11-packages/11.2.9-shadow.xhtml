@@ -59,9 +59,9 @@ of <i>package</i>.
 </p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (package-shadowing-symbols (make-package 'temp)) →  NIL
- (find-symbol 'car 'temp) →  CAR, :INHERITED
+ (find-symbol "CAR" 'temp) →  CAR, :INHERITED
  (shadow 'car 'temp) →  T
- (find-symbol 'car 'temp) →  TEMP::CAR, :INTERNAL
+ (find-symbol "CAR" 'temp) →  TEMP::CAR, :INTERNAL
  (package-shadowing-symbols 'temp) → (TEMP::CAR)
 </pre>
 

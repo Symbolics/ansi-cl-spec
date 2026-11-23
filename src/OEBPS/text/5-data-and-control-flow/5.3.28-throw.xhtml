@@ -72,7 +72,7 @@ and therefore it is the target of the second <a href="#DictEntry_throw_414"><b>t
 </pre>
 
 <p>
-The following prints "<code>The inner catch returns :SECOND-THROW</code>"
+The following prints "<code>The inner catch returns :SECOND-THROW.</code>"
 and then returns <code>:outer-catch</code>.
 
 </p><pre> (catch 'foo
@@ -81,7 +81,7 @@ and then returns <code>:outer-catch</code>.
                      (unwind-protect (throw 'foo :first-throw)
                          (throw 'foo :second-throw))))
          :outer-catch)
-▷ The inner catch returns :SECOND-THROW
+▷ The inner catch returns :SECOND-THROW.
 → :OUTER-CATCH
 </pre>
 

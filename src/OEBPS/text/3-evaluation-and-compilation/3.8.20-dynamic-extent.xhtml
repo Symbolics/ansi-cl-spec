@@ -193,7 +193,7 @@ the <i><a href="../26-glossary/l.xhtml#list">list</a></i> which contained it.
      ((null l))
    (declare (dynamic-extent l))
    (let ((name (package-name (car l))))
-     (when (string-search "COMMON-LISP" name) (print name))))
+     (when (search "COMMON-LISP" name) (print name))))
 ▷"COMMON-LISP"
 ▷"COMMON-LISP-USER"
 →  NIL

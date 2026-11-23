@@ -90,8 +90,8 @@ will either output something else or will signal an error (as described above).
 ;; This is setup code is shared between the examples
 ;; of three hypothetical implementations which follow.
  (setq table (make-hash-table)) → #&lt;HASH-TABLE EQL 0/120 32005763&gt; 
- (setf (gethash table 1) 'one) →  ONE
- (setf (gethash table 2) 'two) →  TWO
+ (setf (gethash 1 table) 'one) →  ONE
+ (setf (gethash 2 table) 'two) →  TWO
 
 ;; Implementation A
  (let ((*print-readably* t)) (print table))

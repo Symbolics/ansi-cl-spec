@@ -32,7 +32,7 @@ that a warning has already been dealt with and that no further action is warrant
        (when r 
          (push c *saved-warnings*)
          (invoke-restart r)))))
-→  CUSTOM-WARNING-HANDLER
+→  QUIET-WARNING-HANDLER
  (defmacro with-quiet-warnings (&amp;body forms)
    `(let ((*all-quiet* t)
           (*saved-warnings* '()))

@@ -82,11 +82,11 @@ report the <i><a href="../26-glossary/r.xhtml#restart">restart</a></i>.
      (let ((result 1))
        (dotimes (i x result)
          (setq result (* 2 result))
-         (unless (fixnump result)
+         (unless (typep result 'fixnum)
            (error "Power of 2 is too large."))))))
 COMPUTE-FIXNUM-POWER-OF-2
  (defun compute-power-of-2 (x)
-   (or (compute-fixnum-power-of-2 x) 'something big))
+   (or (compute-fixnum-power-of-2 x) 'something-big))
 COMPUTE-POWER-OF-2
  (compute-power-of-2 10)
 1024
