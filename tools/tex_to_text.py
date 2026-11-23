@@ -82,7 +82,7 @@ CONST = {
     "key": "&key", "opt": "&optional", "optional": "&optional", "rest": "&rest",
     "body": "&body", "whole": "&whole", "aux": "&aux", "environment": "&environment",
     "allowotherkeys": "&allow-other-keys",
-    "EV": "\u2192", "OUT": "\u25b7", "EQ": "==", "OV": "OR\u2192", "NV": "NOT\u2192",
+    "EV": "\u2192", "OUT": "\u25b7", "EQ": "\u2261", "OV": "OR\u2192", "NV": "NOT\u2192",
     "None": "None.", "clisp": "Common Lisp", "Lisp": "Lisp", "CLOS": "object system",
     "OS": "object system", "CLtL": "Common Lisp: The Language", "CLtLTwo": "Common Lisp: The Language, Second Edition",
     "eval": "evaluated", "noeval": "not evaluated", "evalspecial": "evaluated as described below",

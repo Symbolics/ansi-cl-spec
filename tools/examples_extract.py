@@ -184,13 +184,14 @@ def parse_expectation(text):
 STARTERS = "('`#;\"*+-0123456789<"
 
 
-TRAIL_PROSE_RE = re.compile(r"^(.*?\))\s*(==.*|(?:is|has|should|are|will)\s[A-Za-z].*)$", re.S)
+EQUIV = "\u2261"   # TeX \EQ ("is equivalent to"); older trees spell it "=="
+TRAIL_PROSE_RE = re.compile(r"^(.*?\))\s*((?:==|\u2261).*|(?:is|has|should|are|will)\s[A-Za-z].*)$", re.S)
 ERRORISH_RE = re.compile(r"\b(is an error|should signal an error|signals? an error|is erroneous)\b", re.I)
 
 
 def is_prose(line):
     s = clean(line).strip()
-    if s.startswith("==") or re.match(r"^\d+:\s", s):
+    if s.startswith(("==", EQUIV)) or re.match(r"^\d+:\s", s):
         return True
     if re.match(r"^\(\s*-?\d", s):          # "(0 0)": printed data, not a form
         return True

@@ -68,7 +68,7 @@ that <i>object</i> is returned, regardless of whether or not it is a <i><a href=
  (setq a '(1 2)) → (1 2)
  (eq a (list* a)) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
  (list 3 4 'a (car '(b . c)) (+ 6 -2)) → (3 4 A B 4)
- (list* 'a 'b 'c 'd) ==(cons 'a (cons 'b (cons 'c 'd))) → (A B C . D)
+ (list* 'a 'b 'c 'd) ≡ (cons 'a (cons 'b (cons 'c 'd))) → (A B C . D)
  (list* 'a 'b 'c '(d e f)) → (A B C D E F)
 </pre>
 
@@ -78,7 +78,7 @@ that <i>object</i> is returned, regardless of whether or not it is a <i><a href=
 
 </dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
-<pre> (list* <i>x</i>) ==<i>x</i>
+<pre> (list* <i>x</i>) ≡ <i>x</i>
 </pre>
 
 </dd></dl>

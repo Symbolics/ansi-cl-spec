@@ -179,7 +179,7 @@ as for <a href="#DictEntry_decode_float_847"><b>decode-float</b></a>:
 
 </p><pre> (multiple-value-bind (signif expon sign)
                       (integer-decode-float f)
-   (scale-float (float signif f) expon)) ==(abs f)
+   (scale-float (float signif f) expon)) ≡ (abs f)
 </pre>
 
 </dd><dt data-section="examples"><b>Examples:</b></dt><dd>
@@ -235,14 +235,14 @@ is exactly equal to the value of <i>float</i>.
 <pre> (multiple-value-bind (signif expon sign)
                       (decode-float f)
    (scale-float signif expon))
-==(abs f)
+≡ (abs f)
 </pre>
 and
 
 <pre> (multiple-value-bind (signif expon sign)
                       (decode-float f)
    (* (scale-float signif expon) sign))
-== f
+≡ f
 </pre>
 </dd></dl>
 </section>

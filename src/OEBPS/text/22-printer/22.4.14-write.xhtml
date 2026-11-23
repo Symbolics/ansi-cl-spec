@@ -246,23 +246,23 @@ Section <a href="22.3-formatted-output.xhtml#SubSection_FORMAT_Print_1305">22.3.
 The <i><a href="../26-glossary/f.xhtml#function">functions</a></i> <a href="#DictEntry_write_prin1_1354"><b>prin1</b></a> and <a href="#DictEntry_write_prin1_1354"><b>print</b></a> do not bind <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a>.
 
 <pre> (prin1 object output-stream)
-==(write object :stream output-stream :escape t)
+≡ (write object :stream output-stream :escape t)
 </pre>
 
 <pre> (princ object output-stream)
-==(write object stream output-stream :escape nil :readably nil)
+≡ (write object stream output-stream :escape nil :readably nil)
 </pre>
 
 
 <pre> (print object output-stream)
-==(progn (terpri output-stream)
+≡ (progn (terpri output-stream)
            (write object :stream output-stream
                          :escape t)
            (write-char #\space output-stream))
 </pre>
 
 <pre> (pprint object output-stream)
-==(write object :stream output-stream :escape t :pretty t)
+≡ (write object :stream output-stream :escape t :pretty t)
 </pre>
 </dd></dl>
 </section>

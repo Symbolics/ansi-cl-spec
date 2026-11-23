@@ -234,11 +234,11 @@ Section <a href="9.1-condition-system-concepts.xhtml#SubSubSubSec_Interfaces_t_6
 
 </dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
-<pre> (abort condition) ==(invoke-restart 'abort)
- (muffle-warning)  ==(invoke-restart 'muffle-warning)
- (continue)        ==(let ((r (find-restart 'continue))) (if r (invoke-restart r)))
- (use-value <i>x</i>) ==(let ((r (find-restart 'use-value))) (if r (invoke-restart r <i>x</i>)))
- (store-value x) ==(let ((r (find-restart 'store-value))) (if r (invoke-restart r <i>x</i>)))
+<pre> (abort condition) ≡ (invoke-restart 'abort)
+ (muffle-warning)  ≡ (invoke-restart 'muffle-warning)
+ (continue)        ≡ (let ((r (find-restart 'continue))) (if r (invoke-restart r)))
+ (use-value <i>x</i>) ≡ (let ((r (find-restart 'use-value))) (if r (invoke-restart r <i>x</i>)))
+ (store-value x) ≡ (let ((r (find-restart 'store-value))) (if r (invoke-restart r <i>x</i>)))
 </pre>
 
 <p>

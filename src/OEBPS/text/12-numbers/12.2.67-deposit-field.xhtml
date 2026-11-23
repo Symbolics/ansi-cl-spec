@@ -53,7 +53,7 @@ and elsewhere contains the bits of <i>integer</i>.
 </dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (logbitp <i>j</i> (deposit-field <i>m</i> (byte <i>s</i> <i>p</i>) <i>n</i>))
- ==(if (and (&gt;= <i>j</i> <i>p</i>) (&lt; <i>j</i> (+ <i>p</i> <i>s</i>)))
+ ≡ (if (and (&gt;= <i>j</i> <i>p</i>) (&lt; <i>j</i> (+ <i>p</i> <i>s</i>)))
         (logbitp <i>j</i> <i>m</i>)
         (logbitp <i>j</i> <i>n</i>))
 </pre>

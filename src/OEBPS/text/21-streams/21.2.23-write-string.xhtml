@@ -77,11 +77,11 @@ but then outputs a newline afterwards.
 not the substring <i><a href="../26-glossary/b.xhtml#bounded">bounded</a></i> by <i>start</i> and <i>end</i>.
 
 <pre> (write-string string)
-==(dotimes (i (length string)
+≡ (dotimes (i (length string)
       (write-char (char string i)))
 
  (write-line string)
-==(prog1 (write-string string) (terpri))
+≡ (prog1 (write-string string) (terpri))
 </pre>
 
 

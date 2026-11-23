@@ -73,6 +73,15 @@ def test_trailing_prose_flags():
     assert b["form_text"] == "(a)" and b["expected_values"] == ["3"]
 
 
+@pytest.mark.parametrize("eq", ["==", "\u2261"])
+def test_equivalence_sign_is_prose(eq):
+    # "(a) EQ (b)" and a line that starts with the sign are equivalence notes, not forms or results
+    e = steps_of(" (a) %s(b) \u2192 3\n (c)\n %s (d)\n" % (eq, eq))
+    a, c = e["steps"]
+    assert a["form_text"] == "(a)" and a["expected_values"] == ["3"]
+    assert c["form_text"] == "(c)" and not c["expected_values"] and "(d)" not in c["form_text"]
+
+
 # ---------------------------------------------------------------- classification
 def step(values=None, out=None, nov=False, italics=None, alts=(), flags=(), form="(f)"):
     return {"form_text": form, "expected_values": values,

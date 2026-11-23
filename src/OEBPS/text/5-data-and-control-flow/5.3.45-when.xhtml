@@ -98,13 +98,13 @@ and the <a href="#DictEntry_when_unless_431"><b>unless</b></a> <i><a href="../26
 
 </dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
-<pre> (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(and <i>test</i> (progn <code>{</code><i>form</i><code>}</code>+))
- (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(cond (<i>test</i> <code>{</code><i>form</i><code>}</code>+))
- (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(if <i>test</i> (progn <code>{</code><i>form</i><code>}</code>+) nil)
- (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(unless (not <i>test</i>) <code>{</code><i>form</i><code>}</code>+)
- (unless <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(cond ((not <i>test</i>) <code>{</code><i>form</i><code>}</code>+))
- (unless <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(if <i>test</i> nil (progn <code>{</code><i>form</i><code>}</code>+))
- (unless <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(when (not <i>test</i>) <code>{</code><i>form</i><code>}</code>+)
+<pre> (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ≡ (and <i>test</i> (progn <code>{</code><i>form</i><code>}</code>+))
+ (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ≡ (cond (<i>test</i> <code>{</code><i>form</i><code>}</code>+))
+ (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ≡ (if <i>test</i> (progn <code>{</code><i>form</i><code>}</code>+) nil)
+ (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ≡ (unless (not <i>test</i>) <code>{</code><i>form</i><code>}</code>+)
+ (unless <i>test</i> <code>{</code><i>form</i><code>}</code>+) ≡ (cond ((not <i>test</i>) <code>{</code><i>form</i><code>}</code>+))
+ (unless <i>test</i> <code>{</code><i>form</i><code>}</code>+) ≡ (if <i>test</i> nil (progn <code>{</code><i>form</i><code>}</code>+))
+ (unless <i>test</i> <code>{</code><i>form</i><code>}</code>+) ≡ (when (not <i>test</i>) <code>{</code><i>form</i><code>}</code>+)
 </pre>
 
 </dd></dl>

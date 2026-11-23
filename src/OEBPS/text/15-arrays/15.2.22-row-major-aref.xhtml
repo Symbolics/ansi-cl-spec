@@ -49,13 +49,13 @@ which is referred to by the given <i>index</i>.
 
 </dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
-<pre> (row-major-aref array index) ==
+<pre> (row-major-aref array index) ≡
    (aref (make-array (array-total-size array)
                      :displaced-to array
                      :element-type (array-element-type array))
          index)
 
- (aref array i1 i2 ...) ==
+ (aref array i1 i2 ...) ≡
      (row-major-aref array (array-row-major-index array i1 i2))
 </pre>
 

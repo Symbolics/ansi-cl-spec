@@ -46,8 +46,8 @@ specified by <i>bytespec</i> is non-zero; otherwise returns <i><a href="../26-gl
 
 </dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
-<pre> (ldb-test bytespec n) ==
- (not (zerop (ldb bytespec n))) ==
+<pre> (ldb-test bytespec n) ≡
+ (not (zerop (ldb bytespec n))) ≡
  (logtest (ldb bytespec -1) n)
 </pre>
 

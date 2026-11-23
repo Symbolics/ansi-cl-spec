@@ -62,10 +62,10 @@ and then store the result back into the <i>place</i>.
 
 </dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
-<pre> (ldb <i>bs</i> (mask-field <i>bs</i> <i>n</i>)) ==(ldb <i>bs</i> <i>n</i>)
+<pre> (ldb <i>bs</i> (mask-field <i>bs</i> <i>n</i>)) ≡ (ldb <i>bs</i> <i>n</i>)
  (logbitp <i>j</i> (mask-field (byte <i>s</i> <i>p</i>) <i>n</i>))
-   ==(and (&gt;= <i>j</i> <i>p</i>) (&lt; <i>j</i> <i>s</i>) (logbitp <i>j</i> <i>n</i>))
- (mask-field <i>bs</i> <i>n</i>) ==(logand <i>n</i> (dpb -1 <i>bs</i> 0))
+   ≡ (and (&gt;= <i>j</i> <i>p</i>) (&lt; <i>j</i> <i>s</i>) (logbitp <i>j</i> <i>n</i>))
+ (mask-field <i>bs</i> <i>n</i>) ≡ (logand <i>n</i> (dpb -1 <i>bs</i> 0))
 </pre>
 
 </dd></dl>

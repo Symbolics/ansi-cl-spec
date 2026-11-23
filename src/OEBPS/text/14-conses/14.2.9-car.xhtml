@@ -298,10 +298,10 @@ error checking as if defined by appropriate calls to <a href="#DictEntry_car____
 The <i><a href="../26-glossary/c.xhtml#car">car</a></i> of a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> can also be altered by using <a href="14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplaca</b></a>,
 and the <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i> of a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> can be altered by using <a href="14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplacd</b></a>.
 
-<pre>(car <i>x</i>)    ==(first <i>x</i>)
-(cadr <i>x</i>)   ==(second <i>x</i>) ==(car (cdr <i>x</i>))
-(caddr <i>x</i>)  ==(third <i>x</i>)  ==(car (cdr (cdr <i>x</i>)))
-(cadddr <i>x</i>) ==(fourth <i>x</i>) ==(car (cdr (cdr (cdr <i>x</i>))))
+<pre>(car <i>x</i>)    ≡ (first <i>x</i>)
+(cadr <i>x</i>)   ≡ (second <i>x</i>) ≡ (car (cdr <i>x</i>))
+(caddr <i>x</i>)  ≡ (third <i>x</i>)  ≡ (car (cdr (cdr <i>x</i>)))
+(cadddr <i>x</i>) ≡ (fourth <i>x</i>) ≡ (car (cdr (cdr (cdr <i>x</i>))))
 </pre>
 
 </dd></dl>

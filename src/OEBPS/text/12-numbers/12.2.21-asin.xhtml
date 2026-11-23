@@ -65,7 +65,7 @@ functions can be defined mathematically for
     <td>
 
 Arc cosine</td>
-    <td><i> ( pi /2) - <code>arcsin </code> x </i></td>
+    <td><i> (π/2) - <code>arcsin </code> x </i></td>
   </tr>
   <tr>
     <td>Arc tangent</td>
@@ -88,11 +88,11 @@ If both <i>number1</i> and <i>number2</i> are supplied
 for <a href="#DictEntry_asin_acos__795"><b>atan</b></a>, the result is the arc tangent 
 of <i>number1</i>/<i>number2</i>.
 The value of <a href="#DictEntry_asin_acos__795"><b>atan</b></a> is always between
-<i>- pi </i> (exclusive) and <i> pi </i> (inclusive)
+<i>-π</i> (exclusive) and <i>π</i> (inclusive)
                 
  when minus zero is not supported.
 The range of the two-argument arc tangent when minus zero is supported
-includes <i>- pi </i>.
+includes <i>-π</i>.
                 
 
 </p><p>
@@ -106,7 +106,7 @@ the result is
 a <i>real</i>
 
 and lies between
-<i>- pi /2</i> and <i> pi /2</i> (both exclusive).
+<i>-π/2</i> and <i>π/2</i> (both exclusive).
 <i>number1</i> can be a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i> if <i>number2</i>
 is not supplied. If both are supplied, <i>number2</i> can be zero provided
 <i>number1</i> is not zero.  
@@ -126,9 +126,9 @@ one along the negative real axis to the left of <i>-1</i>
 (inclusive), continuous with quadrant II, and one along the positive real
 axis to the right of <i>1</i> (inclusive), continuous with quadrant IV.  The
 range is that strip of the complex plane containing numbers whose real
-part is between <i>- pi /2</i> and <i> pi /2</i>.  A number with real
-part equal to <i>- pi /2</i> is in the range if and only if its imaginary
-part is non-negative; a number with real part equal to <i> pi /2</i> is in
+part is between <i>-π/2</i> and <i>π/2</i>.  A number with real
+part equal to <i>-π/2</i> is in the range if and only if its imaginary
+part is non-negative; a number with real part equal to <i>π/2</i> is in
 the range if and only if its imaginary part is non-positive.
 
 </p><p>
@@ -136,7 +136,7 @@ the range if and only if its imaginary part is non-positive.
 The following definition for arc cosine determines the range and
 branch cuts:
 
-</p><p><i> <code>arccos </code> z =  pi /2- <code>arcsin </code> z</i>
+</p><p><i> <code>arccos </code> z = π/2- <code>arcsin </code> z</i>
 
 </p><p>
 or, which are equivalent,
@@ -155,9 +155,9 @@ one along the negative real axis to the left of <i>-1</i>
 axis to the right of <i>1</i> (inclusive), continuous with quadrant IV.  
 This is the same branch cut as for arc sine.
 The range is that strip of the complex plane containing numbers whose real
-part is between 0 and <i> pi </i>.  A number with real
+part is between 0 and <i>π</i>.  A number with real
 part equal to 0 is in the range if and only if its imaginary
-part is non-negative; a number with real part equal to <i> pi </i> is in
+part is non-negative; a number with real part equal to <i>π</i> is in
 the range if and only if its imaginary part is non-positive.
 
 </p><p>
@@ -177,12 +177,12 @@ one along the positive imaginary axis above <i>i</i>
 axis below <i>-i</i> (exclusive), continuous with quadrant IV.  
 The points <i>i</i> and <i>-i</i> are excluded from the domain.
 The range is that strip of the complex plane containing numbers whose real
-part is between <i>- pi /2</i> and <i> pi /2</i>.  A number with real
-part equal to <i>- pi /2</i> is in the range if and only if its imaginary
-part is strictly positive; a number with real part equal to <i> pi /2</i> is in
+part is between <i>-π/2</i> and <i>π/2</i>.  A number with real
+part equal to <i>-π/2</i> is in the range if and only if its imaginary
+part is strictly positive; a number with real part equal to <i>π/2</i> is in
 the range if and only if its imaginary part is strictly negative.  Thus the range of
 arc tangent is identical to that of arc sine with the points
-<i>- pi /2</i> and <i> pi /2</i> excluded.
+<i>-π/2</i> and <i>π/2</i> excluded.
 
 </p><p>
 For <a href="#DictEntry_asin_acos__795"><b>atan</b></a>,
@@ -223,55 +223,55 @@ implementations that support minus zero.
     <td><code> </code> y &gt;  0 </td>
     <td> x &gt;  0 </td>
     <td>Quadrant I</td>
-    <td>0 &lt; result &lt;  pi /2 </td>
+    <td>0 &lt; result &lt; π/2 </td>
   </tr>
   <tr>
     <td><code> </code> y &gt;  0 </td>
     <td> x =  0 </td>
     <td>Positive y-axis</td>
-    <td> pi /2</td>
+    <td>π/2</td>
   </tr>
   <tr>
     <td><code> </code> y &gt;  0 </td>
     <td> x &lt;  0 </td>
     <td>Quadrant II</td>
-    <td> pi /2 &lt; result &lt;  pi </td>
+    <td>π/2 &lt; result &lt; π</td>
   </tr>
   <tr>
     <td><code> </code> y =  0 </td>
     <td> x &lt;  0 </td>
     <td>Negative x-axis</td>
-    <td>  pi </td>
+    <td>π</td>
   </tr>
   <tr>
     <td><code>*</code> y = +0 </td>
     <td> x &lt;  0 </td>
     <td>Negative x-axis</td>
-    <td>+ pi </td>
+    <td>+π</td>
   </tr>
   <tr>
     <td><code>*</code> y = -0 </td>
     <td> x &lt;  0 </td>
     <td>Negative x-axis</td>
-    <td>- pi </td>
+    <td>-π</td>
   </tr>
   <tr>
     <td><code> </code> y &lt;  0 </td>
     <td> x &lt;  0 </td>
     <td>Quadrant III</td>
-    <td>- pi &lt; result &lt; - pi /2</td>
+    <td>-π &lt; result &lt; -π/2</td>
   </tr>
   <tr>
     <td><code> </code> y &lt;  0 </td>
     <td> x =  0 </td>
     <td>Negative y-axis</td>
-    <td>- pi /2</td>
+    <td>-π/2</td>
   </tr>
   <tr>
     <td><code> </code> y &lt;  0 </td>
     <td> x &gt;  0 </td>
     <td>Quadrant IV</td>
-    <td>- pi /2 &lt; result &lt; 0 </td>
+    <td>-π/2 &lt; result &lt; 0 </td>
   </tr>
   <tr>
     <td><code> </code> y =  0 </td>
@@ -295,13 +295,13 @@ implementations that support minus zero.
     <td><code>*</code> y = +0 </td>
     <td> x = -0 </td>
     <td>Origin</td>
-    <td>+ pi </td>
+    <td>+π</td>
   </tr>
   <tr>
     <td><code>*</code> y = -0 </td>
     <td> x = -0 </td>
     <td>Origin</td>
-    <td>- pi </td>
+    <td>-π</td>
   </tr>
 </tbody></table>
 

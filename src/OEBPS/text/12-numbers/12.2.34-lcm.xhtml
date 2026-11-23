@@ -43,20 +43,20 @@ the absolute value of that <i>integer</i> is returned.
 </p><p>
 For two arguments that are not both zero,
 
-</p><pre> (lcm a b) ==(/ (abs (* a b)) (gcd a b))
+</p><pre> (lcm a b) ≡ (/ (abs (* a b)) (gcd a b))
 </pre>
 
 <p>
 If one or both arguments are zero,
 
-</p><pre> (lcm a 0) ==(lcm 0 a) ==0
+</p><pre> (lcm a 0) ≡ (lcm 0 a) ≡ 0
 </pre>
 
 <p>
 
 For three or more arguments,
 
-</p><pre> (lcm a b c ... z) ==(lcm (lcm a b) c ... z)
+</p><pre> (lcm a b c ... z) ≡ (lcm (lcm a b) c ... z)
 </pre>
 
 </dd><dt data-section="examples"><b>Examples:</b></dt><dd>

@@ -42,7 +42,7 @@ the base of the natural logarithms.
 
 negative <i>number</i>.
 
-</p><pre> (log -1.0) ==(complex 0.0 (float pi 0.0))
+</p><pre> (log -1.0) ≡ (complex 0.0 (float pi 0.0))
 </pre>
 
 <p>
@@ -68,7 +68,7 @@ The mathematical definition of a complex logarithm
 is as follows, whether or not minus zero is supported by the
 implementation:
 
-</p><pre>(log <i>x</i>) ==(complex (log (abs <i>x</i>)) (phase <i>x</i>))
+</p><pre>(log <i>x</i>) ≡ (complex (log (abs <i>x</i>)) (phase <i>x</i>))
 </pre>
 
 
@@ -76,8 +76,8 @@ implementation:
 Therefore the range of the one-argument logarithm function is that strip
 of the complex plane containing numbers with imaginary parts between
 
-<i>- pi </i> (exclusive) and <i> pi </i> (inclusive) if minus zero is not supported,
-or <i>- pi </i> (inclusive) and <i> pi </i> (inclusive) if minus zero is supported.
+<i>-π</i> (exclusive) and <i>π</i> (inclusive) if minus zero is not supported,
+or <i>-π</i> (inclusive) and <i>π</i> (inclusive) if minus zero is supported.
 
 
 </p><p>
@@ -85,7 +85,7 @@ or <i>- pi </i> (inclusive) and <i> pi </i> (inclusive) if minus zero is suppor
 The two-argument logarithm function is defined as 
 
 </p><pre> (log <i>base</i> <i>number</i>)
- ==(/ (log <i>number</i>) (log <i>base</i>))
+ ≡ (/ (log <i>number</i>) (log <i>base</i>))
 </pre>
 
 <p>

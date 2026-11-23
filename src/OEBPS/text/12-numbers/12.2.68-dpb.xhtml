@@ -65,7 +65,7 @@ being right-justified, as if it were the result of <a href="12.2.69-ldb.xhtml#Di
 </dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (logbitp <i>j</i> (dpb <i>m</i> (byte <i>s</i> <i>p</i>) <i>n</i>))
- ==(if (and (&gt;= <i>j</i> <i>p</i>) (&lt; <i>j</i> (+ <i>p</i> <i>s</i>)))
+ ≡ (if (and (&gt;= <i>j</i> <i>p</i>) (&lt; <i>j</i> (+ <i>p</i> <i>s</i>)))
         (logbitp (- <i>j</i> <i>p</i>) <i>m</i>)
         (logbitp <i>j</i> <i>n</i>))
 </pre>

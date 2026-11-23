@@ -69,23 +69,23 @@ and
 ninth, and tenth <i><a href="../26-glossary/e.xhtml#element">elements</a></i> of <i>list</i>, respectively.
 Specifically,
 
-<pre> (first <i>list</i>)    == (car <i>list</i>)
- (second <i>list</i>)   == (car (cdr <i>list</i>))
- (third <i>list</i>)    == (car (cddr <i>list</i>))
- (fourth <i>list</i>)   == (car (cdddr <i>list</i>))
- (fifth <i>list</i>)    == (car (cddddr <i>list</i>))
- (sixth <i>list</i>)    == (car (cdr (cddddr <i>list</i>)))
- (seventh <i>list</i>)  == (car (cddr (cddddr <i>list</i>)))
- (eighth <i>list</i>)   == (car (cdddr (cddddr <i>list</i>)))
- (ninth <i>list</i>)    == (car (cddddr (cddddr <i>list</i>)))
- (tenth <i>list</i>)    == (car (cdr (cddddr (cddddr <i>list</i>))))
+<pre> (first <i>list</i>)    ≡ (car <i>list</i>)
+ (second <i>list</i>)   ≡ (car (cdr <i>list</i>))
+ (third <i>list</i>)    ≡ (car (cddr <i>list</i>))
+ (fourth <i>list</i>)   ≡ (car (cdddr <i>list</i>))
+ (fifth <i>list</i>)    ≡ (car (cddddr <i>list</i>))
+ (sixth <i>list</i>)    ≡ (car (cdr (cddddr <i>list</i>)))
+ (seventh <i>list</i>)  ≡ (car (cddr (cddddr <i>list</i>)))
+ (eighth <i>list</i>)   ≡ (car (cdddr (cddddr <i>list</i>)))
+ (ninth <i>list</i>)    ≡ (car (cddddr (cddddr <i>list</i>)))
+ (tenth <i>list</i>)    ≡ (car (cdr (cddddr (cddddr <i>list</i>))))
 </pre>
 
 <p>
 <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> can also be used with any of these functions to change an
 existing component.  The same equivalences apply.  For example:
 
-</p><pre> (setf (fifth <i>list</i>) <i>new-object</i>) ==(setf (car (cddddr <i>list</i>)) <i>new-object</i>)
+</p><pre> (setf (fifth <i>list</i>) <i>new-object</i>) ≡ (setf (car (cddddr <i>list</i>)) <i>new-object</i>)
 </pre>
 
 </dd><dt data-section="examples"><b>Examples:</b></dt><dd>
@@ -116,7 +116,7 @@ existing component.  The same equivalences apply.  For example:
 The ordinal numbering used here is one-origin,
 as opposed to the zero-origin numbering used by <a href="14.2.22-nth.xhtml#DictEntry_nth_935"><b>nth</b></a>:
 
-</p><pre> (fifth x) ==(nth 4 x)
+</p><pre> (fifth x) ≡ (nth 4 x)
 </pre>
 
 </dd></dl>

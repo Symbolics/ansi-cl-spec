@@ -231,13 +231,13 @@ Because the following functions are not associative,
 they take exactly two arguments rather than any number
 of arguments.
 
-</p><pre> (lognand <i>n1</i> <i>n2</i>) ==(lognot (logand <i>n1</i> <i>n2</i>))
- (lognor <i>n1</i> <i>n2</i>) ==(lognot (logior <i>n1</i> <i>n2</i>))
- (logandc1 <i>n1</i> <i>n2</i>) ==(logand (lognot <i>n1</i>) <i>n2</i>)
- (logandc2 <i>n1</i> <i>n2</i>) ==(logand <i>n1</i> (lognot <i>n2</i>))
- (logiorc1 <i>n1</i> <i>n2</i>) ==(logior (lognot <i>n1</i>) <i>n2</i>)
- (logiorc2 <i>n1</i> <i>n2</i>) ==(logior <i>n1</i> (lognot <i>n2</i>))
- (logbitp <i>j</i> (lognot <i>x</i>)) ==(not (logbitp <i>j</i> <i>x</i>))
+</p><pre> (lognand <i>n1</i> <i>n2</i>) ≡ (lognot (logand <i>n1</i> <i>n2</i>))
+ (lognor <i>n1</i> <i>n2</i>) ≡ (lognot (logior <i>n1</i> <i>n2</i>))
+ (logandc1 <i>n1</i> <i>n2</i>) ≡ (logand (lognot <i>n1</i>) <i>n2</i>)
+ (logandc2 <i>n1</i> <i>n2</i>) ≡ (logand <i>n1</i> (lognot <i>n2</i>))
+ (logiorc1 <i>n1</i> <i>n2</i>) ≡ (logior (lognot <i>n1</i>) <i>n2</i>)
+ (logiorc2 <i>n1</i> <i>n2</i>) ≡ (logior <i>n1</i> (lognot <i>n2</i>))
+ (logbitp <i>j</i> (lognot <i>x</i>)) ≡ (not (logbitp <i>j</i> <i>x</i>))
 </pre>
 
 </dd></dl>

@@ -57,8 +57,8 @@ the entry count is <code>0</code>.
 The following relationships are functionally correct, although in practice
 using <a href="#DictEntry_hash_table_c_1081"><b>hash-table-count</b></a> is probably much faster:
 
-<pre> (hash-table-count <i>table</i>) ==
- (loop for value being the hash-values of <i>table</i> count t) ==
+<pre> (hash-table-count <i>table</i>) ≡
+ (loop for value being the hash-values of <i>table</i> count t) ≡
  (let ((total 0))
    (maphash #'(lambda (key value)
                 (declare (ignore key value))

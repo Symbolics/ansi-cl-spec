@@ -53,7 +53,7 @@ Returns a <i><a href="../26-glossary/f.xhtml#function">function</a></i> that
 
 </dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
-<pre> (complement <i>x</i>) ==#'(lambda (&amp;rest arguments) (not (apply <i>x</i> arguments)))
+<pre> (complement <i>x</i>) ≡ #'(lambda (&amp;rest arguments) (not (apply <i>x</i> arguments)))
 </pre>
 
 <p>
@@ -61,13 +61,13 @@ In <i>Common Lisp</i>, functions with names like "<code><i>xxx</i>-if-not</code>
 are related to functions with names like "<code><i>xxx</i>-if</code>" 
 in that
 
-</p><pre>(<i>xxx</i>-if-not <i>f</i> . <i>arguments</i>) ==(<i>xxx</i>-if (complement <i>f</i>) . <i>arguments</i>)
+</p><pre>(<i>xxx</i>-if-not <i>f</i> . <i>arguments</i>) ≡ (<i>xxx</i>-if (complement <i>f</i>) . <i>arguments</i>)
 </pre>
 
 <p>
 For example,
 
-</p><pre> (find-if-not #'zerop '(0 0 3)) ==
+</p><pre> (find-if-not #'zerop '(0 0 3)) ≡
  (find-if (complement #'zerop) '(0 0 3)) → 3
 </pre>
 

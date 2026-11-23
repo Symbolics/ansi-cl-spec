@@ -344,10 +344,10 @@ can denote equivalent <i><a href="../26-glossary/c.xhtml#condition">condition</a
 
 </p><pre>(let ((c (make-condition 'arithmetic-error :operator '/ :operands '(7 0))))
   (error c))
-==(error 'arithmetic-error :operator '/ :operands '(7 0))
+≡ (error 'arithmetic-error :operator '/ :operands '(7 0))
 
 (error "Bad luck.")
-==(error 'simple-error :format-control "Bad luck." :format-arguments '())
+≡ (error 'simple-error :format-control "Bad luck." :format-arguments '())
 </pre>
 </section>
 </section>

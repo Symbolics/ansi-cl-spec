@@ -101,8 +101,8 @@ The following functional equivalences are true,
 although good <i><a href="../26-glossary/i.xhtml#implementation">implementations</a></i> will typically use a faster algorithm for
 achieving the same effect:
 
-<pre> (revappend <i>list</i> <i>tail</i>) ==(nconc (reverse <i>list</i>) <i>tail</i>)
- (nreconc <i>list</i> <i>tail</i>) ==(nconc (nreverse <i>list</i>) <i>tail</i>)
+<pre> (revappend <i>list</i> <i>tail</i>) ≡ (nconc (reverse <i>list</i>) <i>tail</i>)
+ (nreconc <i>list</i> <i>tail</i>) ≡ (nconc (nreverse <i>list</i>) <i>tail</i>)
 </pre>
 
 </dd></dl>

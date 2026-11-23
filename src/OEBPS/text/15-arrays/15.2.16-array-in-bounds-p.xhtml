@@ -55,7 +55,7 @@ otherwise returns <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
 </dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (array-in-bounds-p array subscripts)   
- ==(and (not (some #'minusp (list subscripts)))
+ ≡ (and (not (some #'minusp (list subscripts)))
          (every #'&lt; (list subscripts) (array-dimensions array)))
 </pre>
 </dd></dl>

@@ -38,7 +38,7 @@ Returns <i><a href="../26-glossary/t.xhtml#true">true</a></i> if <i>object</i> i
 <p>
 The <i><a href="../26-glossary/e.xhtml#emptylist">empty list</a></i> is not a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i>, so
 
-</p><pre> (consp '()) ==(consp 'nil) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+</p><pre> (consp '()) ≡ (consp 'nil) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
 </pre>
 
 </dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
@@ -47,7 +47,7 @@ The <i><a href="../26-glossary/e.xhtml#emptylist">empty list</a></i> is not a <i
 
 </dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
-<pre> (consp <i>object</i>) ==(typep <i>object</i> 'cons) ==(not (typep <i>object</i> 'atom)) ==(typep <i>object</i> '(not atom))
+<pre> (consp <i>object</i>) ≡ (typep <i>object</i> 'cons) ≡ (not (typep <i>object</i> 'atom)) ≡ (typep <i>object</i> '(not atom))
 </pre>
 
 </dd></dl>

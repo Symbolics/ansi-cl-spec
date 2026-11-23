@@ -97,8 +97,8 @@ the <i><a href="../26-glossary/p.xhtml#primaryvalue">primary value</a></i> <i>yi
 one or more <i><a href="../26-glossary/f.xhtml#form">forms</a></i> with side effects and return a <i><a href="../26-glossary/v.xhtml#value">value</a></i> that
 must be computed before some or all of the side effects happen.
 
-<pre> (prog1 {<i>form</i>}*) ==(values (multiple-value-prog1 {<i>form</i>}*))
- (prog2 <i>form1</i> {<i>form</i>}*) ==(let () <i>form1</i> (prog1 {<i>form</i>}*))
+<pre> (prog1 {<i>form</i>}*) ≡ (values (multiple-value-prog1 {<i>form</i>}*))
+ (prog2 <i>form1</i> {<i>form</i>}*) ≡ (let () <i>form1</i> (prog1 {<i>form</i>}*))
 </pre>
 
 </dd></dl>

@@ -76,7 +76,7 @@ Similarly,
 It is permissible for the <i><a href="../26-glossary/o.xhtml#object">object</a></i> 
 following the dot to be a <i><a href="../26-glossary/l.xhtml#list">list</a></i>:
 
-</p><pre> (a b c d . (e f . (g))) ==(a b c d e f g)
+</p><pre> (a b c d . (e f . (g))) ≡ (a b c d e f g)
 </pre>
 
 <p>
@@ -772,7 +772,7 @@ is treated by the <i>Lisp reader</i> as an abbreviation for and parsed identical
 to the <i><a href="../26-glossary/e.xhtml#expression">expression</a></i> <code>(function <i>expression</i>)</code>.
 See <a href="../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338"><b>function</b></a>.  For example,
 
-</p><pre>(apply #'+ l) ==(apply (function +) l)
+</p><pre>(apply #'+ l) ≡ (apply (function +) l)
 </pre>
 </section>
 <section>
@@ -946,8 +946,8 @@ the <code>#.</code> notation.
 <code>#B</code><i>rational</i> reads <i>rational</i> in binary (radix 2).
 For example, 
 
-</p><pre> #B1101 ==13 ;1101<i><sub>2</sub></i>
- #b101/11 ==5/3
+</p><pre> #B1101 ≡ 13 ;1101<i><sub>2</sub></i>
+ #b101/11 ≡ 5/3
 </pre>
 
 <p>
@@ -965,9 +965,9 @@ the <code>#B</code> does not have the syntax of a binary (<i>i.e.</i>,  radix 2)
 <code>#O</code><i>rational</i> reads <i>rational</i> in octal (radix 8).
 For example, 
 
-</p><pre> #o37/15 ==31/13
- #o777 ==511
- #o105 ==69 ;105<i><sub>8</sub></i>
+</p><pre> #o37/15 ≡ 31/13
+ #o777 ≡ 511
+ #o105 ≡ 69 ;105<i><sub>8</sub></i>
 </pre>
 
 <p>
@@ -986,8 +986,8 @@ the <code>#O</code> does not have the syntax of an octal (<i>i.e.</i>,  radix 8)
 The digits above <code>9</code> are the letters <code>A</code> through <code>F</code> (the lowercase
 letters <code>a</code> through <code>f</code> are also acceptable).  For example,
 
-</p><pre> #xF00 ==3840             
- #x105 ==261 ;105<i><sub>16</sub></i>
+</p><pre> #xF00 ≡ 3840             
+ #x105 ≡ 261 ;105<i><sub>16</sub></i>
 </pre>
 
 <p>
@@ -1345,7 +1345,7 @@ For examples, see Section <a href="../24-system-construction/24.1-system-constru
 except that it skips the <i>expression</i> if the <i>test</i> succeeds; 
 that is,
 
-</p><pre>#-<i>test</i> <i>expression</i> ==#+(not <i>test</i>) <i>expression</i>
+</p><pre>#-<i>test</i> <i>expression</i> ≡ #+(not <i>test</i>) <i>expression</i>
 </pre>
 
 <p>
