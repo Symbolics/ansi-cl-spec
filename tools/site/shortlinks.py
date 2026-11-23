@@ -65,8 +65,10 @@ def chooser_page(recs, site):
     return ("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\"/>\n"
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n"
             "<title>%s</title>\n"
-            "<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/site.css\"/>\n</head>\n<body>\n"
+            "<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/site.css\"/>\n"
+            "<script src=\"../assets/site.js\" defer=\"defer\"></script>\n</head>\n<body>\n"
             "<p><a href=\"../index.html\">ANSI Common Lisp</a> · <a href=\"../nav.xhtml\">Contents</a></p>\n"
+            "<div class=\"site-search\" hidden=\"hidden\"></div>\n"
             "<h1>%s</h1>\n<p>This symbol has several meanings:</p>\n<ul>\n%s\n</ul>\n"
             "</body>\n</html>\n") % (esc(name), esc(name), items)
 
@@ -81,8 +83,10 @@ def index_page(by_symbol):
     return ("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\"/>\n"
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n"
             "<title>Symbols</title>\n"
-            "<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/site.css\"/>\n</head>\n<body>\n"
+            "<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/site.css\"/>\n"
+            "<script src=\"../assets/site.js\" defer=\"defer\"></script>\n</head>\n<body>\n"
             "<p><a href=\"../index.html\">ANSI Common Lisp</a> · <a href=\"../nav.xhtml\">Contents</a></p>\n"
+            "<div class=\"site-search\" hidden=\"hidden\"></div>\n"
             "<h1>Symbols</h1>\n<p>%d symbols. Short links have the form <code>/s/&lt;symbol&gt;</code> and "
             "<code>/s/&lt;symbol&gt;.&lt;kind&gt;</code>.</p>\n<ul>\n%s\n</ul>\n"
             "</body>\n</html>\n") % (len(by_symbol), "\n".join(lines))

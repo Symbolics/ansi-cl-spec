@@ -8,13 +8,15 @@ written into src/:
   index.html            landing page (generated)
   nav.xhtml css/ images/ text/   copied from src/OEBPS/, with navigation chrome spliced into each page
   s/                    short symbol links (tools/site/shortlinks.py); /s/ is reserved
-  assets/site.css       stylesheet for the chrome (tools/site/assets/)
+  assets/site.css, site.js   stylesheet and script for the chrome (tools/site/assets/)
+  search.json           search index (tools/site/indexes.py)
   ANSI-Common-Lisp.epub inventory.json inventory.LICENSE   copied from dist/ (run ./build.sh first)
 
 Output is deterministic. The output directory is replaced.
 """
 import argparse
 import html
+import json
 import re
 import shutil
 import sys
@@ -22,7 +24,7 @@ from pathlib import Path
 
 # tools/site/ is imported as tools.site (a top-level name "site" would clash with the stdlib module)
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from tools.site import check, chrome, shortlinks, toc as tocmod  # noqa: E402
+from tools.site import check, chrome, indexes, shortlinks, toc as tocmod  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://symbolics.github.io/ansi-cl-spec/"
@@ -39,6 +41,7 @@ INDEX = """<!DOCTYPE html>
 <link rel="canonical" href="{site}"/>
 <link rel="stylesheet" type="text/css" href="css/book.css"/>
 <link rel="stylesheet" type="text/css" href="assets/site.css"/>
+<script src="assets/site.js" defer="defer"></script>
 <style>
 body {{ font-family: Georgia, "Times New Roman", serif; }}
 ul.start li {{ margin: 0.35em 0; }}
@@ -48,6 +51,7 @@ ul.start li {{ margin: 0.35em 0; }}
 <body>
 <h1>{title}</h1>
 <p><i>{subtitle}</i></p>
+<div class="site-search site-search-landing" hidden="hidden"></div>
 <p>Derived from {source}. Edition of {modified}.</p>
 
 <h2>Read</h2>
@@ -107,7 +111,9 @@ def add_navigation(oebps, out):
         f.write_text(chrome.add_chrome(f.read_text(encoding="utf-8"), toc, page, edition_title), encoding="utf-8")
     assets = out / "assets"
     assets.mkdir()
-    shutil.copyfile(Path(__file__).resolve().parent / "site" / "assets" / "site.css", assets / "site.css")
+    for name in ("site.css", "site.js"):
+        shutil.copyfile(Path(__file__).resolve().parent / "site" / "assets" / name, assets / name)
+    return toc
 
 
 def build_site(oebps, dist, out, site=SITE):
@@ -127,7 +133,9 @@ def build_site(oebps, dist, out, site=SITE):
     for name in DOWNLOADS:
         shutil.copyfile(dist / name, out / name)
     (out / "index.html").write_text(landing_page(oebps, site), encoding="utf-8")
-    add_navigation(oebps, out)
+    toc = add_navigation(oebps, out)
+    records = json.loads((out / "inventory.json").read_text(encoding="utf-8"))["entries"]
+    indexes.write_search(oebps, out, toc, records)
     shortlinks.write_short_pages(out / "inventory.json", out, site)
     return out
 

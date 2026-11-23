@@ -5,6 +5,7 @@ import re
 from .toc import NAV, COVER, relpath, shorten
 
 ASSET_CSS = "assets/site.css"
+ASSET_JS = "assets/site.js"
 LEGAL = "text/front/legal.xhtml#legal-title"
 BODY_OPEN = re.compile(r"<body(?:\s[^>]*)?>")
 
@@ -21,7 +22,8 @@ def label(title):
 
 def head_html(toc, page):
     out = ['<meta name="viewport" content="width=device-width, initial-scale=1"/>',
-           '<link rel="stylesheet" type="text/css" href="%s"/>' % relpath(ASSET_CSS, page)]
+           '<link rel="stylesheet" type="text/css" href="%s"/>' % relpath(ASSET_CSS, page),
+           '<script src="%s" defer="defer"></script>' % relpath(ASSET_JS, page)]
     if page != COVER:
         for rel, target in (("prev", toc.prev(page)), ("next", toc.next(page)), ("up", toc.up(page))):
             if target:
@@ -32,7 +34,8 @@ def head_html(toc, page):
 def header_html(toc, page, edition_title):
     h = ['<header class="site-header">',
          '<a class="site-title" href="%s">%s</a>' % (relpath("index.html", page), esc(edition_title)),
-         '<a class="site-contents" href="%s">Contents</a>' % relpath(NAV, page)]
+         '<a class="site-contents" href="%s">Contents</a>' % relpath(NAV, page),
+         '<div class="site-search" hidden="hidden"></div>']
     if page != COVER:
         h.append(crumbs_html(toc, page))
     h.append("</header>")

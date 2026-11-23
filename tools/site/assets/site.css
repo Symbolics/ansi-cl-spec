@@ -78,3 +78,51 @@ body.cover .site-header { padding-inline: 0.75rem; text-align: left; }
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 0.8rem;
 }
+
+/* Search (tools/site/assets/site.js). The box is hidden until the script builds it. */
+.site-search { position: relative; flex: 1 1 14em; min-width: 0; max-width: 26em; }
+.site-search[hidden] { display: none; }
+.site-search-input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.3em 0.6em;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--site-fg);
+  background: var(--site-bg);
+  border: 1px solid var(--site-line);
+  border-radius: 0.4em;
+}
+.site-search-input:focus { outline: 2px solid var(--site-link); outline-offset: 1px; }
+.site-search-landing { max-width: 32em; margin: 1em 0; }
+.site-search-landing .site-search-input { padding: 0.5em 0.75em; font-size: 1.1rem; }
+.site-search-status {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.site-search-results {
+  position: absolute;
+  z-index: 1000;
+  box-sizing: border-box;
+  max-width: calc(100% - 1rem);
+  max-height: 60vh;
+  margin: 0;
+  padding: 0.25em 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  list-style: none;
+  color: var(--site-fg);
+  background: var(--site-bg);
+  border: 1px solid var(--site-line);
+  border-radius: 0.4em;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+.site-search-results[hidden] { display: none; }
+.site-search-option, .site-search-note { padding: 0.35em 0.7em; overflow-wrap: anywhere; }
+.site-search-option { cursor: pointer; }
+.site-search-active { background: var(--site-bar); outline: 1px solid var(--site-link); outline-offset: -1px; }
+.site-search-label { font-weight: 600; }
+.site-search-kind, .site-search-note { color: var(--site-muted); }
