@@ -8,20 +8,20 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_proclaim_298" class="entry"><span class="secno">3.8.16</span> <span class="names"><span id="proclaim" data-symbol="proclaim">proclaim</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_proclaim_298" class="entry" data-kind="function"><span class="secno">3.8.16</span> <span class="names"><span id="proclaim" data-symbol="proclaim">proclaim</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>proclaim</b>
 <i>declaration-specifier</i>
   → <i><i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i></i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>declaration-specifier</i>—a <i><a href="../26-glossary/d.xhtml#declarationspecifier">declaration specifier</a></i>.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <i>Establishes</i> the <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i> specified by <i>declaration-specifier</i>
@@ -68,7 +68,7 @@ that can be used with <a href="#DictEntry_proclaim_298"><b>proclaim</b></a>.
 An implementation is free to support other (<i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i>)
 <i><a href="../26-glossary/d.xhtml#declarationidentifier">declaration identifiers</a></i> as well.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defun declare-variable-types-globally (type vars)
    (proclaim `(type ,type ,@vars))
@@ -80,13 +80,13 @@ An implementation is free to support other (<i><a href="../26-glossary/i.xhtml#i
 →  FLOAT
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="3.8.17-declaim.xhtml#DictEntry_declaim_299"><b>declaim</b></a>,
 <a href="3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a>,
 Section <a href="3.2-compilation.xhtml#Section_Compilation_213">3.2 Compilation</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 Although the <i>execution</i> of a <a href="#DictEntry_proclaim_298"><b>proclaim</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> 
 has effects that might affect compilation, the compiler does not make

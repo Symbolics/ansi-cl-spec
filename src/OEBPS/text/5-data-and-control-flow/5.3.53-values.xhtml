@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_values_439" class="entry"><span class="secno">5.3.53</span> <span class="names"><span id="values" data-symbol="values">values</span></span> <span class="kind">Accessor</span></h3>
+<h3 id="DictEntry_values_439" class="entry" data-kind="accessor"><span class="secno">5.3.53</span> <span class="names"><span id="values" data-symbol="values">values</span></span> <span class="kind">Accessor</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>values</b>
 <i><code>&amp;rest</code> object</i>
@@ -21,7 +21,7 @@
 
 (<b>setf</b>
 (<b>values</b> <i><code>&amp;rest</code> place</i>) <i>new-values</i>)
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -33,7 +33,7 @@
 <i>new-value</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 
@@ -47,7 +47,7 @@ returns the <i>objects</i> as <i><a href="../26-glossary/m.xhtml#multiplevalues"
 See Section <a href="5.1-generalized-reference.xhtml#SubSubSectio_VALUES_Forms_377">5.1.2.3 VALUES Forms as Places</a>.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (values) →  &lt; <i>no values</i> &gt; 
  (values 1) → 1
@@ -84,14 +84,14 @@ returns exactly one value for each of
 if any of <i>args</i> produces more than one value, all but the
 first are discarded.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.54-values-list.xhtml#DictEntry_values_list_440"><b>values-list</b></a>,
 <a href="5.3.48-multiple-value-bind.xhtml#DictEntry_multiple_val_434"><b>multiple-value-bind</b></a>,
 <a href="5.3.55-multiple-values-limit.xhtml#DictEntry_multiple_val_441"><b>multiple-values-limit</b></a>,
 Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 Since <a href="#DictEntry_values_439"><b>values</b></a> is a <i><a href="../26-glossary/f.xhtml#function">function</a></i>, not a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> or <i><a href="../26-glossary/s.xhtml#specialform">special form</a></i>,
 it receives as <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i> only the <i><a href="../26-glossary/p.xhtml#primaryvalue">primary values</a></i> of 

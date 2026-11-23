@@ -8,26 +8,26 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_return_412" class="entry"><span class="secno">5.3.26</span> <span class="names"><span id="return" data-symbol="return">return</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_return_412" class="entry" data-kind="macro"><span class="secno">5.3.26</span> <span class="names"><span id="return" data-symbol="return">return</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 
 <b>return</b>
 <i>[<i>result</i>]</i>
   →  <b>|</b> 
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>result</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>; evaluated.
   The default is <a href="5.3.30-nil.xhtml#DictEntry_nil_416"><b>nil</b></a>.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Returns, as if by <a href="5.3.25-return-from.xhtml#DictEntry_return_from_411"><b>return-from</b></a>, from the <i><a href="../26-glossary/b.xhtml#block">block</a></i> named <a href="5.3.30-nil.xhtml#DictEntry_nil_416"><b>nil</b></a>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (block nil (return) 1) →  NIL
  (block nil (return 1) 2) → 1
@@ -37,13 +37,13 @@ Returns, as if by <a href="5.3.25-return-from.xhtml#DictEntry_return_from_411"><
  (block nil (block nil (return 1) 2)) → 1
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.22-block.xhtml#DictEntry_block_408"><b>block</b></a>,
 <a href="5.3.25-return-from.xhtml#DictEntry_return_from_411"><b>return-from</b></a>,
 Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (return) ==(return-from nil)
  (return <i>form</i>) ==(return-from nil <i>form</i>)

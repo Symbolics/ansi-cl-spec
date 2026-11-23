@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_open_1220" class="entry"><span class="secno">21.2.29</span> <span class="names"><span id="open" data-symbol="open">open</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_open_1220" class="entry" data-kind="function"><span class="secno">21.2.29</span> <span class="names"><span id="open" data-symbol="open">open</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>open</b>
 <i>filespec <code>&amp;key</code> direction element-type
 				               if-exists if-does-not-exist
 						     external-format</i><br/> 
   → <i>stream</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>filespec</i>—a <i><a href="../26-glossary/p.xhtml#pathnamedesignator">pathname designator</a></i>.
 
@@ -69,7 +69,7 @@
 <i>stream</i>—a <i><a href="../26-glossary/f.xhtml#filestream">file stream</a></i> or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 
@@ -295,7 +295,7 @@ A file can be deleted, renamed, or destructively modified by <a href="#DictEntry
 For information about opening relative pathnames,
 see Section <a href="../19-filenames/19.2-pathnames.xhtml#SubSection_Merging_Path_1127">19.2.3 Merging Pathnames</a>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (open <i>filespec</i> :direction :probe)  → #&lt;Closed Probe File Stream...&gt;
  (setq q (merge-pathnames (user-homedir-pathname) "test"))
@@ -308,11 +308,11 @@ see Section <a href="../19-filenames/19.2-pathnames.xhtml#SubSection_Merging_Pat
  (open s :direction :output :if-exists nil) →  NIL 
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 The nature and state of the host computer's <i><a href="../26-glossary/f.xhtml#filesystem">file system</a></i>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If <i>if-exists</i> is <code>:error</code>, (subject to the
 constraints on the meaning of <i>if-exists</i> listed above),
@@ -366,7 +366,7 @@ to a <i><a href="../26-glossary/f.xhtml#file">file</a></i> in a given <i><a href
 an <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> to the same <i><a href="../26-glossary/f.xhtml#file">file</a></i> in the same <i><a href="../26-glossary/e.xhtml#elementtype">element type</a></i>
 should work compatibly.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 
 <a href="21.2.31-with-open-file.xhtml#DictEntry_with_open_fi_1222"><b>with-open-file</b></a>,
@@ -380,7 +380,7 @@ Section <a href="../19-filenames/19.1-overview-of-filenames.xhtml#SubSection_Pat
 
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 

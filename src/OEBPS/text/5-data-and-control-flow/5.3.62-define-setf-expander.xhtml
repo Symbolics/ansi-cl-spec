@@ -8,17 +8,17 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_define_setf__448" class="entry"><span class="secno">5.3.62</span> <span class="names"><span id="define-setf-expander" data-symbol="define-setf-expander">define-setf-expander</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_define_setf__448" class="entry" data-kind="macro"><span class="secno">5.3.62</span> <span class="names"><span id="define-setf-expander" data-symbol="define-setf-expander">define-setf-expander</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>define-setf-expander</b>
 <i>access-fn lambda-list
 			 [[{<i>declaration</i>}* <i>|</i> <i>documentation</i>]] {<i>form</i>}*</i><br/>   
   → <i>access-fn</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>access-fn</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> that <i><a href="../26-glossary/n.xhtml#name">names</a></i> a <i><a href="../26-glossary/f.xhtml#function">function</a></i> or <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>.
 
@@ -37,7 +37,7 @@
 </p><p>
 <i>forms</i>—an <i><a href="../26-glossary/i.xhtml#implicitprogn">implicit progn</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_define_setf__448"><b>define-setf-expander</b></a> specifies the means by which <a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> 
@@ -101,7 +101,7 @@ compile-time calls to <a href="5.3.63-get-setf-expansion.xhtml#DictEntry_get_set
 argument is a value received as the <i><a href="../26-glossary/e.xhtml#environmentparameter">environment parameter</a></i> of a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defun lastguy (x) (car (last x))) →  LASTGUY
  (define-setf-expander lastguy (x &amp;environment env)
@@ -148,7 +148,7 @@ argument is a value received as the <i><a href="../26-glossary/e.xhtml#environme
 </pre>
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a>,
 <a href="5.3.61-defsetf.xhtml#DictEntry_defsetf_447"><b>defsetf</b></a>,
@@ -156,7 +156,7 @@ argument is a value received as the <i><a href="../26-glossary/e.xhtml#environme
 <a href="5.3.63-get-setf-expansion.xhtml#DictEntry_get_setf_exp_449"><b>get-setf-expansion</b></a>,
 Section <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSection_Syntactic_In_265">3.4.11 Syntactic Interaction of Documentation Strings and Declarations</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <a href="#DictEntry_define_setf__448"><b>define-setf-expander</b></a> differs from the long form of <a href="5.3.61-defsetf.xhtml#DictEntry_defsetf_447"><b>defsetf</b></a>
 in that while the body is being executed the <i><a href="../26-glossary/v.xhtml#variable">variables</a></i>

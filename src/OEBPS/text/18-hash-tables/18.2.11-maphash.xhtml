@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_maphash_1088" class="entry"><span class="secno">18.2.11</span> <span class="names"><span id="maphash" data-symbol="maphash">maphash</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_maphash_1088" class="entry" data-kind="function"><span class="secno">18.2.11</span> <span class="names"><span id="maphash" data-symbol="maphash">maphash</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 
 <b>maphash</b>
@@ -20,7 +20,7 @@
   → <i><a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>
 </i><p><i></i>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>function</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>,
 		     the <i><a href="../26-glossary/k.xhtml#key">key</a></i> and the <i><a href="../26-glossary/v.xhtml#value">value</a></i>.
@@ -28,7 +28,7 @@
 <p>
 <i>hash-table</i>—a <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Iterates over all entries in the <i>hash-table</i>.  For each entry,
@@ -43,7 +43,7 @@ with two exceptions:
    to change the <i><a href="../26-glossary/v.xhtml#value">value</a></i> part of the entry currently being processed, 
 or it can use <a href="18.2.10-remhash.xhtml#DictEntry_remhash_1087"><b>remhash</b></a> to remove that entry.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq table (make-hash-table)) → #&lt;HASH-TABLE EQL 0/120 32304110&gt;
  (dotimes (i 10) (setf (gethash i table) i)) →  NIL
@@ -68,11 +68,11 @@ or it can use <a href="18.2.10-remhash.xhtml#DictEntry_remhash_1087"><b>remhash<
 →  NIL
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 None, other than any which might be done by the <i>function</i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../6-iteration/6.2.4-loop.xhtml#DictEntry_loop_517"><b>loop</b></a>,
 <a href="18.2.12-with-hash-table-iterator.xhtml#DictEntry_with_hash_ta_1089"><b>with-hash-table-iterator</b></a>,

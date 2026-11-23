@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_max_min_790" class="entry"><span class="secno">12.2.16</span> <span class="names"><span id="max" data-symbol="max">max</span>, <span id="min" data-symbol="min">min</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_max_min_790" class="entry" data-kind="function"><span class="secno">12.2.16</span> <span class="names"><span id="max" data-symbol="max">max</span>, <span id="min" data-symbol="min">min</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>max</b>
 <i><code>&amp;rest</code> reals+</i>
@@ -21,14 +21,14 @@
 <b>min</b>
 <i><code>&amp;rest</code> reals+</i>
   → <i>min-real</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>real</i>—a <i>real</i>.
 
 <p>
 <i>max-real</i>, <i>min-real</i>—a <i>real</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_max_min_790"><b>max</b></a> returns the <i>real</i> that is greatest (closest to positive infinity).
@@ -54,7 +54,7 @@ return the argument in its given format or expanded to the larger format.
 Similar remarks apply to <a href="#DictEntry_max_min_790"><b>min</b></a> 
 (replacing "largest argument" by "smallest argument").
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (max 3) → 3 
@@ -90,7 +90,7 @@ OR→1.0s0
 OR→1.0d0
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if any <i>number</i> is not a <i>real</i>.
 

@@ -8,22 +8,22 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_function_key_557" class="entry"><span class="secno">7.7.1</span> <span class="names"><span id="function-keywords" data-symbol="function-keywords">function-keywords</span></span> <span class="kind">Standard Generic Function</span></h3>
+<h3 id="DictEntry_function_key_557" class="entry" data-kind="standard-generic-function"><span class="secno">7.7.1</span> <span class="names"><span id="function-keywords" data-symbol="function-keywords">function-keywords</span></span> <span class="kind">Standard Generic Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>function-keywords</b>
 <i>method</i>
   →
 <i>keys, allow-other-keys-p</i>
 
-</dd><dt><b>Method Signatures:</b></dt><dd>
+</dd><dt data-section="method-signatures"><b>Method Signatures:</b></dt><dd>
 
 <b>function-keywords</b>
 <i>(<i>method</i> <a href="../4-types-and-classes/4.4.12-standard-method.xhtml#DictEntry_standard_met_347"><b>standard-method</b></a>)</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>method</i>—a <i><a href="../26-glossary/m.xhtml#method">method</a></i>.
 
@@ -33,7 +33,7 @@
 </p><p>
 <i>allow-other-keys-p</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Returns the keyword parameter specifiers for a <i>method</i>.
 
@@ -43,7 +43,7 @@ Two values are returned:
  and a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i> that states whether <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a>
   had been specified in the <i>method</i> definition.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defmethod gf1 ((a integer) &amp;optional (b 2)
                  &amp;key (c 3) ((:dee d) 4) e ((eff f)))
@@ -64,11 +64,11 @@ Two values are returned:
 → (:B :C :D), <i><a href="../26-glossary/t.xhtml#true">true</a></i>
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="7.7.27-defmethod.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="7.7.27-defmethod.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a>
 

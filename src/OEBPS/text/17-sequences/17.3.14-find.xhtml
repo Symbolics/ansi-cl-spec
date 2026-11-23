@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_find_find_i_1054" class="entry"><span class="secno">17.3.14</span> <span class="names"><span id="find" data-symbol="find">find</span>, <span id="find-if" data-symbol="find-if">find-if</span>, <span id="find-if-not" data-symbol="find-if-not">find-if-not</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_find_find_i_1054" class="entry" data-kind="function"><span class="secno">17.3.14</span> <span class="names"><span id="find" data-symbol="find">find</span>, <span id="find-if" data-symbol="find-if">find-if</span>, <span id="find-if-not" data-symbol="find-if-not">find-if-not</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>find</b>
 <i>item sequence <code>&amp;key</code> from-end test test-not start end key</i>
@@ -25,7 +25,7 @@
 <b>find-if-not</b>
 <i>predicate sequence <code>&amp;key</code> from-end start end key</i>
   → <i>element</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>item</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -64,7 +64,7 @@
 </p><p>
 <i>element</i>—an <i><a href="../26-glossary/e.xhtml#element">element</a></i> of the <i>sequence</i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_find_find_i_1054"><b>find</b></a>, <a href="#DictEntry_find_find_i_1054"><b>find-if</b></a>, and <a href="#DictEntry_find_find_i_1054"><b>find-if-not</b></a> 
 each search for an <i><a href="../26-glossary/e.xhtml#element">element</a></i> of the <i>sequence</i>
@@ -86,7 +86,7 @@ depending on <i>from-end</i>,
 is returned;
 otherwise <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> is returned.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (find #\d "here are some letters that can be looked at" :test #'char&gt;)
 → #\Space 
@@ -96,11 +96,11 @@ otherwise <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>
              :start 2) →  NIL 
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>sequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="17.3.15-position.xhtml#DictEntry_position_po_1055"><b>position</b></a>,
 Section <a href="17.2-rules-about-test-functions.xhtml#Section_Rules_about__1035">17.2 Rules about Test Functions</a>,
@@ -108,7 +108,7 @@ Section <a href="17.2-rules-about-test-functions.xhtml#Section_Rules_about__1035
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The <code>:test-not</code> <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> is deprecated.

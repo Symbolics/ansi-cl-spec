@@ -8,17 +8,17 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_locally_309" class="entry"><span class="secno">3.8.27</span> <span class="names"><span id="locally" data-symbol="locally">locally</span></span> <span class="kind">Special Operator</span></h3>
+<h3 id="DictEntry_locally_309" class="entry" data-kind="special-operator"><span class="secno">3.8.27</span> <span class="names"><span id="locally" data-symbol="locally">locally</span></span> <span class="kind">Special Operator</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 
 <b>locally</b>
 <i>{<i>declaration</i>}* {<i>form</i>}*</i>
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>Declaration</i>—a <a href="3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="../26-glossary/e.xhtml#expression">expression</a></i>; not evaluated.
 
@@ -30,13 +30,13 @@
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> of the <i>forms</i>.
 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Sequentially evaluates a body of <i>forms</i>
 in a <i><a href="../26-glossary/l.xhtml#lexicalenvironment">lexical environment</a></i> where the given <i>declarations</i> have effect.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defun sample-function (y)  ;this y is regarded as special
    (declare (special y))                                
@@ -72,11 +72,11 @@ in a <i><a href="../26-glossary/l.xhtml#lexicalenvironment">lexical environment<
 </pre>
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The <a href="3.8.26-special.xhtml#DictEntry_special_308"><b>special</b></a> declaration may be used with <a href="#DictEntry_locally_309"><b>locally</b></a>
 to affect references to, rather than <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i> of, <i><a href="../26-glossary/v.xhtml#variable">variables</a></i>.

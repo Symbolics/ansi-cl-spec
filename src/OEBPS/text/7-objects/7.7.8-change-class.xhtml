@@ -8,17 +8,17 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_change_class_564" class="entry"><span class="secno">7.7.8</span> <span class="names"><span id="change-class" data-symbol="change-class">change-class</span></span> <span class="kind">Standard Generic Function</span></h3>
+<h3 id="DictEntry_change_class_564" class="entry" data-kind="standard-generic-function"><span class="secno">7.7.8</span> <span class="names"><span id="change-class" data-symbol="change-class">change-class</span></span> <span class="kind">Standard Generic Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 
 <b>change-class</b>
 <i>instance new-class <code>&amp;key</code> <code>&amp;allow-other-keys</code></i>
   → <i>instance</i>
-</dd><dt><b>Method Signatures:</b></dt><dd>
+</dd><dt data-section="method-signatures"><b>Method Signatures:</b></dt><dd>
 
 
 <b>change-class</b>
@@ -30,7 +30,7 @@
 <i>(<i>instance</i> <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>)
 		         (<i>new-class</i> <a href="../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675"><b>symbol</b></a>)
 			 <code>&amp;rest</code> initargs</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>instance</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -42,7 +42,7 @@
 <i>initargs</i>—an <i><a href="../26-glossary/i.xhtml#initializationargumentlist">initialization argument list</a></i>.
 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 The <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <a href="#DictEntry_change_class_564"><b>change-class</b></a> changes the 
 <i><a href="../26-glossary/c.xhtml#class">class</a></i> of an <i>instance</i> to <i>new-class</i>.  
@@ -76,7 +76,7 @@ on <i>instance</i>, <code>(find-class <i>new-class</i>)</code>,
 and the <i>initargs</i>.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defclass position () ())
   
@@ -114,12 +114,12 @@ and the <i>initargs</i>.
  
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="7.7.6-update-instance-for-different-class.xhtml#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a>,
 Section <a href="7.2-changing-the-class-of-an-instance.xhtml#Section_Changing_the_528">7.2 Changing the Class of an Instance</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The generic function <a href="#DictEntry_change_class_564"><b>change-class</b></a> has several semantic
 difficulties.  First, it performs a destructive operation that can be

@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_array_dimens_990" class="entry"><span class="secno">15.2.12</span> <span class="names"><span id="array-dimensions" data-symbol="array-dimensions">array-dimensions</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_array_dimens_990" class="entry" data-kind="function"><span class="secno">15.2.12</span> <span class="names"><span id="array-dimensions" data-symbol="array-dimensions">array-dimensions</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>array-dimensions</b>
 <i>array</i>
   → <i>dimensions</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>array</i>—an <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
 
@@ -27,25 +27,25 @@
 
 <i>dimensions</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/i.xhtml#integer">integers</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Returns a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of the <i><a href="../26-glossary/d.xhtml#dimension">dimensions</a></i> of <i>array</i>.
 (If <i>array</i> is a <i><a href="../26-glossary/v.xhtml#vector">vector</a></i> with a <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>, 
  that <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i> is ignored.)
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (array-dimensions (make-array 4)) → (4)
  (array-dimensions (make-array '(2 3))) → (2 3)
  (array-dimensions (make-array 4 :fill-pointer 2)) → (4)
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if its argument is not an <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="15.2.11-array-dimension.xhtml#DictEntry_array_dimens_989"><b>array-dimension</b></a>
 

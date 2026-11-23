@@ -8,17 +8,17 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_compile_file_1407" class="entry"><span class="secno">24.2.2</span> <span class="names"><span id="compile-file-pathname" data-symbol="compile-file-pathname">compile-file-pathname</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_compile_file_1407" class="entry" data-kind="function"><span class="secno">24.2.2</span> <span class="names"><span id="compile-file-pathname" data-symbol="compile-file-pathname">compile-file-pathname</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 
 <b>compile-file-pathname</b>
 <i>input-file <code>&amp;key</code> output-file <code>&amp;allow-other-keys</code></i>
   → <i>pathname</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>input-file</i>—a <i><a href="../26-glossary/p.xhtml#pathnamedesignator">pathname designator</a></i>.
   (Default fillers for unspecified components are taken from
@@ -31,7 +31,7 @@
 </p><p>
 <i>pathname</i>—a <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Returns the <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i> that <a href="24.2.1-compile-file.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> would write into,
 if given the same arguments.
@@ -72,18 +72,18 @@ created with <a href="../21-streams/21.2.42-make-two-way-stream.xhtml#DictEntry_
 If an implementation supports additional keyword arguments to <a href="24.2.1-compile-file.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>, 
 <a href="#DictEntry_compile_file_1407"><b>compile-file-pathname</b></a> must accept the same arguments.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 See <a href="../19-filenames/19.4.8-logical-pathname-translations.xhtml#DictEntry_logical_path_1151"><b>logical-pathname-translations</b></a>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../20-files/20.2.9-file-error.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> might be signaled if either <i>input-file</i> or
 <i>output-file</i> is <i><a href="../26-glossary/w.xhtml#wild">wild</a></i>.
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 
 <a href="24.2.1-compile-file.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>,

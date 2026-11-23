@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_listen_1225" class="entry"><span class="secno">21.2.34</span> <span class="names"><span id="listen" data-symbol="listen">listen</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_listen_1225" class="entry" data-kind="function"><span class="secno">21.2.34</span> <span class="names"><span id="listen" data-symbol="listen">listen</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>listen</b>
 <i><code>&amp;optional</code> input-stream</i>
   → <i>generalized-boolean</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>input-stream</i>—an <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#streamdesignator">stream designator</a></i>.
  The default is <i><a href="../26-glossary/s.xhtml#standardinput">standard input</a></i>.
@@ -25,7 +25,7 @@
 <p>
 <i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Returns <i><a href="../26-glossary/t.xhtml#true">true</a></i> if 
@@ -38,7 +38,7 @@ If an <i><a href="../26-glossary/e.xhtml#endoffile">end of file</a></i> is encou
 when <i>input-stream</i> obtains characters
 from an interactive device such as a keyboard.  
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (progn (unread-char (read-char)) (list (listen) (read-char)))
 ▷<span class="user">1</span>
@@ -47,11 +47,11 @@ from an interactive device such as a keyboard.
 →  NIL ;Unless you're a very fast typist!
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-input*</b></a>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="21.2.10-interactive-stream-p.xhtml#DictEntry_interactive__1201"><b>interactive-stream-p</b></a>,
 <a href="21.2.18-read-char-no-hang.xhtml#DictEntry_read_char_no_1209"><b>read-char-no-hang</b></a>

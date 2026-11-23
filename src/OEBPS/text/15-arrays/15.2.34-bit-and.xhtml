@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_bit_and_bit_1012" class="entry"><span class="secno">15.2.34</span> <span class="names"><span id="bit-and" data-symbol="bit-and">bit-and</span>, <span id="bit-andc1" data-symbol="bit-andc1">bit-andc1</span>, <span id="bit-andc2" data-symbol="bit-andc2">bit-andc2</span>, <span id="bit-eqv" data-symbol="bit-eqv">bit-eqv</span>, <span id="bit-ior" data-symbol="bit-ior">bit-ior</span>, <span id="bit-nand" data-symbol="bit-nand">bit-nand</span>, <span id="bit-nor" data-symbol="bit-nor">bit-nor</span>, <span id="bit-not" data-symbol="bit-not">bit-not</span>, <span id="bit-orc1" data-symbol="bit-orc1">bit-orc1</span>, <span id="bit-orc2" data-symbol="bit-orc2">bit-orc2</span>, <span id="bit-xor" data-symbol="bit-xor">bit-xor</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_bit_and_bit_1012" class="entry" data-kind="function"><span class="secno">15.2.34</span> <span class="names"><span id="bit-and" data-symbol="bit-and">bit-and</span>, <span id="bit-andc1" data-symbol="bit-andc1">bit-andc1</span>, <span id="bit-andc2" data-symbol="bit-andc2">bit-andc2</span>, <span id="bit-eqv" data-symbol="bit-eqv">bit-eqv</span>, <span id="bit-ior" data-symbol="bit-ior">bit-ior</span>, <span id="bit-nand" data-symbol="bit-nand">bit-nand</span>, <span id="bit-nor" data-symbol="bit-nor">bit-nor</span>, <span id="bit-not" data-symbol="bit-not">bit-not</span>, <span id="bit-orc1" data-symbol="bit-orc1">bit-orc1</span>, <span id="bit-orc2" data-symbol="bit-orc2">bit-orc2</span>, <span id="bit-xor" data-symbol="bit-xor">bit-xor</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <table>
 <tbody><tr><td><b>bit-and</b> <i>bit-array1 bit-array2</i> <code>&amp;optional</code> 
@@ -40,7 +40,7 @@
 <b>bit-not</b>
 <i>bit-array <code>&amp;optional</code> opt-arg</i>
   → <i>resulting-bit-array</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>bit-array</i>, <i>bit-array1</i>, <i>bit-array2</i>—a <i><a href="../26-glossary/b.xhtml#bitarray">bit array</a></i>.
 
@@ -56,7 +56,7 @@
 </p><p>
 <i>resulting-bit-array</i>—a <i><a href="../26-glossary/b.xhtml#bitarray">bit array</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 These functions perform 
@@ -107,7 +107,7 @@ performed by each of the <i><a href="../26-glossary/f.xhtml#function">functions<
 <tr><td><a href="#DictEntry_bit_and_bit_1012"><b>bit-orc2</b></a></td><td>or <i>bit-array1</i> with complement of <i>bit-array2</i></td></tr>
 </tbody></table>
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (bit-and (setq ba #*11101010) #*01101011) → #*01101010
  (bit-and #*1100 #*1010) → #*1000      
@@ -123,7 +123,7 @@ performed by each of the <i><a href="../26-glossary/f.xhtml#function">functions<
  (bit-xor #*1100 #*1010) → #*0110
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../12-numbers/12.2.62-logand.xhtml#DictEntry_logand__log_836"><b>lognot</b></a>, <a href="../12-numbers/12.2.62-logand.xhtml#DictEntry_logand__log_836"><b>logand</b></a>
 

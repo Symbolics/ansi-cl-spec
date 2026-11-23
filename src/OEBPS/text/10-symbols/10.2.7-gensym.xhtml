@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_gensym_681" class="entry"><span class="secno">10.2.7</span> <span class="names"><span id="gensym" data-symbol="gensym">gensym</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_gensym_681" class="entry" data-kind="function"><span class="secno">10.2.7</span> <span class="names"><span id="gensym" data-symbol="gensym">gensym</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>gensym</b>
 <i><code>&amp;optional</code> x</i>
   → <i>new-symbol</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>x</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i> or a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 	    Complicated defaulting behavior; see below.
@@ -25,7 +25,7 @@
 <p>
 <i>new-symbol</i>—a <i><a href="../26-glossary/f.xhtml#fresh">fresh</a></i>, <i><a href="../26-glossary/u.xhtml#uninterned">uninterned</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Creates and returns a <i><a href="../26-glossary/f.xhtml#fresh">fresh</a></i>, <i><a href="../26-glossary/u.xhtml#uninterned">uninterned</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>,
 as if by calling <a href="10.2.5-make-symbol.xhtml#DictEntry_make_symbol_679"><b>make-symbol</b></a>.  (The only difference between
@@ -53,7 +53,7 @@ If and only if no explicit suffix is supplied,
 <a href="10.2.8-gensym-counter.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a> is incremented after it is used.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq sym1 (gensym)) → #:G3142
  (symbol-package sym1) →  NIL
@@ -65,24 +65,24 @@ If and only if no explicit suffix is supplied,
  (gensym) → #:G3144
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 Might increment <a href="10.2.8-gensym-counter.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a>.
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="10.2.8-gensym-counter.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>x</i> is not a <i><a href="../26-glossary/s.xhtml#string">string</a></i> or a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="10.2.9-gentemp.xhtml#DictEntry_gentemp_683"><b>gentemp</b></a>,
 <a href="10.2.8-gensym-counter.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The ability to pass a numeric argument to <a href="#DictEntry_gensym_681"><b>gensym</b></a> has been deprecated;
 explicitly <i><a href="../26-glossary/b.xhtml#binding">binding</a></i> <a href="10.2.8-gensym-counter.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a> is now stylistically preferred.

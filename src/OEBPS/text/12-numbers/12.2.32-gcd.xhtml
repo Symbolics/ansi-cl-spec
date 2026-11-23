@@ -8,23 +8,23 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_gcd_806" class="entry"><span class="secno">12.2.32</span> <span class="names"><span id="gcd" data-symbol="gcd">gcd</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_gcd_806" class="entry" data-kind="function"><span class="secno">12.2.32</span> <span class="names"><span id="gcd" data-symbol="gcd">gcd</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>gcd</b>
 <i><code>&amp;rest</code> integers</i>
   → <i>greatest-common-denominator</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
 <p>
 <i>greatest-common-denominator</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Returns the greatest common divisor of <i>integers</i>.
@@ -32,7 +32,7 @@ If only one <i>integer</i> is supplied, its absolute value is returned.
 If no <i>integers</i> are given, <a href="#DictEntry_gcd_806"><b>gcd</b></a> returns <code>0</code>,
 which is an identity for this operation.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (gcd) → 0
@@ -45,15 +45,15 @@ which is an identity for this operation.
  (gcd -4) → 4
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if any <i>integer</i> is not an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="12.2.34-lcm.xhtml#DictEntry_lcm_808"><b>lcm</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 For three or more arguments,
 

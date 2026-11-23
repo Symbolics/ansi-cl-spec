@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_vector_push_1009" class="entry"><span class="secno">15.2.31</span> <span class="names"><span id="vector-push" data-symbol="vector-push">vector-push</span>, <span id="vector-push-extend" data-symbol="vector-push-extend">vector-push-extend</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_vector_push_1009" class="entry" data-kind="function"><span class="secno">15.2.31</span> <span class="names"><span id="vector-push" data-symbol="vector-push">vector-push</span>, <span id="vector-push-extend" data-symbol="vector-push-extend">vector-push-extend</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>vector-push</b>
 <i>new-element vector</i>
@@ -21,7 +21,7 @@
 <b>vector-push-extend</b>
 <i>new-element vector <code>&amp;optional</code> extension</i>
   → <i>new-index</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>new-element</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -38,7 +38,7 @@
 </p><p>
 <i>new-index</i>—a <i><a href="../26-glossary/v.xhtml#validarrayindex">valid array index</a></i> for <i>vector</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_vector_push_1009"><b>vector-push</b></a> and <a href="#DictEntry_vector_push_1009"><b>vector-push-extend</b></a> store 
@@ -69,7 +69,7 @@ must be extended.
 If <code>(&gt;= (fill-pointer <i>vector</i>) (array-dimension <i>vector</i> 0))</code>,
 <a href="#DictEntry_vector_push_1009"><b>vector-push</b></a> returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (vector-push (setq fable (list 'fable))
               (setq fa (make-array 8 
@@ -90,14 +90,14 @@ If <code>(&gt;= (fill-pointer <i>vector</i>) (array-dimension <i>vector</i> 0))<
  (array-total-size aa) → 9 ;(or more)
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 The value of the <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>.
 
 <p>
 How <i>vector</i> was created.
 
-</p></dd><dt><b>Exceptional Situations:</b></dt><dd>
+</p></dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> is signaled by <a href="#DictEntry_vector_push_1009"><b>vector-push-extend</b></a>
 if it tries to extend <i>vector</i> and <i>vector</i> is not <i><a href="../26-glossary/a.xhtml#actuallyadjustable">actually adjustable</a></i>.
@@ -106,7 +106,7 @@ if it tries to extend <i>vector</i> and <i>vector</i> is not <i><a href="../26-g
 An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> is signaled if <i>vector</i> does not 
 have a <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="15.2.9-adjustable-array-p.xhtml#DictEntry_adjustable_a_987"><b>adjustable-array-p</b></a>, <a href="15.2.21-fill-pointer.xhtml#DictEntry_fill_pointer_999"><b>fill-pointer</b></a>, <a href="15.2.30-vector-pop.xhtml#DictEntry_vector_pop_1008"><b>vector-pop</b></a>
 

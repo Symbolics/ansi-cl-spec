@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_debugger_ho_649" class="entry"><span class="secno">9.2.24</span> <span class="names"><span id="*debugger-hook*" data-symbol="*debugger-hook*">*debugger-hook*</span></span> <span class="kind">Variable</span></h3>
+<h3 id="DictEntry_debugger_ho_649" class="entry" data-kind="variable"><span class="secno">9.2.24</span> <span class="names"><span id="*debugger-hook*" data-symbol="*debugger-hook*">*debugger-hook*</span></span> <span class="kind">Variable</span></h3>
 <dl>
 
 
-<dt><b>Value Type:</b></dt><dd>
+<dt data-section="value-type"><b>Value Type:</b></dt><dd>
 
 
 a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
@@ -20,11 +20,11 @@ a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a 
    the debugger was entered),
 or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</dd><dt><b>Initial Value:</b></dt><dd>
+</dd><dt data-section="initial-value"><b>Initial Value:</b></dt><dd>
 
 <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 When the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEntry_debugger_ho_649"><b>*debugger-hook*</b></a> is <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i>, it is called prior to
 normal entry into the debugger, either due to a call to <a href="9.2.22-invoke-debugger.xhtml#DictEntry_invoke_debug_647"><b>invoke-debugger</b></a> 
@@ -36,7 +36,7 @@ To minimize recursive errors while debugging,
 <a href="#DictEntry_debugger_ho_649"><b>*debugger-hook*</b></a> is bound to <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> by <a href="9.2.22-invoke-debugger.xhtml#DictEntry_invoke_debug_647"><b>invoke-debugger</b></a> 
 prior to calling the <i><a href="../26-glossary/f.xhtml#function">function</a></i>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defun one-of (choices &amp;optional (prompt "Choice"))
    (let ((n (length choices)) (i))
@@ -72,11 +72,11 @@ prior to calling the <i><a href="../26-glossary/f.xhtml#function">function</a></
 → 9
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="9.2.22-invoke-debugger.xhtml#DictEntry_invoke_debug_647"><b>invoke-debugger</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 When evaluating code typed in by the user interactively, it is sometimes
 useful to have the hook function bind <a href="#DictEntry_debugger_ho_649"><b>*debugger-hook*</b></a> to the

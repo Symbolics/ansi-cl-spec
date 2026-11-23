@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_push_932" class="entry"><span class="secno">14.2.19</span> <span class="names"><span id="push" data-symbol="push">push</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_push_932" class="entry" data-kind="macro"><span class="secno">14.2.19</span> <span class="names"><span id="push" data-symbol="push">push</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>push</b>
 <i>item place</i>
   → <i>new-place-value</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>item</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>. 
 
@@ -29,7 +29,7 @@
 </p><p>
 <i>new-place-value</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i> (the new <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <i>place</i>).
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_push_932"><b>push</b></a> prepends <i>item</i> to the <i><a href="../26-glossary/l.xhtml#list">list</a></i> that is stored
 in <i>place</i>, stores the resulting <i><a href="../26-glossary/l.xhtml#list">list</a></i> in <i>place</i>, 
@@ -41,7 +41,7 @@ For information about the <i><a href="../26-glossary/e.xhtml#evaluation">evaluat
 see Section <a href="../5-data-and-control-flow/5.1-generalized-reference.xhtml#SubSubSectio_Evaluation_o_370">5.1.1.1 Evaluation of Subforms to Places</a>.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (setq llst '(nil)) → (NIL)
@@ -54,17 +54,17 @@ see Section <a href="../5-data-and-control-flow/5.1-generalized-reference.xhtml#
  x → (A (5 B C) D)
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The contents of <i>place</i> are modified.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.20-pop.xhtml#DictEntry_pop_933"><b>pop</b></a>,
 <a href="14.2.45-pushnew.xhtml#DictEntry_pushnew_958"><b>pushnew</b></a>,
 Section <a href="../5-data-and-control-flow/5.1-generalized-reference.xhtml#Section_Generalized__368">5.1 Generalized Reference</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The effect of <code>(push <i>item</i> <i>place</i>)</code>
 is equivalent to

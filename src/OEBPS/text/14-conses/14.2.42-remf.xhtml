@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_remf_955" class="entry"><span class="secno">14.2.42</span> <span class="names"><span id="remf" data-symbol="remf">remf</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_remf_955" class="entry" data-kind="macro"><span class="secno">14.2.42</span> <span class="names"><span id="remf" data-symbol="remf">remf</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>remf</b>
 <i>place indicator</i>
   → <i>generalized-boolean</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>place</i>—a <i><a href="../26-glossary/p.xhtml#place">place</a></i>.
 
@@ -27,7 +27,7 @@
 </p><p>
 <i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_remf_955"><b>remf</b></a> removes from the <i><a href="../26-glossary/p.xhtml#propertylist">property list</a></i> stored in <i>place</i>
@@ -58,7 +58,7 @@ For information about the <i><a href="../26-glossary/e.xhtml#evaluation">evaluat
 see Section <a href="../5-data-and-control-flow/5.1-generalized-reference.xhtml#SubSubSectio_Evaluation_o_370">5.1.1.1 Evaluation of Subforms to Places</a>.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq x (cons () ())) → (NIL)
  (setf (getf (car x) 'prop1) 'val1) →  VAL1
@@ -66,11 +66,11 @@ see Section <a href="../5-data-and-control-flow/5.1-generalized-reference.xhtml#
  (remf (car x) 'prop1) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The property list stored in <i>place</i> is modified.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../10-symbols/10.2.16-remprop.xhtml#DictEntry_remprop_690"><b>remprop</b></a>, <a href="14.2.41-getf.xhtml#DictEntry_getf_954"><b>getf</b></a>
 

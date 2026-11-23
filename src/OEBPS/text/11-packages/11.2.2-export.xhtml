@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_export_717" class="entry"><span class="secno">11.2.2</span> <span class="names"><span id="export" data-symbol="export">export</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_export_717" class="entry" data-kind="function"><span class="secno">11.2.2</span> <span class="names"><span id="export" data-symbol="export">export</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>export</b>
 <i>symbols <code>&amp;optional</code> package</i>
   → <i><a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
 </i><p><i></i>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>symbols</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>.
 
@@ -29,7 +29,7 @@
 
   The default is the <i><a href="../26-glossary/c.xhtml#currentpackage">current package</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 
@@ -98,7 +98,7 @@ may be resolved in favor of the exported <i><a href="../26-glossary/s.xhtml#symb
 by uninterning the other one, or in favor of the already-present
 <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> by making it a shadowing symbol.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (make-package 'temp :use nil) → #&lt;PACKAGE "TEMP"&gt;
  (use-package 'temp) →  T
@@ -108,22 +108,22 @@ by uninterning the other one, or in favor of the already-present
  (find-symbol "TEMP-SYM") →  TEMP-SYM, :INHERITED
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The package system is modified.
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <i><a href="../26-glossary/a.xhtml#accessible">Accessible</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If any of the <i>symbols</i> is not <i><a href="../26-glossary/a.xhtml#accessible">accessible</a></i> at all in <i>package</i>,
 an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="11.2.29-package-error.xhtml#DictEntry_package_erro_744"><b>package-error</b></a> is signaled that is <i><a href="../26-glossary/c.xhtml#correctable">correctable</a></i> 
 by permitting the <i><a href="../26-glossary/u.xhtml#user">user</a></i>
 to interactively specify whether that <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> should be <i>imported</i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="11.2.6-import.xhtml#DictEntry_import_721"><b>import</b></a>,
 <a href="11.2.14-unexport.xhtml#DictEntry_unexport_729"><b>unexport</b></a>,

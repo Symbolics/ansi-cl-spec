@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_sinh_cosh__797" class="entry"><span class="secno">12.2.23</span> <span class="names"><span id="sinh" data-symbol="sinh">sinh</span>, <span id="cosh" data-symbol="cosh">cosh</span>, <span id="tanh" data-symbol="tanh">tanh</span>, <span id="asinh" data-symbol="asinh">asinh</span>, <span id="acosh" data-symbol="acosh">acosh</span>, <span id="atanh" data-symbol="atanh">atanh</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_sinh_cosh__797" class="entry" data-kind="function"><span class="secno">12.2.23</span> <span class="names"><span id="sinh" data-symbol="sinh">sinh</span>, <span id="cosh" data-symbol="cosh">cosh</span>, <span id="tanh" data-symbol="tanh">tanh</span>, <span id="asinh" data-symbol="asinh">asinh</span>, <span id="acosh" data-symbol="acosh">acosh</span>, <span id="atanh" data-symbol="atanh">atanh</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>sinh</b>
 <i>number</i>
@@ -37,14 +37,14 @@
 <b>atanh</b>
 <i>number</i>
   → <i>result</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>number</i>—a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
 
 <p>
 <i>result</i>—a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 These functions compute the hyperbolic sine, cosine, tangent,
 arc sine, arc cosine, and arc tangent functions, 
@@ -158,24 +158,24 @@ Thus the range of the inverse hyperbolic tangent function is identical to
 that of the inverse hyperbolic sine function with the points
 <i>- pi  i/2</i> and <i> pi  i/2</i> excluded.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (sinh 0) → 0.0 
  (cosh (complex 0 -1)) → #C(0.540302 -0.0)
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>number</i> is not a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
 Might signal <a href="12.2.78-arithmetic-error.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="12.2.35-log.xhtml#DictEntry_log_809"><b>log</b></a>,
 <a href="12.2.38-sqrt.xhtml#DictEntry_sqrt_isqrt_812"><b>sqrt</b></a>,
 Section <a href="12.1-number-concepts.xhtml#SubSubSectio_Rule_of_Floa_759">12.1.3.3 Rule of Float Substitutability</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The result of <a href="#DictEntry_sinh_cosh__797"><b>acosh</b></a> may be a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i> even if <i>number</i> 
 is not a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i>; this occurs when <i>number</i> is less than one.

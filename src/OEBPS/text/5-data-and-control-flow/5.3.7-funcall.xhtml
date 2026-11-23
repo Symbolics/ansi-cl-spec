@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_funcall_393" class="entry"><span class="secno">5.3.7</span> <span class="names"><span id="funcall" data-symbol="funcall">funcall</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_funcall_393" class="entry" data-kind="function"><span class="secno">5.3.7</span> <span class="names"><span id="funcall" data-symbol="funcall">funcall</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>funcall</b>
 <i>function <code>&amp;rest</code> args</i>
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>function</i>—a <i><a href="../26-glossary/f.xhtml#functiondesignator">function designator</a></i>.
 
@@ -28,7 +28,7 @@
 
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>function</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_funcall_393"><b>funcall</b></a> applies <i>function</i> to <i>args</i>.
@@ -40,7 +40,7 @@ it is coerced to a <i><a href="../26-glossary/f.xhtml#function">function</a></i>
 finding its <i><a href="../26-glossary/f.xhtml#functionalvalue">functional value</a></i> in the <i><a href="../26-glossary/g.xhtml#globalenvironment">global environment</a></i>.
 
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (funcall #'+ 1 2 3) → 6
  (funcall 'car '(1 2 3)) → 1
@@ -54,17 +54,17 @@ finding its <i><a href="../26-glossary/f.xhtml#functionalvalue">functional value
 → (KONS (1 . 2) 3)
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="5.3.69-undefined-function.xhtml#DictEntry_undefined_fu_455"><b>undefined-function</b></a> should be signaled if <i>function</i> 
 is a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> that does not have a global definition as a <i><a href="../26-glossary/f.xhtml#function">function</a></i>
 or that has a global definition as a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> or a <i><a href="../26-glossary/s.xhtml#specialoperator">special operator</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.1-apply.xhtml#DictEntry_apply_387"><b>apply</b></a>, <a href="5.3.8-function.xhtml#DictEntry_function_394"><b>function</b></a>, Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (funcall <i>function</i> <i>arg1</i> <i>arg2</i> ...)
  ==(apply <i>function</i> <i>arg1</i> <i>arg2</i> ... nil)

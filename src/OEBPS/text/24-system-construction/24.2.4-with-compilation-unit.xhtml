@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_with_compila_1409" class="entry"><span class="secno">24.2.4</span> <span class="names"><span id="with-compilation-unit" data-symbol="with-compilation-unit">with-compilation-unit</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_with_compila_1409" class="entry" data-kind="macro"><span class="secno">24.2.4</span> <span class="names"><span id="with-compilation-unit" data-symbol="with-compilation-unit">with-compilation-unit</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>with-compilation-unit</b>
 <i>([[↓option]])
@@ -20,7 +20,7 @@
   → <i>{<i>result</i>}*</i>
 <p>
 
-option::= <code>:override</code> override</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+option::= <code>:override</code> override</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>override</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>; evaluated.
  The default is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
@@ -31,7 +31,7 @@ option::= <code>:override</code> override</p></dd><dt><b>Arguments and Values:</
 </p><p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i><a href="../26-glossary/f.xhtml#form">forms</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Executes <i>forms</i> from left to right.
 Within the <i><a href="../26-glossary/d.xhtml#dynamicenvironment">dynamic environment</a></i> of <a href="#DictEntry_with_compila_1409"><b>with-compilation-unit</b></a>,
@@ -65,7 +65,7 @@ result of an explicit programmer request by use of an
 from attaching additional meaning to a use of this macro which involves either
 no keywords or just the keyword <code>:override</code>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 If an <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> would normally defer certain kinds of warnings,
 such as warnings about undefined functions, to the end of a compilation
@@ -83,7 +83,7 @@ warnings to be deferred to the end of the compilation of several files.
 Note however that if the implementation does not normally defer any warnings,
 use of <i>with-compilation-unit</i> might not have any effect.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../3-evaluation-and-compilation/3.8.3-compile.xhtml#DictEntry_compile_285"><b>compile</b></a>, <a href="24.2.1-compile-file.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>
 

@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_with_open_fi_1222" class="entry"><span class="secno">21.2.31</span> <span class="names"><span id="with-open-file" data-symbol="with-open-file">with-open-file</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_with_open_fi_1222" class="entry" data-kind="macro"><span class="secno">21.2.31</span> <span class="names"><span id="with-open-file" data-symbol="with-open-file">with-open-file</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>with-open-file</b>
 <i>(stream filespec {<i>options</i>}*)
 		   {<i>declaration</i>}*
 		   {<i>form</i>}*</i><br/>   
   → <i>results</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>stream</i> -- a variable.
 
@@ -41,7 +41,7 @@
 </p><p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>forms</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_with_open_fi_1222"><b>with-open-file</b></a> uses <a href="21.2.29-open.xhtml#DictEntry_open_1220"><b>open</b></a> to create a <i><a href="../26-glossary/f.xhtml#filestream">file stream</a></i>
@@ -88,7 +88,7 @@ The consequences are undefined if an attempt is made to <i><a href="../26-glossa
 warning if such an attempt is detected.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq p (merge-pathnames "test"))
 
@@ -120,7 +120,7 @@ warning if such an attempt is detected.
 </pre>
 
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 Creates a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> to the <i><a href="../26-glossary/f.xhtml#file">file</a></i> named by <i>filename</i> (upon entry),
 and closes the <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> (upon exit).
@@ -129,17 +129,17 @@ the <i><a href="../26-glossary/f.xhtml#file">file</a></i> might be locked in som
 If the <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> is an <i><a href="../26-glossary/o.xhtml#output">output</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>,
 a <i><a href="../26-glossary/f.xhtml#file">file</a></i> might be created.
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 The host computer's file system.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 See the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="21.2.29-open.xhtml#DictEntry_open_1220"><b>open</b></a>.
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 
 <a href="21.2.29-open.xhtml#DictEntry_open_1220"><b>open</b></a>,

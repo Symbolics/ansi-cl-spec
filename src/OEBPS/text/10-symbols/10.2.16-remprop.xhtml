@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_remprop_690" class="entry"><span class="secno">10.2.16</span> <span class="names"><span id="remprop" data-symbol="remprop">remprop</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_remprop_690" class="entry" data-kind="function"><span class="secno">10.2.16</span> <span class="names"><span id="remprop" data-symbol="remprop">remprop</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>remprop</b>
 <i>symbol indicator</i>
   → <i>generalized-boolean</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>symbol</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
@@ -27,7 +27,7 @@
 </p><p>
 <i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_remprop_690"><b>remprop</b></a> removes from the <i><a href="../26-glossary/p.xhtml#propertylist">property list</a></i><sub>2</sub> of <i>symbol</i>
@@ -54,7 +54,7 @@ such that:
 </pre>
 
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq test (make-symbol "PSEUDO-PI")) → #:PSEUDO-PI
  (symbol-plist test) → ()
@@ -80,19 +80,19 @@ such that:
 → (APPROXIMATION 3 CONSTANT T)
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The <i><a href="../26-glossary/p.xhtml#propertylist">property list</a></i> of <i>symbol</i> is modified.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>symbol</i> is not a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../14-conses/14.2.42-remf.xhtml#DictEntry_remf_955"><b>remf</b></a>, <a href="10.2.13-symbol-plist.xhtml#DictEntry_symbol_plist_687"><b>symbol-plist</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <i><a href="../26-glossary/n.xhtml#number">Numbers</a></i> and <i><a href="../26-glossary/c.xhtml#character">characters</a></i> are not recommended for use as
 <i>indicators</i> in portable code since <a href="#DictEntry_remprop_690"><b>remprop</b></a> tests with

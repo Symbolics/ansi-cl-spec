@@ -8,23 +8,23 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_copy_tree_923" class="entry"><span class="secno">14.2.10</span> <span class="names"><span id="copy-tree" data-symbol="copy-tree">copy-tree</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_copy_tree_923" class="entry" data-kind="function"><span class="secno">14.2.10</span> <span class="names"><span id="copy-tree" data-symbol="copy-tree">copy-tree</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>copy-tree</b>
 <i>tree</i>
   → <i>new-tree</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>tree</i>—a <i><a href="../26-glossary/t.xhtml#tree">tree</a></i>.
 
 <p>
 <i>new-tree</i>—a <i><a href="../26-glossary/t.xhtml#tree">tree</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Creates a <i><a href="../26-glossary/c.xhtml#copy">copy</a></i> of a <i><a href="../26-glossary/t.xhtml#tree">tree</a></i> of <i>conses</i>.
@@ -40,7 +40,7 @@ are copied recursively, stopping only when non-<i>conses</i> are encountered.
 <a href="#DictEntry_copy_tree_923"><b>copy-tree</b></a> does not preserve circularities and the sharing of substructure.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq object (list (cons 1 "one")
                     (cons 2 (list 'a 'b 'c))))
@@ -63,7 +63,7 @@ are copied recursively, stopping only when non-<i>conses</i> are encountered.
  copy-as-tree → ((1 . "one") (2 A B C)) 
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.13-tree-equal.xhtml#DictEntry_tree_equal_926"><b>tree-equal</b></a>
 

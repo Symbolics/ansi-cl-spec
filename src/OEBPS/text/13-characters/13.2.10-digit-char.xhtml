@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_digit_char_893" class="entry"><span class="secno">13.2.10</span> <span class="names"><span id="digit-char" data-symbol="digit-char">digit-char</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_digit_char_893" class="entry" data-kind="function"><span class="secno">13.2.10</span> <span class="names"><span id="digit-char" data-symbol="digit-char">digit-char</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>digit-char</b>
 <i>weight <code>&amp;optional</code> radix</i>
   → <i>char</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>weight</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
@@ -28,7 +28,7 @@
 </p><p>
 <i>char</i>—a <i><a href="../26-glossary/c.xhtml#character">character</a></i> or <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 If <i>weight</i> is less than <i>radix</i>,
 <a href="#DictEntry_digit_char_893"><b>digit-char</b></a> returns a <i><a href="../26-glossary/c.xhtml#character">character</a></i> which has that <i>weight</i>
@@ -40,7 +40,7 @@ it will be an uppercase <i><a href="../26-glossary/c.xhtml#character">character<
 If <i>weight</i> is greater than or equal to <i>radix</i>,
 <a href="#DictEntry_digit_char_893"><b>digit-char</b></a> returns <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (digit-char 0) → #\0
  (digit-char 10 11) → #\A
@@ -52,13 +52,13 @@ If <i>weight</i> is greater than or equal to <i>radix</i>,
  (digit-char 1 2) → #\1
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="13.2.11-digit-char-p.xhtml#DictEntry_digit_char_p_894"><b>digit-char-p</b></a>,
 <a href="13.2.12-graphic-char-p.xhtml#DictEntry_graphic_char_895"><b>graphic-char-p</b></a>,
 Section <a href="../2-syntax/2.1-character-syntax.xhtml#Section_Character_Sy_108">2.1 Character Syntax</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 

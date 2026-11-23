@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_delete_packa_726" class="entry"><span class="secno">11.2.11</span> <span class="names"><span id="delete-package" data-symbol="delete-package">delete-package</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_delete_packa_726" class="entry" data-kind="function"><span class="secno">11.2.11</span> <span class="names"><span id="delete-package" data-symbol="delete-package">delete-package</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>delete-package</b>
 <i>package</i>
   → <i>generalized-boolean</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>package</i>—a <i><a href="../26-glossary/p.xhtml#packagedesignator">package designator</a></i>.
@@ -26,7 +26,7 @@
 <p>
 <i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_delete_packa_726"><b>delete-package</b></a> deletes <i>package</i> from all package system
 data structures. 
@@ -70,7 +70,7 @@ Except for this, <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> <i><
 in <i>package</i> are not modified in any other way;
 <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> whose <i><a href="../26-glossary/h.xhtml#homepackage">home package</a></i> is not <i>package</i> remain unchanged.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq *foo-package* (make-package "FOO" :use nil))
  (setq *foo-symbol*  (intern "FOO" *foo-package*))
@@ -146,7 +146,7 @@ in <i>package</i> are not modified in any other way;
  (package-used-by-list *baz-package*) → ()
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If the <i>package</i> <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> is a <i><a href="../26-glossary/n.xhtml#name">name</a></i> that does not 
 currently name a <i><a href="../26-glossary/p.xhtml#package">package</a></i>, 
@@ -164,7 +164,7 @@ causing <i>package</i>'s <i><a href="../26-glossary/e.xhtml#externalsymbol">exte
 <a href="#DictEntry_delete_packa_726"><b>delete-package</b></a> then deletes <i>package</i> just as it would have had 
 there been no <i><a href="../26-glossary/p.xhtml#package">packages</a></i> that used it.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="11.2.17-unuse-package.xhtml#DictEntry_unuse_packag_732"><b>unuse-package</b></a>
 

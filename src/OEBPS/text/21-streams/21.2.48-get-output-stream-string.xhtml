@@ -8,23 +8,23 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_get_output_s_1239" class="entry"><span class="secno">21.2.48</span> <span class="names"><span id="get-output-stream-string" data-symbol="get-output-stream-string">get-output-stream-string</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_get_output_s_1239" class="entry" data-kind="function"><span class="secno">21.2.48</span> <span class="names"><span id="get-output-stream-string" data-symbol="get-output-stream-string">get-output-stream-string</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>get-output-stream-string</b>
 <i>string-output-stream</i>
   → <i>string</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>string-output-stream</i>—a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
 
 <p>
 <i>string</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Returns a <i><a href="../26-glossary/s.xhtml#string">string</a></i> containing, in order, all the <i><a href="../26-glossary/c.xhtml#character">characters</a></i> 
@@ -35,7 +35,7 @@ so the <i>string</i> contains only those <i><a href="../26-glossary/c.xhtml#char
 or since the creation of the <i>string-output-stream</i>,
 whichever occurred most recently.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq a-stream (make-string-output-stream)
         a-string "abcdefghijklm") → "abcdefghijklm"
@@ -44,11 +44,11 @@ whichever occurred most recently.
  (get-output-stream-string a-stream) → ""
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The <i>string-output-stream</i> is cleared.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 The consequences are undefined if <i>stream-output-string</i> is <i><a href="../26-glossary/c.xhtml#closed">closed</a></i>.
@@ -61,7 +61,7 @@ was not produced by <a href="21.2.50-make-string-output-stream.xhtml#DictEntry_m
 The consequences are undefined if <i>string-output-stream</i> was 
 created implicitly by <a href="21.2.52-with-output-to-string.xhtml#DictEntry_with_output__1243"><b>with-output-to-string</b></a> or <a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="21.2.50-make-string-output-stream.xhtml#DictEntry_make_string__1241"><b>make-string-output-stream</b></a>
 

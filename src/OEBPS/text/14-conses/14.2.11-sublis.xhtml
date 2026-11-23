@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_sublis_nsub_924" class="entry"><span class="secno">14.2.11</span> <span class="names"><span id="sublis" data-symbol="sublis">sublis</span>, <span id="nsublis" data-symbol="nsublis">nsublis</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_sublis_nsub_924" class="entry" data-kind="function"><span class="secno">14.2.11</span> <span class="names"><span id="sublis" data-symbol="sublis">sublis</span>, <span id="nsublis" data-symbol="nsublis">nsublis</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>sublis</b>
 <i>alist tree <code>&amp;key</code> key test test-not</i>
@@ -21,7 +21,7 @@
 <b>nsublis</b>
 <i>alist tree <code>&amp;key</code> key test test-not</i>
   → <i>new-tree</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>alist</i>—an <i><a href="../26-glossary/a.xhtml#associationlist">association list</a></i>.
 
@@ -48,7 +48,7 @@
 <i>new-tree</i>—a <i><a href="../26-glossary/t.xhtml#tree">tree</a></i>.
 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_sublis_nsub_924"><b>sublis</b></a> makes substitutions for <i><a href="../26-glossary/o.xhtml#object">objects</a></i> in <i>tree</i>
@@ -78,7 +78,7 @@ but the result tree may share cells with it.
 <a href="#DictEntry_sublis_nsub_924"><b>nsublis</b></a> is permitted to modify <i>tree</i> 
 but otherwise returns the same values as <a href="#DictEntry_sublis_nsub_924"><b>sublis</b></a>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (sublis '((x . 100) (z . zprime))
          '(plus x (minus g z x p) 4 . x))
@@ -110,11 +110,11 @@ but otherwise returns the same values as <a href="#DictEntry_sublis_nsub_924"><b
 → ((QUOTE TEMP) (QUOTE TEMP) QUOTE TEMP) 
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 <a href="#DictEntry_sublis_nsub_924"><b>nsublis</b></a> modifies <i>tree</i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.12-subst.xhtml#DictEntry_subst_subst_925"><b>subst</b></a>,
 
@@ -124,7 +124,7 @@ Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#SubSectio
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The <code>:test-not</code> parameter is deprecated.

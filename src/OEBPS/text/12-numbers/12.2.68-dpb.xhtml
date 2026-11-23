@@ -8,22 +8,22 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_dpb_842" class="entry"><span class="secno">12.2.68</span> <span class="names"><span id="dpb" data-symbol="dpb">dpb</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_dpb_842" class="entry" data-kind="function"><span class="secno">12.2.68</span> <span class="names"><span id="dpb" data-symbol="dpb">dpb</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>dpb</b>
 <i>newbyte bytespec integer</i>
   → <i>result-integer</i>
-</dd><dt><b>Pronunciation:</b></dt><dd>
+</dd><dt data-section="pronunciation"><b>Pronunciation:</b></dt><dd>
 
     <span class="pron">[ ˌdεˈpib ]</span>
  or <span class="pron">[ ˌdεˈpεb ]</span>
  or <span class="pron">[ ˈdēˈpēˈbē ]</span>
 
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>newbyte</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
@@ -36,7 +36,7 @@
 </p><p>
 <i>result-integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_dpb_842"><b>dpb</b></a> (deposit byte) is used to 
@@ -51,18 +51,18 @@ the result in the byte specified by <i>bytespec</i>.
 <i>Newbyte</i> is interpreted as
 being right-justified, as if it were the result of <a href="12.2.69-ldb.xhtml#DictEntry_ldb_843"><b>ldb</b></a>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (dpb 1 (byte 1 10) 0) → 1024
  (dpb -2 (byte 2 10) 0) → 2048
  (dpb 1 (byte 2 10) 2048) → 1024
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="12.2.66-byte.xhtml#DictEntry_byte_byte_s_840"><b>byte</b></a>, <a href="12.2.67-deposit-field.xhtml#DictEntry_deposit_fiel_841"><b>deposit-field</b></a>, <a href="12.2.69-ldb.xhtml#DictEntry_ldb_843"><b>ldb</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (logbitp <i>j</i> (dpb <i>m</i> (byte <i>s</i> <i>p</i>) <i>n</i>))
  ==(if (and (&gt;= <i>j</i> <i>p</i>) (&lt; <i>j</i> (+ <i>p</i> <i>s</i>)))

@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_make_symbol_679" class="entry"><span class="secno">10.2.5</span> <span class="names"><span id="make-symbol" data-symbol="make-symbol">make-symbol</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_make_symbol_679" class="entry" data-kind="function"><span class="secno">10.2.5</span> <span class="names"><span id="make-symbol" data-symbol="make-symbol">make-symbol</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>make-symbol</b>
 <i>name</i>
   → <i>new-symbol</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>name</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
@@ -25,7 +25,7 @@
 <p>
 <i>new-symbol</i>—a <i><a href="../26-glossary/f.xhtml#fresh">fresh</a></i>, <i><a href="../26-glossary/u.xhtml#uninterned">uninterned</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_make_symbol_679"><b>make-symbol</b></a> creates and returns a <i><a href="../26-glossary/f.xhtml#fresh">fresh</a></i>, <i><a href="../26-glossary/u.xhtml#uninterned">uninterned</a></i>
@@ -42,7 +42,7 @@ has been given as the <i>name</i> <i><a href="../26-glossary/a.xhtml#argument">a
 <i>make-symbol</i>, the consequences are undefined if a
 subsequent attempt is made to alter that <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq temp-string "temp") → "temp"
  (setq temp-symbol (make-symbol temp-string)) → #:|temp|
@@ -52,16 +52,16 @@ subsequent attempt is made to alter that <i><a href="../26-glossary/s.xhtml#stri
  (eq (make-symbol temp-string) (make-symbol temp-string)) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>name</i> is not a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="10.2.6-copy-symbol.xhtml#DictEntry_copy_symbol_680"><b>copy-symbol</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 No attempt is made by <a href="#DictEntry_make_symbol_679"><b>make-symbol</b></a> to convert the case
 of the <i><a href="../26-glossary/n.xhtml#name">name</a></i> to uppercase.  The only case conversion which ever 

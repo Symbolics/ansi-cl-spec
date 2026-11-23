@@ -8,15 +8,15 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_position_po_1055" class="entry"><span class="secno">17.3.15</span> <span class="names"><span id="position" data-symbol="position">position</span>, <span id="position-if" data-symbol="position-if">position-if</span>, <span id="position-if-not" data-symbol="position-if-not">position-if-not</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_position_po_1055" class="entry" data-kind="function"><span class="secno">17.3.15</span> <span class="names"><span id="position" data-symbol="position">position</span>, <span id="position-if" data-symbol="position-if">position-if</span>, <span id="position-if-not" data-symbol="position-if-not">position-if-not</span></span> <span class="kind">Function</span></h3>
 <dl>
-      <dt><b>Syntax:</b></dt><dd><b>position</b> <i>item sequence <code>&amp;key</code> from-end test test-not start end key</i>
+      <dt data-section="syntax"><b>Syntax:</b></dt><dd><b>position</b> <i>item sequence <code>&amp;key</code> from-end test test-not start end key</i>
           → <i>position</i> <p><b>position-if</b> <i>predicate sequence <code>&amp;key</code> from-end start end key</i>
           → <i>position</i> </p>
         <p><b>position-if-not</b> <i>predicate sequence <code>&amp;key</code> from-end start
         end key</i>   → <i>position</i>
         </p>
-      </dd><dt><b>Arguments and Values:</b></dt><dd><i>item</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>. <p><i>sequence</i>—a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>. </p>
+      </dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd><i>item</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>. <p><i>sequence</i>—a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>. </p>
         <p><i>predicate</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i>
         for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of one argument that
         returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>. </p>
@@ -33,7 +33,7 @@
         a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of one argument, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>. </p>
         <p><i>position</i>—a <i><a href="../26-glossary/b.xhtml#boundingindex">bounding index</a></i>
         of <i>sequence</i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>. </p>
-      </dd><dt><b>Description:</b></dt><dd><a href="#DictEntry_position_po_1055"><b>position</b></a>, <a href="#DictEntry_position_po_1055"><b>position-if</b></a>, and <a href="#DictEntry_position_po_1055"><b>position-if-not</b></a> each search <i>sequence</i>
+      </dd><dt data-section="description"><b>Description:</b></dt><dd><a href="#DictEntry_position_po_1055"><b>position</b></a>, <a href="#DictEntry_position_po_1055"><b>position-if</b></a>, and <a href="#DictEntry_position_po_1055"><b>position-if-not</b></a> each search <i>sequence</i>
         for an <i><a href="../26-glossary/e.xhtml#element">element</a></i> that <i>satisfies the test</i>.
         <p>The <i>position</i> returned is the index within <i>sequence</i> of the
         leftmost (if <i>from-end</i> is <i><a href="../26-glossary/t.xhtml#true">true</a></i> <strong>[see
@@ -41,14 +41,14 @@
         that <i>satisfies the test</i>; otherwise <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> is
         returned. The index returned is relative to the left-hand end of the entire <i>sequence</i>,
         regardless of the value of <i>start</i>, <i>end</i>, or <i>from-end</i>. </p>
-      </dd><dt><b>Examples:</b></dt><dd><pre> (position #\a "baobab" :from-end t) → 4
+      </dd><dt data-section="examples"><b>Examples:</b></dt><dd><pre> (position #\a "baobab" :from-end t) → 4
  (position-if #'oddp '((1) (2) (3) (4)) :start 1 :key #'car) → 2
  (position 595 '()) →  NIL
  (position-if-not #'integerp '(1 2 3 4 5.0)) → 4 
 </pre>
-      </dd><dt><b>Exceptional Situations:</b></dt><dd>Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i>
-        <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>sequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>. </dd><dt><b>See Also:</b></dt><dd><a href="17.3.14-find.xhtml#DictEntry_find_find_i_1054"><b>find</b></a>, Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6
-        Traversal Rules and Side Effects</a> </dd><dt><b>Notes:</b></dt><dd>The <code>:test-not</code> <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> is
+      </dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i>
+        <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>sequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>. </dd><dt data-section="see-also"><b>See Also:</b></dt><dd><a href="17.3.14-find.xhtml#DictEntry_find_find_i_1054"><b>find</b></a>, Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6
+        Traversal Rules and Side Effects</a> </dd><dt data-section="notes"><b>Notes:</b></dt><dd>The <code>:test-not</code> <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> is
         deprecated. <p>The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_position_po_1055"><b>position-if-not</b></a> is deprecated. </p>
       </dd></dl>
 </section>

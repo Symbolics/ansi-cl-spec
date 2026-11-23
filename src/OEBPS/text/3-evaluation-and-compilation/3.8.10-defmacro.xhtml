@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_defmacro_292" class="entry"><span class="secno">3.8.10</span> <span class="names"><span id="defmacro" data-symbol="defmacro">defmacro</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_defmacro_292" class="entry" data-kind="macro"><span class="secno">3.8.10</span> <span class="names"><span id="defmacro" data-symbol="defmacro">defmacro</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>defmacro</b>
 <i>name lambda-list [[{<i>declaration</i>}* $|$ <i>documentation</i>]] {<i>form</i>}*</i><br/>   
   → <i>name</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>. 
 
@@ -33,7 +33,7 @@
 </p><p>
 <i>form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Defines <i>name</i> as a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> 
@@ -103,7 +103,7 @@ Users must ensure that the body of the <i><a href="../26-glossary/m.xhtml#macro"
 compile time if it is referenced within the <i><a href="../26-glossary/f.xhtml#file">file</a></i> being <i>compiled</i>.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defmacro mac1 (a b) "Mac1 multiplies and adds" 
             `(+ ,a (* ,b 3))) →  MAC1 
@@ -198,7 +198,7 @@ would be a valid call for the second definition but not for the first.
       5 (((SEGUNDO X2) X3 X4)) (CADR X2) (X3 X4) 5 (X5 X6))
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 
 <a href="3.8.9-define-compiler-macro.xhtml#DictEntry_define_compi_291"><b>define-compiler-macro</b></a>,

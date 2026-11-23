@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_array_979" class="entry"><span class="secno">15.2.1</span> <span class="names"><span id="array" data-symbol="array">array</span></span> <span class="kind">System Class</span></h3>
+<h3 id="DictEntry_array_979" class="entry" data-kind="system-class"><span class="secno">15.2.1</span> <span class="names"><span id="array" data-symbol="array">array</span></span> <span class="kind">System Class</span></h3>
 <dl>
 
 
-<dt><b>Class Precedence List:</b></dt><dd>
+<dt data-section="class-precedence-list"><b>Class Precedence List:</b></dt><dd>
 
 <a href="#DictEntry_array_979"><b>array</b></a>,
 <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 An <i><a href="../26-glossary/a.xhtml#array">array</a></i> contains <i><a href="../26-glossary/o.xhtml#object">objects</a></i> arranged according to a
 Cartesian coordinate system.
@@ -42,17 +42,17 @@ produce the <i><a href="../26-glossary/a.xhtml#actualarrayelementtype">actual ar
 which is the <i><a href="../26-glossary/e.xhtml#elementtype">element type</a></i> for the <i><a href="../26-glossary/a.xhtml#array">array</a></i> is actually <i><a href="../26-glossary/s.xhtml#specialized">specialized</a></i>.
 See the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="15.2.23-upgraded-array-element-type.xhtml#DictEntry_upgraded_arr_1001"><b>upgraded-array-element-type</b></a>.
 
-</p></dd><dt><b>Compound Type Specifier Kind:</b></dt><dd>
+</p></dd><dt data-section="compound-type-specifier-kind"><b>Compound Type Specifier Kind:</b></dt><dd>
 
 Specializing.
 
-</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+</dd><dt data-section="compound-type-specifier-syntax"><b>Compound Type Specifier Syntax:</b></dt><dd>
 
 <code>(array <code>[</code><code>{</code>element-type | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a><code>}</code> [dimension-spec]<code>]</code>)</code>
 
 <p>
 
-dimension-spec::= rank | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a> | (<code>{</code>dimension | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a><code>}</code><sup>*</sup>)</p></dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+dimension-spec::= rank | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a> | (<code>{</code>dimension | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a><code>}</code><sup>*</sup>)</p></dd><dt data-section="compound-type-specifier-arguments"><b>Compound Type Specifier Arguments:</b></dt><dd>
 
 <i>dimension</i>—a <i><a href="../26-glossary/v.xhtml#validarraydimension">valid array dimension</a></i>.
 
@@ -64,7 +64,7 @@ dimension-spec::= rank | <a href="../25-environment/25.2.22-star.xhtml#DictEntry
 <i>rank</i>—a non-negative <i><a href="../26-glossary/f.xhtml#fixnum">fixnum</a></i>.
 
 
-</p></dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+</p></dd><dt data-section="compound-type-specifier-description"><b>Compound Type Specifier Description:</b></dt><dd>
 
 This denotes the set of <i><a href="../26-glossary/a.xhtml#array">arrays</a></i> whose
   <i><a href="../26-glossary/e.xhtml#elementtype">element type</a></i>,  <i><a href="../26-glossary/r.xhtml#rank">rank</a></i>,  and <i><a href="../26-glossary/d.xhtml#dimension">dimensions</a></i>
@@ -95,7 +95,7 @@ in this case, <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><
 If the <i>dimension-spec</i> is the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a>,
 the set is not restricted on the basis of <i><a href="../26-glossary/r.xhtml#rank">rank</a></i> or <i><a href="../26-glossary/d.xhtml#dimension">dimension</a></i>.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../22-printer/22.4.16-print-array.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a>,
 <a href="15.2.10-aref.xhtml#DictEntry_aref_988"><b>aref</b></a>,
@@ -104,7 +104,7 @@ the set is not restricted on the basis of <i><a href="../26-glossary/r.xhtml#ran
 Section <a href="../2-syntax/2.4-standard-macro-characters.xhtml#SubSubSectio_Sharpsign_A_172">2.4.8.12 Sharpsign A</a>,
 Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Oth_1271">22.1.3.8 Printing Other Arrays</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 Note that the type <code>(array t)</code>     
 is a proper <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of the type <code>(array *)</code>.

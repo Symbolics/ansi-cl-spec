@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_with_input_f_1242" class="entry"><span class="secno">21.2.51</span> <span class="names"><span id="with-input-from-string" data-symbol="with-input-from-string">with-input-from-string</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_with_input_f_1242" class="entry" data-kind="macro"><span class="secno">21.2.51</span> <span class="names"><span id="with-input-from-string" data-symbol="with-input-from-string">with-input-from-string</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>with-input-from-string</b>
 <i>(var string <code>&amp;key</code> index start end)
 			  {<i>declaration</i>}*
 			  {<i>form</i>}*</i><br/>   
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>var</i>—a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i><a href="../26-glossary/n.xhtml#name">name</a></i>.
 
@@ -44,7 +44,7 @@
 </p><p>
 <i>result</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>forms</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Creates an
 
@@ -99,7 +99,7 @@ the <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i>var</i>.
 
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (with-input-from-string (s "XXX1 2 3 4xxx"
@@ -112,11 +112,11 @@ the <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i>var</i>.
 </pre>
 The variable <code>j</code> is set to <code>15</code>.
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of the <i><a href="../26-glossary/p.xhtml#place">place</a></i> named by <i>index</i>, if any, is modified.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="21.2.49-make-string-input-stream.xhtml#DictEntry_make_string__1240"><b>make-string-input-stream</b></a>,
 

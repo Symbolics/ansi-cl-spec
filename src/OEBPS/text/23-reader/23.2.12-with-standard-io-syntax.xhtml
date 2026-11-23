@@ -8,23 +8,23 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_with_standar_1392" class="entry"><span class="secno">23.2.12</span> <span class="names"><span id="with-standard-io-syntax" data-symbol="with-standard-io-syntax">with-standard-io-syntax</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_with_standar_1392" class="entry" data-kind="macro"><span class="secno">23.2.12</span> <span class="names"><span id="with-standard-io-syntax" data-symbol="with-standard-io-syntax">with-standard-io-syntax</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>with-standard-io-syntax</b>
 <i>{<i>form</i>}*</i>
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>forms</i>—an <i><a href="../26-glossary/i.xhtml#implicitprogn">implicit progn</a></i>.
 
 <p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i><a href="../26-glossary/f.xhtml#form">forms</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Within the dynamic extent of the body of <i>forms</i>, all reader/printer control
 variables, including any <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i> ones not specified by
@@ -126,7 +126,7 @@ the next figure.
 </tbody></table>
 
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (with-open-file (file pathname :direction :output)
    (with-standard-io-syntax

@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_adjoin_957" class="entry"><span class="secno">14.2.44</span> <span class="names"><span id="adjoin" data-symbol="adjoin">adjoin</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_adjoin_957" class="entry" data-kind="function"><span class="secno">14.2.44</span> <span class="names"><span id="adjoin" data-symbol="adjoin">adjoin</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>adjoin</b>
 <i>item list <code>&amp;key</code> key test test-not</i>
   → <i>new-list</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>item</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -41,7 +41,7 @@
 
 <i>new-list</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Tests whether <i>item</i> is the same as an existing element of <i>list</i>.
 If the <i>item</i> is not an existing element,
@@ -53,7 +53,7 @@ otherwise, nothing is added and the original <i>list</i> is returned.
 The <i>test</i>, <i>test-not</i> and <i>key</i> affect how it is determined whether item is the same as an <i><a href="../26-glossary/e.xhtml#element">element</a></i> of 
 <i>list</i>. For details, see Section <a href="../17-sequences/17.2-rules-about-test-functions.xhtml#SubSection_Satisfying_a_1036">17.2.1 Satisfying a Two-Argument Test</a>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq slist '()) →  NIL 
  (adjoin 'a slist) → (A) 
@@ -65,18 +65,18 @@ The <i>test</i>, <i>test-not</i> and <i>key</i> affect how it is determined whet
  (adjoin '(new-test-item 1) slist) → ((NEW-TEST-ITEM 1) (TEST-ITEM 1)) 
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>list</i> is not a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.45-pushnew.xhtml#DictEntry_pushnew_958"><b>pushnew</b></a>,
 
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The <code>:test-not</code> parameter is deprecated.

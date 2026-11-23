@@ -8,15 +8,15 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_continue_667" class="entry"><span class="secno">9.2.42</span> <span class="names"><span id="continue" data-symbol="continue">continue</span></span> <span class="kind">Restart</span></h3>
+<h3 id="DictEntry_continue_667" class="entry" data-kind="restart"><span class="secno">9.2.42</span> <span class="names"><span id="continue" data-symbol="continue">continue</span></span> <span class="kind">Restart</span></h3>
 <dl>
 
 
-<dt><b>Data Arguments Required:</b></dt><dd>
+<dt data-section="data-arguments-required"><b>Data Arguments Required:</b></dt><dd>
 
 None.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 The <a href="#DictEntry_continue_667"><b>continue</b></a> <i><a href="../26-glossary/r.xhtml#restart">restart</a></i> is generally part of protocols where there is
   a single "obvious" way to continue, such as in 
@@ -25,7 +25,7 @@ The <a href="#DictEntry_continue_667"><b>continue</b></a> <i><a href="../26-glos
   In general, however, it is more reliable to design a special purpose restart
   with a name that more directly suits the particular application.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (let ((x 3))
    (handler-bind ((error #'(lambda (c)
@@ -37,7 +37,7 @@ The <a href="#DictEntry_continue_667"><b>continue</b></a> <i><a href="../26-glos
            (t x)))) → 3.0
 </pre>   
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 Section <a href="9.1-condition-system-concepts.xhtml#SubSubSectio_Restarts_618">9.1.4.2 Restarts</a>,
 Section <a href="9.1-condition-system-concepts.xhtml#SubSubSubSec_Interfaces_t_620">9.1.4.2.2 Interfaces to Restarts</a>,

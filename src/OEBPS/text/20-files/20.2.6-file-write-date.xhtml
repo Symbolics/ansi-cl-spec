@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_file_write_d_1173" class="entry"><span class="secno">20.2.6</span> <span class="names"><span id="file-write-date" data-symbol="file-write-date">file-write-date</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_file_write_d_1173" class="entry" data-kind="function"><span class="secno">20.2.6</span> <span class="names"><span id="file-write-date" data-symbol="file-write-date">file-write-date</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>file-write-date</b>
 <i>pathspec</i>
   → <i>date</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>pathspec</i>—a <i><a href="../26-glossary/p.xhtml#pathnamedesignator">pathname designator</a></i>.
@@ -26,14 +26,14 @@
 <p>
 <i>date</i>—a <i><a href="../26-glossary/u.xhtml#universaltime">universal time</a></i> or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Returns a <i><a href="../26-glossary/u.xhtml#universaltime">universal time</a></i> representing the time at which the <i><a href="../26-glossary/f.xhtml#file">file</a></i> 
 specified by <i>pathspec</i> was last written (or created), 
 or returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if such a time cannot be determined.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (with-open-file (s "noel.text" 
                     :direction :output :if-exists :error)
@@ -47,11 +47,11 @@ or returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b
 → 2902600800
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 The host computer's file system.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 
@@ -68,7 +68,7 @@ An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="20.2.
 if the <i><a href="../26-glossary/f.xhtml#filesystem">file system</a></i> cannot perform the requested operation.
 
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 Section <a href="../25-environment/25.1-the-external-environment.xhtml#SubSubSectio_Universal_Ti_1424">25.1.4.2 Universal Time</a>,
 

@@ -8,23 +8,23 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_lcm_808" class="entry"><span class="secno">12.2.34</span> <span class="names"><span id="lcm" data-symbol="lcm">lcm</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_lcm_808" class="entry" data-kind="function"><span class="secno">12.2.34</span> <span class="names"><span id="lcm" data-symbol="lcm">lcm</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>lcm</b>
 <i><code>&amp;rest</code> integers</i>
   → <i>least-common-multiple</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
 <p>
 <i>least-common-multiple</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_lcm_808"><b>lcm</b></a> returns the least common multiple of the <i>integers</i>.
@@ -59,7 +59,7 @@ For three or more arguments,
 </p><pre> (lcm a b c ... z) ==(lcm (lcm a b) c ... z)
 </pre>
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (lcm 10) → 10
@@ -70,11 +70,11 @@ For three or more arguments,
  (lcm 1 2 3 4 5 6) → 60
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if any argument is not an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="12.2.32-gcd.xhtml#DictEntry_gcd_806"><b>gcd</b></a>
 

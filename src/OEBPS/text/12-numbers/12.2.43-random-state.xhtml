@@ -8,25 +8,25 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_random_stat_817" class="entry"><span class="secno">12.2.43</span> <span class="names"><span id="*random-state*" data-symbol="*random-state*">*random-state*</span></span> <span class="kind">Variable</span></h3>
+<h3 id="DictEntry_random_stat_817" class="entry" data-kind="variable"><span class="secno">12.2.43</span> <span class="names"><span id="*random-state*" data-symbol="*random-state*">*random-state*</span></span> <span class="kind">Variable</span></h3>
 <dl>
 
 
-<dt><b>Value Type:</b></dt><dd>
+<dt data-section="value-type"><b>Value Type:</b></dt><dd>
 
 a <i><a href="../26-glossary/r.xhtml#randomstate">random state</a></i>.
 
-</dd><dt><b>Initial Value:</b></dt><dd>
+</dd><dt data-section="initial-value"><b>Initial Value:</b></dt><dd>
 
 <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 The <i><a href="../26-glossary/c.xhtml#currentrandomstate">current random state</a></i>, which is used, for example,
 by the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="12.2.41-random.xhtml#DictEntry_random_815"><b>random</b></a> when a <i><a href="../26-glossary/r.xhtml#randomstate">random state</a></i> is not explicitly supplied.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (random-state-p *random-state*) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
  (setq snap-shot (make-random-state))
@@ -44,20 +44,20 @@ by the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="12
     (16 67 0 43 70 79 58 5 63 50))
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 The <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>.
 
 <p>
 <a href="12.2.41-random.xhtml#DictEntry_random_815"><b>random</b></a>.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="12.2.40-make-random-state.xhtml#DictEntry_make_random__814"><b>make-random-state</b></a>,
 <a href="12.2.41-random.xhtml#DictEntry_random_815"><b>random</b></a>,
 <a href="12.2.39-random-state.xhtml#DictEntry_random_state_813"><b>random-state</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <i><a href="../26-glossary/b.xhtml#binding">Binding</a></i> <a href="#DictEntry_random_stat_817"><b>*random-state*</b></a> to a different 
 <i><a href="../26-glossary/r.xhtml#randomstate">random state</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> correctly saves and 

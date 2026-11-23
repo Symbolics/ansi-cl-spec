@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_mask_field_845" class="entry"><span class="secno">12.2.71</span> <span class="names"><span id="mask-field" data-symbol="mask-field">mask-field</span></span> <span class="kind">Accessor</span></h3>
+<h3 id="DictEntry_mask_field_845" class="entry" data-kind="accessor"><span class="secno">12.2.71</span> <span class="names"><span id="mask-field" data-symbol="mask-field">mask-field</span></span> <span class="kind">Accessor</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>mask-field</b>
 <i>bytespec integer</i>
@@ -20,7 +20,7 @@
 <p>
 (<b>setf</b>
 (<b>mask-field</b> <i>bytespec place</i>) <i>new-masked-integer</i>)
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>bytespec</i>—a <i><a href="../26-glossary/b.xhtml#bytespecifier">byte specifier</a></i>.
 
@@ -30,7 +30,7 @@
 </p><p>
 <i>masked-integer</i>, <i>new-masked-integer</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_mask_field_845"><b>mask-field</b></a> performs a "mask" operation on <i>integer</i>.
@@ -45,7 +45,7 @@ in a given <i>place</i>.
 The effect is to perform a <a href="12.2.67-deposit-field.xhtml#DictEntry_deposit_fiel_841"><b>deposit-field</b></a> operation
 and then store the result back into the <i>place</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (mask-field (byte 1 5) -1) → 32
  (setq a 15) → 15
@@ -55,12 +55,12 @@ and then store the result back into the <i>place</i>.
  a → 13
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="12.2.66-byte.xhtml#DictEntry_byte_byte_s_840"><b>byte</b></a>,
 <a href="12.2.69-ldb.xhtml#DictEntry_ldb_843"><b>ldb</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (ldb <i>bs</i> (mask-field <i>bs</i> <i>n</i>)) ==(ldb <i>bs</i> <i>n</i>)
  (logbitp <i>j</i> (mask-field (byte <i>s</i> <i>p</i>) <i>n</i>))

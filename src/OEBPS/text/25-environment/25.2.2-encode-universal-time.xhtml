@@ -8,24 +8,24 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_encode_unive_1429" class="entry"><span class="secno">25.2.2</span> <span class="names"><span id="encode-universal-time" data-symbol="encode-universal-time">encode-universal-time</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_encode_unive_1429" class="entry" data-kind="function"><span class="secno">25.2.2</span> <span class="names"><span id="encode-universal-time" data-symbol="encode-universal-time">encode-universal-time</span></span> <span class="kind">Function</span></h3>
 <dl>
-      <dt><b>Syntax:</b></dt><dd><b>encode-universal-time</b> <i>second minute hour date month year <code>&amp;optional</code>
+      <dt data-section="syntax"><b>Syntax:</b></dt><dd><b>encode-universal-time</b> <i>second minute hour date month year <code>&amp;optional</code>
         time-zone</i><br/>
             → <i>universal-time</i>
-      </dd><dt><b>Arguments and Values:</b></dt><dd><i>second</i>, <i>minute</i>, <i>hour</i>, <i>date</i>, <i>month</i>, <i>year</i>, <i>time-zone</i>—the corresponding parts of a <i><a href="../26-glossary/d.xhtml#decodedtime">decoded time</a></i>.
+      </dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd><i>second</i>, <i>minute</i>, <i>hour</i>, <i>date</i>, <i>month</i>, <i>year</i>, <i>time-zone</i>—the corresponding parts of a <i><a href="../26-glossary/d.xhtml#decodedtime">decoded time</a></i>.
         (Note that some of the nine values in a full <i><a href="../26-glossary/d.xhtml#decodedtime">decoded
         time</a></i> are redundant, and so are not used as inputs to this function.) <p><i>universal-time</i>—a <i><a href="../26-glossary/u.xhtml#universaltime">universal time</a></i>. </p>
-      </dd><dt><b>Description:</b></dt><dd><a href="#DictEntry_encode_unive_1429"><b>encode-universal-time</b></a> converts a time
+      </dd><dt data-section="description"><b>Description:</b></dt><dd><a href="#DictEntry_encode_unive_1429"><b>encode-universal-time</b></a> converts a time
         from Decoded Time format to a <i><a href="../26-glossary/u.xhtml#universaltime">universal time</a></i>.
         <p>If <i>time-zone</i> is supplied, no adjustment for daylight savings time is
         performed. </p>
-      </dd><dt><b>Examples:</b></dt><dd><pre> (encode-universal-time 0 0 0 1 1 1900 0) → 0
+      </dd><dt data-section="examples"><b>Examples:</b></dt><dd><pre> (encode-universal-time 0 0 0 1 1 1900 0) → 0
  (encode-universal-time 0 0 1 4 7 1976 5) → 2414296800
 ;; The next example assumes Eastern Daylight Time.
  (encode-universal-time 0 0 1 4 7 1976) → 2414293200
 </pre>
-      </dd><dt><b>See Also:</b></dt><dd><a href="25.2.1-decode-universal-time.xhtml#DictEntry_decode_unive_1428"><b>decode-universal-time</b></a>, <a href="25.2.3-get-universal-time.xhtml#DictEntry_get_universa_1430"><b>get-decoded-time</b></a>
+      </dd><dt data-section="see-also"><b>See Also:</b></dt><dd><a href="25.2.1-decode-universal-time.xhtml#DictEntry_decode_unive_1428"><b>decode-universal-time</b></a>, <a href="25.2.3-get-universal-time.xhtml#DictEntry_get_universa_1430"><b>get-decoded-time</b></a>
         </dd></dl>
 </section>
 </body>

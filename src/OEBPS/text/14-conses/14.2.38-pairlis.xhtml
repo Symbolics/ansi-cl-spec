@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_pairlis_951" class="entry"><span class="secno">14.2.38</span> <span class="names"><span id="pairlis" data-symbol="pairlis">pairlis</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_pairlis_951" class="entry" data-kind="function"><span class="secno">14.2.38</span> <span class="names"><span id="pairlis" data-symbol="pairlis">pairlis</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>pairlis</b>
 <i>keys data <code>&amp;optional</code> alist</i>
   → <i>new-alist</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>keys</i>—a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i>.
 
@@ -31,7 +31,7 @@
 </p><p>
 <i>new-alist</i>—an <i><a href="../26-glossary/a.xhtml#associationlist">association list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Returns an <i><a href="../26-glossary/a.xhtml#associationlist">association list</a></i> that associates
@@ -59,7 +59,7 @@ or
 <pre> ((two . 2) (one . 1) (three . 3) (four . 19))
 </pre>
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq keys '(1 2 3)
         data '("one" "two" "three")
@@ -70,11 +70,11 @@ or
  alist → ((4 . "four"))
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>keys</i> and <i>data</i> are not <i><a href="../26-glossary/p.xhtml#properlist">proper lists</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.35-acons.xhtml#DictEntry_acons_948"><b>acons</b></a>
 

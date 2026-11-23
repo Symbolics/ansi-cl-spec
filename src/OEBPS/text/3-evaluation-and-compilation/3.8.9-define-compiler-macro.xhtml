@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_define_compi_291" class="entry"><span class="secno">3.8.9</span> <span class="names"><span id="define-compiler-macro" data-symbol="define-compiler-macro">define-compiler-macro</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_define_compi_291" class="entry" data-kind="macro"><span class="secno">3.8.9</span> <span class="names"><span id="define-compiler-macro" data-symbol="define-compiler-macro">define-compiler-macro</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>define-compiler-macro</b>
 <i>name lambda-list [[{<i>declaration</i>}* $|$ <i>documentation</i>]] {<i>form</i>}*</i><br/>   
   → <i>name</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>name</i>—a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i>.
 
@@ -33,7 +33,7 @@
 </p><p>
 <i>form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <p>
@@ -67,7 +67,7 @@ and to the <i><a href="../26-glossary/c.xhtml#compilermacrofunction">compiler ma
  <a href="3.4-lambda-lists.xhtml#SubSection_Macro_Lambda_254"><b>&amp;whole</b></a>).
 </li></ul> 
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defun square (x) (expt x 2)) →  SQUARE
  (define-compiler-macro square (&amp;whole form arg)
@@ -169,14 +169,14 @@ and to the <i><a href="../26-glossary/c.xhtml#compilermacrofunction">compiler ma
 →  NIL
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="3.8.8-compiler-macro-function.xhtml#DictEntry_compiler_mac_290"><b>compiler-macro-function</b></a>,
 <a href="3.8.10-defmacro.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a>,
 <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>documentation</b></a>,
 Section <a href="3.4-lambda-lists.xhtml#SubSection_Syntactic_In_265">3.4.11 Syntactic Interaction of Documentation Strings and Declarations</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The consequences of writing a <i><a href="../26-glossary/c.xhtml#compilermacro">compiler macro</a></i> definition for a function
 in the <code>common-lisp</code> <i><a href="../26-glossary/p.xhtml#package">package</a></i> are undefined; it is quite possible that in some

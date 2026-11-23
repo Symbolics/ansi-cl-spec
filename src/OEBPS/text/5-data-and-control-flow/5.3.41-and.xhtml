@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_and_427" class="entry"><span class="secno">5.3.41</span> <span class="names"><span id="and" data-symbol="and">and</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_and_427" class="entry" data-kind="macro"><span class="secno">5.3.41</span> <span class="names"><span id="and" data-symbol="and">and</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>and</b>
 <i>{<i>form</i>}*</i>
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
 
@@ -26,7 +26,7 @@
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> resulting from the evaluation of 
 	          the last <i>form</i>, or the symbols <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> or <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 The macro <a href="#DictEntry_and_427"><b>and</b></a> evaluates each <i>form</i> one at a time from left to right. 
@@ -43,7 +43,7 @@ If no <i>forms</i> are supplied, <code>(and)</code> returns <a href="../4-types-
 <a href="#DictEntry_and_427"><b>and</b></a> passes back multiple values from the last <i><a href="../26-glossary/s.xhtml#subform">subform</a></i>
 but not from subforms other than the last.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (if (and (&gt;= n 0)
           (&lt; n (length a-simple-vector))
@@ -65,7 +65,7 @@ of its parts, <a href="../17-sequences/17.3.3-elt.xhtml#DictEntry_elt_1043"><b>e
  (and) →  T 
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.42-cond.xhtml#DictEntry_cond_428"><b>cond</b></a>,
 <a href="5.3.40-every.xhtml#DictEntry_every_some_426"><b>every</b></a>,
@@ -73,7 +73,7 @@ of its parts, <a href="../17-sequences/17.3.3-elt.xhtml#DictEntry_elt_1043"><b>e
 <a href="5.3.44-or.xhtml#DictEntry_or_430"><b>or</b></a>,
 <a href="5.3.45-when.xhtml#DictEntry_when_unless_431"><b>when</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (and <i>form</i>) ==(let () <i>form</i>)
  (and <i>form1</i> <i>form2</i> ...) ==(when <i>form1</i> (and <i>form2</i> ...))

@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_parse_namest_1155" class="entry"><span class="secno">19.4.12</span> <span class="names"><span id="parse-namestring" data-symbol="parse-namestring">parse-namestring</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_parse_namest_1155" class="entry" data-kind="function"><span class="secno">19.4.12</span> <span class="names"><span id="parse-namestring" data-symbol="parse-namestring">parse-namestring</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>parse-namestring</b>
 <i>thing <code>&amp;optional</code> host default-pathname <code>&amp;key</code> start end junk-allowed</i><br/> 
   → <i>pathname, position</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 
@@ -60,7 +60,7 @@
 </p><p>
 <i>position</i>—a <i><a href="../26-glossary/b.xhtml#boundingindexdesignator">bounding index designator</a></i> for <i>thing</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 
@@ -183,7 +183,7 @@ then it is <i><a href="../26-glossary/i.xhtml#implementationdefined">implementat
 will supply the standard default device for that host as the device component
 of the resulting <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (setq q (parse-namestring "test"))  
@@ -204,7 +204,7 @@ of the resulting <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i>.
 </pre>
 
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If <i>junk-allowed</i> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
 an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.8-parse-error.xhtml#DictEntry_parse_error_633"><b>parse-error</b></a> is signaled if <i>thing</i> 
@@ -226,7 +226,7 @@ are both present and do not match,
 an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> is signaled.               
 
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 
 <a href="19.4.1-pathname.xhtml#DictEntry_pathname_1144"><b>pathname</b></a>,

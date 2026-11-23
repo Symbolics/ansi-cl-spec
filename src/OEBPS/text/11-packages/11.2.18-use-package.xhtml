@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_use_package_733" class="entry"><span class="secno">11.2.18</span> <span class="names"><span id="use-package" data-symbol="use-package">use-package</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_use_package_733" class="entry" data-kind="function"><span class="secno">11.2.18</span> <span class="names"><span id="use-package" data-symbol="use-package">use-package</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>use-package</b>
 <i>packages-to-use <code>&amp;optional</code> package</i>
   → <i><a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
 </i><p><i></i>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>packages-to-use</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for 
@@ -35,7 +35,7 @@
   The <i>package</i> cannot be the <a href="../10-symbols/10.2.2-keyword.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="../26-glossary/p.xhtml#package">package</a></i>.
 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_use_package_733"><b>use-package</b></a> causes <i>package</i> to inherit all the
 <i><a href="../26-glossary/e.xhtml#externalsymbol">external symbols</a></i> of <i>packages-to-use</i>.
@@ -65,7 +65,7 @@ either <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>
 by <i>importing</i> one of them into <i>package</i> and making it a
 shadowing symbol. 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (export (intern "LAND-FILL" (make-package 'trash)) 'trash) →  T
  (find-symbol "LAND-FILL" (make-package 'temp)) →  NIL, NIL
@@ -75,17 +75,17 @@ shadowing symbol.
  (find-symbol "LAND-FILL" 'temp) →  TRASH:LAND-FILL, :INHERITED
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The <i><a href="../26-glossary/u.xhtml#uselist">use list</a></i> of <i>package</i> may be modified.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="11.2.17-unuse-package.xhtml#DictEntry_unuse_packag_732"><b>unuse-package</b></a>,
 <a href="11.2.25-package-use-list.xhtml#DictEntry_package_use__740"><b>package-use-list</b></a>,
 Section <a href="11.1-package-concepts.xhtml#Section_Package_Conc_696">11.1 Package Concepts</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 It is permissible for a <i><a href="../26-glossary/p.xhtml#package">package</a></i> <i>P<sub>1</sub></i> 
 to <i><a href="../26-glossary/u.xhtml#use">use</a></i> a <i><a href="../26-glossary/p.xhtml#package">package</a></i> <i>P<sub>2</sub></i>

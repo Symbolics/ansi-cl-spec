@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_defun_388" class="entry"><span class="secno">5.3.2</span> <span class="names"><span id="defun" data-symbol="defun">defun</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_defun_388" class="entry" data-kind="macro"><span class="secno">5.3.2</span> <span class="names"><span id="defun" data-symbol="defun">defun</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>defun</b>
 <i>function-name lambda-list [[{<i>declaration</i>}* <i>|</i> <i>documentation</i>]] {<i>form</i>}*</i><br/>   
   → <i>function-name</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>function-name</i>—a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i>.
 
@@ -40,7 +40,7 @@
 </p><p>
 <i>block-name</i>—the <i><a href="../26-glossary/f.xhtml#functionblockname">function block name</a></i> of the <i>function-name</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Defines a new <i><a href="../26-glossary/f.xhtml#function">function</a></i> named <i>function-name</i> in the <i><a href="../26-glossary/g.xhtml#globalenvironment">global environment</a></i>.
 The body of the <i><a href="../26-glossary/f.xhtml#function">function</a></i> defined by <a href="#DictEntry_defun_388"><b>defun</b></a> consists 
@@ -97,7 +97,7 @@ about the <i><a href="../26-glossary/f.xhtml#function">function</a></i> for the 
 or to enable the <i><a href="../26-glossary/f.xhtml#function">function</a></i> to be expanded inline.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defun recur (x)
   (when (&gt; x 0)
@@ -129,7 +129,7 @@ or to enable the <i><a href="../26-glossary/f.xhtml#function">function</a></i> t
  (careful-discriminant 1 2/3 -2) → 76/9
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.6-flet.xhtml#DictEntry_flet_labels_392"><b>flet</b></a>,
 <a href="5.3.6-flet.xhtml#DictEntry_flet_labels_392"><b>labels</b></a>, 
@@ -141,7 +141,7 @@ Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#Section_Ev
 Section <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSection_Ordinary_Lam_243">3.4.1 Ordinary Lambda Lists</a>,
 Section <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSection_Syntactic_In_265">3.4.11 Syntactic Interaction of Documentation Strings and Declarations</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 <a href="5.3.25-return-from.xhtml#DictEntry_return_from_411"><b>return-from</b></a> can be used to return

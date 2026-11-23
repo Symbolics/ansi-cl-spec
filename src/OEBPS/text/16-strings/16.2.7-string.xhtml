@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_string_1026" class="entry"><span class="secno">16.2.7</span> <span class="names"><span id="string" data-symbol="string">string</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_string_1026" class="entry" data-kind="function"><span class="secno">16.2.7</span> <span class="names"><span id="string" data-symbol="string">string</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>string</b>
 <i>x</i>
   → <i>string</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>x</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>, a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>, or a <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
@@ -26,7 +26,7 @@
 <p>
 <i>string</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Returns a <i><a href="../26-glossary/s.xhtml#string">string</a></i> described by <i>x</i>; specifically:
 
@@ -44,26 +44,26 @@ then a <i><a href="../26-glossary/s.xhtml#string">string</a></i> containing that
 
 </li></ul>
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (string "already a string") → "already a string"
  (string 'elm) → "ELM"
  (string #\c) → "c"
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 In the case where a conversion is defined neither by this specification nor
 by the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>, an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> is signaled.
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../4-types-and-classes/4.4.24-coerce.xhtml#DictEntry_coerce_359"><b>coerce</b></a>,
 <a href="#DictEntry_string_1026"><b>string</b></a> (<i><a href="../26-glossary/t.xhtml#type">type</a></i>).
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 <a href="../4-types-and-classes/4.4.24-coerce.xhtml#DictEntry_coerce_359"><b>coerce</b></a> can be used to convert a <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i> of <i><a href="../26-glossary/c.xhtml#character">characters</a></i>

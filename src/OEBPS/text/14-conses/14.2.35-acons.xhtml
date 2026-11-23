@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_acons_948" class="entry"><span class="secno">14.2.35</span> <span class="names"><span id="acons" data-symbol="acons">acons</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_acons_948" class="entry" data-kind="function"><span class="secno">14.2.35</span> <span class="names"><span id="acons" data-symbol="acons">acons</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>acons</b>
 <i>key datum alist</i>
   → <i>new-alist</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>key</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -30,7 +30,7 @@
 </p><p>
 <i>new-alist</i>—an <i><a href="../26-glossary/a.xhtml#associationlist">association list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Creates a <i><a href="../26-glossary/f.xhtml#fresh">fresh</a></i> <i><a href="../26-glossary/c.xhtml#cons">cons</a></i>,
@@ -39,7 +39,7 @@ the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of which is another <i><
  the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of which is <i>key</i> and
  the <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i> of which is <i>datum</i>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq alist '()) →  NIL
  (acons 1 "one" alist) → ((1 . "one"))
@@ -50,11 +50,11 @@ the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of which is another <i><
  (assoc 1 alist) → (1 . "uno")
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.36-assoc.xhtml#DictEntry_assoc_assoc_949"><b>assoc</b></a>, <a href="14.2.38-pairlis.xhtml#DictEntry_pairlis_951"><b>pairlis</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre>(acons <i>key</i> <i>datum</i> <i>alist</i>) ==(cons (cons <i>key</i> <i>datum</i>) <i>alist</i>)
 </pre>

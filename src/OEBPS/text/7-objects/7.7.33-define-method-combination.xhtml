@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_define_metho_589" class="entry"><span class="secno">7.7.33</span> <span class="names"><span id="define-method-combination" data-symbol="define-method-combination">define-method-combination</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_define_metho_589" class="entry" data-kind="macro"><span class="secno">7.7.33</span> <span class="names"><span id="define-method-combination" data-symbol="define-method-combination">define-method-combination</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>define-method-combination</b>
 <i>name [[↓short-form-option]]</i><br/>   
@@ -43,7 +43,7 @@ method-group-specifier::= (name
 
 long-form-option::= <code>:description</code> <i>description</i> |<br/>
 			  <code>:order</code> <i>order</i> 		|<br/>
-			  <code>:required</code> <i>required-p</i></p></dd><dt><b>Arguments and Values:</b></dt><dd>
+			  <code>:required</code> <i>required-p</i></p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>args-lambda-list</i>—
 
@@ -98,7 +98,7 @@ a <i><a href="../26-glossary/d.xhtml#definemethodcombinationargumentslambdalist"
 </p><p>
 <i>required-p</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 The macro <a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a> is used to define new types
 of method combination.
@@ -453,7 +453,7 @@ is executed, and possibly as late as the time that <i><a href="../26-glossary/g.
 that use the <i><a href="../26-glossary/m.xhtml#methodcombination">method combination</a></i> are executed.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 Most examples of the long form of <a href="#DictEntry_define_metho_589"><b>define-method-combination</b></a> also
 illustrate the use of the related <i><a href="../26-glossary/f.xhtml#function">functions</a></i> that are provided as part
@@ -588,13 +588,13 @@ of the declarative method combination facility.
   
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 
 The <i><a href="../26-glossary/c.xhtml#compiler">compiler</a></i> is not required to perform any compile-time side-effects.
 
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Method combination types defined with the short form require exactly
 one <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i> per method.  
@@ -621,7 +621,7 @@ If the <code>:order</code> option evaluates to a value other than
 <code>:most-specific-first</code> or <code>:most-specific-last</code>, 
 an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> is signaled.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="7.7.30-call-method.xhtml#DictEntry_call_method_586"><b>call-method</b></a>,
 <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a>,
@@ -634,7 +634,7 @@ Section <a href="7.6-generic-functions-and-methods.xhtml#SubSection_Method_Selec
 Section <a href="7.6-generic-functions-and-methods.xhtml#SubSubSectio_Built_in_Met_554">7.6.6.4 Built-in Method Combination Types</a>,
 Section <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSection_Syntactic_In_265">3.4.11 Syntactic Interaction of Documentation Strings and Declarations</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The <code>:method-combination</code> option of <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> is used to
 specify that a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> should use a particular method

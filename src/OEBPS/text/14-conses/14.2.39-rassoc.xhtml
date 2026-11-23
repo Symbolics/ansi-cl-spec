@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_rassoc_rass_952" class="entry"><span class="secno">14.2.39</span> <span class="names"><span id="rassoc" data-symbol="rassoc">rassoc</span>, <span id="rassoc-if" data-symbol="rassoc-if">rassoc-if</span>, <span id="rassoc-if-not" data-symbol="rassoc-if-not">rassoc-if-not</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_rassoc_rass_952" class="entry" data-kind="function"><span class="secno">14.2.39</span> <span class="names"><span id="rassoc" data-symbol="rassoc">rassoc</span>, <span id="rassoc-if" data-symbol="rassoc-if">rassoc-if</span>, <span id="rassoc-if-not" data-symbol="rassoc-if-not">rassoc-if-not</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>rassoc</b>
 <i>item      alist  <code>&amp;key</code> key test test-not</i>
@@ -25,7 +25,7 @@
 <b>rassoc-if-not</b>
 <i>predicate alist <code>&amp;key</code> key</i>
   → <i>entry</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>item</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -54,7 +54,7 @@
 <i>entry</i>—a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> that is an <i><a href="../26-glossary/e.xhtml#element">element</a></i> of the <i>alist</i>,
 		or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_rassoc_rass_952"><b>rassoc</b></a>, <a href="#DictEntry_rassoc_rass_952"><b>rassoc-if</b></a>, and <a href="#DictEntry_rassoc_rass_952"><b>rassoc-if-not</b></a>
@@ -65,7 +65,7 @@ If no such <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> is found, <a hr
 <p>
 If <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> appears in <i>alist</i> in place of a pair, it is  ignored.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq alist '((1 . "one") (2 . "two") (3 . 3))) 
 → ((1 . "one") (2 . "two") (3 . 3))
@@ -78,14 +78,14 @@ If <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b>
  (rassoc-if-not #'vectorp alist) → (3 . 3)
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.36-assoc.xhtml#DictEntry_assoc_assoc_949"><b>assoc</b></a>,
 
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The <code>:test-not</code> parameter is deprecated.

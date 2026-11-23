@@ -8,29 +8,29 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_list_length_929" class="entry"><span class="secno">14.2.16</span> <span class="names"><span id="list-length" data-symbol="list-length">list-length</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_list_length_929" class="entry" data-kind="function"><span class="secno">14.2.16</span> <span class="names"><span id="list-length" data-symbol="list-length">list-length</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>list-length</b>
 <i>list</i>
   → <i>length</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>list</i>—a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i> or a <i><a href="../26-glossary/c.xhtml#circularlist">circular list</a></i>.
 
 <p>
 <i>length</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Returns the <i><a href="../26-glossary/l.xhtml#length">length</a></i> of <i>list</i> if <i>list</i> is a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i>.
 Returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if <i>list</i> is a <i><a href="../26-glossary/c.xhtml#circularlist">circular list</a></i>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (list-length '(a b c d)) → 4
  (list-length '(a (b c) d)) → 3
@@ -44,15 +44,15 @@ Returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>ni
  (list-length (circular-list)) → 0
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>list</i> is not a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i> or a <i><a href="../26-glossary/c.xhtml#circularlist">circular list</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../17-sequences/17.3.11-length.xhtml#DictEntry_length_1051"><b>length</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <a href="#DictEntry_list_length_929"><b>list-length</b></a> could be implemented as follows:
 

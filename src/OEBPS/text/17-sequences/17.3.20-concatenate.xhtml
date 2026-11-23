@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_concatenate_1060" class="entry"><span class="secno">17.3.20</span> <span class="names"><span id="concatenate" data-symbol="concatenate">concatenate</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_concatenate_1060" class="entry" data-kind="function"><span class="secno">17.3.20</span> <span class="names"><span id="concatenate" data-symbol="concatenate">concatenate</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>concatenate</b>
 <i>result-type <code>&amp;rest</code> sequences</i>
   → <i>result-sequence</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>result-type</i>—a <a href="17.3.1-sequence.xhtml#DictEntry_sequence_1041"><b>sequence</b></a> <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
@@ -29,7 +29,7 @@
 </p><p>
 <i>result-sequence</i>—a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <i>result-type</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_concatenate_1060"><b>concatenate</b></a> returns a <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i> that contains 
@@ -67,7 +67,7 @@ the element type of the resulting array is <a href="../4-types-and-classes/4.4.1
 otherwise, an error is signaled.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre>(concatenate 'string "all" " " "together" " " "now") → "all together now"
 (concatenate 'list "ABC" '(d e f) #(1 2 3) #*1011)
@@ -79,7 +79,7 @@ otherwise, an error is signaled.
 </pre>
 
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 An error is signaled if the <i>result-type</i> is neither
@@ -94,7 +94,7 @@ specifies the number of elements and the sum of <i>sequences</i>
 is different from that number.
 
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../14-conses/14.2.26-append.xhtml#DictEntry_append_939"><b>append</b></a>
 

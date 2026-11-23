@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_catch_409" class="entry"><span class="secno">5.3.23</span> <span class="names"><span id="catch" data-symbol="catch">catch</span></span> <span class="kind">Special Operator</span></h3>
+<h3 id="DictEntry_catch_409" class="entry" data-kind="special-operator"><span class="secno">5.3.23</span> <span class="names"><span id="catch" data-symbol="catch">catch</span></span> <span class="kind">Special Operator</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>catch</b>
 <i><i>tag</i> {<i>form</i>}*</i>
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>tag</i>—a <i><a href="../26-glossary/c.xhtml#catchtag">catch tag</a></i>; evaluated.
@@ -31,7 +31,7 @@
 		  if a throw occurs to the <i>tag</i>,
 		   the <i><a href="../26-glossary/v.xhtml#value">values</a></i> that are thrown.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_catch_409"><b>catch</b></a> is used as the destination of a non-local 
@@ -90,7 +90,7 @@ if <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a> is not with
 <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a> must occur within the <i><a href="../26-glossary/d.xhtml#dynamicextent">dynamic extent</a></i> 
 of the <i><a href="../26-glossary/e.xhtml#evaluation">evaluation</a></i> of the body of a <a href="#DictEntry_catch_409"><b>catch</b></a> with a corresponding <i>tag</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (catch '-tag 1 2 (throw '-tag 3) 4) → 3
  (catch '-tag 1 2 3 4) → 4
@@ -104,16 +104,16 @@ of the <i><a href="../26-glossary/e.xhtml#evaluation">evaluation</a></i> of the 
      2)) → 2
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="5.3.67-control-error.xhtml#DictEntry_control_erro_453"><b>control-error</b></a> is signaled
 if <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a> is done
 when there is no suitable <a href="#DictEntry_catch_409"><b>catch</b></a> <i>tag</i>. 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a>, Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 It is customary for <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> to be used
 as <i>tags</i>, but any <i><a href="../26-glossary/o.xhtml#object">object</a></i> is permitted.  

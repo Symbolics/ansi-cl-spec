@@ -8,23 +8,23 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_time_1437" class="entry"><span class="secno">25.2.10</span> <span class="names"><span id="time" data-symbol="time">time</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_time_1437" class="entry" data-kind="macro"><span class="secno">25.2.10</span> <span class="names"><span id="time" data-symbol="time">time</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>time</b>
 <i>form</i>
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>; evaluated as described below.
 
 <p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>form</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_time_1437"><b>time</b></a> evaluates <i>form</i> in the current <i><a href="../26-glossary/e.xhtml#environment">environment</a></i> (lexical and dynamic).
@@ -39,7 +39,7 @@ Implementations are encouraged to provide such information as
      machine run time,
  and storage management statistics.
 
-</p></dd><dt><b>Affected By:</b></dt><dd>
+</p></dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 The accuracy of the results depends, among other things, on the accuracy
 of the corresponding functions provided by the underlying operating system.
@@ -61,12 +61,12 @@ Some specific issues which frequently affect the outcome are
   whether internal data structures (e.g., hash tables) are implicitly reorganized,
   <i>etc.</i>
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="25.2.12-get-internal-real-time.xhtml#DictEntry_get_internal_1439"><b>get-internal-real-time</b></a>,
 <a href="25.2.13-get-internal-run-time.xhtml#DictEntry_get_internal_1440"><b>get-internal-run-time</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 In general, these timings are not guaranteed to be reliable enough for
 marketing comparisons. Their value is primarily heuristic, for tuning

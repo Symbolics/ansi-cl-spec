@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_progv_405" class="entry"><span class="secno">5.3.19</span> <span class="names"><span id="progv" data-symbol="progv">progv</span></span> <span class="kind">Special Operator</span></h3>
+<h3 id="DictEntry_progv_405" class="entry" data-kind="special-operator"><span class="secno">5.3.19</span> <span class="names"><span id="progv" data-symbol="progv">progv</span></span> <span class="kind">Special Operator</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>progv</b>
 <i><i>symbols</i> <i>values</i> {<i>form</i>}*</i>
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>symbols</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>; evaluated.
@@ -31,7 +31,7 @@
 </p><p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i><a href="../26-glossary/f.xhtml#form">forms</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_progv_405"><b>progv</b></a> creates new dynamic variable <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i> and
 executes each <i>form</i> using those <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i>.
@@ -51,7 +51,7 @@ supplied, the excess values are ignored.
 The <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i> of the dynamic variables are undone on
 exit from <a href="#DictEntry_progv_405"><b>progv</b></a>. 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq *x* 1) → 1
  (progv '(*x*) '(2) *x*) → 2
@@ -64,11 +64,11 @@ Assuming *x* is not globally special,
       (list *x* (symbol-value '*x*)))) → (3 4)
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.18-let.xhtml#DictEntry_let_let_404"><b>let</b></a>, Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 Among other things, <a href="#DictEntry_progv_405"><b>progv</b></a> is useful when writing 

@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_flet_labels_392" class="entry"><span class="secno">5.3.6</span> <span class="names"><span id="flet" data-symbol="flet">flet</span>, <span id="labels" data-symbol="labels">labels</span>, <span id="macrolet" data-symbol="macrolet">macrolet</span></span> <span class="kind">Special Operator</span></h3>
+<h3 id="DictEntry_flet_labels_392" class="entry" data-kind="special-operator"><span class="secno">5.3.6</span> <span class="names"><span id="flet" data-symbol="flet">flet</span>, <span id="labels" data-symbol="labels">labels</span>, <span id="macrolet" data-symbol="macrolet">macrolet</span></span> <span class="kind">Special Operator</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 
 <b>flet</b>
@@ -38,7 +38,7 @@
 				      		  {<i>local-form</i>}*)}*)
 			  {<i>declaration</i>}* {<i>form</i>}*</i><br/> 
   → <i>{<i>result</i>}*</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>function-name</i>—a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i>.
@@ -70,7 +70,7 @@
 </p><p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> of the <i>forms</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_flet_labels_392"><b>flet</b></a>, <a href="#DictEntry_flet_labels_392"><b>labels</b></a>, and <a href="#DictEntry_flet_labels_392"><b>macrolet</b></a>
 define local <i><a href="../26-glossary/f.xhtml#function">functions</a></i> and <i><a href="../26-glossary/m.xhtml#macro">macros</a></i>, and execute
@@ -220,7 +220,7 @@ as a <i><a href="../26-glossary/d.xhtml#documentationstring">documentation strin
 
 </p></li></ul>
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defun foo (x flag)
    (macrolet ((fudge (z)
@@ -305,7 +305,7 @@ visible at the site of the macro call which produced the expansion.
 </pre>
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../3-evaluation-and-compilation/3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a>,
 <a href="../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a>,
@@ -315,7 +315,7 @@ visible at the site of the macro call which produced the expansion.
 Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#Section_Evaluation_187">3.1 Evaluation</a>,
 Section <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSection_Syntactic_In_265">3.4.11 Syntactic Interaction of Documentation Strings and Declarations</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 It is not possible to define recursive <i><a href="../26-glossary/f.xhtml#function">functions</a></i> with <a href="#DictEntry_flet_labels_392"><b>flet</b></a>.
 <a href="#DictEntry_flet_labels_392"><b>labels</b></a> can be used to define mutually recursive <i><a href="../26-glossary/f.xhtml#function">functions</a></i>.

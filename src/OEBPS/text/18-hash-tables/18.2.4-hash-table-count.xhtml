@@ -8,23 +8,23 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_hash_table_c_1081" class="entry"><span class="secno">18.2.4</span> <span class="names"><span id="hash-table-count" data-symbol="hash-table-count">hash-table-count</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_hash_table_c_1081" class="entry" data-kind="function"><span class="secno">18.2.4</span> <span class="names"><span id="hash-table-count" data-symbol="hash-table-count">hash-table-count</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>hash-table-count</b>
 <i>hash-table</i>
   → <i>count</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>hash-table</i>—a <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i>.
 
 <p>
 <i>count</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Returns the number of entries in the <i>hash-table</i>.
@@ -32,7 +32,7 @@ If <i>hash-table</i> has just been created
 or newly cleared (see <a href="18.2.13-clrhash.xhtml#DictEntry_clrhash_1090"><b>clrhash</b></a>)
 the entry count is <code>0</code>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq table (make-hash-table)) → #&lt;HASH-TABLE EQL 0/120 32115135&gt;
  (hash-table-count table) → 0
@@ -42,17 +42,17 @@ the entry count is <code>0</code>.
  (hash-table-count table) → 100
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="18.2.13-clrhash.xhtml#DictEntry_clrhash_1090"><b>clrhash</b></a>,
 <a href="18.2.10-remhash.xhtml#DictEntry_remhash_1087"><b>remhash</b></a>,
 <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> of <a href="18.2.9-gethash.xhtml#DictEntry_gethash_1086"><b>gethash</b></a>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="18.2.7-hash-table-size.xhtml#DictEntry_hash_table_s_1084"><b>hash-table-size</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The following relationships are functionally correct, although in practice
 using <a href="#DictEntry_hash_table_c_1081"><b>hash-table-count</b></a> is probably much faster:

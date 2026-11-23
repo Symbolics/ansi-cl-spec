@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_map_1047" class="entry"><span class="secno">17.3.7</span> <span class="names"><span id="map" data-symbol="map">map</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_map_1047" class="entry" data-kind="function"><span class="secno">17.3.7</span> <span class="names"><span id="map" data-symbol="map">map</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>map</b>
 <i>result-type function <code>&amp;rest</code> sequences+</i>
   → <i>result</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>result-type</i> -- a <a href="17.3.1-sequence.xhtml#DictEntry_sequence_1041"><b>sequence</b></a> <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
@@ -38,7 +38,7 @@
 		 then a <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i> of the <i><a href="../26-glossary/t.xhtml#type">type</a></i> it denotes;
 		 otherwise (if the <i>result-type</i> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>), <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Applies <i>function</i> to successive sets of arguments in which
@@ -76,7 +76,7 @@ the element type of the resulting array is <a href="../4-types-and-classes/4.4.1
 otherwise, an error is signaled.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (map 'string #'(lambda (x y)
                   (char "01234567890ABCDEF" (mod (+ x y) 16)))
@@ -95,7 +95,7 @@ otherwise, an error is signaled.
 </pre>
 
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> must be signaled if the <i>result-type</i> is 
@@ -115,7 +115,7 @@ number of elements and the minimum length of the <i>sequences</i>
 is different from that number.
 
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>

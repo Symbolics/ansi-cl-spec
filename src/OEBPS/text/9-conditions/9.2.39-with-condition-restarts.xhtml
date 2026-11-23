@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_with_conditi_664" class="entry"><span class="secno">9.2.39</span> <span class="names"><span id="with-condition-restarts" data-symbol="with-condition-restarts">with-condition-restarts</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_with_conditi_664" class="entry" data-kind="macro"><span class="secno">9.2.39</span> <span class="names"><span id="with-condition-restarts" data-symbol="with-condition-restarts">with-condition-restarts</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>with-condition-restarts</b>
 <i>condition-form restarts-form {<i>form</i>}*</i><br/>   
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>condition-form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>; <i>evaluated</i> to produce a <i>condition</i>.
 
@@ -38,7 +38,7 @@
 </p><p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by <i>forms</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 First, the <i>condition-form</i> and <i>restarts-form</i> are <i>evaluated</i>
 in normal left-to-right order; the <i><a href="../26-glossary/p.xhtml#primaryvalue">primary values</a></i> yielded by these
@@ -50,11 +50,11 @@ Next, the <i>forms</i> are <i>evaluated</i> in a <i><a href="../26-glossary/d.xh
 in which each <i><a href="../26-glossary/r.xhtml#restart">restart</a></i> in <i>restart-list</i> is associated with
 the <i>condition</i>.  See Section <a href="9.1-condition-system-concepts.xhtml#SubSubSubSec_Associating__622">9.1.4.2.4 Associating a Restart with a Condition</a>.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="9.2.37-restart-case.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 Usually this <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> is not used explicitly in code, 
 since <a href="9.2.37-restart-case.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a> handles most of the common cases

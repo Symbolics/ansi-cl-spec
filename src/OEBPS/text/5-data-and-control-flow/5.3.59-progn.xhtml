@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_progn_445" class="entry"><span class="secno">5.3.59</span> <span class="names"><span id="progn" data-symbol="progn">progn</span></span> <span class="kind">Special Operator</span></h3>
+<h3 id="DictEntry_progn_445" class="entry" data-kind="special-operator"><span class="secno">5.3.59</span> <span class="names"><span id="progn" data-symbol="progn">progn</span></span> <span class="kind">Special Operator</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>progn</b>
 <i>{<i>form</i>}*</i>
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>forms</i>—an <i><a href="../26-glossary/i.xhtml#implicitprogn">implicit progn</a></i>.
 
@@ -26,7 +26,7 @@
 
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> of the <i><a href="../26-glossary/f.xhtml#form">forms</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_progn_445"><b>progn</b></a> evaluates <i>forms</i>,
@@ -41,7 +41,7 @@ If <a href="#DictEntry_progn_445"><b>progn</b></a> appears as a <i><a href="../2
 within that <a href="#DictEntry_progn_445"><b>progn</b></a> are considered by the compiler to be 
 <i><a href="../26-glossary/t.xhtml#toplevelform">top level forms</a></i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (progn) →  NIL
  (progn 1 2 3) → 3
@@ -53,11 +53,11 @@ within that <a href="#DictEntry_progn_445"><b>progn</b></a> are considered by th
  a →  NIL
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.58-prog1.xhtml#DictEntry_prog1_prog2_444"><b>prog1</b></a>, <a href="5.3.58-prog1.xhtml#DictEntry_prog1_prog2_444"><b>prog2</b></a>, Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 Many places in <i>Common Lisp</i> involve syntax that uses <i><a href="../26-glossary/i.xhtml#implicitprogn">implicit progns</a></i>.
 That is, part of their syntax allows many <i><a href="../26-glossary/f.xhtml#form">forms</a></i> to be written

@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_make_dispatc_1383" class="entry"><span class="secno">23.2.3</span> <span class="names"><span id="make-dispatch-macro-character" data-symbol="make-dispatch-macro-character">make-dispatch-macro-character</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_make_dispatc_1383" class="entry" data-kind="function"><span class="secno">23.2.3</span> <span class="names"><span id="make-dispatch-macro-character" data-symbol="make-dispatch-macro-character">make-dispatch-macro-character</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>make-dispatch-macro-character</b>
 <i>char <code>&amp;optional</code> non-terminating-p readtable</i>
   → <i><a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
 </i><p><i></i>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>char</i>—a <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
@@ -33,7 +33,7 @@
 <i>readtable</i>—a <i><a href="../26-glossary/r.xhtml#readtable">readtable</a></i>.
  The default is the <i><a href="../26-glossary/c.xhtml#currentreadtable">current readtable</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_make_dispatc_1383"><b>make-dispatch-macro-character</b></a> makes <i>char</i> 
@@ -52,7 +52,7 @@ if <i>non-terminating-p</i> is <i><a href="../26-glossary/f.xhtml#false">false</
 the <i><a href="../26-glossary/d.xhtml#dispatchingmacrocharacter">dispatching macro character</a></i> 
 is made a <i><a href="../26-glossary/t.xhtml#terminating">terminating</a></i> <i><a href="../26-glossary/m.xhtml#macrocharacter">macro character</a></i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (get-macro-character #\{) →  NIL, <i><a href="../26-glossary/f.xhtml#false">false</a></i>
  (make-dispatch-macro-character #\{) →  T
@@ -62,7 +62,7 @@ is made a <i><a href="../26-glossary/t.xhtml#terminating">terminating</a></i> <i
 <p>
 The <i>readtable</i> is altered.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="23.2.17-readtable.xhtml#DictEntry_readtable_1397"><b>*readtable*</b></a>, <a href="23.2.9-set-dispatch-macro-character.xhtml#DictEntry_set_dispatch_1389"><b>set-dispatch-macro-character</b></a>
 

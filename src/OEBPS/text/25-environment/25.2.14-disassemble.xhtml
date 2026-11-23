@@ -8,25 +8,25 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_disassemble_1441" class="entry"><span class="secno">25.2.14</span> <span class="names"><span id="disassemble" data-symbol="disassemble">disassemble</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_disassemble_1441" class="entry" data-kind="function"><span class="secno">25.2.14</span> <span class="names"><span id="disassemble" data-symbol="disassemble">disassemble</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>disassemble</b>
 <i>fn</i>
   → <i><a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>
 </i><p><i></i>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>fn</i>—an <i><a href="../26-glossary/e.xhtml#extendedfunctiondesignator">extended function designator</a></i>
 	  or a <i><a href="../26-glossary/l.xhtml#lambdaexpression">lambda expression</a></i>.
 
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_disassemble_1441"><b>disassemble</b></a> is a debugging aid that composes symbolic 
 instructions or expressions in some <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> 
@@ -56,7 +56,7 @@ the <i><a href="../26-glossary/f.xhtml#function">function</a></i> that it <i><a 
 it is first compiled but the result of this implicit compilation is not installed.)
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (defun f (a) (1+ a)) →  F
@@ -66,11 +66,11 @@ it is first compiled but the result of this implicit compilation is not installe
 </pre>
 
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>fn</i> is not an <i><a href="../26-glossary/e.xhtml#extendedfunctiondesignator">extended function designator</a></i>
 		  or a <i><a href="../26-glossary/l.xhtml#lambdaexpression">lambda expression</a></i>.

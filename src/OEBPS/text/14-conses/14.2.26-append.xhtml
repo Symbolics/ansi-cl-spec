@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_append_939" class="entry"><span class="secno">14.2.26</span> <span class="names"><span id="append" data-symbol="append">append</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_append_939" class="entry" data-kind="function"><span class="secno">14.2.26</span> <span class="names"><span id="append" data-symbol="append">append</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>append</b>
 <i><code>&amp;rest</code> lists</i>
   → <i>result</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>list</i>—each must be a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i> except the last,
@@ -30,7 +30,7 @@
 
         	    and all preceding <i>lists</i> were <i><a href="../26-glossary/n.xhtml#null">null</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_append_939"><b>append</b></a> returns a new <i>list</i> that is the concatenation of
@@ -44,7 +44,7 @@ or is returned directly if there are no preceding
 <i><a href="../26-glossary/n.xhtml#nonempty">non-empty</a></i> 
 <i>lists</i>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (append '(a b c) '(d e f) '() '(g)) → (A B C D E F G)
  (append '(a b c) 'd) → (A B C . D)
@@ -55,7 +55,7 @@ or is returned directly if there are no preceding
  (append 'a) →  A
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.25-nconc.xhtml#DictEntry_nconc_938"><b>nconc</b></a>, <a href="../17-sequences/17.3.20-concatenate.xhtml#DictEntry_concatenate_1060"><b>concatenate</b></a>
 

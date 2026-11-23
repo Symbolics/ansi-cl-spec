@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_eql_420" class="entry"><span class="secno">5.3.34</span> <span class="names"><span id="eql" data-symbol="eql">eql</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_eql_420" class="entry" data-kind="function"><span class="secno">5.3.34</span> <span class="names"><span id="eql" data-symbol="eql">eql</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>eql</b>
 <i>x y</i>
   → <i>generalized-boolean</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>x</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -27,7 +27,7 @@
 </p><p>
 <i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 The value of <a href="#DictEntry_eql_420"><b>eql</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i> of two objects, <i>x</i> and
@@ -50,7 +50,7 @@ then <code>(eql 0.0 -0.0)</code> returns <i><a href="../26-glossary/f.xhtml#fals
 Otherwise, when the syntax <code>-0.0</code> is read it is interpreted as the value <code>0.0</code>,
 and so <code>(eql 0.0 -0.0)</code> returns <i><a href="../26-glossary/t.xhtml#true">true</a></i>.  
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (eql 'a 'b) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
  (eql 'a 'a) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
@@ -82,7 +82,7 @@ formats are permitted to "collapse" the four formats into some
 smaller number of them; in such an implementation <code>(eql 1.0s0 1.0d0)</code>
 might be true.  
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a>,
 <a href="5.3.35-equal.xhtml#DictEntry_equal_421"><b>equal</b></a>,
@@ -90,7 +90,7 @@ might be true.
 <a href="../12-numbers/12.2.15-eq.xhtml#DictEntry___lt_789"><b>=</b></a>,
 <a href="../13-characters/13.2.5-char=.xhtml#DictEntry_char_char_888"><b>char=</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <a href="#DictEntry_eql_420"><b>eql</b></a> is the same as <a href="5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a>, except that if the
 arguments are <i><a href="../26-glossary/c.xhtml#character">characters</a></i> or <i><a href="../26-glossary/n.xhtml#number">numbers</a></i> 

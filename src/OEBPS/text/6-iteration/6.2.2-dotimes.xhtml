@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_dotimes_515" class="entry"><span class="secno">6.2.2</span> <span class="names"><span id="dotimes" data-symbol="dotimes">dotimes</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_dotimes_515" class="entry" data-kind="macro"><span class="secno">6.2.2</span> <span class="names"><span id="dotimes" data-symbol="dotimes">dotimes</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>dotimes</b>
 <i>(var count-form [result-form])
 		  {<i>declaration</i>}*
 		  <code>{</code>tag | statement<code>}</code><sup>*</sup></i><br/>   
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>var</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
@@ -45,7 +45,7 @@
  otherwise, the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>result-form</i>
  or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if there is no <i>result-form</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_dotimes_515"><b>dotimes</b></a> iterates over a series of <i><a href="../26-glossary/i.xhtml#integer">integers</a></i>.
@@ -94,7 +94,7 @@ It is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation
 or whether it <i>establishes</i> a binding for <i>var</i> once at the
 beginning and then <i>assigns</i> it on any subsequent iterations.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (dotimes (temp-one 10 temp-one)) → 10
  (setq temp-two 0) → 0
@@ -133,11 +133,11 @@ Here is an example of the use of <code>dotimes</code> in processing strings:
                   a yam, a hat, a canal--Panama!")) →  T
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="6.2.1-do.xhtml#DictEntry_do_do_514"><b>do</b></a>, <a href="6.2.3-dolist.xhtml#DictEntry_dolist_516"><b>dolist</b></a>, <a href="../5-data-and-control-flow/5.3.27-tagbody.xhtml#DictEntry_tagbody_413"><b>tagbody</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <a href="../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410"><b>go</b></a> may be used within the body of
 <a href="#DictEntry_dotimes_515"><b>dotimes</b></a> to transfer control to a statement labeled by a <i>tag</i>.

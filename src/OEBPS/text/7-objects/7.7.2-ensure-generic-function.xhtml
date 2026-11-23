@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_ensure_gener_558" class="entry"><span class="secno">7.7.2</span> <span class="names"><span id="ensure-generic-function" data-symbol="ensure-generic-function">ensure-generic-function</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_ensure_gener_558" class="entry" data-kind="function"><span class="secno">7.7.2</span> <span class="names"><span id="ensure-generic-function" data-symbol="ensure-generic-function">ensure-generic-function</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>ensure-generic-function</b>
 <i>function-name <code>&amp;key</code>
@@ -21,7 +21,7 @@
                                generic-function-class lambda-list
                                method-class method-combination</i><br/> 
   → <i>generic-function</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>function-name</i>—a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i>.
 
@@ -43,7 +43,7 @@ and run-time environments.
 </p><p>
 <i>generic-function</i>—a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_ensure_gener_558"><b>ensure-generic-function</b></a> is used to define 
 a globally named <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> with no <i><a href="../26-glossary/m.xhtml#method">methods</a></i> 
@@ -99,11 +99,11 @@ If <i>function-name</i> specifies a <i><a href="../26-glossary/g.xhtml#genericfu
 different value for the <code>:method-class</code> argument, the value is
 changed, but any existing <i><a href="../26-glossary/m.xhtml#method">methods</a></i> are not changed.
 
-</p></dd><dt><b>Affected By:</b></dt><dd>
+</p></dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 Existing function binding of <i>function-name</i>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If 
 
@@ -127,7 +127,7 @@ different value for the <code>:generic-function-class</code> argument and if
 the new generic function class not is compatible with the old,
 an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> is signaled.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a>
 

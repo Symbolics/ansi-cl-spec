@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_read_defaul_1394" class="entry"><span class="secno">23.2.14</span> <span class="names"><span id="*read-default-float-format*" data-symbol="*read-default-float-format*">*read-default-float-format*</span></span> <span class="kind">Variable</span></h3>
+<h3 id="DictEntry_read_defaul_1394" class="entry" data-kind="variable"><span class="secno">23.2.14</span> <span class="names"><span id="*read-default-float-format*" data-symbol="*read-default-float-format*">*read-default-float-format*</span></span> <span class="kind">Variable</span></h3>
 <dl>
 
 
-<dt><b>Value Type:</b></dt><dd>
+<dt data-section="value-type"><b>Value Type:</b></dt><dd>
 
 
 one of the <i><a href="../26-glossary/a.xhtml#atomictypespecifier">atomic type specifiers</a></i> 
@@ -23,11 +23,11 @@ one of the <i><a href="../26-glossary/a.xhtml#atomictypespecifier">atomic type s
  or else some other <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> defined 
     by the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> to be acceptable.
 
-</dd><dt><b>Initial Value:</b></dt><dd>
+</dd><dt data-section="initial-value"><b>Initial Value:</b></dt><dd>
 
 The <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="../12-numbers/12.2.5-short-float.xhtml#DictEntry_short_float_779"><b>single-float</b></a>.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Controls the floating-point format that is to be used when reading a
@@ -39,7 +39,7 @@ explicitly prescribe the floating-point format to be used.
 The printer uses <a href="#DictEntry_read_defaul_1394"><b>*read-default-float-format*</b></a> to guide the
 choice of <i><a href="../26-glossary/e.xhtml#exponentmarker">exponent markers</a></i> when printing floating-point numbers.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (let ((*read-default-float-format* 'double-float))
    (read-from-string "(1.0 1.0e0 1.0s0 1.0f0 1.0d0 1.0L0)"))

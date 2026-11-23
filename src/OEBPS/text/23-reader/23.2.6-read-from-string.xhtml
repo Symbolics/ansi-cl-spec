@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_read_from_st_1386" class="entry"><span class="secno">23.2.6</span> <span class="names"><span id="read-from-string" data-symbol="read-from-string">read-from-string</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_read_from_st_1386" class="entry" data-kind="function"><span class="secno">23.2.6</span> <span class="names"><span id="read-from-string" data-symbol="read-from-string">read-from-string</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <table>
 <tbody><tr><td><b>read-from-string</b> <i>string</i></td><td><code>&amp;optional</code> eof-error-p eof-value</td></tr>
@@ -20,7 +20,7 @@
 </tbody></table>
   → object, position
 
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>string</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
 
@@ -55,7 +55,7 @@
 		   and less than or equal to 
 		   one more than the <i><a href="../26-glossary/l.xhtml#length">length</a></i> of the <i>string</i>. 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Parses the printed representation of an <i><a href="../26-glossary/o.xhtml#object">object</a></i>
@@ -85,14 +85,14 @@ If the entire <i>string</i> was read,
 the <i>position</i> returned is either the <i>length</i> of the <i>string</i> 
 or one greater than the <i>length</i> of the <i>string</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (read-from-string " 1 3 5" t nil :start 2) → 3, 5
  (read-from-string "(a b c)") → (A B C), 7
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 If the end of the supplied substring
@@ -101,12 +101,12 @@ error is signaled if <i>eof-error-p</i> is <i><a href="../26-glossary/t.xhtml#tr
 An error is signaled if the end of the <i>substring</i> occurs
 in the middle of an incomplete <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>,
 <a href="23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read-preserving-whitespace</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 

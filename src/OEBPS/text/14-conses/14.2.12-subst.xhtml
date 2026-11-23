@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_subst_subst_925" class="entry"><span class="secno">14.2.12</span> <span class="names"><span id="subst" data-symbol="subst">subst</span>, <span id="subst-if" data-symbol="subst-if">subst-if</span>, <span id="subst-if-not" data-symbol="subst-if-not">subst-if-not</span>, <span id="nsubst" data-symbol="nsubst">nsubst</span>, <span id="nsubst-if" data-symbol="nsubst-if">nsubst-if</span>, <span id="nsubst-if-not" data-symbol="nsubst-if-not">nsubst-if-not</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_subst_subst_925" class="entry" data-kind="function"><span class="secno">14.2.12</span> <span class="names"><span id="subst" data-symbol="subst">subst</span>, <span id="subst-if" data-symbol="subst-if">subst-if</span>, <span id="subst-if-not" data-symbol="subst-if-not">subst-if-not</span>, <span id="nsubst" data-symbol="nsubst">nsubst</span>, <span id="nsubst-if" data-symbol="nsubst-if">nsubst-if</span>, <span id="nsubst-if-not" data-symbol="nsubst-if-not">nsubst-if-not</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>subst</b>
 <i>new old  tree <code>&amp;key</code> key test test-not</i>
@@ -37,7 +37,7 @@
 <b>nsubst-if-not</b>
 <i>new predicate tree <code>&amp;key</code> key</i>
   → <i>new-tree</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>new</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -72,7 +72,7 @@
 <i>new-tree</i>—a <i><a href="../26-glossary/t.xhtml#tree">tree</a></i>.
 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_subst_subst_925"><b>subst</b></a>, <a href="#DictEntry_subst_subst_925"><b>subst-if</b></a>, and <a href="#DictEntry_subst_subst_925"><b>subst-if-not</b></a> perform
 substitution operations on <i>tree</i>.  
@@ -119,7 +119,7 @@ the original <i>tree</i> is  modified and returned as the function result,
 but the result may not be <a href="../5-data-and-control-flow/5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a> to <i>tree</i>.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (setq tree1 '(1 (1 2) (1 2 3) (1 2 3 4))) → (1 (1 2) (1 2 3) (1 2 3 4))
@@ -146,13 +146,13 @@ but the result may not be <a href="../5-data-and-control-flow/5.3.33-eq.xhtml#Di
  tree1 → (1 (1 2) X X)
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 
 <a href="#DictEntry_subst_subst_925"><b>nsubst</b></a>, <a href="#DictEntry_subst_subst_925"><b>nsubst-if</b></a>, and <a href="#DictEntry_subst_subst_925"><b>nsubst-if-not</b></a> 
 might alter the <i><a href="../26-glossary/t.xhtml#treestructure">tree structure</a></i> of <i>tree</i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../17-sequences/17.3.19-substitute.xhtml#DictEntry_substitute__1059"><b>substitute</b></a>,
 <a href="../17-sequences/17.3.19-substitute.xhtml#DictEntry_substitute__1059"><b>nsubstitute</b></a>,
@@ -163,7 +163,7 @@ Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#SubSectio
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The <code>:test-not</code> parameter is deprecated.

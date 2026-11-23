@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_translate_pa_1159" class="entry"><span class="secno">19.4.16</span> <span class="names"><span id="translate-pathname" data-symbol="translate-pathname">translate-pathname</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_translate_pa_1159" class="entry" data-kind="function"><span class="secno">19.4.16</span> <span class="names"><span id="translate-pathname" data-symbol="translate-pathname">translate-pathname</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>translate-pathname</b>
 <i>source from-wildcard to-wildcard <code>&amp;key</code></i><br/> 
   → <i>translated-pathname</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>source</i>—a <i><a href="../26-glossary/p.xhtml#pathnamedesignator">pathname designator</a></i>.
 
@@ -30,7 +30,7 @@
 </p><p>
 <i>translated-pathname</i>—a <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_translate_pa_1159"><b>translate-pathname</b></a> translates <i>source</i> 
 (that matches <i>from-wildcard</i>) into a corresponding <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i> 
@@ -96,7 +96,7 @@ is valid for <i>from-wildcard</i> and/or <i>to-wildcard</i> to be
 
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> ;; The results of the following five forms are all implementation-dependent.
  ;; The second item in particular is shown with multiple results just to 
@@ -140,7 +140,7 @@ OR→"bar"
    ;Renames /usr/joe/veg-recipes.text to /usr/jim/cookbook/joe's-veg-rec.text
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If any of <i>source</i>, <i>from-wildcard</i>, or <i>to-wildcard</i>
 is not a <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i>, a <i><a href="../26-glossary/s.xhtml#string">string</a></i>, or a <i><a href="../26-glossary/s.xhtml#streamassociatedwithafile">stream associated with a file</a></i>
@@ -150,7 +150,7 @@ an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-
 <code>(pathname-match-p <i>source from-wildcard</i>)</code> must
 be true or an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> is signaled.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="19.4.11-namestring.xhtml#DictEntry_namestring__1154"><b>namestring</b></a>,
 <a href="19.4.6-pathname-host.xhtml#DictEntry_pathname_hos_1149"><b>pathname-host</b></a>,
@@ -163,7 +163,7 @@ Section <a href="../20-files/20.1-file-system-concepts.xhtml#Section_File_System
 Section <a href="19.1-overview-of-filenames.xhtml#SubSection_Pathnames_as_1095">19.1.2 Pathnames as Filenames</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The exact behavior of <a href="#DictEntry_translate_pa_1159"><b>translate-pathname</b></a> cannot be dictated
 by the <i>Common Lisp</i> language and must be allowed to vary, depending on the

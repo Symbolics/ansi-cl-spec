@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_define_modif_446" class="entry"><span class="secno">5.3.60</span> <span class="names"><span id="define-modify-macro" data-symbol="define-modify-macro">define-modify-macro</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_define_modif_446" class="entry" data-kind="macro"><span class="secno">5.3.60</span> <span class="names"><span id="define-modify-macro" data-symbol="define-modify-macro">define-modify-macro</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>define-modify-macro</b>
 <i>name lambda-list function [documentation]</i>
   → <i>name</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
@@ -30,7 +30,7 @@
 </p><p>
 <i>documentation</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>; not evaluated.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_define_modif_446"><b>define-modify-macro</b></a> defines a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> named
@@ -94,7 +94,7 @@ the <i><a href="../26-glossary/c.xhtml#compiler">compiler</a></i> must store the
 so that occurrences of the macro later on in the file can be expanded correctly.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 
@@ -108,11 +108,11 @@ so that occurrences of the macro later on in the file can be expanded correctly.
  (define-modify-macro unionf (other-set &amp;rest keywords) union)
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 A macro definition is assigned to <i>name</i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.61-defsetf.xhtml#DictEntry_defsetf_447"><b>defsetf</b></a>,
 

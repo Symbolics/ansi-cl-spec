@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_map_into_1048" class="entry"><span class="secno">17.3.8</span> <span class="names"><span id="map-into" data-symbol="map-into">map-into</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_map_into_1048" class="entry" data-kind="function"><span class="secno">17.3.8</span> <span class="names"><span id="map-into" data-symbol="map-into">map-into</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>map-into</b>
 <i>result-sequence function <code>&amp;rest</code> sequences</i>
   → <i>result-sequence</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>result-sequence</i>—a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
@@ -28,7 +28,7 @@
 </p><p>
 <i>sequence</i>—a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Destructively modifies <i>result-sequence</i> to contain the results of
 applying <i>function</i> to each element in the argument <i>sequences</i> 
@@ -56,7 +56,7 @@ If <i>function</i> has side effects, it can count on being called
 first on all of the elements with index 0, then on all of those 
 numbered 1, and so on.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq a (list 1 2 3 4) b (list 10 10 10 10)) → (10 10 10 10)
  (map-into a #'+ a b) → (11 12 13 14)
@@ -68,12 +68,12 @@ numbered 1, and so on.
  a → (#:G9090 #:G9091 #:G9092 #:G9093)
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>result-sequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>sequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <a href="#DictEntry_map_into_1048"><b>map-into</b></a> differs from <a href="17.3.7-map.xhtml#DictEntry_map_1047"><b>map</b></a> in that it modifies an
 existing <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i> rather than creating a new one.

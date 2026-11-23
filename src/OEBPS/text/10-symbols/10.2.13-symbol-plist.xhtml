@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_symbol_plist_687" class="entry"><span class="secno">10.2.13</span> <span class="names"><span id="symbol-plist" data-symbol="symbol-plist">symbol-plist</span></span> <span class="kind">Accessor</span></h3>
+<h3 id="DictEntry_symbol_plist_687" class="entry" data-kind="accessor"><span class="secno">10.2.13</span> <span class="names"><span id="symbol-plist" data-symbol="symbol-plist">symbol-plist</span></span> <span class="kind">Accessor</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>symbol-plist</b>
 <i>symbol</i>
@@ -20,20 +20,20 @@
 <p>
 (<b>setf</b>
 (<b>symbol-plist</b> <i>symbol</i>) <i>new-plist</i>)
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>symbol</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
 <p>
 <i>plist</i>, <i>new-plist</i>—a <i><a href="../26-glossary/p.xhtml#propertylist">property list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 
 <i>Accesses</i> the <i><a href="../26-glossary/p.xhtml#propertylist">property list</a></i> of <i>symbol</i>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq sym (gensym)) → #:G9723
  (symbol-plist sym) → ()
@@ -45,18 +45,18 @@
  (symbol-plist sym) → (PROP3 VAL3)
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>symbol</i> is not a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="10.2.15-get.xhtml#DictEntry_get_689"><b>get</b></a>,
 <a href="10.2.16-remprop.xhtml#DictEntry_remprop_690"><b>remprop</b></a>
 
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The use of <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> should be avoided, since a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>'s
 <i><a href="../26-glossary/p.xhtml#propertylist">property list</a></i> is a global resource that can contain information 

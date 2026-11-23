@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_subseq_1046" class="entry"><span class="secno">17.3.6</span> <span class="names"><span id="subseq" data-symbol="subseq">subseq</span></span> <span class="kind">Accessor</span></h3>
+<h3 id="DictEntry_subseq_1046" class="entry" data-kind="accessor"><span class="secno">17.3.6</span> <span class="names"><span id="subseq" data-symbol="subseq">subseq</span></span> <span class="kind">Accessor</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>subseq</b>
 <i>sequence start <code>&amp;optional</code> end</i>
@@ -20,7 +20,7 @@
 <p>
 (<b>setf</b>
 (<b>subseq</b> <i>sequence start <code>&amp;optional</code> end</i>) <i>new-subsequence</i>)
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>sequence</i>—a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
@@ -38,7 +38,7 @@
 </p><p>
 <i>new-subsequence</i>—a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_subseq_1046"><b>subseq</b></a> creates a <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i> 
@@ -73,7 +73,7 @@ the shorter length determines the number of elements that are
 replaced.  The remaining <i><a href="../26-glossary/e.xhtml#element">elements</a></i> at the end of the longer sequence 
 are not modified in the operation.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq str "012345") → "012345"
  (subseq str 2) → "2345"
@@ -84,12 +84,12 @@ are not modified in the operation.
  str → "A123ab"
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>sequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>new-subsequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="17.3.18-replace.xhtml#DictEntry_replace_1058"><b>replace</b></a>
 

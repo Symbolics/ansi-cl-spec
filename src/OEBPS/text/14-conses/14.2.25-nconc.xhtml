@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_nconc_938" class="entry"><span class="secno">14.2.25</span> <span class="names"><span id="nconc" data-symbol="nconc">nconc</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_nconc_938" class="entry" data-kind="function"><span class="secno">14.2.25</span> <span class="names"><span id="nconc" data-symbol="nconc">nconc</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>nconc</b>
 <i><code>&amp;rest</code> lists</i>
   → <i>concatenated-list</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>list</i>—each but the last must be a <i><a href="../26-glossary/l.xhtml#list">list</a></i> 
@@ -28,7 +28,7 @@
 <p>
 <i>concatenated-list</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Returns a <i><a href="../26-glossary/l.xhtml#list">list</a></i> that is the concatenation of <i>lists</i>.
@@ -44,7 +44,7 @@ If no <i>lists</i> are supplied, <code>(nconc)</code> returns <a href="../4-type
 </pre>
 
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (nconc) →  NIL
  (setq x '(a b c)) → (A B C)
@@ -79,14 +79,14 @@ it would be printed as <code>(A B C . #1=(D E F . #1#))</code>.
  baz → (K L M)
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The <i>lists</i> are modified rather than copied.
 
 <p>
 ?
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.26-append.xhtml#DictEntry_append_939"><b>append</b></a>, <a href="../17-sequences/17.3.20-concatenate.xhtml#DictEntry_concatenate_1060"><b>concatenate</b></a>
 

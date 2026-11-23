@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_set_693" class="entry"><span class="secno">10.2.19</span> <span class="names"><span id="set" data-symbol="set">set</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_set_693" class="entry" data-kind="function"><span class="secno">10.2.19</span> <span class="names"><span id="set" data-symbol="set">set</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>set</b>
 <i>symbol value</i>
   → <i>value</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>symbol</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
@@ -27,7 +27,7 @@
 <i>value</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_set_693"><b>set</b></a> changes the contents of the <i><a href="../26-glossary/v.xhtml#valuecell">value cell</a></i> of <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>
@@ -36,7 +36,7 @@ to the given <i><a href="../26-glossary/v.xhtml#value">value</a></i>.
 <pre>(set <i>symbol</i> <i>value</i>) ==(setf (symbol-value <i>symbol</i>) <i>value</i>)
 </pre>
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setf (symbol-value 'n) 1) → 1
  (set 'n 2) → 2
@@ -72,15 +72,15 @@ to the given <i><a href="../26-glossary/v.xhtml#value">value</a></i>.
  *odd-count* → 20
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <i>symbol</i> is changed.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../5-data-and-control-flow/5.3.20-setq.xhtml#DictEntry_setq_406"><b>setq</b></a>, <a href="../5-data-and-control-flow/5.3.19-progv.xhtml#DictEntry_progv_405"><b>progv</b></a>, <a href="10.2.14-symbol-value.xhtml#DictEntry_symbol_value_688"><b>symbol-value</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The function <a href="#DictEntry_set_693"><b>set</b></a> is deprecated.
 

@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_tagbody_413" class="entry"><span class="secno">5.3.27</span> <span class="names"><span id="tagbody" data-symbol="tagbody">tagbody</span></span> <span class="kind">Special Operator</span></h3>
+<h3 id="DictEntry_tagbody_413" class="entry" data-kind="special-operator"><span class="secno">5.3.27</span> <span class="names"><span id="tagbody" data-symbol="tagbody">tagbody</span></span> <span class="kind">Special Operator</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>tagbody</b>
 <i><code>{</code><i>tag</i> | <i>statement</i><code>}</code><sup>*</sup></i>
   → <i><a href="5.3.30-nil.xhtml#DictEntry_nil_416"><b>nil</b></a>
 </i><p><i></i>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>tag</i>—a <i><a href="../26-glossary/g.xhtml#gotag">go tag</a></i>; not evaluated.
@@ -27,7 +27,7 @@
 <p>
 <i>statement</i>—a <i><a href="../26-glossary/c.xhtml#compoundform">compound form</a></i>; evaluated as described below.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Executes zero or more <i>statements</i> in a 
 
@@ -63,7 +63,7 @@ its <i><a href="../26-glossary/m.xhtml#macroexpansion">macro expansion</a></i> i
 as a <i>statement</i>, not a <i>tag</i>.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (let (val)
     (tagbody
@@ -100,11 +100,11 @@ as a <i>statement</i>, not a <i>tag</i>.
 →  NIL
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.24-go.xhtml#DictEntry_go_410"><b>go</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The <i><a href="../26-glossary/m.xhtml#macro">macros</a></i> in the next figure have <i>implicit tagbodies</i>.
 

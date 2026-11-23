@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_pprint_dispa_1343" class="entry"><span class="secno">22.4.3</span> <span class="names"><span id="pprint-dispatch" data-symbol="pprint-dispatch">pprint-dispatch</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_pprint_dispa_1343" class="entry" data-kind="function"><span class="secno">22.4.3</span> <span class="names"><span id="pprint-dispatch" data-symbol="pprint-dispatch">pprint-dispatch</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>pprint-dispatch</b>
 <i>object <code>&amp;optional</code> table</i>
   → <i>function, found-p</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -32,7 +32,7 @@
 </p><p>
 <i>found-p</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Retrieves the highest priority function in <i>table</i> that is
 associated with a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> that matches <i>object</i>.
@@ -57,16 +57,16 @@ retrieval is done in the
 
 <i><a href="../26-glossary/i.xhtml#initialpprintdispatchtable">initial pprint dispatch table</a></i>.
 
-</p></dd><dt><b>Affected By:</b></dt><dd>
+</p></dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 The state of the <i>table</i>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>table</i> is neither a
 <i>pprint-dispatch-table</i> nor <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre>(let ((*print-pretty* t))
   (write object :stream s))

@@ -8,19 +8,19 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_print_lines_1363" class="entry"><span class="secno">22.4.23</span> <span class="names"><span id="*print-lines*" data-symbol="*print-lines*">*print-lines*</span></span> <span class="kind">Variable</span></h3>
+<h3 id="DictEntry_print_lines_1363" class="entry" data-kind="variable"><span class="secno">22.4.23</span> <span class="names"><span id="*print-lines*" data-symbol="*print-lines*">*print-lines*</span></span> <span class="kind">Variable</span></h3>
 <dl>
 
 
-<dt><b>Value Type:</b></dt><dd>
+<dt data-section="value-type"><b>Value Type:</b></dt><dd>
 
 a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</dd><dt><b>Initial Value:</b></dt><dd>
+</dd><dt data-section="initial-value"><b>Initial Value:</b></dt><dd>
 
 <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 When the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEntry_print_lines_1363"><b>*print-lines*</b></a> is other than <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
 it is a limit on the number of output lines produced when something is pretty
@@ -29,7 +29,7 @@ printed.  If an attempt is made to go beyond that many lines,
 is printed at the end of the last line followed by all of the
 suffixes (closing delimiters) that are pending to be printed.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (let ((*print-right-margin* 25) (*print-lines* 3))
    (pprint '(progn (setq a 1 b 2 c 3 d 4))))
@@ -39,7 +39,7 @@ suffixes (closing delimiters) that are pending to be printed.
 →  &lt; <i>no values</i> &gt; 
 </pre>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The "<code>..</code>" notation is intentionally different than
 the "<code>...</code>" notation used for level abbreviation, so that the two

@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_union_nunio_962" class="entry"><span class="secno">14.2.49</span> <span class="names"><span id="union" data-symbol="union">union</span>, <span id="nunion" data-symbol="nunion">nunion</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_union_nunio_962" class="entry" data-kind="function"><span class="secno">14.2.49</span> <span class="names"><span id="union" data-symbol="union">union</span>, <span id="nunion" data-symbol="nunion">nunion</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>union</b>
 <i>list-1 list-2 <code>&amp;key</code> key test test-not</i>
@@ -21,7 +21,7 @@
 <b>nunion</b>
 <i>list-1 list-2 <code>&amp;key</code> key test test-not</i>
   → <i>result-list</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>list-1</i>—a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i>.
 
@@ -44,7 +44,7 @@
 </p><p>
 <i>result-list</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_union_nunio_962"><b>union</b></a> and <a href="#DictEntry_union_nunio_962"><b>nunion</b></a> return a <i><a href="../26-glossary/l.xhtml#list">list</a></i>
 that contains every element that occurs in either <i>list-1</i> 
@@ -96,7 +96,7 @@ reflect the ordering of <i>list-1</i> or <i>list-2</i> in any way.
 The result <i><a href="../26-glossary/l.xhtml#list">list</a></i> may be <a href="../5-data-and-control-flow/5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a> to either
 <i>list-1</i> or <i>list-2</i> if appropriate.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (union '(a b c) '(f a d))
 → (A B C F D)
@@ -114,18 +114,18 @@ OR→((X 4) (Y 6) (Z 2))
 OR→(1 2 (1 2) "a" "b" "C" "B" (2 3) 3)
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 
 <a href="#DictEntry_union_nunio_962"><b>nunion</b></a> is permitted to modify any part, <i><a href="../26-glossary/c.xhtml#car">car</a></i> or <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i>, 
 of the <i><a href="../26-glossary/l.xhtml#liststructure">list structure</a></i> of <i>list-1</i> or <i>list-2</i>.
 
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>list-1</i> and <i>list-2</i> are not <i><a href="../26-glossary/p.xhtml#properlist">proper lists</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.43-intersection.xhtml#DictEntry_intersection_956"><b>intersection</b></a>,
 
@@ -135,7 +135,7 @@ Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#SubSectio
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The <code>:test-not</code> parameter is deprecated.

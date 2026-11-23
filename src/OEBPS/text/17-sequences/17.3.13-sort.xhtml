@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_sort_stable_1053" class="entry"><span class="secno">17.3.13</span> <span class="names"><span id="sort" data-symbol="sort">sort</span>, <span id="stable-sort" data-symbol="stable-sort">stable-sort</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_sort_stable_1053" class="entry" data-kind="function"><span class="secno">17.3.13</span> <span class="names"><span id="sort" data-symbol="sort">sort</span>, <span id="stable-sort" data-symbol="stable-sort">stable-sort</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>sort</b>
 <i>sequence predicate <code>&amp;key</code> key</i>
@@ -21,7 +21,7 @@
 <b>stable-sort</b>
 <i>sequence predicate <code>&amp;key</code> key</i>
   → <i>sorted-sequence</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>sequence</i>—a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
@@ -37,7 +37,7 @@
 </p><p>
 <i>sorted-sequence</i>—a <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_sort_stable_1053"><b>sort</b></a> and <a href="#DictEntry_sort_stable_1053"><b>stable-sort</b></a> destructively sort <i>sequences</i>  
@@ -108,7 +108,7 @@ In the case of a <i><a href="../26-glossary/l.xhtml#list">list</a></i>, the <i><
 destructively reordered in the same manner as for
 <a href="17.3.12-reverse.xhtml#DictEntry_reverse_nre_1052"><b>nreverse</b></a>.  
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq tester (copy-seq "lkjashd")) → "lkjashd"
  (sort tester #'char-lessp) → "adhjkls"
@@ -152,11 +152,11 @@ destructively reordered in the same manner as for
      (("David" "Moon") "Objects"))
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>sequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="17.3.21-merge.xhtml#DictEntry_merge_1061"><b>merge</b></a>,
 
@@ -167,7 +167,7 @@ Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-ef
 
 Section <a href="../3-evaluation-and-compilation/3.7-destructive-operations.xhtml#Section_Destructive__278">3.7 Destructive Operations</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 

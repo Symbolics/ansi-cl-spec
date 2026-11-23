@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_documentatio_1442" class="entry"><span class="secno">25.2.15</span> <span class="names"><span id="documentation" data-symbol="documentation">documentation</span>, <span id="(setf-documentation)" data-symbol="(setf documentation)">(setf documentation)</span></span> <span class="kind">Standard Generic Function</span></h3>
+<h3 id="DictEntry_documentatio_1442" class="entry" data-kind="standard-generic-function"><span class="secno">25.2.15</span> <span class="names"><span id="documentation" data-symbol="documentation">documentation</span>, <span id="(setf-documentation)" data-symbol="(setf documentation)">(setf documentation)</span></span> <span class="kind">Standard Generic Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>documentation</b>
 <i>x doc-type</i>
@@ -22,11 +22,11 @@
 <i>new-value x doc-type</i>
   → <i>new-value</i>
 
-</p></dd><dt><b>Argument Precedence Order:</b></dt><dd>
+</p></dd><dt data-section="argument-precedence-order"><b>Argument Precedence Order:</b></dt><dd>
 
 <i>doc-type</i>, <i>object</i>
 
-</dd><dt><b>Method Signatures:</b></dt><dd>
+</dd><dt data-section="method-signatures"><b>Method Signatures:</b></dt><dd>
 
 
 
@@ -86,7 +86,7 @@
 <b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'variable</code>))<br/>
 <b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'variable</code>))<br/>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>x</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
@@ -104,7 +104,7 @@
 </p><p>
 <i>new-value</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 The <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <a href="#DictEntry_documentatio_1442"><b>documentation</b></a> returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i>
 associated with the given <i><a href="../26-glossary/o.xhtml#object">object</a></i> if it is available;
@@ -216,7 +216,7 @@ whose <i><a href="../26-glossary/n.xhtml#name">name</a></i> is the <i><a href=".
 
 A <i><a href="../26-glossary/c.xhtml#conformingimplementation">conforming implementation</a></i> or a <i><a href="../26-glossary/c.xhtml#conformingprogram">conforming program</a></i>
 may extend the set of <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> that are acceptable as the <i>doc-type</i>.
-</p></dd><dt><b>Notes:</b></dt><dd>
+</p></dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 This standard prescribes no means to retrieve the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation strings</a></i>

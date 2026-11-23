@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry___lt_789" class="entry"><span class="secno">12.2.15</span> <span class="names"><span id="=" data-symbol="=">=</span>, <span id="/=" data-symbol="/=">/=</span>, <span id="&lt;" data-symbol="&lt;">&lt;</span>, <span id="&gt;" data-symbol="&gt;">&gt;</span>, <span id="&lt;=" data-symbol="&lt;=">&lt;=</span>, <span id="&gt;=" data-symbol="&gt;=">&gt;=</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry___lt_789" class="entry" data-kind="function"><span class="secno">12.2.15</span> <span class="names"><span id="=" data-symbol="=">=</span>, <span id="/=" data-symbol="/=">/=</span>, <span id="&lt;" data-symbol="&lt;">&lt;</span>, <span id="&gt;" data-symbol="&gt;">&gt;</span>, <span id="&lt;=" data-symbol="&lt;=">&lt;=</span>, <span id="&gt;=" data-symbol="&gt;=">&gt;=</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>=</b>
 <i><code>&amp;rest</code> numbers+</i>
@@ -37,7 +37,7 @@
 <b>&gt;=</b>
 <i><code>&amp;rest</code> numbers+</i>
   → <i>generalized-boolean</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>number</i>—for <a href="#DictEntry___lt_789"><b>&lt;</b></a>, <a href="#DictEntry___lt_789"><b>&gt;</b></a>, <a href="#DictEntry___lt_789"><b>&lt;=</b></a>, <a href="#DictEntry___lt_789"><b>&gt;=</b></a>: a <i>real</i>;
 		 for <a href="#DictEntry___lt_789"><b>=</b></a>, <a href="#DictEntry___lt_789"><b>/=</b></a>: a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
@@ -45,7 +45,7 @@
 <p>
 <i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry___lt_789"><b>=</b></a>, <a href="#DictEntry___lt_789"><b>/=</b></a>, <a href="#DictEntry___lt_789"><b>&lt;</b></a>, <a href="#DictEntry___lt_789"><b>&gt;</b></a>, <a href="#DictEntry___lt_789"><b>&lt;=</b></a>, and <a href="#DictEntry___lt_789"><b>&gt;=</b></a> 
 perform arithmetic comparisons on their arguments as follows:
@@ -96,7 +96,7 @@ otherwise it is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
 <a href="#DictEntry___lt_789"><b>=</b></a>, <a href="#DictEntry___lt_789"><b>/=</b></a>, <a href="#DictEntry___lt_789"><b>&lt;</b></a>, <a href="#DictEntry___lt_789"><b>&gt;</b></a>, <a href="#DictEntry___lt_789"><b>&lt;=</b></a>, and <a href="#DictEntry___lt_789"><b>&gt;=</b></a> 
 perform necessary type conversions. 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 The uses of these functions are illustrated in the next figure.
 
@@ -212,12 +212,12 @@ The uses of these functions are illustrated in the next figure.
 </tbody></table>
 
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Might signal <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if some <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> is not a <i>real</i>.
 Might signal <a href="12.2.78-arithmetic-error.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a> if otherwise unable to fulfill its contract.
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <a href="#DictEntry___lt_789"><b>=</b></a> differs from <a href="../4-types-and-classes/4.4.23-eql.xhtml#DictEntry_eql_358"><b>eql</b></a> in that
 <code>(= 0.0 -0.0)</code> is always true,

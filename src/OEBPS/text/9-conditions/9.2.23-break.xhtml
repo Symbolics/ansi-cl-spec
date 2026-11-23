@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_break_648" class="entry"><span class="secno">9.2.23</span> <span class="names"><span id="break" data-symbol="break">break</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_break_648" class="entry" data-kind="function"><span class="secno">9.2.23</span> <span class="names"><span id="break" data-symbol="break">break</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>break</b>
 <i><code>&amp;optional</code> format-control <code>&amp;rest</code> format-arguments</i>
   → <i><a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>
 </i><p><i></i>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>format-control</i>—a <i><a href="../26-glossary/f.xhtml#formatcontrol">format control</a></i>.
@@ -29,7 +29,7 @@
 <p>
 <i>format-arguments</i>—<i><a href="../26-glossary/f.xhtml#formatargument">format arguments</a></i> for the <i>format-control</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_break_648"><b>break</b></a> <i><a href="../26-glossary/f.xhtml#format">formats</a></i> <i>format-control</i> and <i>format-arguments</i>
 and then goes directly into the debugger without allowing any possibility of
@@ -55,7 +55,7 @@ If the <a href="9.2.42-continue.xhtml#DictEntry_continue_667"><b>continue</b></a
 before attempting to enter the debugger.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (break "You got here with arguments: ~:S." '(FOO 37 A))
 ▷ BREAK: You got here with these arguments: FOO, 37, A.
@@ -68,19 +68,19 @@ before attempting to enter the debugger.
  
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The debugger is entered.
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*debug-io*</b></a>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a>, <a href="9.2.22-invoke-debugger.xhtml#DictEntry_invoke_debug_647"><b>invoke-debugger</b></a>.
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 <a href="#DictEntry_break_648"><b>break</b></a> is used as a way of inserting temporary debugging

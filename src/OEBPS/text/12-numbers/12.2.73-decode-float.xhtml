@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_decode_float_847" class="entry"><span class="secno">12.2.73</span> <span class="names"><span id="decode-float" data-symbol="decode-float">decode-float</span>, <span id="scale-float" data-symbol="scale-float">scale-float</span>, <span id="float-radix" data-symbol="float-radix">float-radix</span>, <span id="float-sign" data-symbol="float-sign">float-sign</span>, <span id="float-digits" data-symbol="float-digits">float-digits</span>, <span id="float-precision" data-symbol="float-precision">float-precision</span>, <span id="integer-decode-float" data-symbol="integer-decode-float">integer-decode-float</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_decode_float_847" class="entry" data-kind="function"><span class="secno">12.2.73</span> <span class="names"><span id="decode-float" data-symbol="decode-float">decode-float</span>, <span id="scale-float" data-symbol="scale-float">scale-float</span>, <span id="float-radix" data-symbol="float-radix">float-radix</span>, <span id="float-sign" data-symbol="float-sign">float-sign</span>, <span id="float-digits" data-symbol="float-digits">float-digits</span>, <span id="float-precision" data-symbol="float-precision">float-precision</span>, <span id="integer-decode-float" data-symbol="integer-decode-float">integer-decode-float</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>decode-float</b>
 <i>float</i>
@@ -41,7 +41,7 @@
 <b>integer-decode-float</b>
 <i>float</i>
   → <i>significand, exponent, integer-sign</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>digits1</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
@@ -83,7 +83,7 @@
 </p><p>
 <i>significand</i>—a <i><a href="../26-glossary/f.xhtml#float">float</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 
@@ -182,7 +182,7 @@ as for <a href="#DictEntry_decode_float_847"><b>decode-float</b></a>:
    (scale-float (float signif f) expon)) ==(abs f)
 </pre>
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> ;; Note that since the purpose of this functionality is to expose
  ;; details of the implementation, all of these examples are necessarily
@@ -207,11 +207,11 @@ as for <a href="#DictEntry_decode_float_847"><b>decode-float</b></a>:
  (integer-decode-float 1.0) → 8388608, -23, 1
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 The implementation's representation for <i><a href="../26-glossary/f.xhtml#float">floats</a></i>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 The functions <a href="#DictEntry_decode_float_847"><b>decode-float</b></a>, <a href="#DictEntry_decode_float_847"><b>float-radix</b></a>, <a href="#DictEntry_decode_float_847"><b>float-digits</b></a>,
 <a href="#DictEntry_decode_float_847"><b>float-precision</b></a>, and <a href="#DictEntry_decode_float_847"><b>integer-decode-float</b></a> should signal an error
@@ -226,7 +226,7 @@ The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#Dict
 is not a <i><a href="../26-glossary/f.xhtml#float">float</a></i> or if its second argument is supplied but is 
 not a <i><a href="../26-glossary/f.xhtml#float">float</a></i>.
 
-</p></dd><dt><b>Notes:</b></dt><dd>
+</p></dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The product of the first result of <a href="#DictEntry_decode_float_847"><b>decode-float</b></a> or <a href="#DictEntry_decode_float_847"><b>integer-decode-float</b></a>,
 of the radix raised to the power of the second result, and of the third result

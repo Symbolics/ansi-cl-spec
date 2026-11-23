@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_incf_decf_807" class="entry"><span class="secno">12.2.33</span> <span class="names"><span id="incf" data-symbol="incf">incf</span>, <span id="decf" data-symbol="decf">decf</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_incf_decf_807" class="entry" data-kind="macro"><span class="secno">12.2.33</span> <span class="names"><span id="incf" data-symbol="incf">incf</span>, <span id="decf" data-symbol="decf">decf</span></span> <span class="kind">Macro</span></h3>
 <dl>
                          
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>incf</b>
 <i>place [delta-form]</i>
@@ -21,7 +21,7 @@
 <b>decf</b>
 <i>place [delta-form]</i>
   → <i>new-value</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>place</i>—a <i><a href="../26-glossary/p.xhtml#place">place</a></i>.
 
@@ -35,7 +35,7 @@
 </p><p>
 <i>new-value</i>—a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_incf_decf_807"><b>incf</b></a> and <a href="#DictEntry_incf_decf_807"><b>decf</b></a> are used for incrementing and
 decrementing the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <i>place</i>, respectively.
@@ -55,7 +55,7 @@ For information about the <i><a href="../26-glossary/e.xhtml#evaluation">evaluat
 see Section <a href="../5-data-and-control-flow/5.1-generalized-reference.xhtml#SubSubSectio_Evaluation_o_370">5.1.1.1 Evaluation of Subforms to Places</a>.  
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq n 0)
  (incf n) → 1      
@@ -69,11 +69,11 @@ see Section <a href="../5-data-and-control-flow/5.1-generalized-reference.xhtml#
  n → 1.5
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 <i>Place</i> is modified.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../25-environment/25.2.21-plus.xhtml#DictEntry____1448"><b>+</b></a>, <a href="../25-environment/25.2.20-minus.xhtml#DictEntry___1447"><b>-</b></a>, <a href="12.2.28-1+.xhtml#DictEntry_1_1__802"><b>1+</b></a>, <a href="12.2.28-1+.xhtml#DictEntry_1_1__802"><b>1-</b></a>, <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a>
 

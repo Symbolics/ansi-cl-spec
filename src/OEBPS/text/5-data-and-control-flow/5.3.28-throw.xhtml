@@ -8,23 +8,23 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_throw_414" class="entry"><span class="secno">5.3.28</span> <span class="names"><span id="throw" data-symbol="throw">throw</span></span> <span class="kind">Special Operator</span></h3>
+<h3 id="DictEntry_throw_414" class="entry" data-kind="special-operator"><span class="secno">5.3.28</span> <span class="names"><span id="throw" data-symbol="throw">throw</span></span> <span class="kind">Special Operator</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>throw</b>
 <i>tag result-form</i>
   →  <b>|</b> 
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>tag</i>—a <i><a href="../26-glossary/c.xhtml#catchtag">catch tag</a></i>; evaluated.
 
 <p>
 <i>result-form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>; evaluated as described below.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_throw_414"><b>throw</b></a> causes a non-local control transfer
 to a <a href="5.3.23-catch.xhtml#DictEntry_catch_409"><b>catch</b></a> whose tag is <a href="5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a> to <i>tag</i>. 
@@ -43,7 +43,7 @@ values of <a href="5.3.23-catch.xhtml#DictEntry_catch_409"><b>catch</b></a>.
 The transfer of control initiated by <a href="#DictEntry_throw_414"><b>throw</b></a> is performed
 as described in Section <a href="5.2-transfer-of-control-to-an-exit-point.xhtml#Section_Transfer_of__385">5.2 Transfer of Control to an Exit Point</a>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (catch 'result
     (setq i 0 j 0)
@@ -85,7 +85,7 @@ and then returns <code>:outer-catch</code>.
 → :OUTER-CATCH
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 If there is no outstanding <i><a href="../26-glossary/c.xhtml#catchtag">catch tag</a></i> that matches the throw tag,
@@ -98,7 +98,7 @@ When the error is signaled,
 the <i><a href="../26-glossary/d.xhtml#dynamicenvironment">dynamic environment</a></i> is that which was
 in force at the point of the <a href="#DictEntry_throw_414"><b>throw</b></a>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.22-block.xhtml#DictEntry_block_408"><b>block</b></a>,
 <a href="5.3.23-catch.xhtml#DictEntry_catch_409"><b>catch</b></a>,
@@ -106,7 +106,7 @@ in force at the point of the <a href="#DictEntry_throw_414"><b>throw</b></a>.
 <a href="5.3.29-unwind-protect.xhtml#DictEntry_unwind_prote_415"><b>unwind-protect</b></a>,
 Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <a href="5.3.23-catch.xhtml#DictEntry_catch_409"><b>catch</b></a> and <a href="#DictEntry_throw_414"><b>throw</b></a> are normally used when the <i><a href="../26-glossary/e.xhtml#exitpoint">exit point</a></i>
 must have <i><a href="../26-glossary/d.xhtml#dynamicscope">dynamic scope</a></i> (<i>e.g.</i>,  the <a href="#DictEntry_throw_414"><b>throw</b></a> is not lexically enclosed

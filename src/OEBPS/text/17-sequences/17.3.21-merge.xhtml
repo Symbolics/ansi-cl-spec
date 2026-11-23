@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_merge_1061" class="entry"><span class="secno">17.3.21</span> <span class="names"><span id="merge" data-symbol="merge">merge</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_merge_1061" class="entry" data-kind="function"><span class="secno">17.3.21</span> <span class="names"><span id="merge" data-symbol="merge">merge</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>merge</b>
 <i>result-type sequence-1 sequence-2 predicate <code>&amp;key</code> key</i>
   → <i>result-sequence</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>result-type</i>—a <a href="17.3.1-sequence.xhtml#DictEntry_sequence_1041"><b>sequence</b></a> <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
@@ -41,7 +41,7 @@
 </p><p>
 <i>result-sequence</i>—a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <i>result-type</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Destructively merges <i>sequence-1</i> with <i>sequence-2</i> according
@@ -116,7 +116,7 @@ the element type of the resulting array is <a href="../4-types-and-classes/4.4.1
 otherwise, an error is signaled.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
                                
 <pre> (setq test1 (list 1 3 4 6 7))
  (setq test2 (list 2 5 8))
@@ -134,7 +134,7 @@ otherwise, an error is signaled.
 </pre>
 
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 An error must be signaled if the <i>result-type</i> is neither
@@ -150,7 +150,7 @@ and the sum of the lengths of <i>sequence-1</i> and <i>sequence-2</i>
 is different from that number.
 
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="17.3.13-sort.xhtml#DictEntry_sort_stable_1053"><b>sort</b></a>,
 <a href="17.3.13-sort.xhtml#DictEntry_sort_stable_1053"><b>stable-sort</b></a>,

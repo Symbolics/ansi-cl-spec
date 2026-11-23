@@ -8,22 +8,22 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_setq_406" class="entry"><span class="secno">5.3.20</span> <span class="names"><span id="setq" data-symbol="setq">setq</span></span> <span class="kind">Special Form</span></h3>
+<h3 id="DictEntry_setq_406" class="entry" data-kind="special-form"><span class="secno">5.3.20</span> <span class="names"><span id="setq" data-symbol="setq">setq</span></span> <span class="kind">Special Form</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>setq</b>
 <i>{<i>pair</i>}*</i>
   → <i>result</i>
 <p>
 
-pair::= var form</p></dd><dt><b>Pronunciation:</b></dt><dd>
+pair::= var form</p></dd><dt data-section="pronunciation"><b>Pronunciation:</b></dt><dd>
 
 <span class="pron">[ ˈsetˌkyü ]</span>
 
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>var</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> naming a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> other than a <i><a href="../26-glossary/c.xhtml#constantvariable">constant variable</a></i>.
@@ -36,7 +36,7 @@ pair::= var form</p></dd><dt><b>Pronunciation:</b></dt><dd>
 <i>result</i>—the <i><a href="../26-glossary/p.xhtml#primaryvalue">primary value</a></i> of the last <i>form</i>,
 		 or <a href="5.3.30-nil.xhtml#DictEntry_nil_416"><b>nil</b></a> if no <i>pairs</i> were supplied.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Assigns values to <i><a href="../26-glossary/v.xhtml#variable">variables</a></i>.
 
@@ -58,7 +58,7 @@ then that <i>var</i> is treated as if <a href="5.3.64-setf.xhtml#DictEntry_setf_
 (not <a href="#DictEntry_setq_406"><b>setq</b></a>) had been used.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> ;; A simple use of SETQ to establish values for variables.
  (setq a 1 b 2 c 3) → 3
@@ -80,11 +80,11 @@ then that <i>var</i> is treated as if <a href="5.3.64-setf.xhtml#DictEntry_setf_
 → ((21 22 30) 21 22)
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The <i><a href="../26-glossary/p.xhtml#primaryvalue">primary value</a></i> of each <i>form</i> is assigned to the corresponding <i>var</i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.21-psetq.xhtml#DictEntry_psetq_407"><b>psetq</b></a>,
 <a href="../10-symbols/10.2.19-set.xhtml#DictEntry_set_693"><b>set</b></a>,

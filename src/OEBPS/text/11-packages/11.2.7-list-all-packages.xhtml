@@ -8,20 +8,20 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_list_all_pac_722" class="entry"><span class="secno">11.2.7</span> <span class="names"><span id="list-all-packages" data-symbol="list-all-packages">list-all-packages</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_list_all_pac_722" class="entry" data-kind="function"><span class="secno">11.2.7</span> <span class="names"><span id="list-all-packages" data-symbol="list-all-packages">list-all-packages</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>list-all-packages</b>
 <i> &lt; <i>no arguments</i> &gt; </i>
   → <i>packages</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>packages</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/p.xhtml#package">package</a></i> <i><a href="../26-glossary/o.xhtml#object">objects</a></i>.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_list_all_pac_722"><b>list-all-packages</b></a> returns a 
@@ -33,14 +33,14 @@
 all <i><a href="../26-glossary/r.xhtml#registeredpackage">registered packages</a></i>.
 
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (let ((before (list-all-packages)))
     (make-package 'temp)
     (set-difference (list-all-packages) before)) → (#&lt;PACKAGE "TEMP"&gt;)
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="11.2.19-defpackage.xhtml#DictEntry_defpackage_734"><b>defpackage</b></a>,
 <a href="11.2.11-delete-package.xhtml#DictEntry_delete_packa_726"><b>delete-package</b></a>,

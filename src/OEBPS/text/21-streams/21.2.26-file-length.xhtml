@@ -8,23 +8,23 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_file_length_1217" class="entry"><span class="secno">21.2.26</span> <span class="names"><span id="file-length" data-symbol="file-length">file-length</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_file_length_1217" class="entry" data-kind="function"><span class="secno">21.2.26</span> <span class="names"><span id="file-length" data-symbol="file-length">file-length</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>file-length</b>
 <i>stream</i>
   → <i>length</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>stream</i>—a <i><a href="../26-glossary/s.xhtml#streamassociatedwithafile">stream associated with a file</a></i>.
 
 <p>
 <i>length</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_file_length_1217"><b>file-length</b></a> returns the length of <i>stream</i>,  
@@ -34,7 +34,7 @@ or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b>
 For a binary file, the length is measured in units of
 the <i><a href="../26-glossary/e.xhtml#elementtype">element type</a></i> of the <i>stream</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (with-open-file (s "decimal-digits.text" 
                     :direction :output :if-exists :error)
@@ -46,11 +46,11 @@ the <i><a href="../26-glossary/e.xhtml#elementtype">element type</a></i> of the 
 → 10
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>stream</i> is not a <i><a href="../26-glossary/s.xhtml#streamassociatedwithafile">stream associated with a file</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="21.2.29-open.xhtml#DictEntry_open_1220"><b>open</b></a>
 

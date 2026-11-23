@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_pprint_logic_1347" class="entry"><span class="secno">22.4.7</span> <span class="names"><span id="pprint-logical-block" data-symbol="pprint-logical-block">pprint-logical-block</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_pprint_logic_1347" class="entry" data-kind="macro"><span class="secno">22.4.7</span> <span class="names"><span id="pprint-logical-block" data-symbol="pprint-logical-block">pprint-logical-block</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>pprint-logical-block</b>
 <i>(stream-symbol object 
@@ -21,7 +21,7 @@
   → <i><a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>
 </i><p><i></i>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>stream-symbol</i>—a <i><a href="../26-glossary/s.xhtml#streamvariabledesignator">stream variable designator</a></i>.
 
@@ -46,7 +46,7 @@
 </p><p>
 <i>forms</i>—an <i><a href="../26-glossary/i.xhtml#implicitprogn">implicit progn</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Causes printing to be grouped into a logical block.
 
@@ -136,11 +136,11 @@ example, no <i><a href="../26-glossary/v.xhtml#variable">variables</a></i> must 
 The <a href="#DictEntry_pprint_logic_1347"><b>pprint-logical-block</b></a> <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> may be used regardless of the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="22.4.26-print-pretty.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a>.
 
 
-</p></dd><dt><b>Affected By:</b></dt><dd>
+</p></dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="22.4.19-print-circle.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a>, <a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> is signaled if any of the <code>:suffix</code>, 
 <code>:prefix</code>, or <code>:per-line-prefix</code> is supplied but does not evaluate 
@@ -158,13 +158,13 @@ of this extent, output is attempted to the <i><a href="../26-glossary/p.xhtml#pr
 It is also unspecified what happens if, within this extent, any output is 
 sent directly to the underlying destination stream.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="22.4.9-pprint-pop.xhtml#DictEntry_pprint_pop_1349"><b>pprint-pop</b></a>,
 <a href="22.4.4-pprint-exit-if-list-exhausted.xhtml#DictEntry_pprint_exit__1344"><b>pprint-exit-if-list-exhausted</b></a>,
 Section <a href="22.3-formatted-output.xhtml#SubSubSectio_Tilde_Less_T_1311">22.3.5.2 Tilde Less-Than-Sign: Logical Block</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 One reason for using the <a href="#DictEntry_pprint_logic_1347"><b>pprint-logical-block</b></a> <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> when the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="22.4.26-print-pretty.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a>

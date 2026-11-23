@@ -8,38 +8,38 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_method_quali_571" class="entry"><span class="secno">7.7.15</span> <span class="names"><span id="method-qualifiers" data-symbol="method-qualifiers">method-qualifiers</span></span> <span class="kind">Standard Generic Function</span></h3>
+<h3 id="DictEntry_method_quali_571" class="entry" data-kind="standard-generic-function"><span class="secno">7.7.15</span> <span class="names"><span id="method-qualifiers" data-symbol="method-qualifiers">method-qualifiers</span></span> <span class="kind">Standard Generic Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>method-qualifiers</b>
 <i>method</i>
   → <i>qualifiers</i>
-</dd><dt><b>Method Signatures:</b></dt><dd>
+</dd><dt data-section="method-signatures"><b>Method Signatures:</b></dt><dd>
 
 <b>method-qualifiers</b>
 <i>(<i>method</i> <a href="../4-types-and-classes/4.4.12-standard-method.xhtml#DictEntry_standard_met_347"><b>standard-method</b></a>)</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>method</i>—a <i><a href="../26-glossary/m.xhtml#method">method</a></i>.
 
 <p>
 <i>qualifiers</i>—a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Returns a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of the <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i> of the <i>method</i>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defmethod some-gf :before ((a integer)) a)
 → #&lt;STANDARD-METHOD SOME-GF (:BEFORE) (INTEGER) 42736540&gt;
  (method-qualifiers *) → (:BEFORE)
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="7.7.33-define-method-combination.xhtml#DictEntry_define_metho_589"><b>define-method-combination</b></a>
 

@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_with_output__1243" class="entry"><span class="secno">21.2.52</span> <span class="names"><span id="with-output-to-string" data-symbol="with-output-to-string">with-output-to-string</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_with_output__1243" class="entry" data-kind="macro"><span class="secno">21.2.52</span> <span class="names"><span id="with-output-to-string" data-symbol="with-output-to-string">with-output-to-string</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>with-output-to-string</b>
 <i>(var <code>&amp;optional</code> string-form <code>&amp;key</code> element-type)
  			  {<i>declaration</i>}*
  			  {<i>form</i>}*</i><br/>   
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>var</i>—a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i><a href="../26-glossary/n.xhtml#name">name</a></i>.
 
@@ -49,7 +49,7 @@
 		  a <i><a href="../26-glossary/s.xhtml#string">string</a></i>; otherwise, 
 		  the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>forms</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_with_output__1243"><b>with-output-to-string</b></a> creates a
 
@@ -110,7 +110,7 @@ the <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i>var</i>.
 
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq fstr (make-array '(0) :element-type 'base-char
                              :fill-pointer 0 :adjustable t)) → ""
@@ -120,18 +120,18 @@ the <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i>var</i>.
  fstr → "here's some output"
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The <i>string</i> is modified.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 The consequences are undefined if destructive modifications are performed
 directly on the <i>string</i> during the <i><a href="../26-glossary/d.xhtml#dynamicextent">dynamic extent</a></i> of the call.
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="21.2.50-make-string-output-stream.xhtml#DictEntry_make_string__1241"><b>make-string-output-stream</b></a>,
 <a href="../15-arrays/15.2.31-vector-push.xhtml#DictEntry_vector_push_1009"><b>vector-push-extend</b></a>,

@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_getf_954" class="entry"><span class="secno">14.2.41</span> <span class="names"><span id="getf" data-symbol="getf">getf</span></span> <span class="kind">Accessor</span></h3>
+<h3 id="DictEntry_getf_954" class="entry" data-kind="accessor"><span class="secno">14.2.41</span> <span class="names"><span id="getf" data-symbol="getf">getf</span></span> <span class="kind">Accessor</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>getf</b>
 <i>plist indicator <code>&amp;optional</code> default</i>
@@ -20,7 +20,7 @@
 <p>
 (<b>setf</b>
 (<b>getf</b> <i>place indicator <code>&amp;optional</code> default</i>) <i>new-value</i>)
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>plist</i>—a <i><a href="../26-glossary/p.xhtml#propertylist">property list</a></i>.
 
@@ -41,7 +41,7 @@
 </p><p>
 <i>new-value</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_getf_954"><b>getf</b></a> finds a <i><a href="../26-glossary/p.xhtml#property">property</a></i> on the <i>plist</i>
 whose <i><a href="../26-glossary/p.xhtml#propertyindicator">property indicator</a></i> is <i><a href="../26-glossary/i.xhtml#identical">identical</a></i> to <i>indicator</i>,
@@ -79,7 +79,7 @@ left-to-right evaluation rules, but its <i><a href="../26-glossary/v.xhtml#value
      of the <i><a href="../26-glossary/l.xhtml#liststructure">list structure</a></i> held by <i>place</i>.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (setq x '()) →  NIL
@@ -106,14 +106,14 @@ OR→(C D)
 </pre>
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../10-symbols/10.2.15-get.xhtml#DictEntry_get_689"><b>get</b></a>,
 <a href="14.2.40-get-properties.xhtml#DictEntry_get_properti_953"><b>get-properties</b></a>,
 <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a>,
 Section <a href="../5-data-and-control-flow/5.1-generalized-reference.xhtml#SubSubSectio_Function_Cal_376">5.1.2.2 Function Call Forms as Places</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 There is no way (using <a href="#DictEntry_getf_954"><b>getf</b></a>) to distinguish an absent property
 from one whose value is <i>default</i>; but see <a href="14.2.40-get-properties.xhtml#DictEntry_get_properti_953"><b>get-properties</b></a>.

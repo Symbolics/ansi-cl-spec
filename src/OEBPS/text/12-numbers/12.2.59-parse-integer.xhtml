@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_parse_intege_833" class="entry"><span class="secno">12.2.59</span> <span class="names"><span id="parse-integer" data-symbol="parse-integer">parse-integer</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_parse_intege_833" class="entry" data-kind="function"><span class="secno">12.2.59</span> <span class="names"><span id="parse-integer" data-symbol="parse-integer">parse-integer</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>parse-integer</b>
 <i>string <code>&amp;key</code> start end radix junk-allowed</i>
   → <i>integer, pos</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>string</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
 
@@ -43,7 +43,7 @@
 </p><p>
 <i>pos</i>—a <i><a href="../26-glossary/b.xhtml#boundingindex">bounding index</a></i> of <i>string</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_parse_intege_833"><b>parse-integer</b></a> parses an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> in the specified <i>radix</i>
@@ -81,14 +81,14 @@ The second <i><a href="../26-glossary/v.xhtml#value">value</a></i> is either
     the end of the substring (as is always the case if <i>junk-allowed</i> 
     is <i><a href="../26-glossary/f.xhtml#false">false</a></i>).
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (parse-integer "123") → 123, 3
  (parse-integer "123" :start 1 :radix 5) → 13, 3
  (parse-integer "no-integer" :junk-allowed t) →  NIL, 0
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If <i>junk-allowed</i> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>, 
 an error is signaled if substring does not consist entirely of

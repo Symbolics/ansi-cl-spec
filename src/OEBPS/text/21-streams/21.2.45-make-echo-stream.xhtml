@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_make_echo_st_1236" class="entry"><span class="secno">21.2.45</span> <span class="names"><span id="make-echo-stream" data-symbol="make-echo-stream">make-echo-stream</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_make_echo_st_1236" class="entry" data-kind="function"><span class="secno">21.2.45</span> <span class="names"><span id="make-echo-stream" data-symbol="make-echo-stream">make-echo-stream</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 
 
@@ -20,7 +20,7 @@
 <b>make-echo-stream</b>
 <i>input-stream output-stream</i>
   → <i>echo-stream</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>input-stream</i>—an <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
 
@@ -30,14 +30,14 @@
 </p><p>
 <i>echo-stream</i>—an <i><a href="../26-glossary/e.xhtml#echostream">echo stream</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Creates and returns an <i><a href="../26-glossary/e.xhtml#echostream">echo stream</a></i> 
 that takes input  from <i>input-stream</i>
 and  sends output to   <i>output-stream</i>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (let ((out (make-string-output-stream)))
     (with-open-stream 
@@ -50,7 +50,7 @@ and  sends output to   <i>output-stream</i>.
 → "this-is-read-and-echoed * this-is-direct-output"
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="21.2.44-echo-stream-input-stream.xhtml#DictEntry_echo_stream__1235"><b>echo-stream-input-stream</b></a>,
 <a href="21.2.44-echo-stream-input-stream.xhtml#DictEntry_echo_stream__1235"><b>echo-stream-output-stream</b></a>,

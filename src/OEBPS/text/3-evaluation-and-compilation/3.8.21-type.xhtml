@@ -8,33 +8,33 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_type_303" class="entry"><span class="secno">3.8.21</span> <span class="names"><span id="type" data-symbol="type">type</span></span> <span class="kind">Declaration</span></h3>
+<h3 id="DictEntry_type_303" class="entry" data-kind="declaration"><span class="secno">3.8.21</span> <span class="names"><span id="type" data-symbol="type">type</span></span> <span class="kind">Declaration</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <code>(type <i>typespec</i> {<i>var</i>}*)</code>
 
 <p>
 <code>(<i>typespec</i> {<i>var</i>}*)</code>
 
-</p></dd><dt><b>Arguments:</b></dt><dd>
+</p></dd><dt data-section="arguments"><b>Arguments:</b></dt><dd>
 
 <i>typespec</i>—a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
 
 <p>
 <i>var</i>—a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i><a href="../26-glossary/n.xhtml#name">name</a></i>.
 
-</p></dd><dt><b>Valid Context:</b></dt><dd>
+</p></dd><dt data-section="valid-context"><b>Valid Context:</b></dt><dd>
 
 <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i> or <i><a href="../26-glossary/p.xhtml#proclamation">proclamation</a></i>
 
-</dd><dt><b>Binding Types Affected:</b></dt><dd>
+</dd><dt data-section="binding-types-affected"><b>Binding Types Affected:</b></dt><dd>
 
 <i><a href="../26-glossary/v.xhtml#variable">variable</a></i>
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Affects
 only variable <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i> and specifies that the
@@ -146,7 +146,7 @@ the code within the scope of the <a href="../15-arrays/15.2.1-array.xhtml#DictEn
 <a href="3.8.28-the.xhtml#DictEntry_the_310"><b>the</b></a> form.
  
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defun f (x y)
    (declare (type fixnum x y))
@@ -218,14 +218,14 @@ could be compiled with all <i><a href="../26-glossary/f.xhtml#fixnum">fixnum</a>
 </pre>
  
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 
 <a href="3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a>,
 <a href="3.8.17-declaim.xhtml#DictEntry_declaim_299"><b>declaim</b></a>,
 <a href="3.8.16-proclaim.xhtml#DictEntry_proclaim_298"><b>proclaim</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <code>(<i>typespec</i> {<i>var</i>}*)</code> 
 is an abbreviation for <code>(type <i>typespec</i> {<i>var</i>}*)</code>.

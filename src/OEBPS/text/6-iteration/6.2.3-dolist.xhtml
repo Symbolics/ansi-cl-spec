@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_dolist_516" class="entry"><span class="secno">6.2.3</span> <span class="names"><span id="dolist" data-symbol="dolist">dolist</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_dolist_516" class="entry" data-kind="macro"><span class="secno">6.2.3</span> <span class="names"><span id="dolist" data-symbol="dolist">dolist</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>dolist</b>
 <i>(var list-form [result-form])
 		   {<i>declaration</i>}*
 	           <code>{</code>tag | statement<code>}</code><sup>*</sup></i><br/>   
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>var</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
@@ -45,7 +45,7 @@
  otherwise, the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>result-form</i>
  or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if there is no <i>result-form</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_dolist_516"><b>dolist</b></a> iterates over the elements of a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
@@ -88,7 +88,7 @@ It is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation
 or whether it <i>establishes</i> a binding for <i>var</i> once at the
 beginning and then <i>assigns</i> it on any subsequent iterations.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (setq temp-two '()) →  NIL
@@ -103,7 +103,7 @@ beginning and then <i>assigns</i> it on any subsequent iterations.
 →  NIL
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="6.2.1-do.xhtml#DictEntry_do_do_514"><b>do</b></a>,
 <a href="6.2.2-dotimes.xhtml#DictEntry_dotimes_515"><b>dotimes</b></a>,
@@ -112,7 +112,7 @@ beginning and then <i>assigns</i> it on any subsequent iterations.
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <a href="../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410"><b>go</b></a> may be used within the body of <a href="#DictEntry_dolist_516"><b>dolist</b></a> 
 to transfer control to a statement labeled by a <i>tag</i>.

@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_logical_path_1151" class="entry"><span class="secno">19.4.8</span> <span class="names"><span id="logical-pathname-translations" data-symbol="logical-pathname-translations">logical-pathname-translations</span></span> <span class="kind">Accessor</span></h3>
+<h3 id="DictEntry_logical_path_1151" class="entry" data-kind="accessor"><span class="secno">19.4.8</span> <span class="names"><span id="logical-pathname-translations" data-symbol="logical-pathname-translations">logical-pathname-translations</span></span> <span class="kind">Accessor</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>logical-pathname-translations</b>
 <i>host</i>
@@ -20,14 +20,14 @@
 <p>
 (<b>setf</b>
 (<b>logical-pathname-translations</b> <i>host</i>) <i>new-translations</i>)
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>host</i>--a <i><a href="../26-glossary/l.xhtml#logicalhostdesignator">logical host designator</a></i>.
 
 <p>
 <i>translations</i>, <i>new-translations</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Returns the host's <i><a href="../26-glossary/l.xhtml#list">list</a></i> of translations.
 Each translation is a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of at least two elements: 
@@ -72,7 +72,7 @@ will perform repeated translation steps when
 as a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> host name by <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> of
 <a href="#DictEntry_logical_path_1151"><b>logical-pathname-translations</b></a>. 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> ;;;A very simple example of setting up a logical pathname host.  No
  ;;;translations are necessary to get around file system restrictions, so
@@ -184,19 +184,19 @@ as a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i
 → #P"PGDOC"
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If <i>host</i> is incorrectly supplied, 
 an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> is signaled.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="19.4.9-logical-pathname.xhtml#DictEntry_logical_path_1152"><b>logical-pathname</b></a>,
 
 Section <a href="19.1-overview-of-filenames.xhtml#SubSection_Pathnames_as_1095">19.1.2 Pathnames as Filenames</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 Implementations can define additional <i><a href="../26-glossary/f.xhtml#function">functions</a></i>
 that operate on <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> hosts,

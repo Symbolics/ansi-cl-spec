@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry__801" class="entry"><span class="secno">12.2.27</span> <span class="names"><span id="/" data-symbol="/">/</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry__801" class="entry" data-kind="function"><span class="secno">12.2.27</span> <span class="names"><span id="/" data-symbol="/">/</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>/</b>
 <i>number</i>
@@ -21,14 +21,14 @@
 <b>/</b>
 <i>numerator <code>&amp;rest</code> denominators+</i>
   → <i>quotient</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>number</i>, <i>denominator</i>—a non-zero <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
 
 <p>
 <i>numerator</i>, <i>quotient</i>, <i>reciprocal</i>—a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry__801"><b>/</b></a> performs division or reciprocation.
@@ -56,7 +56,7 @@ If any <i>argument</i> is a <i><a href="../26-glossary/f.xhtml#float">float</a><
 the rules of floating-point contagion apply;
 see Section <a href="12.1-number-concepts.xhtml#SubSection_Floating_poi_760">12.1.4 Floating-point Computations</a>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (/ 12 4) → 3
  (/ 13 4) → 13/4
@@ -69,7 +69,7 @@ see Section <a href="12.1-number-concepts.xhtml#SubSection_Floating_poi_760">12.
  (/ 2 #c(2 2)) → #C(1/2 -1/2)
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 The consequences are unspecified if any <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> other than the first is zero.
 If there is only one <i><a href="../26-glossary/a.xhtml#argument">argument</a></i>, the consequences are unspecified if it is zero.
@@ -79,7 +79,7 @@ Might signal <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_t
 Might signal <a href="12.2.80-division-by-zero.xhtml#DictEntry_division_by__854"><b>division-by-zero</b></a> if division by zero is attempted.
 Might signal <a href="12.2.78-arithmetic-error.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a>.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="12.2.19-floor.xhtml#DictEntry_floor_ffloo_793"><b>floor</b></a>, <a href="12.2.19-floor.xhtml#DictEntry_floor_ffloo_793"><b>ceiling</b></a>, <a href="12.2.19-floor.xhtml#DictEntry_floor_ffloo_793"><b>truncate</b></a>, <a href="12.2.19-floor.xhtml#DictEntry_floor_ffloo_793"><b>round</b></a>
 

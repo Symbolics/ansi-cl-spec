@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_write_to_str_1355" class="entry"><span class="secno">22.4.15</span> <span class="names"><span id="write-to-string" data-symbol="write-to-string">write-to-string</span>, <span id="prin1-to-string" data-symbol="prin1-to-string">prin1-to-string</span>, <span id="princ-to-string" data-symbol="princ-to-string">princ-to-string</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_write_to_str_1355" class="entry" data-kind="function"><span class="secno">22.4.15</span> <span class="names"><span id="write-to-string" data-symbol="write-to-string">write-to-string</span>, <span id="prin1-to-string" data-symbol="prin1-to-string">prin1-to-string</span>, <span id="princ-to-string" data-symbol="princ-to-string">princ-to-string</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <table>
 <tbody><tr><td><b>write-to-string</b> <i>object<i> <code>&amp;key</code></i></i></td><td><i>array base case circle escape gensym</i></td></tr>
@@ -29,7 +29,7 @@
 <b>princ-to-string</b>
 <i>object</i>
   → <i>string</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -66,7 +66,7 @@
 </p><p>
 <i>string</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_write_to_str_1355"><b>write-to-string</b></a>, <a href="#DictEntry_write_to_str_1355"><b>prin1-to-string</b></a>, and <a href="#DictEntry_write_to_str_1355"><b>princ-to-string</b></a>
 are used to create a <i><a href="../26-glossary/s.xhtml#string">string</a></i> consisting of the printed representation 
@@ -102,13 +102,13 @@ or <a href="#DictEntry_write_to_str_1355"><b>princ-to-string</b></a> is invoked.
 The meanings and defaults for the keyword arguments to <a href="#DictEntry_write_to_str_1355"><b>write-to-string</b></a>
 are the same as those for <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>write</b></a>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (prin1-to-string "abc") → "\"abc\""
  (princ-to-string "abc") → "abc"
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a>,
 <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a>,
@@ -122,11 +122,11 @@ are the same as those for <a href="22.4.14-write.xhtml#DictEntry_write_prin1_135
 <a href="22.4.16-print-array.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a>,
 <a href="../23-reader/23.2.14-read-default-float-format.xhtml#DictEntry_read_defaul_1394"><b>*read-default-float-format*</b></a>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>write</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (write-to-string <i>object</i> <code>{</code><i>key</i> <i>argument</i><code>}</code><sup>*</sup>)
 ==(with-output-to-string (#1=#:string-stream) 

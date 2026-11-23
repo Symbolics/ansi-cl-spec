@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_compiler_mac_290" class="entry"><span class="secno">3.8.8</span> <span class="names"><span id="compiler-macro-function" data-symbol="compiler-macro-function">compiler-macro-function</span></span> <span class="kind">Accessor</span></h3>
+<h3 id="DictEntry_compiler_mac_290" class="entry" data-kind="accessor"><span class="secno">3.8.8</span> <span class="names"><span id="compiler-macro-function" data-symbol="compiler-macro-function">compiler-macro-function</span></span> <span class="kind">Accessor</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>compiler-macro-function</b>
 <i>name <code>&amp;optional</code> environment</i>
@@ -21,7 +21,7 @@
 
 (<b>setf</b>
 (<b>compiler-macro-function</b> <i>name <code>&amp;optional</code> environment</i>) <i>new-function</i>)
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>name</i>—a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i>.
 
@@ -31,7 +31,7 @@
 </p><p>
 <i>function</i>, <i>new-function</i>—a <i><a href="../26-glossary/c.xhtml#compilermacrofunction">compiler macro function</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <i>Accesses</i> the <i><a href="../26-glossary/c.xhtml#compilermacrofunction">compiler macro function</a></i> named <i>name</i>, if any,
 in the <i>environment</i>.
@@ -39,14 +39,14 @@ in the <i>environment</i>.
 <p>
 A value of <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> denotes the absence of a <i><a href="../26-glossary/c.xhtml#compilermacrofunction">compiler macro function</a></i> named <i>name</i>.
 
-</p></dd><dt><b>Exceptional Situations:</b></dt><dd>
+</p></dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 The consequences are undefined if <i>environment</i> is <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i>
 in a use of <a href="../5-data-and-control-flow/5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> of <a href="#DictEntry_compiler_mac_290"><b>compiler-macro-function</b></a>.
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="3.8.9-define-compiler-macro.xhtml#DictEntry_define_compi_291"><b>define-compiler-macro</b></a>, Section <a href="3.2-compilation.xhtml#SubSubSectio_Compiler_Mac_216">3.2.2.1 Compiler Macros</a>
 

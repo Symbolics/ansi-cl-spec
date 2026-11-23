@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_assoc_assoc_949" class="entry"><span class="secno">14.2.36</span> <span class="names"><span id="assoc" data-symbol="assoc">assoc</span>, <span id="assoc-if" data-symbol="assoc-if">assoc-if</span>, <span id="assoc-if-not" data-symbol="assoc-if-not">assoc-if-not</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_assoc_assoc_949" class="entry" data-kind="function"><span class="secno">14.2.36</span> <span class="names"><span id="assoc" data-symbol="assoc">assoc</span>, <span id="assoc-if" data-symbol="assoc-if">assoc-if</span>, <span id="assoc-if-not" data-symbol="assoc-if-not">assoc-if-not</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>assoc</b>
 <i>item      alist <code>&amp;key</code> key test test-not</i>
@@ -25,7 +25,7 @@
 <b>assoc-if-not</b>
 <i>predicate alist <code>&amp;key</code> key</i>
   → <i>entry</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>item</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -54,7 +54,7 @@
 <i>entry</i>—a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> that is an <i><a href="../26-glossary/e.xhtml#element">element</a></i> of <i>alist</i>,
 	        or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 
@@ -68,7 +68,7 @@ or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b>
 For <a href="#DictEntry_assoc_assoc_949"><b>assoc</b></a>, <a href="#DictEntry_assoc_assoc_949"><b>assoc-if</b></a>, and <a href="#DictEntry_assoc_assoc_949"><b>assoc-if-not</b></a>, if <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> appears
 in <i>alist</i> in place of a pair, it is ignored.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (setq values '((x . 100) (y . 200) (z . 50))) → ((X . 100) (Y . 200) (Z . 50))
@@ -95,11 +95,11 @@ in <i>alist</i> in place of a pair, it is ignored.
 </pre>
 
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>alist</i> is not an <i><a href="../26-glossary/a.xhtml#associationlist">association list</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.39-rassoc.xhtml#DictEntry_rassoc_rass_952"><b>rassoc</b></a>,
 <a href="../17-sequences/17.3.14-find.xhtml#DictEntry_find_find_i_1054"><b>find</b></a>,
@@ -109,7 +109,7 @@ Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The <code>:test-not</code> parameter is deprecated.

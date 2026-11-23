@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_unexport_729" class="entry"><span class="secno">11.2.14</span> <span class="names"><span id="unexport" data-symbol="unexport">unexport</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_unexport_729" class="entry" data-kind="function"><span class="secno">11.2.14</span> <span class="names"><span id="unexport" data-symbol="unexport">unexport</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>unexport</b>
 <i>symbols <code>&amp;optional</code> package</i>
   → <i><a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
 </i><p><i></i>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>symbols</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>.
 
@@ -29,7 +29,7 @@
 
   The default is the <i><a href="../26-glossary/c.xhtml#currentpackage">current package</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_unexport_729"><b>unexport</b></a> reverts external <i>symbols</i> in <i>package</i> to
@@ -46,7 +46,7 @@ If <a href="#DictEntry_unexport_729"><b>unexport</b></a> is given a <i><a href="
 already <i><a href="../26-glossary/a.xhtml#accessible">accessible</a></i> as an <i><a href="../26-glossary/i.xhtml#internalsymbol">internal symbol</a></i> in <i>package</i>,
 it does nothing.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (in-package "COMMON-LISP-USER") → #&lt;PACKAGE "COMMON-LISP-USER"&gt;
  (export (intern "CONTRABAND" (make-package 'temp)) 'temp) →  T
@@ -57,15 +57,15 @@ it does nothing.
  (find-symbol "CONTRABAND") →  NIL, NIL
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 Package system is modified.
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 Current state of the package system.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If <a href="#DictEntry_unexport_729"><b>unexport</b></a> is given a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>
 not <i><a href="../26-glossary/a.xhtml#accessible">accessible</a></i> in <i>package</i> at all, 
@@ -76,7 +76,7 @@ The consequences are undefined if <i>package</i> is the <a href="../10-symbols/1
 
 or the <code>common-lisp</code> <i><a href="../26-glossary/p.xhtml#package">package</a></i>.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="11.2.2-export.xhtml#DictEntry_export_717"><b>export</b></a>, Section <a href="11.1-package-concepts.xhtml#Section_Package_Conc_696">11.1 Package Concepts</a>
 

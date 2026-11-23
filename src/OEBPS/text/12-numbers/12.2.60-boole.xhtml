@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_boole_834" class="entry"><span class="secno">12.2.60</span> <span class="names"><span id="boole" data-symbol="boole">boole</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_boole_834" class="entry" data-kind="function"><span class="secno">12.2.60</span> <span class="names"><span id="boole" data-symbol="boole">boole</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>boole</b>
 <i>op integer-1 integer-2</i>
   → <i>result-integer</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>Op</i>—a <i><a href="../26-glossary/b.xhtml#bitwiselogicaloperationspecifier">bit-wise logical operation specifier</a></i>.
 
@@ -30,7 +30,7 @@
 </p><p>
 <i>result-integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_boole_834"><b>boole</b></a> performs bit-wise logical operations on
@@ -119,7 +119,7 @@ specified for any <i>op</i> in the next figure.
 
 
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (boole boole-ior 1 16) → 17
  (boole boole-and -2 5) → 4
@@ -158,17 +158,17 @@ specified for any <i>op</i> in the next figure.
 →  NIL
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if its first argument is not a 
 <i><a href="../26-glossary/b.xhtml#bitwiselogicaloperationspecifier">bit-wise logical operation specifier</a></i> or if any subsequent argument is not
 an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="12.2.62-logand.xhtml#DictEntry_logand__log_836"><b>logand</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 In general,

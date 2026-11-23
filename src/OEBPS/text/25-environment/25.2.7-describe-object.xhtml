@@ -8,29 +8,29 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_describe_obj_1434" class="entry"><span class="secno">25.2.7</span> <span class="names"><span id="describe-object" data-symbol="describe-object">describe-object</span></span> <span class="kind">Standard Generic Function</span></h3>
+<h3 id="DictEntry_describe_obj_1434" class="entry" data-kind="standard-generic-function"><span class="secno">25.2.7</span> <span class="names"><span id="describe-object" data-symbol="describe-object">describe-object</span></span> <span class="kind">Standard Generic Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>describe-object</b>
 <i>object stream</i>
   →
  <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
 
-</dd><dt><b>Method Signatures:</b></dt><dd>
+</dd><dt data-section="method-signatures"><b>Method Signatures:</b></dt><dd>
 
 <b>describe-object</b>
 <i>(<i>object</i> standard-object) <i>stream</i></i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
 <p>
 <i>stream</i>—a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 The generic function <a href="#DictEntry_describe_obj_1434"><b>describe-object</b></a> prints a description of
 <i>object</i> to a <i>stream</i>.  <a href="#DictEntry_describe_obj_1434"><b>describe-object</b></a> is called 
@@ -62,7 +62,7 @@ an intermediate <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> that i
 <i><a href="../26-glossary/m.xhtml#method">Methods</a></i> should therefore not depend on the identity of this
 <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defclass spaceship ()
    ((captain :initarg :captain :accessor spaceship-captain)
@@ -88,11 +88,11 @@ an intermediate <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> that i
 →  &lt; <i>no values</i> &gt; 
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="25.2.6-describe.xhtml#DictEntry_describe_1433"><b>describe</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The same implementation techniques that are applicable to <a href="../22-printer/22.4.11-print-object.xhtml#DictEntry_print_object_1351"><b>print-object</b></a> are
 applicable to <a href="#DictEntry_describe_obj_1434"><b>describe-object</b></a>.

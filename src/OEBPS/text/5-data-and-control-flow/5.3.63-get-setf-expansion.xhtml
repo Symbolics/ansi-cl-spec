@@ -8,17 +8,17 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_get_setf_exp_449" class="entry"><span class="secno">5.3.63</span> <span class="names"><span id="get-setf-expansion" data-symbol="get-setf-expansion">get-setf-expansion</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_get_setf_exp_449" class="entry" data-kind="function"><span class="secno">5.3.63</span> <span class="names"><span id="get-setf-expansion" data-symbol="get-setf-expansion">get-setf-expansion</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 
 <b>get-setf-expansion</b>
 <i>place <code>&amp;optional</code> environment</i><br/> 
   → <i>vars, vals, store-vars, writer-form, reader-form</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>place</i>—a <i><a href="../26-glossary/p.xhtml#place">place</a></i>.
 
@@ -30,7 +30,7 @@
 </p><p>
 <i>vars, vals, store-vars, writer-form, reader-form</i>—a <i><a href="../26-glossary/s.xhtml#setfexpansion">setf expansion</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 
@@ -44,7 +44,7 @@ If <i>environment</i> is not supplied or <a href="../4-types-and-classes/4.4.1-n
 the environment is the <i><a href="../26-glossary/n.xhtml#nulllexicalenvironment">null lexical environment</a></i>. 
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (get-setf-expansion 'x)
 →  NIL, NIL, (#:G0001), (SETQ X #:G0001), X 
@@ -73,13 +73,13 @@ the environment is the <i><a href="../26-glossary/n.xhtml#nulllexicalenvironment
 
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.61-defsetf.xhtml#DictEntry_defsetf_447"><b>defsetf</b></a>,
 <a href="5.3.62-define-setf-expander.xhtml#DictEntry_define_setf__448"><b>define-setf-expander</b></a>,
 <a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 Any <i><a href="../26-glossary/c.xhtml#compoundform">compound form</a></i> is a valid <i><a href="../26-glossary/p.xhtml#place">place</a></i>,
 since any <i><a href="../26-glossary/c.xhtml#compoundform">compound form</a></i> whose <i><a href="../26-glossary/o.xhtml#operator">operator</a></i> <i>f</i> has no <i><a href="../26-glossary/s.xhtml#setfexpander">setf expander</a></i>

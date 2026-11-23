@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_shadowing_im_725" class="entry"><span class="secno">11.2.10</span> <span class="names"><span id="shadowing-import" data-symbol="shadowing-import">shadowing-import</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_shadowing_im_725" class="entry" data-kind="function"><span class="secno">11.2.10</span> <span class="names"><span id="shadowing-import" data-symbol="shadowing-import">shadowing-import</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>shadowing-import</b>
 <i>symbols <code>&amp;optional</code> package</i>
   → <i><a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
 </i><p><i></i>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>symbols</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>.
 
@@ -29,7 +29,7 @@
 
  The default is the <i><a href="../26-glossary/c.xhtml#currentpackage">current package</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_shadowing_im_725"><b>shadowing-import</b></a> is like <a href="11.2.6-import.xhtml#DictEntry_import_721"><b>import</b></a>, 
@@ -57,7 +57,7 @@ if it was
 
 <i><a href="../26-glossary/p.xhtml#present">present</a></i> in <i>package</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (in-package "COMMON-LISP-USER") → #&lt;PACKAGE "COMMON-LISP-USER"&gt;
  (setq sym (intern "CONFLICT")) →  CONFLICT
@@ -67,7 +67,7 @@ if it was
  (package-shadowing-symbols 'temp) → (CONFLICT)
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 
 <a href="#DictEntry_shadowing_im_725"><b>shadowing-import</b></a> 
@@ -77,11 +77,11 @@ the consistency rules do not hold across the change.
 <p>
 <i>package</i>'s shadowing-symbols list is modified.
 
-</p></dd><dt><b>Affected By:</b></dt><dd>
+</p></dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 Current state of the package system.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="11.2.6-import.xhtml#DictEntry_import_721"><b>import</b></a>, <a href="11.2.15-unintern.xhtml#DictEntry_unintern_730"><b>unintern</b></a>, <a href="11.2.24-package-shadowing-symbols.xhtml#DictEntry_package_shad_739"><b>package-shadowing-symbols</b></a>
 

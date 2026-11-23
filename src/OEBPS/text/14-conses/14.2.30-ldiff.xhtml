@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_ldiff_tailp_943" class="entry"><span class="secno">14.2.30</span> <span class="names"><span id="ldiff" data-symbol="ldiff">ldiff</span>, <span id="tailp" data-symbol="tailp">tailp</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_ldiff_tailp_943" class="entry" data-kind="function"><span class="secno">14.2.30</span> <span class="names"><span id="ldiff" data-symbol="ldiff">ldiff</span>, <span id="tailp" data-symbol="tailp">tailp</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>ldiff</b>
 <i>list object</i>
@@ -21,7 +21,7 @@
 <b>tailp</b>
 <i>object list</i>
   → <i>generalized-boolean</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>list</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>,
 
@@ -38,7 +38,7 @@
 
 <i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 
@@ -56,7 +56,7 @@ of the <i><a href="../26-glossary/e.xhtml#element">elements</a></i> of <i><a hre
 that precede <b>object</b> in the <i><a href="../26-glossary/l.xhtml#liststructure">list structure</a></i> of <i>list</i>;
 otherwise, it returns a <i><a href="../26-glossary/c.xhtml#copy">copy</a></i><sub>2</sub> of <i>list</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (let ((lists '#((a b c) (a b c . d))))
@@ -92,21 +92,21 @@ otherwise, it returns a <i><a href="../26-glossary/c.xhtml#copy">copy</a></i><su
 </pre>
 
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 Neither <a href="#DictEntry_ldiff_tailp_943"><b>ldiff</b></a> nor <a href="#DictEntry_ldiff_tailp_943"><b>tailp</b></a> modifies either of its <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>list</i> is not a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i> or a <i><a href="../26-glossary/d.xhtml#dottedlist">dotted list</a></i>.
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.46-set-difference.xhtml#DictEntry_set_differen_959"><b>set-difference</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 If the <i>list</i> is a <i><a href="../26-glossary/c.xhtml#circularlist">circular list</a></i>,
 <a href="#DictEntry_ldiff_tailp_943"><b>tailp</b></a> will reliably <i><a href="../26-glossary/y.xhtml#yield">yield</a></i> a <i><a href="../26-glossary/v.xhtml#value">value</a></i> 

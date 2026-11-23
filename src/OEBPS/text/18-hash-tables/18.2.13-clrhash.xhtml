@@ -8,26 +8,26 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_clrhash_1090" class="entry"><span class="secno">18.2.13</span> <span class="names"><span id="clrhash" data-symbol="clrhash">clrhash</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_clrhash_1090" class="entry" data-kind="function"><span class="secno">18.2.13</span> <span class="names"><span id="clrhash" data-symbol="clrhash">clrhash</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>clrhash</b>
 <i>hash-table</i>
   → <i>hash-table</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>hash-table</i>—a <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i>.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Removes all entries from <i>hash-table</i>,
 and then returns that empty <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq table (make-hash-table)) → #&lt;HASH-TABLE EQL 0/120 32004073&gt;
  (dotimes (i 100) (setf (gethash i table) (format nil "~R" i))) →  NIL
@@ -38,7 +38,7 @@ and then returns that empty <i><a href="../26-glossary/h.xhtml#hashtable">hash t
  (gethash 57 table) →  NIL, <i><a href="../26-glossary/f.xhtml#false">false</a></i>
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The <i>hash-table</i> is modified.
 

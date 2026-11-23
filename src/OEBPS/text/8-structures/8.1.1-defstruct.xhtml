@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_defstruct_600" class="entry"><span class="secno">8.1.1</span> <span class="names"><span id="defstruct" data-symbol="defstruct">defstruct</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_defstruct_600" class="entry" data-kind="macro"><span class="secno">8.1.1</span> <span class="names"><span id="defstruct" data-symbol="defstruct">defstruct</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>defstruct</b>
 <i>name-and-options [documentation] {<i>slot-description</i>}*</i><br/>   
@@ -79,7 +79,7 @@ slot-description::= <i>slot-name</i> | <br/>
 				       [[↓slot-option]]])</p><p>
 
 slot-option::= <code>:type</code> <i>slot-type</i> | <br/>
-		     <code>:read-only</code> <i>slot-read-only-p</i></p></dd><dt><b>Arguments and Values:</b></dt><dd>
+		     <code>:read-only</code> <i>slot-read-only-p</i></p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>conc-name</i>—a <i><a href="../26-glossary/s.xhtml#stringdesignator">string designator</a></i>.
 
@@ -137,7 +137,7 @@ even if it would expand into a <i><a href="../26-glossary/s.xhtml#structurename"
 
 <i>documentation</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>; not evaluated.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> defines a structured <i><a href="../26-glossary/t.xhtml#type">type</a></i>, named <i>structure-type</i>,
 with named slots as specified by the <i>slot-options</i>.
@@ -1093,7 +1093,7 @@ The <code>#S</code> <i><a href="../26-glossary/r.xhtml#readermacro">reader macro
 <i><a href="../26-glossary/s.xhtml#structure">structure</a></i> <i><a href="../26-glossary/t.xhtml#type">type</a></i> name at compile time.  
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 An example of a structure definition follows:
@@ -1259,7 +1259,7 @@ for each <i><a href="../26-glossary/a.xhtml#access">access</a></i> function.
  (dfs-boa-d x) → (4 5 6)
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 
@@ -1274,7 +1274,7 @@ The consequences are undefined if the <i>included-structure-name</i>
 does not name a <i>structure type</i>.
 
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>documentation</b></a>,
 <a href="../22-printer/22.4.11-print-object.xhtml#DictEntry_print_object_1351"><b>print-object</b></a>,
@@ -1284,7 +1284,7 @@ does not name a <i>structure type</i>.
 <a href="../4-types-and-classes/4.4.28-typep.xhtml#DictEntry_typep_363"><b>typep</b></a>,
 Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#Section_Compilation_213">3.2 Compilation</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The <i>printer-name</i> should observe the values of

@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_y_or_n_p_ye_1228" class="entry"><span class="secno">21.2.37</span> <span class="names"><span id="y-or-n-p" data-symbol="y-or-n-p">y-or-n-p</span>, <span id="yes-or-no-p" data-symbol="yes-or-no-p">yes-or-no-p</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_y_or_n_p_ye_1228" class="entry" data-kind="function"><span class="secno">21.2.37</span> <span class="names"><span id="y-or-n-p" data-symbol="y-or-n-p">y-or-n-p</span>, <span id="yes-or-no-p" data-symbol="yes-or-no-p">yes-or-no-p</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>y-or-n-p</b>
 <i><code>&amp;optional</code> control <code>&amp;rest</code> arguments</i>
@@ -21,7 +21,7 @@
 <b>yes-or-no-p</b>
 <i><code>&amp;optional</code> control <code>&amp;rest</code> arguments</i>
   → <i>generalized-boolean</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>control</i>—a <i><a href="../26-glossary/f.xhtml#formatcontrol">format control</a></i>.
@@ -33,7 +33,7 @@
 </p><p>
 <i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 These functions ask a question and parse a response from the user.
 They return <i><a href="../26-glossary/t.xhtml#true">true</a></i> if the answer is affirmative,
@@ -81,7 +81,7 @@ a prompt such as "<code>(Y or N)</code>" or "<code>(Yes or No)</code>" if approp
 
 All input and output are performed using <i>query I/O</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (y-or-n-p "(t or nil) given by")
@@ -96,19 +96,19 @@ All input and output are performed using <i>query I/O</i>.
 → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 Output to and input from <i>query I/O</i> will occur.
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*query-io*</b></a>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <a href="#DictEntry_y_or_n_p_ye_1228"><b>yes-or-no-p</b></a> and <a href="#DictEntry_y_or_n_p_ye_1228"><b>yes-or-no-p</b></a> do not add question marks
 to the end of the prompt string, so any desired question mark or other

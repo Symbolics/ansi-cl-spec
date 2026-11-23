@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_read_line_1213" class="entry"><span class="secno">21.2.22</span> <span class="names"><span id="read-line" data-symbol="read-line">read-line</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_read_line_1213" class="entry" data-kind="function"><span class="secno">21.2.22</span> <span class="names"><span id="read-line" data-symbol="read-line">read-line</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>read-line</b>
 <i><code>&amp;optional</code> input-stream eof-error-p eof-value recursive-p</i><br/> 
   → <i>line, missing-newline-p</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>input-stream</i>—an <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#streamdesignator">stream designator</a></i>.
  The default is <i><a href="../26-glossary/s.xhtml#standardinput">standard input</a></i>.
@@ -42,7 +42,7 @@
 </p><p>
 <i>missing-newline-p</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Reads from <i>input-stream</i> a line of text
@@ -74,7 +74,7 @@ is a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean<
 
 		   (or if the <i>line</i> is the <i>eof-value</i>).
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq a "line 1
  line2")
@@ -88,21 +88,21 @@ is a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean<
 →  NIL, <i><a href="../26-glossary/t.xhtml#true">true</a></i>
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-input*</b></a>,
 <a href="21.2.54-terminal-io.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If an <i><a href="../26-glossary/e.xhtml#endoffile">end of file</a></i><sub>2</sub> occurs before any characters are read in the line,
 an error is signaled if <i>eof-error-p</i> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.  
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../23-reader/23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The corresponding output function is <a href="21.2.23-write-string.xhtml#DictEntry_write_string_1214"><b>write-line</b></a>.

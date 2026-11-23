@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_fill_pointer_999" class="entry"><span class="secno">15.2.21</span> <span class="names"><span id="fill-pointer" data-symbol="fill-pointer">fill-pointer</span></span> <span class="kind">Accessor</span></h3>
+<h3 id="DictEntry_fill_pointer_999" class="entry" data-kind="accessor"><span class="secno">15.2.21</span> <span class="names"><span id="fill-pointer" data-symbol="fill-pointer">fill-pointer</span></span> <span class="kind">Accessor</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 
 <b>fill-pointer</b>
@@ -21,7 +21,7 @@
 <p>
 (<b>setf</b>
 (<b>fill-pointer</b> <i>vector</i>) <i>new-fill-pointer</i>)
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>vector</i>—a <i><a href="../26-glossary/v.xhtml#vector">vector</a></i> with a <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>.
 
@@ -29,12 +29,12 @@
 <i>fill-pointer</i>, <i>new-fill-pointer</i>—a <i><a href="../26-glossary/v.xhtml#validfillpointer">valid fill pointer</a></i> 
   for the <i>vector</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <i>Accesses</i> the <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i> of <i>vector</i>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq a (make-array 8 :fill-pointer 4)) → #(NIL NIL NIL NIL)
  (fill-pointer a) → 4
@@ -47,15 +47,15 @@
  a → #(0 1 4 9 NIL NIL NIL NIL)
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>vector</i> is not a <i><a href="../26-glossary/v.xhtml#vector">vector</a></i> with a <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="15.2.7-make-array.xhtml#DictEntry_make_array_985"><b>make-array</b></a>, <a href="../17-sequences/17.3.11-length.xhtml#DictEntry_length_1051"><b>length</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 There is no <i><a href="../26-glossary/o.xhtml#operator">operator</a></i> that will remove a <i><a href="../26-glossary/v.xhtml#vector">vector</a></i>'s <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>.
 

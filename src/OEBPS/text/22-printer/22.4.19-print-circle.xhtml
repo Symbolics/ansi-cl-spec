@@ -8,19 +8,19 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_print_circl_1359" class="entry"><span class="secno">22.4.19</span> <span class="names"><span id="*print-circle*" data-symbol="*print-circle*">*print-circle*</span></span> <span class="kind">Variable</span></h3>
+<h3 id="DictEntry_print_circl_1359" class="entry" data-kind="variable"><span class="secno">22.4.19</span> <span class="names"><span id="*print-circle*" data-symbol="*print-circle*">*print-circle*</span></span> <span class="kind">Variable</span></h3>
 <dl>
 
 
-<dt><b>Value Type:</b></dt><dd>
+<dt data-section="value-type"><b>Value Type:</b></dt><dd>
 
 a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</dd><dt><b>Initial Value:</b></dt><dd>
+</dd><dt data-section="initial-value"><b>Initial Value:</b></dt><dd>
 
 <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Controls the attempt to detect circularity and sharing in an <i><a href="../26-glossary/o.xhtml#object">object</a></i> 
@@ -68,7 +68,7 @@ Note that implementations should not use <code>#<i>n</i>#</code> notation
 when the <i>Lisp reader</i> would automatically assure sharing without it
 (<i>e.g.</i>,  as happens with <i><a href="../26-glossary/i.xhtml#interned">interned</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>).
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (let ((a (list 1 2 3)))
    (setf (cdddr a) a)
@@ -79,11 +79,11 @@ when the <i>Lisp reader</i> would automatically assure sharing without it
 → :DONE
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>write</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 An attempt to print a circular structure with <a href="#DictEntry_print_circl_1359"><b>*print-circle*</b></a> 
 set to <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> may lead to looping behavior and failure to terminate.

@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_debug_io__1244" class="entry"><span class="secno">21.2.53</span> <span class="names"><span id="*debug-io*" data-symbol="*debug-io*">*debug-io*</span>, <span id="*error-output*" data-symbol="*error-output*">*error-output*</span>, <span id="*query-io*" data-symbol="*query-io*">*query-io*</span>, <span id="*standard-input*" data-symbol="*standard-input*">*standard-input*</span>, <span id="*standard-output*" data-symbol="*standard-output*">*standard-output*</span>, <span id="*trace-output*" data-symbol="*trace-output*">*trace-output*</span></span> <span class="kind">Variable</span></h3>
+<h3 id="DictEntry_debug_io__1244" class="entry" data-kind="variable"><span class="secno">21.2.53</span> <span class="names"><span id="*debug-io*" data-symbol="*debug-io*">*debug-io*</span>, <span id="*error-output*" data-symbol="*error-output*">*error-output*</span>, <span id="*query-io*" data-symbol="*query-io*">*query-io*</span>, <span id="*standard-input*" data-symbol="*standard-input*">*standard-input*</span>, <span id="*standard-output*" data-symbol="*standard-output*">*standard-output*</span>, <span id="*trace-output*" data-symbol="*trace-output*">*trace-output*</span></span> <span class="kind">Variable</span></h3>
 <dl>
 
 
-<dt><b>Value Type:</b></dt><dd>
+<dt data-section="value-type"><b>Value Type:</b></dt><dd>
 
 For <a href="#DictEntry_debug_io__1244"><b>*standard-input*</b></a>:
  an <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>
@@ -25,7 +25,7 @@ For <a href="#DictEntry_debug_io__1244"><b>*error-output*</b></a>, <a href="#Dic
 For <a href="#DictEntry_debug_io__1244"><b>*debug-io*</b></a>, <a href="#DictEntry_debug_io__1244"><b>*query-io*</b></a>:
  a <i><a href="../26-glossary/b.xhtml#bidirectional">bidirectional</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
 
-</p></dd><dt><b>Initial Value:</b></dt><dd>
+</p></dd><dt data-section="initial-value"><b>Initial Value:</b></dt><dd>
 
 <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>, but
 it must be an <i><a href="../26-glossary/o.xhtml#open">open</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> 
@@ -37,7 +37,7 @@ The initial value might also be a <i><a href="../26-glossary/g.xhtml#generalized
 to either the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="21.2.54-terminal-io.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a> or to the <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> 
 that is its <i><a href="../26-glossary/v.xhtml#value">value</a></i>.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 These <i><a href="../26-glossary/v.xhtml#variable">variables</a></i> are collectively called the
 <i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> <i>I/O customization variables</i>.
@@ -82,7 +82,7 @@ The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEnt
 is the <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> on which traced functions (see <a href="../25-environment/25.2.8-trace.xhtml#DictEntry_trace_untra_1435"><b>trace</b></a>)
 and the <a href="../25-environment/25.2.10-time.xhtml#DictEntry_time_1437"><b>time</b></a> <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> print their output.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (with-output-to-string (*error-output*)
    (warn "this string is sent to *error-output*"))
@@ -117,7 +117,7 @@ and the <a href="../25-environment/25.2.10-time.xhtml#DictEntry_time_1437"><b>ti
 1 Exit FACT 6"
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="21.2.54-terminal-io.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>,
 <a href="21.2.7-synonym-stream.xhtml#DictEntry_synonym_stre_1198"><b>synonym-stream</b></a>,
@@ -127,7 +127,7 @@ Chapter <a href="../9-conditions/index.xhtml#Chapter_Conditions_602">9 Condition
 Chapter <a href="../23-reader/index.xhtml#Chapter_Reader_1372">23 Reader</a>,
 Chapter <a href="../22-printer/index.xhtml#Chapter_Printer_1249">22 Printer</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The intent of the constraints on the initial <i><a href="../26-glossary/v.xhtml#value">value</a></i> 

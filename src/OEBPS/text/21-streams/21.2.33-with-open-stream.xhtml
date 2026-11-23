@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_with_open_st_1224" class="entry"><span class="secno">21.2.33</span> <span class="names"><span id="with-open-stream" data-symbol="with-open-stream">with-open-stream</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_with_open_st_1224" class="entry" data-kind="macro"><span class="secno">21.2.33</span> <span class="names"><span id="with-open-stream" data-symbol="with-open-stream">with-open-stream</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>with-open-stream</b>
 <i>(var stream)
 		   {<i>declaration</i>}* 
 		   {<i>form</i>}*</i><br/>   
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>var</i>—a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i><a href="../26-glossary/n.xhtml#name">name</a></i>.
 
@@ -35,7 +35,7 @@
 </p><p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>forms</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_with_open_st_1224"><b>with-open-stream</b></a> performs a series of operations on 
 <i>stream</i>, returns a value, and then closes the <i>stream</i>.
@@ -62,17 +62,17 @@ The consequences are undefined if an attempt is made to <i><a href="../26-glossa
 
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (with-open-stream (s (make-string-input-stream "1 2 3 4"))
     (+ (read s) (read s) (read s))) → 6
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The <i>stream</i> is closed (upon exit).
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="21.2.32-close.xhtml#DictEntry_close_1223"><b>close</b></a>
 

@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_function_394" class="entry"><span class="secno">5.3.8</span> <span class="names"><span id="function" data-symbol="function">function</span></span> <span class="kind">Special Operator</span></h3>
+<h3 id="DictEntry_function_394" class="entry" data-kind="special-operator"><span class="secno">5.3.8</span> <span class="names"><span id="function" data-symbol="function">function</span></span> <span class="kind">Special Operator</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>function</b>
 <i>name</i>
   → <i>function</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>name</i>—a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i> or <i><a href="../26-glossary/l.xhtml#lambdaexpression">lambda expression</a></i>.
 
@@ -25,7 +25,7 @@
 
 <i>function</i>—a <i><a href="../26-glossary/f.xhtml#function">function</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEntry_function_394"><b>function</b></a> is the <i><a href="../26-glossary/f.xhtml#functionalvalue">functional value</a></i> of <i>name</i>
@@ -62,7 +62,7 @@ performance reasons, but implementations are forbidden from
 defining the failure to signal an error as a useful behavior.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defun adder (x) (function (lambda (y) (+ x y))))
 </pre>
@@ -75,7 +75,7 @@ This works because <a href="#DictEntry_function_394"><b>function</b></a> creates
 the <i><a href="../26-glossary/l.xhtml#lambdaexpression">lambda expression</a></i> that is able to refer to the <i><a href="../26-glossary/v.xhtml#value">value</a></i> <code>3</code>
 of the variable <code>x</code> even after control has returned from the function <code>adder</code>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.2-defun.xhtml#DictEntry_defun_388"><b>defun</b></a>,
 <a href="5.3.3-fdefinition.xhtml#DictEntry_fdefinition_389"><b>fdefinition</b></a>,
@@ -86,7 +86,7 @@ Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#SubSubSubS
 Section <a href="../2-syntax/2.4-standard-macro-characters.xhtml#SubSubSectio_Sharpsign_Si_161">2.4.8.2 Sharpsign Single-Quote</a>,
 Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Oth_1276">22.1.3.13 Printing Other Objects</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The notation <code>#'<i>name</i></code> may be used as an abbreviation
 for <code>(function <i>name</i>)</code>.

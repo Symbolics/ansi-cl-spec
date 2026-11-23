@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_decode_unive_1428" class="entry"><span class="secno">25.2.1</span> <span class="names"><span id="decode-universal-time" data-symbol="decode-universal-time">decode-universal-time</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_decode_unive_1428" class="entry" data-kind="function"><span class="secno">25.2.1</span> <span class="names"><span id="decode-universal-time" data-symbol="decode-universal-time">decode-universal-time</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>decode-universal-time</b>
 <i>universal-time <code>&amp;optional</code> time-zone</i><br/> 
   → <i>second, minute, hour, date, month, year, day, daylight-p, zone</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>universal-time</i>—a <i><a href="../26-glossary/u.xhtml#universaltime">universal time</a></i>.
 
@@ -30,7 +30,7 @@
 <i>second</i>, <i>minute</i>, <i>hour</i>, <i>date</i>, <i>month</i>,
 <i>year</i>, <i>day</i>, <i>daylight-p</i>, <i>zone</i>—a <i><a href="../26-glossary/d.xhtml#decodedtime">decoded time</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Returns the <i><a href="../26-glossary/d.xhtml#decodedtime">decoded time</a></i> represented by the given <i><a href="../26-glossary/u.xhtml#universaltime">universal time</a></i>.
@@ -43,7 +43,7 @@ If <i>time-zone</i> is supplied, daylight saving time information is ignored.
 The daylight saving time flag is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if <i>time-zone</i> is supplied.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (decode-universal-time 0 0) → 0, 0, 0, 1, 1, 1900, 0, <i><a href="../26-glossary/f.xhtml#false">false</a></i>, 0
@@ -62,12 +62,12 @@ The daylight saving time flag is <a href="../4-types-and-classes/4.4.1-nil.xhtml
 </pre>
 
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <i><a href="../26-glossary/i.xhtml#implementationdependent">Implementation-dependent</a></i> mechanisms for calculating when or if daylight
 savings time is in effect for any given session.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="25.2.2-encode-universal-time.xhtml#DictEntry_encode_unive_1429"><b>encode-universal-time</b></a>, <a href="25.2.3-get-universal-time.xhtml#DictEntry_get_universa_1430"><b>get-universal-time</b></a>, 
 

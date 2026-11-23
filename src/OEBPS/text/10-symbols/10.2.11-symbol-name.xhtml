@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_symbol_name_685" class="entry"><span class="secno">10.2.11</span> <span class="names"><span id="symbol-name" data-symbol="symbol-name">symbol-name</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_symbol_name_685" class="entry" data-kind="function"><span class="secno">10.2.11</span> <span class="names"><span id="symbol-name" data-symbol="symbol-name">symbol-name</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>symbol-name</b>
 <i>symbol</i>
   → <i>name</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>symbol</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
@@ -25,7 +25,7 @@
 
 <i>name</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_symbol_name_685"><b>symbol-name</b></a> returns the <i><a href="../26-glossary/n.xhtml#name">name</a></i> of <i>symbol</i>.
@@ -33,14 +33,14 @@
 The consequences are undefined if <i>name</i> is ever modified.
 
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (symbol-name 'temp) → "TEMP" 
  (symbol-name :start) → "START"
  (symbol-name (gensym)) → "G1234" ;for example
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>symbol</i> is not a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 

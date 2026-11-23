@@ -8,28 +8,28 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_add_method_591" class="entry"><span class="secno">7.7.35</span> <span class="names"><span id="add-method" data-symbol="add-method">add-method</span></span> <span class="kind">Standard Generic Function</span></h3>
+<h3 id="DictEntry_add_method_591" class="entry" data-kind="standard-generic-function"><span class="secno">7.7.35</span> <span class="names"><span id="add-method" data-symbol="add-method">add-method</span></span> <span class="kind">Standard Generic Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>add-method</b>
 <i>generic-function method</i>
   → <i>generic-function</i>
-</dd><dt><b>Method Signatures:</b></dt><dd>
+</dd><dt data-section="method-signatures"><b>Method Signatures:</b></dt><dd>
 
 <b>add-method</b>
 <i>(<i>generic-function</i> <a href="../4-types-and-classes/4.4.6-standard-generic-function.xhtml#DictEntry_standard_gen_341"><b>standard-generic-function</b></a>)
 			   (<i>method</i> <a href="../4-types-and-classes/4.4.11-method.xhtml#DictEntry_method_346"><b>method</b></a>)</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>generic-function</i>—a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
 <p>
 <i>method</i>—a <i><a href="../26-glossary/m.xhtml#method">method</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 The generic function <a href="#DictEntry_add_method_591"><b>add-method</b></a> adds a <i><a href="../26-glossary/m.xhtml#method">method</a></i>
 to a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>.
@@ -39,7 +39,7 @@ If <i>method</i> agrees with an existing <i><a href="../26-glossary/m.xhtml#meth
 on <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> and <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i>, 
 the existing <i><a href="../26-glossary/m.xhtml#method">method</a></i> is replaced.
 
-</p></dd><dt><b>Exceptional Situations:</b></dt><dd>
+</p></dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 The <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> of the method function of <i>method</i> must be
 congruent with the <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> of <i>generic-function</i>, 
@@ -49,7 +49,7 @@ or an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="..
 If <i>method</i> is a <i><a href="../26-glossary/m.xhtml#method">method</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> of
 another <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>, an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> is signaled.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="7.7.27-defmethod.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a>,
 <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a>,

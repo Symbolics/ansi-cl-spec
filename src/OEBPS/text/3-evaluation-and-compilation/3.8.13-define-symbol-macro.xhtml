@@ -8,23 +8,23 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_define_symbo_295" class="entry"><span class="secno">3.8.13</span> <span class="names"><span id="define-symbol-macro" data-symbol="define-symbol-macro">define-symbol-macro</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_define_symbo_295" class="entry" data-kind="macro"><span class="secno">3.8.13</span> <span class="names"><span id="define-symbol-macro" data-symbol="define-symbol-macro">define-symbol-macro</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>define-symbol-macro</b>
 <i>symbol expansion</i><br/>   
   → <i>symbol</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>symbol</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
 <p>
 <i>expansion</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Provides a mechanism for globally affecting the <i><a href="../26-glossary/m.xhtml#macroexpansion">macro expansion</a></i>
 of the indicated <i>symbol</i>.
@@ -71,7 +71,7 @@ the <i>symbol</i>
 A <i><a href="../26-glossary/b.xhtml#binding">binding</a></i> for a <i><a href="../26-glossary/s.xhtml#symbolmacro">symbol macro</a></i> can be <i>shadowed</i><sub>2</sub>
 by <a href="../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404"><b>let</b></a> or <a href="3.8.14-symbol-macrolet.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre>(defvar *things* (list 'alpha 'beta 'gamma)) → *THINGS*
 
@@ -89,13 +89,13 @@ thing3 →  THREE
 (list thing2 (let ((thing2 2)) thing2)) → (TWO 2)
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 
 If <i>symbol</i> is already defined as a <i><a href="../26-glossary/g.xhtml#globalvariable">global variable</a></i>,
 an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../5-data-and-control-flow/5.3.68-program-error.xhtml#DictEntry_program_erro_454"><b>program-error</b></a> is signaled.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="3.8.14-symbol-macrolet.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>,
 <a href="3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294"><b>macroexpand</b></a>

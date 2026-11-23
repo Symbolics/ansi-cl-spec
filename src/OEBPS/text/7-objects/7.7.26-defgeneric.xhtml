@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_defgeneric_582" class="entry"><span class="secno">7.7.26</span> <span class="names"><span id="defgeneric" data-symbol="defgeneric">defgeneric</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_defgeneric_582" class="entry" data-kind="macro"><span class="secno">7.7.26</span> <span class="names"><span id="defgeneric" data-symbol="defgeneric">defgeneric</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>defgeneric</b>
 <i>function-name gf-lambda-list
@@ -33,7 +33,7 @@ method-description::= (<code>:method</code>
 			    {<i>method-qualifier</i>}* 
 					<i>specialized-lambda-list</i>
 			          [[{<i>declaration</i>}* <i>|</i> <i>documentation</i>]] 
-					{<i>form</i>}*)</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+					{<i>form</i>}*)</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>function-name</i>—a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i>.
 
@@ -77,7 +77,7 @@ method-description::= (<code>:method</code>
    each <i><a href="../26-glossary/r.xhtml#requiredparameter">required parameter</a></i> in the <i>lambda-list</i>
    must be used exactly once as a <i>parameter-name</i>.)
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 The macro <a href="#DictEntry_defgeneric_582"><b>defgeneric</b></a> is used to define a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>
 or to specify options and declarations that pertain 
@@ -265,10 +265,10 @@ the <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>
  for the function name has been seen).
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If <i>function-name</i> names an <i><a href="../26-glossary/o.xhtml#ordinaryfunction">ordinary function</a></i>, a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>,
 or a <i><a href="../26-glossary/s.xhtml#specialoperator">special operator</a></i>, an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../5-data-and-control-flow/5.3.68-program-error.xhtml#DictEntry_program_erro_454"><b>program-error</b></a> is signaled.
@@ -308,7 +308,7 @@ It is required that an implementation
 signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../5-data-and-control-flow/5.3.68-program-error.xhtml#DictEntry_program_erro_454"><b>program-error</b></a> if
 it observes an option that is not implemented locally.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="7.7.27-defmethod.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a>,
 <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>documentation</b></a>,

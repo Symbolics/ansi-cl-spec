@@ -8,24 +8,24 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_delete_file_1175" class="entry"><span class="secno">20.2.8</span> <span class="names"><span id="delete-file" data-symbol="delete-file">delete-file</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_delete_file_1175" class="entry" data-kind="function"><span class="secno">20.2.8</span> <span class="names"><span id="delete-file" data-symbol="delete-file">delete-file</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>delete-file</b>
 <i>filespec</i>
   → <i><a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
 </i><p><i></i>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>filespec</i>—a <i><a href="../26-glossary/p.xhtml#pathnamedesignator">pathname designator</a></i>.
 
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Deletes the <i><a href="../26-glossary/f.xhtml#file">file</a></i> specified by <i>filespec</i>.
 
@@ -56,7 +56,7 @@ The consequences are undefined
  or if <i>filespec</i> has a <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> component 
      and the file system does not permit a <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> component.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (with-open-file (s "delete-me.text" :direction :output :if-exists :error))
 →  NIL
@@ -69,7 +69,7 @@ The consequences are undefined
  (probe-file "delete-me.text") → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If the deletion operation is not successful, an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="20.2.9-file-error.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> is signaled.
 
@@ -78,7 +78,7 @@ If the deletion operation is not successful, an error of <i><a href="../26-gloss
 An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="20.2.9-file-error.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> might be signaled if <i>filespec</i> is <i><a href="../26-glossary/w.xhtml#wild">wild</a></i>.
 
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 
 <a href="../19-filenames/19.4.1-pathname.xhtml#DictEntry_pathname_1144"><b>pathname</b></a>,

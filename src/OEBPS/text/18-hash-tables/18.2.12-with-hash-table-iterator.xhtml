@@ -8,17 +8,17 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_with_hash_ta_1089" class="entry"><span class="secno">18.2.12</span> <span class="names"><span id="with-hash-table-iterator" data-symbol="with-hash-table-iterator">with-hash-table-iterator</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_with_hash_ta_1089" class="entry" data-kind="macro"><span class="secno">18.2.12</span> <span class="names"><span id="with-hash-table-iterator" data-symbol="with-hash-table-iterator">with-hash-table-iterator</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>with-hash-table-iterator</b>
 <i>(name hash-table) 
 	           {<i>declaration</i>}* {<i>form</i>}*</i>
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>name</i>—a name suitable for the first argument to <a href="../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a>.
 
@@ -34,7 +34,7 @@
 </p><p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by <i>forms</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Within the lexical scope of the body, <i>name</i> is defined via <a href="../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a> 
 such that successive invocations of <code>(<i>name</i>)</code> return the items,
@@ -67,7 +67,7 @@ can be nested, and the body of the innermost one can invoke all of the
 locally <i>established</i> <i><a href="../26-glossary/m.xhtml#macro">macros</a></i>, provided all of those <i><a href="../26-glossary/m.xhtml#macro">macros</a></i>
 have <i><a href="../26-glossary/d.xhtml#distinct">distinct</a></i> names.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 The following function should return <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a> on any 
 <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i>, and signal
@@ -105,13 +105,13 @@ The following could be an acceptable definition of
              (funcall function key value)))))
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 The consequences are undefined if the local function named <i>name</i>
 <i>established</i> by <a href="#DictEntry_with_hash_ta_1089"><b>with-hash-table-iterator</b></a> is called after it has
 returned <i><a href="../26-glossary/f.xhtml#false">false</a></i> as its <i><a href="../26-glossary/p.xhtml#primaryvalue">primary value</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>

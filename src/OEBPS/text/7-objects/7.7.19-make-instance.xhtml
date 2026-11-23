@@ -8,24 +8,24 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_make_instanc_575" class="entry"><span class="secno">7.7.19</span> <span class="names"><span id="make-instance" data-symbol="make-instance">make-instance</span></span> <span class="kind">Standard Generic Function</span></h3>
+<h3 id="DictEntry_make_instanc_575" class="entry" data-kind="standard-generic-function"><span class="secno">7.7.19</span> <span class="names"><span id="make-instance" data-symbol="make-instance">make-instance</span></span> <span class="kind">Standard Generic Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 
 <b>make-instance</b>
 <i>class <code>&amp;rest</code> initargs <code>&amp;key</code> <code>&amp;allow-other-keys</code></i>
   → <i>instance</i>
-</dd><dt><b>Method Signatures:</b></dt><dd>
+</dd><dt data-section="method-signatures"><b>Method Signatures:</b></dt><dd>
 
 <b>make-instance</b>
 <i>(<i>class</i> <a href="../4-types-and-classes/4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a>) <code>&amp;rest</code> initargs</i>
 <p>
 <b>make-instance</b>
 <i>(<i>class</i> <a href="../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675"><b>symbol</b></a>) <code>&amp;rest</code> initargs</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 
@@ -38,7 +38,7 @@
 </p><p>
 <i>instance</i>—a <i><a href="../26-glossary/f.xhtml#fresh">fresh</a></i> <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>class</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 The <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <a href="#DictEntry_make_instanc_575"><b>make-instance</b></a> 
 creates and returns a new <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of the given <i>class</i>.
@@ -55,12 +55,12 @@ The initialization arguments are checked within <a href="#DictEntry_make_instanc
 The <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <a href="#DictEntry_make_instanc_575"><b>make-instance</b></a> 
 may be used as described in Section <a href="7.1-object-creation-and-initialization.xhtml#Section_Object_Creat_520">7.1 Object Creation and Initialization</a>.
 
-</p></dd><dt><b>Exceptional Situations:</b></dt><dd>
+</p></dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 If any of the initialization arguments has not
 been declared as valid, an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> is signaled.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a>,
 <a href="7.7.39-class-of.xhtml#DictEntry_class_of_595"><b>class-of</b></a>,

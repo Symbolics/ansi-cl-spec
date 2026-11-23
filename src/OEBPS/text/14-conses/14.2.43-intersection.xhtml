@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_intersection_956" class="entry"><span class="secno">14.2.43</span> <span class="names"><span id="intersection" data-symbol="intersection">intersection</span>, <span id="nintersection" data-symbol="nintersection">nintersection</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_intersection_956" class="entry" data-kind="function"><span class="secno">14.2.43</span> <span class="names"><span id="intersection" data-symbol="intersection">intersection</span>, <span id="nintersection" data-symbol="nintersection">nintersection</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>intersection</b>
 <i>list-1 list-2 <code>&amp;key</code> key test test-not</i>
@@ -21,7 +21,7 @@
 <b>nintersection</b>
 <i>list-1 list-2 <code>&amp;key</code> key test test-not</i>
   → <i>result-list</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>list-1</i>—a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i>.
 
@@ -45,7 +45,7 @@
 </p><p>
 <i>result-list</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_intersection_956"><b>intersection</b></a> and <a href="#DictEntry_intersection_956"><b>nintersection</b></a> return a <i><a href="../26-glossary/l.xhtml#list">list</a></i>
@@ -102,7 +102,7 @@ The result <i><a href="../26-glossary/l.xhtml#list">list</a></i> may share cells
 or be <a href="../5-data-and-control-flow/5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a> to, either <i>list-1</i> or <i>list-2</i>
 if appropriate.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq list1 (list 1 1 2 3 4 a b c "A" "B" "C" "d")
        list2 (list 1 4 5 b c d "a" "B" "c" "D")) 
@@ -122,7 +122,7 @@ if appropriate.
  list2 → <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> ;<i>e.g.</i>,  ((1 . 3) (2 . 4) (3 . 6) (4 . 8)) 
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 
 <a href="#DictEntry_intersection_956"><b>nintersection</b></a> can modify <i>list-1</i>, 
@@ -132,11 +132,11 @@ but not <i>list-2</i>.
 
 
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>list-1</i> and <i>list-2</i> are not <i><a href="../26-glossary/p.xhtml#properlist">proper lists</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.49-union.xhtml#DictEntry_union_nunio_962"><b>union</b></a>,
 
@@ -146,7 +146,7 @@ Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#SubSectio
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The <code>:test-not</code> parameter is deprecated.

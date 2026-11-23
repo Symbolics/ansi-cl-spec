@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_simple_array_980" class="entry"><span class="secno">15.2.2</span> <span class="names"><span id="simple-array" data-symbol="simple-array">simple-array</span></span> <span class="kind">Type</span></h3>
+<h3 id="DictEntry_simple_array_980" class="entry" data-kind="type"><span class="secno">15.2.2</span> <span class="names"><span id="simple-array" data-symbol="simple-array">simple-array</span></span> <span class="kind">Type</span></h3>
 <dl>
 
 
-<dt><b>Supertypes:</b></dt><dd>
+<dt data-section="supertypes"><b>Supertypes:</b></dt><dd>
 
 <a href="#DictEntry_simple_array_980"><b>simple-array</b></a>,
 
 <a href="15.2.1-array.xhtml#DictEntry_array_979"><b>array</b></a>,
 <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 
@@ -44,17 +44,17 @@ for they respectively mean <code>(simple-array t (*))</code>,
  			    for any <i>c</i> being a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../13-characters/13.2.1-character.xhtml#DictEntry_character_884"><b>character</b></a>,
 			and <code>(simple-array bit (*))</code>.
 
-</p></dd><dt><b>Compound Type Specifier Kind:</b></dt><dd>
+</p></dd><dt data-section="compound-type-specifier-kind"><b>Compound Type Specifier Kind:</b></dt><dd>
 
 Specializing.
 
-</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+</dd><dt data-section="compound-type-specifier-syntax"><b>Compound Type Specifier Syntax:</b></dt><dd>
 
 <code>(simple-array <code>[</code><code>{</code>element-type | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a><code>}</code> [dimension-spec]<code>]</code>)</code>
 
 <p>
 
-dimension-spec::= rank | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a> | (<code>{</code>dimension | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a><code>}</code><sup>*</sup>)</p></dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+dimension-spec::= rank | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a> | (<code>{</code>dimension | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a><code>}</code><sup>*</sup>)</p></dd><dt data-section="compound-type-specifier-arguments"><b>Compound Type Specifier Arguments:</b></dt><dd>
 
 <i>dimension</i>—a <i><a href="../26-glossary/v.xhtml#validarraydimension">valid array dimension</a></i>.
 
@@ -66,13 +66,13 @@ dimension-spec::= rank | <a href="../25-environment/25.2.22-star.xhtml#DictEntry
 <i>rank</i>—a non-negative <i><a href="../26-glossary/f.xhtml#fixnum">fixnum</a></i>.
 
 
-</p></dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+</p></dd><dt data-section="compound-type-specifier-description"><b>Compound Type Specifier Description:</b></dt><dd>
 
 This <i><a href="../26-glossary/c.xhtml#compoundtypespecifier">compound type specifier</a></i> is treated exactly as the corresponding
 <i><a href="../26-glossary/c.xhtml#compoundtypespecifier">compound type specifier</a></i> for <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="15.2.1-array.xhtml#DictEntry_array_979"><b>array</b></a> would be treated,
 except that the set is further constrained to include only <i><a href="../26-glossary/s.xhtml#simplearray">simple arrays</a></i>.
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 It is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> 
 whether <i><a href="../26-glossary/d.xhtml#displacedarray">displaced arrays</a></i>,

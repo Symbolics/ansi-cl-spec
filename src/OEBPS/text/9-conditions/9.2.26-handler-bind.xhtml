@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_handler_bind_651" class="entry"><span class="secno">9.2.26</span> <span class="names"><span id="handler-bind" data-symbol="handler-bind">handler-bind</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_handler_bind_651" class="entry" data-kind="macro"><span class="secno">9.2.26</span> <span class="names"><span id="handler-bind" data-symbol="handler-bind">handler-bind</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>handler-bind</b>
 <i>({<i>binding</i>}*) 
@@ -20,7 +20,7 @@
   → <i>{<i>result</i>}*</i>
 <p>
 
-binding::= (type handler)</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+binding::= (type handler)</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>type</i>—a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
 
@@ -36,7 +36,7 @@ binding::= (type handler)</p></dd><dt><b>Arguments and Values:</b></dt><dd>
 </p><p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i><a href="../26-glossary/f.xhtml#form">forms</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Executes <i>forms</i> in a <i><a href="../26-glossary/d.xhtml#dynamicenvironment">dynamic environment</a></i> where the indicated
 <i>handler</i> <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i> are in effect.
@@ -63,7 +63,7 @@ If no appropriate <i><a href="../26-glossary/h.xhtml#handler">handler</a></i> is
 from dynamically enclosing contours.  If no <i><a href="../26-glossary/h.xhtml#handler">handler</a></i> is found outside, 
 then <a href="9.2.17-signal.xhtml#DictEntry_signal_642"><b>signal</b></a> returns or <a href="9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> enters the debugger. 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 In the following code, if an unbound variable error is
 signaled in the body (and not handled by an intervening handler), 
@@ -100,7 +100,7 @@ Note that "Foo." is not printed because the condition made
 by <a href="9.2.17-signal.xhtml#DictEntry_signal_642"><b>signal</b></a> is a <i><a href="../26-glossary/s.xhtml#simplecondition">simple condition</a></i>, which is not of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a>, 
 so it doesn't trigger the handler for <a href="9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> set up by <code>trap-errors</code>.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="9.2.27-handler-case.xhtml#DictEntry_handler_case_652"><b>handler-case</b></a>
 

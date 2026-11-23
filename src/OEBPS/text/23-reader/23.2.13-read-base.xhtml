@@ -8,19 +8,19 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_read_base_1393" class="entry"><span class="secno">23.2.13</span> <span class="names"><span id="*read-base*" data-symbol="*read-base*">*read-base*</span></span> <span class="kind">Variable</span></h3>
+<h3 id="DictEntry_read_base_1393" class="entry" data-kind="variable"><span class="secno">23.2.13</span> <span class="names"><span id="*read-base*" data-symbol="*read-base*">*read-base*</span></span> <span class="kind">Variable</span></h3>
 <dl>
 
 
-<dt><b>Value Type:</b></dt><dd>
+<dt data-section="value-type"><b>Value Type:</b></dt><dd>
 
 a <i><a href="../26-glossary/r.xhtml#radix">radix</a></i>.
 
-</dd><dt><b>Initial Value:</b></dt><dd>
+</dd><dt data-section="initial-value"><b>Initial Value:</b></dt><dd>
 
 <code>10</code>.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Controls the interpretation of tokens by <a href="23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> as being
@@ -39,7 +39,7 @@ The effect of <a href="#DictEntry_read_base_1393"><b>*read-base*</b></a> on the 
 <code>#O</code>, <code>#X</code>, <code>#B</code>, or <code>#<i>n</i>R</code> syntax
 or by a trailing decimal point.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (dotimes (i 6)
    (let ((*read-base* (+ 10. i)))
@@ -54,7 +54,7 @@ or by a trailing decimal point.
 →  NIL
 </pre>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 Altering the input radix can be useful when reading data files in special formats.

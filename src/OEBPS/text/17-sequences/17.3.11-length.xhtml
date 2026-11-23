@@ -8,23 +8,23 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_length_1051" class="entry"><span class="secno">17.3.11</span> <span class="names"><span id="length" data-symbol="length">length</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_length_1051" class="entry" data-kind="function"><span class="secno">17.3.11</span> <span class="names"><span id="length" data-symbol="length">length</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>length</b>
 <i>sequence</i>
   → <i>n</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>sequence</i>—a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
 <p>
 <i>n</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Returns the number of <i><a href="../26-glossary/e.xhtml#element">elements</a></i> in <i>sequence</i>.
@@ -33,7 +33,7 @@ Returns the number of <i><a href="../26-glossary/e.xhtml#element">elements</a></
 If <i>sequence</i> is a <i><a href="../26-glossary/v.xhtml#vector">vector</a></i> with a <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>,
 the active length as specified by the <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i> is returned.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (length "abc") → 3
  (setq str (make-array '(3) :element-type 'character 
@@ -44,13 +44,13 @@ the active length as specified by the <i><a href="../26-glossary/f.xhtml#fillpoi
  (length str) → 2
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>sequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../14-conses/14.2.16-list-length.xhtml#DictEntry_list_length_929"><b>list-length</b></a>,
 <a href="17.3.1-sequence.xhtml#DictEntry_sequence_1041"><b>sequence</b></a>

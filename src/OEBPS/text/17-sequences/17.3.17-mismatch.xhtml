@@ -8,17 +8,17 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_mismatch_1057" class="entry"><span class="secno">17.3.17</span> <span class="names"><span id="mismatch" data-symbol="mismatch">mismatch</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_mismatch_1057" class="entry" data-kind="function"><span class="secno">17.3.17</span> <span class="names"><span id="mismatch" data-symbol="mismatch">mismatch</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>mismatch</b>
 <i>sequence-1 sequence-2 
 			 <code>&amp;key</code> from-end test test-not key start1 start2 end1 end2</i><br/> 
   → <i>position</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>Sequence-1</i>—a <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i>.
 
@@ -58,7 +58,7 @@
 <i>position</i>—a <i><a href="../26-glossary/b.xhtml#boundingindex">bounding index</a></i> of <i>sequence-1</i>,
 		   or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 The specified subsequences of         
@@ -89,7 +89,7 @@ are aligned at their right-hand ends; then, the last elements are compared,
 the penultimate elements, and so on.  The index returned is 
 an index relative to <i>sequence-1</i>.                  
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
                                  
 <pre> (mismatch "abcd" "ABCDE" :test #'char-equal) → 4
  (mismatch '(3 2 1 1 2 3) '(1 2 3) :from-end t) → 3
@@ -97,13 +97,13 @@ an index relative to <i>sequence-1</i>.
  (mismatch '(1 2 3 4 5 6) '(3 4 5 6 7) :start1 2 :end2 4) →  NIL 
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The <code>:test-not</code> <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> is deprecated.

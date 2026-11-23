@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_rational_ra_828" class="entry"><span class="secno">12.2.54</span> <span class="names"><span id="rational" data-symbol="rational">rational</span>, <span id="rationalize" data-symbol="rationalize">rationalize</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_rational_ra_828" class="entry" data-kind="function"><span class="secno">12.2.54</span> <span class="names"><span id="rational" data-symbol="rational">rational</span>, <span id="rationalize" data-symbol="rationalize">rationalize</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>rational</b>
 <i>number</i>
@@ -21,14 +21,14 @@
 <b>rationalize</b>
 <i>number</i>
   → <i>rational</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>number</i>—a <i>real</i>.
 
 <p>
 <i>rational</i>—a <i><a href="../26-glossary/r.xhtml#rational">rational</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_rational_ra_828"><b>rational</b></a> and <a href="#DictEntry_rational_ra_828"><b>rationalize</b></a> convert 
@@ -57,7 +57,7 @@ the underlying floating-point representation.
 <i><a href="../26-glossary/f.xhtml#float">float</a></i> is accurate only to the precision of the
 floating-point representation.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (rational 0) → 0
  (rationalize -11/100) → -11/100
@@ -65,16 +65,16 @@ floating-point representation.
  (rationalize .1) → 1/10
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 The <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>number</i> is not a <i>real</i>.
 Might signal <a href="12.2.78-arithmetic-error.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a>.
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 It is always the case that
 

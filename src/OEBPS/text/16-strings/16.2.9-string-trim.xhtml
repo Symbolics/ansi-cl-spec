@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_string_trim_1028" class="entry"><span class="secno">16.2.9</span> <span class="names"><span id="string-trim" data-symbol="string-trim">string-trim</span>, <span id="string-left-trim" data-symbol="string-left-trim">string-left-trim</span>, <span id="string-right-trim" data-symbol="string-right-trim">string-right-trim</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_string_trim_1028" class="entry" data-kind="function"><span class="secno">16.2.9</span> <span class="names"><span id="string-trim" data-symbol="string-trim">string-trim</span>, <span id="string-left-trim" data-symbol="string-left-trim">string-left-trim</span>, <span id="string-right-trim" data-symbol="string-right-trim">string-right-trim</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <table>
 <tbody><tr><td><b>string-trim</b> <i>character-bag string</i></td><td>→  <i>trimmed-string</i></td></tr>
@@ -21,7 +21,7 @@
 </tbody></table>
 
 
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>character-bag</i>—a <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i> containing <i><a href="../26-glossary/c.xhtml#character">characters</a></i>.
 
@@ -33,7 +33,7 @@
 </p><p>
 <i>trimmed-string</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_string_trim_1028"><b>string-trim</b></a> returns a substring of <i>string</i>, 
@@ -50,7 +50,7 @@ at the discretion of the implementation.
 
 All of these <i><a href="../26-glossary/f.xhtml#function">functions</a></i> observe the <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (string-trim "abc" "abcaakaaakabcaaa") → "kaaak"
  (string-trim '(#\Space #\Tab #\Newline) " garbanzo beans
@@ -67,7 +67,7 @@ All of these <i><a href="../26-glossary/f.xhtml#function">functions</a></i> obse
 </pre>
 
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 The <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>.
 

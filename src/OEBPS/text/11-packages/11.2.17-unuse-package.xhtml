@@ -8,18 +8,18 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_unuse_packag_732" class="entry"><span class="secno">11.2.17</span> <span class="names"><span id="unuse-package" data-symbol="unuse-package">unuse-package</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_unuse_packag_732" class="entry" data-kind="function"><span class="secno">11.2.17</span> <span class="names"><span id="unuse-package" data-symbol="unuse-package">unuse-package</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>unuse-package</b>
 <i>packages-to-unuse <code>&amp;optional</code> package</i>
   → <i><a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
 </i><p><i></i>
 
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>packages-to-unuse</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for
@@ -33,7 +33,7 @@
 <i>package</i>—a <i><a href="../26-glossary/p.xhtml#packagedesignator">package designator</a></i>.
  The default is the <i><a href="../26-glossary/c.xhtml#currentpackage">current package</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_unuse_packag_732"><b>unuse-package</b></a> causes <i>package</i> to cease inheriting
@@ -50,7 +50,7 @@ are removed from the <i><a href="../26-glossary/u.xhtml#uselist">use list</a></i
 Any <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> that have been
 <i>imported</i> into <i>package</i> continue to be <i><a href="../26-glossary/p.xhtml#present">present</a></i> in <i>package</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (in-package "COMMON-LISP-USER") → #&lt;PACKAGE "COMMON-LISP-USER"&gt;
  (export (intern "SHOES" (make-package 'temp)) 'temp) →  T
@@ -62,16 +62,16 @@ Any <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> that have been
  (find-symbol "SHOES") →  NIL, NIL
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The <i><a href="../26-glossary/u.xhtml#uselist">use list</a></i> of <i>package</i> is modified.
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 Current state of the package system.
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="11.2.18-use-package.xhtml#DictEntry_use_package_733"><b>use-package</b></a>, <a href="11.2.25-package-use-list.xhtml#DictEntry_package_use__740"><b>package-use-list</b></a>
 

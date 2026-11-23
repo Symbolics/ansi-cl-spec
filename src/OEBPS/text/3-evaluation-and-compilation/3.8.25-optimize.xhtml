@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_optimize_307" class="entry"><span class="secno">3.8.25</span> <span class="names"><span id="optimize" data-symbol="optimize">optimize</span></span> <span class="kind">Declaration</span></h3>
+<h3 id="DictEntry_optimize_307" class="entry" data-kind="declaration"><span class="secno">3.8.25</span> <span class="names"><span id="optimize" data-symbol="optimize">optimize</span></span> <span class="kind">Declaration</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <code>(optimize <code>{</code><i>quality</i> | (<i>quality</i> <i>value</i>)<code>}</code><sup>*</sup>)</code>
 
@@ -21,18 +21,18 @@
 
 
 
-</dd><dt><b>Arguments:</b></dt><dd>
+</dd><dt data-section="arguments"><b>Arguments:</b></dt><dd>
 
 <i>quality</i>—an <i><a href="../26-glossary/o.xhtml#optimizequality">optimize quality</a></i>.
 
 <p>
 <i>value</i>—one of the <i><a href="../26-glossary/i.xhtml#integer">integers</a></i> <code>0</code>, <code>1</code>, <code>2</code>, or <code>3</code>.
 
-</p></dd><dt><b>Valid Context:</b></dt><dd>
+</p></dd><dt data-section="valid-context"><b>Valid Context:</b></dt><dd>
 
 <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i> or <i><a href="../26-glossary/p.xhtml#proclamation">proclamation</a></i>
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Advises the compiler that each <i>quality</i> should be given attention
 according to the specified corresponding <i>value</i>.
@@ -93,7 +93,7 @@ is called <i><a href="../26-glossary/s.xhtml#safe">safe</a></i> <i><a href="../2
 The consequences are unspecified if a <i>quality</i> appears more than once
 with <i><a href="../26-glossary/d.xhtml#different">different</a></i> <i>values</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defun often-used-subroutine (x y)
    (declare (optimize (safety 2)))
@@ -108,14 +108,14 @@ with <i><a href="../26-glossary/d.xhtml#different">different</a></i> <i>values</
      ))
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a>,
 <a href="3.8.17-declaim.xhtml#DictEntry_declaim_299"><b>declaim</b></a>,
 <a href="3.8.16-proclaim.xhtml#DictEntry_proclaim_298"><b>proclaim</b></a>,
 Section <a href="3.3-declarations.xhtml#SubSection_Declaration__240">3.3.4 Declaration Scope</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 An <a href="#DictEntry_optimize_307"><b>optimize</b></a> declaration never applies to either a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> or
 a <i><a href="../26-glossary/f.xhtml#function">function</a></i> <i><a href="../26-glossary/b.xhtml#binding">binding</a></i>.  An <a href="#DictEntry_optimize_307"><b>optimize</b></a> declaration can only

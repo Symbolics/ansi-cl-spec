@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_get_properti_953" class="entry"><span class="secno">14.2.40</span> <span class="names"><span id="get-properties" data-symbol="get-properties">get-properties</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_get_properti_953" class="entry" data-kind="function"><span class="secno">14.2.40</span> <span class="names"><span id="get-properties" data-symbol="get-properties">get-properties</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>get-properties</b>
 <i>plist indicator-list</i>
   → <i>indicator, value, tail</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>plist</i>—a <i><a href="../26-glossary/p.xhtml#propertylist">property list</a></i>.
@@ -35,7 +35,7 @@
 </p><p>
 <i>tail</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_get_properti_953"><b>get-properties</b></a> is used to look up any of several
@@ -52,7 +52,7 @@ that begins with the found entry (<i>i.e.</i>,  whose <i><a href="../26-glossary
 If no such entry is found, the <i>indicator</i>, <i>value</i>, and <i>tail</i> 
 are all <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq x '()) →  NIL
  (setq *indicator-list* '(prop1 prop2)) → (PROP1 PROP2)
@@ -63,7 +63,7 @@ are all <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>ni
  x → (PROP1 VAL1)
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../10-symbols/10.2.15-get.xhtml#DictEntry_get_689"><b>get</b></a>, <a href="14.2.41-getf.xhtml#DictEntry_getf_954"><b>getf</b></a>
 

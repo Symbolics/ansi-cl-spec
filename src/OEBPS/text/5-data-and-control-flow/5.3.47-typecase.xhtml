@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_typecase_ct_433" class="entry"><span class="secno">5.3.47</span> <span class="names"><span id="typecase" data-symbol="typecase">typecase</span>, <span id="ctypecase" data-symbol="ctypecase">ctypecase</span>, <span id="etypecase" data-symbol="etypecase">etypecase</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_typecase_ct_433" class="entry" data-kind="macro"><span class="secno">5.3.47</span> <span class="names"><span id="typecase" data-symbol="typecase">typecase</span>, <span id="ctypecase" data-symbol="ctypecase">ctypecase</span>, <span id="etypecase" data-symbol="etypecase">etypecase</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>typecase</b>
 <i>keyform  {<i>normal-clause</i>}* [↓otherwise-clause]</i>
@@ -31,7 +31,7 @@ normal-clause::= (type {<i>form</i>}*)</p><p>
 
 otherwise-clause::= (<code>{</code>otherwise | t<code>}</code> {<i>form</i>}*)</p><p>
 
-clause::= normal-clause | otherwise-clause</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+clause::= normal-clause | otherwise-clause</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>keyform</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>; evaluated to produce a <i>test-key</i>.
 
@@ -52,7 +52,7 @@ clause::= normal-clause | otherwise-clause</p></dd><dt><b>Arguments and Values:<
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>forms</i> 
 		  in the matching <i>clause</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 These <i><a href="../26-glossary/m.xhtml#macro">macros</a></i> allow the conditional execution of a body of <i>forms</i>
 in a <i>clause</i> that is selected by matching the <i>test-key</i> on the basis 
@@ -132,7 +132,7 @@ In all three cases, is permissible for more than one <i>clause</i> to specify a
 matching <i><a href="../26-glossary/t.xhtml#type">type</a></i>, particularly if one is a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of another;
 the earliest applicable <i>clause</i> is chosen.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre>;;; (Note that the parts of this example which use TYPE-OF 
 ;;;  are implementation-dependent.)
@@ -172,12 +172,12 @@ the earliest applicable <i>clause</i> is chosen.
  x → 12
 </pre>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="#DictEntry_typecase_ct_433"><b>ctypecase</b></a> and <a href="#DictEntry_typecase_ct_433"><b>etypecase</b></a>, since they might signal an error,
 are potentially affected by existing <i>handlers</i> and <a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*debug-io*</b></a>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 <a href="#DictEntry_typecase_ct_433"><b>ctypecase</b></a> and <a href="#DictEntry_typecase_ct_433"><b>etypecase</b></a> signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a>
 if no <i>normal-clause</i> matches.
@@ -187,14 +187,14 @@ The <i><a href="../26-glossary/c.xhtml#compiler">compiler</a></i> may choose to 
 if a <i>clause</i> will never be selected because it is completely 
 shadowed by earlier clauses.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.46-case.xhtml#DictEntry_case_ccase_432"><b>case</b></a>,
 <a href="5.3.42-cond.xhtml#DictEntry_cond_428"><b>cond</b></a>,
 <a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a>,
 Section <a href="5.1-generalized-reference.xhtml#Section_Generalized__368">5.1 Generalized Reference</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre>(typecase <i>test-key</i>
   <code>{</code>(<i>type</i> {<i>form</i>}*)<code>}</code><sup>*</sup>)

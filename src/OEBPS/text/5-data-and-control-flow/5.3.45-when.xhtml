@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_when_unless_431" class="entry"><span class="secno">5.3.45</span> <span class="names"><span id="when" data-symbol="when">when</span>, <span id="unless" data-symbol="unless">unless</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_when_unless_431" class="entry" data-kind="macro"><span class="secno">5.3.45</span> <span class="names"><span id="when" data-symbol="when">when</span>, <span id="unless" data-symbol="unless">unless</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>when</b>
 <i>test-form {<i>form</i>}*</i>
@@ -21,7 +21,7 @@
 <b>unless</b>
 <i>test-form {<i>form</i>}*</i>
   → <i>{<i>result</i>}*</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>test-form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
 
@@ -34,7 +34,7 @@
  or in an <a href="#DictEntry_when_unless_431"><b>unless</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> if the <i>test-form</i> <i><a href="../26-glossary/y.xhtml#yield">yields</a></i> <i><a href="../26-glossary/f.xhtml#false">false</a></i>;
  otherwise <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_when_unless_431"><b>when</b></a> and <a href="#DictEntry_when_unless_431"><b>unless</b></a> allow the execution of <i>forms</i> 
 to be dependent on a single <i>test-form</i>.
@@ -61,7 +61,7 @@ Otherwise, if the <i>test-form</i> <i><a href="../26-glossary/y.xhtml#yield">yie
 the <i>forms</i> are not <i>evaluated</i>,
 and the <a href="#DictEntry_when_unless_431"><b>unless</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (when t 'hello) →  HELLO
  (unless t 'hello) →  NIL
@@ -89,14 +89,14 @@ and the <a href="#DictEntry_when_unless_431"><b>unless</b></a> <i><a href="../26
 → ((4) NIL (5) NIL 6 (6) 7 (7))
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../4-types-and-classes/4.4.20-and.xhtml#DictEntry_and_355"><b>and</b></a>,
 <a href="5.3.42-cond.xhtml#DictEntry_cond_428"><b>cond</b></a>,
 <a href="5.3.43-if.xhtml#DictEntry_if_429"><b>if</b></a>,
 <a href="../4-types-and-classes/4.4.21-or.xhtml#DictEntry_or_356"><b>or</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(and <i>test</i> (progn <code>{</code><i>form</i><code>}</code>+))
  (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(cond (<i>test</i> <code>{</code><i>form</i><code>}</code>+))

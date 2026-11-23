@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_multiple_val_434" class="entry"><span class="secno">5.3.48</span> <span class="names"><span id="multiple-value-bind" data-symbol="multiple-value-bind">multiple-value-bind</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_multiple_val_434" class="entry" data-kind="macro"><span class="secno">5.3.48</span> <span class="names"><span id="multiple-value-bind" data-symbol="multiple-value-bind">multiple-value-bind</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>multiple-value-bind</b>
 <i>({<i>var</i>}*)
@@ -20,7 +20,7 @@
  		   {<i>declaration</i>}*
  		   {<i>form</i>}*</i><br/>   
   → <i>{<i>result</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>var</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> naming a variable; not evaluated.
 
@@ -36,7 +36,7 @@
 </p><p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>forms</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Creates new variable <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i> for the <i>vars</i> and
 executes a series of <i>forms</i> that use these <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i>.
@@ -65,19 +65,19 @@ do not include the <i>values-form</i>.
 
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (multiple-value-bind (f r) 
      (floor 130 11)
    (list f r)) → (11 9)
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.18-let.xhtml#DictEntry_let_let_404"><b>let</b></a>,
 <a href="5.3.49-multiple-value-call.xhtml#DictEntry_multiple_val_435"><b>multiple-value-call</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (multiple-value-bind ({<i>var</i>}*) <i>values-form</i> {<i>form</i>}*)
  ==(multiple-value-call #'(lambda (&amp;optional {<i>var</i>}* &amp;rest #1=#:ignore)

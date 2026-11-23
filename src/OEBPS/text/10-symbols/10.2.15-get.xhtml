@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_get_689" class="entry"><span class="secno">10.2.15</span> <span class="names"><span id="get" data-symbol="get">get</span></span> <span class="kind">Accessor</span></h3>
+<h3 id="DictEntry_get_689" class="entry" data-kind="accessor"><span class="secno">10.2.15</span> <span class="names"><span id="get" data-symbol="get">get</span></span> <span class="kind">Accessor</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>get</b>
 <i>symbol indicator <code>&amp;optional</code> default</i>
@@ -20,7 +20,7 @@
 <p>
 (<b>setf</b>
 (<b>get</b> <i>symbol indicator <code>&amp;optional</code> default</i>) <i>new-value</i>)
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>symbol</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
@@ -39,7 +39,7 @@
 </p><p>
 <i>new-value</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 
@@ -73,7 +73,7 @@ any <i>default</i> which is supplied is evaluated according to normal
 left-to-right evaluation rules, but its <i><a href="../26-glossary/v.xhtml#value">value</a></i> is ignored.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defun make-person (first-name last-name)
    (let ((person (gensym "PERSON")))
@@ -105,17 +105,17 @@ left-to-right evaluation rules, but its <i><a href="../26-glossary/v.xhtml#value
  (age *john* 20) → 25
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>symbol</i> is not a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../14-conses/14.2.41-getf.xhtml#DictEntry_getf_954"><b>getf</b></a>,
 <a href="10.2.13-symbol-plist.xhtml#DictEntry_symbol_plist_687"><b>symbol-plist</b></a>,
 <a href="10.2.16-remprop.xhtml#DictEntry_remprop_690"><b>remprop</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (get x y) ==(getf (symbol-plist x) y)
 </pre>

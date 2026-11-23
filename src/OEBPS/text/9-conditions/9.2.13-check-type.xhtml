@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_check_type_638" class="entry"><span class="secno">9.2.13</span> <span class="names"><span id="check-type" data-symbol="check-type">check-type</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_check_type_638" class="entry" data-kind="macro"><span class="secno">9.2.13</span> <span class="names"><span id="check-type" data-symbol="check-type">check-type</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>check-type</b> <i>place typespec</i> 
 [<i>string</i>]  →  <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>
 
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>place</i>—a <i><a href="../26-glossary/p.xhtml#place">place</a></i>.
 
@@ -27,7 +27,7 @@
 </p><p>
 <i>string</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>; evaluated. 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_check_type_638"><b>check-type</b></a> signals a <i><a href="../26-glossary/c.xhtml#correctable">correctable</a></i> <i><a href="../26-glossary/e.xhtml#error">error</a></i> 
 of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if the contents of <i>place</i> are not 
@@ -69,7 +69,7 @@ such as one of the arguments to the function that called <a href="#DictEntry_che
 may require a more specific description of what is wanted
 than can be generated automatically from <i>typespec</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq aardvarks '(sam harry fred))
 → (SAM HARRY FRED)
@@ -128,11 +128,11 @@ than can be generated automatically from <i>typespec</i>.
 <p>
 Control is transferred to a handler.
 
-</p></dd><dt><b>Side Effects:</b></dt><dd>
+</p></dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The debugger might be entered.
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="9.2.25-break-on-signals.xhtml#DictEntry_break_on_si_650"><b>*break-on-signals*</b></a>
 
@@ -140,11 +140,11 @@ The debugger might be entered.
 <p>
 The implementation.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 Section <a href="9.1-condition-system-concepts.xhtml#Section_Condition_Sy_603">9.1 Condition System Concepts</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (check-type <i>place</i> <i>typespec</i>)
  ==(assert (typep <i>place</i> '<i>typespec</i>) (<i>place</i>)

@@ -8,23 +8,23 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_copy_list_927" class="entry"><span class="secno">14.2.14</span> <span class="names"><span id="copy-list" data-symbol="copy-list">copy-list</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_copy_list_927" class="entry" data-kind="function"><span class="secno">14.2.14</span> <span class="names"><span id="copy-list" data-symbol="copy-list">copy-list</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>copy-list</b>
 <i>list</i>
   → <i>copy</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>list</i>—a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i> or a <i><a href="../26-glossary/d.xhtml#dottedlist">dotted list</a></i>.
 
 <p>
 <i>copy</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Returns a <i><a href="../26-glossary/c.xhtml#copy">copy</a></i> of <i>list</i>.
 If <i>list</i> is a <i><a href="../26-glossary/d.xhtml#dottedlist">dotted list</a></i>,
@@ -35,7 +35,7 @@ Only the <i><a href="../26-glossary/l.xhtml#liststructure">list structure</a></i
 the <i><a href="../26-glossary/e.xhtml#element">elements</a></i> of the resulting list are 
 the <i><a href="../26-glossary/s.xhtml#same">same</a></i> as the corresponding <i><a href="../26-glossary/e.xhtml#element">elements</a></i> of the given <i>list</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq lst (list 1 (list 2 3))) → (1 (2 3))
  (setq slst lst) → (1 (2 3))
@@ -52,17 +52,17 @@ the <i><a href="../26-glossary/s.xhtml#same">same</a></i> as the corresponding <
  clst → (1 ("two" 3))
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 The consequences are undefined if <i>list</i> is a <i><a href="../26-glossary/c.xhtml#circularlist">circular list</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.37-copy-alist.xhtml#DictEntry_copy_alist_950"><b>copy-alist</b></a>,
 <a href="../17-sequences/17.3.2-copy-seq.xhtml#DictEntry_copy_seq_1042"><b>copy-seq</b></a>,
 <a href="14.2.10-copy-tree.xhtml#DictEntry_copy_tree_923"><b>copy-tree</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The copy created is <a href="../5-data-and-control-flow/5.3.35-equal.xhtml#DictEntry_equal_421"><b>equal</b></a> to <i>list</i>, but not <a href="../5-data-and-control-flow/5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a>.
 

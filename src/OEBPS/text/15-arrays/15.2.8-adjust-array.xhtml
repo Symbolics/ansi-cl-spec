@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_adjust_array_986" class="entry"><span class="secno">15.2.8</span> <span class="names"><span id="adjust-array" data-symbol="adjust-array">adjust-array</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_adjust_array_986" class="entry" data-kind="function"><span class="secno">15.2.8</span> <span class="names"><span id="adjust-array" data-symbol="adjust-array">adjust-array</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>adjust-array</b>
 <i>array new-dimensions <code>&amp;key</code> element-type
@@ -22,7 +22,7 @@
                                                            displaced-to
                                                            displaced-index-offset</i><br/> 
   → <i>adjusted-array</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>array</i>—an <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
 
@@ -75,7 +75,7 @@
 </p><p>
 <i>adjusted-array</i>—an <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_adjust_array_986"><b>adjust-array</b></a> changes the dimensions or elements of <i>array</i>.
@@ -255,7 +255,7 @@ refer to <i>C</i> directly and forget that the chain of reference passes through
 <i>B</i>.  However, caching techniques are permitted as long as they preserve the 
 semantics specified here.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (adjustable-array-p
   (setq ada (adjust-array
@@ -296,12 +296,12 @@ is a 3-by-5 array with contents
     ( iota      kappa     lambda    mu        baz ))
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> is signaled if <i>fill-pointer</i> is supplied
 and <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i> but <i>array</i> has no <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="15.2.9-adjustable-array-p.xhtml#DictEntry_adjustable_a_987"><b>adjustable-array-p</b></a>,    <a href="15.2.7-make-array.xhtml#DictEntry_make_array_985"><b>make-array</b></a>,
 <a href="15.2.24-array-dimension-limit.xhtml#DictEntry_array_dimens_1002"><b>array-dimension-limit</b></a>, <a href="15.2.26-array-total-size-limit.xhtml#DictEntry_array_total__1004"><b>array-total-size-limit</b></a>,

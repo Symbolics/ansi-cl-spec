@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_deposit_fiel_841" class="entry"><span class="secno">12.2.67</span> <span class="names"><span id="deposit-field" data-symbol="deposit-field">deposit-field</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_deposit_fiel_841" class="entry" data-kind="function"><span class="secno">12.2.67</span> <span class="names"><span id="deposit-field" data-symbol="deposit-field">deposit-field</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>deposit-field</b>
 <i>newbyte bytespec integer</i>
   → <i>result-integer</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>newbyte</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
@@ -30,7 +30,7 @@
 </p><p>
 <i>result-integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Replaces a field of bits within <i>integer</i>; specifically,
@@ -38,19 +38,19 @@ returns an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> that cont
 within the <i><a href="../26-glossary/b.xhtml#byte">byte</a></i> specified by <i>bytespec</i>,
 and elsewhere contains the bits of <i>integer</i>.  
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (deposit-field 7 (byte 2 1) 0) → 6
  (deposit-field -1 (byte 4 0) 0) → 15
  (deposit-field 0 (byte 2 1) -3) → -7
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="12.2.66-byte.xhtml#DictEntry_byte_byte_s_840"><b>byte</b></a>,
 <a href="12.2.68-dpb.xhtml#DictEntry_dpb_842"><b>dpb</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (logbitp <i>j</i> (deposit-field <i>m</i> (byte <i>s</i> <i>p</i>) <i>n</i>))
  ==(if (and (&gt;= <i>j</i> <i>p</i>) (&lt; <i>j</i> (+ <i>p</i> <i>s</i>)))

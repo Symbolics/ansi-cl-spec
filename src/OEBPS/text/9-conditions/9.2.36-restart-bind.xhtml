@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_restart_bind_661" class="entry"><span class="secno">9.2.36</span> <span class="names"><span id="restart-bind" data-symbol="restart-bind">restart-bind</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_restart_bind_661" class="entry" data-kind="macro"><span class="secno">9.2.36</span> <span class="names"><span id="restart-bind" data-symbol="restart-bind">restart-bind</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>restart-bind</b>
 <i>(<code>{</code>(name function
@@ -24,7 +24,7 @@
 
 key-val-pair::= <code>:interactive-function</code> interactive-function | <br/>
 		      <code>:report-function</code> report-function           | <br/>
-		      <code>:test-function</code> test-function</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+		      <code>:test-function</code> test-function</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>; not evaluated.
 
@@ -46,7 +46,7 @@ key-val-pair::= <code>:interactive-function</code> interactive-function | <br/>
 </p><p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i><a href="../26-glossary/f.xhtml#form">forms</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_restart_bind_661"><b>restart-bind</b></a> executes the body of <i>forms</i> 
 in a <i><a href="../26-glossary/d.xhtml#dynamicenvironment">dynamic environment</a></i> where <i><a href="../26-glossary/r.xhtml#restart">restarts</a></i> with the given <i>names</i> are in effect.
@@ -139,15 +139,15 @@ as follows.
 
 </p></li></ul>
 
-</dd><dt><b>Affected By:</b></dt><dd>
+</dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*query-io*</b></a>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="9.2.37-restart-case.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a>, <a href="9.2.40-with-simple-restart.xhtml#DictEntry_with_simple__665"><b>with-simple-restart</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <a href="#DictEntry_restart_bind_661"><b>restart-bind</b></a> is primarily intended to be used to implement
 <a href="9.2.37-restart-case.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a> and  might be useful in implementing other

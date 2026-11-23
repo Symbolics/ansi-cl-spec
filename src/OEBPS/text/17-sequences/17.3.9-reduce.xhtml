@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_reduce_1049" class="entry"><span class="secno">17.3.9</span> <span class="names"><span id="reduce" data-symbol="reduce">reduce</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_reduce_1049" class="entry" data-kind="function"><span class="secno">17.3.9</span> <span class="names"><span id="reduce" data-symbol="reduce">reduce</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>reduce</b>
 <i>function sequence <code>&amp;key</code> key from-end start end initial-value</i>
   → <i>result</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>function</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i>
    that might be called with either zero or two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>.
@@ -49,7 +49,7 @@
 </p><p>
 <i>result</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 
@@ -99,7 +99,7 @@ and <a href="#DictEntry_reduce_1049"><b>reduce</b></a> returns whatever <i>funct
 This is the only case where the
 <i>function</i> is called with other than two arguments.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (reduce #'* '(1 2 3 4 5)) → 120
@@ -119,11 +119,11 @@ This is the only case where the
         :from-end t :initial-value 'foo) → (1 (2 (3 (4 foo))))
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>sequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>

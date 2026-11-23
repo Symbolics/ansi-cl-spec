@@ -8,20 +8,20 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_declare_300" class="entry"><span class="secno">3.8.18</span> <span class="names"><span id="declare" data-symbol="declare">declare</span></span> <span class="kind">Symbol</span></h3>
+<h3 id="DictEntry_declare_300" class="entry" data-kind="symbol"><span class="secno">3.8.18</span> <span class="names"><span id="declare" data-symbol="declare">declare</span></span> <span class="kind">Symbol</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>declare</b>
 <i>{<i>declaration-specifier</i>}*</i>
-</dd><dt><b>Arguments:</b></dt><dd>
+</dd><dt data-section="arguments"><b>Arguments:</b></dt><dd>
 
 
 <i>declaration-specifier</i>—a <i><a href="../26-glossary/d.xhtml#declarationspecifier">declaration specifier</a></i>; not evaluated.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 A <a href="#DictEntry_declare_300"><b>declare</b></a> <i><a href="../26-glossary/e.xhtml#expression">expression</a></i>, sometimes called a <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i>,
@@ -175,7 +175,7 @@ that can be used with <a href="#DictEntry_declare_300"><b>declare</b></a>.
 An implementation is free to support other (<i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i>)
 <i><a href="../26-glossary/d.xhtml#declarationidentifier">declaration identifiers</a></i> as well.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defun nonsense (k x z)
    (foo z x)                     ;First call to foo
@@ -208,12 +208,12 @@ parameter <i><a href="../26-glossary/b.xhtml#binding">binding</a></i> has not be
 of <a href="../5-data-and-control-flow/5.3.2-defun.xhtml#DictEntry_defun_388"><b>defun</b></a>,  but in an inner <i><a href="../26-glossary/f.xhtml#form">form</a></i>, and therefore does not
 affect the <i><a href="../26-glossary/b.xhtml#binding">binding</a></i> of the <i><a href="../26-glossary/p.xhtml#parameter">parameter</a></i>.)
 
-</p></dd><dt><b>Exceptional Situations:</b></dt><dd>
+</p></dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 The consequences  of trying to use a <a href="#DictEntry_declare_300"><b>declare</b></a> <i><a href="../26-glossary/e.xhtml#expression">expression</a></i> as 
 a <i><a href="../26-glossary/f.xhtml#form">form</a></i> to be <i>evaluated</i> are undefined.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="3.8.16-proclaim.xhtml#DictEntry_proclaim_298"><b>proclaim</b></a>,
 Section <a href="../4-types-and-classes/4.2-types.xhtml#SubSection_Type_Specifi_318">4.2.3 Type Specifiers</a>,

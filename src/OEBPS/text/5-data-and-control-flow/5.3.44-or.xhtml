@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_or_430" class="entry"><span class="secno">5.3.44</span> <span class="names"><span id="or" data-symbol="or">or</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_or_430" class="entry" data-kind="macro"><span class="secno">5.3.44</span> <span class="names"><span id="or" data-symbol="or">or</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>or</b>
 <i>{<i>form</i>}*</i>
   → <i>{<i>results</i>}*</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
 
@@ -27,7 +27,7 @@
 		  resulting from the evaluation of
 		  the last <i>form</i> executed or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_or_430"><b>or</b></a> evaluates each <i>form</i>, one at a time, from left to right.  
@@ -43,7 +43,7 @@ If every <i>form</i> but the last returns <i><a href="../26-glossary/f.xhtml#fal
 <a href="#DictEntry_or_430"><b>or</b></a> returns all <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the last <i>form</i>.
 If no <i>forms</i> are supplied, <a href="#DictEntry_or_430"><b>or</b></a> returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (or) →  NIL 
  (setq temp0 nil temp1 10 temp2 20 temp3 30) → 30
@@ -59,7 +59,7 @@ If no <i>forms</i> are supplied, <a href="#DictEntry_or_430"><b>or</b></a> retur
  (or (values temp0 temp1) (values temp2 temp3)) → 20, 30
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../4-types-and-classes/4.4.20-and.xhtml#DictEntry_and_355"><b>and</b></a>,
 <a href="5.3.40-every.xhtml#DictEntry_every_some_426"><b>some</b></a>,

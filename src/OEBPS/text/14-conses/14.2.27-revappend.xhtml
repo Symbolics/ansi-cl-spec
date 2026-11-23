@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_revappend_n_940" class="entry"><span class="secno">14.2.27</span> <span class="names"><span id="revappend" data-symbol="revappend">revappend</span>, <span id="nreconc" data-symbol="nreconc">nreconc</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_revappend_n_940" class="entry" data-kind="function"><span class="secno">14.2.27</span> <span class="names"><span id="revappend" data-symbol="revappend">revappend</span>, <span id="nreconc" data-symbol="nreconc">nreconc</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>revappend</b>
 <i>list tail</i>
@@ -21,7 +21,7 @@
 <b>nreconc</b>
 <i>list tail</i>
   → <i>result-list</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>list</i>—a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i>.
 
@@ -31,7 +31,7 @@
 </p><p>
 <i>result-list</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_revappend_n_940"><b>revappend</b></a> constructs a <i><a href="../26-glossary/c.xhtml#copy">copy</a></i><sub>2</sub> of <i>list</i>,
 but with the <i><a href="../26-glossary/e.xhtml#element">elements</a></i> in reverse order.  It then appends (as if
@@ -45,7 +45,7 @@ the <i>tail</i> to that reversed list and returns the result.
 </p><p>
 The resulting <i><a href="../26-glossary/l.xhtml#list">list</a></i> shares <i><a href="../26-glossary/l.xhtml#liststructure">list structure</a></i> with <i>tail</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (let ((list-1 (list 1 2 3))
        (list-2 (list 'a 'b 'c)))
@@ -75,7 +75,7 @@ The resulting <i><a href="../26-glossary/l.xhtml#list">list</a></i> shares <i><a
 
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 <a href="#DictEntry_revappend_n_940"><b>revappend</b></a> does not modify either of its <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>.
 <a href="#DictEntry_revappend_n_940"><b>nreconc</b></a> is permitted to modify <i>list</i> but not <i>tail</i>.
@@ -89,13 +89,13 @@ Although it might be implemented differently,
 </pre>
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../17-sequences/17.3.12-reverse.xhtml#DictEntry_reverse_nre_1052"><b>reverse</b></a>,
 <a href="../17-sequences/17.3.12-reverse.xhtml#DictEntry_reverse_nre_1052"><b>nreverse</b></a>,
 <a href="14.2.25-nconc.xhtml#DictEntry_nconc_938"><b>nconc</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 The following functional equivalences are true, 
 although good <i><a href="../26-glossary/i.xhtml#implementation">implementations</a></i> will typically use a faster algorithm for

@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_intern_736" class="entry"><span class="secno">11.2.21</span> <span class="names"><span id="intern" data-symbol="intern">intern</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_intern_736" class="entry" data-kind="function"><span class="secno">11.2.21</span> <span class="names"><span id="intern" data-symbol="intern">intern</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>intern</b>
 <i>string <code>&amp;optional</code> package</i>
   → <i>symbol, status</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>string</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
 
@@ -33,7 +33,7 @@
 </p><p>
 <i>status</i>—one of <code>:inherited</code>, <code>:external</code>, <code>:internal</code>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_intern_736"><b>intern</b></a> enters a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> named <i>string</i> into <i>package</i>.
@@ -99,7 +99,7 @@ subsequent attempt is made to alter that <i><a href="../26-glossary/s.xhtml#stri
 </p></li></ul>
 
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 
 <pre> (in-package "COMMON-LISP-USER") → #&lt;PACKAGE "COMMON-LISP-USER"&gt;
@@ -110,7 +110,7 @@ subsequent attempt is made to alter that <i><a href="../26-glossary/s.xhtml#stri
 </pre>
 
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="11.2.3-find-symbol.xhtml#DictEntry_find_symbol_718"><b>find-symbol</b></a>,
 <a href="../23-reader/23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>,
@@ -118,7 +118,7 @@ subsequent attempt is made to alter that <i><a href="../26-glossary/s.xhtml#stri
 <a href="11.2.15-unintern.xhtml#DictEntry_unintern_730"><b>unintern</b></a>,
 Section <a href="../2-syntax/2.3-interpretation-of-tokens.xhtml#SubSection_Symbols_as_T_139">2.3.4 Symbols as Tokens</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 <a href="#DictEntry_intern_736"><b>intern</b></a> does not need to do any name conflict checking 

@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_random_815" class="entry"><span class="secno">12.2.41</span> <span class="names"><span id="random" data-symbol="random">random</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_random_815" class="entry" data-kind="function"><span class="secno">12.2.41</span> <span class="names"><span id="random" data-symbol="random">random</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>random</b>
 <i>limit <code>&amp;optional</code> random-state</i>
   → <i>random-number</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>limit</i>—a positive <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>,
 	     or a positive <i><a href="../26-glossary/f.xhtml#float">float</a></i>.
@@ -32,7 +32,7 @@
 			less than <i>limit</i> 
 		    and of the same <i><a href="../26-glossary/t.xhtml#type">type</a></i> as <i>limit</i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Returns a pseudo-random number that is a non-negative <i><a href="../26-glossary/n.xhtml#number">number</a></i>
 less than <i>limit</i> and of the same <i><a href="../26-glossary/t.xhtml#type">type</a></i> as <i>limit</i>.
@@ -46,7 +46,7 @@ An approximately uniform choice distribution is used.  If <i>limit</i>
 is an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, each of the possible results occurs with
 (approximate) probability 1/<i>limit</i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (&lt;= 0 (random 1000) 1000) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
  (let ((state1 (make-random-state))
@@ -54,19 +54,19 @@ is an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, each of the p
    (= (random 1000 state1) (random 1000 state2))) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 The <i>random-state</i> is modified.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>limit</i> is not a positive <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> or a positive <i>real</i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="12.2.40-make-random-state.xhtml#DictEntry_make_random__814"><b>make-random-state</b></a>, <a href="12.2.43-random-state.xhtml#DictEntry_random_stat_817"><b>*random-state*</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 See <i>Common Lisp: The Language</i> for information about generating random numbers.
 

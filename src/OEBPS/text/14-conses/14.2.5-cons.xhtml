@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_cons_918" class="entry"><span class="secno">14.2.5</span> <span class="names"><span id="cons" data-symbol="cons">cons</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_cons_918" class="entry" data-kind="function"><span class="secno">14.2.5</span> <span class="names"><span id="cons" data-symbol="cons">cons</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>cons</b>
 <i>object-1 object-2</i>
   → <i>cons</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>object-1</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -27,13 +27,13 @@
 </p><p>
 <i>cons</i>—a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Creates a <i><a href="../26-glossary/f.xhtml#fresh">fresh</a></i> <i><a href="../26-glossary/c.xhtml#cons">cons</a></i>, the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of which is <i>object-1</i>
 and the <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i> of which is <i>object-2</i>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (cons 1 2) → (1 . 2)
  (cons 1 nil) → (1)
@@ -45,11 +45,11 @@ and the <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i> of which is <i>objec
  (cons 'a '(b c d)) → (A B C D)
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.15-list.xhtml#DictEntry_list_list_928"><b>list</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 If <i>object-2</i> is a <i><a href="../26-glossary/l.xhtml#list">list</a></i>, <a href="#DictEntry_cons_918"><b>cons</b></a> can be thought of as
 producing a new <i><a href="../26-glossary/l.xhtml#list">list</a></i> which is like it but has <i>object-1</i> prepended.

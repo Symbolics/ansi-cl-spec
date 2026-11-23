@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_ash_830" class="entry"><span class="secno">12.2.56</span> <span class="names"><span id="ash" data-symbol="ash">ash</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_ash_830" class="entry" data-kind="function"><span class="secno">12.2.56</span> <span class="names"><span id="ash" data-symbol="ash">ash</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>ash</b>
 <i>integer count</i>
   → <i>shifted-integer</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
@@ -27,7 +27,7 @@
 </p><p>
 <i>shifted-integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_ash_830"><b>ash</b></a> performs the arithmetic shift operation on the binary
@@ -53,7 +53,7 @@ discarding bits.
 <a href="#DictEntry_ash_830"><b>ash</b></a> is defined to behave as if <i>integer</i> were 
 represented in two's complement form, regardless of
 how <i><a href="../26-glossary/i.xhtml#integer">integers</a></i> are represented internally.
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (ash 16 1) → 32
  (ash 16 0) → 16
@@ -61,13 +61,13 @@ how <i><a href="../26-glossary/i.xhtml#integer">integers</a></i> are represented
  (ash -100000000000000000000000000000000 -100) → -79
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>integer</i> is not an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>count</i> is not an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 Might signal <a href="12.2.78-arithmetic-error.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a>.
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (logbitp <i>j</i> (ash <i>n</i> <i>k</i>))
  ==(and (&gt;= <i>j</i> <i>k</i>) (logbitp (- <i>j</i> <i>k</i>) <i>n</i>))

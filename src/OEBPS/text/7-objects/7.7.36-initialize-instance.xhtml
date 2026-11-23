@@ -8,28 +8,28 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_initialize_i_592" class="entry"><span class="secno">7.7.36</span> <span class="names"><span id="initialize-instance" data-symbol="initialize-instance">initialize-instance</span></span> <span class="kind">Standard Generic Function</span></h3>
+<h3 id="DictEntry_initialize_i_592" class="entry" data-kind="standard-generic-function"><span class="secno">7.7.36</span> <span class="names"><span id="initialize-instance" data-symbol="initialize-instance">initialize-instance</span></span> <span class="kind">Standard Generic Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 
 <b>initialize-instance</b>
 <i>instance <code>&amp;rest</code> initargs <code>&amp;key</code> <code>&amp;allow-other-keys</code></i>
   → <i>instance</i>
-</dd><dt><b>Method Signatures:</b></dt><dd>
+</dd><dt data-section="method-signatures"><b>Method Signatures:</b></dt><dd>
 
 <b>initialize-instance</b>
 <i>(<i>instance</i> <a href="../4-types-and-classes/4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>) <code>&amp;rest</code> initargs</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>instance</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
 <p>
 <i>initargs</i>—a <i><a href="../26-glossary/d.xhtml#defaultedinitializationargumentlist">defaulted initialization argument list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Called by <a href="7.7.19-make-instance.xhtml#DictEntry_make_instanc_575"><b>make-instance</b></a> to initialize a newly created <i><a href="../26-glossary/i.xhtml#instance">instance</a></i>.
 The generic function is called with the new <i>instance</i> 
@@ -52,7 +52,7 @@ specify actions to be taken when an instance is initialized.  If only
 system-supplied primary <i><a href="../26-glossary/m.xhtml#method">method</a></i> for initialization and therefore will
 not interfere with the default behavior of <a href="#DictEntry_initialize_i_592"><b>initialize-instance</b></a>.
 
-</p></dd><dt><b>See Also:</b></dt><dd>
+</p></dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="7.7.5-shared-initialize.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a>,
 <a href="7.7.19-make-instance.xhtml#DictEntry_make_instanc_575"><b>make-instance</b></a>,

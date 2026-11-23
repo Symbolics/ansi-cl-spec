@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_mapc_mapcar_947" class="entry"><span class="secno">14.2.34</span> <span class="names"><span id="mapc" data-symbol="mapc">mapc</span>, <span id="mapcar" data-symbol="mapcar">mapcar</span>, <span id="mapcan" data-symbol="mapcan">mapcan</span>, <span id="mapl" data-symbol="mapl">mapl</span>, <span id="maplist" data-symbol="maplist">maplist</span>, <span id="mapcon" data-symbol="mapcon">mapcon</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_mapc_mapcar_947" class="entry" data-kind="function"><span class="secno">14.2.34</span> <span class="names"><span id="mapc" data-symbol="mapc">mapc</span>, <span id="mapcar" data-symbol="mapcar">mapcar</span>, <span id="mapcan" data-symbol="mapcan">mapcan</span>, <span id="mapl" data-symbol="mapl">mapl</span>, <span id="maplist" data-symbol="maplist">maplist</span>, <span id="mapcon" data-symbol="mapcon">mapcon</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>mapc</b>
 <i>function <code>&amp;rest</code> lists+</i>
@@ -37,7 +37,7 @@
 <b>mapcon</b>
 <i>function <code>&amp;rest</code> lists+</i>
   → <i>concatenated-results</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>function</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> 
   that must take as many <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i> as there are <i>lists</i>.
@@ -56,7 +56,7 @@
 </p><p>
 <i>concatenated-results</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 The mapping operation involves applying <i>function</i> to
 successive sets of arguments in which
@@ -125,7 +125,7 @@ That is,
 and similarly for the relationship between <a href="#DictEntry_mapc_mapcar_947"><b>mapcan</b></a> 
 and <a href="#DictEntry_mapc_mapcar_947"><b>mapcar</b></a>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (mapcar #'car '((1 a) (2 b) (3 c))) → (1 2 3) 
  (mapcar #'abs '(3 -4 2 -5 -6)) → (3 4 2 5 6)
@@ -164,11 +164,11 @@ this is a standard <i>Lisp</i> idiom using <a href="#DictEntry_mapc_mapcar_947"
 <pre> (mapcon #'list '(1 2 3 4)) → ((1 2 3 4) (2 3 4) (3 4) (4)) 
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if any <i>list</i> is not a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../6-iteration/6.2.3-dolist.xhtml#DictEntry_dolist_516"><b>dolist</b></a>,
 <a href="../17-sequences/17.3.7-map.xhtml#DictEntry_map_1047"><b>map</b></a>,

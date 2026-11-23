@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_logtest_839" class="entry"><span class="secno">12.2.65</span> <span class="names"><span id="logtest" data-symbol="logtest">logtest</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_logtest_839" class="entry" data-kind="function"><span class="secno">12.2.65</span> <span class="names"><span id="logtest" data-symbol="logtest">logtest</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>logtest</b>
 <i>integer-1 integer-2</i>
   → <i>generalized-boolean</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>integer-1</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
@@ -27,7 +27,7 @@
 </p><p>
 <i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Returns <i><a href="../26-glossary/t.xhtml#true">true</a></i> if any of the bits designated by the 1's 
@@ -39,7 +39,7 @@ otherwise it is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
 Negative <i>integer-1</i> and <i>integer-2</i> are treated as if
 they were represented in two's-complement binary.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (logtest 1 7) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
  (logtest 1 2) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
@@ -47,12 +47,12 @@ they were represented in two's-complement binary.
  (logtest 0 -1) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>integer-1</i> is not an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>integer-2</i> is not an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (logtest <i>x</i> <i>y</i>) ==(not (zerop (logand <i>x</i> <i>y</i>)))
 </pre>

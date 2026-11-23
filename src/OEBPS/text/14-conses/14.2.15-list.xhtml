@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_list_list_928" class="entry"><span class="secno">14.2.15</span> <span class="names"><span id="list" data-symbol="list">list</span>, <span id="list*" data-symbol="list*">list*</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_list_list_928" class="entry" data-kind="function"><span class="secno">14.2.15</span> <span class="names"><span id="list" data-symbol="list">list</span>, <span id="list*" data-symbol="list*">list*</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>list</b>
 <i><code>&amp;rest</code> objects</i>
@@ -21,7 +21,7 @@
 <b>list*</b>
 <i><code>&amp;rest</code> objects+</i>
   → <i>result</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -32,7 +32,7 @@
 <i>result</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_list_list_928"><b>list</b></a> returns a <i><a href="../26-glossary/l.xhtml#list">list</a></i> containing the supplied <i>objects</i>.  
 
@@ -55,7 +55,7 @@ the preceding <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i> of 
 If <a href="#DictEntry_list_list_928"><b>list*</b></a> receives only one <i>object</i>,
 that <i>object</i> is returned, regardless of whether or not it is a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (list 1) → (1)
  (list* 1) → 1
@@ -72,11 +72,11 @@ that <i>object</i> is returned, regardless of whether or not it is a <i><a href=
  (list* 'a 'b 'c '(d e f)) → (A B C D E F)
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="14.2.3-cons.xhtml#DictEntry_cons_916"><b>cons</b></a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 <pre> (list* <i>x</i>) ==<i>x</i>
 </pre>

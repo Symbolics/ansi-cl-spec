@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_let_let_404" class="entry"><span class="secno">5.3.18</span> <span class="names"><span id="let" data-symbol="let">let</span>, <span id="let*" data-symbol="let*">let*</span></span> <span class="kind">Special Operator</span></h3>
+<h3 id="DictEntry_let_let_404" class="entry" data-kind="special-operator"><span class="secno">5.3.18</span> <span class="names"><span id="let" data-symbol="let">let</span>, <span id="let*" data-symbol="let*">let*</span></span> <span class="kind">Special Operator</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 
 <b>let</b>
@@ -22,7 +22,7 @@
 <b>let*</b>
 <i>(<code>{</code><i>var</i> | (<i>var</i> <i>[</i><i>init-form</i> <i>]</i>)<code>}</code><sup>*</sup>) {<i>declaration</i>}* {<i>form</i>}*</i>
   → <i>{<i>result</i>}*</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 
 <i>var</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
@@ -44,7 +44,7 @@
 </p><p>
 <i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i><a href="../26-glossary/f.xhtml#form">forms</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 <a href="#DictEntry_let_let_404"><b>let</b></a> and <a href="#DictEntry_let_let_404"><b>let*</b></a>
@@ -130,7 +130,7 @@ initial value form.
 For <a href="#DictEntry_let_let_404"><b>let*</b></a>, a variable's <i><a href="../26-glossary/s.xhtml#scope">scope</a></i> also includes the 
      remaining initial value forms for subsequent variable bindings.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq a 'top) →  TOP
  (defun -function () a) →  DUMMY-FUNCTION
@@ -157,7 +157,7 @@ and is set to a value of the declared type <i><a href="../26-glossary/i.xhtml#in
 <code>x</code> initially takes on the value <a href="5.3.30-nil.xhtml#DictEntry_nil_416"><b>nil</b></a> in violation of the type
 declaration.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="5.3.19-progv.xhtml#DictEntry_progv_405"><b>progv</b></a>
 

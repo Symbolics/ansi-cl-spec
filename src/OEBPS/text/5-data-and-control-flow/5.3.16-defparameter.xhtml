@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_defparameter_402" class="entry"><span class="secno">5.3.16</span> <span class="names"><span id="defparameter" data-symbol="defparameter">defparameter</span>, <span id="defvar" data-symbol="defvar">defvar</span></span> <span class="kind">Macro</span></h3>
+<h3 id="DictEntry_defparameter_402" class="entry" data-kind="macro"><span class="secno">5.3.16</span> <span class="names"><span id="defparameter" data-symbol="defparameter">defparameter</span>, <span id="defvar" data-symbol="defvar">defvar</span></span> <span class="kind">Macro</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>defparameter</b>
 <i>name         initial-value [documentation] </i>
@@ -21,7 +21,7 @@
 <b>defvar</b>
 <i>name <code>[</code>initial-value [documentation]<code>]</code></i>
   → <i>name</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>; not evaluated.
 
@@ -36,7 +36,7 @@
 <i>documentation</i>—a <i>string</i>; not evaluated.
 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_defparameter_402"><b>defparameter</b></a> and <a href="#DictEntry_defparameter_402"><b>defvar</b></a> <i><a href="../26-glossary/e.xhtml#establish">establish</a></i> <i>name</i> 
 as a <i><a href="../26-glossary/d.xhtml#dynamicvariable">dynamic variable</a></i>.
@@ -69,7 +69,7 @@ the compile-time side effects described below only take place when
 they appear as <i><a href="../26-glossary/t.xhtml#toplevelform">top level forms</a></i>.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (defparameter *p* 1) → *P*
  *p* → 1
@@ -143,7 +143,7 @@ The choice of whether to use <a href="#DictEntry_defparameter_402"><b>defparamet
 visible consequences to programs, but is nevertheless often made for subjective
 reasons.
 
-</p></dd><dt><b>Side Effects:</b></dt><dd>
+</p></dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 
 
@@ -159,18 +159,18 @@ There may be additional (<i><a href="../26-glossary/i.xhtml#implementationdefine
 run-time side effects, as long as such effects do not interfere with the
 correct operation of <i><a href="../26-glossary/c.xhtml#conformingprogram">conforming programs</a></i>.
 
-</p></dd><dt><b>Affected By:</b></dt><dd>
+</p></dd><dt data-section="affected-by"><b>Affected By:</b></dt><dd>
 
 <a href="#DictEntry_defparameter_402"><b>defvar</b></a> is affected by whether <i>name</i> is already <i><a href="../26-glossary/b.xhtml#bound">bound</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../3-evaluation-and-compilation/3.8.17-declaim.xhtml#DictEntry_declaim_299"><b>declaim</b></a>, 
 <a href="5.3.15-defconstant.xhtml#DictEntry_defconstant_401"><b>defconstant</b></a>,
 <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>documentation</b></a>,
 Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#Section_Compilation_213">3.2 Compilation</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 It is customary to name <i><a href="../26-glossary/d.xhtml#dynamicvariable">dynamic variables</a></i> with an <i><a href="../26-glossary/a.xhtml#asterisk">asterisk</a></i>
 at the beginning and end of the name.  e.g., <code>*foo*</code> is a good name for

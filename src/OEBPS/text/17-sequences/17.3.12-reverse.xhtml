@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_reverse_nre_1052" class="entry"><span class="secno">17.3.12</span> <span class="names"><span id="reverse" data-symbol="reverse">reverse</span>, <span id="nreverse" data-symbol="nreverse">nreverse</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_reverse_nre_1052" class="entry" data-kind="function"><span class="secno">17.3.12</span> <span class="names"><span id="reverse" data-symbol="reverse">reverse</span>, <span id="nreverse" data-symbol="nreverse">nreverse</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>reverse</b>
 <i>sequence</i>
@@ -21,7 +21,7 @@
 <b>nreverse</b>
 <i>sequence</i>
   → <i>reversed-sequence</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>sequence</i>—a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
@@ -29,7 +29,7 @@
 
 <i>reversed-sequence</i>—a <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_reverse_nre_1052"><b>reverse</b></a> and <a href="#DictEntry_reverse_nre_1052"><b>nreverse</b></a> return a new <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i> 
 of the same kind as <i>sequence</i>, containing the same <i><a href="../26-glossary/e.xhtml#element">elements</a></i>,
@@ -67,7 +67,7 @@ When <i>sequence</i> is a <i><a href="../26-glossary/v.xhtml#vector">vector</a><
 in order to produce the resulting <i><a href="../26-glossary/v.xhtml#vector">vector</a></i>.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq str "abc") → "abc"
  (reverse str) → "cba"
@@ -80,14 +80,14 @@ in order to produce the resulting <i><a href="../26-glossary/v.xhtml#vector">vec
  l → <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 <a href="#DictEntry_reverse_nre_1052"><b>nreverse</b></a> might either create a new <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i>,
 modify the argument <i>sequence</i>, or both.
 
 (<a href="#DictEntry_reverse_nre_1052"><b>reverse</b></a> does not modify <i>sequence</i>.)
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>sequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 

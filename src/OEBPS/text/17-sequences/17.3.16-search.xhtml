@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_search_1056" class="entry"><span class="secno">17.3.16</span> <span class="names"><span id="search" data-symbol="search">search</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_search_1056" class="entry" data-kind="function"><span class="secno">17.3.16</span> <span class="names"><span id="search" data-symbol="search">search</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>search</b>
 <i>sequence-1 sequence-2 
@@ -20,7 +20,7 @@
                                       key start1 start2
                                       end1 end2</i><br/> 
   → <i>position</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>Sequence-1</i>—a <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i>.
 
@@ -60,7 +60,7 @@
 <i>position</i>—a <i><a href="../26-glossary/b.xhtml#boundingindex">bounding index</a></i> of <i>sequence-2</i>,
 		   or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 
 Searches <i>sequence-2</i> for a subsequence that matches <i>sequence-1</i>.  
@@ -85,19 +85,19 @@ otherwise <a href="#DictEntry_search_1056"><b>search</b></a> returns <a href="..
 If <i>from-end</i> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>, the index of the leftmost
 element of the rightmost matching subsequence is returned.
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (search "dog" "it's a dog's life") → 7
  (search '(0 1) '(2 4 6 1 3 5) :key #'oddp) → 2
 </pre>
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 The <code>:test-not</code> <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> is deprecated.

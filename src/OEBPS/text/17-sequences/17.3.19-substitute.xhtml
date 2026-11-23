@@ -8,11 +8,11 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_substitute__1059" class="entry"><span class="secno">17.3.19</span> <span class="names"><span id="substitute" data-symbol="substitute">substitute</span>, <span id="substitute-if" data-symbol="substitute-if">substitute-if</span>, <span id="substitute-if-not" data-symbol="substitute-if-not">substitute-if-not</span>, <span id="nsubstitute" data-symbol="nsubstitute">nsubstitute</span>, <span id="nsubstitute-if" data-symbol="nsubstitute-if">nsubstitute-if</span>, <span id="nsubstitute-if-not" data-symbol="nsubstitute-if-not">nsubstitute-if-not</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_substitute__1059" class="entry" data-kind="function"><span class="secno">17.3.19</span> <span class="names"><span id="substitute" data-symbol="substitute">substitute</span>, <span id="substitute-if" data-symbol="substitute-if">substitute-if</span>, <span id="substitute-if-not" data-symbol="substitute-if-not">substitute-if-not</span>, <span id="nsubstitute" data-symbol="nsubstitute">nsubstitute</span>, <span id="nsubstitute-if" data-symbol="nsubstitute-if">nsubstitute-if</span>, <span id="nsubstitute-if-not" data-symbol="nsubstitute-if-not">nsubstitute-if-not</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>substitute</b>
 <i>newitem  olditem  sequence 
@@ -41,7 +41,7 @@
 <b>nsubstitute-if-not</b>
 <i>newitem predicate sequence <code>&amp;key</code> from-end start end count key</i><br/> 
   → <i>sequence</i>
-</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>newitem</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
 
@@ -89,7 +89,7 @@
 </p><p>
 <i>result-sequence</i>—a <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i>.
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 <a href="#DictEntry_substitute__1059"><b>substitute</b></a>, <a href="#DictEntry_substitute__1059"><b>substitute-if</b></a>, and <a href="#DictEntry_substitute__1059"><b>substitute-if-not</b></a>
 return a 
@@ -166,7 +166,7 @@ If <i>sequence</i> is a <i><a href="../26-glossary/l.xhtml#list">list</a></i>,
 none of the <i><a href="../26-glossary/c.xhtml#cdr">cdrs</a></i> of the top-level <i><a href="../26-glossary/l.xhtml#list">list</a></i> can be modified.  
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (substitute #\. #\SPACE "0 2 4 6") → "0.2.4.6"
  (substitute 9 4 '(1 2 4 1 3 4 5)) → (1 2 9 1 3 9 5)
@@ -190,16 +190,16 @@ none of the <i><a href="../26-glossary/c.xhtml#cdr">cdrs</a></i> of the top-leve
  alpha-tester → "abz"
 </pre>
 
-</dd><dt><b>Side Effects:</b></dt><dd>
+</dd><dt data-section="side-effects"><b>Side Effects:</b></dt><dd>
 
 <a href="#DictEntry_substitute__1059"><b>nsubstitute</b></a>, <a href="#DictEntry_substitute__1059"><b>nsubstitute-if</b></a>, and <a href="#DictEntry_substitute__1059"><b>nsubstitute-if-not</b></a>
 modify <i>sequence</i>.
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>sequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="../14-conses/14.2.12-subst.xhtml#DictEntry_subst_subst_925"><b>subst</b></a>,
 <a href="../14-conses/14.2.12-subst.xhtml#DictEntry_subst_subst_925"><b>nsubst</b></a>,
@@ -210,7 +210,7 @@ Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#SubSectio
 Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
 
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 
 

@@ -8,16 +8,16 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_hash_table_r_1083" class="entry"><span class="secno">18.2.6</span> <span class="names"><span id="hash-table-rehash-threshold" data-symbol="hash-table-rehash-threshold">hash-table-rehash-threshold</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_hash_table_r_1083" class="entry" data-kind="function"><span class="secno">18.2.6</span> <span class="names"><span id="hash-table-rehash-threshold" data-symbol="hash-table-rehash-threshold">hash-table-rehash-threshold</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>hash-table-rehash-threshold</b>
 <i>hash-table</i>
   → <i>rehash-threshold</i>
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>hash-table</i>—a <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i>.
 
@@ -28,25 +28,25 @@
 
 
 
-</p></dd><dt><b>Description:</b></dt><dd>
+</p></dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 Returns the current rehash threshold of <i>hash-table</i>, which is
 suitable for use in a call to <a href="18.2.2-make-hash-table.xhtml#DictEntry_make_hash_ta_1079"><b>make-hash-table</b></a> in order to
 produce a <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i> with state corresponding to the current 
 state of the <i>hash-table</i>.
 
-</dd><dt><b>Examples:</b></dt><dd>
+</dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (setq table (make-hash-table :size 100 :rehash-threshold 0.5))
 → #&lt;HASH-TABLE EQL 0/100 2562446&gt;
  (hash-table-rehash-threshold table) → 0.5
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>hash-table</i> is not a <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="18.2.2-make-hash-table.xhtml#DictEntry_make_hash_ta_1079"><b>make-hash-table</b></a>,
 <a href="18.2.5-hash-table-rehash-size.xhtml#DictEntry_hash_table_r_1082"><b>hash-table-rehash-size</b></a>

@@ -8,22 +8,22 @@
 </head>
 <body class="entry">
 <section>
-<h3 id="DictEntry_char_upcase_897" class="entry"><span class="secno">13.2.14</span> <span class="names"><span id="char-upcase" data-symbol="char-upcase">char-upcase</span>, <span id="char-downcase" data-symbol="char-downcase">char-downcase</span></span> <span class="kind">Function</span></h3>
+<h3 id="DictEntry_char_upcase_897" class="entry" data-kind="function"><span class="secno">13.2.14</span> <span class="names"><span id="char-upcase" data-symbol="char-upcase">char-upcase</span>, <span id="char-downcase" data-symbol="char-downcase">char-downcase</span></span> <span class="kind">Function</span></h3>
 <dl>
 
 
-<dt><b>Syntax:</b></dt><dd>
+<dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <table>
 <tbody><tr><td><b>char-upcase</b> <i>character</i>  </td><td>→  <i>corresponding-character</i></td></tr> 
 <tr><td><b>char-downcase</b> <i>character</i>  </td><td>→  <i>corresponding-character</i></td></tr> 
 </tbody></table>
 
-</dd><dt><b>Arguments and Values:</b></dt><dd>
+</dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>character</i>, <i>corresponding-character</i>—a <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
 
-</dd><dt><b>Description:</b></dt><dd>
+</dd><dt data-section="description"><b>Description:</b></dt><dd>
 
 If <i>character</i> is a <i><a href="../26-glossary/l.xhtml#lowercase">lowercase</a></i> <i><a href="../26-glossary/c.xhtml#character">character</a></i>,
 <a href="#DictEntry_char_upcase_897"><b>char-upcase</b></a> returns the corresponding <i><a href="../26-glossary/u.xhtml#uppercase">uppercase</a></i> <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
@@ -41,7 +41,7 @@ in its <i><a href="../26-glossary/c.xhtml#code">code</a></i> <i><a href="../26-g
 all <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="../26-glossary/a.xhtml#attribute">attributes</a></i> are preserved.
 
 
-</p></dd><dt><b>Examples:</b></dt><dd>
+</p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
 <pre> (char-upcase #\a) → #\A
  (char-upcase #\A) → #\A
@@ -65,18 +65,18 @@ all <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-def
 →  NIL
 </pre>
 
-</dd><dt><b>Exceptional Situations:</b></dt><dd>
+</dd><dt data-section="exceptional-situations"><b>Exceptional Situations:</b></dt><dd>
 
 Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>character</i> is not a <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
 
-</dd><dt><b>See Also:</b></dt><dd>
+</dd><dt data-section="see-also"><b>See Also:</b></dt><dd>
 
 <a href="13.2.15-upper-case-p.xhtml#DictEntry_upper_case_p_898"><b>upper-case-p</b></a>,
 <a href="13.2.8-alpha-char-p.xhtml#DictEntry_alpha_char_p_891"><b>alpha-char-p</b></a>,
 Section <a href="13.1-character-concepts.xhtml#SubSubSectio_Characters_W_869">13.1.4.3 Characters With Case</a>,
 Section <a href="13.1-character-concepts.xhtml#SubSection_Documentatio_882">13.1.10 Documentation of Implementation-Defined Scripts</a>
 
-</dd><dt><b>Notes:</b></dt><dd>
+</dd><dt data-section="notes"><b>Notes:</b></dt><dd>
 
 If the <i>corresponding-char</i> is <i><a href="../26-glossary/d.xhtml#different">different</a></i> than <i>character</i>,
 then both the <i>character</i> and the <i>corresponding-char</i> have <i><a href="../26-glossary/c.xhtml#case">case</a></i>.
