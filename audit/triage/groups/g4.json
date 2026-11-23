@@ -1,0 +1,499 @@
+[
+ {
+  "secno": "12.2.3",
+  "names": [
+   "real"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.3-real.xhtml",
+  "item": "text:Compound Type Specifier Syntax",
+  "category": "conversion-error",
+  "summary": "Closing paren misplaced: the syntax reads (real [lower-limit [upper-limit)]] instead of (real [lower-limit [upper-limit]]). The ) sits inside the inner optional bracket, and the outer ] is outside the <code>.",
+  "epub_excerpt": "(real [lower-limit [upper-limit)]]",
+  "tex_excerpt": "\\Deftype{#1}{\\ttbrac{lower-limit \\brac{upper-limit}}} => (real [lower-limit [upper-limit]])",
+  "fix": {
+   "old": "[upper-limit)</code><code>]</code>]",
+   "new": "[upper-limit]<code>]</code>)</code>"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.4",
+  "names": [
+   "float"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.4-float.xhtml",
+  "item": "text:Compound Type Specifier Syntax",
+  "category": "conversion-error",
+  "summary": "Closing paren misplaced: the syntax reads (float [lower-limit [upper-limit)]] instead of (float [lower-limit [upper-limit]]). The ) sits inside the inner optional bracket, and the outer ] is outside the <code>.",
+  "epub_excerpt": "(float [lower-limit [upper-limit)]]",
+  "tex_excerpt": "\\Deftype{#1}{\\ttbrac{lower-limit \\brac{upper-limit}}} => (float [lower-limit [upper-limit]])",
+  "fix": {
+   "old": "[upper-limit)</code><code>]</code>]",
+   "new": "[upper-limit]<code>]</code>)</code>"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.6",
+  "names": [
+   "rational"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.6-rational.xhtml",
+  "item": "text:Compound Type Specifier Syntax",
+  "category": "conversion-error",
+  "summary": "Closing paren misplaced: the syntax reads (rational [lower-limit [upper-limit)]] instead of (rational [lower-limit [upper-limit]]). The ) sits inside the inner optional bracket, and the outer ] is outside the <code>.",
+  "epub_excerpt": "(rational [lower-limit [upper-limit)]]",
+  "tex_excerpt": "\\Deftype{#1}{\\ttbrac{lower-limit \\brac{upper-limit}}} => (rational [lower-limit [upper-limit]])",
+  "fix": {
+   "old": "[upper-limit)</code><code>]</code>]",
+   "new": "[upper-limit]<code>]</code>)</code>"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.8",
+  "names": [
+   "integer"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.8-integer.xhtml",
+  "item": "text:Compound Type Specifier Syntax",
+  "category": "conversion-error",
+  "summary": "Closing paren misplaced: the syntax reads (integer [lower-limit [upper-limit)]] instead of (integer [lower-limit [upper-limit]]). The ) sits inside the inner optional bracket, and the outer ] is outside the <code>.",
+  "epub_excerpt": "(integer [lower-limit [upper-limit)]]",
+  "tex_excerpt": "\\Deftype{#1}{\\ttbrac{lower-limit \\brac{upper-limit}}} => (integer [lower-limit [upper-limit]])",
+  "fix": {
+   "old": "[upper-limit)</code><code>]</code>]",
+   "new": "[upper-limit]<code>]</code>)</code>"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.2",
+  "names": [
+   "complex"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.2-complex.xhtml",
+  "item": "text:Notes",
+  "category": "normaliser-noise",
+  "summary": "Only $r$ $i$ vs r i; EPUB has <i>r</i> <i>i</i> inside #C(...). Faithful.",
+  "epub_excerpt": "#C(<i>r</i> <i>i</i>)",
+  "tex_excerpt": "\\f{\\#C($r$ $i$)}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.5",
+  "names": [
+   "short-float",
+   "single-float",
+   "double-float",
+   "long-float"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.5-short-float.xhtml",
+  "item": "text:Description",
+  "category": "normaliser-noise",
+  "summary": "\"Figure §\" is the normalised \\thenextfigure link text (EPUB: \"the next figure\"); \"2pt 2pt\" is TeX \\noalign spacing. Figure 12-12 values (13/5, 24/8, 50/8, 50/8) match. Formulas p log2 b and log2(n+1) match.",
+  "epub_excerpt": "as given in the next figure",
+  "tex_excerpt": "\\thenextfigure; \\noalign{\\vskip 2pt...}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.9",
+  "names": [
+   "signed-byte"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.9-signed-byte.xhtml",
+  "item": "text:Compound Type Specifier Description",
+  "category": "normaliser-noise",
+  "summary": "The lead is not an error: EPUB renders $-2^{s-1}$ $2^{s-1}-1$ as -2<sup>s-1</sup> 2<sup>s-1</sup>-1 (proper superscripts), equivalent to (integer -2^(s-1) 2^(s-1)-1). Correct.",
+  "epub_excerpt": "(integer -2<sup>s-1</sup> 2<sup>s-1</sup>-1)",
+  "tex_excerpt": "(integer $-2^{s-1}$ $2^{s-1}-1$)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.15",
+  "names": [
+   "=",
+   "/=",
+   "<",
+   ">",
+   "<=",
+   ">="
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.15-eq.xhtml",
+  "item": "text:Examples",
+  "category": "normaliser-noise",
+  "summary": "\"Figure §\" is the normalised \\thenextfigure link; the EPUB says \"the next figure\". Examples otherwise equal (ratio 0.998).",
+  "epub_excerpt": "illustrated in the next figure",
+  "tex_excerpt": "\\thenextfigure",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.18",
+  "names": [
+   "zerop"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.18-zerop.xhtml",
+  "item": "text:Pronunciation",
+  "category": "normaliser-noise",
+  "summary": "Respelling macros (\\Stress, \\harde, \\hardo) rendered as IPA-like [ ˈzē(ˌ)rō(ˌ)pē ]; faithful.",
+  "epub_excerpt": "[ ˈzē(ˌ)rō(ˌ)pē ]",
+  "tex_excerpt": "\\Stress{z\\harde}(\\stress{})r\\hardo{}(\\stress{})p\\harde",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.19",
+  "names": [
+   "floor",
+   "ffloor",
+   "ceiling",
+   "fceiling",
+   "truncate",
+   "ftruncate",
+   "round",
+   "fround"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.19-floor.xhtml",
+  "item": "text:Description",
+  "category": "normaliser-noise",
+  "summary": "Checked by eye: quotient·divisor+remainder=number and integer+1/2 (TeX uses \\centerdot and a fraction) are faithful; all four bullet descriptions match.",
+  "epub_excerpt": "<i>quotient</i>·<i>divisor</i>+<i>remainder</i>=<i>number</i>; <i>integer</i>+<i>1/2</i>",
+  "tex_excerpt": "\\param{quotient}\\centerdot \\param{divisor}+\\param{remainder}=\\param{number}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.21",
+  "names": [
+   "asin",
+   "acos",
+   "atan"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.21-asin.xhtml",
+  "item": "text:Description",
+  "category": "conversion-error",
+  "summary": "Two formula errors in the arc cosine / arc tangent definitions. (1) The third arccos formula is 2 log(sqrt((1+z)/2) + i sqrt((1-z)/2))/i in the TeX; the EPUB has i (sqrt(1-z)/2), moving the sqrt off the whole quotient. (2) The arctan definition is (log(1+iz) - log(1-iz))/(2i); the EPUB drops the parentheses and reads log (1+iz) - log (1-iz) /2i, which is a different expression. All other formulas, the branch-cut prose and both tables (Figures 12-14, 12-15) match; the many pi/sqrt diffs are normaliser artefacts (see systematic pattern on \"pi\").",
+  "epub_excerpt": "arccos z = 2 log (sqrt((1+z)/2) + i (sqrt(1-z)/2))/i ;  arctan z = log (1+iz) - log (1-iz) /2i",
+  "tex_excerpt": "{{2\\ \\ff{log} (\\bigl(\\sqrt{(1+z)/2} + i\\ \\sqrt{(1-z)/2}\\bigr)}\\over{i}} ;  {{\\ff{log} (1+iz) - \\ff{log} (1-iz)}\\over{2i}}",
+  "fix": [
+   {
+    "old": " (sqrt(1-z)/2))/i",
+    "new": " sqrt((1-z)/2))/i"
+   },
+   {
+    "old": "z = <code>log </code> (1+iz) - <code>log </code> (1-iz)\n/2i </i>",
+    "new": "z = (<code>log </code> (1+iz) - <code>log </code> (1-iz))/2i </i>"
+   }
+  ],
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.21",
+  "names": [
+   "asin",
+   "acos",
+   "atan"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.21-asin.xhtml",
+  "item": "example:1:317",
+  "category": "implementation-difference",
+  "summary": "EPUB example equals TeX: (atan #c(0 2)) -> #C(-1.5707964 0.54930615). SBCL returns +1.5707964 for this point on the branch cut (SBCL picks the other side of the cut); the draft text says the cut is continuous with quadrant II (-pi/2). SBCL disagrees with the draft.",
+  "epub_excerpt": "(atan #c(0 2)) → #C(-1.5707964 0.54930615)",
+  "tex_excerpt": "(atan #c(0 2)) \\EV #C(-1.5707964 0.54930615)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.23",
+  "names": [
+   "sinh",
+   "cosh",
+   "tanh",
+   "asinh",
+   "acosh",
+   "atanh"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.23-sinh.xhtml",
+  "item": "text:Description",
+  "category": "normaliser-noise",
+  "summary": "Compared every formula by eye (Figure 12-16 and the arccosh/arcsinh/arctanh definitions, branch-cut prose): all match the TeX, including parenthesisation of sqrt((x+1)/2)+sqrt((x-1)/2) and (log(1+z)-log(1-z))/2. Diffs are pi/sqrt/paren artefacts. Note the draft text for arcsinh (\"imaginary part equal to pi/2 ... iff its imaginary part is non-negative\") is the same in the TeX; it likely meant \"real part\" (see errata).",
+  "epub_excerpt": "2 log (sqrt((x+1)/2) + sqrt((x-1)/2)); (log (1+z) - log (1-z))/2",
+  "tex_excerpt": "2\\ \\ff{log} (\\sqrt{(x+1)/2} + \\sqrt{(x-1)/2}); {{\\ff{log} (1+z) - \\ff{log} (1-z)}\\over{2}}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.29",
+  "names": [
+   "abs"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.29-abs.xhtml",
+  "item": "example:1:66",
+  "category": "implementation-difference",
+  "summary": "EPUB equals TeX. The draft example (eql (abs -0.0) -0.0) -> true presumes no distinct minus zero; SBCL supports -0.0 so (abs -0.0) is 0.0, not eql to -0.0.",
+  "epub_excerpt": "(eql (abs -0.0) -0.0) → true",
+  "tex_excerpt": "(eql (abs -0.0) -0.0) \\EV \\term{true}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.35",
+  "names": [
+   "log"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.35-log.xhtml",
+  "item": "text:Description",
+  "category": "normaliser-noise",
+  "summary": "Only -pi vs \"- pi\" diffs; formulas (log x) == (complex (log (abs x)) (phase x)) and (log base number) == (/ (log number) (log base)) match. \"\\EQ\" is written \"==\" with no following space (book-wide convention, see patterns).",
+  "epub_excerpt": "(log <i>base</i> <i>number</i>)\n ==(/ (log <i>number</i>) (log <i>base</i>))",
+  "tex_excerpt": "\\EQ (/ (log \\param{number}) (log \\param{base}))",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.35",
+  "names": [
+   "log"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.35-log.xhtml",
+  "item": "unparsed:1",
+  "category": "harness-limitation",
+  "summary": "Prose continuation line \"or approximately 3.0 (unlikely)\" of the example \"(log #c(-16 16) #c(2 2)) → 3 or approximately #c(3.0 0.0) or approximately 3.0 (unlikely)\"; present identically in the TeX.",
+  "epub_excerpt": "or approximately 3.0 (unlikely)",
+  "tex_excerpt": "or approximately 3.0 (unlikely)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.43",
+  "names": [
+   "*random-state*"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.43-random-state.xhtml",
+  "item": "example:1:35",
+  "category": "original-erratum",
+  "summary": "EPUB equals TeX. The example calls (random) with no argument (random requires a limit) and uses undefined snap-shot unless the preceding setq is run; the printed values (19 16 44 ...) imply a (random 100)-like call. SBCL errors. The draft example is not runnable as written.",
+  "epub_excerpt": "(loop for i from 1 to 10 collect (random))",
+  "tex_excerpt": "(loop for i from 1 to 10 collect (random))",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "12.2.49",
+  "names": [
+   "phase"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.49-phase.xhtml",
+  "item": "text:Description",
+  "category": "normaliser-noise",
+  "summary": "Only -pi diffs (pi rendered as the word \"pi\"); sentences, ranges and (phase x) = (atan (imagpart x) (realpart x)) match.",
+  "epub_excerpt": "in the range - pi (exclusive) ... to pi (inclusive)",
+  "tex_excerpt": "$-\\pi$ (exclusive) ... to $\\pi$ (inclusive)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.60",
+  "names": [
+   "boole"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.60-boole.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "Runs of hyphens in the table-header string of the example were garbled: the format string \"~%---Op-------Decimal-----Binary----Bits---~%\" became \"~% - Op---- - Decimal-- - Binary- - Bits - ~%\", and the ▷ output line likewise. This changes the code and the displayed output. Everything else in the Description (Figure 12-17 table, op names) and Examples matches the TeX.",
+  "epub_excerpt": "~% - Op---- - Decimal-- - Binary- - Bits - ~%",
+  "tex_excerpt": "~%---Op-------Decimal-----Binary----Bits---~%",
+  "fix": [
+   {
+    "old": "~% - Op---- - Decimal-- - Binary- - Bits - ~%",
+    "new": "~%---Op-------Decimal-----Binary----Bits---~%"
+   },
+   {
+    "old": "▷ - Op---- - Decimal-- - Binary- - Bits - ",
+    "new": "▷ ---Op-------Decimal-----Binary----Bits---"
+   }
+  ],
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.68",
+  "names": [
+   "dpb"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.68-dpb.xhtml",
+  "item": "text:Pronunciation",
+  "category": "normaliser-noise",
+  "summary": "Respelling (\\schwa = ε, \\Stress/\\stress) rendered consistently: [ ˌdεˈpib ] or [ ˌdεˈpεb ] or [ ˈdēˈpēˈbē ]",
+  "epub_excerpt": "[ ˌdεˈpib ] or [ ˌdεˈpεb ] or [ ˈdēˈpēˈbē ]",
+  "tex_excerpt": "\\pronounced{...}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.69",
+  "names": [
+   "ldb"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.69-ldb.xhtml",
+  "item": "text:Pronunciation",
+  "category": "normaliser-noise",
+  "summary": "Respelling (\\schwa = ε, \\Stress/\\stress) rendered consistently: [ ˈlidib ] or [ ˈlidεb ] or [ ˈelˈdēˈbē ]",
+  "epub_excerpt": "[ ˈlidib ] or [ ˈlidεb ] or [ ˈelˈdēˈbē ]",
+  "tex_excerpt": "\\pronounced{...}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "12.2.77",
+  "names": [
+   "short-float-epsilon",
+   "short-float-negative-epsilon",
+   "single-float-epsilon",
+   "single-float-negative-epsilon",
+   "double-float-epsilon",
+   "double-float-negative-epsilon",
+   "long-float-epsilon",
+   "long-float-negative-epsilon"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.77-short-float-epsilon.xhtml",
+  "item": "text:Description",
+  "category": "conversion-error",
+  "summary": "The two code expressions use the word \"epsilon\" where the TeX has $\\epsilon$ (the prose just above correctly uses ε), and the surrounding markup is broken: a stray <i> opened after the first </code> italicises the entire second paragraph and the second expression through mismatched <i>/</i> across <p> boundaries. Fix rewrites the block with ε in <code> and balanced markup.",
+  "epub_excerpt": "<code>(not (= (float 1 <i>epsilon</i>) (+ (float 1 <i>epsilon</i>) <i><i>epsilon</i>))) </i></code><i> ...",
+  "tex_excerpt": "{\\tt (not (= (float 1 $\\epsilon$) (+ (float 1 $\\epsilon$) $\\epsilon$)))\\/}",
+  "fix": {
+   "old": "<p>\n<code>(not (= (float 1 <i>epsilon</i>) (+ (float 1 <i>epsilon</i>) \n<i><i>epsilon</i>))) </i></code><i>\n\n</i></p><p><i>\nThe value of each of the constants <a href=\"#DictEntry_short_float__851\"><b>short-float-negative-epsilon</b></a>, \n<a href=\"#DictEntry_short_float__851\"><b>single-float-negative-epsilon</b></a>,\n<a href=\"#DictEntry_short_float__851\"><b>double-float-negative-epsilon</b></a>, and  \n<a href=\"#DictEntry_short_float__851\"><b>long-float-negative-epsilon</b></a> is the smallest positive\n<i><a href=\"../26-glossary/f.xhtml#float\">float</a></i> <i>ε</i> of the given format, such that the following\nexpression is <i><a href=\"../26-glossary/t.xhtml#true\">true</a></i> when evaluated:\n\n</i></p><p><i>\n<code>(not (= (float 1 <i>epsilon</i>) (- (float 1 <i>epsilon</i>) \n<i>epsilon</i>))) </code>\n\n</i></p><p><i>\n</i></p>",
+   "new": "<p>\n<code>(not (= (float 1 <i>ε</i>) (+ (float 1 <i>ε</i>) \n<i>ε</i>)))</code>\n\n</p><p>\nThe value of each of the constants <a href=\"#DictEntry_short_float__851\"><b>short-float-negative-epsilon</b></a>, \n<a href=\"#DictEntry_short_float__851\"><b>single-float-negative-epsilon</b></a>,\n<a href=\"#DictEntry_short_float__851\"><b>double-float-negative-epsilon</b></a>, and  \n<a href=\"#DictEntry_short_float__851\"><b>long-float-negative-epsilon</b></a> is the smallest positive\n<i><a href=\"../26-glossary/f.xhtml#float\">float</a></i> <i>ε</i> of the given format, such that the following\nexpression is <i><a href=\"../26-glossary/t.xhtml#true\">true</a></i> when evaluated:\n\n</p><p>\n<code>(not (= (float 1 <i>ε</i>) (- (float 1 <i>ε</i>) <i>ε</i>)))</code>\n\n</p>"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "13.2.8",
+  "names": [
+   "alpha-char-p"
+  ],
+  "file": "OEBPS/text/13-characters/13.2.8-alpha-char-p.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "The TeX macro \\alfa (= $\\alpha$, Greek alpha) in \"#\\\\\\alfa\" was not expanded: the EPUB prints #\\\\alfa (two backslashes and the word alfa) in both the comment and the form. Should be #\\α.",
+  "epub_excerpt": "in which #\\\\alfa is a defined character. (alpha-char-p #\\\\alfa)",
+  "tex_excerpt": "\\def\\alfa{$\\alpha$} ... #\\\\\\alfa  (i.e. #\\α)",
+  "fix": [
+   {
+    "old": " in which #\\\\alfa is a defined",
+    "new": " in which #\\α is a defined"
+   },
+   {
+    "old": "(alpha-char-p #\\\\alfa)",
+    "new": "(alpha-char-p #\\α)"
+   }
+  ],
+  "confidence": "high"
+ },
+ {
+  "secno": "13.2.8",
+  "names": [
+   "alpha-char-p"
+  ],
+  "file": "OEBPS/text/13-characters/13.2.8-alpha-char-p.xhtml",
+  "item": "example:1:40",
+  "category": "conversion-error",
+  "summary": "Same root cause as text:Examples: form (alpha-char-p #\\\\alfa) is garbled (reader error). Same fix as text:Examples.",
+  "epub_excerpt": "(alpha-char-p #\\\\alfa)",
+  "tex_excerpt": "(alpha-char-p #\\\\\\alfa) = (alpha-char-p #\\α)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "13.2.14",
+  "names": [
+   "char-upcase",
+   "char-downcase"
+  ],
+  "file": "OEBPS/text/13-characters/13.2.14-char-upcase.xhtml",
+  "item": "example:1:57",
+  "category": "implementation-difference",
+  "summary": "EPUB equals TeX. SBCL has characters (e.g. U+01C5, Dž titlecase) for which upcase/downcase do not round trip, so the loop returns a character instead of NIL.",
+  "epub_excerpt": "→ NIL",
+  "tex_excerpt": "\\EV NIL",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "13.2.17",
+  "names": [
+   "char-int"
+  ],
+  "file": "OEBPS/text/13-characters/13.2.17-char-int.xhtml",
+  "item": "example:1:49",
+  "category": "implementation-difference",
+  "summary": "The three lines are alternatives for implementations A, B, C (65 / 577 / 262145); the harness ran all and SBCL gives 65 (matches line 1, \"mismatch\" is for the others). Same text as TeX.",
+  "epub_excerpt": "(char-int #\\A) → 577 ; implementation B",
+  "tex_excerpt": "\\EV 577      ; implementation B",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "13.2.17",
+  "names": [
+   "char-int"
+  ],
+  "file": "OEBPS/text/13-characters/13.2.17-char-int.xhtml",
+  "item": "example:1:50",
+  "category": "implementation-difference",
+  "summary": "Same as example:1:49 (implementation C, 262145).",
+  "epub_excerpt": "(char-int #\\A) → 262145 ; implementation C",
+  "tex_excerpt": "\\EV 262145   ; implementation C",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "13.2.20",
+  "names": [
+   "char-name"
+  ],
+  "file": "OEBPS/text/13-characters/13.2.20-char-name.xhtml",
+  "item": "example:1:56",
+  "category": "conversion-error",
+  "summary": "(Reclassified by orchestrator) U+00A0 after #\\ in example code: TeX has a plain space (#\\Space); NBSP changes the character read.",
+  "epub_excerpt": "(char-name #\\<NBSP>)",
+  "tex_excerpt": "(char-name #\\\\ )",
+  "fix": {
+   "old": "(char-name #\\ )",
+   "new": "(char-name #\\ )"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "13.2.20",
+  "names": [
+   "char-name"
+  ],
+  "file": "OEBPS/text/13-characters/13.2.20-char-name.xhtml",
+  "item": "example:1:60",
+  "category": "harness-limitation",
+  "summary": "Expected is NIL because the book gives alternatives (NIL / \"LOWERCASE-a\" / ...) as OR→ lines and the harness took only the first; SBCL returns \"LATIN_SMALL_LETTER_A\", a legal implementation-defined name.",
+  "epub_excerpt": "→ NIL OR→\"LOWERCASE-a\" ...",
+  "tex_excerpt": "\\EV NIL \\OV \"LOWERCASE-a\" ...",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "13.2.20",
+  "names": [
+   "char-name"
+  ],
+  "file": "OEBPS/text/13-characters/13.2.20-char-name.xhtml",
+  "item": "example:1:66",
+  "category": "harness-limitation",
+  "summary": "Same as example:1:60 for #\\A (\"UPPERCASE-A\", \"Capital-A\", \"LA02\" alternatives; SBCL \"LATIN_CAPITAL_LETTER_A\").",
+  "epub_excerpt": "→ NIL OR→\"UPPERCASE-A\" ...",
+  "tex_excerpt": "\\EV NIL \\OV \"UPPERCASE-A\" ...",
+  "fix": null,
+  "confidence": "high"
+ }
+]

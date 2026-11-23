@@ -1,0 +1,1465 @@
+[
+ {
+  "secno": "12.2.2",
+  "names": [
+   "complex"
+  ],
+  "kind": "System Class",
+  "file": "OEBPS/text/12-numbers/12.2.2-complex.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Notes",
+    "ratio": 0.9649,
+    "tex_words": 57,
+    "epub_words": 57,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "$r$ $i$",
+      "epub": "r i",
+      "ctx": "i is #C ("
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.3",
+  "names": [
+   "real"
+  ],
+  "kind": "System Class",
+  "file": "OEBPS/text/12-numbers/12.2.3-real.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Compound Type Specifier Syntax",
+    "ratio": 0.8889,
+    "tex_words": 9,
+    "epub_words": 9,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": ")",
+      "ctx": "[ lower-limit [ upper-limit"
+     },
+     {
+      "op": "delete",
+      "tex": ")",
+      "epub": "",
+      "ctx": "[ upper-limit ] ]"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.4",
+  "names": [
+   "float"
+  ],
+  "kind": "System Class",
+  "file": "OEBPS/text/12-numbers/12.2.4-float.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Compound Type Specifier Syntax",
+    "ratio": 0.8889,
+    "tex_words": 9,
+    "epub_words": 9,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": ")",
+      "ctx": "[ lower-limit [ upper-limit"
+     },
+     {
+      "op": "delete",
+      "tex": ")",
+      "epub": "",
+      "ctx": "[ upper-limit ] ]"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.5",
+  "names": [
+   "short-float",
+   "single-float",
+   "double-float",
+   "long-float"
+  ],
+  "kind": "Type",
+  "file": "OEBPS/text/12-numbers/12.2.5-short-float.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.9936,
+    "tex_words": 312,
+    "epub_words": 312,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "Figure §",
+      "ctx": "a minus zero ."
+     },
+     {
+      "op": "delete",
+      "tex": "2pt 2pt",
+      "epub": "",
+      "ctx": "Precision Minimum Exponent Size"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.6",
+  "names": [
+   "rational"
+  ],
+  "kind": "System Class",
+  "file": "OEBPS/text/12-numbers/12.2.6-rational.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Compound Type Specifier Syntax",
+    "ratio": 0.8889,
+    "tex_words": 9,
+    "epub_words": 9,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": ")",
+      "ctx": "[ lower-limit [ upper-limit"
+     },
+     {
+      "op": "delete",
+      "tex": ")",
+      "epub": "",
+      "ctx": "[ upper-limit ] ]"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.8",
+  "names": [
+   "integer"
+  ],
+  "kind": "System Class",
+  "file": "OEBPS/text/12-numbers/12.2.8-integer.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Compound Type Specifier Syntax",
+    "ratio": 0.8889,
+    "tex_words": 9,
+    "epub_words": 9,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": ")",
+      "ctx": "[ lower-limit [ upper-limit"
+     },
+     {
+      "op": "delete",
+      "tex": ")",
+      "epub": "",
+      "ctx": "[ upper-limit ] ]"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.9",
+  "names": [
+   "signed-byte"
+  ],
+  "kind": "Type",
+  "file": "OEBPS/text/12-numbers/12.2.9-signed-byte.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Compound Type Specifier Description",
+    "ratio": 0.9583,
+    "tex_words": 48,
+    "epub_words": 48,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "$-2^s-1$ $2^s-1-1$",
+      "epub": "-2s-1 2s-1-1",
+      "ctx": "equivalent to ( integer"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.15",
+  "names": [
+   "=",
+   "/=",
+   "<",
+   ">",
+   "<=",
+   ">="
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/12-numbers/12.2.15-eq.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": 0.9981,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9981,
+    "tex_words": 517,
+    "epub_words": 519,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "Figure §",
+      "ctx": "the next figure ."
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.18",
+  "names": [
+   "zerop"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/12-numbers/12.2.18-zerop.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Pronunciation",
+    "ratio": 0.6,
+    "tex_words": 9,
+    "epub_words": 11,
+    "n_diffs": 5,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "ze",
+      "epub": "ˈzē",
+      "ctx": "["
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "ˌ",
+      "ctx": "[ ze ("
+     },
+     {
+      "op": "replace",
+      "tex": "ro",
+      "epub": "rō",
+      "ctx": "[ ze ( )"
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "ˌ",
+      "ctx": "( ) ro ("
+     },
+     {
+      "op": "replace",
+      "tex": "pe",
+      "epub": "pē",
+      "ctx": ") ro ( )"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.19",
+  "names": [
+   "floor",
+   "ffloor",
+   "ceiling",
+   "fceiling",
+   "truncate",
+   "ftruncate",
+   "round",
+   "fround"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/12-numbers/12.2.19-floor.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.9928,
+    "tex_words": 350,
+    "epub_words": 349,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "quotient· divisor+remainder=number",
+      "epub": "quotient·divisor+remainder=number",
+      "ctx": "remainder , such that"
+     },
+     {
+      "op": "replace",
+      "tex": "integer+12",
+      "epub": "integer+1/2",
+      "ctx": "it has the form"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.21",
+  "names": [
+   "asin",
+   "acos",
+   "atan"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/12-numbers/12.2.21-asin.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.9209,
+    "tex_words": 1012,
+    "epub_words": 1036,
+    "n_diffs": 48,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "sqrt1-x2",
+      "epub": "sqrt ( 1-x2 )",
+      "ctx": "-i log ( ix+"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2",
+      "epub": "pi /2",
+      "ctx": ") Arc cosine ("
+     },
+     {
+      "op": "replace",
+      "tex": "sqrt1/",
+      "epub": "sqrt ( 1/",
+      "ctx": "( ( 1+ix )"
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": ")",
+      "ctx": ") sqrt1/ ( 1+x2"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi",
+      "epub": "- pi",
+      "ctx": "atan is always between"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi",
+      "epub": "- pi",
+      "ctx": "zero is supported includes"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi/2",
+      "epub": "- pi /2",
+      "ctx": "real and lies between"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2",
+      "epub": "pi /2",
+      "ctx": "lies between -pi/2 and"
+     },
+     {
+      "op": "replace",
+      "tex": "iz+sqrt1-z2",
+      "epub": "iz+sqrt ( 1-z2 )",
+      "ctx": "= -i log ("
+     },
+     {
+      "op": "replace",
+      "tex": "-pi/2",
+      "epub": "- pi /2",
+      "ctx": "real part is between"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2",
+      "epub": "pi /2",
+      "ctx": "is between -pi/2 and"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi/2",
+      "epub": "- pi /2",
+      "ctx": "real part equal to"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2",
+      "epub": "pi /2",
+      "ctx": "real part equal to"
+     },
+     {
+      "op": "replace",
+      "tex": "pi2-",
+      "epub": "pi /2-",
+      "ctx": "cuts: arccos z ="
+     },
+     {
+      "op": "replace",
+      "tex": "sqrt1-z2",
+      "epub": "sqrt ( 1-z2 )",
+      "ctx": "-i log ( z+i"
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "(",
+      "ctx": "log ( sqrt ("
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": ")",
+      "ctx": "( 1+z ) /2"
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "(",
+      "ctx": ") /2 + i"
+     },
+     {
+      "op": "replace",
+      "tex": "i",
+      "epub": ") /i",
+      "ctx": "1-z ) /2 )"
+     },
+     {
+      "op": "replace",
+      "tex": "2i",
+      "epub": "/2i",
+      "ctx": "log ( 1-iz )"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi/2",
+      "epub": "- pi /2",
+      "ctx": "real part is between"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2",
+      "epub": "pi /2",
+      "ctx": "is between -pi/2 and"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi/2",
+      "epub": "- pi /2",
+      "ctx": "real part equal to"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2",
+      "epub": "pi /2",
+      "ctx": "real part equal to"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi/2",
+      "epub": "- pi /2",
+      "ctx": "sine with the points"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2",
+      "epub": "pi /2",
+      "ctx": "the points -pi/2 and"
+     },
+     {
+      "op": "delete",
+      "tex": "to 1pc",
+      "epub": "",
+      "ctx": "information for arc tangent"
+     },
+     {
+      "op": "delete",
+      "tex": "to 1pc",
+      "epub": "",
+      "ctx": "locus Range of result"
+     },
+     {
+      "op": "replace",
+      "tex": "to 1pc*",
+      "epub": "*",
+      "ctx": "0 Positive x-axis 0"
+     },
+     {
+      "op": "replace",
+      "tex": "to 1pc*",
+      "epub": "*",
+      "ctx": "0 Positive x-axis +0"
+     },
+     {
+      "op": "delete",
+      "tex": "to 1pc",
+      "epub": "",
+      "ctx": "0 Positive x-axis -0"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2 to 1pc",
+      "epub": "pi /2",
+      "ctx": "0 < result <"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2 to 1pc",
+      "epub": "pi /2",
+      "ctx": "= 0 Positive y-axis"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2",
+      "epub": "pi /2",
+      "ctx": "< 0 Quadrant II"
+     },
+     {
+      "op": "delete",
+      "tex": "to 1pc",
+      "epub": "",
+      "ctx": "< result < pi"
+     },
+     {
+      "op": "replace",
+      "tex": "to 1pc*",
+      "epub": "*",
+      "ctx": "0 Negative x-axis pi"
+     },
+     {
+      "op": "replace",
+      "tex": "+pi to 1pc*",
+      "epub": "+ pi *",
+      "ctx": "< 0 Negative x-axis"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi to 1pc",
+      "epub": "- pi",
+      "ctx": "< 0 Negative x-axis"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi",
+      "epub": "- pi",
+      "ctx": "< 0 Quadrant III"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi/2 to 1pc",
+      "epub": "- pi /2",
+      "ctx": "-pi < result <"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "12.2.21",
+    "names": "asin, acos, atan",
+    "kind": "Function",
+    "file": "e12-2-21.xhtml",
+    "block": 1,
+    "line": 317,
+    "form_text": "(atan #c(0 2))",
+    "expected_values": [
+     "#C(-1.5707964 0.54930615)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#C(1.5707964 0.54930615)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "12.2.23",
+  "names": [
+   "sinh",
+   "cosh",
+   "tanh",
+   "asinh",
+   "acosh",
+   "atanh"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/12-numbers/12.2.23-sinh.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.9525,
+    "tex_words": 575,
+    "epub_words": 605,
+    "n_diffs": 22,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "x+sqrt1+x2",
+      "epub": "x+sqrt ( 1+x2 )",
+      "ctx": "arc sine log ("
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "(",
+      "ctx": "log ( sqrt ("
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": ")",
+      "ctx": "( x+1 ) /2"
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "(",
+      "ctx": ") /2 + sqrt"
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": ")",
+      "ctx": "( x-1 ) /2"
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "(",
+      "ctx": "log ( sqrt ("
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": ")",
+      "ctx": "( z+1 ) /2"
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "(",
+      "ctx": ") /2 + sqrt"
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": ")",
+      "ctx": "( z-1 ) /2"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi",
+      "epub": "- pi",
+      "ctx": "imaginary part is between"
+     },
+     {
+      "op": "replace",
+      "tex": "z+sqrt1+z2",
+      "epub": "z+sqrt ( 1+z2 )",
+      "ctx": "z = log ("
+     },
+     {
+      "op": "replace",
+      "tex": "-pi/2",
+      "epub": "- pi /2",
+      "ctx": "imaginary part is between"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2",
+      "epub": "pi /2",
+      "ctx": "is between -pi/2 and"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi/2",
+      "epub": "- pi /2",
+      "ctx": "imaginary part equal to"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2",
+      "epub": "pi /2",
+      "ctx": "imaginary part equal to"
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "(",
+      "ctx": "cuts: arctanh z ="
+     },
+     {
+      "op": "replace",
+      "tex": "2",
+      "epub": ") /2",
+      "ctx": "log ( 1-z )"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi/2",
+      "epub": "- pi /2",
+      "ctx": "imaginary part is between"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2",
+      "epub": "pi /2",
+      "ctx": "is between -pi/2 and"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi/2",
+      "epub": "- pi /2",
+      "ctx": "imaginary part equal to"
+     },
+     {
+      "op": "replace",
+      "tex": "pi/2",
+      "epub": "pi /2",
+      "ctx": "imaginary part equal to"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi",
+      "epub": "- pi",
+      "ctx": "function with the points"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.29",
+  "names": [
+   "abs"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/12-numbers/12.2.29-abs.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "12.2.29",
+    "names": "abs",
+    "kind": "Function",
+    "file": "e12-2-29.xhtml",
+    "block": 1,
+    "line": 66,
+    "form_text": "(eql (abs -0.0) -0.0)",
+    "expected_values": [
+     "true"
+    ],
+    "expected_italics": [
+     [
+      "true"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "12.2.35",
+  "names": [
+   "log"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/12-numbers/12.2.35-log.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.9891,
+    "tex_words": 274,
+    "epub_words": 276,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "-pi",
+      "epub": "- pi",
+      "ctx": "with imaginary parts between"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi",
+      "epub": "- pi",
+      "ctx": "not supported , or"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [],
+  "example_unparsed": [
+   {
+    "secno": "12.2.35",
+    "names": "log",
+    "file": "e12-2-35.xhtml",
+    "block": 2,
+    "line": 108,
+    "text": "or approximately 3.0 (unlikely)",
+    "reason": "prose"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "12.2.43",
+  "names": [
+   "*random-state*"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/12-numbers/12.2.43-random-state.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "12.2.43",
+    "names": "*random-state*",
+    "kind": "Variable",
+    "file": "e12-2-43.xhtml",
+    "block": 1,
+    "line": 35,
+    "form_text": "(list (loop for i from 1 to 10 collect (random))\n(let ((*random-state* snap-shot))\n(loop for i from 1 to 10 collect (random)))\n(loop for i from 1 to 10 collect (random))\n(let ((*random-state* snap-shot))\n(loop for i from 1 to 10 collect (random))))",
+    "expected_values": [
+     "((19 16 44 19 96 15 76 96 13 61)\n(19 16 44 19 96 15 76 96 13 61)\n(16 67 0 43 70 79 58 5 63 50)\n(16 67 0 43 70 79 58 5 63 50))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-PROGRAM-ERROR invalid number of arguments: 0"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "12.2.49",
+  "names": [
+   "phase"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/12-numbers/12.2.49-phase.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.9771,
+    "tex_words": 195,
+    "epub_words": 198,
+    "n_diffs": 3,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "-pi",
+      "epub": "- pi",
+      "ctx": ", in the range"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi",
+      "epub": "- pi",
+      "ctx": "not supported , or"
+     },
+     {
+      "op": "replace",
+      "tex": "-pi",
+      "epub": "- pi",
+      "ctx": "the real axis between"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.60",
+  "names": [
+   "boole"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/12-numbers/12.2.60-boole.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": 0.9699,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9699,
+    "tex_words": 292,
+    "epub_words": 306,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "~%---Op-------Decimal-----Binary----Bits---~%",
+      "epub": "~% - Op----- Decimal--- Binary- - Bits - ~%",
+      "ctx": ". . . ~"
+     },
+     {
+      "op": "replace",
+      "tex": "---Op-------Decimal-----Binary----Bits---",
+      "epub": "- Op----- Decimal--- Binary- - Bits -",
+      "ctx": ". . . ▷"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.68",
+  "names": [
+   "dpb"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/12-numbers/12.2.68-dpb.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Pronunciation",
+    "ratio": 0.64,
+    "tex_words": 14,
+    "epub_words": 11,
+    "n_diffs": 3,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "də pib",
+      "epub": "ˌdεˈpib",
+      "ctx": "["
+     },
+     {
+      "op": "replace",
+      "tex": "də pə b",
+      "epub": "ˌdεˈpεb",
+      "ctx": "pib ] or ["
+     },
+     {
+      "op": "replace",
+      "tex": "depebe",
+      "epub": "ˈdēˈpēˈbē",
+      "ctx": "b ] or ["
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.69",
+  "names": [
+   "ldb"
+  ],
+  "kind": "Accessor",
+  "file": "OEBPS/text/12-numbers/12.2.69-ldb.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Pronunciation",
+    "ratio": 0.6957,
+    "tex_words": 12,
+    "epub_words": 11,
+    "n_diffs": 3,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "lidib",
+      "epub": "ˈlidib",
+      "ctx": "["
+     },
+     {
+      "op": "replace",
+      "tex": "lidə b",
+      "epub": "ˈlidεb",
+      "ctx": "lidib ] or ["
+     },
+     {
+      "op": "replace",
+      "tex": "eldebe",
+      "epub": "ˈelˈdēˈbē",
+      "ctx": "b ] or ["
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "12.2.77",
+  "names": [
+   "short-float-epsilon",
+   "short-float-negative-epsilon",
+   "single-float-epsilon",
+   "single-float-negative-epsilon",
+   "double-float-epsilon",
+   "double-float-negative-epsilon",
+   "long-float-epsilon",
+   "long-float-negative-epsilon"
+  ],
+  "kind": "Constant Variable",
+  "file": "OEBPS/text/12-numbers/12.2.77-short-float-epsilon.xhtml",
+  "tex_file": "dict-numbers.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.9818,
+    "tex_words": 110,
+    "epub_words": 110,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "epsilon",
+      "epub": "ε",
+      "ctx": "the smallest positive float"
+     },
+     {
+      "op": "replace",
+      "tex": "epsilon",
+      "epub": "ε",
+      "ctx": "the smallest positive float"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "13.2.8",
+  "names": [
+   "alpha-char-p"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/13-characters/13.2.8-alpha-char-p.xhtml",
+  "tex_file": "dict-characters.tex",
+  "examples_ratio": 0.9524,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9524,
+    "tex_words": 42,
+    "epub_words": 42,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "#\\alpha",
+      "epub": "#\\\\alfa",
+      "ctx": "; ; in which"
+     },
+     {
+      "op": "replace",
+      "tex": "#\\alpha",
+      "epub": "#\\\\alfa",
+      "ctx": "character . ( alpha-char-p"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "13.2.8",
+    "names": "alpha-char-p",
+    "kind": "Function",
+    "file": "e13-2-8.xhtml",
+    "block": 1,
+    "line": 40,
+    "form_text": "(alpha-char-p #\\\\alfa)",
+    "expected_values": [
+     "implementation-dependent"
+    ],
+    "expected_italics": [
+     [
+      "implementation-dependent"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-READER-ERROR unrecognized character name: \"\\\\alfa\" Stream: #<dynamic-extent STRING-INPUT-STREAM (unavailable) from \"(alpha-c...\">"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "13.2.14",
+  "names": [
+   "char-upcase",
+   "char-downcase"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/13-characters/13.2.14-char-upcase.xhtml",
+  "tex_file": "dict-characters.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "13.2.14",
+    "names": "char-upcase, char-downcase",
+    "kind": "Function",
+    "file": "e13-2-14.xhtml",
+    "block": 1,
+    "line": 57,
+    "form_text": "(dotimes (code char-code-limit)\n(let ((char (code-char code)))\n(when char\n(unless (cond ((upper-case-p char) (char= (char-upcase (char-downcase char)) char))\n((lower-case-p char) (char= (char-downcase (char-upcase char)) char))\n(t (and (char= (char-upcase (char-downcase char)) char)\n(char= (char-downcase (char-upcase char)) char))))\n(return char)))))",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#\\LATIN_CAPITAL_LETTER_D_WITH_SMALL_LETTER_Z_WITH_CARON"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "13.2.17",
+  "names": [
+   "char-int"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/13-characters/13.2.17-char-int.xhtml",
+  "tex_file": "dict-characters.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "13.2.17",
+    "names": "char-int",
+    "kind": "Function",
+    "file": "e13-2-17.xhtml",
+    "block": 1,
+    "line": 49,
+    "form_text": "(char-int #\\A)",
+    "expected_values": [
+     "577"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "65"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "13.2.17",
+    "names": "char-int",
+    "kind": "Function",
+    "file": "e13-2-17.xhtml",
+    "block": 1,
+    "line": 50,
+    "form_text": "(char-int #\\A)",
+    "expected_values": [
+     "262145"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "65"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "13.2.20",
+  "names": [
+   "char-name"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/13-characters/13.2.20-char-name.xhtml",
+  "tex_file": "dict-characters.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "13.2.20",
+    "names": "char-name",
+    "kind": "Function",
+    "file": "e13-2-20.xhtml",
+    "block": 1,
+    "line": 56,
+    "form_text": "(char-name #\\ )",
+    "expected_values": [
+     "\"Space\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"NO-BREAK_SPACE\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "13.2.20",
+    "names": "char-name",
+    "kind": "Function",
+    "file": "e13-2-20.xhtml",
+    "block": 1,
+    "line": 60,
+    "form_text": "(char-name #\\a)",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "\"LOWERCASE-a\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "\"Small-A\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "\"LA01\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"LATIN_SMALL_LETTER_A\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "13.2.20",
+    "names": "char-name",
+    "kind": "Function",
+    "file": "e13-2-20.xhtml",
+    "block": 1,
+    "line": 66,
+    "form_text": "(char-name #\\A)",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "\"UPPERCASE-A\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "\"Capital-A\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "\"LA02\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"LATIN_CAPITAL_LETTER_A\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ }
+]

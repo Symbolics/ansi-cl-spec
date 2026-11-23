@@ -1,0 +1,897 @@
+[
+ {
+  "secno": "5.3.1",
+  "names": [
+   "apply"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.1-apply.xhtml",
+  "item": "example:2:78",
+  "category": "implementation-difference",
+  "summary": "SBCL's make-array result has type-of (SIMPLE-VECTOR 4), so concatenate with (type-of v) fails; the example relies on implementation-dependent type-of. EPUB equals TeX.",
+  "epub_excerpt": "(concatenate (type-of v) v v)",
+  "tex_excerpt": "same",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.4",
+  "names": [
+   "fboundp"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.4-fboundp.xhtml",
+  "item": "text:Pronunciation",
+  "category": "normaliser-noise",
+  "summary": "Pronunciation respelling \\stress/\\Stress/\\.u rendered as IPA-like glyphs; faithful.",
+  "epub_excerpt": "[ ˌefˈbau̇ndpē ]",
+  "tex_excerpt": "\\pronounced{\\stress{ef}\\Stress{ba\\.und}p\\harde}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.4",
+  "names": [
+   "fboundp"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.4-fboundp.xhtml",
+  "item": "example:1:42",
+  "category": "original-erratum",
+  "summary": "Example says (fboundp 'nth-value) is false, but nth-value is a macro so fboundp is true (SBCL returns the macro function). EPUB matches TeX; the draft example is wrong or dated.",
+  "epub_excerpt": "(fboundp 'nth-value) → false",
+  "tex_excerpt": "(fboundp 'nth-value) \\EV \\term{false}",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "5.3.5",
+  "names": [
+   "fmakunbound"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.5-fmakunbound.xhtml",
+  "item": "text:Pronunciation",
+  "category": "normaliser-noise",
+  "summary": "Respelling; the schwa is TeX \\schwa = $\\epsilon$, rendered as Greek epsilon in the EPUB, so faithful to the TeX (IPA schwa U+0259 would be more correct, but no change from TeX).",
+  "epub_excerpt": "[ ˌefˈmakεnˌbau̇nd ] or [ ˌefˈmākεnˌbau̇nd ]",
+  "tex_excerpt": "\\stress{ef}\\Stress{mak}\\schwa n\\stress{ba\\.und} / m\\harda k",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.6",
+  "names": [
+   "flet",
+   "labels",
+   "macrolet"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.6-flet.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "'dummy-function' lost its prefix in the flet example: '-function' appears in code (defun, #', ', flet) while the result still shows DUMMY-FUNCTION. 9 occurrences, one fix block.",
+  "epub_excerpt": "(defun -function () 'top-level) → DUMMY-FUNCTION",
+  "tex_excerpt": "(defun dummy-function () 'top-level) \\EV DUMMY-FUNCTION",
+  "fix": {
+   "old": "(defun -function () 'top-level) →  DUMMY-FUNCTION \n (funcall #'-function) →  TOP-LEVEL \n (flet ((-function () 'shadow)) \n      (funcall #'-function)) →  SHADOW \n (eq (funcall #'-function) (funcall '-function))\n→ <i><a href=\"../26-glossary/t.xhtml#true\">true</a></i> \n (flet ((-function () 'shadow))\n   (eq (funcall #'-function)\n       (funcall '-function)))",
+   "new": "(defun dummy-function () 'top-level) →  DUMMY-FUNCTION \n (funcall #'dummy-function) →  TOP-LEVEL \n (flet ((dummy-function () 'shadow)) \n      (funcall #'dummy-function)) →  SHADOW \n (eq (funcall #'dummy-function) (funcall 'dummy-function))\n→ <i><a href=\"../26-glossary/t.xhtml#true\">true</a></i> \n (flet ((dummy-function () 'shadow))\n   (eq (funcall #'dummy-function)\n       (funcall 'dummy-function)))"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.6",
+  "names": [
+   "flet",
+   "labels",
+   "macrolet"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.6-flet.xhtml",
+  "item": "example:2:249",
+  "category": "conversion-error",
+  "summary": "Same root cause as text:Examples (lost 'dummy' prefix; harness shows -FUNCTION vs DUMMY-FUNCTION). Same fix as text:Examples.",
+  "epub_excerpt": "(defun -function () 'top-level)",
+  "tex_excerpt": "(defun dummy-function () 'top-level)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.6",
+  "names": [
+   "flet",
+   "labels",
+   "macrolet"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.6-flet.xhtml",
+  "item": "example:1:225",
+  "category": "harness-limitation",
+  "summary": "Reader error 'Comma not inside a backquote': harness mis-split the example (backquote after '\\bq\\ ' on a comment-laden macrolet form); EPUB equals TeX, backquote is ASCII.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "5.3.6",
+  "names": [
+   "flet",
+   "labels",
+   "macrolet"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.6-flet.xhtml",
+  "item": "unparsed:1",
+  "category": "harness-limitation",
+  "summary": "'==' separator between two equivalent forms; prose, not an example form.",
+  "epub_excerpt": "==",
+  "tex_excerpt": "==",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.7",
+  "names": [
+   "funcall"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.7-funcall.xhtml",
+  "item": "example:1:49",
+  "category": "implementation-difference",
+  "summary": "SBCL package lock: binding CONS as a local function violates COMMON-LISP lock (the example is itself 'undefined' in ANSI terms in modern implementations). EPUB equals TeX.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.9",
+  "names": [
+   "function-lambda-expression"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.9-function-lambda-expression.xhtml",
+  "item": "example:1:69",
+  "category": "harness-limitation",
+  "summary": "Book lists several permitted results with 'OR→' lines; the harness only compares the first value, and implementation-dependent results are allowed. EPUB equals TeX.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.9",
+  "names": [
+   "function-lambda-expression"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.9-function-lambda-expression.xhtml",
+  "item": "example:1:75",
+  "category": "harness-limitation",
+  "summary": "Book lists several permitted results with 'OR→' lines; the harness only compares the first value, and implementation-dependent results are allowed. EPUB equals TeX.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.9",
+  "names": [
+   "function-lambda-expression"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.9-function-lambda-expression.xhtml",
+  "item": "example:1:82",
+  "category": "harness-limitation",
+  "summary": "Book lists several permitted results with 'OR→' lines; the harness only compares the first value, and implementation-dependent results are allowed. EPUB equals TeX.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.9",
+  "names": [
+   "function-lambda-expression"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.9-function-lambda-expression.xhtml",
+  "item": "example:1:89",
+  "category": "harness-limitation",
+  "summary": "Book lists several permitted results with 'OR→' lines; the harness only compares the first value, and implementation-dependent results are allowed. EPUB equals TeX.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.9",
+  "names": [
+   "function-lambda-expression"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.9-function-lambda-expression.xhtml",
+  "item": "example:1:101",
+  "category": "harness-limitation",
+  "summary": "Book lists several permitted results with 'OR→' lines; the harness only compares the first value, and implementation-dependent results are allowed. EPUB equals TeX.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.9",
+  "names": [
+   "function-lambda-expression"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.9-function-lambda-expression.xhtml",
+  "item": "example:1:86",
+  "category": "harness-limitation",
+  "summary": "'NOT→' lines of the example parsed as a form named NOT; notation in book, not code.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.9",
+  "names": [
+   "function-lambda-expression"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.9-function-lambda-expression.xhtml",
+  "item": "example:1:87",
+  "category": "harness-limitation",
+  "summary": "'NOT→' lines of the example parsed as a form named NOT; notation in book, not code.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.11",
+  "names": [
+   "compiled-function-p"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.11-compiled-function-p.xhtml",
+  "item": "example:1:39",
+  "category": "implementation-difference",
+  "summary": "SBCL returns (compile 'f) as three values F, NIL, NIL; the book shows only the primary value. EPUB equals TeX.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.18",
+  "names": [
+   "let",
+   "let*"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.18-let.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "'dummy-function' lost its prefix in the let example (4 occurrences: defun and three calls) while the result still shows DUMMY-FUNCTION.",
+  "epub_excerpt": "(defun -function () a) → DUMMY-FUNCTION",
+  "tex_excerpt": "(defun dummy-function () a) \\EV DUMMY-FUNCTION",
+  "fix": {
+   "old": "(defun -function () a) →  DUMMY-FUNCTION\n (let ((a 'inside) (b a))\n    (format nil \"~S ~S ~S\" a b (-function))) → \"INSIDE TOP TOP\" \n (let* ((a 'inside) (b a))\n    (format nil \"~S ~S ~S\" a b (-function))) → \"INSIDE INSIDE TOP\" \n (let ((a 'inside) (b a))\n    (declare (special a))\n    (format nil \"~S ~S ~S\" a b (-function)))",
+   "new": "(defun dummy-function () a) →  DUMMY-FUNCTION\n (let ((a 'inside) (b a))\n    (format nil \"~S ~S ~S\" a b (dummy-function))) → \"INSIDE TOP TOP\" \n (let* ((a 'inside) (b a))\n    (format nil \"~S ~S ~S\" a b (dummy-function))) → \"INSIDE INSIDE TOP\" \n (let ((a 'inside) (b a))\n    (declare (special a))\n    (format nil \"~S ~S ~S\" a b (dummy-function)))"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.18",
+  "names": [
+   "let",
+   "let*"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.18-let.xhtml",
+  "item": "example:1:136",
+  "category": "conversion-error",
+  "summary": "Same root cause as text:Examples; same fix as 5.3.18 text:Examples.",
+  "epub_excerpt": "(defun -function () a)",
+  "tex_excerpt": "(defun dummy-function () a)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.19",
+  "names": [
+   "progv"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.19-progv.xhtml",
+  "item": "unparsed:1",
+  "category": "harness-limitation",
+  "summary": "Prose line ('Assuming *x* is not globally special,') inside <pre>; not an example form.",
+  "epub_excerpt": "Assuming *x* is not globally special,",
+  "tex_excerpt": "Assuming *x* is not globally special,",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.20",
+  "names": [
+   "setq"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.20-setq.xhtml",
+  "item": "text:Syntax",
+  "category": "conversion-error",
+  "summary": "Lost down-arrow: TeX \\stardown{pair} = {↓pair}*; EPUB has {pair}*. The syntax then no longer points to the auxiliary BNF 'pair::=' production.",
+  "epub_excerpt": "<i>{<i>pair</i>}*</i>",
+  "tex_excerpt": "\\DefspecWithValues setq {\\stardown{pair}} {result}",
+  "fix": {
+   "old": "<i>{<i>pair</i>}*</i>",
+   "new": "<i>{↓<i>pair</i>}*</i>"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.20",
+  "names": [
+   "setq"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.20-setq.xhtml",
+  "item": "text:Pronunciation",
+  "category": "normaliser-noise",
+  "summary": "Respelling glyphs only.",
+  "epub_excerpt": "[ ˈsetˌkyü ]",
+  "tex_excerpt": "\\Stress{set}\\stress{ky\\\"u}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.21",
+  "names": [
+   "psetq"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.21-psetq.xhtml",
+  "item": "text:Syntax",
+  "category": "conversion-error",
+  "summary": "Lost down-arrow: \\stardown{pair} rendered as {pair}*.",
+  "epub_excerpt": "<i>{<i>pair</i>}*</i>",
+  "tex_excerpt": "\\DefmacWithValues psetq {\\stardown{pair}} {\\nil}",
+  "fix": {
+   "old": "<i>{<i>pair</i>}*</i>",
+   "new": "<i>{↓<i>pair</i>}*</i>"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.21",
+  "names": [
+   "psetq"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.21-psetq.xhtml",
+  "item": "text:Pronunciation",
+  "category": "normaliser-noise",
+  "summary": "Normaliser garbled \\harde/\\maybeStress (rules 'width 1pt...' leak in TeX-side text); EPUB '¦pēˈsetˌkyü' is a faithful rendering of \\maybeStress{p\\harde}\\Stress{set}\\stress{ky\\\"u}.",
+  "epub_excerpt": "psetq: [ ¦pēˈsetˌkyü ]",
+  "tex_excerpt": "\\maybeStress{p\\harde}\\Stress{set}\\stress{ky\\\"u}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.23",
+  "names": [
+   "catch"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.23-catch.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "'dummy-tag' lost its prefix: (catch '-tag ...) and (throw '-tag ...), 5 occurrences. Resulting tag is the symbol -TAG; semantics still hold, but text differs from TeX and is garbled.",
+  "epub_excerpt": "(catch '-tag 1 2 (throw '-tag 3) 4) → 3",
+  "tex_excerpt": "(catch 'dummy-tag 1 2 (throw 'dummy-tag 3) 4) \\EV 3",
+  "fix": {
+   "old": "(catch '-tag 1 2 (throw '-tag 3) 4) → 3\n (catch '-tag 1 2 3 4) → 4\n (defun throw-back (tag) (throw tag t)) →  THROW-BACK\n (catch '-tag (throw-back '-tag) 2)",
+   "new": "(catch 'dummy-tag 1 2 (throw 'dummy-tag 3) 4) → 3\n (catch 'dummy-tag 1 2 3 4) → 4\n (defun throw-back (tag) (throw tag t)) →  THROW-BACK\n (catch 'dummy-tag (throw-back 'dummy-tag) 2)"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.24",
+  "names": [
+   "go"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.24-go.xhtml",
+  "item": "example:2:65",
+  "category": "harness-limitation",
+  "summary": "Examples are deliberately erroneous per prose ('The following is in error ...'); SBCL signals the expected control error. EPUB equals TeX.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.24",
+  "names": [
+   "go"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.24-go.xhtml",
+  "item": "example:3:74",
+  "category": "harness-limitation",
+  "summary": "Examples are deliberately erroneous per prose ('The following is in error ...'); SBCL signals the expected control error. EPUB equals TeX.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.25",
+  "names": [
+   "return-from"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.25-return-from.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "'dummy lost: (return-from temp 'dummy) became (return-from temp ') which leaves an unbalanced quote and an unbalanced form, while the result still says DUMMY.",
+  "epub_excerpt": "(if x (return-from temp '))",
+  "tex_excerpt": "(if x (return-from temp 'dummy))",
+  "fix": {
+   "old": "(return-from temp ')",
+   "new": "(return-from temp 'dummy)"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.25",
+  "names": [
+   "return-from"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.25-return-from.xhtml",
+  "item": "skipped:1",
+  "category": "harness-limitation",
+  "summary": "Skipped example (flet exit / return-from out) by harness; the EPUB equals the TeX. Possibly skipped because exit is treated as unsafe; not a conversion matter.",
+  "epub_excerpt": "(block out (flet ((exit (n) (return-from out n))) ...",
+  "tex_excerpt": "same",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "5.3.28",
+  "names": [
+   "throw"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.28-throw.xhtml",
+  "item": "example:4:78",
+  "category": "original-erratum",
+  "summary": "Format string is \"The inner catch returns ~s.~%\" so the output ends with a period, but the book's expected output (and prose) omit the final period. EPUB matches TeX (\\OUT line); original erratum.",
+  "epub_excerpt": "▷ The inner catch returns :SECOND-THROW",
+  "tex_excerpt": "\\OUT The inner catch returns :SECOND-THROW",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.29",
+  "names": [
+   "unwind-protect"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.29-unwind-protect.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "'dummy-function' lost its prefix (4 occurrences: defun and three calls) while the result still shows DUMMY-FUNCTION.",
+  "epub_excerpt": "(defun -function (x) ... → DUMMY-FUNCTION",
+  "tex_excerpt": "(defun dummy-function (x) ...",
+  "fix": {
+   "old": "(defun -function (x)\n    (setq state 'running)\n    (unless (numberp x) (throw 'abort 'not-a-number))\n    (setq state (1+ x))) →  DUMMY-FUNCTION\n (catch 'abort (-function 1)) → 2\n state → 2\n (catch 'abort (-function 'trash)) →  NOT-A-NUMBER\n state →  RUNNING\n (catch 'abort (unwind-protect (-function 'trash)",
+   "new": "(defun dummy-function (x)\n    (setq state 'running)\n    (unless (numberp x) (throw 'abort 'not-a-number))\n    (setq state (1+ x))) →  DUMMY-FUNCTION\n (catch 'abort (dummy-function 1)) → 2\n state → 2\n (catch 'abort (dummy-function 'trash)) →  NOT-A-NUMBER\n state →  RUNNING\n (catch 'abort (unwind-protect (dummy-function 'trash)"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.29",
+  "names": [
+   "unwind-protect"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.29-unwind-protect.xhtml",
+  "item": "example:2:89",
+  "category": "conversion-error",
+  "summary": "Same root cause as text:Examples; same fix.",
+  "epub_excerpt": "(defun -function (x)",
+  "tex_excerpt": "(defun dummy-function (x)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.29",
+  "names": [
+   "unwind-protect"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.29-unwind-protect.xhtml",
+  "item": "example:3:107",
+  "category": "harness-limitation",
+  "summary": "Example fragment relies on undefined *access-count*/perform-access from surrounding prose; not self-contained.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.29",
+  "names": [
+   "unwind-protect"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.29-unwind-protect.xhtml",
+  "item": "example:4:117",
+  "category": "harness-limitation",
+  "summary": "Example fragment relies on undefined *access-count*/perform-access from surrounding prose; not self-contained.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.34",
+  "names": [
+   "eql"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.34-eql.xhtml",
+  "item": "text:Description",
+  "category": "deliberate-edit",
+  "summary": "TeX typo 'folowing' corrected to 'following' in the EPUB.",
+  "epub_excerpt": "following",
+  "tex_excerpt": "folowing",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.41",
+  "names": [
+   "and"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.41-and.xhtml",
+  "item": "example:1:48",
+  "category": "harness-limitation",
+  "summary": "Fragment uses free variables n and a-simple-vector (illustrative); not self-contained.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.42",
+  "names": [
+   "cond"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.42-cond.xhtml",
+  "item": "text:Syntax",
+  "category": "conversion-error",
+  "summary": "Lost down-arrow: \\stardown{clause} rendered as {clause}*.",
+  "epub_excerpt": "<i>{<i>clause</i>}*</i>",
+  "tex_excerpt": "{\\stardown{clause}}",
+  "fix": {
+   "old": "<i>{<i>clause</i>}*</i>",
+   "new": "<i>{↓<i>clause</i>}*</i>"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.46",
+  "names": [
+   "case",
+   "ccase",
+   "ecase"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.46-case.xhtml",
+  "item": "text:Syntax",
+  "category": "conversion-error",
+  "summary": "Lost down-arrow in three Syntax forms (case, ccase, ecase): \\stardown{normal-clause} rendered as {normal-clause}*; the neighbouring [↓otherwise-clause] kept its arrow. Three fixes (list).",
+  "epub_excerpt": "keyform  {<i>normal-clause</i>}* [↓otherwise-clause]",
+  "tex_excerpt": "keyform \\stardown{normal-clause} \\brac{\\down{otherwise-clause}}",
+  "fix": [
+   {
+    "old": "keyform  {<i>normal-clause</i>}* [↓otherwise-clause]",
+    "new": "keyform  {↓<i>normal-clause</i>}* [↓otherwise-clause]"
+   },
+   {
+    "old": "keyplace {<i>normal-clause</i>}*",
+    "new": "keyplace {↓<i>normal-clause</i>}*"
+   },
+   {
+    "old": "keyform  {<i>normal-clause</i>}*</i>",
+    "new": "keyform  {↓<i>normal-clause</i>}*</i>"
+   }
+  ],
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.46",
+  "names": [
+   "case",
+   "ccase",
+   "ecase"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.46-case.xhtml",
+  "item": "example:1:154",
+  "category": "harness-limitation",
+  "summary": "Interactive debugger session (ccase with :CONTINUE restart); not runnable non-interactively. EPUB equals TeX.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.47",
+  "names": [
+   "typecase",
+   "ctypecase",
+   "etypecase"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.47-typecase.xhtml",
+  "item": "text:Syntax",
+  "category": "conversion-error",
+  "summary": "Lost down-arrow in three Syntax forms (typecase, ctypecase, etypecase), as in case. Three fixes (list).",
+  "epub_excerpt": "keyform  {<i>normal-clause</i>}* [↓otherwise-clause]",
+  "tex_excerpt": "keyform \\stardown{normal-clause} \\brac{\\down{otherwise-clause}}",
+  "fix": [
+   {
+    "old": "keyform  {<i>normal-clause</i>}* [↓otherwise-clause]",
+    "new": "keyform  {↓<i>normal-clause</i>}* [↓otherwise-clause]"
+   },
+   {
+    "old": "keyplace {<i>normal-clause</i>}*",
+    "new": "keyplace {↓<i>normal-clause</i>}*"
+   },
+   {
+    "old": "keyform  {<i>normal-clause</i>}*</i>",
+    "new": "keyform  {↓<i>normal-clause</i>}*</i>"
+   }
+  ],
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.47",
+  "names": [
+   "typecase",
+   "ctypecase",
+   "etypecase"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.47-typecase.xhtml",
+  "item": "example:1:147",
+  "category": "implementation-difference",
+  "summary": "SBCL type-of 7 is (INTEGER 0 4611686018427387903) rather than INTEGER; type-of is implementation-dependent.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.47",
+  "names": [
+   "typecase",
+   "ctypecase",
+   "etypecase"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.47-typecase.xhtml",
+  "item": "example:1:156",
+  "category": "harness-limitation",
+  "summary": "Interactive ctypecase session with store-value restart (1/3 -> 3.7 -> 12); not runnable non-interactively.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.47",
+  "names": [
+   "typecase",
+   "ctypecase",
+   "etypecase"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.47-typecase.xhtml",
+  "item": "example:1:172",
+  "category": "harness-limitation",
+  "summary": "'x → 12' is correct in the book's session: the interactive store-value restart assigned 12 to x. Not an erratum; harness did not replay the restarts. EPUB equals TeX.",
+  "epub_excerpt": "x → 12",
+  "tex_excerpt": "x \\EV 12",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.52",
+  "names": [
+   "multiple-value-setq"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.52-multiple-value-setq.xhtml",
+  "item": "text:Description",
+  "category": "normaliser-noise",
+  "summary": "TeX \\i{symbol}\\subN renders as symbol<sub>N</sub> in EPUB (text normaliser lowercased/merged); EPUB matches.",
+  "epub_excerpt": "<i>symbol</i><sub>N</sub>",
+  "tex_excerpt": "\\i{symbol}\\subN",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.57",
+  "names": [
+   "prog",
+   "prog*"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.57-prog.xhtml",
+  "item": "example:1:104",
+  "category": "harness-limitation",
+  "summary": "Fragment uses free variable z; the prose says 'returns the car of the value of z'. Not self-contained.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.61",
+  "names": [
+   "defsetf"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.61-defsetf.xhtml",
+  "item": "example:1:160",
+  "category": "implementation-difference",
+  "summary": "SBCL package lock: defsetf on CL:SYMBOL-VALUE.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.61",
+  "names": [
+   "defsetf"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.61-defsetf.xhtml",
+  "item": "example:2:170",
+  "category": "implementation-difference",
+  "summary": "SBCL package lock: defsetf on CL:CAR.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.61",
+  "names": [
+   "defsetf"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.61-defsetf.xhtml",
+  "item": "example:4:195",
+  "category": "implementation-difference",
+  "summary": "SBCL package lock: defsetf on CL:SUBSEQ.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.61",
+  "names": [
+   "defsetf"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.61-defsetf.xhtml",
+  "item": "example:5:207",
+  "category": "original-erratum",
+  "summary": "The xy example in the draft is inconsistent: the long defsetf lambda list uses &key ((x x) 0) ((y y) 0), so a place (xy a b) passes a and b as keywords; the example calls (xy a b) and (xy 'x 1) mixing quoted and unquoted keys. EPUB matches TeX (ratio 1.0).",
+  "epub_excerpt": "(get-setf-expansion '(xy a b))",
+  "tex_excerpt": "same",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "5.3.61",
+  "names": [
+   "defsetf"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.61-defsetf.xhtml",
+  "item": "example:5:215",
+  "category": "implementation-difference",
+  "summary": "(aref *xy* x y) on a fresh (make-array '(10 10)) returns 0 in SBCL; initial contents of make-array without :initial-element are implementation-dependent (book says NIL).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.61",
+  "names": [
+   "defsetf"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.61-defsetf.xhtml",
+  "item": "example:5:216",
+  "category": "original-erratum",
+  "summary": "(setf (xy 'x 1) 1): defsetf &key arguments take literal keyword symbols, but the form passes (QUOTE X); SBCL signals unknown &KEY argument. Draft example is inconsistent. EPUB matches TeX.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "5.3.61",
+  "names": [
+   "defsetf"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.61-defsetf.xhtml",
+  "item": "example:5:217",
+  "category": "harness-limitation",
+  "summary": "Consequence of the preceding failed setf (value still 0).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.61",
+  "names": [
+   "defsetf"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.61-defsetf.xhtml",
+  "item": "example:5:218",
+  "category": "original-erratum",
+  "summary": "Same quoting problem: (setf (xy a 1 b 2) 3) with a,b variables holding X/Y; unknown &KEY argument #:A1. Draft example inconsistent.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "5.3.61",
+  "names": [
+   "defsetf"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.61-defsetf.xhtml",
+  "item": "example:5:222",
+  "category": "harness-limitation",
+  "summary": "Consequence of earlier failed setfs (value 0 instead of 1).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.61",
+  "names": [
+   "defsetf"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.61-defsetf.xhtml",
+  "item": "example:5:223",
+  "category": "harness-limitation",
+  "summary": "Consequence of earlier failed setfs (value 0 instead of 3).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.62",
+  "names": [
+   "define-setf-expander"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.62-define-setf-expander.xhtml",
+  "item": "example:2:131",
+  "category": "implementation-difference",
+  "summary": "SBCL package lock: define-setf-expander on CL:LDB.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.63",
+  "names": [
+   "get-setf-expansion"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.63-get-setf-expansion.xhtml",
+  "item": "example:2:67",
+  "category": "harness-limitation",
+  "summary": "Deliberately erroneous example ('The following is an error') using free variable z and macro xpop; not meant to run.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "5.3.64",
+  "names": [
+   "setf",
+   "psetf"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.64-setf.xhtml",
+  "item": "text:Syntax",
+  "category": "conversion-error",
+  "summary": "Lost down-arrow in both setf and psetf Syntax forms. Two fixes (list).",
+  "epub_excerpt": "<i>{<i>pair</i>}*</i>",
+  "tex_excerpt": "\\DefmacWithValues setf {\\stardown{pair}} {\\starparam{result}}",
+  "fix": [
+   {
+    "old": "<b>setf</b>\n<i>{<i>pair</i>}*</i>",
+    "new": "<b>setf</b>\n<i>{↓<i>pair</i>}*</i>"
+   },
+   {
+    "old": "<b>psetf</b>\n<i>{<i>pair</i>}*</i>",
+    "new": "<b>psetf</b>\n<i>{↓<i>pair</i>}*</i>"
+   }
+  ],
+  "confidence": "high"
+ }
+]

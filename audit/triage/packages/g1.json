@@ -1,0 +1,1462 @@
+[
+ {
+  "secno": "3.8.3",
+  "names": [
+   "compile"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.3-compile.xhtml",
+  "tex_file": "dict-eval-compile.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "3.8.3",
+    "names": "compile",
+    "kind": "Function",
+    "file": "e3-8-3.xhtml",
+    "block": 1,
+    "line": 109,
+    "form_text": "(compile 'foo)",
+    "expected_values": [
+     "FOO"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "FOO",
+     "NIL",
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "3.8.5",
+  "names": [
+   "eval-when"
+  ],
+  "kind": "Special Operator",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.5-eval-when.xhtml",
+  "tex_file": "dict-eval-compile.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "3.8.5",
+    "names": "eval-when",
+    "kind": "Special Operator",
+    "file": "e3-8-5.xhtml",
+    "block": 1,
+    "line": 90,
+    "form_text": "(eval-when (:compile-toplevel :load-toplevel :execute)\n(set-macro-character #\\$ #'(lambda (stream char)\n(declare (ignore char))\n(list 'dollar (read stream)))))",
+    "expected_values": [
+     "T"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\nSee also:\n  The ANSI Standard, Section 2.1.1.2\n  The ANSI Standard, Glossary entry for \"standard readtable\""
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "3.8.7",
+  "names": [
+   "quote"
+  ],
+  "kind": "Special Operator",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.7-quote.xhtml",
+  "tex_file": "dict-eval-compile.tex",
+  "examples_ratio": 0.9838,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9838,
+    "tex_words": 184,
+    "epub_words": 186,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "''a",
+      "epub": "\" a",
+      "ctx": "1 'a → A"
+     },
+     {
+      "op": "replace",
+      "tex": "'''a",
+      "epub": "\" 'a",
+      "ctx": "( QUOTE A )"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "3.8.7",
+    "names": "quote",
+    "kind": "Special Operator",
+    "file": "e3-8-7.xhtml",
+    "block": 1,
+    "line": 40,
+    "form_text": "\"a → (QUOTE A)\n\"'a",
+    "expected_values": [
+     "(QUOTE (QUOTE A))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "A"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "3.8.9",
+  "names": [
+   "define-compiler-macro"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.9-define-compiler-macro.xhtml",
+  "tex_file": "dict-eval-compile.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.95,
+    "tex_words": 19,
+    "epub_words": 21,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "$",
+      "ctx": "{ declaration } *"
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "$",
+      "ctx": "declaration } * |"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "3.8.9",
+    "names": "define-compiler-macro",
+    "kind": "Macro",
+    "file": "e3-8-9.xhtml",
+    "block": 1,
+    "line": 147,
+    "form_text": "(dolist (form\n'((distance :x1 (setq x 7) :x2 (decf x) :y1 (decf x) :y2 (decf x))\n(distance :x1 (setq x 7) :y1 (decf x) :x2 (decf x) :y2 (decf x))\n(distance :x1 (setq x 7) :y1 (incf x))\n(distance :x1 (setq x 7) :y1 (incf x) :x1 (incf x))\n(distance :x1 a1 :y1 b1 :x2 a2 :y2 b2)\n(distance :x1 a1 :x2 a2 :y1 b1 :y2 b2)\n(distance :x1 a1 :y1 b1 :z1 c1 :x2 a2 :y2 b2 :z2 c2)))\n(print (funcall (compiler-macro-function 'distance) form nil)))",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "(LET ((#:G6558 (SETQ X 7))",
+     "     (#:G6559 (DECF X))",
+     "     (#:G6560 (DECF X))",
+     "     (#:G6561 (DECF X)))",
+     " (DISTANCE :X1 #:G6558 :X2 #:G6559 :Y1 #:G6560 :Y2 #:G6561))",
+     "(DISTANCE-POSITIONAL (SETQ X 7) (DECF X) (DECF X) (DECF X))",
+     "(LET ((#:G6567 (SETQ X 7))",
+     "     (#:G6568 (INCF X)))",
+     " (DISTANCE :X1 #:G6567 :Y1 #:G6568))",
+     "(DISTANCE :X1 (SETQ X 7) :Y1 (INCF X) :X1 (INCF X))",
+     "(DISTANCE-POSITIONAL A1 B1 A2 B2)",
+     "(DISTANCE-POSITIONAL A1 B1 A2 B2)",
+     "(DISTANCE :X1 A1 :Y1 B1 :Z1 C1 :X2 A2 :Y2 B2 :Z2 C2)"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "COMPILED-PROGRAM-ERROR Execution of a form compiled with errors.\nForm:\n  (FLET ((KEY (N)\n         (NTH (* N 2) KEY-VALUE-PAIRS))\n       (ARG (N)\n         (NTH (1+ (* N 2)) KEY-VALUE-PAIRS))\n       (SIMPLEP (X)\n         (LET ((EXPANDED-X #))\n           (OR (CONSTANTP EXPANDED-X ENV) (SYMBOLP EXPANDED-X)))))\n  (LET ((N (/ (LENGTH KEY-VALUE-PAIRS) 2)))\n    (MULTIPLE-VALUE-BIND (X1S Y1S X2S Y2S OTHERS)\n        (LOOP FOR (KEY) ON KEY-VALUE-PAIRS BY #'CDDR\n              COUNT (EQ KEY ':X1) INTO X1S\n              COUNT ...)\n      (COND ((AND # # # # #) `(DISTANCE-POSITIONAL ,X1 ,Y1 ,X2 ,Y2))\n            ((AND # # # # #) `(DISTANCE-POSITIONAL ,X1 ,Y1 ,X2 ,Y2))\n            ((AND # # # # #)\n             (LET #\n               `#))\n            (T FORM)))))\nCompile-time error:\n  Lock on package SB-DEBUG violated when binding ARG as a local function while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\""
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "3.8.10",
+  "names": [
+   "defmacro"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.10-defmacro.xhtml",
+  "tex_file": "dict-eval-compile.tex",
+  "examples_ratio": 0.9975,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.95,
+    "tex_words": 19,
+    "epub_words": 21,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "$",
+      "ctx": "{ declaration } *"
+     },
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "$",
+      "ctx": "declaration } * |"
+     }
+    ]
+   },
+   {
+    "label": "Examples",
+    "ratio": 0.9975,
+    "tex_words": 989,
+    "epub_words": 986,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "``",
+      "epub": "\"",
+      "ctx": "f &environment env )"
+     },
+     {
+      "op": "delete",
+      "tex": "Exceptional Situations: .",
+      "epub": "",
+      "ctx": "X5 X6 ) )"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "3.8.10",
+    "names": "defmacro",
+    "kind": "Macro",
+    "file": "e3-8-10.xhtml",
+    "block": 6,
+    "line": 164,
+    "form_text": "(loser (car pool) ((+ x 1)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable POOL is unbound."
+    }
+   },
+   {
+    "secno": "3.8.10",
+    "names": "defmacro",
+    "kind": "Macro",
+    "file": "e3-8-10.xhtml",
+    "block": 7,
+    "line": 169,
+    "form_text": "(macroexpand '(dm1a))",
+    "expected_values": [
+     "(QUOTE (DM1A))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(QUOTE (DM1A))",
+     "T"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "3.8.10",
+    "names": "defmacro",
+    "kind": "Macro",
+    "file": "e3-8-10.xhtml",
+    "block": 7,
+    "line": 174,
+    "form_text": "(macroexpand '(dm1b q))",
+    "expected_values": [
+     "(QUOTE ((DM1B Q) Q NIL))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(QUOTE ((DM1B Q) Q NIL))",
+     "T"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "3.8.10",
+    "names": "defmacro",
+    "kind": "Macro",
+    "file": "e3-8-10.xhtml",
+    "block": 7,
+    "line": 175,
+    "form_text": "(macroexpand '(dm1b q r))",
+    "expected_values": [
+     "(QUOTE ((DM1B Q R) Q R))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(QUOTE ((DM1B Q R) Q R))",
+     "T"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "3.8.10",
+    "names": "defmacro",
+    "kind": "Macro",
+    "file": "e3-8-10.xhtml",
+    "block": 8,
+    "line": 180,
+    "form_text": "(macroexpand '(dm2a x y))",
+    "expected_values": [
+     "(QUOTE (FORM (DM2A X Y) A X B Y))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(QUOTE (FORM (DM2A X Y) A X B Y))",
+     "T"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "3.8.10",
+    "names": "defmacro",
+    "kind": "Macro",
+    "file": "e3-8-10.xhtml",
+    "block": 8,
+    "line": 194,
+    "form_text": "(let ((x1 5))\n(macrolet ((segundo (x) `(cadr ,x)))\n(dm2b x1 (((segundo x2) x3 x4)) x5 x6)))",
+    "expected_values": [
+     "((DM2B X1 (((SEGUNDO X2) X3 X4)) X5 X6)\n5 (((SEGUNDO X2) X3 X4)) (CADR X2) (X3 X4) 5 (X5 X6))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "COMPILED-PROGRAM-ERROR Execution of a form compiled with errors.\nForm:\n  (((SEGUNDO X2) X3 X4))\nCompile-time error:\n  illegal function call"
+    }
+   }
+  ],
+  "example_unparsed": [
+   {
+    "secno": "3.8.10",
+    "names": "defmacro",
+    "file": "e3-8-10.xhtml",
+    "block": 8,
+    "line": 183,
+    "text": "(defmacro dm2b (&whole form a (&whole b (c . d) &optional (e 5))\n&body f &environment env)\n\"(,',form ,,a ,',b ,',(macroexpand c env) ,',d ,',e ,',f))\n;Note that because backquote is involved, implementations may differ\n;slightly in the nature (though not the functionality) of the expansion.\n(macroexpand '(dm2b x1 (((incf x2) x3 x4)) x5 x6))",
+    "reason": "unbalanced form"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "3.8.11",
+  "names": [
+   "macro-function"
+  ],
+  "kind": "Accessor",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.11-macro-function.xhtml",
+  "tex_file": "dict-eval-compile.tex",
+  "examples_ratio": 0.9577,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9577,
+    "tex_words": 70,
+    "epub_words": 72,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "''yes ''no",
+      "epub": "\" yes \" no",
+      "ctx": "macro-function 'bar env )"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "3.8.11",
+    "names": "macro-function",
+    "kind": "Accessor",
+    "file": "e3-8-11.xhtml",
+    "block": 2,
+    "line": 70,
+    "form_text": "(macrolet ((foo (&environment env)\n(if (macro-function 'bar env)\n\"yes\n\"no)))\n(list (foo)\n(macrolet ((bar () :beep))\n(foo))))",
+    "expected_values": [
+     "(NO YES)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable NO is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "3.8.12",
+  "names": [
+   "macroexpand",
+   "macroexpand-1"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.12-macroexpand.xhtml",
+  "tex_file": "dict-eval-compile.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "3.8.12",
+    "names": "macroexpand, macroexpand-1",
+    "kind": "Function",
+    "file": "e3-8-12.xhtml",
+    "block": 1,
+    "line": 102,
+    "form_text": "(defmacro delta (x y) `(gamma ,x ,y))",
+    "expected_values": [
+     "EPSILON"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "DELTA"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "3.8.14",
+  "names": [
+   "symbol-macrolet"
+  ],
+  "kind": "Special Operator",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.14-symbol-macrolet.xhtml",
+  "tex_file": "dict-eval-compile.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "3.8.14",
+    "names": "symbol-macrolet",
+    "kind": "Special Operator",
+    "file": "e3-8-14.xhtml",
+    "block": 1,
+    "line": 97,
+    "form_text": "NOT",
+    "expected_values": [
+     "(foo foo)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable NOT is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "3.8.15",
+  "names": [
+   "*macroexpand-hook*"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.15-macroexpand-hook.xhtml",
+  "tex_file": "dict-eval-compile.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "3.8.15",
+    "names": "*macroexpand-hook*",
+    "kind": "Variable",
+    "file": "e3-8-15.xhtml",
+    "block": 1,
+    "line": 54,
+    "form_text": "(let ((*macroexpand-hook* #'hook)) (macroexpand '(machook 1 2)))",
+    "expected_values": [
+     "(/ (+ 1 2) 2)",
+     "true"
+    ],
+    "expected_italics": [
+     [],
+     [
+      "true"
+     ]
+    ],
+    "expected_output": [
+     "Now expanding (MACHOOK 1 2)"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(/ (+ 1 2) 2)",
+     "T"
+    ],
+    "actual_no_values": false,
+    "actual_output": [
+     "Now expanding: (MACHOOK 1 2)"
+    ],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "3.8.20",
+  "names": [
+   "dynamic-extent"
+  ],
+  "kind": "Declaration",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.20-dynamic-extent.xhtml",
+  "tex_file": "dict-eval-compile.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.933,
+    "tex_words": 179,
+    "epub_words": 179,
+    "n_diffs": 12,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "vari",
+      "epub": "var$i$",
+      "ctx": "declaration asserts for each"
+     },
+     {
+      "op": "replace",
+      "tex": "vij",
+      "epub": "v$ij$",
+      "ctx": "and for each value"
+     },
+     {
+      "op": "replace",
+      "tex": "vari",
+      "epub": "var$i$",
+      "ctx": "each value vij that"
+     },
+     {
+      "op": "replace",
+      "tex": "xijk",
+      "epub": "x$ijk$",
+      "ctx": "and for each object"
+     },
+     {
+      "op": "replace",
+      "tex": "vij",
+      "epub": "v$ij$",
+      "ctx": "otherwise inaccessible part of"
+     },
+     {
+      "op": "replace",
+      "tex": "vij",
+      "epub": "v$ij$",
+      "ctx": "at any time when"
+     },
+     {
+      "op": "replace",
+      "tex": "vari",
+      "epub": "var$i$",
+      "ctx": "becomes the value of"
+     },
+     {
+      "op": "replace",
+      "tex": "xijk",
+      "epub": "x$ijk$",
+      "ctx": "of F terminates ,"
+     },
+     {
+      "op": "replace",
+      "tex": "vari",
+      "epub": "var$i$",
+      "ctx": "established a binding for"
+     },
+     {
+      "op": "replace",
+      "tex": "vari",
+      "epub": "var$i$",
+      "ctx": "the current value of"
+     },
+     {
+      "op": "replace",
+      "tex": "vari",
+      "epub": "var$i$",
+      "ctx": "establish a binding for"
+     },
+     {
+      "op": "replace",
+      "tex": "fni",
+      "epub": "fn$i$",
+      "ctx": "relation holds for each"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "3.8.20",
+    "names": "dynamic-extent",
+    "kind": "Declaration",
+    "file": "e3-8-20.xhtml",
+    "block": 6,
+    "line": 192,
+    "form_text": "(do ((l (list-all-packages) (cdr l)))\n((null l))\n(declare (dynamic-extent l))\n(let ((name (package-name (car l))))\n(when (string-search \"COMMON-LISP\" name) (print name))))",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "\"COMMON-LISP\"",
+     "\"COMMON-LISP-USER\""
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNDEFINED-FUNCTION The function COMMON-LISP-USER::STRING-SEARCH is undefined."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "3.8.21",
+  "names": [
+   "type"
+  ],
+  "kind": "Declaration",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.21-type.xhtml",
+  "tex_file": "dict-eval-compile.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "3.8.21",
+    "names": "type",
+    "kind": "Declaration",
+    "file": "e3-8-21.xhtml",
+    "block": 2,
+    "line": 187,
+    "form_text": "(frob *one-array*)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR Value of SB-C::NEW-VALUE in (THE #<SB-KERNEL:NUMERIC-UNION-TYPE (SIGNED-BYTE 5)> SB-C::NEW-VALUE) is 31, not a (SIGNED-BYTE 5)."
+    }
+   },
+   {
+    "secno": "3.8.21",
+    "names": "type",
+    "kind": "Declaration",
+    "file": "e3-8-21.xhtml",
+    "block": 2,
+    "line": 188,
+    "form_text": "(frob *another-array*)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR Value of SB-C::NEW-VALUE in (THE #<SB-KERNEL:NUMERIC-UNION-TYPE (SIGNED-BYTE 5)> SB-C::NEW-VALUE) is 31, not a (SIGNED-BYTE 5)."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "3.8.30",
+  "names": [
+   "constantp"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.30-constantp.xhtml",
+  "tex_file": "dict-eval-compile.tex",
+  "examples_ratio": 0.9905,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9905,
+    "tex_words": 158,
+    "epub_words": 159,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "''temp",
+      "epub": "\" temp",
+      "ctx": "→ false ( constantp"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [],
+  "example_unparsed": [
+   {
+    "secno": "3.8.30",
+    "names": "constantp",
+    "file": "e3-8-30.xhtml",
+    "block": 1,
+    "line": 90,
+    "text": "(constantp \"temp)) → true\n(defconstant this-is-a-constant 'never-changing) →  THIS-IS-A-CONSTANT\n(constantp 'this-is-a-constant) → true\n(constantp \"temp\") → true\n(setq a 6) → 6\n(constantp a) → true\n(constantp '(sin pi)) → implementation-dependent\n(constantp '(car '(x))) → implementation-dependent\n(constantp '(eql x x)) → implementation-dependent\n(constantp '(typep x 'nil)) → implementation-dependent\n(constantp '(typep x 't)) → implementation-dependent\n(constantp '(values this-is-a-constant)) → implementation-dependent\n(constantp '(values 'x 'y)) → implementation-dependent\n(constantp '(let ((a '(a b c))) (+ (length a) 6))) → implementation-dependent",
+    "reason": "unbalanced form"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "4.4.24",
+  "names": [
+   "coerce"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/4-types-and-classes/4.4.24-coerce.xhtml",
+  "tex_file": "dict-types.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "4.4.24",
+    "names": "coerce",
+    "kind": "Function",
+    "file": "e4-4-24.xhtml",
+    "block": 2,
+    "line": 158,
+    "form_text": "(coerce '(a b c) '(vector * 4))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The length requested (3) does not match the type restriction in (VECTOR * 4)."
+    }
+   },
+   {
+    "secno": "4.4.24",
+    "names": "coerce",
+    "kind": "Function",
+    "file": "e4-4-24.xhtml",
+    "block": 2,
+    "line": 159,
+    "form_text": "(coerce #(a b c) '(vector * 4))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The length requested (3) does not match the type restriction in (VECTOR * 4)."
+    }
+   },
+   {
+    "secno": "4.4.24",
+    "names": "coerce",
+    "kind": "Function",
+    "file": "e4-4-24.xhtml",
+    "block": 2,
+    "line": 160,
+    "form_text": "(coerce '(a b c) '(vector * 2))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The length requested (3) does not match the type restriction in (VECTOR * 2)."
+    }
+   },
+   {
+    "secno": "4.4.24",
+    "names": "coerce",
+    "kind": "Function",
+    "file": "e4-4-24.xhtml",
+    "block": 2,
+    "line": 161,
+    "form_text": "(coerce #(a b c) '(vector * 2))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The length requested (3) does not match the type restriction in (VECTOR * 2)."
+    }
+   },
+   {
+    "secno": "4.4.24",
+    "names": "coerce",
+    "kind": "Function",
+    "file": "e4-4-24.xhtml",
+    "block": 2,
+    "line": 162,
+    "form_text": "(coerce \"foo\" '(string 2))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The length requested (3) does not match the type restriction in (VECTOR CHARACTER 2)."
+    }
+   },
+   {
+    "secno": "4.4.24",
+    "names": "coerce",
+    "kind": "Function",
+    "file": "e4-4-24.xhtml",
+    "block": 2,
+    "line": 163,
+    "form_text": "(coerce #(#\\a #\\b #\\c) '(string 2))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The length requested (3) does not match the type restriction in (VECTOR CHARACTER 2)."
+    }
+   },
+   {
+    "secno": "4.4.24",
+    "names": "coerce",
+    "kind": "Function",
+    "file": "e4-4-24.xhtml",
+    "block": 2,
+    "line": 164,
+    "form_text": "(coerce '(0 1) '(simple-bit-vector 3))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The length requested (2) does not match the type restriction in (SIMPLE-BIT-VECTOR 3)."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "4.4.26",
+  "names": [
+   "subtypep"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/4-types-and-classes/4.4.26-subtypep.xhtml",
+  "tex_file": "dict-types.tex",
+  "examples_ratio": 0.9986,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.998,
+    "tex_words": 768,
+    "epub_words": 765,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "delete",
+      "tex": "the intersection of",
+      "epub": "",
+      "ctx": "other than * ,"
+     }
+    ]
+   },
+   {
+    "label": "Examples",
+    "ratio": 0.9986,
+    "tex_words": 366,
+    "epub_words": 365,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "delete",
+      "tex": "dummy",
+      "epub": "",
+      "ctx": "subtypep ' ( satisfies"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "4.4.26",
+    "names": "subtypep",
+    "kind": "Function",
+    "file": "e4-4-26.xhtml",
+    "block": 1,
+    "line": 221,
+    "form_text": "(subtypep '(satisfies ) nil)",
+    "expected_values": [
+     "false",
+     "implementation-dependent"
+    ],
+    "expected_italics": [
+     [
+      "false"
+     ],
+     [
+      "implementation-dependent"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "ARG-COUNT-ERROR Error while parsing arguments to DESTRUCTURING-BIND:too few elements in () to satisfy lambda list (PREDICATE-NAME): exactly 1 expected, but got 0"
+    }
+   },
+   {
+    "secno": "4.4.26",
+    "names": "subtypep",
+    "kind": "Function",
+    "file": "e4-4-26.xhtml",
+    "block": 3,
+    "line": 260,
+    "form_text": "(subtypep '(array <aet-x>) '(array <aet-y>))",
+    "expected_values": [
+     "true",
+     "true"
+    ],
+    "expected_italics": [
+     [
+      "true"
+     ],
+     [
+      "true"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "NIL",
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "4.4.26",
+    "names": "subtypep",
+    "kind": "Function",
+    "file": "e4-4-26.xhtml",
+    "block": 3,
+    "line": 261,
+    "form_text": "(subtypep '(array <aet-y>) '(array <aet-x>))",
+    "expected_values": [
+     "true",
+     "true"
+    ],
+    "expected_italics": [
+     [
+      "true"
+     ],
+     [
+      "true"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "NIL",
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "4.4.27",
+  "names": [
+   "type-of"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/4-types-and-classes/4.4.27-type-of.xhtml",
+  "tex_file": "dict-types.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "4.4.27",
+    "names": "type-of",
+    "kind": "Function",
+    "file": "e4-4-27.xhtml",
+    "block": 2,
+    "line": 108,
+    "form_text": "(type-of #c(0 1))",
+    "expected_values": [
+     "COMPLEX"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "(COMPLEX INTEGER)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(COMPLEX RATIONAL)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "4.4.27",
+    "names": "type-of",
+    "kind": "Function",
+    "file": "e4-4-27.xhtml",
+    "block": 2,
+    "line": 113,
+    "form_text": "(type-of \"abc\")",
+    "expected_values": [
+     "STRING"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "(STRING 3)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(SIMPLE-ARRAY CHARACTER (3))"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "4.4.27",
+    "names": "type-of",
+    "kind": "Function",
+    "file": "e4-4-27.xhtml",
+    "block": 2,
+    "line": 117,
+    "form_text": "(type-of (expt 2 40))",
+    "expected_values": [
+     "BIGNUM"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "INTEGER"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(INTEGER 1099511627776 1099511627776)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "SYSTEM::TWO-WORD-BIGNUM"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "FIXNUM"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(INTEGER 0 4611686018427387903)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "4.4.27",
+    "names": "type-of",
+    "kind": "Function",
+    "file": "e4-4-27.xhtml",
+    "block": 2,
+    "line": 125,
+    "form_text": "(class-name (class-of *foo*))",
+    "expected_values": [
+     "VECTOR"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "SIMPLE-VECTOR"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "4.4.27",
+    "names": "type-of",
+    "kind": "Function",
+    "file": "e4-4-27.xhtml",
+    "block": 2,
+    "line": 126,
+    "form_text": "(type-of *foo*)",
+    "expected_values": [
+     "VECTOR"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "(VECTOR T 5)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(SIMPLE-VECTOR 5)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "4.4.28",
+  "names": [
+   "typep"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/4-types-and-classes/4.4.28-typep.xhtml",
+  "tex_file": "dict-types.tex",
+  "examples_ratio": 0.9624,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9624,
+    "tex_words": 193,
+    "epub_words": 206,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "§",
+      "epub": "12 . 1 . 5 . 3 Rule of Canonical Representation for Complex Rationals",
+      "ctx": "to ; ; Section"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "4.4.30",
+  "names": [
+   "type-error-datum",
+   "type-error-expected-type"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/4-types-and-classes/4.4.30-type-error-datum.xhtml",
+  "tex_file": "dict-types.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "See Also",
+    "ratio": 0.5714,
+    "tex_words": 4,
+    "epub_words": 3,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "Chapter §",
+      "epub": "Conditions",
+      "ctx": "type-error ,"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ }
+]

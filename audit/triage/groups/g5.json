@@ -1,0 +1,1144 @@
+[
+ {
+  "secno": "14.2.8",
+  "names": [
+   "rplaca",
+   "rplacd"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.8-rplaca.xhtml",
+  "item": "text:Pronunciation",
+  "category": "normaliser-noise",
+  "summary": "Webster-style accent macros (\\stress/\\Stress/\\harde/\\schwa) rendered as IPA-like marks; compared each variant: stress placement and vowels correspond. Schwa is rendered as Greek epsilon (notation choice).",
+  "epub_excerpt": "[ ˌrēˈplakε ] or [ ˌrεˈplakε ]",
+  "tex_excerpt": "\\pronounced{\\stress{r\\harde}\\Stress{plak}\\schwa}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.9",
+  "names": [
+   "car",
+   "cdr",
+   "caar",
+   "cadr",
+   "cdar",
+   "cddr",
+   "caaar",
+   "caadr",
+   "cadar",
+   "caddr",
+   "cdaar",
+   "cdadr",
+   "cddar",
+   "cdddr",
+   "caaaar",
+   "caaadr",
+   "caadar",
+   "caaddr",
+   "cadaar",
+   "cadadr",
+   "caddar",
+   "cadddr",
+   "cdaaar",
+   "cdaadr",
+   "cdadar",
+   "cdaddr",
+   "cddaar",
+   "cddadr",
+   "cdddar",
+   "cddddr"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.9-car.xhtml",
+  "item": "text:Pronunciation",
+  "category": "normaliser-noise",
+  "summary": "Same accent-macro rendering; all 7 variants (cadr, caddr x2, cdr, cddr x2) checked: \\Stress -> primary ˈ, \\stress -> secondary ˌ, \\.u -> u̇, \\schwa -> ε. Faithful.",
+  "epub_excerpt": "[ ˈkadεˌdεr ] or [ ˈkaˌdu̇dεr ]",
+  "tex_excerpt": "\\pronounced{\\Stress{kad}\\schwa \\stress{d\\schwa r}}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.44",
+  "names": [
+   "adjoin"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.44-adjoin.xhtml",
+  "item": "text:Description",
+  "category": "conversion-error",
+  "summary": "Expansion of the \\SatisfyTest macro lost the serial comma (\"test-not, and key\") and the italics on \\param{item} (renders as plain \"item\"). Minor punctuation/markup loss; only adjoin uses this macro in the EPUB.",
+  "epub_excerpt": "The <i>test</i>, <i>test-not</i> and <i>key</i> affect how it is determined whether item is the same as",
+  "tex_excerpt": "\\def\\SatisfyTest#1#2{The \\param{test}, \\param{test-not}, and \\param{key} affect how it is determined whether \\param{#1} is the same as #2.",
+  "fix": {
+   "old": "<i>test-not</i> and <i>key</i> affect how it is determined whether item is",
+   "new": "<i>test-not</i>, and <i>key</i> affect how it is determined whether <i>item</i> is"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "15.2.3",
+  "names": [
+   "vector"
+  ],
+  "file": "OEBPS/text/15-arrays/15.2.3-vector.xhtml",
+  "item": "text:Notes",
+  "category": "normaliser-noise",
+  "summary": "TeX has math-mode $C$ in \"(vector $C$)\"; EPUB renders it as <code>(vector <i>C</i>)</code> with italic C and \"where <i>C</i> is any subtype\". Faithful (no raw math markup in the EPUB).",
+  "epub_excerpt": "(vector <i>C</i>) ... where <i>C</i> is any subtype of character",
+  "tex_excerpt": "\\f{(vector $C$)}, where $C$ is any \\term{subtype}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "15.2.33",
+  "names": [
+   "bit",
+   "sbit"
+  ],
+  "file": "OEBPS/text/15-arrays/15.2.33-bit.xhtml",
+  "item": "text:Syntax",
+  "category": "conversion-error",
+  "summary": "Three defects in one block: sbit row returns \"new-bit\" instead of \"bit\" (TeX: both rows have value {bit}; new-bit belongs only to the setf forms); \"subscripts\" misspelled \"subscrips\" in both setf lines. Single multi-line fix covers all three.",
+  "epub_excerpt": "sbit <i>bit-array</i> &rest <i>subscripts</i> → <i>new-bit</i>; (setf (bit ... &rest <i>subscrips</i>) <i>new-bit</i>)",
+  "tex_excerpt": "\\DefunMultiWithValues {bit-array {\\rest} subscripts} {bit} ... \\DefsetfMulti {bit-array {\\rest} subscripts} {new-bit}",
+  "fix": {
+   "old": "<i>new-bit</i></td></tr>\n</tbody></table><p>\n(<b>setf</b>(<b>bit</b> <i>bit-array</i> &amp;rest <i>subscrips</i>) <i>new-bit</i>)<br/>\n(<b>setf</b>(<b>sbit</b> <i>bit-array</i> &amp;rest <i>subscrips</i>) <i>new-bit</i>)",
+   "new": "<i>bit</i></td></tr>\n</tbody></table><p>\n(<b>setf</b>(<b>bit</b> <i>bit-array</i> &amp;rest <i>subscripts</i>) <i>new-bit</i>)<br/>\n(<b>setf</b>(<b>sbit</b> <i>bit-array</i> &amp;rest <i>subscripts</i>) <i>new-bit</i>)"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "15.2.34",
+  "names": [
+   "bit-and",
+   "bit-andc1",
+   "bit-andc2",
+   "bit-eqv",
+   "bit-ior",
+   "bit-nand",
+   "bit-nor",
+   "bit-not",
+   "bit-orc1",
+   "bit-orc2",
+   "bit-xor"
+  ],
+  "file": "OEBPS/text/15-arrays/15.2.34-bit-and.xhtml",
+  "item": "text:Description",
+  "category": "normaliser-noise",
+  "summary": "Difference is the \\halign figure (Figure 15-4) which the normaliser cannot flatten. Compared the 11 table rows and caption by eye against TeX: identical wording, parameters italic, all rows present.",
+  "epub_excerpt": "<tr><td>bit-nand</td><td>complement of <i>bit-array1</i> and <i>bit-array2</i></td></tr> ...",
+  "tex_excerpt": "\\funref{bit-nand}&complement of \\param{bit-array1} and \\param{bit-array2}\\cr",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "17.3.15",
+  "names": [
+   "position",
+   "position-if",
+   "position-if-not"
+  ],
+  "file": "OEBPS/text/17-sequences/17.3.15-position.xhtml",
+  "item": "text:Description",
+  "category": "conversion-error",
+  "summary": "Inserted text not in the TeX: \"<strong>[see correction below]</strong>\" after \"leftmost (if from-end is true\". No such note exists anywhere in the TeX; there is no correction in the file either.",
+  "epub_excerpt": "leftmost (if <i>from-end</i> is <i>true</i> <strong>[see correction below]</strong>) or of the rightmost",
+  "tex_excerpt": "of the leftmost  (if \\param{from-end} is \\term{true}) or of the rightmost (if \\param{from-end} is \\term{false})",
+  "fix": {
+   "old": " <strong>[see\n        correction below]</strong>",
+   "new": ""
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.4",
+  "names": [
+   "make-pathname"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.4-make-pathname.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "Lost \"$\" in VMS pathnames: SYS$DISK: became SYS<i>DISK: ... SYS</i>DISK:. The converter treated each pair of $ signs as TeX math delimiters (italic span), which dropped the $ and left an <i> opened in one example line and closed several lines later (4 occurrences). The rendered text reads SYSDISK:.",
+  "epub_excerpt": "#P\"SYS<i>DISK:[PUBLIC.GAMES]CHESS.DB\" ... #P\"BOBBY::SYS</i>DISK:...",
+  "tex_excerpt": "#P\"SYS$DISK:[PUBLIC.GAMES]CHESS.DB\"",
+  "fix": {
+   "old": "#P\"SYS<i>DISK",
+   "new": "#P\"SYS$DISK"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "old": "#P\"SYS<i>DISK",
+    "new": "#P\"SYS$DISK"
+   },
+   {
+    "old": "BOBBY::SYS</i>DISK",
+    "new": "BOBBY::SYS$DISK"
+   },
+   {
+    "old": "MY-VAX:SYS<i>DISK",
+    "new": "MY-VAX:SYS$DISK"
+   },
+   {
+    "old": "MY-VAX:SYS</i>DISK",
+    "new": "MY-VAX:SYS$DISK"
+   }
+  ]
+ },
+ {
+  "secno": "19.4.8",
+  "names": [
+   "logical-pathname-translations"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.8-logical-pathname-translations.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "Same lost-$ defect as 19.4.4: \"MY-VAX:SYS<i>DISK:[JOE.DOC]\" and \"MY-VAX:SYS</i>DISK:[JOE.MAIL.PROG...]*.MBX\" in the setf translations (2 occurrences; the later #P\"MY-VAX:SYS$DISK:...\" result line is already correct). The other text difference (a \\reviewer{Laddaga: ...} note) is correctly suppressed: setup-options.tex has \\editornotesfalse.",
+  "epub_excerpt": "\"MY-VAX:SYS<i>DISK:[JOE.DOC]\" ... \"MY-VAX:SYS</i>DISK:[JOE.MAIL.PROG...]*.MBX\"",
+  "tex_excerpt": "\"MY-VAX:SYS$DISK:[JOE.DOC]\"",
+  "fix": {
+   "old": "SYS<i>DISK",
+   "new": "SYS$DISK"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "old": "SYS<i>DISK",
+    "new": "SYS$DISK"
+   },
+   {
+    "old": "SYS</i>DISK",
+    "new": "SYS$DISK"
+   }
+  ]
+ },
+ {
+  "secno": "14.2.12",
+  "names": [
+   "subst",
+   "subst-if",
+   "subst-if-not",
+   "nsubst",
+   "nsubst-if",
+   "nsubst-if-not"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.12-subst.xhtml",
+  "item": "example:1:140",
+  "category": "original-erratum",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Draft's stated result (1 X) for (subst-if-not '(x) #'consp tree1) is wrong; SBCL's result replaces every non-cons leaf, which is what the definition prescribes.",
+  "epub_excerpt": "(subst-if-not '(x) #'consp tree1) → (1 X)",
+  "tex_excerpt": "(subst-if-not '(x) #'consp tree1) \\EV (1 X)",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "14.2.27",
+  "names": [
+   "revappend",
+   "nreconc"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.27-revappend.xhtml",
+  "item": "example:1:66",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Book prints NIL for (equal list-1 '(1 2 3)) because NRECONC destroyed the (literal) list-1; SBCL prints T (the literal is constant-folded/not visibly modified). Destructive modification of a literal is undefined; result is implementation-dependent.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "14.2.31",
+  "names": [
+   "nthcdr"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.31-nthcdr.xhtml",
+  "item": "example:1:52",
+  "category": "harness-limitation",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Example is an error-signalling form; the book gives prose 'Error: Attempted to take CDR of 1.' SBCL does signal a TYPE-ERROR as expected.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.31",
+  "names": [
+   "nthcdr"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.31-nthcdr.xhtml",
+  "item": "unparsed:1",
+  "category": "harness-limitation",
+  "summary": "Prose line \"Error: Attempted to take CDR of 1.\" is an expected-error note, not a result.",
+  "epub_excerpt": "Error: Attempted to take CDR of 1.",
+  "tex_excerpt": "Error: Attempted to take CDR of 1.",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.36",
+  "names": [
+   "assoc",
+   "assoc-if",
+   "assoc-if-not"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.36-assoc.xhtml",
+  "item": "example:1:74",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). (setq values ...) violates the CL package lock in SBCL (VALUES is a CL symbol); the later lines fail as a cascade (unbound VALUES). Book's choice of variable name VALUES is legal-but-bad in the draft (binding a CL symbol as a variable is undefined per 11.1.2.1.2).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.36",
+  "names": [
+   "assoc",
+   "assoc-if",
+   "assoc-if-not"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.36-assoc.xhtml",
+  "item": "example:1:75",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). (setq values ...) violates the CL package lock in SBCL (VALUES is a CL symbol); the later lines fail as a cascade (unbound VALUES). Book's choice of variable name VALUES is legal-but-bad in the draft (binding a CL symbol as a variable is undefined per 11.1.2.1.2).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.36",
+  "names": [
+   "assoc",
+   "assoc-if",
+   "assoc-if-not"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.36-assoc.xhtml",
+  "item": "example:1:76",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). (setq values ...) violates the CL package lock in SBCL (VALUES is a CL symbol); the later lines fail as a cascade (unbound VALUES). Book's choice of variable name VALUES is legal-but-bad in the draft (binding a CL symbol as a variable is undefined per 11.1.2.1.2).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.36",
+  "names": [
+   "assoc",
+   "assoc-if",
+   "assoc-if-not"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.36-assoc.xhtml",
+  "item": "example:1:77",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). (setq values ...) violates the CL package lock in SBCL (VALUES is a CL symbol); the later lines fail as a cascade (unbound VALUES). Book's choice of variable name VALUES is legal-but-bad in the draft (binding a CL symbol as a variable is undefined per 11.1.2.1.2).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.43",
+  "names": [
+   "intersection",
+   "nintersection"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.43-intersection.xhtml",
+  "item": "example:1:107",
+  "category": "original-erratum",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). The draft's example list contains unquoted symbols (list 1 1 2 3 4 a b c ...): a, b, c are unbound variables; original text bug (later CLHS also leaves it). Subsequent steps fail only as a cascade.",
+  "epub_excerpt": "(setq list1 (list 1 1 2 3 4 a b c \"A\" \"B\" \"C\" \"d\")",
+  "tex_excerpt": "(setq list1 (list 1 1 2 3 4 a b c \"A\" \"B\" \"C\" \"d\")",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "14.2.43",
+  "names": [
+   "intersection",
+   "nintersection"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.43-intersection.xhtml",
+  "item": "example:1:110",
+  "category": "original-erratum",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Cascade from line 107 (LIST1/LIST2 never bound because of unquoted a b c in the draft's setq).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "14.2.43",
+  "names": [
+   "intersection",
+   "nintersection"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.43-intersection.xhtml",
+  "item": "example:1:111",
+  "category": "original-erratum",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Cascade from line 107 (LIST1/LIST2 never bound because of unquoted a b c in the draft's setq).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "14.2.43",
+  "names": [
+   "intersection",
+   "nintersection"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.43-intersection.xhtml",
+  "item": "example:1:112",
+  "category": "original-erratum",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Cascade from line 107 (LIST1/LIST2 never bound because of unquoted a b c in the draft's setq).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "14.2.43",
+  "names": [
+   "intersection",
+   "nintersection"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.43-intersection.xhtml",
+  "item": "example:1:113",
+  "category": "original-erratum",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Cascade from line 107 (LIST1/LIST2 never bound because of unquoted a b c in the draft's setq).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "14.2.43",
+  "names": [
+   "intersection",
+   "nintersection"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.43-intersection.xhtml",
+  "item": "example:1:114",
+  "category": "harness-limitation",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Expected value is the prose 'implementation-dependent' (with an e.g. comment); also cascade from line 107.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.43",
+  "names": [
+   "intersection",
+   "nintersection"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.43-intersection.xhtml",
+  "item": "example:1:115",
+  "category": "harness-limitation",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Expected value is the prose 'implementation-dependent' (with an e.g. comment); also cascade from line 107.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.43",
+  "names": [
+   "intersection",
+   "nintersection"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.43-intersection.xhtml",
+  "item": "example:1:120",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Order of elements in INTERSECTION/NINTERSECTION result is unspecified; SBCL returns ((3 . 4) (2 . 3)).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.46",
+  "names": [
+   "set-difference",
+   "nset-difference"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.46-set-difference.xhtml",
+  "item": "example:1:101",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Result order of NSET-DIFFERENCE is unspecified (SBCL gives (\"b\" \"A\")).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.46",
+  "names": [
+   "set-difference",
+   "nset-difference"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.46-set-difference.xhtml",
+  "item": "example:1:106",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Result order of NSET-DIFFERENCE is unspecified.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.46",
+  "names": [
+   "set-difference",
+   "nset-difference"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.46-set-difference.xhtml",
+  "item": "example:1:108",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). lst1 after destructive NSET-DIFFERENCE: the book's value is what it was before; destructive effect on lst1 is implementation-dependent (SBCL spliced out the element).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.46",
+  "names": [
+   "set-difference",
+   "nset-difference"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.46-set-difference.xhtml",
+  "item": "example:2:112",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Book says 'One possible ordering'; SBCL's ordering differs.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.47",
+  "names": [
+   "set-exclusive-or",
+   "nset-exclusive-or"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.47-set-exclusive-or.xhtml",
+  "item": "example:1:92",
+  "category": "original-erratum",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). The draft's source has (list ((\"a\" . \"b\") ...)) i.e. an extra pair of parentheses, a call to a non-function: the draft example is malformed (the earlier set-difference example in the TeX uses '((...)) correctly).",
+  "epub_excerpt": "(setq lst1 (list ((\"a\" . \"b\") (\"c\" . \"d\") (\"e\" . \"f\"))))",
+  "tex_excerpt": "(setq lst1 (list ((\"a\" . \"b\") (\"c\" . \"d\") (\"e\" . \"f\"))))",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.47",
+  "names": [
+   "set-exclusive-or",
+   "nset-exclusive-or"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.47-set-exclusive-or.xhtml",
+  "item": "example:1:94",
+  "category": "original-erratum",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). The draft's source has (list ((\"a\" . \"b\") ...)) i.e. an extra pair of parentheses, a call to a non-function: the draft example is malformed (the earlier set-difference example in the TeX uses '((...)) correctly).",
+  "epub_excerpt": "(setq lst1 (list ((\"a\" . \"b\") (\"c\" . \"d\") (\"e\" . \"f\"))))",
+  "tex_excerpt": "(setq lst1 (list ((\"a\" . \"b\") (\"c\" . \"d\") (\"e\" . \"f\"))))",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.47",
+  "names": [
+   "set-exclusive-or",
+   "nset-exclusive-or"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.47-set-exclusive-or.xhtml",
+  "item": "example:1:96",
+  "category": "original-erratum",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Cascade from the malformed setq forms at lines 92/94 (lst1/lst2 keep earlier values).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.47",
+  "names": [
+   "set-exclusive-or",
+   "nset-exclusive-or"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.47-set-exclusive-or.xhtml",
+  "item": "example:1:98",
+  "category": "original-erratum",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Cascade from the malformed setq forms at lines 92/94 (lst1/lst2 keep earlier values).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.47",
+  "names": [
+   "set-exclusive-or",
+   "nset-exclusive-or"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.47-set-exclusive-or.xhtml",
+  "item": "example:1:99",
+  "category": "original-erratum",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Cascade from the malformed setq forms at lines 92/94 (lst1/lst2 keep earlier values).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.49",
+  "names": [
+   "union",
+   "nunion"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.49-union.xhtml",
+  "item": "example:1:101",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Result order of UNION is unspecified (the book lists three alternatives, SBCL gives a fourth).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.49",
+  "names": [
+   "union",
+   "nunion"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.49-union.xhtml",
+  "item": "example:1:105",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Result order of UNION is unspecified.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "14.2.49",
+  "names": [
+   "union",
+   "nunion"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.49-union.xhtml",
+  "item": "example:1:112",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Result order of NUNION is unspecified.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "15.2.8",
+  "names": [
+   "adjust-array"
+  ],
+  "file": "OEBPS/text/15-arrays/15.2.8-adjust-array.xhtml",
+  "item": "example:1:268",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Default initial contents of a (non-:initial-element) array is implementation-dependent: SBCL gives 0 where the book shows NIL.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "15.2.8",
+  "names": [
+   "adjust-array"
+  ],
+  "file": "OEBPS/text/15-arrays/15.2.8-adjust-array.xhtml",
+  "item": "example:1:270",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Same: uninitialised element values are 0 in SBCL, NIL in the book.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "15.2.8",
+  "names": [
+   "adjust-array"
+  ],
+  "file": "OEBPS/text/15-arrays/15.2.8-adjust-array.xhtml",
+  "item": "example:3:290",
+  "category": "harness-limitation",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). The 4-by-4 array m is defined in prose/#2A text outside the code block, so M is unbound.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "15.2.21",
+  "names": [
+   "fill-pointer"
+  ],
+  "file": "OEBPS/text/15-arrays/15.2.21-fill-pointer.xhtml",
+  "item": "example:1:39",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Uninitialised elements: SBCL 0, book NIL.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "15.2.21",
+  "names": [
+   "fill-pointer"
+  ],
+  "file": "OEBPS/text/15-arrays/15.2.21-fill-pointer.xhtml",
+  "item": "example:1:47",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Uninitialised elements beyond the fill pointer: SBCL 0, book NIL.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "17.3.9",
+  "names": [
+   "reduce"
+  ],
+  "file": "OEBPS/text/17-sequences/17.3.9-reduce.xhtml",
+  "item": "example:1:111",
+  "category": "harness-limitation",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). The line '(reduce #\\'- ...) == (- 1 (- 2 ...)) -> -2' uses the book's equivalence notation: \\EQ ($\\equiv$) is written '==' throughout the EPUB (known book-wide convention, see audit summary). The harness evaluated '==' as a symbol.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "17.3.21",
+  "names": [
+   "merge"
+  ],
+  "file": "OEBPS/text/17-sequences/17.3.21-merge.xhtml",
+  "item": "unparsed:1",
+  "category": "original-erratum",
+  "summary": "The draft TeX itself has the unbalanced string: (setq test2 (copy-seq :nosy\")) (should be \"NOSY\"), and also (vector ((red . 1) (blue . 4))) / (vector ((yellow . 2) (green . 7))) with an extra paren pair. EPUB equals TeX (dict-sequences.tex line 2089-2092, same in dpANS3), so this is not a conversion error. If the user wants the book corrected, the fix is to \"NOSY\" and (vector (quote...)) forms; no fix proposed here.",
+  "epub_excerpt": "(setq test2 (copy-seq :nosy\"))",
+  "tex_excerpt": "(setq test2 (copy-seq :nosy\"))",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "18.2.11",
+  "names": [
+   "maphash"
+  ],
+  "file": "OEBPS/text/18-hash-tables/18.2.11-maphash.xhtml",
+  "item": "unparsed:1",
+  "category": "harness-limitation",
+  "summary": "Printed output lines of the (print (list k v)) example have no ▷ marker in the TeX (the TeX shows them bare, as in the original draft) so the harness took them as prose/result without form. EPUB equals TeX.",
+  "epub_excerpt": "(0 0)",
+  "tex_excerpt": "(0 0)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "18.2.11",
+  "names": [
+   "maphash"
+  ],
+  "file": "OEBPS/text/18-hash-tables/18.2.11-maphash.xhtml",
+  "item": "unparsed:2",
+  "category": "harness-limitation",
+  "summary": "Printed output lines of the (print (list k v)) example have no ▷ marker in the TeX (the TeX shows them bare, as in the original draft) so the harness took them as prose/result without form. EPUB equals TeX.",
+  "epub_excerpt": "(8 64)",
+  "tex_excerpt": "(8 64)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "18.2.11",
+  "names": [
+   "maphash"
+  ],
+  "file": "OEBPS/text/18-hash-tables/18.2.11-maphash.xhtml",
+  "item": "unparsed:3",
+  "category": "harness-limitation",
+  "summary": "Printed output lines of the (print (list k v)) example have no ▷ marker in the TeX (the TeX shows them bare, as in the original draft) so the harness took them as prose/result without form. EPUB equals TeX.",
+  "epub_excerpt": "(2 4)",
+  "tex_excerpt": "(2 4)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "18.2.11",
+  "names": [
+   "maphash"
+  ],
+  "file": "OEBPS/text/18-hash-tables/18.2.11-maphash.xhtml",
+  "item": "unparsed:4",
+  "category": "harness-limitation",
+  "summary": "Printed output lines of the (print (list k v)) example have no ▷ marker in the TeX (the TeX shows them bare, as in the original draft) so the harness took them as prose/result without form. EPUB equals TeX.",
+  "epub_excerpt": "(6 36)",
+  "tex_excerpt": "(6 36)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "18.2.11",
+  "names": [
+   "maphash"
+  ],
+  "file": "OEBPS/text/18-hash-tables/18.2.11-maphash.xhtml",
+  "item": "unparsed:5",
+  "category": "harness-limitation",
+  "summary": "Printed output lines of the (print (list k v)) example have no ▷ marker in the TeX (the TeX shows them bare, as in the original draft) so the harness took them as prose/result without form. EPUB equals TeX.",
+  "epub_excerpt": "(4 16)",
+  "tex_excerpt": "(4 16)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "18.2.11",
+  "names": [
+   "maphash"
+  ],
+  "file": "OEBPS/text/18-hash-tables/18.2.11-maphash.xhtml",
+  "item": "unparsed:6",
+  "category": "harness-limitation",
+  "summary": "Final \"→ NIL\" is the maphash return value following the bare output lines; harness could not attach it to a form. EPUB equals TeX.",
+  "epub_excerpt": "→  NIL",
+  "tex_excerpt": "→  NIL",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "18.2.12",
+  "names": [
+   "with-hash-table-iterator"
+  ],
+  "file": "OEBPS/text/18-hash-tables/18.2.12-with-hash-table-iterator.xhtml",
+  "item": "example:2:101",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). The example redefines CL:MAPHASH, which is package-locked in SBCL.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.3",
+  "names": [
+   "pathname"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.3-pathname.xhtml",
+  "item": "example:1:97",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Pathname printing / file system conventions are implementation-specific (book shows a Lisp-machine host).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.4",
+  "names": [
+   "make-pathname"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.4-make-pathname.xhtml",
+  "item": "example:1:145",
+  "category": "conversion-error",
+  "summary": "Expected value corrupted by the lost-$ defect (SYS$DISK: -> SYSDISK:) in the 19.4.4 text:Examples record; fix is the same. The runtime mismatch with SBCL is also an implementation difference.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.4",
+  "names": [
+   "make-pathname"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.4-make-pathname.xhtml",
+  "item": "example:1:148",
+  "category": "conversion-error",
+  "summary": "Expected value corrupted by the lost-$ defect (SYS$DISK: -> SYSDISK:) in the 19.4.4 text:Examples record; fix is the same. The runtime mismatch with SBCL is also an implementation difference.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.4",
+  "names": [
+   "make-pathname"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.4-make-pathname.xhtml",
+  "item": "example:1:157",
+  "category": "conversion-error",
+  "summary": "Expected value corrupted by the lost-$ defect (SYS$DISK: -> SYSDISK:) in the 19.4.4 text:Examples record; fix is the same. The runtime mismatch with SBCL is also an implementation difference.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.5",
+  "names": [
+   "pathnamep"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.5-pathnamep.xhtml",
+  "item": "example:1:36",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Book prints the pathname in #S(PATHNAME ...) syntax; SBCL prints #P\"test\" (an issue PATHNAME-PRINT-READ:SHARPSIGN-P outcome; both are permitted).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.7",
+  "names": [
+   "load-logical-pathname-translations"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.7-load-logical-pathname-translations.xhtml",
+  "item": "example:1:44",
+  "category": "harness-limitation",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Book shows an error described in prose ('Error: The logical host HACKS is not defined.') as output; example needs a site-specific logical host.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.7",
+  "names": [
+   "load-logical-pathname-translations"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.7-load-logical-pathname-translations.xhtml",
+  "item": "example:1:46",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Requires a site translation file SYS:SITE;HACKS.TRANSLATIONS; not available in SBCL.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.7",
+  "names": [
+   "load-logical-pathname-translations"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.7-load-logical-pathname-translations.xhtml",
+  "item": "example:1:50",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Depends on HACKS logical host being loaded (VMS translations in the book).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.7",
+  "names": [
+   "load-logical-pathname-translations"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.7-load-logical-pathname-translations.xhtml",
+  "item": "example:1:52",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Requires SYS:SITE;HACKS.TRANSLATIONS.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.8",
+  "names": [
+   "logical-pathname-translations"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.8-logical-pathname-translations.xhtml",
+  "item": "unparsed:skipped-1",
+  "category": "harness-limitation",
+  "summary": "Skipped by the harness (\"absolute/parent path literal\"): Unix translation literals \"/lib/prog/...\" are not evaluated. EPUB equals TeX apart from the $ defect recorded in text:Examples.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.8",
+  "names": [
+   "logical-pathname-translations"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.8-logical-pathname-translations.xhtml",
+  "item": "unparsed:skipped-2",
+  "category": "harness-limitation",
+  "summary": "Skipped by the harness (\"absolute/parent path literal\"): Unix translation literals \"/lib/prog/...\" are not evaluated. EPUB equals TeX apart from the $ defect recorded in text:Examples.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.8",
+  "names": [
+   "logical-pathname-translations"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.8-logical-pathname-translations.xhtml",
+  "item": "unparsed:skipped-3",
+  "category": "harness-limitation",
+  "summary": "Skipped by the harness (\"absolute/parent path literal\"): Unix translation literals \"/lib/prog/...\" are not evaluated. EPUB equals TeX apart from the $ defect recorded in text:Examples.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.10",
+  "names": [
+   "*default-pathname-defaults*"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.10-default-pathname-defaults.xhtml",
+  "item": "example:1:37",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Book shows a site-specific default (PS:<FRED>); SBCL has the cwd.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.10",
+  "names": [
+   "*default-pathname-defaults*"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.10-default-pathname-defaults.xhtml",
+  "item": "example:1:38",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Depends on the book's assumed *default-pathname-defaults* value.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.10",
+  "names": [
+   "*default-pathname-defaults*"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.10-default-pathname-defaults.xhtml",
+  "item": "example:1:40",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Book shows #P\"<MARY>CALENDAR\" (Lisp-machine/VMS-style syntax); SBCL parses (pathname \"<MARY>\") as a Unix name.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.12",
+  "names": [
+   "parse-namestring"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.12-parse-namestring.xhtml",
+  "item": "example:1:189",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Book prints #S(PATHNAME ...) (issue PATHNAME-PRINT-READ:SHARPSIGN-P); SBCL prints #P\"test\".",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.12",
+  "names": [
+   "parse-namestring"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.12-parse-namestring.xhtml",
+  "item": "example:1:193",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Same #S vs #P printing; the second value 4 matches.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.12",
+  "names": [
+   "parse-namestring"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.12-parse-namestring.xhtml",
+  "item": "example:1:197",
+  "category": "harness-limitation",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Depends on (setq s (open xxx)) where xxx is an italic placeholder in the TeX (\\i{xxx}); the harness cannot evaluate it.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.12",
+  "names": [
+   "parse-namestring"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.12-parse-namestring.xhtml",
+  "item": "example:1:200",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Book's second value 15 is a placeholder and the form passes NIL as DEFAULTS, which SBCL rejects; behaviour with a NIL defaults argument is implementation-dependent.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.12",
+  "names": [
+   "parse-namestring"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.12-parse-namestring.xhtml",
+  "item": "example:1:202",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). SBCL returns the secondary value 8; the book shows only the primary value.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.13",
+  "names": [
+   "wild-pathname-p"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.13-wild-pathname-p.xhtml",
+  "item": "example:1:66",
+  "category": "original-erratum",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). The draft's example calls (pathname :name \"F*O\"), but PATHNAME takes no keyword arguments; the intended function is clearly MAKE-PATHNAME. TeX has the same text (dict-pathnames.tex line 1377).",
+  "epub_excerpt": "(wild-pathname-p (pathname :name \"F*O\"))",
+  "tex_excerpt": "(wild-pathname-p (pathname :name \"F*O\")) \\EV \\term{true} ;Most places",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "19.4.17",
+  "names": [
+   "merge-pathnames"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.17-merge-pathnames.xhtml",
+  "item": "example:1:161",
+  "category": "implementation-difference",
+  "summary": "EPUB example text equals the TeX (char-level compare of the Examples section shows no differences beyond TeX macros). Book shows VMS-style CMUC::PS:<LISPIO> syntax; SBCL parses differently.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ }
+]

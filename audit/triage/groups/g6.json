@@ -1,0 +1,1527 @@
+[
+ {
+  "secno": "20.2.10",
+  "names": [
+   "file-error-pathname"
+  ],
+  "file": "OEBPS/text/20-files/20.2.10-file-error-pathname.xhtml",
+  "item": "text:See Also",
+  "category": "conversion-error",
+  "summary": "Cross-reference \"Chapter 9 (Conditions)\" (TeX {\\secref\\Conditions}) reduced to bare word \"Conditions\": \"Chapter\" and the link to chapter 9 are lost.",
+  "epub_excerpt": "Conditions",
+  "tex_excerpt": "{\\secref\\Conditions}",
+  "fix": {
+   "old": "\nConditions\n",
+   "new": "\nChapter <a href=\"../9-conditions/index.xhtml#Chapter_Conditions_602\">9 Conditions</a>\n"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.56",
+  "names": [
+   "stream-error-stream"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.56-stream-error-stream.xhtml",
+  "item": "text:See Also",
+  "category": "conversion-error",
+  "summary": "Cross-reference \"Chapter 9 (Conditions)\" (TeX {\\secref\\Conditions}) reduced to bare word \"Conditions\": \"Chapter\" and the link to chapter 9 are lost.",
+  "epub_excerpt": "Conditions",
+  "tex_excerpt": "{\\secref\\Conditions}",
+  "fix": {
+   "old": "\nConditions\n",
+   "new": "\nChapter <a href=\"../9-conditions/index.xhtml#Chapter_Conditions_602\">9 Conditions</a>\n"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.30",
+  "names": [
+   "print-not-readable-object"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.30-print-not-readable-object.xhtml",
+  "item": "text:See Also",
+  "category": "conversion-error",
+  "summary": "Cross-reference \"Chapter 9 (Conditions)\" (TeX {\\secref\\Conditions}) reduced to bare word \"Conditions\": \"Chapter\" and the link to chapter 9 are lost.",
+  "epub_excerpt": "Conditions",
+  "tex_excerpt": "{\\secref\\Conditions}",
+  "fix": {
+   "old": "\nConditions\n",
+   "new": "\nChapter <a href=\"../9-conditions/index.xhtml#Chapter_Conditions_602\">9 Conditions</a>\n"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.33",
+  "names": [
+   "with-open-stream"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.33-with-open-stream.xhtml",
+  "item": "text:Description",
+  "category": "deliberate-edit",
+  "summary": "TeX has duplicated word \"assign the \\n the variable\"; EPUB drops the duplicate.",
+  "epub_excerpt": "assign the <i>variable</i>",
+  "tex_excerpt": "assign the \nthe \\term{variable}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.26",
+  "names": [
+   "*print-pretty*"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.26-print-pretty.xhtml",
+  "item": "text:Examples",
+  "category": "normaliser-noise",
+  "summary": "TeX source is #\\b 'c ... (char literal #\\b); normaliser mangled it. EPUB shows `#\\b 'c`, faithful (per lead).",
+  "epub_excerpt": "(LIST \"a\" #\\b 'C #'D)",
+  "tex_excerpt": "(list \"a\" #\\b 'c #'d)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.3",
+  "names": [
+   "make-dispatch-macro-character"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.3-make-dispatch-macro-character.xhtml",
+  "item": "text:Examples",
+  "category": "normaliser-noise",
+  "summary": "Only diff is TeX \\lbr rendered as { by EPUB vs [ by normaliser; EPUB `#\\{` is correct.",
+  "epub_excerpt": "#\\{",
+  "tex_excerpt": "#\\\\\\lbr",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.10",
+  "names": [
+   "set-macro-character",
+   "get-macro-character"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.10-set-macro-character.xhtml",
+  "item": "text:Examples",
+  "category": "normaliser-noise",
+  "summary": "Only diff is TeX \\lbr rendered as { in EPUB vs [ by normaliser; correct.",
+  "epub_excerpt": "#\\{",
+  "tex_excerpt": "#\\\\\\lbr",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.4",
+  "names": [
+   "read",
+   "read-preserving-whitespace"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.4-read.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "Character `#\\/` lost its slash in slash-reader example (twice): `#\\ ))))` and `(set-macro-character #\\  #'slash-reader)`; as written the macro char is a space, contradicting the prose (\"The / macro\").",
+  "epub_excerpt": "#\\ ))))\n (set-macro-character #\\  #'slash-reader)",
+  "tex_excerpt": "#\\\\/))))  ... (set-macro-character #\\\\/ #'slash-reader)",
+  "fix": {
+   "old": "#\\ ))))\n (set-macro-character #\\  #'slash-reader)",
+   "new": "#\\/))))\n (set-macro-character #\\/ #'slash-reader)"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.5",
+  "names": [
+   "read-delimited-list"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.5-read-delimited-list.xhtml",
+  "item": "text:Examples",
+  "category": "normaliser-noise",
+  "summary": "TeX `$\\ldots$` (math ellipsis) is rendered by EPUB as `<i> ... </i>`; the \"$\" differences are just math delimiters, the lead \"lost $\" is not a defect here.",
+  "epub_excerpt": "#{<i>a</i> <i>b</i> <i>c</i> <i> ... </i> <i>z</i>}",
+  "tex_excerpt": "\\#\\{\\i{a} \\i{b} \\i{c} $\\ldots$ \\i{z}\\}",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.9",
+  "names": [
+   "set-dispatch-macro-character",
+   "get-dispatch-macro-character"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.9-set-dispatch-macro-character.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "`$` in `|#$-reader|` was taken as TeX math delimiter, producing `|#<i>-reader|` ... `|#</i>-reader|` (stray <i> markup) in the defun name and its returned value. (The set-dispatch-macro-character line below already has the right `|#$-reader|`.)",
+  "epub_excerpt": "(defun |#<i>-reader| (stream subchar arg)\n   (declare (ignore subchar arg))\n   (list 'dollars (read stream t nil t))) → |#</i>-reader|",
+  "tex_excerpt": "(defun |#$-reader| (stream subchar arg) ... \\EV |#$-reader|",
+  "fix": {
+   "old": "(defun |#<i>-reader| (stream subchar arg)\n   (declare (ignore subchar arg))\n   (list 'dollars (read stream t nil t))) → |#</i>-reader|",
+   "new": "(defun |#$-reader| (stream subchar arg)\n   (declare (ignore subchar arg))\n   (list 'dollars (read stream t nil t))) → |#$-reader|"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "24.2.3",
+  "names": [
+   "load"
+  ],
+  "file": "OEBPS/text/24-system-construction/24.2.3-load.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "Comment banners `;----[Begin file SETUP]----` / `;----[End of file SETUP]----` rewritten as `;- - [Begin ...]- - ` (spaced hyphens + trailing space). Only inside a code comment so low impact, but code text differs from TeX; probably the converter avoiding a `--` ligature. Possibly a deliberate typographic choice, user may decide.",
+  "epub_excerpt": ";- - [Begin file SETUP]- - ",
+  "tex_excerpt": ";----[Begin file SETUP]----",
+  "fix": {
+   "old": " ;- - [Begin file SETUP]- - \n (in-package \"MY-STUFF\")\n (defmacro compile-truename () `',*compile-file-truename*)\n (defvar *my-compile-truename* (compile-truename) \"Just for debugging.\")\n (defvar *my-load-pathname* *load-pathname*)\n (defun load-my-system ()\n   (dolist (module-name '(\"FOO\" \"BAR\" \"BAZ\"))\n     (load (merge-pathnames module-name *my-load-pathname*))))\n ;- - [End of file SETUP]- - ",
+   "new": " ;----[Begin file SETUP]----\n (in-package \"MY-STUFF\")\n (defmacro compile-truename () `',*compile-file-truename*)\n (defvar *my-compile-truename* (compile-truename) \"Just for debugging.\")\n (defvar *my-load-pathname* *load-pathname*)\n (defun load-my-system ()\n   (dolist (module-name '(\"FOO\" \"BAR\" \"BAZ\"))\n     (load (merge-pathnames module-name *my-load-pathname*))))\n ;----[End of file SETUP]----"
+  },
+  "confidence": "medium"
+ },
+ {
+  "secno": "25.2.15",
+  "names": [
+   "documentation",
+   "(setf documentation)"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.15-documentation.xhtml",
+  "item": "text:Method Signatures",
+  "category": "conversion-error",
+  "summary": "Two defects in the Method Signatures list: (1) all 19 `(setf documentation)` signatures print the parameter as `new value` instead of `new-value` (the Syntax and Arguments sections correctly have new-value); (2) the 4 `structure-class` methods (t and type, for documentation and setf) were replaced by duplicate `standard-class` lines, so structure-class is missing entirely and standard-class appears twice.",
+  "epub_excerpt": "<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) ...",
+  "tex_excerpt": "\\param{new-value} ... \\Meth{structure-class}{t}\\Meth{structure-class}{type}",
+  "fix": {
+   "old": "<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>function</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>function</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>list</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>list</b>) (<i>doc-type</i> (<code>eql 'compiler-macro</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'compiler-macro</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'setf</code>))<br/>\n</p><p>\n<b>Method Combinations:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>method-combination</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>method-combination</b>) (<i>doc-type </i> (<code>eql 'method-combination</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'method-combination</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>method-combination</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>method-combination</b>) (<i>doc-type</i> (<code>eql 'method-combination</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'method-combination</code>))<br/>\n\n</p><p>\n<b>Methods:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>standard-method</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-method</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n\n</p><p>\n<b>Packages:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>package</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>package</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n\n</p><p>\n<b>Types, Classes, and Structure Names:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'structure</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'structure</code>))<br/>\n\n</p><p>\n<b>Variables:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'variable</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'variable</code>))<br/>",
+   "new": "<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>function</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>function</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>list</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>list</b>) (<i>doc-type</i> (<code>eql 'compiler-macro</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'compiler-macro</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'setf</code>))<br/>\n</p><p>\n<b>Method Combinations:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>method-combination</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>method-combination</b>) (<i>doc-type </i> (<code>eql 'method-combination</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'method-combination</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>method-combination</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>method-combination</b>) (<i>doc-type</i> (<code>eql 'method-combination</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'method-combination</code>))<br/>\n\n</p><p>\n<b>Methods:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>standard-method</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>standard-method</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n\n</p><p>\n<b>Packages:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>package</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>package</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n\n</p><p>\n<b>Types, Classes, and Structure Names:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>structure-class</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>structure-class</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'structure</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>structure-class</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>structure-class</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'structure</code>))<br/>\n\n</p><p>\n<b>Variables:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'variable</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'variable</code>))<br/>"
+  },
+  "confidence": "high",
+  "fix_note": "Equivalent mechanical edit: replace every `<i>new value</i>` with `<i>new-value</i>` (19 occurrences, all in this section); in the \"Types, Classes, and Structure Names\" paragraph change the 3rd and 4th `standard-class` line of both the documentation and (setf documentation) groups (file lines 73,74,79,80) to `structure-class`."
+ },
+ {
+  "secno": "20.2.4",
+  "names": [
+   "truename"
+  ],
+  "file": "OEBPS/text/20-files/20.2.4-truename.xhtml",
+  "item": "example:1:54",
+  "category": "implementation-difference",
+  "summary": "Example uses Lisp-machine/CMU pathnames (\">vistor>...\", \"S:\" host); file does not exist on this host. EPUB equals TeX.",
+  "epub_excerpt": "(with-open-file (stream \">vistor>test.text.newest\")\n(values (pathname stream)\n(truename stream))) => exp ['#P\"S:>vistor>test.text.newest\"', '#P\"S:>vistor>test.text.1\"'] got {'error': 'FILE-DOES-NOT-EXIST The file #P\"/tmp/exwd-i06o3yn7/>vistor>test.text.newest\" does not exist: No such file or directory'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "20.2.4",
+  "names": [
+   "truename"
+  ],
+  "file": "OEBPS/text/20-files/20.2.4-truename.xhtml",
+  "item": "example:1:63",
+  "category": "implementation-difference",
+  "summary": "Same: host-specific pathname syntax, file absent.",
+  "epub_excerpt": "(with-open-file (stream \">vistor>test.text.newest\")\n(close stream)\n(values (pathname stream)\n(truename stream))) => exp ['#P\"S:>vistor>test.text.newest\"', '#P\"S:>vistor>test.text.1\"'] got {'error': 'FILE-DOES-NOT-EXIST The file #P\"/tmp/exwd-i06o3yn7/>vistor>test.text.newest\" does not exist: No such file or directory'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "20.2.4",
+  "names": [
+   "truename"
+  ],
+  "file": "OEBPS/text/20-files/20.2.4-truename.xhtml",
+  "item": "example:1:72",
+  "category": "implementation-difference",
+  "summary": "Same: CMUC:: logical host pathname, absent.",
+  "epub_excerpt": "(with-open-file (stream \"CMUC::DOC:DUMPER.HLP\")\n(values (pathname stream)\n(truename stream))) => exp ['#P\"CMUC::DOC:DUMPER.HLP\"', '#P\"CMUC::PS:<DOCUMENTATION>DUMPER.HLP.13\"'] got {'error': 'FILE-DOES-NOT-EXIST The file #P\"/tmp/exwd-i06o3yn7/CMUC::DOC:DUMPER.HLP\" does not exist: No such file or directory'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "20.2.5",
+  "names": [
+   "file-author"
+  ],
+  "file": "OEBPS/text/20-files/20.2.5-file-author.xhtml",
+  "item": "example:1:37",
+  "category": "implementation-difference",
+  "summary": "Host-specific pathname \">relativity>general.text\", file absent; fragment example.",
+  "epub_excerpt": "(with-open-file (stream \">relativity>general.text\")\n(file-author s)) => exp ['\"albert\"'] got {'error': 'FILE-DOES-NOT-EXIST The file #P\"/tmp/exwd-4z5iuki5/>relativity>general.text\" does not exist: No such file or directory'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "20.2.6",
+  "names": [
+   "file-write-date"
+  ],
+  "file": "OEBPS/text/20-files/20.2.6-file-write-date.xhtml",
+  "item": "example:1:38",
+  "category": "implementation-difference",
+  "summary": "Truename is host-specific (CUPID:/susan/noel.text vs /tmp/...).",
+  "epub_excerpt": "(with-open-file (s \"noel.text\"\n:direction :output :if-exists :error)\n(format s \"~&Dear Santa,~2%I was good this year.  ~\nPlease leave lots of toys.~2% => exp ['#P\"CUPID:/susan/noel.text\"'] got ['#P\"/tmp/exwd-v3itq12y/noel.text\"']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "20.2.6",
+  "names": [
+   "file-write-date"
+  ],
+  "file": "OEBPS/text/20-files/20.2.6-file-write-date.xhtml",
+  "item": "example:1:45",
+  "category": "implementation-difference",
+  "summary": "File write date is wall-clock/host dependent.",
+  "epub_excerpt": "(with-open-file (s \"noel.text\")\n(file-write-date s)) => exp ['2902600800'] got ['4004394831']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "20.2.7",
+  "names": [
+   "rename-file"
+  ],
+  "file": "OEBPS/text/20-files/20.2.7-rename-file.xhtml",
+  "item": "example:1:40",
+  "category": "implementation-difference",
+  "summary": "Logical pathname SYS: has no translation in SBCL; example presupposes site setup.",
+  "epub_excerpt": "(with-open-file (stream \"sys:chemistry;lead.text\"\n:direction :output :if-exists :error)\n(princ \"eureka\" stream)\n(values (pathname stream) (truename st => exp ['#P\"SYS:CHEMISTRY;LEAD.TEXT.NEWEST\"', '#P\"Q:>sys>chem>lead.text.1\"'] got {'error': 'SIMPLE-FILE-ERROR no translation for #P\"SYS:CHEMISTRY;LEAD.TEXT.NEWEST\"'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "20.2.7",
+  "names": [
+   "rename-file"
+  ],
+  "file": "OEBPS/text/20-files/20.2.7-rename-file.xhtml",
+  "item": "example:1:45",
+  "category": "implementation-difference",
+  "summary": "Same: SYS: logical host not defined.",
+  "epub_excerpt": "(rename-file \"sys:chemistry;lead.text\" \"gold.text\") => exp ['#P\"SYS:CHEMISTRY;GOLD.TEXT.NEWEST\"', '#P\"Q:>sys>chem>lead.text.1\"', '#P\"Q:>sys>chem>gold.text.1\"'] got {'error': 'SIMPLE-FILE-ERROR no translation for #P\"SYS:CHEMISTRY;LEAD.TEXT.NEWEST\"'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "20.2.8",
+  "names": [
+   "delete-file"
+  ],
+  "file": "OEBPS/text/20-files/20.2.8-delete-file.xhtml",
+  "item": "example:1:63",
+  "category": "implementation-difference",
+  "summary": "Truename on a different host (R:>fred>...) vs /tmp path.",
+  "epub_excerpt": "(setq p (probe-file \"delete-me.text\")) => exp ['#P\"R:>fred>delete-me.text.1\"'] got ['#P\"/tmp/exwd-ci8xx6ul/delete-me.text\"']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.10",
+  "names": [
+   "interactive-stream-p"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.10-interactive-stream-p.xhtml",
+  "item": "example:1:33",
+  "category": "harness-limitation",
+  "summary": "Code fragment using undefined variables MEASURED/LIMIT; interactive-stream-p demo.",
+  "epub_excerpt": "(when (> measured limit)\n(let ((error (round (* (- measured limit) 100)\nlimit)))\n(unless (if (interactive-stream-p *query-io*)\n(yes-or-no-p \"The framm => exp None got {'error': 'UNBOUND-VARIABLE The variable MEASURED is unbound.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.18",
+  "names": [
+   "read-char-no-hang"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.18-read-char-no-hang.xhtml",
+  "item": "example:1:71",
+  "category": "harness-limitation",
+  "summary": "Interactive example needing typed input; stdin at EOF.",
+  "epub_excerpt": "(test-it) => exp ['(#\\\\a NIL NIL)'] got {'error': 'END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.18",
+  "names": [
+   "read-char-no-hang"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.18-read-char-no-hang.xhtml",
+  "item": "example:1:77",
+  "category": "harness-limitation",
+  "summary": "Interactive example needing typed input; stdin at EOF.",
+  "epub_excerpt": "(test-it) => exp ['(#\\\\a #\\\\Newline NIL)'] got {'error': 'END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.26",
+  "names": [
+   "file-length"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.26-file-length.xhtml",
+  "item": "example:1:39",
+  "category": "implementation-difference",
+  "summary": "Truename is host-specific (A:>Joe>...).",
+  "epub_excerpt": "(with-open-file (s \"decimal-digits.text\"\n:direction :output :if-exists :error)\n(princ \"0123456789\" s)\n(truename s)) => exp ['#P\"A:>Joe>decimal-digits.text.1\"'] got ['#P\"/tmp/exwd-qbrot2vc/decimal-digits.text\"']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.27",
+  "names": [
+   "file-position"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.27-file-position.xhtml",
+  "item": "example:1:99",
+  "category": "harness-limitation",
+  "summary": "(tester) undefined: harness did not evaluate the defun tester shown (displayed as `→ tester`); also results depend on file-position support. EPUB equals TeX.",
+  "epub_excerpt": "(tester) => exp ['(0 2 T 2 0 2 5 7)'] got {'error': 'UNDEFINED-FUNCTION The function COMMON-LISP-USER::TESTER is undefined.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "21.2.29",
+  "names": [
+   "open"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.29-open.xhtml",
+  "item": "example:1:306",
+  "category": "harness-limitation",
+  "summary": "Fragment of pathname/return value display; variable S unbound (depends on earlier unparsed prose lines).",
+  "epub_excerpt": "(truename s) => exp ['#<PATHNAME :HOST NIL :DEVICE device-name :DIRECTORY'] got {'error': 'UNBOUND-VARIABLE The variable S is unbound.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.29",
+  "names": [
+   "open"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.29-open.xhtml",
+  "item": "example:1:308",
+  "category": "harness-limitation",
+  "summary": "Fragment; S unbound.",
+  "epub_excerpt": "(open s :direction :output :if-exists nil) => exp ['NIL'] got {'error': 'UNBOUND-VARIABLE The variable S is unbound.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.31",
+  "names": [
+   "with-open-file"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.31-with-open-file.xhtml",
+  "item": "example:2:111",
+  "category": "harness-limitation",
+  "summary": "Interactive example: expected output \"hello?\" is typed input; no such file read.",
+  "epub_excerpt": "(with-open-file (foo \"no-such-file\" :if-does-not-exist nil)\n(read foo)) => exp ['HELLO?'] got {'error': 'END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.32",
+  "names": [
+   "close"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.32-close.xhtml",
+  "item": "example:1:92",
+  "category": "implementation-difference",
+  "summary": "output-stream-p on a closed stream: book says true, SBCL returns NIL (closed stream answers are implementation-dependent in practice).",
+  "epub_excerpt": "(output-stream-p s) => exp ['true'] got ['NIL']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "21.2.34",
+  "names": [
+   "listen"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.34-listen.xhtml",
+  "item": "example:1:43",
+  "category": "harness-limitation",
+  "summary": "Interactive example (reads typed \"1\"); stdin at EOF.",
+  "epub_excerpt": "(progn (unread-char (read-char)) (list (listen) (read-char))) => exp ['(T #\\\\1)'] got {'error': 'END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.37",
+  "names": [
+   "y-or-n-p",
+   "yes-or-no-p"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.37-y-or-n-p.xhtml",
+  "item": "example:1:87",
+  "category": "harness-limitation",
+  "summary": "Interactive query example needing user input.",
+  "epub_excerpt": "(y-or-n-p \"(t or nil) given by\") => exp ['true'] got {'error': 'END-OF-FILE end of file on #<SB-IMPL::STRING-INPUT-STREAM {1201096843}>'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.37",
+  "names": [
+   "y-or-n-p",
+   "yes-or-no-p"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.37-y-or-n-p.xhtml",
+  "item": "example:1:90",
+  "category": "harness-limitation",
+  "summary": "Interactive query example needing user input.",
+  "epub_excerpt": "(yes-or-no-p \"a ~S message\" 'frightening) => exp ['false'] got {'error': 'END-OF-FILE end of file on #<TWO-WAY-STREAM :INPUT-STREAM #<SB-IMPL::STRING-INPUT-STREAM {1201097613}> :OUTPUT-STREAM #<BROADCAST-STREAM {12010976A3}> {1201097713}>'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.37",
+  "names": [
+   "y-or-n-p",
+   "yes-or-no-p"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.37-y-or-n-p.xhtml",
+  "item": "example:1:93",
+  "category": "harness-limitation",
+  "summary": "Interactive query example needing user input.",
+  "epub_excerpt": "(y-or-n-p \"Produce listing file?\") => exp ['false'] got {'error': 'END-OF-FILE end of file on #<SB-IMPL::STRING-INPUT-STREAM {12010A8BF3}>'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.53",
+  "names": [
+   "*debug-io*",
+   "*error-output*",
+   "*query-io*",
+   "*standard-input*",
+   "*standard-output*",
+   "*trace-output*"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.53-debug-io.xhtml",
+  "item": "example:1:87",
+  "category": "implementation-difference",
+  "summary": "Warning message text format differs (\"Warning:\" vs \"WARNING:\"); implementation-defined.",
+  "epub_excerpt": "(with-output-to-string (*error-output*)\n(warn \"this string is sent to *error-output*\")) => exp ['\"Warning: this string is sent to *error-output*\\n\"'] got ['\"WARNING: this string is sent to *error-output*\\n\"']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.53",
+  "names": [
+   "*debug-io*",
+   "*error-output*",
+   "*query-io*",
+   "*standard-input*",
+   "*standard-output*",
+   "*trace-output*"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.53-debug-io.xhtml",
+  "item": "example:1:109",
+  "category": "implementation-difference",
+  "summary": "TRACE output format is implementation-defined.",
+  "epub_excerpt": "(with-output-to-string (*trace-output*)\n(fact 3)) => exp ['\"\\n1 Enter FACT 3\\n| 2 Enter FACT 2\\n|   3 Enter FACT 1\\n|   3 Exit FACT 1\\n| 2 Exit FACT 2\\n1 Exit FACT 6\"'] got ['\"  0: (FACT 3)\\n    1: (FACT 2)\\n      2: (FACT 1)\\n      2: FACT returned 1\\n    1: FACT returned 2\\n  0: FACT returned 6\\n\"']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.12",
+  "names": [
+   "print-unreadable-object"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.12-print-unreadable-object.xhtml",
+  "item": "example:1:67",
+  "category": "harness-limitation",
+  "summary": "defmethod on undefined class AIRPLANE; fragment example.",
+  "epub_excerpt": "(defmethod print-object ((obj airplane) stream)\n(print-unreadable-object (obj stream :type t :identity t)\n(princ (tail-number obj) stream))) => exp None got {'error': 'CLASS-NOT-FOUND-ERROR There is no class named COMMON-LISP-USER::AIRPLANE.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.12",
+  "names": [
+   "print-unreadable-object"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.12-print-unreadable-object.xhtml",
+  "item": "example:1:71",
+  "category": "harness-limitation",
+  "summary": "my-airplane not defined; fragment. Output is implementation-dependent anyway.",
+  "epub_excerpt": "(prin1-to-string my-airplane) => exp ['\"#<Airplane NW0773 36000123135>\"'] got {'error': 'UNBOUND-VARIABLE The variable MY-AIRPLANE is unbound.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.18",
+  "names": [
+   "*print-case*"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.18-print-case.xhtml",
+  "item": "example:1:47",
+  "category": "original-erratum",
+  "summary": "Defun is named TEST-PRINT-CASE but the shown result is TEST-PC (TeX has the same: `\\EV TEST-PC`).",
+  "epub_excerpt": "(defun test-print-case ()\n(dolist (*print-case* '(:upcase :downcase :capitalize))\n(format t \"~&~S ~S~%\" 'this-and-that '|And-something-elSE|))) => exp ['TEST-PC'] got ['TEST-PRINT-CASE']",
+  "tex_excerpt": "(defun test-print-case () ...) \\EV TEST-PC",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.18",
+  "names": [
+   "*print-case*"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.18-print-case.xhtml",
+  "item": "example:1:56",
+  "category": "implementation-difference",
+  "summary": "Book shows two hypothetical implementations (A, B) with different escaping; SBCL prints |And-something-elSE| in all cases.",
+  "epub_excerpt": "(test-print-case) ;Implementation A => exp ['NIL'] got ['NIL']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.18",
+  "names": [
+   "*print-case*"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.18-print-case.xhtml",
+  "item": "example:1:61",
+  "category": "implementation-difference",
+  "summary": "Implementation B output differs; SBCL uses |...| around whole symbol.",
+  "epub_excerpt": "(test-print-case) ;Implementation B => exp ['NIL'] got ['NIL']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.23",
+  "names": [
+   "*print-lines*"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.23-print-lines.xhtml",
+  "item": "example:1:34",
+  "category": "implementation-difference",
+  "summary": "Pretty-printer line breaking differs from the book's layout.",
+  "epub_excerpt": "(let ((*print-right-margin* 25) (*print-lines* 3))\n(pprint '(progn (setq a 1 b 2 c 3 d 4)))) => exp None got {}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.27",
+  "names": [
+   "*print-readably*"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.27-print-readably.xhtml",
+  "item": "example:1:93",
+  "category": "original-erratum",
+  "summary": "(setf (gethash table 1) ...) has key/table swapped (gethash takes key then table); TeX identical.",
+  "epub_excerpt": "(setf (gethash table 1) 'one) => exp ['ONE'] got {'error': 'SIMPLE-TYPE-ERROR Value of 1 in (SB-KERNEL:%PUTHASH #:KEY 1 #:NEW93) is 1, not a HASH-TABLE.'}",
+  "tex_excerpt": "(setf (gethash table 1) 'one) \\EV ONE",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.27",
+  "names": [
+   "*print-readably*"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.27-print-readably.xhtml",
+  "item": "example:1:94",
+  "category": "original-erratum",
+  "summary": "Same swapped gethash arguments in the draft.",
+  "epub_excerpt": "(setf (gethash table 2) 'two) => exp ['TWO'] got {'error': 'SIMPLE-TYPE-ERROR Value of 2 in (SB-KERNEL:%PUTHASH #:KEY 2 #:NEW94) is 2, not a HASH-TABLE.'}",
+  "tex_excerpt": "(setf (gethash table 2) 'two) \\EV TWO",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.27",
+  "names": [
+   "*print-readably*"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.27-print-readably.xhtml",
+  "item": "example:1:103",
+  "category": "implementation-difference",
+  "summary": "Printing of hash tables is implementation-dependent (book shows #S(...) / #<...>).",
+  "epub_excerpt": "(let ((*print-readably* t)) (print table)) => exp ['#<HASH-TABLE EQL 0/120 32005763>'] got ['#<HASH-TABLE :TEST EQL :COUNT 0 {12010DE283}>']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.27",
+  "names": [
+   "*print-readably*"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.27-print-readably.xhtml",
+  "item": "example:1:112",
+  "category": "implementation-difference",
+  "summary": "Same: hash-table readable printing differs; table also not populated due to earlier erratum.",
+  "epub_excerpt": "(let ((*print-readably* t)) (print table)) => exp ['#<HASH-TABLE EQL 0/120 32005763>'] got ['#<HASH-TABLE :TEST EQL :COUNT 0 {12010DE283}>']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.2",
+  "names": [
+   "copy-readtable"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.2-copy-readtable.xhtml",
+  "item": "example:1:54",
+  "category": "harness-limitation",
+  "summary": "COPY-READTABLE into *readtable* hits the locked standard readtable in the harness (SBCL standard-readtable-modified-error).",
+  "epub_excerpt": "(copy-readtable table2 *readtable*) => exp ['#<READTABLE 614000277>'] got {'error': 'STANDARD-READTABLE-MODIFIED-ERROR COPY-READTABLE would modify the standard readtable.\\nSee also:\\n  The ANSI Standard, Section 2.1.1.2\\n  The ANSI Standard, Glossary entry for \"standard readtable\"'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.2",
+  "names": [
+   "copy-readtable"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.2-copy-readtable.xhtml",
+  "item": "example:1:55",
+  "category": "harness-limitation",
+  "summary": "Result depends on previous step that failed due to locked standard readtable.",
+  "epub_excerpt": "zvar => exp ['VAR'] got ['123']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.2",
+  "names": [
+   "copy-readtable"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.2-copy-readtable.xhtml",
+  "item": "example:1:57",
+  "category": "harness-limitation",
+  "summary": "Same: dependent on failed readtable modification.",
+  "epub_excerpt": "zvar => exp ['VAR'] got ['123']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.3",
+  "names": [
+   "make-dispatch-macro-character"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.3-make-dispatch-macro-character.xhtml",
+  "item": "example:1:58",
+  "category": "harness-limitation",
+  "summary": "Modifies standard readtable, locked in harness. EPUB `#\\{` is correct.",
+  "epub_excerpt": "(make-dispatch-macro-character #\\{) => exp ['T'] got {'error': 'STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\\nSee also:\\n  The ANSI Standard, Section 2.1.1.2\\n  The ANSI Standard, Glossary entry for \"standard readtable\"'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.3",
+  "names": [
+   "make-dispatch-macro-character"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.3-make-dispatch-macro-character.xhtml",
+  "item": "example:1:59",
+  "category": "harness-limitation",
+  "summary": "Depends on failed previous step (standard readtable locked).",
+  "epub_excerpt": "(not (get-macro-character #\\{)) => exp ['false'] got ['T']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.4",
+  "names": [
+   "read",
+   "read-preserving-whitespace"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.4-read.xhtml",
+  "item": "example:1:105",
+  "category": "harness-limitation",
+  "summary": "Interactive (read) from stdin.",
+  "epub_excerpt": "(read) => exp ['(QUOTE A)'] got {'error': 'END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.4",
+  "names": [
+   "read",
+   "read-preserving-whitespace"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.4-read.xhtml",
+  "item": "example:1:112",
+  "category": "harness-limitation",
+  "summary": "Book marks this example \"needs work\" (TeX comment %!!! This example needs work.); its value list mixes printed output and values; SBCL differs. EPUB equals TeX.",
+  "epub_excerpt": "(let ((*readtable* (copy-readtable nil)))\n(set-dispatch-macro-character #\\# #\\{ #'skip-then-read-char)\n(set-dispatch-macro-character #\\# #\\} #'skip-th => exp ['#\\\\x', '#\\\\Space', 'NIL'] got ['NIL']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "23.2.4",
+  "names": [
+   "read",
+   "read-preserving-whitespace"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.4-read.xhtml",
+  "item": "example:2:130",
+  "category": "conversion-error",
+  "summary": "The form `(set-macro-character #\\  #'slash-reader)` has lost the `/` character (should be `#\\/`); it errors in harness because of the locked readtable, but the root cause of the wrong form is the conversion error. Same fix as text:Examples of 23.2.4.",
+  "epub_excerpt": "(set-macro-character #\\  #'slash-reader) => exp None got {'error': 'STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\\nSee also:\\n  The ANSI Standard, Section 2.1.1.2\\n  The ANSI Standard, Glossary entry for \"standard readtable\"'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.4",
+  "names": [
+   "read",
+   "read-preserving-whitespace"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.4-read.xhtml",
+  "item": "example:3:137",
+  "category": "harness-limitation",
+  "summary": "Illustrative expression, not evaluable (zyedh/unbound symbols); depends on the slash reader.",
+  "epub_excerpt": "(zyedh /usr/games/zork /usr/games/boggle) => exp None got {'error': 'UNBOUND-VARIABLE The variable /USR/GAMES/ZORK is unbound.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.4",
+  "names": [
+   "read",
+   "read-preserving-whitespace"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.4-read.xhtml",
+  "item": "example:4:143",
+  "category": "harness-limitation",
+  "summary": "Illustrative expression, not evaluable (zyedh/unbound symbols); depends on the slash reader.",
+  "epub_excerpt": "(zyedh (path usr games zork) (path usr games boggle)) => exp None got {'error': 'UNBOUND-VARIABLE The variable USR is unbound.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.4",
+  "names": [
+   "read",
+   "read-preserving-whitespace"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.4-read.xhtml",
+  "item": "example:5:151",
+  "category": "harness-limitation",
+  "summary": "Illustrative expression, not evaluable (zyedh/unbound symbols); depends on the slash reader.",
+  "epub_excerpt": "(zyedh (path usr games zork usr games boggle)) => exp None got {'error': 'UNBOUND-VARIABLE The variable USR is unbound.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.5",
+  "names": [
+   "read-delimited-list"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.5-read-delimited-list.xhtml",
+  "item": "example:1:75",
+  "category": "harness-limitation",
+  "summary": "Interactive (read-delimited-list from stdin).",
+  "epub_excerpt": "(read-delimited-list #\\]) 1 2 3 4 5 6 ] => exp ['(1 2 3 4 5 6)'] got {'error': 'END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.5",
+  "names": [
+   "read-delimited-list"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.5-read-delimited-list.xhtml",
+  "item": "example:2:83",
+  "category": "harness-limitation",
+  "summary": "Prose illustration of #{...} reading; needs macro definition, readtable locked.",
+  "epub_excerpt": "#{p q z a}  reads as  ((p q) (p z) (p a) (q z) (q a) (z a)) => exp None got {'error': 'SIMPLE-READER-ERROR no dispatch function defined for #\\\\{ Stream: #<dynamic-extent STRING-INPUT-STREAM (unavailable) from \"#{p q z ...\">'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.5",
+  "names": [
+   "read-delimited-list"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.5-read-delimited-list.xhtml",
+  "item": "example:3:96",
+  "category": "harness-limitation",
+  "summary": "Modifies the standard readtable (locked in harness).",
+  "epub_excerpt": "(set-dispatch-macro-character #\\# #\\{ #'|#{-reader|) => exp ['T'] got {'error': 'STANDARD-READTABLE-MODIFIED-ERROR SET-DISPATCH-MACRO-CHARACTER would modify the standard readtable.\\nSee also:\\n  The ANSI Standard, Section 2.1.1.2\\n  The ANSI Standard, Glossary entry for \"standard readtable\"'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.5",
+  "names": [
+   "read-delimited-list"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.5-read-delimited-list.xhtml",
+  "item": "example:3:97",
+  "category": "harness-limitation",
+  "summary": "Modifies the standard readtable (locked in harness).",
+  "epub_excerpt": "(set-macro-character #\\} (get-macro-character #\\) nil)) => exp None got {'error': 'STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\\nSee also:\\n  The ANSI Standard, Section 2.1.1.2\\n  The ANSI Standard, Glossary entry for \"standard readtable\"'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.5",
+  "names": [
+   "read-delimited-list"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.5-read-delimited-list.xhtml",
+  "item": "example:4:107",
+  "category": "harness-limitation",
+  "summary": "Modifies the standard readtable (locked in harness).",
+  "epub_excerpt": "(set-macro-character #\\} (get-macro-character #\\) nil)) => exp None got {'error': 'STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\\nSee also:\\n  The ANSI Standard, Section 2.1.1.2\\n  The ANSI Standard, Glossary entry for \"standard readtable\"'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.5",
+  "names": [
+   "read-delimited-list"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.5-read-delimited-list.xhtml",
+  "item": "example:5:111",
+  "category": "harness-limitation",
+  "summary": "Depends on macro character definition that failed (locked readtable).",
+  "epub_excerpt": "#{ p q z a} => exp None got {'error': 'SIMPLE-READER-ERROR no dispatch function defined for #\\\\{ Stream: #<dynamic-extent STRING-INPUT-STREAM (unavailable) from \"#{ p q z...\">'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.9",
+  "names": [
+   "set-dispatch-macro-character",
+   "get-dispatch-macro-character"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.9-set-dispatch-macro-character.xhtml",
+  "item": "example:1:85",
+  "category": "harness-limitation",
+  "summary": "Modifies standard readtable (locked in harness).",
+  "epub_excerpt": "(set-dispatch-macro-character #\\# #\\{        ;dispatch on #{\n#'(lambda(s c n)\n(let ((list (read s nil (values) t)))  ;list is object after #n{\n(when ( => exp ['T'] got {'error': 'STANDARD-READTABLE-MODIFIED-ERROR SET-DISPATCH-MACRO-CHARACTER would modify the standard readtable.\\nSee also:\\n  The ANSI Standard, Section 2.1.1.2\\n  The ANSI Standard, Glossary entry for \"standard readtable\"'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.9",
+  "names": [
+   "set-dispatch-macro-character",
+   "get-dispatch-macro-character"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.9-set-dispatch-macro-character.xhtml",
+  "item": "example:1:92",
+  "category": "harness-limitation",
+  "summary": "Depends on the failed #{ dispatch definition (locked readtable).",
+  "epub_excerpt": "#{(1 2 3 4) => exp ['1'] got {'error': 'SIMPLE-READER-ERROR no dispatch function defined for #\\\\{ Stream: #<dynamic-extent STRING-INPUT-STREAM (unavailable) from \"#{(1 2 3...\">'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.9",
+  "names": [
+   "set-dispatch-macro-character",
+   "get-dispatch-macro-character"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.9-set-dispatch-macro-character.xhtml",
+  "item": "example:1:93",
+  "category": "harness-limitation",
+  "summary": "Depends on the failed #{ dispatch definition (locked readtable).",
+  "epub_excerpt": "#3{(0 1 2 3) => exp ['3'] got {'error': 'SIMPLE-READER-ERROR no dispatch function defined for #\\\\{ Stream: #<dynamic-extent STRING-INPUT-STREAM (unavailable) from \"#3{(0 1 ...\">'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.9",
+  "names": [
+   "set-dispatch-macro-character",
+   "get-dispatch-macro-character"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.9-set-dispatch-macro-character.xhtml",
+  "item": "example:1:94",
+  "category": "harness-limitation",
+  "summary": "Depends on the failed #{ dispatch definition (locked readtable).",
+  "epub_excerpt": "#{123 => exp ['123'] got {'error': 'SIMPLE-READER-ERROR no dispatch function defined for #\\\\{ Stream: #<dynamic-extent STRING-INPUT-STREAM (unavailable) from \"#{123\">'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.9",
+  "names": [
+   "set-dispatch-macro-character",
+   "get-dispatch-macro-character"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.9-set-dispatch-macro-character.xhtml",
+  "item": "example:2:103",
+  "category": "conversion-error",
+  "summary": "Function name is garbled to `|#<i>-reader|` in the defun and result (the `$` lost); the call refers to `|#$-reader|`, hence undefined-function. Same fix as text:Examples of 23.2.9.",
+  "epub_excerpt": "(set-dispatch-macro-character #\\# #\\$ #'|#$-reader|) => exp ['T'] got {'error': 'UNDEFINED-FUNCTION The function COMMON-LISP-USER::|#$-reader| is undefined.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.10",
+  "names": [
+   "set-macro-character",
+   "get-macro-character"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.10-set-macro-character.xhtml",
+  "item": "example:2:76",
+  "category": "harness-limitation",
+  "summary": "Modifies standard readtable (locked in harness).",
+  "epub_excerpt": "(set-macro-character #\\' #'single-quote-reader) => exp ['T'] got {'error': 'STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\\nSee also:\\n  The ANSI Standard, Section 2.1.1.2\\n  The ANSI Standard, Glossary entry for \"standard readtable\"'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.10",
+  "names": [
+   "set-macro-character",
+   "get-macro-character"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.10-set-macro-character.xhtml",
+  "item": "example:3:95",
+  "category": "harness-limitation",
+  "summary": "Modifies standard readtable (locked in harness).",
+  "epub_excerpt": "(set-macro-character #\\; #'semicolon-reader) => exp ['T'] got {'error': 'STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\\nSee also:\\n  The ANSI Standard, Section 2.1.1.2\\n  The ANSI Standard, Glossary entry for \"standard readtable\"'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.11",
+  "names": [
+   "set-syntax-from-char"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.11-set-syntax-from-char.xhtml",
+  "item": "example:1:71",
+  "category": "harness-limitation",
+  "summary": "Modifies standard readtable (locked in harness).",
+  "epub_excerpt": "(set-syntax-from-char #\\7 #\\;) => exp ['T'] got {'error': 'STANDARD-READTABLE-MODIFIED-ERROR SET-SYNTAX-FROM-CHAR would modify the standard readtable.\\nSee also:\\n  The ANSI Standard, Section 2.1.1.2\\n  The ANSI Standard, Glossary entry for \"standard readtable\"'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.11",
+  "names": [
+   "set-syntax-from-char"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.11-set-syntax-from-char.xhtml",
+  "item": "example:1:72",
+  "category": "harness-limitation",
+  "summary": "Depends on failed set-syntax-from-char (locked readtable).",
+  "epub_excerpt": "123579 => exp ['1235'] got ['123579']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.12",
+  "names": [
+   "with-standard-io-syntax"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.12-with-standard-io-syntax.xhtml",
+  "item": "example:1:131",
+  "category": "harness-limitation",
+  "summary": "Variables PATHNAME/DATA unbound; fragment.",
+  "epub_excerpt": "(with-open-file (file pathname :direction :output)\n(with-standard-io-syntax\n(print data file))) => exp None got {'error': 'UNBOUND-VARIABLE The variable PATHNAME is unbound.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.12",
+  "names": [
+   "with-standard-io-syntax"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.12-with-standard-io-syntax.xhtml",
+  "item": "example:1:137",
+  "category": "harness-limitation",
+  "summary": "Fragment; PATHNAME unbound.",
+  "epub_excerpt": "(with-open-file (file pathname :direction :input)\n(with-standard-io-syntax\n(setq data (read file)))) => exp None got {'error': 'UNBOUND-VARIABLE The variable PATHNAME is unbound.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "23.2.14",
+  "names": [
+   "*read-default-float-format*"
+  ],
+  "file": "OEBPS/text/23-reader/23.2.14-read-default-float-format.xhtml",
+  "item": "example:1:44",
+  "category": "implementation-difference",
+  "summary": "Book lists alternative outputs by implementation; SBCL has short-float = single-float and no long-float distinct from double, giving (1.0d0 1.0d0 1.0 1.0 1.0d0 1.0d0).",
+  "epub_excerpt": "(let ((*read-default-float-format* 'double-float))\n(read-from-string \"(1.0 1.0e0 1.0s0 1.0f0 1.0d0 1.0L0)\")) => exp ['(1.0   1.0   1.0   1.0 1.0   1.0)'] got ['(1.0d0 1.0d0 1.0 1.0 1.0d0 1.0d0)', '35']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "24.2.3",
+  "names": [
+   "load"
+  ],
+  "file": "OEBPS/text/24-system-construction/24.2.3-load.xhtml",
+  "item": "example:2:186",
+  "category": "harness-limitation",
+  "summary": "Contents of file SETUP shown as example, package MY-STUFF not defined; not a runnable sequence. (Comment banner conversion error is recorded under text:Examples.)",
+  "epub_excerpt": "(in-package \"MY-STUFF\") => exp None got {'error': 'PACKAGE-DOES-NOT-EXIST The name \"MY-STUFF\" does not designate any package.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "24.2.3",
+  "names": [
+   "load"
+  ],
+  "file": "OEBPS/text/24-system-construction/24.2.3-load.xhtml",
+  "item": "example:2:196",
+  "category": "harness-limitation",
+  "summary": "(load \"SETUP\") needs the file SETUP shown above.",
+  "epub_excerpt": "(load \"SETUP\") => exp None got {'error': 'SIMPLE-FILE-ERROR Couldn\\'t load \"SETUP\": file does not exist.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "24.2.3",
+  "names": [
+   "load"
+  ],
+  "file": "OEBPS/text/24-system-construction/24.2.3-load.xhtml",
+  "item": "example:2:197",
+  "category": "harness-limitation",
+  "summary": "Depends on SETUP file/FOO BAR BAZ modules.",
+  "epub_excerpt": "(load-my-system) => exp None got {'error': 'SIMPLE-FILE-ERROR Couldn\\'t load #P\"/tmp/claude-1000/-workspaces-lisp-stat/5d101160-5834-444f-8e56-a3cfe2ab8eb0/scratchpad/wt-examples/tools/lisp/FOO.lisp\": file does not exist.'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "24.2.4",
+  "names": [
+   "with-compilation-unit"
+  ],
+  "file": "OEBPS/text/24-system-construction/24.2.4-with-compilation-unit.xhtml",
+  "item": "example:1:79",
+  "category": "harness-limitation",
+  "summary": "compile-files is a user function not defined here; files A B C absent.",
+  "epub_excerpt": "(compile-files \"A\" \"B\" \"C\") => exp None got {'error': 'SIMPLE-FILE-ERROR Failed to find the TRUENAME of /tmp/exwd-tiw87pkh/A.lisp: No such file or directory'}",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.1",
+  "names": [
+   "decode-universal-time"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.1-decode-universal-time.xhtml",
+  "item": "example:1:53",
+  "category": "implementation-difference",
+  "summary": "Depends on time zone/DST (book assumes EST, tz 5 with DST).",
+  "epub_excerpt": "(decode-universal-time 2414293200) => exp ['0', '0', '1', '4', '7', '1976', '6', 'true', '5'] got ['0', '0', '5', '4', '7', '1976', '6', 'NIL', '0']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.1",
+  "names": [
+   "decode-universal-time"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.1-decode-universal-time.xhtml",
+  "item": "example:1:57",
+  "category": "implementation-difference",
+  "summary": "Time zone dependent; container is UTC.",
+  "epub_excerpt": "(let* ((here (nth 8 (multiple-value-list (get-decoded-time)))) ;Time zone\n(recently (get-universal-time))\n(a (nthcdr 7 (multiple-value-list (decode-un => exp ['((T 5) (NIL 5) NIL)'] got ['((NIL 0) (NIL 0) T)']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.2",
+  "names": [
+   "encode-universal-time"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.2-encode-universal-time.xhtml",
+  "item": "example:1:26",
+  "category": "implementation-difference",
+  "summary": "Time-zone dependent (book assumes tz 5).",
+  "epub_excerpt": "(encode-universal-time 0 0 1 4 7 1976) => exp ['2414293200'] got ['2414278800']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.3",
+  "names": [
+   "get-universal-time",
+   "get-decoded-time"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.3-get-universal-time.xhtml",
+  "item": "example:1:45",
+  "category": "implementation-difference",
+  "summary": "Wall-clock value / time zone dependent.",
+  "epub_excerpt": "(get-decoded-time) => exp ['0', '0', '12', '4', '7', '1976', '6', 'true', '5'] got ['51', '53', '3', '23', '11', '2026', '0', 'NIL', '0']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.3",
+  "names": [
+   "get-universal-time",
+   "get-decoded-time"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.3-get-universal-time.xhtml",
+  "item": "example:1:47",
+  "category": "implementation-difference",
+  "summary": "Wall-clock value / time zone dependent.",
+  "epub_excerpt": "(get-universal-time) => exp ['2414332800'] got ['4004394831']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.3",
+  "names": [
+   "get-universal-time",
+   "get-decoded-time"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.3-get-universal-time.xhtml",
+  "item": "example:1:49",
+  "category": "implementation-difference",
+  "summary": "Wall-clock value / time zone dependent.",
+  "epub_excerpt": "(get-universal-time) => exp ['2414333100'] got ['4004394831']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.3",
+  "names": [
+   "get-universal-time",
+   "get-decoded-time"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.3-get-universal-time.xhtml",
+  "item": "example:1:51",
+  "category": "implementation-difference",
+  "summary": "Wall-clock value / time zone dependent.",
+  "epub_excerpt": "(- * **) => exp ['300'] got ['0']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.8",
+  "names": [
+   "trace",
+   "untrace"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.8-trace.xhtml",
+  "item": "example:1:75",
+  "category": "harness-limitation",
+  "summary": "TRACE output goes to the real *trace-output* and trace of FACT needs the defun; book output format implementation-defined.",
+  "epub_excerpt": "(fact 3) => exp ['6'] got ['6']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "25.2.20",
+  "names": [
+   "-"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.20-minus.xhtml",
+  "item": "example:1:30",
+  "category": "harness-limitation",
+  "summary": "Value of `-` is set by a REPL; the harness is not a REPL so `-` is NIL.",
+  "epub_excerpt": "(format t \"~&Evaluating ~S~%\" -) => exp ['NIL'] got ['NIL']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.22",
+  "names": [
+   "*",
+   "**",
+   "***"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.22-star.xhtml",
+  "item": "example:1:54",
+  "category": "implementation-difference",
+  "summary": "SBCL COMPILE returns 3 values; the book shows one.",
+  "epub_excerpt": "(compile *) => exp ['CUBE-ROOT'] got ['CUBE-ROOT', 'NIL', 'NIL']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.24",
+  "names": [
+   "lisp-implementation-type",
+   "lisp-implementation-version"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.24-lisp-implementation-type.xhtml",
+  "item": "example:1:53",
+  "category": "implementation-difference",
+  "summary": "Implementation-specific identification strings.",
+  "epub_excerpt": "(lisp-implementation-type) => exp ['\"ACME Lisp\"'] got ['\"SBCL\"']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.24",
+  "names": [
+   "lisp-implementation-type",
+   "lisp-implementation-version"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.24-lisp-implementation-type.xhtml",
+  "item": "example:1:56",
+  "category": "implementation-difference",
+  "summary": "Implementation-specific identification strings.",
+  "epub_excerpt": "(lisp-implementation-version) => exp ['\"1.3a\"'] got ['\"2.6.2\"']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.25",
+  "names": [
+   "short-site-name",
+   "long-site-name"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.25-short-site-name.xhtml",
+  "item": "example:1:38",
+  "category": "implementation-difference",
+  "summary": "Site-specific names (SBCL returns NIL).",
+  "epub_excerpt": "(short-site-name) => exp ['\"MIT AI Lab\"'] got ['NIL']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.25",
+  "names": [
+   "short-site-name",
+   "long-site-name"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.25-short-site-name.xhtml",
+  "item": "example:1:41",
+  "category": "implementation-difference",
+  "summary": "Site-specific names (SBCL returns NIL).",
+  "epub_excerpt": "(long-site-name) => exp ['\"MIT Artificial Intelligence Laboratory\"'] got ['NIL']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.26",
+  "names": [
+   "machine-instance"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.26-machine-instance.xhtml",
+  "item": "example:1:33",
+  "category": "implementation-difference",
+  "summary": "Machine/site-specific value.",
+  "epub_excerpt": "(machine-instance) => exp ['\"ACME.COM\"'] got ['\"df89647f5223\"']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.27",
+  "names": [
+   "machine-type"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.27-machine-type.xhtml",
+  "item": "example:1:32",
+  "category": "implementation-difference",
+  "summary": "Machine/site-specific value.",
+  "epub_excerpt": "(machine-type) => exp ['\"DEC PDP-10\"'] got ['\"X86-64\"']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.28",
+  "names": [
+   "machine-version"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.28-machine-version.xhtml",
+  "item": "example:1:32",
+  "category": "implementation-difference",
+  "summary": "Machine/site-specific value.",
+  "epub_excerpt": "(machine-version) => exp ['\"KL-10, microcode 9\"'] got ['\"Intel(R) Core(TM) i7-5930K CPU @ 3.50GHz\"']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.29",
+  "names": [
+   "software-type",
+   "software-version"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.29-software-type.xhtml",
+  "item": "example:1:43",
+  "category": "implementation-difference",
+  "summary": "Machine/site-specific value.",
+  "epub_excerpt": "(software-type) => exp ['\"Multics\"'] got ['\"Linux\"']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "25.2.29",
+  "names": [
+   "software-type",
+   "software-version"
+  ],
+  "file": "OEBPS/text/25-environment/25.2.29-software-type.xhtml",
+  "item": "example:1:44",
+  "category": "implementation-difference",
+  "summary": "Machine/site-specific value.",
+  "epub_excerpt": "(software-version) => exp ['\"1.3x\"'] got ['\"6.8.0-110-generic\"']",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.29",
+  "names": [
+   "open"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.29-open.xhtml",
+  "item": "unparsed:1",
+  "category": "harness-limitation",
+  "summary": "Output/continuation line not an evaluable form (prose): ':NAME \"test\" :TYPE NIL :VERSION :NEWEST>'",
+  "epub_excerpt": ":NAME \"test\" :TYPE NIL :VERSION :NEWEST>",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.29",
+  "names": [
+   "open"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.29-open.xhtml",
+  "item": "unparsed:2",
+  "category": "harness-limitation",
+  "summary": "Output/continuation line not an evaluable form (prose): 'directory-name :NAME filespec :TYPE extension :VERSION 1>'",
+  "epub_excerpt": "directory-name :NAME filespec :TYPE extension :VERSION 1>",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "21.2.31",
+  "names": [
+   "with-open-file"
+  ],
+  "file": "OEBPS/text/21-streams/21.2.31-with-open-file.xhtml",
+  "item": "unparsed:1",
+  "category": "harness-limitation",
+  "summary": "Output/continuation line not an evaluable form (prose): ':NAME \"test\" :TYPE NIL :VERSION :NEWEST>'",
+  "epub_excerpt": ":NAME \"test\" :TYPE NIL :VERSION :NEWEST>",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.5",
+  "names": [
+   "pprint-fill",
+   "pprint-linear",
+   "pprint-tabular"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.5-pprint-fill.xhtml",
+  "item": "unparsed:1",
+  "category": "harness-limitation",
+  "summary": "Output/continuation line not an evaluable form (prose): 'Roads ELM     MAIN'",
+  "epub_excerpt": "Roads ELM     MAIN",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.5",
+  "names": [
+   "pprint-fill",
+   "pprint-linear",
+   "pprint-tabular"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.5-pprint-fill.xhtml",
+  "item": "unparsed:2",
+  "category": "harness-limitation",
+  "summary": "Output/continuation line not an evaluable form (prose): 'MAPLE   CENTER'",
+  "epub_excerpt": "MAPLE   CENTER",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "22.4.27",
+  "names": [
+   "*print-readably*"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.27-print-readably.xhtml",
+  "item": "unparsed:1",
+  "category": "harness-limitation",
+  "summary": "Output/continuation line not an evaluable form (prose): \"Error: Can't print #<HASH-TABLE EQL 0/120 32005763> readably.\"",
+  "epub_excerpt": "Error: Can't print #<HASH-TABLE EQL 0/120 32005763> readably.",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high"
+ }
+]

@@ -1,0 +1,1992 @@
+[
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.7-quote.xhtml",
+  "old": "\n \"a → (QUOTE A)",
+  "new": "\n ''a → (QUOTE A)",
+  "secno": "3.8.7",
+  "item": "text:Examples",
+  "summary": "Two lines of the Examples lost their quote characters: ''a became \"a and '''a became \"'a.",
+  "confidence": "high",
+  "group": "g1"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.7-quote.xhtml",
+  "old": "\n \"'a → (QUOTE (QUOTE A))",
+  "new": "\n '''a → (QUOTE (QUOTE A))",
+  "secno": "3.8.7",
+  "item": "text:Examples",
+  "summary": "(second occurrence, same defect) Two lines of the Examples lost their quote characters: ''a became \"a and '''a became \"'a.",
+  "confidence": "high",
+  "group": "g1"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.9-define-compiler-macro.xhtml",
+  "old": "[[{<i>declaration</i>}* $|$ <i>documentation</i>]]",
+  "new": "[[{<i>declaration</i>}* <i>|</i> <i>documentation</i>]]",
+  "secno": "3.8.9",
+  "item": "text:Syntax",
+  "summary": "Stray TeX math delimiters around the bar: \"$|$\" instead of \"|\" (other entries, e.g. defun, use <i>|</i>).",
+  "confidence": "high",
+  "group": "g1"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.10-defmacro.xhtml",
+  "old": "[[{<i>declaration</i>}* $|$ <i>documentation</i>]]",
+  "new": "[[{<i>declaration</i>}* <i>|</i> <i>documentation</i>]]",
+  "secno": "3.8.10",
+  "item": "text:Syntax",
+  "summary": "Same stray \"$|$\" as in define-compiler-macro.",
+  "confidence": "high",
+  "group": "g1"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.10-defmacro.xhtml",
+  "old": "\n   \"(,',form ,,a",
+  "new": "\n   ``(,',form ,,a",
+  "secno": "3.8.10",
+  "item": "text:Examples",
+  "summary": "In the dm2b definition the double backquote was turned into a single double-quote: TeX is ``(,',form ,,a ...); EPUB has \"(,',form ... which also unbalances the string. (The reported deletion of \"Exceptional Situations: .\" is normaliser noise: the TeX section is \\none and the EPUB omits empty sections by convention.)",
+  "confidence": "high",
+  "group": "g1"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.11-macro-function.xhtml",
+  "old": "\n                  \"yes\n                  \"no)))",
+  "new": "\n                  ''yes\n                  ''no)))",
+  "secno": "3.8.11",
+  "item": "text:Examples",
+  "summary": "In the macrolet example, ''yes and ''no became \"yes and \"no (unbalanced strings; the example is meant to return the symbols YES and NO).",
+  "confidence": "high",
+  "group": "g1"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.20-dynamic-extent.xhtml",
+  "old": "In some containing <i><a href=\"../26-glossary/f.xhtml#form\">form</a></i>, <i>F</i>, this declaration\nasserts for each <i>var$<sub>i</sub>$</i> (which need not be bound by <i>F</i>),\nand for each <i><a href=\"../26-glossary/v.xhtml#value\">value</a></i> <i>v$<sub>ij</sub>$</i> that <i>var$<sub>i</sub>$</i> takes on,\nand for each <i><a href=\"../26-glossary/o.xhtml#object\">object</a></i> <i>x$<sub>ijk</sub>$</i> that \n\n\nis\nan <i><a href=\"../26-glossary/o.xhtml#otherwiseinaccessiblepart\">otherwise inaccessible part</a></i> of <i>v$<sub>ij</sub>$</i> at any time when\n\n\n<i>v$<sub>ij</sub>$</i>\nbecomes the value of <i>var$<sub>i</sub>$</i>,\nthat just after the execution of <i>F</i> terminates, \n<i>x$<sub>ijk</sub>$</i> is either <i><a href=\"../26-glossary/i.xhtml#inaccessible\">inaccessible</a></i>\n(if <i>F</i> established a <i><a href=\"../26-glossary/b.xhtml#binding\">binding</a></i> for <i>var$<sub>i</sub>$</i>)\nor still an <i><a href=\"../26-glossary/o.xhtml#otherwiseinaccessiblepart\">otherwise inaccessible part</a></i> of the current value of \n<i>var$<sub>i</sub>$</i> (if <i>F</i> did not establish a <i><a href=\"../26-glossary/b.xhtml#binding\">binding</a></i> \nfor <i>var$<sub>i</sub>$</i>).\n\n\n\nThe same relation holds for each <i>fn$<sub>i</sub>$</i>, \nexcept that the <i><a href=\"../26-glossary/b.xhtml#binding\">bindings</a></i> are in the <i><a href=\"../26-glossary/f.xhtml#function\">function</a></i> <i><a href=\"../26-glossary/n.xhtml#namespace\">namespace</a></i>.\n\n\n",
+  "new": "In some containing <i><a href=\"../26-glossary/f.xhtml#form\">form</a></i>, <i>F</i>, this declaration\nasserts for each <i>var<sub>i</sub></i> (which need not be bound by <i>F</i>),\nand for each <i><a href=\"../26-glossary/v.xhtml#value\">value</a></i> <i>v<sub>ij</sub></i> that <i>var<sub>i</sub></i> takes on,\nand for each <i><a href=\"../26-glossary/o.xhtml#object\">object</a></i> <i>x<sub>ijk</sub></i> that \n\n\nis\nan <i><a href=\"../26-glossary/o.xhtml#otherwiseinaccessiblepart\">otherwise inaccessible part</a></i> of <i>v<sub>ij</sub></i> at any time when\n\n\n<i>v<sub>ij</sub></i>\nbecomes the value of <i>var<sub>i</sub></i>,\nthat just after the execution of <i>F</i> terminates, \n<i>x<sub>ijk</sub></i> is either <i><a href=\"../26-glossary/i.xhtml#inaccessible\">inaccessible</a></i>\n(if <i>F</i> established a <i><a href=\"../26-glossary/b.xhtml#binding\">binding</a></i> for <i>var<sub>i</sub></i>)\nor still an <i><a href=\"../26-glossary/o.xhtml#otherwiseinaccessiblepart\">otherwise inaccessible part</a></i> of the current value of \n<i>var<sub>i</sub></i> (if <i>F</i> did not establish a <i><a href=\"../26-glossary/b.xhtml#binding\">binding</a></i> \nfor <i>var<sub>i</sub></i>).\n\n\n\nThe same relation holds for each <i>fn<sub>i</sub></i>, \nexcept that the <i><a href=\"../26-glossary/b.xhtml#binding\">bindings</a></i> are in the <i><a href=\"../26-glossary/f.xhtml#function\">function</a></i> <i><a href=\"../26-glossary/n.xhtml#namespace\">namespace</a></i>.\n\n\n",
+  "secno": "3.8.20",
+  "item": "text:Description",
+  "summary": "Raw TeX math markup left in: var$<sub>i</sub>$, v$<sub>ij</sub>$, x$<sub>ijk</sub>$, fn$<sub>i</sub>$ (12 occurrences). TeX is \\param{var$\\sub{i}$} etc. Fix: drop the $ signs, leaving <i>var<sub>i</sub></i> (as used elsewhere, e.g. <i>O<sub>i</sub></i>). One fix replaces the whole first paragraph.",
+  "confidence": "high",
+  "group": "g1"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.30-constantp.xhtml",
+  "old": "(constantp \"temp)) → ",
+  "new": "(constantp ''temp)) → ",
+  "secno": "3.8.30",
+  "item": "text:Examples",
+  "summary": "(constantp ''temp)) became (constantp \"temp)), which unbalances the string and loses the quoted-quote form. NOTE: the TeX itself has a stray extra \")\" after ''temp (an original typo), left as is.",
+  "confidence": "high",
+  "group": "g1"
+ },
+ {
+  "file": "OEBPS/text/4-types-and-classes/4.4.26-subtypep.xhtml",
+  "old": "<code>*</code>, \n    <code>(array <i>T1</i>)</code>\nand <code>(array <i>T2</i>)</code> is the empty set",
+  "new": "<code>*</code>, \nthe intersection of\n    <code>(array <i>T1</i>)</code>\nand <code>(array <i>T2</i>)</code> is the empty set",
+  "secno": "4.4.26",
+  "item": "text:Description",
+  "summary": "Lost words \"the intersection of\": TeX reads \"For all T1 and T2 other than *, the intersection of (array T1) and (array T2) is the empty set ...\"; EPUB says \"(array T1) and (array T2) is the empty set\". (TeX also contains a commented-out alternative \"the specified intersection for ...\" which is not in the text; only one variant is live, and the EPUB dropped part of it.)",
+  "confidence": "high",
+  "group": "g1"
+ },
+ {
+  "file": "OEBPS/text/4-types-and-classes/4.4.26-subtypep.xhtml",
+  "old": "(subtypep '(satisfies ) nil)",
+  "new": "(subtypep '(satisfies dummy) nil)",
+  "secno": "4.4.26",
+  "item": "text:Examples",
+  "summary": "The predicate name \"dummy\" was lost: (satisfies ) instead of (satisfies dummy).",
+  "confidence": "high",
+  "group": "g1"
+ },
+ {
+  "file": "OEBPS/text/4-types-and-classes/4.4.30-type-error-datum.xhtml",
+  "old": "</b></a>,\nConditions\n",
+  "new": "</b></a>,\nChapter <a href=\"../9-conditions/index.xhtml#Chapter_Conditions_602\">9 Conditions</a>\n",
+  "secno": "4.4.30",
+  "item": "text:See Also",
+  "summary": "{\\secref\\Conditions} (= \"Chapter 9 (Conditions)\") was rendered as bare text \"Conditions\": the word \"Chapter\", the number 9 and the link are lost. Other entries render chapter refs as: Chapter <a href=\"../9-conditions/index.xhtml#Chapter_Conditions_602\">9 Conditions</a>.",
+  "confidence": "high",
+  "group": "g1"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.6-flet.xhtml",
+  "old": "(defun -function () 'top-level) →  DUMMY-FUNCTION \n (funcall #'-function) →  TOP-LEVEL \n (flet ((-function () 'shadow)) \n      (funcall #'-function)) →  SHADOW \n (eq (funcall #'-function) (funcall '-function))\n→ <i><a href=\"../26-glossary/t.xhtml#true\">true</a></i> \n (flet ((-function () 'shadow))\n   (eq (funcall #'-function)\n       (funcall '-function)))",
+  "new": "(defun dummy-function () 'top-level) →  DUMMY-FUNCTION \n (funcall #'dummy-function) →  TOP-LEVEL \n (flet ((dummy-function () 'shadow)) \n      (funcall #'dummy-function)) →  SHADOW \n (eq (funcall #'dummy-function) (funcall 'dummy-function))\n→ <i><a href=\"../26-glossary/t.xhtml#true\">true</a></i> \n (flet ((dummy-function () 'shadow))\n   (eq (funcall #'dummy-function)\n       (funcall 'dummy-function)))",
+  "secno": "5.3.6",
+  "item": "text:Examples",
+  "summary": "'dummy-function' lost its prefix in the flet example: '-function' appears in code (defun, #', ', flet) while the result still shows DUMMY-FUNCTION. 9 occurrences, one fix block.",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.18-let.xhtml",
+  "old": "(defun -function () a) →  DUMMY-FUNCTION\n (let ((a 'inside) (b a))\n    (format nil \"~S ~S ~S\" a b (-function))) → \"INSIDE TOP TOP\" \n (let* ((a 'inside) (b a))\n    (format nil \"~S ~S ~S\" a b (-function))) → \"INSIDE INSIDE TOP\" \n (let ((a 'inside) (b a))\n    (declare (special a))\n    (format nil \"~S ~S ~S\" a b (-function)))",
+  "new": "(defun dummy-function () a) →  DUMMY-FUNCTION\n (let ((a 'inside) (b a))\n    (format nil \"~S ~S ~S\" a b (dummy-function))) → \"INSIDE TOP TOP\" \n (let* ((a 'inside) (b a))\n    (format nil \"~S ~S ~S\" a b (dummy-function))) → \"INSIDE INSIDE TOP\" \n (let ((a 'inside) (b a))\n    (declare (special a))\n    (format nil \"~S ~S ~S\" a b (dummy-function)))",
+  "secno": "5.3.18",
+  "item": "text:Examples",
+  "summary": "'dummy-function' lost its prefix in the let example (4 occurrences: defun and three calls) while the result still shows DUMMY-FUNCTION.",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.20-setq.xhtml",
+  "old": "<i>{<i>pair</i>}*</i>",
+  "new": "<i>{↓<i>pair</i>}*</i>",
+  "secno": "5.3.20",
+  "item": "text:Syntax",
+  "summary": "Lost down-arrow: TeX \\stardown{pair} = {↓pair}*; EPUB has {pair}*. The syntax then no longer points to the auxiliary BNF 'pair::=' production.",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.21-psetq.xhtml",
+  "old": "<i>{<i>pair</i>}*</i>",
+  "new": "<i>{↓<i>pair</i>}*</i>",
+  "secno": "5.3.21",
+  "item": "text:Syntax",
+  "summary": "Lost down-arrow: \\stardown{pair} rendered as {pair}*.",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.23-catch.xhtml",
+  "old": "(catch '-tag 1 2 (throw '-tag 3) 4) → 3\n (catch '-tag 1 2 3 4) → 4\n (defun throw-back (tag) (throw tag t)) →  THROW-BACK\n (catch '-tag (throw-back '-tag) 2)",
+  "new": "(catch 'dummy-tag 1 2 (throw 'dummy-tag 3) 4) → 3\n (catch 'dummy-tag 1 2 3 4) → 4\n (defun throw-back (tag) (throw tag t)) →  THROW-BACK\n (catch 'dummy-tag (throw-back 'dummy-tag) 2)",
+  "secno": "5.3.23",
+  "item": "text:Examples",
+  "summary": "'dummy-tag' lost its prefix: (catch '-tag ...) and (throw '-tag ...), 5 occurrences. Resulting tag is the symbol -TAG; semantics still hold, but text differs from TeX and is garbled.",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.25-return-from.xhtml",
+  "old": "(return-from temp ')",
+  "new": "(return-from temp 'dummy)",
+  "secno": "5.3.25",
+  "item": "text:Examples",
+  "summary": "'dummy lost: (return-from temp 'dummy) became (return-from temp ') which leaves an unbalanced quote and an unbalanced form, while the result still says DUMMY.",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.29-unwind-protect.xhtml",
+  "old": "(defun -function (x)\n    (setq state 'running)\n    (unless (numberp x) (throw 'abort 'not-a-number))\n    (setq state (1+ x))) →  DUMMY-FUNCTION\n (catch 'abort (-function 1)) → 2\n state → 2\n (catch 'abort (-function 'trash)) →  NOT-A-NUMBER\n state →  RUNNING\n (catch 'abort (unwind-protect (-function 'trash)",
+  "new": "(defun dummy-function (x)\n    (setq state 'running)\n    (unless (numberp x) (throw 'abort 'not-a-number))\n    (setq state (1+ x))) →  DUMMY-FUNCTION\n (catch 'abort (dummy-function 1)) → 2\n state → 2\n (catch 'abort (dummy-function 'trash)) →  NOT-A-NUMBER\n state →  RUNNING\n (catch 'abort (unwind-protect (dummy-function 'trash)",
+  "secno": "5.3.29",
+  "item": "text:Examples",
+  "summary": "'dummy-function' lost its prefix (4 occurrences: defun and three calls) while the result still shows DUMMY-FUNCTION.",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.42-cond.xhtml",
+  "old": "<i>{<i>clause</i>}*</i>",
+  "new": "<i>{↓<i>clause</i>}*</i>",
+  "secno": "5.3.42",
+  "item": "text:Syntax",
+  "summary": "Lost down-arrow: \\stardown{clause} rendered as {clause}*.",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.46-case.xhtml",
+  "old": "keyform  {<i>normal-clause</i>}* [↓otherwise-clause]",
+  "new": "keyform  {↓<i>normal-clause</i>}* [↓otherwise-clause]",
+  "secno": "5.3.46",
+  "item": "text:Syntax",
+  "summary": "Lost down-arrow in three Syntax forms (case, ccase, ecase): \\stardown{normal-clause} rendered as {normal-clause}*; the neighbouring [↓otherwise-clause] kept its arrow. Three fixes (list).",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.46-case.xhtml",
+  "old": "keyplace {<i>normal-clause</i>}*",
+  "new": "keyplace {↓<i>normal-clause</i>}*",
+  "secno": "5.3.46",
+  "item": "text:Syntax",
+  "summary": "Lost down-arrow in three Syntax forms (case, ccase, ecase): \\stardown{normal-clause} rendered as {normal-clause}*; the neighbouring [↓otherwise-clause] kept its arrow. Three fixes (list).",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.46-case.xhtml",
+  "old": "keyform  {<i>normal-clause</i>}*</i>",
+  "new": "keyform  {↓<i>normal-clause</i>}*</i>",
+  "secno": "5.3.46",
+  "item": "text:Syntax",
+  "summary": "Lost down-arrow in three Syntax forms (case, ccase, ecase): \\stardown{normal-clause} rendered as {normal-clause}*; the neighbouring [↓otherwise-clause] kept its arrow. Three fixes (list).",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.47-typecase.xhtml",
+  "old": "keyform  {<i>normal-clause</i>}* [↓otherwise-clause]",
+  "new": "keyform  {↓<i>normal-clause</i>}* [↓otherwise-clause]",
+  "secno": "5.3.47",
+  "item": "text:Syntax",
+  "summary": "Lost down-arrow in three Syntax forms (typecase, ctypecase, etypecase), as in case. Three fixes (list).",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.47-typecase.xhtml",
+  "old": "keyplace {<i>normal-clause</i>}*",
+  "new": "keyplace {↓<i>normal-clause</i>}*",
+  "secno": "5.3.47",
+  "item": "text:Syntax",
+  "summary": "Lost down-arrow in three Syntax forms (typecase, ctypecase, etypecase), as in case. Three fixes (list).",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.47-typecase.xhtml",
+  "old": "keyform  {<i>normal-clause</i>}*</i>",
+  "new": "keyform  {↓<i>normal-clause</i>}*</i>",
+  "secno": "5.3.47",
+  "item": "text:Syntax",
+  "summary": "Lost down-arrow in three Syntax forms (typecase, ctypecase, etypecase), as in case. Three fixes (list).",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.64-setf.xhtml",
+  "old": "<b>setf</b>\n<i>{<i>pair</i>}*</i>",
+  "new": "<b>setf</b>\n<i>{↓<i>pair</i>}*</i>",
+  "secno": "5.3.64",
+  "item": "text:Syntax",
+  "summary": "Lost down-arrow in both setf and psetf Syntax forms. Two fixes (list).",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.64-setf.xhtml",
+  "old": "<b>psetf</b>\n<i>{<i>pair</i>}*</i>",
+  "new": "<b>psetf</b>\n<i>{↓<i>pair</i>}*</i>",
+  "secno": "5.3.64",
+  "item": "text:Syntax",
+  "summary": "Lost down-arrow in both setf and psetf Syntax forms. Two fixes (list).",
+  "confidence": "high",
+  "group": "g2"
+ },
+ {
+  "file": "OEBPS/text/6-iteration/6.2.4-loop.xhtml",
+  "old": "{<i>variable-clause</i>}*",
+  "new": "{↓<i>variable-clause</i>}*",
+  "secno": "6.2.4",
+  "item": "text:Syntax#variable-clause",
+  "summary": "TeX \\stardown{variable-clause} = {↓variable-clause}*; EPUB lost the ↓ (rendered {variable-clause}*).",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/6-iteration/6.2.4-loop.xhtml",
+  "old": "{<i>main-clause</i>}*",
+  "new": "{↓<i>main-clause</i>}*",
+  "secno": "6.2.4",
+  "item": "text:Syntax#main-clause",
+  "summary": "Same defect: \\stardown{main-clause} lost its ↓.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/7-objects/7.7.26-defgeneric.xhtml",
+  "old": "{<i>method-description</i>}*]]",
+  "new": "{↓<i>method-description</i>}*]]",
+  "secno": "7.7.26",
+  "item": "text:Syntax",
+  "summary": "\\stardown{method-description} lost its ↓ (cf. \\down{option}, which kept it).",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/8-structures/8.1.1-defstruct.xhtml",
+  "old": "[documentation] {<i>slot-description</i>}*",
+  "new": "[documentation] {↓<i>slot-description</i>}*",
+  "secno": "8.1.1",
+  "item": "text:Syntax#slot-description(1)",
+  "summary": "\\stardown{slot-description} in the defstruct lambda list lost its ↓.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/8-structures/8.1.1-defstruct.xhtml",
+  "old": "{<i>constructor-option</i>}*",
+  "new": "{↓<i>constructor-option</i>}*",
+  "secno": "8.1.1",
+  "item": "text:Syntax#constructor-option",
+  "summary": "\\stardown{constructor-option} in options:: lost its ↓.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/8-structures/8.1.1-defstruct.xhtml",
+  "old": "{<i>slot-description</i>}*)</p>",
+  "new": "{↓<i>slot-description</i>}*)</p>",
+  "secno": "8.1.1",
+  "item": "text:Syntax#slot-description(include-option)",
+  "summary": "\\stardown{slot-description} in include-option:: lost its ↓.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/9-conditions/9.2.26-handler-bind.xhtml",
+  "old": "({<i>binding</i>}*)",
+  "new": "({↓<i>binding</i>}*)",
+  "secno": "9.2.26",
+  "item": "text:Syntax",
+  "summary": "\\paren{\\stardown{binding}} lost its ↓.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/9-conditions/9.2.27-handler-case.xhtml",
+  "old": "[[{<i>error-clause</i>}*",
+  "new": "[[{↓<i>error-clause</i>}*",
+  "secno": "9.2.27",
+  "item": "text:Syntax",
+  "summary": "\\stardown{error-clause} lost its ↓ (↓no-error-clause kept it).",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/9-conditions/9.2.29-define-condition.xhtml",
+  "old": "({<i>slot-spec</i>}*)",
+  "new": "({↓<i>slot-spec</i>}*)",
+  "secno": "9.2.29",
+  "item": "text:Syntax",
+  "summary": "\\paren{\\stardown{slot-spec}} lost its ↓.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/9-conditions/9.2.36-restart-bind.xhtml",
+  "old": "{<i>key-val-pair</i>}*)",
+  "new": "{↓<i>key-val-pair</i>}*)",
+  "secno": "9.2.36",
+  "item": "text:Syntax",
+  "summary": "\\stardown{key-val-pair} lost its ↓.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/11-packages/11.2.19-defpackage.xhtml",
+  "old": "<code>:shadow</code> {<i>symbol-name</i>}*",
+  "new": "<code>:shadow</code> {↓<i>symbol-name</i>}*",
+  "secno": "11.2.19",
+  "item": "text:Syntax#:shadow",
+  "summary": "\\stardown{symbol-name} in the :shadow option lost its ↓.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/11-packages/11.2.19-defpackage.xhtml",
+  "old": "<code>:shadowing-import-from</code> \n\t\t\t   <i>package-name</i>\n\t\t\t   {<i>symbol-name</i>}*",
+  "new": "<code>:shadowing-import-from</code> \n\t\t\t   <i>package-name</i>\n\t\t\t   {↓<i>symbol-name</i>}*",
+  "secno": "11.2.19",
+  "item": "text:Syntax#:shadowing-import-from",
+  "summary": "\\stardown{symbol-name} in the :shadowing-import-from option lost its ↓.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/11-packages/11.2.19-defpackage.xhtml",
+  "old": "<code>:import-from</code>\n\t\t\t   <i>package-name</i>\n\t\t\t   {<i>symbol-name</i>}*",
+  "new": "<code>:import-from</code>\n\t\t\t   <i>package-name</i>\n\t\t\t   {↓<i>symbol-name</i>}*",
+  "secno": "11.2.19",
+  "item": "text:Syntax#:import-from",
+  "summary": "\\stardown{symbol-name} in the :import-from option lost its ↓.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/11-packages/11.2.19-defpackage.xhtml",
+  "old": "<code>:export</code> {<i>symbol-name</i>}*",
+  "new": "<code>:export</code> {↓<i>symbol-name</i>}*",
+  "secno": "11.2.19",
+  "item": "text:Syntax#:export",
+  "summary": "\\stardown{symbol-name} in the :export option lost its ↓.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/11-packages/11.2.19-defpackage.xhtml",
+  "old": "<code>:intern</code> {<i>symbol-name</i>}*",
+  "new": "<code>:intern</code> {↓<i>symbol-name</i>}*",
+  "secno": "11.2.19",
+  "item": "text:Syntax#:intern",
+  "summary": "\\stardown{symbol-name} in the :intern option lost its ↓.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/7-objects/7.7.25-defclass.xhtml",
+  "old": "<i>slot name</i>",
+  "new": "<i>slot-name</i>",
+  "secno": "7.7.25",
+  "item": "text:Syntax#slot-name",
+  "summary": "TeX \\i{slot-name} in slot-specifier::= became \"slot name\" (hyphen lost); the next line and the nonterminal definition use slot-name.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/7-objects/7.7.25-defclass.xhtml",
+  "old": "<code>·</code>",
+  "new": "<code>.</code>",
+  "secno": "7.7.25",
+  "item": "text:Syntax#dot",
+  "summary": "Dotted-pair \".\" in (:default-initargs . initarg-list) rendered as middle dot \"·\"; TeX has \\f{.} and define-condition (9.2.29) renders it as \".\".",
+  "confidence": "medium",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/10-symbols/10.2.15-get.xhtml",
+  "old": "(default \"thirty-something))",
+  "new": "(default ''thirty-something))",
+  "secno": "10.2.15",
+  "item": "text:Examples",
+  "summary": "''thirty-something turned into \"thirty-something (unbalanced string); the defmacro default should be ''thirty-something.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/11-packages/11.2.29-package-error.xhtml",
+  "old": "</b></a>,\nConditions\n",
+  "new": "</b></a>,\nChapter <a href=\"../9-conditions/index.xhtml#Chapter_Conditions_602\">9 Conditions</a>\n",
+  "secno": "11.2.29",
+  "item": "text:See Also",
+  "summary": "\\secref\\Conditions (\"Chapter 9 (Conditions)\") reduced to bare \"Conditions\" with no chapter number or link; other files render it as Chapter <a href=\"../9-conditions/index.xhtml#Chapter_Conditions_602\">9 Conditions</a>.",
+  "confidence": "high",
+  "group": "g3"
+ },
+ {
+  "file": "OEBPS/text/12-numbers/12.2.3-real.xhtml",
+  "old": "[upper-limit)</code><code>]</code>]",
+  "new": "[upper-limit]<code>]</code>)</code>",
+  "secno": "12.2.3",
+  "item": "text:Compound Type Specifier Syntax",
+  "summary": "Closing paren misplaced: the syntax reads (real [lower-limit [upper-limit)]] instead of (real [lower-limit [upper-limit]]). The ) sits inside the inner optional bracket, and the outer ] is outside the <code>.",
+  "confidence": "high",
+  "group": "g4"
+ },
+ {
+  "file": "OEBPS/text/12-numbers/12.2.4-float.xhtml",
+  "old": "[upper-limit)</code><code>]</code>]",
+  "new": "[upper-limit]<code>]</code>)</code>",
+  "secno": "12.2.4",
+  "item": "text:Compound Type Specifier Syntax",
+  "summary": "Closing paren misplaced: the syntax reads (float [lower-limit [upper-limit)]] instead of (float [lower-limit [upper-limit]]). The ) sits inside the inner optional bracket, and the outer ] is outside the <code>.",
+  "confidence": "high",
+  "group": "g4"
+ },
+ {
+  "file": "OEBPS/text/12-numbers/12.2.6-rational.xhtml",
+  "old": "[upper-limit)</code><code>]</code>]",
+  "new": "[upper-limit]<code>]</code>)</code>",
+  "secno": "12.2.6",
+  "item": "text:Compound Type Specifier Syntax",
+  "summary": "Closing paren misplaced: the syntax reads (rational [lower-limit [upper-limit)]] instead of (rational [lower-limit [upper-limit]]). The ) sits inside the inner optional bracket, and the outer ] is outside the <code>.",
+  "confidence": "high",
+  "group": "g4"
+ },
+ {
+  "file": "OEBPS/text/12-numbers/12.2.8-integer.xhtml",
+  "old": "[upper-limit)</code><code>]</code>]",
+  "new": "[upper-limit]<code>]</code>)</code>",
+  "secno": "12.2.8",
+  "item": "text:Compound Type Specifier Syntax",
+  "summary": "Closing paren misplaced: the syntax reads (integer [lower-limit [upper-limit)]] instead of (integer [lower-limit [upper-limit]]). The ) sits inside the inner optional bracket, and the outer ] is outside the <code>.",
+  "confidence": "high",
+  "group": "g4"
+ },
+ {
+  "file": "OEBPS/text/12-numbers/12.2.21-asin.xhtml",
+  "old": " (sqrt(1-z)/2))/i",
+  "new": " sqrt((1-z)/2))/i",
+  "secno": "12.2.21",
+  "item": "text:Description",
+  "summary": "Two formula errors in the arc cosine / arc tangent definitions. (1) The third arccos formula is 2 log(sqrt((1+z)/2) + i sqrt((1-z)/2))/i in the TeX; the EPUB has i (sqrt(1-z)/2), moving the sqrt off the whole quotient. (2) The arctan definition is (log(1+iz) - log(1-iz))/(2i); the EPUB drops the parentheses and reads log (1+iz) - log (1-iz) /2i, which is a different expression. All other formulas, the branch-cut prose and both tables (Figures 12-14, 12-15) match; the many pi/sqrt diffs are normaliser artefacts (see systematic pattern on \"pi\").",
+  "confidence": "high",
+  "group": "g4"
+ },
+ {
+  "file": "OEBPS/text/12-numbers/12.2.21-asin.xhtml",
+  "old": "z = <code>log </code> (1+iz) - <code>log </code> (1-iz)\n/2i </i>",
+  "new": "z = (<code>log </code> (1+iz) - <code>log </code> (1-iz))/2i </i>",
+  "secno": "12.2.21",
+  "item": "text:Description",
+  "summary": "Two formula errors in the arc cosine / arc tangent definitions. (1) The third arccos formula is 2 log(sqrt((1+z)/2) + i sqrt((1-z)/2))/i in the TeX; the EPUB has i (sqrt(1-z)/2), moving the sqrt off the whole quotient. (2) The arctan definition is (log(1+iz) - log(1-iz))/(2i); the EPUB drops the parentheses and reads log (1+iz) - log (1-iz) /2i, which is a different expression. All other formulas, the branch-cut prose and both tables (Figures 12-14, 12-15) match; the many pi/sqrt diffs are normaliser artefacts (see systematic pattern on \"pi\").",
+  "confidence": "high",
+  "group": "g4"
+ },
+ {
+  "file": "OEBPS/text/12-numbers/12.2.60-boole.xhtml",
+  "old": "~% - Op---- - Decimal-- - Binary- - Bits - ~%",
+  "new": "~%---Op-------Decimal-----Binary----Bits---~%",
+  "secno": "12.2.60",
+  "item": "text:Examples",
+  "summary": "Runs of hyphens in the table-header string of the example were garbled: the format string \"~%---Op-------Decimal-----Binary----Bits---~%\" became \"~% - Op---- - Decimal-- - Binary- - Bits - ~%\", and the ▷ output line likewise. This changes the code and the displayed output. Everything else in the Description (Figure 12-17 table, op names) and Examples matches the TeX.",
+  "confidence": "high",
+  "group": "g4"
+ },
+ {
+  "file": "OEBPS/text/12-numbers/12.2.60-boole.xhtml",
+  "old": "▷ - Op---- - Decimal-- - Binary- - Bits - ",
+  "new": "▷ ---Op-------Decimal-----Binary----Bits---",
+  "secno": "12.2.60",
+  "item": "text:Examples",
+  "summary": "Runs of hyphens in the table-header string of the example were garbled: the format string \"~%---Op-------Decimal-----Binary----Bits---~%\" became \"~% - Op---- - Decimal-- - Binary- - Bits - ~%\", and the ▷ output line likewise. This changes the code and the displayed output. Everything else in the Description (Figure 12-17 table, op names) and Examples matches the TeX.",
+  "confidence": "high",
+  "group": "g4"
+ },
+ {
+  "file": "OEBPS/text/12-numbers/12.2.77-short-float-epsilon.xhtml",
+  "old": "<p>\n<code>(not (= (float 1 <i>epsilon</i>) (+ (float 1 <i>epsilon</i>) \n<i><i>epsilon</i>))) </i></code><i>\n\n</i></p><p><i>\nThe value of each of the constants <a href=\"#DictEntry_short_float__851\"><b>short-float-negative-epsilon</b></a>, \n<a href=\"#DictEntry_short_float__851\"><b>single-float-negative-epsilon</b></a>,\n<a href=\"#DictEntry_short_float__851\"><b>double-float-negative-epsilon</b></a>, and  \n<a href=\"#DictEntry_short_float__851\"><b>long-float-negative-epsilon</b></a> is the smallest positive\n<i><a href=\"../26-glossary/f.xhtml#float\">float</a></i> <i>ε</i> of the given format, such that the following\nexpression is <i><a href=\"../26-glossary/t.xhtml#true\">true</a></i> when evaluated:\n\n</i></p><p><i>\n<code>(not (= (float 1 <i>epsilon</i>) (- (float 1 <i>epsilon</i>) \n<i>epsilon</i>))) </code>\n\n</i></p><p><i>\n</i></p>",
+  "new": "<p>\n<code>(not (= (float 1 <i>ε</i>) (+ (float 1 <i>ε</i>) \n<i>ε</i>)))</code>\n\n</p><p>\nThe value of each of the constants <a href=\"#DictEntry_short_float__851\"><b>short-float-negative-epsilon</b></a>, \n<a href=\"#DictEntry_short_float__851\"><b>single-float-negative-epsilon</b></a>,\n<a href=\"#DictEntry_short_float__851\"><b>double-float-negative-epsilon</b></a>, and  \n<a href=\"#DictEntry_short_float__851\"><b>long-float-negative-epsilon</b></a> is the smallest positive\n<i><a href=\"../26-glossary/f.xhtml#float\">float</a></i> <i>ε</i> of the given format, such that the following\nexpression is <i><a href=\"../26-glossary/t.xhtml#true\">true</a></i> when evaluated:\n\n</p><p>\n<code>(not (= (float 1 <i>ε</i>) (- (float 1 <i>ε</i>) <i>ε</i>)))</code>\n\n</p>",
+  "secno": "12.2.77",
+  "item": "text:Description",
+  "summary": "The two code expressions use the word \"epsilon\" where the TeX has $\\epsilon$ (the prose just above correctly uses ε), and the surrounding markup is broken: a stray <i> opened after the first </code> italicises the entire second paragraph and the second expression through mismatched <i>/</i> across <p> boundaries. Fix rewrites the block with ε in <code> and balanced markup.",
+  "confidence": "high",
+  "group": "g4"
+ },
+ {
+  "file": "OEBPS/text/13-characters/13.2.8-alpha-char-p.xhtml",
+  "old": " in which #\\\\alfa is a defined",
+  "new": " in which #\\α is a defined",
+  "secno": "13.2.8",
+  "item": "text:Examples",
+  "summary": "The TeX macro \\alfa (= $\\alpha$, Greek alpha) in \"#\\\\\\alfa\" was not expanded: the EPUB prints #\\\\alfa (two backslashes and the word alfa) in both the comment and the form. Should be #\\α.",
+  "confidence": "high",
+  "group": "g4"
+ },
+ {
+  "file": "OEBPS/text/13-characters/13.2.8-alpha-char-p.xhtml",
+  "old": "(alpha-char-p #\\\\alfa)",
+  "new": "(alpha-char-p #\\α)",
+  "secno": "13.2.8",
+  "item": "text:Examples",
+  "summary": "The TeX macro \\alfa (= $\\alpha$, Greek alpha) in \"#\\\\\\alfa\" was not expanded: the EPUB prints #\\\\alfa (two backslashes and the word alfa) in both the comment and the form. Should be #\\α.",
+  "confidence": "high",
+  "group": "g4"
+ },
+ {
+  "file": "OEBPS/text/13-characters/13.2.20-char-name.xhtml",
+  "old": "(char-name #\\ )",
+  "new": "(char-name #\\ )",
+  "secno": "13.2.20",
+  "item": "example:1:56",
+  "summary": "(Reclassified by orchestrator) U+00A0 after #\\ in example code: TeX has a plain space (#\\Space); NBSP changes the character read.",
+  "confidence": "high",
+  "group": "g4"
+ },
+ {
+  "file": "OEBPS/text/14-conses/14.2.44-adjoin.xhtml",
+  "old": "<i>test-not</i> and <i>key</i> affect how it is determined whether item is",
+  "new": "<i>test-not</i>, and <i>key</i> affect how it is determined whether <i>item</i> is",
+  "secno": "14.2.44",
+  "item": "text:Description",
+  "summary": "Expansion of the \\SatisfyTest macro lost the serial comma (\"test-not, and key\") and the italics on \\param{item} (renders as plain \"item\"). Minor punctuation/markup loss; only adjoin uses this macro in the EPUB.",
+  "confidence": "high",
+  "group": "g5"
+ },
+ {
+  "file": "OEBPS/text/15-arrays/15.2.33-bit.xhtml",
+  "old": "<i>new-bit</i></td></tr>\n</tbody></table><p>\n(<b>setf</b>(<b>bit</b> <i>bit-array</i> &amp;rest <i>subscrips</i>) <i>new-bit</i>)<br/>\n(<b>setf</b>(<b>sbit</b> <i>bit-array</i> &amp;rest <i>subscrips</i>) <i>new-bit</i>)",
+  "new": "<i>bit</i></td></tr>\n</tbody></table><p>\n(<b>setf</b>(<b>bit</b> <i>bit-array</i> &amp;rest <i>subscripts</i>) <i>new-bit</i>)<br/>\n(<b>setf</b>(<b>sbit</b> <i>bit-array</i> &amp;rest <i>subscripts</i>) <i>new-bit</i>)",
+  "secno": "15.2.33",
+  "item": "text:Syntax",
+  "summary": "Three defects in one block: sbit row returns \"new-bit\" instead of \"bit\" (TeX: both rows have value {bit}; new-bit belongs only to the setf forms); \"subscripts\" misspelled \"subscrips\" in both setf lines. Single multi-line fix covers all three.",
+  "confidence": "high",
+  "group": "g5"
+ },
+ {
+  "file": "OEBPS/text/17-sequences/17.3.15-position.xhtml",
+  "old": " <strong>[see\n        correction below]</strong>",
+  "new": "",
+  "secno": "17.3.15",
+  "item": "text:Description",
+  "summary": "Inserted text not in the TeX: \"<strong>[see correction below]</strong>\" after \"leftmost (if from-end is true\". No such note exists anywhere in the TeX; there is no correction in the file either.",
+  "confidence": "high",
+  "group": "g5"
+ },
+ {
+  "file": "OEBPS/text/19-filenames/19.4.4-make-pathname.xhtml",
+  "old": "#P\"SYS<i>DISK",
+  "new": "#P\"SYS$DISK",
+  "secno": "19.4.4",
+  "item": "text:Examples",
+  "summary": "Lost \"$\" in VMS pathnames: SYS$DISK: became SYS<i>DISK: ... SYS</i>DISK:. The converter treated each pair of $ signs as TeX math delimiters (italic span), which dropped the $ and left an <i> opened in one example line and closed several lines later (4 occurrences). The rendered text reads SYSDISK:.",
+  "confidence": "high",
+  "group": "g5"
+ },
+ {
+  "file": "OEBPS/text/19-filenames/19.4.4-make-pathname.xhtml",
+  "old": "BOBBY::SYS</i>DISK",
+  "new": "BOBBY::SYS$DISK",
+  "secno": "19.4.4",
+  "item": "text:Examples",
+  "summary": "Lost \"$\" in VMS pathnames: SYS$DISK: became SYS<i>DISK: ... SYS</i>DISK:. The converter treated each pair of $ signs as TeX math delimiters (italic span), which dropped the $ and left an <i> opened in one example line and closed several lines later (4 occurrences). The rendered text reads SYSDISK:.",
+  "confidence": "high",
+  "group": "g5"
+ },
+ {
+  "file": "OEBPS/text/19-filenames/19.4.4-make-pathname.xhtml",
+  "old": "MY-VAX:SYS<i>DISK",
+  "new": "MY-VAX:SYS$DISK",
+  "secno": "19.4.4",
+  "item": "text:Examples",
+  "summary": "Lost \"$\" in VMS pathnames: SYS$DISK: became SYS<i>DISK: ... SYS</i>DISK:. The converter treated each pair of $ signs as TeX math delimiters (italic span), which dropped the $ and left an <i> opened in one example line and closed several lines later (4 occurrences). The rendered text reads SYSDISK:.",
+  "confidence": "high",
+  "group": "g5"
+ },
+ {
+  "file": "OEBPS/text/19-filenames/19.4.4-make-pathname.xhtml",
+  "old": "MY-VAX:SYS</i>DISK",
+  "new": "MY-VAX:SYS$DISK",
+  "secno": "19.4.4",
+  "item": "text:Examples",
+  "summary": "Lost \"$\" in VMS pathnames: SYS$DISK: became SYS<i>DISK: ... SYS</i>DISK:. The converter treated each pair of $ signs as TeX math delimiters (italic span), which dropped the $ and left an <i> opened in one example line and closed several lines later (4 occurrences). The rendered text reads SYSDISK:.",
+  "confidence": "high",
+  "group": "g5"
+ },
+ {
+  "file": "OEBPS/text/19-filenames/19.4.8-logical-pathname-translations.xhtml",
+  "old": "SYS<i>DISK",
+  "new": "SYS$DISK",
+  "secno": "19.4.8",
+  "item": "text:Examples",
+  "summary": "Same lost-$ defect as 19.4.4: \"MY-VAX:SYS<i>DISK:[JOE.DOC]\" and \"MY-VAX:SYS</i>DISK:[JOE.MAIL.PROG...]*.MBX\" in the setf translations (2 occurrences; the later #P\"MY-VAX:SYS$DISK:...\" result line is already correct). The other text difference (a \\reviewer{Laddaga: ...} note) is correctly suppressed: setup-options.tex has \\editornotesfalse.",
+  "confidence": "high",
+  "group": "g5"
+ },
+ {
+  "file": "OEBPS/text/19-filenames/19.4.8-logical-pathname-translations.xhtml",
+  "old": "SYS</i>DISK",
+  "new": "SYS$DISK",
+  "secno": "19.4.8",
+  "item": "text:Examples",
+  "summary": "Same lost-$ defect as 19.4.4: \"MY-VAX:SYS<i>DISK:[JOE.DOC]\" and \"MY-VAX:SYS</i>DISK:[JOE.MAIL.PROG...]*.MBX\" in the setf translations (2 occurrences; the later #P\"MY-VAX:SYS$DISK:...\" result line is already correct). The other text difference (a \\reviewer{Laddaga: ...} note) is correctly suppressed: setup-options.tex has \\editornotesfalse.",
+  "confidence": "high",
+  "group": "g5"
+ },
+ {
+  "file": "OEBPS/text/20-files/20.2.10-file-error-pathname.xhtml",
+  "old": "\nConditions\n",
+  "new": "\nChapter <a href=\"../9-conditions/index.xhtml#Chapter_Conditions_602\">9 Conditions</a>\n",
+  "secno": "20.2.10",
+  "item": "text:See Also",
+  "summary": "Cross-reference \"Chapter 9 (Conditions)\" (TeX {\\secref\\Conditions}) reduced to bare word \"Conditions\": \"Chapter\" and the link to chapter 9 are lost.",
+  "confidence": "high",
+  "group": "g6"
+ },
+ {
+  "file": "OEBPS/text/21-streams/21.2.56-stream-error-stream.xhtml",
+  "old": "\nConditions\n",
+  "new": "\nChapter <a href=\"../9-conditions/index.xhtml#Chapter_Conditions_602\">9 Conditions</a>\n",
+  "secno": "21.2.56",
+  "item": "text:See Also",
+  "summary": "Cross-reference \"Chapter 9 (Conditions)\" (TeX {\\secref\\Conditions}) reduced to bare word \"Conditions\": \"Chapter\" and the link to chapter 9 are lost.",
+  "confidence": "high",
+  "group": "g6"
+ },
+ {
+  "file": "OEBPS/text/22-printer/22.4.30-print-not-readable-object.xhtml",
+  "old": "\nConditions\n",
+  "new": "\nChapter <a href=\"../9-conditions/index.xhtml#Chapter_Conditions_602\">9 Conditions</a>\n",
+  "secno": "22.4.30",
+  "item": "text:See Also",
+  "summary": "Cross-reference \"Chapter 9 (Conditions)\" (TeX {\\secref\\Conditions}) reduced to bare word \"Conditions\": \"Chapter\" and the link to chapter 9 are lost.",
+  "confidence": "high",
+  "group": "g6"
+ },
+ {
+  "file": "OEBPS/text/23-reader/23.2.4-read.xhtml",
+  "old": "#\\ ))))\n (set-macro-character #\\  #'slash-reader)",
+  "new": "#\\/))))\n (set-macro-character #\\/ #'slash-reader)",
+  "secno": "23.2.4",
+  "item": "text:Examples",
+  "summary": "Character `#\\/` lost its slash in slash-reader example (twice): `#\\ ))))` and `(set-macro-character #\\  #'slash-reader)`; as written the macro char is a space, contradicting the prose (\"The / macro\").",
+  "confidence": "high",
+  "group": "g6"
+ },
+ {
+  "file": "OEBPS/text/23-reader/23.2.9-set-dispatch-macro-character.xhtml",
+  "old": "(defun |#<i>-reader| (stream subchar arg)\n   (declare (ignore subchar arg))\n   (list 'dollars (read stream t nil t))) → |#</i>-reader|",
+  "new": "(defun |#$-reader| (stream subchar arg)\n   (declare (ignore subchar arg))\n   (list 'dollars (read stream t nil t))) → |#$-reader|",
+  "secno": "23.2.9",
+  "item": "text:Examples",
+  "summary": "`$` in `|#$-reader|` was taken as TeX math delimiter, producing `|#<i>-reader|` ... `|#</i>-reader|` (stray <i> markup) in the defun name and its returned value. (The set-dispatch-macro-character line below already has the right `|#$-reader|`.)",
+  "confidence": "high",
+  "group": "g6"
+ },
+ {
+  "file": "OEBPS/text/24-system-construction/24.2.3-load.xhtml",
+  "old": " ;- - [Begin file SETUP]- - \n (in-package \"MY-STUFF\")\n (defmacro compile-truename () `',*compile-file-truename*)\n (defvar *my-compile-truename* (compile-truename) \"Just for debugging.\")\n (defvar *my-load-pathname* *load-pathname*)\n (defun load-my-system ()\n   (dolist (module-name '(\"FOO\" \"BAR\" \"BAZ\"))\n     (load (merge-pathnames module-name *my-load-pathname*))))\n ;- - [End of file SETUP]- - ",
+  "new": " ;----[Begin file SETUP]----\n (in-package \"MY-STUFF\")\n (defmacro compile-truename () `',*compile-file-truename*)\n (defvar *my-compile-truename* (compile-truename) \"Just for debugging.\")\n (defvar *my-load-pathname* *load-pathname*)\n (defun load-my-system ()\n   (dolist (module-name '(\"FOO\" \"BAR\" \"BAZ\"))\n     (load (merge-pathnames module-name *my-load-pathname*))))\n ;----[End of file SETUP]----",
+  "secno": "24.2.3",
+  "item": "text:Examples",
+  "summary": "Comment banners `;----[Begin file SETUP]----` / `;----[End of file SETUP]----` rewritten as `;- - [Begin ...]- - ` (spaced hyphens + trailing space). Only inside a code comment so low impact, but code text differs from TeX; probably the converter avoiding a `--` ligature. Possibly a deliberate typographic choice, user may decide.",
+  "confidence": "medium",
+  "group": "g6"
+ },
+ {
+  "file": "OEBPS/text/25-environment/25.2.15-documentation.xhtml",
+  "old": "<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>function</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>function</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>list</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>list</b>) (<i>doc-type</i> (<code>eql 'compiler-macro</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'compiler-macro</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'setf</code>))<br/>\n</p><p>\n<b>Method Combinations:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>method-combination</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>method-combination</b>) (<i>doc-type </i> (<code>eql 'method-combination</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'method-combination</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>method-combination</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>method-combination</b>) (<i>doc-type</i> (<code>eql 'method-combination</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'method-combination</code>))<br/>\n\n</p><p>\n<b>Methods:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>standard-method</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-method</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n\n</p><p>\n<b>Packages:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>package</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>package</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n\n</p><p>\n<b>Types, Classes, and Structure Names:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'structure</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'structure</code>))<br/>\n\n</p><p>\n<b>Variables:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'variable</code>))<br/>\n<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'variable</code>))<br/>",
+  "new": "<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>function</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>function</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>list</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>list</b>) (<i>doc-type</i> (<code>eql 'compiler-macro</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'compiler-macro</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'setf</code>))<br/>\n</p><p>\n<b>Method Combinations:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>method-combination</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>method-combination</b>) (<i>doc-type </i> (<code>eql 'method-combination</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'method-combination</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>method-combination</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>method-combination</b>) (<i>doc-type</i> (<code>eql 'method-combination</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'method-combination</code>))<br/>\n\n</p><p>\n<b>Methods:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>standard-method</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>standard-method</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n\n</p><p>\n<b>Packages:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>package</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>package</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n\n</p><p>\n<b>Types, Classes, and Structure Names:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>structure-class</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>structure-class</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'structure</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>structure-class</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>structure-class</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'structure</code>))<br/>\n\n</p><p>\n<b>Variables:</b></p><p>\n<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'variable</code>))<br/>\n<b>(setf documentation)</b> <i>new-value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'variable</code>))<br/>",
+  "secno": "25.2.15",
+  "item": "text:Method Signatures",
+  "summary": "Two defects in the Method Signatures list: (1) all 19 `(setf documentation)` signatures print the parameter as `new value` instead of `new-value` (the Syntax and Arguments sections correctly have new-value); (2) the 4 `structure-class` methods (t and type, for documentation and setf) were replaced by duplicate `standard-class` lines, so structure-class is missing entirely and standard-class appears twice.",
+  "confidence": "high",
+  "group": "g6"
+ },
+ {
+  "file": "OEBPS/text/1-introduction/1.4-definitions.xhtml",
+  "old": "<i>keyform  {<i>normal-clause</i>}* [↓otherwise-clause]</i>",
+  "new": "<i>keyform  {↓<i>normal-clause</i>}* [↓otherwise-clause]</i>",
+  "secno": "1.4.1.2.3",
+  "item": "concept:1.4.1.2.3 Additional Uses for Indirect Definitions",
+  "summary": "\\stardown{normal-clause} rendered without the down-arrow (case): should be {↓normal-clause}*",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/1-introduction/1.4-definitions.xhtml",
+  "old": "<i>keyplace {<i>normal-clause</i>}*</i>",
+  "new": "<i>keyplace {↓<i>normal-clause</i>}*</i>",
+  "secno": "1.4.1.2.3",
+  "item": "concept:1.4.1.2.3 Additional Uses for Indirect Definitions",
+  "summary": "\\stardown lost its arrow (ccase)",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/1-introduction/1.4-definitions.xhtml",
+  "old": "<i>keyform  {<i>normal-clause</i>}*</i>",
+  "new": "<i>keyform  {↓<i>normal-clause</i>}*</i>",
+  "secno": "1.4.1.2.3",
+  "item": "concept:1.4.1.2.3 Additional Uses for Indirect Definitions",
+  "summary": "\\stardown lost its arrow (ecase)",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/2-syntax/2.4-standard-macro-characters.xhtml",
+  "old": " \"foo → (QUOTE FOO)",
+  "new": " ''foo → (QUOTE FOO)",
+  "secno": "2.4.3.1",
+  "item": "concept:2.4.3.1 Examples of Single-Quote",
+  "summary": "TeX ''foo (two apostrophes) rendered as a double-quote character",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/2-syntax/2.4-standard-macro-characters.xhtml",
+  "old": "(car \"foo) →",
+  "new": "(car ''foo) →",
+  "secno": "2.4.3.1",
+  "item": "concept:2.4.3.1 Examples of Single-Quote",
+  "summary": "TeX (car ''foo) rendered with a double-quote",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/2-syntax/2.1-character-syntax.xhtml",
+  "old": "<tr><td/><td><i>package marker</i></td><td>N, n</td>",
+  "new": "<tr><td>:</td><td><i>package marker</i></td><td>N, n</td>",
+  "secno": "2.1.4.2",
+  "item": "concept:2.1.4.2 Constituent Traits",
+  "summary": "Figure 2-8 (constituent traits): the colon character in the package-marker row is missing",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/2-syntax/2.1-character-syntax.xhtml",
+  "old": "<tr><td>]</td><td><i>alphabetic<sub>2</sub></i></td><td>U, u</td>",
+  "new": "<tr><td>[</td><td><i>alphabetic<sub>2</sub></i></td><td>U, u</td>",
+  "secno": "2.1.4.2",
+  "item": "concept:2.1.4.2 Constituent Traits",
+  "summary": "Figure 2-8: the [ and ] rows are swapped; TeX has [ opposite U,u",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/2-syntax/2.1-character-syntax.xhtml",
+  "old": "<tr><td>[</td><td><i>alphabetic<sub>2</sub></i></td><td>W, w</td>",
+  "new": "<tr><td>]</td><td><i>alphabetic<sub>2</sub></i></td><td>W, w</td>",
+  "secno": "2.1.4.2",
+  "item": "concept:2.1.4.2 Constituent Traits",
+  "summary": "Figure 2-8: ] belongs opposite W,w (TeX \\f{]}&\\a&W, w)",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "old": "<td><code>ab.cd</code></td>\n    <td><code>-</code></td>",
+  "new": "<td><code>ab.cd</code></td>\n    <td><code>_</code></td>",
+  "secno": "2.3.1.1.2",
+  "item": "concept:2.3.1.1.2 Examples of Potential Numbers",
+  "summary": "Figure 2-11: TeX \\f{\\_} (underscore) rendered as a hyphen",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "old": "<i>sign</i>---a ",
+  "new": "<i>sign</i>—a ",
+  "secno": "2.3.1",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "summary": "TeX --- (em dash) left as literal \"---\" in the figure legend (book uses — elsewhere)",
+  "confidence": "medium",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "old": "<i>slash</i>---a ",
+  "new": "<i>slash</i>—a ",
+  "secno": "2.3.1",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "summary": "TeX --- (em dash) left as literal \"---\" in the figure legend (book uses — elsewhere)",
+  "confidence": "medium",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "old": "<i>decimal-point</i>---a ",
+  "new": "<i>decimal-point</i>—a ",
+  "secno": "2.3.1",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "summary": "TeX --- (em dash) left as literal \"---\" in the figure legend (book uses — elsewhere)",
+  "confidence": "medium",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "old": "<i>exponent-marker</i>---an ",
+  "new": "<i>exponent-marker</i>—an ",
+  "secno": "2.3.1",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "summary": "TeX --- (em dash) left as literal \"---\" in the figure legend (book uses — elsewhere)",
+  "confidence": "medium",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "old": "<i>decimal-digit</i>---a ",
+  "new": "<i>decimal-digit</i>—a ",
+  "secno": "2.3.1",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "summary": "TeX --- (em dash) left as literal \"---\" in the figure legend (book uses — elsewhere)",
+  "confidence": "medium",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "old": "<i>digit</i>---a ",
+  "new": "<i>digit</i>—a ",
+  "secno": "2.3.1",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "summary": "TeX --- (em dash) left as literal \"---\" in the figure legend (book uses — elsewhere)",
+  "confidence": "medium",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.2-compilation.xhtml",
+  "old": "<tr><td>Yes</td><td>Yes</td><td>---</td><td>---</td><td>Process</td><td>compile-time-too</td></tr>\n<tr><td>No</td><td>Yes</td><td>Yes</td><td> CTT</td><td>Process</td><td>compile-time-too</td></tr>\n<tr><td>No</td><td>Yes</td><td>Yes</td><td> NCT</td><td>Process</td><td>not-compile-time</td></tr>\n<tr><td>No</td><td>Yes</td><td>No</td><td>---</td><td>Process</td><td>not-compile-time</td></tr>\n<tr><td>Yes</td><td>No</td><td>---</td><td>---</td><td>Evaluate</td><td>---</td></tr>\n<tr><td>No</td><td>No</td><td>Yes</td><td> CTT</td><td>Evaluate</td><td>---</td></tr>\n<tr><td>No</td><td>No</td><td>Yes</td><td> NCT</td><td>Discard</td><td>---</td></tr>\n<tr><td>No</td><td>No</td><td>No</td><td>---</td><td>Discard</td><td>---</td></tr>\n",
+  "new": "<tr><td>Yes</td><td>Yes</td><td>—</td><td>—</td><td>Process</td><td>compile-time-too</td></tr>\n<tr><td>No</td><td>Yes</td><td>Yes</td><td> CTT</td><td>Process</td><td>compile-time-too</td></tr>\n<tr><td>No</td><td>Yes</td><td>Yes</td><td> NCT</td><td>Process</td><td>not-compile-time</td></tr>\n<tr><td>No</td><td>Yes</td><td>No</td><td>—</td><td>Process</td><td>not-compile-time</td></tr>\n<tr><td>Yes</td><td>No</td><td>—</td><td>—</td><td>Evaluate</td><td>—</td></tr>\n<tr><td>No</td><td>No</td><td>Yes</td><td> CTT</td><td>Evaluate</td><td>—</td></tr>\n<tr><td>No</td><td>No</td><td>Yes</td><td> NCT</td><td>Discard</td><td>—</td></tr>\n<tr><td>No</td><td>No</td><td>No</td><td>—</td><td>Discard</td><td>—</td></tr>\n",
+  "secno": "3.2.3.1",
+  "item": "concept:3.2.3.1 Processing of Top Level Forms",
+  "summary": "Figure 3-7 (EVAL-WHEN processing): the TeX \\hfil--- cells (em dash, \"not relevant\") appear as literal \"---\" in 9 cells; the prose beneath says a dash (—)",
+  "confidence": "medium",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "old": "(<i>var</i> [<i>specializer</i>])<sup>*</sup><br/>",
+  "new": "(<i>var</i> [<i>specializer</i>])<code>}</code><sup>*</sup><br/>",
+  "secno": "3.4.3",
+  "item": "concept:3.4.3 Specialized Lambda Lists",
+  "summary": "closing } missing before the * in the specialized-lambda-list BNF ({var | (var [specializer])}*)",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "old": "reqvars::= </td><td><code>{</code><i>var</i> | \n↓<i>pattern</i><code>}</code></td>",
+  "new": "reqvars::= </td><td><code>{</code><i>var</i> | \n↓<i>pattern</i><code>}</code><sup>*</sup></td>",
+  "secno": "3.4.4",
+  "item": "concept:3.4.4 Macro Lambda Lists",
+  "summary": "reqvars is {var | ↓pattern}* in the TeX (\\star{\\TVar}); the * is missing",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "old": "<code>&amp;body</code><code>}</code> <code>]</code><code>{</code><i>var</i> | \n↓<i>pattern</i><code>}</code></td></tr>",
+  "new": "<code>&amp;body</code><code>}</code> <code>{</code><i>var</i> | \n↓<i>pattern</i><code>}</code><code>]</code></td></tr>",
+  "secno": "3.4.4",
+  "item": "concept:3.4.4 Macro Lambda Lists",
+  "summary": "misplaced closing bracket in restvar: should be [{&rest | &body} {var | ↓pattern}]",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "old": "<td>(↓wholevar↓reqvars↓optvars↓restvar↓keyvars↓auxvars) |</td>",
+  "new": "<td>(↓wholevar ↓reqvars ↓optvars ↓restvar ↓keyvars ↓auxvars) |</td>",
+  "secno": "3.4.4",
+  "item": "concept:3.4.4 Macro Lambda Lists",
+  "summary": "the ↓names of the pattern production run together; the TeX has a space between them (and 3.4.5 has them separated)",
+  "confidence": "medium",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "old": "                         (<i>var</i> <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup><code>]</code></p><p>\n\nrestvar::= <code>[</code><code>{</code><code>&amp;rest</code>",
+  "new": "                         (<code>{</code><i>var</i> | ↓<i>lambda-list</i><code>}</code> <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup><code>]</code></p><p>\n\nrestvar::= <code>[</code><code>{</code><code>&amp;rest</code>",
+  "secno": "3.4.5",
+  "item": "concept:3.4.5 Destructuring Lambda Lists",
+  "summary": "optvars lost the inner {var | ↓lambda-list}: TeX \\VarValueSuppliedP uses \\TVar (= \\curly{var | \\down{lambda-list}}) for the parameter",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "old": "(<code>{</code><i>var</i> | (<i>keyword-name</i> <i>var</i>)<code>}</code> \n                         <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup>[<code>&amp;\n                         allow-other-keys</code>]<code>]</code></p><p>",
+  "new": "(<code>{</code><i>var</i> | (<i>keyword-name</i> <code>{</code><i>var</i> | ↓<i>lambda-list</i><code>}</code>)<code>}</code> \n                         <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup>[<code>&amp;allow-other-keys</code>]<code>]</code></p><p>",
+  "secno": "3.4.5",
+  "item": "concept:3.4.5 Destructuring Lambda Lists",
+  "summary": "keyvars: (keyword-name {var | ↓lambda-list}) lost the inner choice (TeX \\TVar), and \"&allow-other-keys\" is split by a newline (\"& allow-other-keys\")",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/7-objects/7.1-object-creation-and-initialization.xhtml",
+  "old": "Initialisation Argument",
+  "new": "Initialization Argument",
+  "secno": "7.1.4",
+  "item": "concept:7.1.4 Rules for Initialization Arguments",
+  "summary": "spelling changed in a table header (TeX and the rest of the book: Initialization)",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/22-printer/22.3-formatted-output.xhtml",
+  "old": "<i>padchar</i>F <i>ee</i>@T",
+  "new": "<i>padchar</i>F~<i>ee</i>@T",
+  "secno": "22.3.3.3",
+  "item": "concept:22.3.3.3 Tilde G: General Floating-Point",
+  "summary": "\"~\" of the directive \"~ee@T\" turned into a no-break space",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/22-printer/22.3-formatted-output.xhtml",
+  "old": "<code>~{<i>str</i> }</code>\n\n</p><p>\nThis is an iteration",
+  "new": "<code>~{<i>str</i>~}</code>\n\n</p><p>\nThis is an iteration",
+  "secno": "22.3.7.4",
+  "item": "concept:22.3.7.4 Tilde Left-Brace: Iteration",
+  "summary": "in prose the TeX tilde before the closing brace (\"~{str~}\") became a no-break space, so the directive reads \"~{str }\"",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/22-printer/22.3-formatted-output.xhtml",
+  "old": "<code>~:{<i>str</i> } </code> is similar,",
+  "new": "<code>~:{<i>str</i>~} </code> is similar,",
+  "secno": "22.3.7.4",
+  "item": "concept:22.3.7.4 Tilde Left-Brace: Iteration",
+  "summary": "in prose the TeX tilde before the closing brace (\"~:{str~}\") became a no-break space, so the directive reads \"~{str }\"",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/22-printer/22.3-formatted-output.xhtml",
+  "old": "<code>~@{<i>str</i> }</code>\nis similar to <code>~{<i>str</i> } </code>",
+  "new": "<code>~@{<i>str</i>~}</code>\nis similar to <code>~{<i>str</i>~} </code>",
+  "secno": "22.3.7.4",
+  "item": "concept:22.3.7.4 Tilde Left-Brace: Iteration",
+  "summary": "in prose the TeX tilde before the closing brace (\"~@{str~} and ~{str~}\") became a no-break space, so the directive reads \"~{str }\"",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/22-printer/22.3-formatted-output.xhtml",
+  "old": "<code>~:@{<i>str</i> } </code> \ncombines the features                              \nof <code>~:{<i>str</i> } </code>\nand <code>~@{<i>str</i> } </code>.",
+  "new": "<code>~:@{<i>str</i>~} </code> \ncombines the features                              \nof <code>~:{<i>str</i>~} </code>\nand <code>~@{<i>str</i>~} </code>.",
+  "secno": "22.3.7.4",
+  "item": "concept:22.3.7.4 Tilde Left-Brace: Iteration",
+  "summary": "in prose the TeX tilde before the closing brace (\"~:@{str~}, ~:{str~}, ~@{str~}\") became a no-break space, so the directive reads \"~{str }\"",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/22-printer/22.1-the-lisp-printer.xhtml",
+  "old": "~%----------------------------------------------- - ~",
+  "new": "~%--------------------------------------------------~",
+  "secno": "22.1.3.3.2.1",
+  "item": "concept:22.1.3.3.2.1 Examples of Effect of Readtable Case on the Lisp Printer",
+  "summary": "last three hyphens of the 50-hyphen ruler were converted to \" - \"",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/22-printer/22.1-the-lisp-printer.xhtml",
+  "old": "    ----------------------------------------------- - ",
+  "new": "    --------------------------------------------------",
+  "secno": "22.1.3.3.2.1",
+  "item": "concept:22.1.3.3.2.1 Examples of Effect of Readtable Case on the Lisp Printer",
+  "summary": "same defect in the printed output ruler (47 hyphens + \" - \" instead of 50 hyphens)",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/23-reader/23.1-reader-concepts.xhtml",
+  "old": "~%-------------------------------- - ~",
+  "new": "~%-----------------------------------~",
+  "secno": "23.1.2.1",
+  "item": "concept:23.1.2.1 Examples of Effect of Readtable Case on the Lisp Reader",
+  "summary": "last three hyphens of the 35-hyphen ruler converted to \" - \"",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/23-reader/23.1-reader-concepts.xhtml",
+  "old": " ---------------------------------- - ",
+  "new": " -------------------------------------",
+  "secno": "23.1.2.1",
+  "item": "concept:23.1.2.1 Examples of Effect of Readtable Case on the Lisp Reader",
+  "summary": "same defect in the output ruler (34 hyphens + \" - \" instead of 37)",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/26.1-glossary.xhtml",
+  "old": "This is an example of an example.",
+  "new": "\"This is an example of an example.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:intro",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/a.xhtml",
+  "old": "Applying the function <a href=\"../12-numbers/12.2.25-plus.xhtml#DictEntry__799\"><b>+</b></a> to a list of integers returns\n\t    the sum of the elements of that list.",
+  "new": "\"Applying the function <a href=\"../12-numbers/12.2.25-plus.xhtml#DictEntry__799\"><b>+</b></a> to a list of integers returns\n\t    the sum of the elements of that list.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:apply",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/a.xhtml",
+  "old": "The argument evaluation order for Common Lisp is left to right.",
+  "new": "\"The argument evaluation order for Common Lisp is left to right.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:argument evaluation order",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/a.xhtml",
+  "old": "A vector is an atom.",
+  "new": "\"A vector is an atom.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:atom",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/a.xhtml",
+  "old": "The number 3, the symbol <code>foo</code>, and <a href=\"../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336\"><b>nil</b></a> are atomic.",
+  "new": "\"The number 3, the symbol <code>foo</code>, and <a href=\"../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336\"><b>nil</b></a> are atomic.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:atomic",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/a.xhtml",
+  "old": "An implementation that support fonts\n            might make font information an attribute of a character,\n            while others might represent font information separately from characters.",
+  "new": "\"An implementation that support fonts\n            might make font information an attribute of a character,\n            while others might represent font information separately from characters.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:attribute",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/b.xhtml",
+  "old": "A lexical binding is a lexical association between a \n            name and its value.",
+  "new": "\"A lexical binding is a lexical association between a \n            name and its value.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:binding",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/b.xhtml",
+  "old": "<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes variable bindings.",
+  "new": "\"<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes variable bindings.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:binding",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/b.xhtml",
+  "old": "<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes bindings of variables.",
+  "new": "\"<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes bindings of variables.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:binding",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/b.xhtml",
+  "old": "The variables named by a <a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> are bound within\n               its body.",
+  "new": "\"The variables named by a <a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> are bound within\n               its body.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:bound",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/b.xhtml",
+  "old": "The variable <a href=\"../22-printer/22.4.20-print-escape.xhtml#DictEntry_print_escap_1360\"><b>*print-escape*</b></a> is bound while in\n               the <a href=\"../22-printer/22.4.14-write.xhtml#DictEntry_write_prin1_1354\"><b>princ</b></a> function.",
+  "new": "\"The variable <a href=\"../22-printer/22.4.20-print-escape.xhtml#DictEntry_print_escap_1360\"><b>*print-escape*</b></a> is bound while in\n               the <a href=\"../22-printer/22.4.14-write.xhtml#DictEntry_write_prin1_1354\"><b>princ</b></a> function.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:bound",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "Calling the function <a href=\"../12-numbers/12.2.25-plus.xhtml#DictEntry__799\"><b>+</b></a> with the arguments \n               <code>5</code> and <code>1</code> yields a value of <code>6</code>.",
+  "new": "\"Calling the function <a href=\"../12-numbers/12.2.25-plus.xhtml#DictEntry__799\"><b>+</b></a> with the arguments \n               <code>5</code> and <code>1</code> yields a value of <code>6</code>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:call",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "Each newly added shared slot is set to the result of evaluating\n            the captured initialization form for the slot that was specified\n            in the <a href=\"../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581\"><b>defclass</b></a> form for the new class.",
+  "new": "\"Each newly added shared slot is set to the result of evaluating\n            the captured initialization form for the slot that was specified\n            in the <a href=\"../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581\"><b>defclass</b></a> form for the new class.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:captured initialization form",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "The function <a href=\"../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921\"><b>rplaca</b></a> modifies the car of a cons.",
+  "new": "\"The function <a href=\"../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921\"><b>rplaca</b></a> modifies the car of a cons.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:car",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "The function <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>car</b></a> returns the car of a cons.",
+  "new": "\"The function <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>car</b></a> returns the car of a cons.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:car",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "The characters <code>#\\A</code> and <code>#\\a</code> have case,\n\t    but the character <code>#\\$</code> has no case.",
+  "new": "\"The characters <code>#\\A</code> and <code>#\\a</code> have case,\n\t    but the character <code>#\\$</code> has no case.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:case",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "The function <a href=\"../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921\"><b>rplacd</b></a> modifies the cdr of a cons.",
+  "new": "\"The function <a href=\"../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921\"><b>rplacd</b></a> modifies the cdr of a cons.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:cdr",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "The function <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>cdr</b></a> returns the cdr of a cons.",
+  "new": "\"The function <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>cdr</b></a> returns the cdr of a cons.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:cdr",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "The class <a href=\"../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782\"><b>integer</b></a> is a subclass of the class <a href=\"../12-numbers/12.2.1-number.xhtml#DictEntry_number_775\"><b>number</b></a>.",
+  "new": "\"The class <a href=\"../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782\"><b>integer</b></a> is a subclass of the class <a href=\"../12-numbers/12.2.1-number.xhtml#DictEntry_number_775\"><b>number</b></a>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:class",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "The class of the object returned by <a href=\"../10-symbols/10.2.7-gensym.xhtml#DictEntry_gensym_681\"><b>gensym</b></a> \n \t       is <a href=\"../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675\"><b>symbol</b></a>.",
+  "new": "\"The class of the object returned by <a href=\"../10-symbols/10.2.7-gensym.xhtml#DictEntry_gensym_681\"><b>gensym</b></a> \n \t       is <a href=\"../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675\"><b>symbol</b></a>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:class",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "<a href=\"../21-streams/21.2.38-make-synonym-stream.xhtml#DictEntry_make_synonym_1229\"><b>make-synonym-stream</b></a> creates a composite stream.",
+  "new": "\"<a href=\"../21-streams/21.2.38-make-synonym-stream.xhtml#DictEntry_make_synonym_1229\"><b>make-synonym-stream</b></a> creates a composite stream.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:composite stream",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "<code>(vector single-float)</code> is a compound type specifier.",
+  "new": "\"<code>(vector single-float)</code> is a compound type specifier.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:compound type specifier",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "A <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>car</b></a> form in which the argument is a\n            <a href=\"../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289\"><b>quote</b></a> form is a constant form.",
+  "new": "\"A <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>car</b></a> form in which the argument is a\n            <a href=\"../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289\"><b>quote</b></a> form is a constant form.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:constant form",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "A literal object that has been processed by <a href=\"../24-system-construction/24.2.1-compile-file.xhtml#DictEntry_compile_file_1406\"><b>compile-file</b></a>\n\t    is a constant object.",
+  "new": "\"A literal object that has been processed by <a href=\"../24-system-construction/24.2.1-compile-file.xhtml#DictEntry_compile_file_1406\"><b>compile-file</b></a>\n\t    is a constant object.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:constant object",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "The symbols <a href=\"../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351\"><b>t</b></a>, <a href=\"../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336\"><b>nil</b></a>, <code>:direction</code>, and\n            <a href=\"../12-numbers/12.2.72-most-positive-fixnum.xhtml#DictEntry_most_positiv_846\"><b>most-positive-fixnum</b></a> are constant variables.",
+  "new": "\"The symbols <a href=\"../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351\"><b>t</b></a>, <a href=\"../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336\"><b>nil</b></a>, <code>:direction</code>, and\n            <a href=\"../12-numbers/12.2.72-most-positive-fixnum.xhtml#DictEntry_most_positiv_846\"><b>most-positive-fixnum</b></a> are constant variables.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:constant variable",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "A string stream is a constructed stream.",
+  "new": "\"A string stream is a constructed stream.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:constructed stream",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "The function <a href=\"../9-conditions/9.2.12-cerror.xhtml#DictEntry_cerror_637\"><b>cerror</b></a> signals an error \n\t       that is correctable by the <a href=\"../9-conditions/9.2.42-continue.xhtml#DictEntry_continue_667\"><b>continue</b></a> <i><a href=\"r.xhtml#restart\">restart</a></i>.",
+  "new": "\"The function <a href=\"../9-conditions/9.2.12-cerror.xhtml#DictEntry_cerror_637\"><b>cerror</b></a> signals an error \n\t       that is correctable by the <a href=\"../9-conditions/9.2.42-continue.xhtml#DictEntry_continue_667\"><b>continue</b></a> <i><a href=\"r.xhtml#restart\">restart</a></i>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:correctable",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "old": "<a href=\"../11-packages/11.2.6-import.xhtml#DictEntry_import_721\"><b>import</b></a> signals a correctable error of <i><a href=\"t.xhtml#type\">type</a></i> <a href=\"../11-packages/11.2.29-package-error.xhtml#DictEntry_package_erro_744\"><b>package-error</b></a>\n\t       if any of the imported symbols has the same name as\n\t        some distinct symbol already accessible in the package.",
+  "new": "\"<a href=\"../11-packages/11.2.6-import.xhtml#DictEntry_import_721\"><b>import</b></a> signals a correctable error of <i><a href=\"t.xhtml#type\">type</a></i> <a href=\"../11-packages/11.2.29-package-error.xhtml#DictEntry_package_erro_744\"><b>package-error</b></a>\n\t       if any of the imported symbols has the same name as\n\t        some distinct symbol already accessible in the package.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:correctable",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/d.xhtml",
+  "old": "<a href=\"../5-data-and-control-flow/5.3.2-defun.xhtml#DictEntry_defun_388\"><b>defun</b></a> and <a href=\"../5-data-and-control-flow/5.3.16-defparameter.xhtml#DictEntry_defparameter_402\"><b>defparameter</b></a> are defining forms.",
+  "new": "\"<a href=\"../5-data-and-control-flow/5.3.2-defun.xhtml#DictEntry_defun_388\"><b>defun</b></a> and <a href=\"../5-data-and-control-flow/5.3.16-defparameter.xhtml#DictEntry_defparameter_402\"><b>defparameter</b></a> are defining forms.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:defining form",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/d.xhtml",
+  "old": "The strings <code>\"FOO\"</code> and <code>\"foo\"</code> are different under\n\t    <a href=\"../5-data-and-control-flow/5.3.35-equal.xhtml#DictEntry_equal_421\"><b>equal</b></a> but not under <a href=\"../5-data-and-control-flow/5.3.36-equalp.xhtml#DictEntry_equalp_422\"><b>equalp</b></a>.",
+  "new": "\"The strings <code>\"FOO\"</code> and <code>\"foo\"</code> are different under\n\t    <a href=\"../5-data-and-control-flow/5.3.35-equal.xhtml#DictEntry_equal_421\"><b>equal</b></a> but not under <a href=\"../5-data-and-control-flow/5.3.36-equalp.xhtml#DictEntry_equalp_422\"><b>equalp</b></a>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:different",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/d.xhtml",
+  "old": "The second dimension of that array is 7.",
+  "new": "\"The second dimension of that array is 7.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:dimension",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/d.xhtml",
+  "old": "This array has six dimensions.",
+  "new": "\"This array has six dimensions.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:dimension",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/d.xhtml",
+  "old": "The function <a href=\"../7-objects/7.7.19-make-instance.xhtml#DictEntry_make_instanc_575\"><b>make-instance</b></a> always returns a \n  \t    direct instance of the class which is (or is named by)\n\t    its first argument.",
+  "new": "\"The function <a href=\"../7-objects/7.7.19-make-instance.xhtml#DictEntry_make_instanc_575\"><b>make-instance</b></a> always returns a \n  \t    direct instance of the class which is (or is named by)\n\t    its first argument.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:direct instance",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/d.xhtml",
+  "old": "The body of code in a <a href=\"../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292\"><b>defmacro</b></a> form can be preceded \n\t    by a documentation string of kind <a href=\"../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338\"><b>function</b></a>.",
+  "new": "\"The body of code in a <a href=\"../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292\"><b>defmacro</b></a> form can be preceded \n\t    by a documentation string of kind <a href=\"../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338\"><b>function</b></a>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:documentation string",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/d.xhtml",
+  "old": "Dynamic variable bindings have dynamic extent.",
+  "new": "\"Dynamic variable bindings have dynamic extent.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:dynamic extent",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/e.xhtml",
+  "old": "<a href=\"../3-evaluation-and-compilation/3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294\"><b>macroexpand</b></a> takes an optional environment argument.\n\n<p>\n<span id=\"environmentobject\"/>",
+  "new": "\"<a href=\"../3-evaluation-and-compilation/3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294\"><b>macroexpand</b></a> takes an optional environment argument.\"\n\n<p>\n<span id=\"environmentobject\"/>",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:environment",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/e.xhtml",
+  "old": "<a href=\"../3-evaluation-and-compilation/3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294\"><b>macroexpand</b></a> takes an optional environment argument.\n     (The <i>",
+  "new": "\"<a href=\"../3-evaluation-and-compilation/3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294\"><b>macroexpand</b></a> takes an optional environment argument.\"\n     (The <i>",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:environment object",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/e.xhtml",
+  "old": "<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes lexical bindings.",
+  "new": "\"<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes lexical bindings.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:establish",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/e.xhtml",
+  "old": "<a href=\"../5-data-and-control-flow/5.3.23-catch.xhtml#DictEntry_catch_409\"><b>catch</b></a> and <a href=\"../5-data-and-control-flow/5.3.22-block.xhtml#DictEntry_block_408\"><b>block</b></a> establish bindings for\n            exit points to which <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a> and <a href=\"../5-data-and-control-flow/5.3.25-return-from.xhtml#DictEntry_return_from_411\"><b>return-from</b></a>,\n\t    respectively, can transfer control and values;\n\t    <a href=\"../5-data-and-control-flow/5.3.27-tagbody.xhtml#DictEntry_tagbody_413\"><b>tagbody</b></a> establishes a binding for an exit point\n\t    with lexical extent to which <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a> can transfer control;\n\t    and <a href=\"../5-data-and-control-flow/5.3.29-unwind-protect.xhtml#DictEntry_unwind_prote_415\"><b>unwind-protect</b></a> establishes an exit point \n\t    through which control might be transferred by \n\t    operators such as <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a>, <a href=\"../5-data-and-control-flow/5.3.25-return-from.xhtml#DictEntry_return_from_411\"><b>return-from</b></a>,\n            and <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a>.",
+  "new": "\"<a href=\"../5-data-and-control-flow/5.3.23-catch.xhtml#DictEntry_catch_409\"><b>catch</b></a> and <a href=\"../5-data-and-control-flow/5.3.22-block.xhtml#DictEntry_block_408\"><b>block</b></a> establish bindings for\n            exit points to which <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a> and <a href=\"../5-data-and-control-flow/5.3.25-return-from.xhtml#DictEntry_return_from_411\"><b>return-from</b></a>,\n\t    respectively, can transfer control and values;\n\t    <a href=\"../5-data-and-control-flow/5.3.27-tagbody.xhtml#DictEntry_tagbody_413\"><b>tagbody</b></a> establishes a binding for an exit point\n\t    with lexical extent to which <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a> can transfer control;\n\t    and <a href=\"../5-data-and-control-flow/5.3.29-unwind-protect.xhtml#DictEntry_unwind_prote_415\"><b>unwind-protect</b></a> establishes an exit point \n\t    through which control might be transferred by \n\t    operators such as <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a>, <a href=\"../5-data-and-control-flow/5.3.25-return-from.xhtml#DictEntry_return_from_411\"><b>return-from</b></a>,\n            and <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:exit point",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/e.xhtml",
+  "old": "The exponent marker `d' in `3.0d7' indicates\n\t    that this number is to be represented as a double float.",
+  "new": "\"The exponent marker `d' in `3.0d7' indicates\n\t    that this number is to be represented as a double float.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:exponent marker",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/e.xhtml",
+  "old": "The second expression in a <a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> form is a list\n   \t       of bindings.",
+  "new": "\"The second expression in a <a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> form is a list\n   \t       of bindings.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:expression",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/e.xhtml",
+  "old": "The expression <code>'sample</code> is equivalent to <code>(quote sample)</code>.",
+  "new": "\"The expression <code>'sample</code> is equivalent to <code>(quote sample)</code>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:expression",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/e.xhtml",
+  "old": "<a href=\"../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292\"><b>defmacro</b></a> uses extended lambda lists.",
+  "new": "\"<a href=\"../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292\"><b>defmacro</b></a> uses extended lambda lists.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:extended lambda list",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/f.xhtml",
+  "old": "The <code>:ansi-cl</code> feature is present in all conforming implementations.",
+  "new": "\"The <code>:ansi-cl</code> feature is present in all conforming implementations.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:feature",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/f.xhtml",
+  "old": "The type specifier <code>(integer 0 5)</code> denotes a finite type,\n\t    but the type specifiers <a href=\"../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782\"><b>integer</b></a> and <code>(integer 0)</code> do not.",
+  "new": "\"The type specifier <code>(integer 0 5)</code> denotes a finite type,\n\t    but the type specifiers <a href=\"../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782\"><b>integer</b></a> and <code>(integer 0)</code> do not.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:finite",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/f.xhtml",
+  "old": "A <a href=\"../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289\"><b>quote</b></a> form is a constant form.",
+  "new": "\"A <a href=\"../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289\"><b>quote</b></a> form is a constant form.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:form",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/f.xhtml",
+  "old": "In <code>\"~D base 10 = ~8R\"</code>, the character\n     \t       sequences `<code>~D</code>' and `<code>~8R</code>' are format directives.",
+  "new": "\"In <code>\"~D base 10 = ~8R\"</code>, the character\n     \t       sequences `<code>~D</code>' and `<code>~8R</code>' are format directives.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:format directive",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/f.xhtml",
+  "old": "Both <code>\"~3d\"</code> and <code>\"~3,'0D\"</code> are valid uses of the\n\t       `<code>~D</code>' format directive.",
+  "new": "\"Both <code>\"~3d\"</code> and <code>\"~3,'0D\"</code> are valid uses of the\n\t       `<code>~D</code>' format directive.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:format directive",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/f.xhtml",
+  "old": "Block compilation and generation of machine-specific instructions\n            are examples of further compilation.",
+  "new": "\"Block compilation and generation of machine-specific instructions\n            are examples of further compilation.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:further compilation",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/g.xhtml",
+  "old": "Graphic characters have associated glyphs.",
+  "new": "\"Graphic characters have associated glyphs.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:glyph",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/i.xhtml",
+  "old": "Numbers are immutable.",
+  "new": "\"Numbers are immutable.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:immutable",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/i.xhtml",
+  "old": "Most Common Lisp objects have indefinite extent.",
+  "new": "\"Most Common Lisp objects have indefinite extent.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:indefinite extent",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/i.xhtml",
+  "old": "An integer is an indirect instance of the class <a href=\"../12-numbers/12.2.1-number.xhtml#DictEntry_number_775\"><b>number</b></a>.",
+  "new": "\"An integer is an indirect instance of the class <a href=\"../12-numbers/12.2.1-number.xhtml#DictEntry_number_775\"><b>number</b></a>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:indirect instance",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/i.xhtml",
+  "old": "The initialization form for a slot in a <a href=\"../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581\"><b>defclass</b></a> form\n            is introduced by the keyword <code>:initform</code>.",
+  "new": "\"The initialization form for a slot in a <a href=\"../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581\"><b>defclass</b></a> form\n            is introduced by the keyword <code>:initform</code>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:initialization form",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/l.xhtml",
+  "old": "The names of parameters to a function normally are lexically scoped.",
+  "new": "\"The names of parameters to a function normally are lexically scoped.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:lexical scope",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/l.xhtml",
+  "old": "In the form <code>(cons \"one\" '(\"two\"))</code>, \n            the expressions <code>\"one\"</code>, <code>(\"two\")</code>, and <code>\"two\"</code>\n            are literal objects.",
+  "new": "\"In the form <code>(cons \"one\" '(\"two\"))</code>, \n            the expressions <code>\"one\"</code>, <code>(\"two\")</code>, and <code>\"two\"</code>\n            are literal objects.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:literal",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/m.xhtml",
+  "old": "<a href=\"../4-types-and-classes/4.4.25-deftype.xhtml#DictEntry_deftype_360\"><b>deftype</b></a> uses a modified lambda list.",
+  "new": "\"<a href=\"../4-types-and-classes/4.4.25-deftype.xhtml#DictEntry_deftype_360\"><b>deftype</b></a> uses a modified lambda list.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:modified lambda list",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/m.xhtml",
+  "old": "The function <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> returns multiple values.",
+  "new": "\"The function <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> returns multiple values.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:multiple values",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/m.xhtml",
+  "old": "The function <a href=\"../4-types-and-classes/4.4.22-values.xhtml#DictEntry_values_357\"><b>values</b></a> returns multiple values.",
+  "new": "\"The function <a href=\"../4-types-and-classes/4.4.22-values.xhtml#DictEntry_values_357\"><b>values</b></a> returns multiple values.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:multiple values",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/m.xhtml",
+  "old": "The macro <a href=\"../5-data-and-control-flow/5.3.48-multiple-value-bind.xhtml#DictEntry_multiple_val_434\"><b>multiple-value-bind</b></a> is among the few\n\t       operators in <i>Common Lisp</i> which can detect and manipulate\n \t       multiple values.",
+  "new": "\"The macro <a href=\"../5-data-and-control-flow/5.3.48-multiple-value-bind.xhtml#DictEntry_multiple_val_434\"><b>multiple-value-bind</b></a> is among the few\n\t       operators in <i>Common Lisp</i> which can detect and manipulate\n \t       multiple values.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:multiple values",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/n.xhtml",
+  "old": "The string which is a symbol's name is returned\n\t       by <a href=\"../10-symbols/10.2.11-symbol-name.xhtml#DictEntry_symbol_name_685\"><b>symbol-name</b></a>.",
+  "new": "\"The string which is a symbol's name is returned\n\t       by <a href=\"../10-symbols/10.2.11-symbol-name.xhtml#DictEntry_symbol_name_685\"><b>symbol-name</b></a>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:name",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/n.xhtml",
+  "old": "The value of a named constant may not be changed\n            by assignment or by binding.",
+  "new": "\"The value of a named constant may not be changed\n            by assignment or by binding.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:named constant",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/n.xhtml",
+  "old": "The bindings of names to tags is the tag namespace.",
+  "new": "\"The bindings of names to tags is the tag namespace.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:namespace",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/n.xhtml",
+  "old": "A package defines a namespace.",
+  "new": "\"A package defines a namespace.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:namespace",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/n.xhtml",
+  "old": "The operators <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a>, <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a>, \n\t    and <a href=\"../5-data-and-control-flow/5.3.25-return-from.xhtml#DictEntry_return_from_411\"><b>return-from</b></a> cause a non-local exit.",
+  "new": "\"The operators <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a>, <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a>, \n\t    and <a href=\"../5-data-and-control-flow/5.3.25-return-from.xhtml#DictEntry_return_from_411\"><b>return-from</b></a> cause a non-local exit.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:non-local exit",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/o.xhtml",
+  "old": "The function <a href=\"../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916\"><b>cons</b></a> creates an object which refers\n               to two other objects.",
+  "new": "\"The function <a href=\"../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916\"><b>cons</b></a> creates an object which refers\n               to two other objects.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:object",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/o.xhtml",
+  "old": "The function <a href=\"../10-symbols/10.2.10-symbol-function.xhtml#DictEntry_symbol_funct_684\"><b>symbol-function</b></a> takes a function name \n\t       and returns a function object.",
+  "new": "\"The function <a href=\"../10-symbols/10.2.10-symbol-function.xhtml#DictEntry_symbol_funct_684\"><b>symbol-function</b></a> takes a function name \n\t       and returns a function object.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:object",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/o.xhtml",
+  "old": "The operators <a href=\"../14-conses/14.2.34-mapc.xhtml#DictEntry_mapc_mapcar_947\"><b>mapcar</b></a>, <a href=\"../18-hash-tables/18.2.11-maphash.xhtml#DictEntry_maphash_1088\"><b>maphash</b></a>, \n\t    <a href=\"../11-packages/11.2.13-with-package-iterator.xhtml#DictEntry_with_package_728\"><b>with-package-iterator</b></a> and <a href=\"../17-sequences/17.3.10-count.xhtml#DictEntry_count_count_1050\"><b>count</b></a>\n \t    perform object-traversing operations.",
+  "new": "\"The operators <a href=\"../14-conses/14.2.34-mapc.xhtml#DictEntry_mapc_mapcar_947\"><b>mapcar</b></a>, <a href=\"../18-hash-tables/18.2.11-maphash.xhtml#DictEntry_maphash_1088\"><b>maphash</b></a>, \n\t    <a href=\"../11-packages/11.2.13-with-package-iterator.xhtml#DictEntry_with_package_728\"><b>with-package-iterator</b></a> and <a href=\"../17-sequences/17.3.10-count.xhtml#DictEntry_count_count_1050\"><b>count</b></a>\n \t    perform object-traversing operations.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:object-traversing",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/o.xhtml",
+  "old": "<a href=\"../5-data-and-control-flow/5.3.2-defun.xhtml#DictEntry_defun_388\"><b>defun</b></a> uses an ordinary lambda list.",
+  "new": "\"<a href=\"../5-data-and-control-flow/5.3.2-defun.xhtml#DictEntry_defun_388\"><b>defun</b></a> uses an ordinary lambda list.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:ordinary lambda list",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/p.xhtml",
+  "old": "The types <i>A</i>, <i>B</i>, and <i>C</i> are pairwise disjoint if \n            <i>A</i> and <i>B</i> are disjoint,\n            <i>B</i> and <i>C</i> are disjoint, and\n            <i>A</i> and <i>C</i> are disjoint.",
+  "new": "\"The types <i>A</i>, <i>B</i>, and <i>C</i> are pairwise disjoint if \n            <i>A</i> and <i>B</i> are disjoint,\n            <i>B</i> and <i>C</i> are disjoint, and\n            <i>A</i> and <i>C</i> are disjoint.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:pairwise",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/p.xhtml",
+  "old": "In <code>\"~3,'0D\"</code>, the number <code>3</code> and the character\n\t       <code>#\\0</code> are parameters to the <code>~D</code> format directive.",
+  "new": "\"In <code>\"~3,'0D\"</code>, the number <code>3</code> and the character\n\t       <code>#\\0</code> are parameters to the <code>~D</code> format directive.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:parameter",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/p.xhtml",
+  "old": "The primary value returned by <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> is an\n            integer quotient, truncated toward zero.",
+  "new": "\"The primary value returned by <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> is an\n            integer quotient, truncated toward zero.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:primary value",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/r.xhtml",
+  "old": "The notation <code>#P\"../foo.text\"</code> denotes a relative\n\t       pathname if the host file system is Unix.",
+  "new": "\"The notation <code>#P\"../foo.text\"</code> denotes a relative\n\t       pathname if the host file system is Unix.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:relative",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "The symbol <code>car</code>, the string <code>\"car\"</code>, and the string <code>\"CAR\"</code>\n\t       are the <code>same</code> under <a href=\"../16-strings/16.2.10-string=.xhtml#DictEntry_string_str_1029\"><b>string-equal</b></a>",
+  "new": "\"The symbol <code>car</code>, the string <code>\"car\"</code>, and the string <code>\"CAR\"</code>\n\t       are the <code>same</code> under <a href=\"../16-strings/16.2.10-string=.xhtml#DictEntry_string_str_1029\"><b>string-equal</b></a>\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:same",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "The conses returned by two successive calls to <a href=\"../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916\"><b>cons</b></a>\n\t       are never the same.",
+  "new": "\"The conses returned by two successive calls to <a href=\"../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916\"><b>cons</b></a>\n\t       are never the same.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:same",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "The types specified by <code>(integer 0 1)</code>,\n\t\t\t\t      <code>(unsigned-byte 1)</code>,\n\t\t\t\t  and <code>bit</code> are the same.",
+  "new": "\"The types specified by <code>(integer 0 1)</code>,\n\t\t\t\t      <code>(unsigned-byte 1)</code>,\n\t\t\t\t  and <code>bit</code> are the same.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:same",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "The secondary value returned by <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> is a remainder.",
+  "new": "\"The secondary value returned by <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> is a remainder.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:secondary value",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "Strings are self-evaluating objects.",
+  "new": "\"Strings are self-evaluating objects.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:self-evaluating object",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "That binding of <code>X</code> shadows an outer one.",
+  "new": "\"That binding of <code>X</code> shadows an outer one.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:shadow",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "That <a href=\"../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392\"><b>macrolet</b></a> of <code>F</code> shadows the\n               outer <a href=\"../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392\"><b>flet</b></a> of <code>F</code>.",
+  "new": "\"That <a href=\"../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392\"><b>macrolet</b></a> of <code>F</code> shadows the\n               outer <a href=\"../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392\"><b>flet</b></a> of <code>F</code>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:shadow",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "That package shadows the symbol <code>cl:car</code> with\n               its own symbol <code>car</code>.",
+  "new": "\"That package shadows the symbol <code>cl:car</code> with\n               its own symbol <code>car</code>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:shadow",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "<code>(list 'hello)</code> returns a singleton list.",
+  "new": "\"<code>(list 'hello)</code> returns a singleton list.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:singleton",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "<code>(make-array 5 :element-type 'bit)</code> makes an array of length\n\t       five that is specialized for bits.",
+  "new": "\"<code>(make-array 5 :element-type 'bit)</code> makes an array of length\n\t       five that is specialized for bits.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:specialized",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "The list (1 2 (3 4 5)) is a spreadable argument list designator for\n\t    the list (1 2 3 4 5).",
+  "new": "\"The list (1 2 (3 4 5)) is a spreadable argument list designator for\n\t    the list (1 2 3 4 5).\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:spreadable argument list designator",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "All standardized variables that are required to \n\t    hold bidirectional streams have \"<code>-io*</code>\" in their name.",
+  "new": "\"All standardized variables that are required to \n\t    hold bidirectional streams have \"<code>-io*</code>\" in their name.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:standardized",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "old": "<code>(f x)</code> and <code>x</code>, but not <code>exit</code>, are subforms of\n\t    <code>(return-from exit (f x))</code>.",
+  "new": "\"<code>(f x)</code> and <code>x</code>, but not <code>exit</code>, are subforms of\n\t    <code>(return-from exit (f x))</code>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:subform",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/t.xhtml",
+  "old": "The empty list is a tail of every proper list.",
+  "new": "\"The empty list is a tail of every proper list.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:tail",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/t.xhtml",
+  "old": "The target of a synonym stream is \n\t       the value of its synonym stream symbol.",
+  "new": "\"The target of a synonym stream is \n\t       the value of its synonym stream symbol.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:target",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/t.xhtml",
+  "old": "The type <a href=\"../15-arrays/15.2.3-vector.xhtml#DictEntry_vector_981\"><b>vector</b></a> is an array type.",
+  "new": "\"The type <a href=\"../15-arrays/15.2.3-vector.xhtml#DictEntry_vector_981\"><b>vector</b></a> is an array type.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:type",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/t.xhtml",
+  "old": "The symbol <code>random-state</code>, the list <code>(integer 3 5)</code>,\n            the list <code>(and list (not null))</code>, and the class named\n            <code>standard-class</code> are type specifiers.",
+  "new": "\"The symbol <code>random-state</code>, the list <code>(integer 3 5)</code>,\n            the list <code>(and list (not null))</code>, and the class named\n            <code>standard-class</code> are type specifiers.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:type specifier",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/u.xhtml",
+  "old": "The package <code>cl-user</code> uses the package <code>cl</code>.",
+  "new": "\"The package <code>cl-user</code> uses the package <code>cl</code>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:use",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/v.xhtml",
+  "old": "For a <code>2</code> by <code>3</code> array,\n\t    valid array indices for the first  dimension are <code>0</code> and <code>1</code>, and\n\t    valid array indices for the second dimension are <code>0</code>, <code>1</code> and <code>2</code>.",
+  "new": "\"For a <code>2</code> by <code>3</code> array,\n\t    valid array indices for the first  dimension are <code>0</code> and <code>1</code>, and\n\t    valid array indices for the second dimension are <code>0</code>, <code>1</code> and <code>2</code>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:valid array index",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ },
+ {
+  "file": "OEBPS/text/26-glossary/y.xhtml",
+  "old": "The form <code>(+ 2 3)</code> yields <code>5</code>.",
+  "new": "\"The form <code>(+ 2 3)</code> yields <code>5</code>.\"",
+  "secno": "26.1",
+  "item": "concept:26.1 glossary:yield",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "confidence": "high",
+  "group": "sweep"
+ }
+]

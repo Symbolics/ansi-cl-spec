@@ -1,0 +1,2279 @@
+[
+ {
+  "secno": "14.2.8",
+  "names": [
+   "rplaca",
+   "rplacd"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/14-conses/14.2.8-rplaca.xhtml",
+  "tex_file": "dict-conses.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Pronunciation",
+    "ratio": 0.75,
+    "tex_words": 24,
+    "epub_words": 24,
+    "n_diffs": 6,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "replakə",
+      "epub": "ˌrēˈplakε",
+      "ctx": "rplaca: ["
+     },
+     {
+      "op": "replace",
+      "tex": "rəplakə",
+      "epub": "ˌrεˈplakε",
+      "ctx": "replakə ] or ["
+     },
+     {
+      "op": "replace",
+      "tex": "replakdə",
+      "epub": "ˌrēˈplakdε",
+      "ctx": "rəplakə ] rplacd: ["
+     },
+     {
+      "op": "replace",
+      "tex": "rəplakdə",
+      "epub": "ˌrεˈplakdε",
+      "ctx": "replakdə ] or ["
+     },
+     {
+      "op": "replace",
+      "tex": "replakde",
+      "epub": "ˌrēˈplakdē",
+      "ctx": "rəplakdə ] or ["
+     },
+     {
+      "op": "replace",
+      "tex": "rəplakde",
+      "epub": "ˌrεˈplakdē",
+      "ctx": "replakde ] or ["
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "14.2.9",
+  "names": [
+   "car",
+   "cdr",
+   "caar",
+   "cadr",
+   "cdar",
+   "cddr",
+   "caaar",
+   "caadr",
+   "cadar",
+   "caddr",
+   "cdaar",
+   "cdadr",
+   "cddar",
+   "cdddr",
+   "caaaar",
+   "caaadr",
+   "caadar",
+   "caaddr",
+   "cadaar",
+   "cadadr",
+   "caddar",
+   "cadddr",
+   "cdaaar",
+   "cdaadr",
+   "cdadar",
+   "cdaddr",
+   "cddaar",
+   "cddadr",
+   "cdddar",
+   "cddddr"
+  ],
+  "kind": "Accessor",
+  "file": "OEBPS/text/14-conses/14.2.9-car.xhtml",
+  "tex_file": "dict-conses.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Pronunciation",
+    "ratio": 0.6429,
+    "tex_words": 32,
+    "epub_words": 24,
+    "n_diffs": 6,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "kadə r",
+      "epub": "ˈkaˌdεr",
+      "ctx": "cadr: ["
+     },
+     {
+      "op": "replace",
+      "tex": "kadə də r",
+      "epub": "ˈkadεˌdεr",
+      "ctx": "r ] caddr: ["
+     },
+     {
+      "op": "replace",
+      "tex": "kadudə r",
+      "epub": "ˈkaˌdu̇dεr",
+      "ctx": "r ] or ["
+     },
+     {
+      "op": "replace",
+      "tex": "kudə r",
+      "epub": "ˈku̇ˌdεr",
+      "ctx": "r ] cdr: ["
+     },
+     {
+      "op": "replace",
+      "tex": "kudə də r",
+      "epub": "ˈku̇dεˌdεr",
+      "ctx": "r ] cddr: ["
+     },
+     {
+      "op": "replace",
+      "tex": "kədudə r",
+      "epub": "ˈkεˌdu̇dεr",
+      "ctx": "r ] or ["
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "14.2.12",
+  "names": [
+   "subst",
+   "subst-if",
+   "subst-if-not",
+   "nsubst",
+   "nsubst-if",
+   "nsubst-if-not"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/14-conses/14.2.12-subst.xhtml",
+  "tex_file": "dict-conses.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "14.2.12",
+    "names": "subst, subst-if, subst-if-not, nsubst, nsubst-if, nsubst-if-not",
+    "kind": "Function",
+    "file": "e14-2-12.xhtml",
+    "block": 1,
+    "line": 140,
+    "form_text": "(subst-if-not '(x) #'consp tree1)",
+    "expected_values": [
+     "(1 X)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "((X) ((X) (X) X) ((X) (X) (X) X) ((X) (X) (X) (X) X) X)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "14.2.27",
+  "names": [
+   "revappend",
+   "nreconc"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/14-conses/14.2.27-revappend.xhtml",
+  "tex_file": "dict-conses.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "14.2.27",
+    "names": "revappend, nreconc",
+    "kind": "Function",
+    "file": "e14-2-27.xhtml",
+    "block": 1,
+    "line": 66,
+    "form_text": "(let ((list-1 '(1 2 3))\n(list-2 '(a b c)))\n(print (nreconc list-1 list-2))\n(print (equal list-1 '(1 2 3)))\n(print (equal list-2 '(a b c))))",
+    "expected_values": [
+     "T"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "(3 2 1 A B C)",
+     "NIL",
+     "T"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "T"
+    ],
+    "actual_no_values": false,
+    "actual_output": [
+     "",
+     "(3 2 1 A B C) ",
+     "T ",
+     "T "
+    ],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "14.2.31",
+  "names": [
+   "nthcdr"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/14-conses/14.2.31-nthcdr.xhtml",
+  "tex_file": "dict-conses.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "14.2.31",
+    "names": "nthcdr",
+    "kind": "Function",
+    "file": "e14-2-31.xhtml",
+    "block": 1,
+    "line": 52,
+    "form_text": "(locally (declare (optimize (safety 3)))\n(nthcdr 3 '(0 . 1)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "TYPE-ERROR The value 1 is not of type LIST"
+    }
+   }
+  ],
+  "example_unparsed": [
+   {
+    "secno": "14.2.31",
+    "names": "nthcdr",
+    "file": "e14-2-31.xhtml",
+    "block": 1,
+    "line": 54,
+    "text": "Error: Attempted to take CDR of 1.",
+    "reason": "prose"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "14.2.36",
+  "names": [
+   "assoc",
+   "assoc-if",
+   "assoc-if-not"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/14-conses/14.2.36-assoc.xhtml",
+  "tex_file": "dict-conses.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "14.2.36",
+    "names": "assoc, assoc-if, assoc-if-not",
+    "kind": "Function",
+    "file": "e14-2-36.xhtml",
+    "block": 1,
+    "line": 74,
+    "form_text": "(setq values '((x . 100) (y . 200) (z . 50)))",
+    "expected_values": [
+     "((X . 100) (Y . 200) (Z . 50))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when setting the value of VALUES while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   },
+   {
+    "secno": "14.2.36",
+    "names": "assoc, assoc-if, assoc-if-not",
+    "kind": "Function",
+    "file": "e14-2-36.xhtml",
+    "block": 1,
+    "line": 75,
+    "form_text": "(assoc 'y values)",
+    "expected_values": [
+     "(Y . 200)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable VALUES is unbound."
+    }
+   },
+   {
+    "secno": "14.2.36",
+    "names": "assoc, assoc-if, assoc-if-not",
+    "kind": "Function",
+    "file": "e14-2-36.xhtml",
+    "block": 1,
+    "line": 76,
+    "form_text": "(rplacd (assoc 'y values) 201)",
+    "expected_values": [
+     "(Y . 201)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable VALUES is unbound."
+    }
+   },
+   {
+    "secno": "14.2.36",
+    "names": "assoc, assoc-if, assoc-if-not",
+    "kind": "Function",
+    "file": "e14-2-36.xhtml",
+    "block": 1,
+    "line": 77,
+    "form_text": "(assoc 'y values)",
+    "expected_values": [
+     "(Y . 201)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable VALUES is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "14.2.43",
+  "names": [
+   "intersection",
+   "nintersection"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/14-conses/14.2.43-intersection.xhtml",
+  "tex_file": "dict-conses.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "14.2.43",
+    "names": "intersection, nintersection",
+    "kind": "Function",
+    "file": "e14-2-43.xhtml",
+    "block": 1,
+    "line": 107,
+    "form_text": "(setq list1 (list 1 1 2 3 4 a b c \"A\" \"B\" \"C\" \"d\")\nlist2 (list 1 4 5 b c d \"a\" \"B\" \"c\" \"D\"))",
+    "expected_values": [
+     "(1 4 5 B C D \"a\" \"B\" \"c\" \"D\")"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable A is unbound."
+    }
+   },
+   {
+    "secno": "14.2.43",
+    "names": "intersection, nintersection",
+    "kind": "Function",
+    "file": "e14-2-43.xhtml",
+    "block": 1,
+    "line": 110,
+    "form_text": "(intersection list1 list2)",
+    "expected_values": [
+     "(C B 4 1 1)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable LIST1 is unbound."
+    }
+   },
+   {
+    "secno": "14.2.43",
+    "names": "intersection, nintersection",
+    "kind": "Function",
+    "file": "e14-2-43.xhtml",
+    "block": 1,
+    "line": 111,
+    "form_text": "(intersection list1 list2 :test 'equal)",
+    "expected_values": [
+     "(\"B\" C B 4 1 1)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable LIST1 is unbound."
+    }
+   },
+   {
+    "secno": "14.2.43",
+    "names": "intersection, nintersection",
+    "kind": "Function",
+    "file": "e14-2-43.xhtml",
+    "block": 1,
+    "line": 112,
+    "form_text": "(intersection list1 list2 :test #'equalp)",
+    "expected_values": [
+     "(\"d\" \"C\" \"B\" \"A\" C B 4 1 1)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable LIST1 is unbound."
+    }
+   },
+   {
+    "secno": "14.2.43",
+    "names": "intersection, nintersection",
+    "kind": "Function",
+    "file": "e14-2-43.xhtml",
+    "block": 1,
+    "line": 113,
+    "form_text": "(nintersection list1 list2)",
+    "expected_values": [
+     "(1 1 4 B C)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable LIST1 is unbound."
+    }
+   },
+   {
+    "secno": "14.2.43",
+    "names": "intersection, nintersection",
+    "kind": "Function",
+    "file": "e14-2-43.xhtml",
+    "block": 1,
+    "line": 114,
+    "form_text": "list1",
+    "expected_values": [
+     "implementation-dependent"
+    ],
+    "expected_italics": [
+     [
+      "implementation-dependent"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable LIST1 is unbound."
+    }
+   },
+   {
+    "secno": "14.2.43",
+    "names": "intersection, nintersection",
+    "kind": "Function",
+    "file": "e14-2-43.xhtml",
+    "block": 1,
+    "line": 115,
+    "form_text": "list2",
+    "expected_values": [
+     "implementation-dependent"
+    ],
+    "expected_italics": [
+     [
+      "implementation-dependent"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable LIST2 is unbound."
+    }
+   },
+   {
+    "secno": "14.2.43",
+    "names": "intersection, nintersection",
+    "kind": "Function",
+    "file": "e14-2-43.xhtml",
+    "block": 1,
+    "line": 120,
+    "form_text": "(nintersection list1 list2 :key #'cdr)",
+    "expected_values": [
+     "((2 . 3) (3 . 4))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "((3 . 4) (2 . 3))"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "14.2.44",
+  "names": [
+   "adjoin"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/14-conses/14.2.44-adjoin.xhtml",
+  "tex_file": "dict-conses.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.9938,
+    "tex_words": 81,
+    "epub_words": 80,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "delete",
+      "tex": ",",
+      "epub": "",
+      "ctx": "The test , test-not"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "14.2.46",
+  "names": [
+   "set-difference",
+   "nset-difference"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/14-conses/14.2.46-set-difference.xhtml",
+  "tex_file": "dict-conses.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "14.2.46",
+    "names": "set-difference, nset-difference",
+    "kind": "Function",
+    "file": "e14-2-46.xhtml",
+    "block": 1,
+    "line": 101,
+    "form_text": "(nset-difference lst1 lst2 :test #'string=)",
+    "expected_values": [
+     "(\"A\" \"b\")"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(\"b\" \"A\")"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "14.2.46",
+    "names": "set-difference, nset-difference",
+    "kind": "Function",
+    "file": "e14-2-46.xhtml",
+    "block": 1,
+    "line": 106,
+    "form_text": "(nset-difference lst1 lst2 :test #'string= :key #'cdr)",
+    "expected_values": [
+     "((\"c\" . \"d\") (\"e\" . \"f\"))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "((\"e\" . \"f\") (\"c\" . \"d\"))"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "14.2.46",
+    "names": "set-difference, nset-difference",
+    "kind": "Function",
+    "file": "e14-2-46.xhtml",
+    "block": 1,
+    "line": 108,
+    "form_text": "lst1",
+    "expected_values": [
+     "((\"a\" . \"b\") (\"c\" . \"d\") (\"e\" . \"f\"))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "((\"a\" . \"b\") (\"c\" . \"d\"))"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "14.2.46",
+    "names": "set-difference, nset-difference",
+    "kind": "Function",
+    "file": "e14-2-46.xhtml",
+    "block": 2,
+    "line": 112,
+    "form_text": "(set-difference '(\"strawberry\" \"chocolate\" \"banana\"\n\"lemon\" \"pistachio\" \"rhubarb\")\n'(#\\c #\\w)\n:test #'(lambda (s c) (find c s)))",
+    "expected_values": [
+     "(\"banana\" \"rhubarb\" \"lemon\")"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(\"rhubarb\" \"lemon\" \"banana\")"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "14.2.47",
+  "names": [
+   "set-exclusive-or",
+   "nset-exclusive-or"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/14-conses/14.2.47-set-exclusive-or.xhtml",
+  "tex_file": "dict-conses.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "14.2.47",
+    "names": "set-exclusive-or, nset-exclusive-or",
+    "kind": "Function",
+    "file": "e14-2-47.xhtml",
+    "block": 1,
+    "line": 92,
+    "form_text": "(setq lst1 (list ((\"a\" . \"b\") (\"c\" . \"d\") (\"e\" . \"f\"))))",
+    "expected_values": [
+     "((\"a\" . \"b\") (\"c\" . \"d\") (\"e\" . \"f\"))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "COMPILED-PROGRAM-ERROR Execution of a form compiled with errors.\nForm:\n  ((\"a\" . \"b\") (\"c\" . \"d\") (\"e\" . \"f\"))\nCompile-time error:\n  illegal function call"
+    }
+   },
+   {
+    "secno": "14.2.47",
+    "names": "set-exclusive-or, nset-exclusive-or",
+    "kind": "Function",
+    "file": "e14-2-47.xhtml",
+    "block": 1,
+    "line": 94,
+    "form_text": "(setq lst2 (list ((\"c\" . \"a\") (\"e\" . \"b\") (\"d\" . \"a\"))))",
+    "expected_values": [
+     "((\"c\" . \"a\") (\"e\" . \"b\") (\"d\" . \"a\"))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "COMPILED-PROGRAM-ERROR Execution of a form compiled with errors.\nForm:\n  ((\"c\" . \"a\") (\"e\" . \"b\") (\"d\" . \"a\"))\nCompile-time error:\n  illegal function call"
+    }
+   },
+   {
+    "secno": "14.2.47",
+    "names": "set-exclusive-or, nset-exclusive-or",
+    "kind": "Function",
+    "file": "e14-2-47.xhtml",
+    "block": 1,
+    "line": 96,
+    "form_text": "(nset-exclusive-or lst1 lst2 :test #'string= :key #'cdr)",
+    "expected_values": [
+     "((\"c\" . \"d\") (\"e\" . \"f\") (\"c\" . \"a\") (\"d\" . \"a\"))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "TYPE-ERROR The value 1 is not of type LIST when binding LIST"
+    }
+   },
+   {
+    "secno": "14.2.47",
+    "names": "set-exclusive-or, nset-exclusive-or",
+    "kind": "Function",
+    "file": "e14-2-47.xhtml",
+    "block": 1,
+    "line": 98,
+    "form_text": "lst1",
+    "expected_values": [
+     "((\"a\" . \"b\") (\"c\" . \"d\") (\"e\" . \"f\"))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(1 \"a\" \"b\" \"A\" \"b\")"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "14.2.47",
+    "names": "set-exclusive-or, nset-exclusive-or",
+    "kind": "Function",
+    "file": "e14-2-47.xhtml",
+    "block": 1,
+    "line": 99,
+    "form_text": "lst2",
+    "expected_values": [
+     "((\"c\" . \"a\") (\"d\" . \"a\"))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(1)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "14.2.49",
+  "names": [
+   "union",
+   "nunion"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/14-conses/14.2.49-union.xhtml",
+  "tex_file": "dict-conses.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "14.2.49",
+    "names": "union, nunion",
+    "kind": "Function",
+    "file": "e14-2-49.xhtml",
+    "block": 1,
+    "line": 101,
+    "form_text": "(union '(a b c) '(f a d))",
+    "expected_values": [
+     "(A B C F D)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "(B C F A D)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(D F A B C)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(C B F A D)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "14.2.49",
+    "names": "union, nunion",
+    "kind": "Function",
+    "file": "e14-2-49.xhtml",
+    "block": 1,
+    "line": 105,
+    "form_text": "(union '((x 5) (y 6)) '((z 2) (x 4)) :key #'car)",
+    "expected_values": [
+     "((X 5) (Y 6) (Z 2))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "((X 4) (Y 6) (Z 2))"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "((Y 6) (Z 2) (X 4))"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "14.2.49",
+    "names": "union, nunion",
+    "kind": "Function",
+    "file": "e14-2-49.xhtml",
+    "block": 1,
+    "line": 112,
+    "form_text": "(nunion lst1 lst2)",
+    "expected_values": [
+     "(1 (1 2) \"a\" \"b\" 2 3 (2 3) \"B\" \"C\")"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "(1 2 (1 2) \"a\" \"b\" \"C\" \"B\" (2 3) 3)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(\"b\" \"a\" (1 2) 1 2 3 (2 3) \"B\" \"C\")"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "15.2.3",
+  "names": [
+   "vector"
+  ],
+  "kind": "System Class",
+  "file": "OEBPS/text/15-arrays/15.2.3-vector.xhtml",
+  "tex_file": "dict-arrays.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Notes",
+    "ratio": 0.9888,
+    "tex_words": 89,
+    "epub_words": 89,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "$C$",
+      "epub": "C",
+      "ctx": "all types ( vector"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "15.2.8",
+  "names": [
+   "adjust-array"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/15-arrays/15.2.8-adjust-array.xhtml",
+  "tex_file": "dict-arrays.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "15.2.8",
+    "names": "adjust-array",
+    "kind": "Function",
+    "file": "e15-2-8.xhtml",
+    "block": 1,
+    "line": 268,
+    "form_text": "(setq beta (make-array '(2 3) :adjustable t))",
+    "expected_values": [
+     "#2A((NIL NIL NIL) (NIL NIL NIL))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#2A((0 0 0) (0 0 0))"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "15.2.8",
+    "names": "adjust-array",
+    "kind": "Function",
+    "file": "e15-2-8.xhtml",
+    "block": 1,
+    "line": 270,
+    "form_text": "(adjust-array beta '(4 6) :displaced-to ada)",
+    "expected_values": [
+     "#2A((A B C NIL NIL NIL)\n(1 2 3 NIL NIL NIL)\n(NIL NIL NIL NIL NIL NIL)\n(NIL NIL NIL NIL NIL NIL))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#2A((A B C 0 0 0) (1 2 3 0 0 0) (0 0 0 0 0 0) (0 0 0 0 0 0))"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "15.2.8",
+    "names": "adjust-array",
+    "kind": "Function",
+    "file": "e15-2-8.xhtml",
+    "block": 3,
+    "line": 290,
+    "form_text": "(adjust-array m '(3 5) :initial-element 'baz)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable M is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "15.2.21",
+  "names": [
+   "fill-pointer"
+  ],
+  "kind": "Accessor",
+  "file": "OEBPS/text/15-arrays/15.2.21-fill-pointer.xhtml",
+  "tex_file": "dict-arrays.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "15.2.21",
+    "names": "fill-pointer",
+    "kind": "Accessor",
+    "file": "e15-2-21.xhtml",
+    "block": 1,
+    "line": 39,
+    "form_text": "(setq a (make-array 8 :fill-pointer 4))",
+    "expected_values": [
+     "#(NIL NIL NIL NIL)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#(0 0 0 0)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "15.2.21",
+    "names": "fill-pointer",
+    "kind": "Accessor",
+    "file": "e15-2-21.xhtml",
+    "block": 1,
+    "line": 47,
+    "form_text": "a",
+    "expected_values": [
+     "#(0 1 4 9 NIL NIL NIL NIL)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#(0 1 4 9 0 0 0 0)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "15.2.33",
+  "names": [
+   "bit",
+   "sbit"
+  ],
+  "kind": "Accessor",
+  "file": "OEBPS/text/15-arrays/15.2.33-bit.xhtml",
+  "tex_file": "dict-arrays.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9062,
+    "tex_words": 32,
+    "epub_words": 32,
+    "n_diffs": 3,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "bit",
+      "epub": "new-bit",
+      "ctx": "bit-array &rest subscripts →"
+     },
+     {
+      "op": "replace",
+      "tex": "subscripts",
+      "epub": "subscrips",
+      "ctx": "( bit bit-array &rest"
+     },
+     {
+      "op": "replace",
+      "tex": "subscripts",
+      "epub": "subscrips",
+      "ctx": "( sbit bit-array &rest"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "15.2.34",
+  "names": [
+   "bit-and",
+   "bit-andc1",
+   "bit-andc2",
+   "bit-eqv",
+   "bit-ior",
+   "bit-nand",
+   "bit-nor",
+   "bit-not",
+   "bit-orc1",
+   "bit-orc2",
+   "bit-xor"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/15-arrays/15.2.34-bit-and.xhtml",
+  "tex_file": "dict-arrays.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.7838,
+    "tex_words": 293,
+    "epub_words": 202,
+    "n_diffs": 3,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "2 by - by - -2pt 1pc 1pc plus 2pc 1= 0=2pc 20 to # 0 # 0pt plus 1fil -9pt",
+      "epub": "Figure § Bit-wise Logical Operations on Bit Arrays",
+      "ctx": "of the functions ."
+     },
+     {
+      "op": "delete",
+      "tex": "2pt 2pt",
+      "epub": "",
+      "ctx": "1fil -9pt Function Operation"
+     },
+     {
+      "op": "delete",
+      "tex": "-9pt #1-- . Bit-wise Logical Operations on Bit Arrays 1 20000 1pc 20000 ( ) 0pt Figure ! 2 ! ! > 0 #1--- 1 ( ) to height1pt depth0pt 1 20000 20000 ( ) 0pt Figure ! 2 ! ! > 0 #1--- 1 ( ) to height1pt depth0pt 1= 0pt height1pt width 1pt height0pt width 11pc1 width1pt height1pt 20000 20000 ( ) 0pt Figure ! 2 ! ! > 0 #1--- 1 ( )",
+      "epub": "",
+      "ctx": "with complement of bit-array2"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "17.3.9",
+  "names": [
+   "reduce"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/17-sequences/17.3.9-reduce.xhtml",
+  "tex_file": "dict-sequences.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "17.3.9",
+    "names": "reduce",
+    "kind": "Function",
+    "file": "e17-3-9.xhtml",
+    "block": 1,
+    "line": 111,
+    "form_text": "==(- 1 (- 2 (- 3 4)))",
+    "expected_values": [
+     "-2"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable == is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "17.3.15",
+  "names": [
+   "position",
+   "position-if",
+   "position-if-not"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/17-sequences/17.3.15-position.xhtml",
+  "tex_file": "dict-sequences.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.9701,
+    "tex_words": 81,
+    "epub_words": 86,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "insert",
+      "tex": "",
+      "epub": "[ see correction below ]",
+      "ctx": "if from-end is true"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "17.3.21",
+  "names": [
+   "merge"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/17-sequences/17.3.21-merge.xhtml",
+  "tex_file": "dict-sequences.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [],
+  "example_unparsed": [
+   {
+    "secno": "17.3.21",
+    "names": "merge",
+    "file": "e17-3-21.xhtml",
+    "block": 1,
+    "line": 125,
+    "text": "(setq test2 (copy-seq :nosy\"))\n(merge 'string test1 test2 #'char-lessp) → \"BnOosYy\"\n(setq test1 (vector ((red . 1) (blue . 4))))\n(setq test2 (vector ((yellow . 2) (green . 7))))\n(merge 'vector test1 test2 #'< :key #'cdr)",
+    "reason": "unbalanced form"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "18.2.11",
+  "names": [
+   "maphash"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/18-hash-tables/18.2.11-maphash.xhtml",
+  "tex_file": "dict-hash-tables.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [],
+  "example_unparsed": [
+   {
+    "secno": "18.2.11",
+    "names": "maphash",
+    "file": "e18-2-11.xhtml",
+    "block": 1,
+    "line": 63,
+    "text": "(0 0)",
+    "reason": "prose"
+   },
+   {
+    "secno": "18.2.11",
+    "names": "maphash",
+    "file": "e18-2-11.xhtml",
+    "block": 1,
+    "line": 64,
+    "text": "(8 64)",
+    "reason": "prose"
+   },
+   {
+    "secno": "18.2.11",
+    "names": "maphash",
+    "file": "e18-2-11.xhtml",
+    "block": 1,
+    "line": 65,
+    "text": "(2 4)",
+    "reason": "prose"
+   },
+   {
+    "secno": "18.2.11",
+    "names": "maphash",
+    "file": "e18-2-11.xhtml",
+    "block": 1,
+    "line": 66,
+    "text": "(6 36)",
+    "reason": "prose"
+   },
+   {
+    "secno": "18.2.11",
+    "names": "maphash",
+    "file": "e18-2-11.xhtml",
+    "block": 1,
+    "line": 67,
+    "text": "(4 16)",
+    "reason": "prose"
+   },
+   {
+    "secno": "18.2.11",
+    "names": "maphash",
+    "file": "e18-2-11.xhtml",
+    "block": 1,
+    "line": 68,
+    "text": "→  NIL",
+    "reason": "result line without a form"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "18.2.12",
+  "names": [
+   "with-hash-table-iterator"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/18-hash-tables/18.2.12-with-hash-table-iterator.xhtml",
+  "tex_file": "dict-hash-tables.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "18.2.12",
+    "names": "with-hash-table-iterator",
+    "kind": "Macro",
+    "file": "e18-2-12.xhtml",
+    "block": 2,
+    "line": 101,
+    "form_text": "(defun maphash (function hash-table)\n(with-hash-table-iterator (next-entry hash-table)\n(loop (multiple-value-bind (more key value) (next-entry)\n(unless more (return nil))\n(funcall function key value)))))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when setting fdefinition of MAPHASH while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "19.4.3",
+  "names": [
+   "pathname"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/19-filenames/19.4.3-pathname.xhtml",
+  "tex_file": "dict-pathnames.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "19.4.3",
+    "names": "pathname",
+    "kind": "Function",
+    "file": "e19-4-3.xhtml",
+    "block": 1,
+    "line": 97,
+    "form_text": "(with-open-file (stream \"test\" :direction :output)\n(pathname stream))",
+    "expected_values": [
+     "#P\"ORANGE-CHOCOLATE:>Gus>test.lisp.newest\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"/tmp/exwd-f2n07f27/test\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "19.4.4",
+  "names": [
+   "make-pathname"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/19-filenames/19.4.4-make-pathname.xhtml",
+  "tex_file": "dict-pathnames.tex",
+  "examples_ratio": 0.9893,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9893,
+    "tex_words": 373,
+    "epub_words": 373,
+    "n_diffs": 4,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "SYS$DISK:",
+      "epub": "SYSDISK:",
+      "ctx": ") → #P \""
+     },
+     {
+      "op": "replace",
+      "tex": "BOBBY::SYS$DISK:",
+      "epub": "BOBBY::SYSDISK:",
+      "ctx": ") → #P \""
+     },
+     {
+      "op": "replace",
+      "tex": "MY-VAX:SYS$DISK:",
+      "epub": "MY-VAX:SYSDISK:",
+      "ctx": "\" ▷ #P \""
+     },
+     {
+      "op": "replace",
+      "tex": "MY-VAX:SYS$DISK:",
+      "epub": "MY-VAX:SYSDISK:",
+      "ctx": "\" ▷ #P \""
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "19.4.4",
+    "names": "make-pathname",
+    "kind": "Function",
+    "file": "e19-4-4.xhtml",
+    "block": 1,
+    "line": 145,
+    "form_text": "(make-pathname :directory '(:absolute \"PUBLIC\" \"GAMES\")\n:name \"CHESS\" :type \"DB\")",
+    "expected_values": [
+     "#P\"SYSDISK:[PUBLIC.GAMES]CHESS.DB\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"/PUBLIC/GAMES/CHESS.DB\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "19.4.4",
+    "names": "make-pathname",
+    "kind": "Function",
+    "file": "e19-4-4.xhtml",
+    "block": 1,
+    "line": 148,
+    "form_text": "(make-pathname :host \"BOBBY\"\n:directory '(:absolute \"PUBLIC\" \"GAMES\")\n:name \"CHESS\" :type \"DB\")",
+    "expected_values": [
+     "#P\"BOBBY::SYSDISK:[PUBLIC.GAMES]CHESS.DB\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR logical host not yet defined: \"BOBBY\""
+    }
+   },
+   {
+    "secno": "19.4.4",
+    "names": "make-pathname",
+    "kind": "Function",
+    "file": "e19-4-4.xhtml",
+    "block": 1,
+    "line": 157,
+    "form_text": "(dolist (case '(:common :local))\n(dolist (host '(\"MY-LISPM\" \"MY-VAX\" \"MY-UNIX\"))\n(print (make-pathname :host host :case case\n:directory '(:absolute \"PUBLIC\" \"GAMES\")\n:name \"CHESS\" :type \"DB\"))))",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "#P\"MY-LISPM:>public>games>chess.db\"",
+     "#P\"MY-VAX:SYSDISK:[PUBLIC.GAMES]CHESS.DB\"",
+     "#P\"MY-UNIX:/public/games/chess.db\"",
+     "#P\"MY-LISPM:>public>games>chess.db\"",
+     "#P\"MY-VAX:SYSDISK:[PUBLIC.GAMES]CHESS.DB\"",
+     "#P\"MY-UNIX:/PUBLIC/GAMES/CHESS.DB\""
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR logical host not yet defined: \"MY-LISPM\""
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "19.4.5",
+  "names": [
+   "pathnamep"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/19-filenames/19.4.5-pathnamep.xhtml",
+  "tex_file": "dict-pathnames.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "19.4.5",
+    "names": "pathnamep",
+    "kind": "Function",
+    "file": "e19-4-5.xhtml",
+    "block": 1,
+    "line": 36,
+    "form_text": "(setq q (pathname \"test\"))",
+    "expected_values": [
+     "#S(PATHNAME :HOST NIL :DEVICE NIL :DIRECTORY NIL :NAME \"test\" :TYPE NIL\n:VERSION NIL)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"test\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "19.4.7",
+  "names": [
+   "load-logical-pathname-translations"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/19-filenames/19.4.7-load-logical-pathname-translations.xhtml",
+  "tex_file": "dict-pathnames.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "19.4.7",
+    "names": "load-logical-pathname-translations",
+    "kind": "Function",
+    "file": "e19-4-7.xhtml",
+    "block": 1,
+    "line": 44,
+    "form_text": "(translate-logical-pathname \"hacks:weather;barometer.lisp.newest\")",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": [
+     "Error: The logical host HACKS is not defined."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"hacks:weather;barometer.lisp.newest\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "19.4.7",
+    "names": "load-logical-pathname-translations",
+    "kind": "Function",
+    "file": "e19-4-7.xhtml",
+    "block": 1,
+    "line": 46,
+    "form_text": "(load-logical-pathname-translations \"HACKS\")",
+    "expected_values": [
+     "true"
+    ],
+    "expected_italics": [
+     [
+      "true"
+     ]
+    ],
+    "expected_output": [
+     ";; Loading SYS:SITE;HACKS.TRANSLATIONS",
+     ";; Loading done."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-FILE-ERROR no translation for #P\"SYS:SITE;HACKS.TRANSLATIONS.NEWEST\""
+    }
+   },
+   {
+    "secno": "19.4.7",
+    "names": "load-logical-pathname-translations",
+    "kind": "Function",
+    "file": "e19-4-7.xhtml",
+    "block": 1,
+    "line": 50,
+    "form_text": "(translate-logical-pathname \"hacks:weather;barometer.lisp.newest\")",
+    "expected_values": [
+     "#P\"HELIUM:[SHARED.HACKS.WEATHER]BAROMETER.LSP;0\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"hacks:weather;barometer.lisp.newest\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "19.4.7",
+    "names": "load-logical-pathname-translations",
+    "kind": "Function",
+    "file": "e19-4-7.xhtml",
+    "block": 1,
+    "line": 52,
+    "form_text": "(load-logical-pathname-translations \"HACKS\")",
+    "expected_values": [
+     "false"
+    ],
+    "expected_italics": [
+     [
+      "false"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-FILE-ERROR no translation for #P\"SYS:SITE;HACKS.TRANSLATIONS.NEWEST\""
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "19.4.8",
+  "names": [
+   "logical-pathname-translations"
+  ],
+  "kind": "Accessor",
+  "file": "OEBPS/text/19-filenames/19.4.8-logical-pathname-translations.xhtml",
+  "tex_file": "dict-pathnames.tex",
+  "examples_ratio": 0.9981,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9981,
+    "tex_words": 1033,
+    "epub_words": 1033,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "MY-VAX:SYS$DISK:",
+      "epub": "MY-VAX:SYSDISK:",
+      "ctx": ". * \" \""
+     },
+     {
+      "op": "replace",
+      "tex": "MY-VAX:SYS$DISK:",
+      "epub": "MY-VAX:SYSDISK:",
+      "ctx": ". MAIL \" \""
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [],
+  "example_unparsed": [],
+  "example_skipped": [
+   "absolute/parent path literal '/lib/prog/'",
+   "absolute/parent path literal '/lib/prog/docum.*'",
+   "absolute/parent path literal '/lib/prog/documentatio.*'"
+  ]
+ },
+ {
+  "secno": "19.4.10",
+  "names": [
+   "*default-pathname-defaults*"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/19-filenames/19.4.10-default-pathname-defaults.xhtml",
+  "tex_file": "dict-pathnames.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "19.4.10",
+    "names": "*default-pathname-defaults*",
+    "kind": "Variable",
+    "file": "e19-4-10.xhtml",
+    "block": 1,
+    "line": 37,
+    "form_text": "*default-pathname-defaults*",
+    "expected_values": [
+     "#P\"PS:<FRED>\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"/tmp/exwd-9wskstkp/\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "19.4.10",
+    "names": "*default-pathname-defaults*",
+    "kind": "Variable",
+    "file": "e19-4-10.xhtml",
+    "block": 1,
+    "line": 38,
+    "form_text": "(merge-pathnames (make-pathname :name \"CALENDAR\"))",
+    "expected_values": [
+     "#P\"PS:<FRED>CALENDAR\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"/tmp/exwd-9wskstkp/CALENDAR\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "19.4.10",
+    "names": "*default-pathname-defaults*",
+    "kind": "Variable",
+    "file": "e19-4-10.xhtml",
+    "block": 1,
+    "line": 40,
+    "form_text": "(let ((*default-pathname-defaults* (pathname \"<MARY>\")))\n(merge-pathnames (make-pathname :name \"CALENDAR\")))",
+    "expected_values": [
+     "#P\"<MARY>CALENDAR\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"CALENDAR\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "19.4.12",
+  "names": [
+   "parse-namestring"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/19-filenames/19.4.12-parse-namestring.xhtml",
+  "tex_file": "dict-pathnames.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "19.4.12",
+    "names": "parse-namestring",
+    "kind": "Function",
+    "file": "e19-4-12.xhtml",
+    "block": 1,
+    "line": 189,
+    "form_text": "(setq q (parse-namestring \"test\"))",
+    "expected_values": [
+     "#S(PATHNAME :HOST NIL :DEVICE NIL :DIRECTORY NIL :NAME \"test\"\n:TYPE NIL :VERSION NIL)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"test\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "19.4.12",
+    "names": "parse-namestring",
+    "kind": "Function",
+    "file": "e19-4-12.xhtml",
+    "block": 1,
+    "line": 193,
+    "form_text": "(parse-namestring \"test\")",
+    "expected_values": [
+     "#S(PATHNAME :HOST NIL :DEVICE NIL :DIRECTORY NIL :NAME \"test\"\n:TYPE NIL :VERSION NIL)",
+     "4"
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"test\"",
+     "4"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "19.4.12",
+    "names": "parse-namestring",
+    "kind": "Function",
+    "file": "e19-4-12.xhtml",
+    "block": 1,
+    "line": 197,
+    "form_text": "(parse-namestring s)",
+    "expected_values": [
+     "#S(PATHNAME :HOST NIL :DEVICE NIL :DIRECTORY NIL :NAME xxx\n:TYPE NIL :VERSION NIL)",
+     "0"
+    ],
+    "expected_italics": [
+     [
+      "xxx"
+     ],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable S is unbound."
+    }
+   },
+   {
+    "secno": "19.4.12",
+    "names": "parse-namestring",
+    "kind": "Function",
+    "file": "e19-4-12.xhtml",
+    "block": 1,
+    "line": 200,
+    "form_text": "(parse-namestring \"test\" nil nil :start 2 :end 4 )",
+    "expected_values": [
+     "#S(PATHNAME ...)",
+     "15"
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "TYPE-ERROR The value NIL is not of type (OR STRING PATHNAME SYNONYM-STREAM FILE-STREAM) when binding SB-IMPL::DEFAULTS"
+    }
+   },
+   {
+    "secno": "19.4.12",
+    "names": "parse-namestring",
+    "kind": "Function",
+    "file": "e19-4-12.xhtml",
+    "block": 1,
+    "line": 202,
+    "form_text": "(parse-namestring \"foo.lisp\")",
+    "expected_values": [
+     "#P\"foo.lisp\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"foo.lisp\"",
+     "8"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "19.4.13",
+  "names": [
+   "wild-pathname-p"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/19-filenames/19.4.13-wild-pathname-p.xhtml",
+  "tex_file": "dict-pathnames.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "19.4.13",
+    "names": "wild-pathname-p",
+    "kind": "Function",
+    "file": "e19-4-13.xhtml",
+    "block": 1,
+    "line": 66,
+    "form_text": "(wild-pathname-p (pathname :name \"F*O\"))",
+    "expected_values": [
+     "true"
+    ],
+    "expected_italics": [
+     [
+      "true"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-PROGRAM-ERROR invalid number of arguments: 2"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "19.4.17",
+  "names": [
+   "merge-pathnames"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/19-filenames/19.4.17-merge-pathnames.xhtml",
+  "tex_file": "dict-pathnames.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "19.4.17",
+    "names": "merge-pathnames",
+    "kind": "Function",
+    "file": "e19-4-17.xhtml",
+    "block": 1,
+    "line": 161,
+    "form_text": "(merge-pathnames \"CMUC::FORMAT\"\n\"CMUC::PS:<LISPIO>.FASL\")",
+    "expected_values": [
+     "#P\"CMUC::PS:<LISPIO>FORMAT.FASL.0\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"CMUC::FORMAT.FASL\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ }
+]

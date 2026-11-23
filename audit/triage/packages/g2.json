@@ -1,0 +1,2125 @@
+[
+ {
+  "secno": "5.3.1",
+  "names": [
+   "apply"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.1-apply.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.1",
+    "names": "apply",
+    "kind": "Function",
+    "file": "e5-3-1.xhtml",
+    "block": 2,
+    "line": 78,
+    "form_text": "(foo 4 :initial-contents '(a b c d) :double t)",
+    "expected_values": [
+     "#(A B C D A B C D)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The length requested (8) does not match the type restriction in (SIMPLE-VECTOR 4)."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.4",
+  "names": [
+   "fboundp"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.4-fboundp.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Pronunciation",
+    "ratio": 0.6667,
+    "tex_words": 3,
+    "epub_words": 3,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "efbaundpe",
+      "epub": "ˌefˈbau̇ndpē",
+      "ctx": "["
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.4",
+    "names": "fboundp",
+    "kind": "Function",
+    "file": "e5-3-4.xhtml",
+    "block": 1,
+    "line": 42,
+    "form_text": "(fboundp 'nth-value)",
+    "expected_values": [
+     "false"
+    ],
+    "expected_italics": [
+     [
+      "false"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#<FUNCTION (:MACRO NTH-VALUE) {120025658B}>"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.5",
+  "names": [
+   "fmakunbound"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.5-fmakunbound.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Pronunciation",
+    "ratio": 0.5882,
+    "tex_words": 10,
+    "epub_words": 7,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "efmakə nbaund",
+      "epub": "ˌefˈmakεnˌbau̇nd",
+      "ctx": "["
+     },
+     {
+      "op": "replace",
+      "tex": "efma kə nbaund",
+      "epub": "ˌefˈmākεnˌbau̇nd",
+      "ctx": "nbaund ] or ["
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "5.3.6",
+  "names": [
+   "flet",
+   "labels",
+   "macrolet"
+  ],
+  "kind": "Special Operator",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.6-flet.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 0.9883,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9883,
+    "tex_words": 770,
+    "epub_words": 770,
+    "n_diffs": 9,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "dummy-function",
+      "epub": "-function",
+      "ctx": "→ 6 ( defun"
+     },
+     {
+      "op": "replace",
+      "tex": "#'dummy-function",
+      "epub": "#'-function",
+      "ctx": "→ DUMMY-FUNCTION ( funcall"
+     },
+     {
+      "op": "replace",
+      "tex": "dummy-function",
+      "epub": "-function",
+      "ctx": "( flet ( ("
+     },
+     {
+      "op": "replace",
+      "tex": "#'dummy-function",
+      "epub": "#'-function",
+      "ctx": ") ) ( funcall"
+     },
+     {
+      "op": "replace",
+      "tex": "#'dummy-function",
+      "epub": "#'-function",
+      "ctx": "( eq ( funcall"
+     },
+     {
+      "op": "replace",
+      "tex": "'dummy-function",
+      "epub": "'-function",
+      "ctx": "#'dummy-function ) ( funcall"
+     },
+     {
+      "op": "replace",
+      "tex": "dummy-function",
+      "epub": "-function",
+      "ctx": "( flet ( ("
+     },
+     {
+      "op": "replace",
+      "tex": "#'dummy-function",
+      "epub": "#'-function",
+      "ctx": "( eq ( funcall"
+     },
+     {
+      "op": "replace",
+      "tex": "'dummy-function",
+      "epub": "'-function",
+      "ctx": "#'dummy-function ) ( funcall"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.6",
+    "names": "flet, labels, macrolet",
+    "kind": "Special Operator",
+    "file": "e5-3-6.xhtml",
+    "block": 1,
+    "line": 225,
+    "form_text": "(defun foo (x flag)\n(macrolet ((fudge (z)\n;The parameters x and flag are not accessible\n; at this point; a reference to flag would be to\n; the global variable of that name.\n` (if flag (* ,z ,z) ,z)))\n;The parameters x and flag are accessible here.\n(+ x\n(fudge x)\n(fudge (+ x 1)))))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-READER-ERROR Comma not inside a backquote. Stream: #<dynamic-extent STRING-INPUT-STREAM (unavailable) from \"(defun f...\">"
+    }
+   },
+   {
+    "secno": "5.3.6",
+    "names": "flet, labels, macrolet",
+    "kind": "Special Operator",
+    "file": "e5-3-6.xhtml",
+    "block": 2,
+    "line": 249,
+    "form_text": "(defun -function () 'top-level)",
+    "expected_values": [
+     "DUMMY-FUNCTION"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "-FUNCTION"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [
+   {
+    "secno": "5.3.6",
+    "names": "flet, labels, macrolet",
+    "file": "e5-3-6.xhtml",
+    "block": 1,
+    "line": 235,
+    "text": "==",
+    "reason": "prose"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.7",
+  "names": [
+   "funcall"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.7-funcall.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.7",
+    "names": "funcall",
+    "kind": "Function",
+    "file": "e5-3-7.xhtml",
+    "block": 1,
+    "line": 49,
+    "form_text": "(flet ((cons (x y) `(kons ,x ,y)))\n(let ((cons (symbol-function '+)))\n(funcall #'cons\n(funcall 'cons 1 2)\n(funcall cons 1 2))))",
+    "expected_values": [
+     "(KONS (1 . 2) 3)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "COMPILED-PROGRAM-ERROR Execution of a form compiled with errors.\nForm:\n  (FLET ((CONS (X Y)\n         `(KONS ,X ,Y)))\n  (LET ((CONS (SYMBOL-FUNCTION '+)))\n    (FUNCALL #'CONS (FUNCALL 'CONS 1 2) (FUNCALL CONS 1 2))))\nCompile-time error:\n  Lock on package COMMON-LISP violated when binding CONS as a local function while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.9",
+  "names": [
+   "function-lambda-expression"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.9-function-lambda-expression.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.9",
+    "names": "function-lambda-expression",
+    "kind": "Function",
+    "file": "e5-3-9.xhtml",
+    "block": 1,
+    "line": 69,
+    "form_text": "(function-lambda-expression #'(lambda (x) x))",
+    "expected_values": [
+     "NIL",
+     "false",
+     "NIL"
+    ],
+    "expected_italics": [
+     [],
+     [
+      "false"
+     ],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "NIL",
+       "true",
+       "NIL"
+      ],
+      "italics": [
+       [],
+       [
+        "true"
+       ],
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(LAMBDA (X) X)",
+       "true",
+       "NIL"
+      ],
+      "italics": [
+       [],
+       [
+        "true"
+       ],
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(LAMBDA (X) X)",
+       "false",
+       "NIL"
+      ],
+      "italics": [
+       [],
+       [
+        "false"
+       ],
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(LAMBDA (X) X)",
+     "T",
+     "(LAMBDA (X) :IN \"/tmp/claude-1000/-workspaces-lisp-stat/5d101160-5834-444f-8e56-a3cfe2ab8eb0/scratchpad/wt-examples/tools/lisp/run-example.lisp\")"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "5.3.9",
+    "names": "function-lambda-expression",
+    "kind": "Function",
+    "file": "e5-3-9.xhtml",
+    "block": 1,
+    "line": 75,
+    "form_text": "(function-lambda-expression\n(funcall #'(lambda () #'(lambda (x) x))))",
+    "expected_values": [
+     "NIL",
+     "false",
+     "NIL"
+    ],
+    "expected_italics": [
+     [],
+     [
+      "false"
+     ],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "NIL",
+       "true",
+       "NIL"
+      ],
+      "italics": [
+       [],
+       [
+        "true"
+       ],
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(LAMBDA (X) X)",
+       "true",
+       "NIL"
+      ],
+      "italics": [
+       [],
+       [
+        "true"
+       ],
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(LAMBDA (X) X)",
+       "false",
+       "NIL"
+      ],
+      "italics": [
+       [],
+       [
+        "false"
+       ],
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(LAMBDA (X) X)",
+     "T",
+     "(LAMBDA (X) :IN \"/tmp/claude-1000/-workspaces-lisp-stat/5d101160-5834-444f-8e56-a3cfe2ab8eb0/scratchpad/wt-examples/tools/lisp/run-example.lisp\")"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "5.3.9",
+    "names": "function-lambda-expression",
+    "kind": "Function",
+    "file": "e5-3-9.xhtml",
+    "block": 1,
+    "line": 82,
+    "form_text": "(function-lambda-expression\n(funcall #'(lambda (x) #'(lambda () x)) nil))",
+    "expected_values": [
+     "NIL",
+     "true",
+     "NIL"
+    ],
+    "expected_italics": [
+     [],
+     [
+      "true"
+     ],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "(LAMBDA () X)",
+       "true",
+       "NIL"
+      ],
+      "italics": [
+       [],
+       [
+        "true"
+       ],
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(LAMBDA NIL X)",
+     "T",
+     "(LAMBDA NIL :IN \"/tmp/claude-1000/-workspaces-lisp-stat/5d101160-5834-444f-8e56-a3cfe2ab8eb0/scratchpad/wt-examples/tools/lisp/run-example.lisp\")"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "5.3.9",
+    "names": "function-lambda-expression",
+    "kind": "Function",
+    "file": "e5-3-9.xhtml",
+    "block": 1,
+    "line": 86,
+    "form_text": "NOT",
+    "expected_values": [
+     "NIL",
+     "false",
+     "NIL"
+    ],
+    "expected_italics": [
+     [],
+     [
+      "false"
+     ],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable NOT is unbound."
+    }
+   },
+   {
+    "secno": "5.3.9",
+    "names": "function-lambda-expression",
+    "kind": "Function",
+    "file": "e5-3-9.xhtml",
+    "block": 1,
+    "line": 87,
+    "form_text": "NOT",
+    "expected_values": [
+     "(LAMBDA () X)",
+     "false",
+     "NIL"
+    ],
+    "expected_italics": [
+     [],
+     [
+      "false"
+     ],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable NOT is unbound."
+    }
+   },
+   {
+    "secno": "5.3.9",
+    "names": "function-lambda-expression",
+    "kind": "Function",
+    "file": "e5-3-9.xhtml",
+    "block": 1,
+    "line": 89,
+    "form_text": "(flet ((foo (x) x))\n(setf (symbol-function 'bar) #'foo)\n(function-lambda-expression #'bar))",
+    "expected_values": [
+     "NIL",
+     "false",
+     "NIL"
+    ],
+    "expected_italics": [
+     [],
+     [
+      "false"
+     ],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "NIL",
+       "true",
+       "NIL"
+      ],
+      "italics": [
+       [],
+       [
+        "true"
+       ],
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(LAMBDA (X) (BLOCK FOO X))",
+       "true",
+       "NIL"
+      ],
+      "italics": [
+       [],
+       [
+        "true"
+       ],
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(LAMBDA (X) (BLOCK FOO X))",
+       "false",
+       "FOO"
+      ],
+      "italics": [
+       [],
+       [
+        "false"
+       ],
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(SI::BLOCK-LAMBDA FOO (X) X)",
+       "false",
+       "FOO"
+      ],
+      "italics": [
+       [],
+       [
+        "false"
+       ],
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(LAMBDA (X) (BLOCK FOO X))",
+     "T",
+     "(FLET FOO :IN \"/tmp/claude-1000/-workspaces-lisp-stat/5d101160-5834-444f-8e56-a3cfe2ab8eb0/scratchpad/wt-examples/tools/lisp/run-example.lisp\")"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "5.3.9",
+    "names": "function-lambda-expression",
+    "kind": "Function",
+    "file": "e5-3-9.xhtml",
+    "block": 1,
+    "line": 101,
+    "form_text": "(function-lambda-expression (foo))",
+    "expected_values": [
+     "NIL",
+     "false",
+     "NIL"
+    ],
+    "expected_italics": [
+     [],
+     [
+      "false"
+     ],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "NIL",
+       "true",
+       "NIL"
+      ],
+      "italics": [
+       [],
+       [
+        "true"
+       ],
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(LAMBDA (X) (BLOCK BAR X))",
+       "true",
+       "NIL"
+      ],
+      "italics": [
+       [],
+       [
+        "true"
+       ],
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(LAMBDA (X) (BLOCK BAR X))",
+       "true",
+       "(:INTERNAL FOO 0 BAR)"
+      ],
+      "italics": [
+       [],
+       [
+        "true"
+       ],
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(LAMBDA (X) (BLOCK BAR X))",
+       "false",
+       "\"BAR in FOO\""
+      ],
+      "italics": [
+       [],
+       [
+        "false"
+       ],
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(LAMBDA (X) (BLOCK BAR X))",
+     "T",
+     "(FLET BAR :IN FOO)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.11",
+  "names": [
+   "compiled-function-p"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.11-compiled-function-p.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.11",
+    "names": "compiled-function-p",
+    "kind": "Function",
+    "file": "e5-3-11.xhtml",
+    "block": 1,
+    "line": 39,
+    "form_text": "(compile 'f)",
+    "expected_values": [
+     "F"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "F",
+     "NIL",
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.18",
+  "names": [
+   "let",
+   "let*"
+  ],
+  "kind": "Special Operator",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.18-let.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 0.9788,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9788,
+    "tex_words": 189,
+    "epub_words": 189,
+    "n_diffs": 4,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "dummy-function",
+      "epub": "-function",
+      "ctx": "→ TOP ( defun"
+     },
+     {
+      "op": "replace",
+      "tex": "dummy-function",
+      "epub": "-function",
+      "ctx": "\" a b ("
+     },
+     {
+      "op": "replace",
+      "tex": "dummy-function",
+      "epub": "-function",
+      "ctx": "\" a b ("
+     },
+     {
+      "op": "replace",
+      "tex": "dummy-function",
+      "epub": "-function",
+      "ctx": "\" a b ("
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.18",
+    "names": "let, let*",
+    "kind": "Special Operator",
+    "file": "e5-3-18.xhtml",
+    "block": 1,
+    "line": 136,
+    "form_text": "(defun -function () a)",
+    "expected_values": [
+     "DUMMY-FUNCTION"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "-FUNCTION"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.19",
+  "names": [
+   "progv"
+  ],
+  "kind": "Special Operator",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.19-progv.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [],
+  "example_unparsed": [
+   {
+    "secno": "5.3.19",
+    "names": "progv",
+    "file": "e5-3-19.xhtml",
+    "block": 1,
+    "line": 60,
+    "text": "Assuming *x* is not globally special,",
+    "reason": "prose"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.20",
+  "names": [
+   "setq"
+  ],
+  "kind": "Special Form",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.20-setq.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9091,
+    "tex_words": 11,
+    "epub_words": 11,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓pair",
+      "epub": "pair",
+      "ctx": "setq {"
+     }
+    ]
+   },
+   {
+    "label": "Pronunciation",
+    "ratio": 0.6667,
+    "tex_words": 3,
+    "epub_words": 3,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "setkyu",
+      "epub": "ˈsetˌkyü",
+      "ctx": "["
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "5.3.21",
+  "names": [
+   "psetq"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.21-psetq.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9091,
+    "tex_words": 11,
+    "epub_words": 11,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓pair",
+      "epub": "pair",
+      "ctx": "psetq {"
+     }
+    ]
+   },
+   {
+    "label": "Pronunciation",
+    "ratio": 0.2857,
+    "tex_words": 17,
+    "epub_words": 4,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "width 1pt height 2pt depth 2pt -1pt 6pt width 1pt height 2pt depth 2ptpesetkyu",
+      "epub": "¦pēˈsetˌkyü",
+      "ctx": "psetq: ["
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "5.3.23",
+  "names": [
+   "catch"
+  ],
+  "kind": "Special Operator",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.23-catch.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 0.9474,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9474,
+    "tex_words": 95,
+    "epub_words": 95,
+    "n_diffs": 5,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "'dummy-tag",
+      "epub": "'-tag",
+      "ctx": "( catch"
+     },
+     {
+      "op": "replace",
+      "tex": "'dummy-tag",
+      "epub": "'-tag",
+      "ctx": "1 2 ( throw"
+     },
+     {
+      "op": "replace",
+      "tex": "'dummy-tag",
+      "epub": "'-tag",
+      "ctx": "→ 3 ( catch"
+     },
+     {
+      "op": "replace",
+      "tex": "'dummy-tag",
+      "epub": "'-tag",
+      "ctx": "→ THROW-BACK ( catch"
+     },
+     {
+      "op": "replace",
+      "tex": "'dummy-tag",
+      "epub": "'-tag",
+      "ctx": "catch 'dummy-tag ( throw-back"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "5.3.24",
+  "names": [
+   "go"
+  ],
+  "kind": "Special Operator",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.24-go.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.24",
+    "names": "go",
+    "kind": "Special Operator",
+    "file": "e5-3-24.xhtml",
+    "block": 2,
+    "line": 65,
+    "form_text": "(let ((a nil))\n(tagbody t (setq a #'(lambda () (go t))))\n(funcall a))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-CONTROL-ERROR attempt to RETURN-FROM a block or GO to a tag that no longer exists"
+    }
+   },
+   {
+    "secno": "5.3.24",
+    "names": "go",
+    "kind": "Special Operator",
+    "file": "e5-3-24.xhtml",
+    "block": 3,
+    "line": 74,
+    "form_text": "(funcall (block nil\n(tagbody a (return #'(lambda () (go a))))))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-CONTROL-ERROR attempt to RETURN-FROM a block or GO to a tag that no longer exists"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.25",
+  "names": [
+   "return-from"
+  ],
+  "kind": "Special Operator",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.25-return-from.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 0.9968,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9968,
+    "tex_words": 310,
+    "epub_words": 310,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "'dummy",
+      "epub": "'",
+      "ctx": "x ( return-from temp"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [],
+  "example_unparsed": [],
+  "example_skipped": [
+   "exit in `(block out\n(flet ((exit (n) (return-from`"
+  ]
+ },
+ {
+  "secno": "5.3.28",
+  "names": [
+   "throw"
+  ],
+  "kind": "Special Operator",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.28-throw.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.28",
+    "names": "throw",
+    "kind": "Special Operator",
+    "file": "e5-3-28.xhtml",
+    "block": 4,
+    "line": 78,
+    "form_text": "(catch 'foo\n(format t \"The inner catch returns ~s.~%\"\n(catch 'foo\n(unwind-protect (throw 'foo :first-throw)\n(throw 'foo :second-throw))))\n:outer-catch)",
+    "expected_values": [
+     ":OUTER-CATCH"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "The inner catch returns :SECOND-THROW"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     ":OUTER-CATCH"
+    ],
+    "actual_no_values": false,
+    "actual_output": [
+     "The inner catch returns :SECOND-THROW."
+    ],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.29",
+  "names": [
+   "unwind-protect"
+  ],
+  "kind": "Special Operator",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.29-unwind-protect.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 0.9942,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9942,
+    "tex_words": 689,
+    "epub_words": 689,
+    "n_diffs": 4,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "dummy-function",
+      "epub": "-function",
+      "ctx": "completed . ( defun"
+     },
+     {
+      "op": "replace",
+      "tex": "dummy-function",
+      "epub": "-function",
+      "ctx": "( catch 'abort ("
+     },
+     {
+      "op": "replace",
+      "tex": "dummy-function",
+      "epub": "-function",
+      "ctx": "( catch 'abort ("
+     },
+     {
+      "op": "replace",
+      "tex": "dummy-function",
+      "epub": "-function",
+      "ctx": "'abort ( unwind-protect ("
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.29",
+    "names": "unwind-protect",
+    "kind": "Special Operator",
+    "file": "e5-3-29.xhtml",
+    "block": 2,
+    "line": 89,
+    "form_text": "(defun -function (x)\n(setq state 'running)\n(unless (numberp x) (throw 'abort 'not-a-number))\n(setq state (1+ x)))",
+    "expected_values": [
+     "DUMMY-FUNCTION"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "-FUNCTION"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "5.3.29",
+    "names": "unwind-protect",
+    "kind": "Special Operator",
+    "file": "e5-3-29.xhtml",
+    "block": 3,
+    "line": 107,
+    "form_text": "(unwind-protect\n(progn (incf *access-count*)\n(perform-access))\n(decf *access-count*))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable *ACCESS-COUNT* is unbound."
+    }
+   },
+   {
+    "secno": "5.3.29",
+    "names": "unwind-protect",
+    "kind": "Special Operator",
+    "file": "e5-3-29.xhtml",
+    "block": 4,
+    "line": 117,
+    "form_text": "(let ((old-count *access-count*))\n(unwind-protect\n(progn (incf *access-count*)\n(perform-access))\n(setq *access-count* old-count)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable *ACCESS-COUNT* is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.34",
+  "names": [
+   "eql"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.34-eql.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.992,
+    "tex_words": 125,
+    "epub_words": 125,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "folowing",
+      "epub": "following",
+      "ctx": "y , in the"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "5.3.41",
+  "names": [
+   "and"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.41-and.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.41",
+    "names": "and",
+    "kind": "Macro",
+    "file": "e5-3-41.xhtml",
+    "block": 1,
+    "line": 48,
+    "form_text": "(if (and (>= n 0)\n(< n (length a-simple-vector))\n(eq (elt a-simple-vector n) 'foo))\n(princ \"Foo!\"))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable N is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.42",
+  "names": [
+   "cond"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.42-cond.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9474,
+    "tex_words": 19,
+    "epub_words": 19,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓clause",
+      "epub": "clause",
+      "ctx": "cond {"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "5.3.46",
+  "names": [
+   "case",
+   "ccase",
+   "ecase"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.46-case.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9524,
+    "tex_words": 63,
+    "epub_words": 63,
+    "n_diffs": 3,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓normal-clause",
+      "epub": "normal-clause",
+      "ctx": "case keyform {"
+     },
+     {
+      "op": "replace",
+      "tex": "↓normal-clause",
+      "epub": "normal-clause",
+      "ctx": "* ccase keyplace {"
+     },
+     {
+      "op": "replace",
+      "tex": "↓normal-clause",
+      "epub": "normal-clause",
+      "ctx": "* ecase keyform {"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.46",
+    "names": "case, ccase, ecase",
+    "kind": "Macro",
+    "file": "e5-3-46.xhtml",
+    "block": 1,
+    "line": 154,
+    "form_text": "(add-em '(uno iiii))",
+    "expected_values": [
+     "5"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Error: The value of X, IIII, is not I, UNO, II, DOS, III,",
+     "      TRES, IV, or CUATRO.",
+     "1: Supply a value to use instead.",
+     "2: Return to Lisp Toplevel.",
+     "Debug> :CONTINUE 1",
+     "Value to evaluate and use for X: 'IV"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "CASE-FAILURE IIII fell through CCASE expression. Wanted one of (I UNO II DOS III TRES IV CUATRO)."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.47",
+  "names": [
+   "typecase",
+   "ctypecase",
+   "etypecase"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.47-typecase.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9524,
+    "tex_words": 63,
+    "epub_words": 63,
+    "n_diffs": 3,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓normal-clause",
+      "epub": "normal-clause",
+      "ctx": "typecase keyform {"
+     },
+     {
+      "op": "replace",
+      "tex": "↓normal-clause",
+      "epub": "normal-clause",
+      "ctx": "* ctypecase keyplace {"
+     },
+     {
+      "op": "replace",
+      "tex": "↓normal-clause",
+      "epub": "normal-clause",
+      "ctx": "* etypecase keyform {"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.47",
+    "names": "typecase, ctypecase, etypecase",
+    "kind": "Macro",
+    "file": "e5-3-47.xhtml",
+    "block": 1,
+    "line": 147,
+    "form_text": "(map 'nil #'what-is-it '(nil (a b) 7.0 7 box))",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "NIL is a symbol, boolean false, or the empty list.",
+     "(A B) is a list.",
+     "7.0 is a float.",
+     "7 is a(n) integer.",
+     "BOX is a(n) symbol."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [
+     "NIL is a symbol, boolean false, or the empty list.",
+     "(A B) is a list.",
+     "7.0 is a float.",
+     "7 is a(n) (integer 0 4611686018427387903).",
+     "BOX is a(n) symbol."
+    ],
+    "detail": {}
+   },
+   {
+    "secno": "5.3.47",
+    "names": "typecase, ctypecase, etypecase",
+    "kind": "Macro",
+    "file": "e5-3-47.xhtml",
+    "block": 1,
+    "line": 156,
+    "form_text": "(ctypecase x\n(integer (* x 4))\n(symbol  (symbol-value x)))",
+    "expected_values": [
+     "48"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Error: The value of X, 1/3, is neither an integer nor a symbol.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Specify a value to use instead.",
+     "2: Return to Lisp Toplevel.",
+     "Debug> :CONTINUE 1",
+     "Use value: 3.7",
+     "Error: The value of X, 3.7, is neither an integer nor a symbol.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Specify a value to use instead.",
+     "2: Return to Lisp Toplevel.",
+     "Debug> :CONTINUE 1",
+     "Use value: 12"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "CASE-FAILURE 1/3 fell through CTYPECASE expression. Wanted one of (INTEGER SYMBOL)."
+    }
+   },
+   {
+    "secno": "5.3.47",
+    "names": "typecase, ctypecase, etypecase",
+    "kind": "Macro",
+    "file": "e5-3-47.xhtml",
+    "block": 1,
+    "line": 172,
+    "form_text": "x",
+    "expected_values": [
+     "12"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "1/3"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.52",
+  "names": [
+   "multiple-value-setq"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.52-multiple-value-setq.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.9854,
+    "tex_words": 137,
+    "epub_words": 137,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "symboln",
+      "epub": "symbolN",
+      "ctx": "symbol1 . . ."
+     },
+     {
+      "op": "replace",
+      "tex": "symboln",
+      "epub": "symbolN",
+      "ctx": "symbol1 . . ."
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "5.3.57",
+  "names": [
+   "prog",
+   "prog*"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.57-prog.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.57",
+    "names": "prog, prog*",
+    "kind": "Macro",
+    "file": "e5-3-57.xhtml",
+    "block": 1,
+    "line": 104,
+    "form_text": "(prog* ((y z) (x (car y)))\n(return x))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable Z is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.61",
+  "names": [
+   "defsetf"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.61-defsetf.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.61",
+    "names": "defsetf",
+    "kind": "Macro",
+    "file": "e5-3-61.xhtml",
+    "block": 1,
+    "line": 160,
+    "form_text": "(defsetf symbol-value set)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining a setf-expander for SYMBOL-VALUE while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   },
+   {
+    "secno": "5.3.61",
+    "names": "defsetf",
+    "kind": "Macro",
+    "file": "e5-3-61.xhtml",
+    "block": 2,
+    "line": 170,
+    "form_text": "(defsetf car rplaca)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining a setf-expander for CAR while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   },
+   {
+    "secno": "5.3.61",
+    "names": "defsetf",
+    "kind": "Macro",
+    "file": "e5-3-61.xhtml",
+    "block": 4,
+    "line": 195,
+    "form_text": "(defsetf subseq (sequence start &optional end) (new-sequence)\n`(progn (replace ,sequence ,new-sequence\n:start1 ,start :end1 ,end)\n,new-sequence))",
+    "expected_values": [
+     "SUBSEQ"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining a setf-expander for SUBSEQ while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   },
+   {
+    "secno": "5.3.61",
+    "names": "defsetf",
+    "kind": "Macro",
+    "file": "e5-3-61.xhtml",
+    "block": 5,
+    "line": 207,
+    "form_text": "(get-setf-expansion '(xy a b))",
+    "expected_values": [
+     "(#:t0 #:t1)",
+     "(a b)",
+     "(#:store)",
+     "((lambda (&key ((x #:x)) ((y #:y)))\n(set-xy #:store 'x #:x 'y #:y))\n#:t0 #:t1)",
+     "(xy #:t0 #:t1)"
+    ],
+    "expected_italics": [
+     [],
+     [],
+     [],
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNKNOWN-KEYWORD-ARGUMENT Unknown &KEY argument: #:A93"
+    }
+   },
+   {
+    "secno": "5.3.61",
+    "names": "defsetf",
+    "kind": "Macro",
+    "file": "e5-3-61.xhtml",
+    "block": 5,
+    "line": 215,
+    "form_text": "(xy 'x 1)",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "0"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "5.3.61",
+    "names": "defsetf",
+    "kind": "Macro",
+    "file": "e5-3-61.xhtml",
+    "block": 5,
+    "line": 216,
+    "form_text": "(setf (xy 'x 1) 1)",
+    "expected_values": [
+     "1"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNKNOWN-KEYWORD-ARGUMENT Unknown &KEY argument: (QUOTE X)"
+    }
+   },
+   {
+    "secno": "5.3.61",
+    "names": "defsetf",
+    "kind": "Macro",
+    "file": "e5-3-61.xhtml",
+    "block": 5,
+    "line": 217,
+    "form_text": "(xy 'x 1)",
+    "expected_values": [
+     "1"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "0"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "5.3.61",
+    "names": "defsetf",
+    "kind": "Macro",
+    "file": "e5-3-61.xhtml",
+    "block": 5,
+    "line": 218,
+    "form_text": "(let ((a 'x) (b 'y))\n(setf (xy a 1 b 2) 3)\n(setf (xy b 5 a 9) 14))",
+    "expected_values": [
+     "14"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "COMPILED-PROGRAM-ERROR Execution of a form compiled with errors.\nForm:\n  (SETF (XY A 1 B 2) 3)\nCompile-time error:\n  during macroexpansion of (SETF (XY A 1 ...) 3). Use *BREAK-ON-SIGNALS* to intercept.\n Unknown &KEY argument: #:A1"
+    }
+   },
+   {
+    "secno": "5.3.61",
+    "names": "defsetf",
+    "kind": "Macro",
+    "file": "e5-3-61.xhtml",
+    "block": 5,
+    "line": 222,
+    "form_text": "(xy 'y 0 'x 1)",
+    "expected_values": [
+     "1"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "0"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "5.3.61",
+    "names": "defsetf",
+    "kind": "Macro",
+    "file": "e5-3-61.xhtml",
+    "block": 5,
+    "line": 223,
+    "form_text": "(xy 'x 1 'y 2)",
+    "expected_values": [
+     "3"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "0"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.62",
+  "names": [
+   "define-setf-expander"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.62-define-setf-expander.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.62",
+    "names": "define-setf-expander",
+    "kind": "Macro",
+    "file": "e5-3-62.xhtml",
+    "block": 2,
+    "line": 131,
+    "form_text": "(define-setf-expander ldb (bytespec int &environment env)\n(multiple-value-bind (temps vals stores\nstore-form access-form)\n(get-setf-expansion int env);Get setf expansion for int.\n(let ((btemp (gensym))     ;Temp var for byte specifier.\n(store (gensym))     ;Temp var for byte to store.\n(stemp (first stores))) ;Temp var for int to store.\n(if (cdr stores) (error \"Can't expand this.\"))\n;;; Return the setf expansion for LDB as five values.\n(values (cons btemp temps)       ;Temporary variables.\n(cons bytespec vals)     ;Value forms.\n(list store)             ;Store variables.\n`(let ((,stemp (dpb ,store ,btemp ,access-form)))\n,store-form\n,store)               ;Storing form.\n`(ldb ,btemp ,access-form) ;Accessing form.\n))))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining a setf-expander for LDB while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.63",
+  "names": [
+   "get-setf-expansion"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.63-get-setf-expansion.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "5.3.63",
+    "names": "get-setf-expansion",
+    "kind": "Function",
+    "file": "e5-3-63.xhtml",
+    "block": 2,
+    "line": 67,
+    "form_text": "(flet ((frob (x) (cdr x)))  ;Invalid\n(xpop (frob z)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable Z is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "5.3.64",
+  "names": [
+   "setf",
+   "psetf"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.64-setf.xhtml",
+  "tex_file": "dict-flow.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9048,
+    "tex_words": 21,
+    "epub_words": 21,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓pair",
+      "epub": "pair",
+      "ctx": "setf {"
+     },
+     {
+      "op": "replace",
+      "tex": "↓pair",
+      "epub": "pair",
+      "ctx": "} * psetf {"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ }
+]

@@ -1,0 +1,3588 @@
+[
+ {
+  "secno": "1.4.1.2.3",
+  "names": "Additional Uses for Indirect Definitions",
+  "file": "text/1-introduction/1.4-definitions.xhtml",
+  "item": "concept:1.4.1.2.3 Additional Uses for Indirect Definitions",
+  "category": "conversion-error",
+  "summary": "\\stardown{normal-clause} rendered without the down-arrow (case): should be {↓normal-clause}*",
+  "epub_excerpt": "<i>keyform  {<i>normal-clause</i>}* [↓otherwise-clause]</i>",
+  "tex_excerpt": "{keyform  \\stardown{normal-clause} \\brac{\\down{otherwise-clause}}}",
+  "fix": {
+   "old": "<i>keyform  {<i>normal-clause</i>}* [↓otherwise-clause]</i>",
+   "new": "<i>keyform  {↓<i>normal-clause</i>}* [↓otherwise-clause]</i>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "1.4.1.2.3",
+  "names": "Additional Uses for Indirect Definitions",
+  "file": "text/1-introduction/1.4-definitions.xhtml",
+  "item": "concept:1.4.1.2.3 Additional Uses for Indirect Definitions",
+  "category": "conversion-error",
+  "summary": "\\stardown lost its arrow (ccase)",
+  "epub_excerpt": "<i>keyplace {<i>normal-clause</i>}*</i>",
+  "tex_excerpt": "{keyplace \\stardown{normal-clause}}",
+  "fix": {
+   "old": "<i>keyplace {<i>normal-clause</i>}*</i>",
+   "new": "<i>keyplace {↓<i>normal-clause</i>}*</i>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "1.4.1.2.3",
+  "names": "Additional Uses for Indirect Definitions",
+  "file": "text/1-introduction/1.4-definitions.xhtml",
+  "item": "concept:1.4.1.2.3 Additional Uses for Indirect Definitions",
+  "category": "conversion-error",
+  "summary": "\\stardown lost its arrow (ecase)",
+  "epub_excerpt": "<i>keyform  {<i>normal-clause</i>}*</i>",
+  "tex_excerpt": "{keyform  \\stardown{normal-clause}}",
+  "fix": {
+   "old": "<i>keyform  {<i>normal-clause</i>}*</i>",
+   "new": "<i>keyform  {↓<i>normal-clause</i>}*</i>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.4.3.1",
+  "names": "Examples of Single-Quote",
+  "file": "text/2-syntax/2.4-standard-macro-characters.xhtml",
+  "item": "concept:2.4.3.1 Examples of Single-Quote",
+  "category": "conversion-error",
+  "summary": "TeX ''foo (two apostrophes) rendered as a double-quote character",
+  "epub_excerpt": " \"foo → (QUOTE FOO)",
+  "tex_excerpt": "''foo \\EV (QUOTE FOO)",
+  "fix": {
+   "old": " \"foo → (QUOTE FOO)",
+   "new": " ''foo → (QUOTE FOO)"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.4.3.1",
+  "names": "Examples of Single-Quote",
+  "file": "text/2-syntax/2.4-standard-macro-characters.xhtml",
+  "item": "concept:2.4.3.1 Examples of Single-Quote",
+  "category": "conversion-error",
+  "summary": "TeX (car ''foo) rendered with a double-quote",
+  "epub_excerpt": "(car \"foo) →",
+  "tex_excerpt": "(car ''foo) \\EV QUOTE",
+  "fix": {
+   "old": "(car \"foo) →",
+   "new": "(car ''foo) →"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.1.4.2",
+  "names": "Constituent Traits",
+  "file": "text/2-syntax/2.1-character-syntax.xhtml",
+  "item": "concept:2.1.4.2 Constituent Traits",
+  "category": "conversion-error",
+  "summary": "Figure 2-8 (constituent traits): the colon character in the package-marker row is missing",
+  "epub_excerpt": "<tr><td/><td><i>package marker</i></td><td>N, n</td>",
+  "tex_excerpt": "\\hbox: \":&\\pm&N, n&\\ad\\cr\"",
+  "fix": {
+   "old": "<tr><td/><td><i>package marker</i></td><td>N, n</td>",
+   "new": "<tr><td>:</td><td><i>package marker</i></td><td>N, n</td>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.1.4.2",
+  "names": "Constituent Traits",
+  "file": "text/2-syntax/2.1-character-syntax.xhtml",
+  "item": "concept:2.1.4.2 Constituent Traits",
+  "category": "conversion-error",
+  "summary": "Figure 2-8: the [ and ] rows are swapped; TeX has [ opposite U,u",
+  "epub_excerpt": "<tr><td>]</td><td><i>alphabetic<sub>2</sub></i></td><td>U, u</td>",
+  "tex_excerpt": "\\f{[}&\\a&U, u&\\ad\\cr",
+  "fix": {
+   "old": "<tr><td>]</td><td><i>alphabetic<sub>2</sub></i></td><td>U, u</td>",
+   "new": "<tr><td>[</td><td><i>alphabetic<sub>2</sub></i></td><td>U, u</td>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.1.4.2",
+  "names": "Constituent Traits",
+  "file": "text/2-syntax/2.1-character-syntax.xhtml",
+  "item": "concept:2.1.4.2 Constituent Traits",
+  "category": "conversion-error",
+  "summary": "Figure 2-8: ] belongs opposite W,w (TeX \\f{]}&\\a&W, w)",
+  "epub_excerpt": "<tr><td>[</td><td><i>alphabetic<sub>2</sub></i></td><td>W, w</td>",
+  "tex_excerpt": "\\f{]}&\\a&W, w&\\ad\\cr",
+  "fix": {
+   "old": "<tr><td>[</td><td><i>alphabetic<sub>2</sub></i></td><td>W, w</td>",
+   "new": "<tr><td>]</td><td><i>alphabetic<sub>2</sub></i></td><td>W, w</td>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.1.1.2",
+  "names": "Examples of Potential Numbers",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.1.1.2 Examples of Potential Numbers",
+  "category": "conversion-error",
+  "summary": "Figure 2-11: TeX \\f{\\_} (underscore) rendered as a hyphen",
+  "epub_excerpt": "<td><code>ab.cd</code></td>\n    <td><code>-</code></td>",
+  "tex_excerpt": "\\f{foo+} & \\f{ab.cd} & \\f{\\_} & \\f{\\hat} & ...",
+  "fix": {
+   "old": "<td><code>ab.cd</code></td>\n    <td><code>-</code></td>",
+   "new": "<td><code>ab.cd</code></td>\n    <td><code>_</code></td>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.1",
+  "names": "Numbers as Tokens",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "category": "conversion-error",
+  "summary": "TeX --- (em dash) left as literal \"---\" in the figure legend (book uses — elsewhere)",
+  "epub_excerpt": "<i>sign</i>---a ",
+  "tex_excerpt": "\\param{sign}---a \\term{...}",
+  "fix": {
+   "old": "<i>sign</i>---a ",
+   "new": "<i>sign</i>—a "
+  },
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.1",
+  "names": "Numbers as Tokens",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "category": "conversion-error",
+  "summary": "TeX --- (em dash) left as literal \"---\" in the figure legend (book uses — elsewhere)",
+  "epub_excerpt": "<i>slash</i>---a ",
+  "tex_excerpt": "\\param{slash}---a \\term{...}",
+  "fix": {
+   "old": "<i>slash</i>---a ",
+   "new": "<i>slash</i>—a "
+  },
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.1",
+  "names": "Numbers as Tokens",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "category": "conversion-error",
+  "summary": "TeX --- (em dash) left as literal \"---\" in the figure legend (book uses — elsewhere)",
+  "epub_excerpt": "<i>decimal-point</i>---a ",
+  "tex_excerpt": "\\param{decimal-point}---a \\term{...}",
+  "fix": {
+   "old": "<i>decimal-point</i>---a ",
+   "new": "<i>decimal-point</i>—a "
+  },
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.1",
+  "names": "Numbers as Tokens",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "category": "conversion-error",
+  "summary": "TeX --- (em dash) left as literal \"---\" in the figure legend (book uses — elsewhere)",
+  "epub_excerpt": "<i>exponent-marker</i>---an ",
+  "tex_excerpt": "\\param{exponent-marker}---an \\term{...}",
+  "fix": {
+   "old": "<i>exponent-marker</i>---an ",
+   "new": "<i>exponent-marker</i>—an "
+  },
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.1",
+  "names": "Numbers as Tokens",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "category": "conversion-error",
+  "summary": "TeX --- (em dash) left as literal \"---\" in the figure legend (book uses — elsewhere)",
+  "epub_excerpt": "<i>decimal-digit</i>---a ",
+  "tex_excerpt": "\\param{decimal-digit}---a \\term{...}",
+  "fix": {
+   "old": "<i>decimal-digit</i>---a ",
+   "new": "<i>decimal-digit</i>—a "
+  },
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.1",
+  "names": "Numbers as Tokens",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "category": "conversion-error",
+  "summary": "TeX --- (em dash) left as literal \"---\" in the figure legend (book uses — elsewhere)",
+  "epub_excerpt": "<i>digit</i>---a ",
+  "tex_excerpt": "\\param{digit}---a \\term{...}",
+  "fix": {
+   "old": "<i>digit</i>---a ",
+   "new": "<i>digit</i>—a "
+  },
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "3.2.3.1",
+  "names": "Processing of Top Level Forms",
+  "file": "text/3-evaluation-and-compilation/3.2-compilation.xhtml",
+  "item": "concept:3.2.3.1 Processing of Top Level Forms",
+  "category": "conversion-error",
+  "summary": "Figure 3-7 (EVAL-WHEN processing): the TeX \\hfil--- cells (em dash, \"not relevant\") appear as literal \"---\" in 9 cells; the prose beneath says a dash (—)",
+  "epub_excerpt": "<tr><td>Yes</td><td>Yes</td><td>---</td><td>---</td><td>Process</td><td>compile-time-too</td></tr>\n<tr><td>No</td><td>Yes</td><td>Yes</td><td> CTT</td><td>Process</td><td>compile-time-too</td></tr>\n<tr><td>No</td><td>Yes</td><td>Yes</td><td",
+  "tex_excerpt": "Yes&Yes&\\hfil---&\\hfil---&Process&...",
+  "fix": {
+   "old": "<tr><td>Yes</td><td>Yes</td><td>---</td><td>---</td><td>Process</td><td>compile-time-too</td></tr>\n<tr><td>No</td><td>Yes</td><td>Yes</td><td> CTT</td><td>Process</td><td>compile-time-too</td></tr>\n<tr><td>No</td><td>Yes</td><td>Yes</td><td> NCT</td><td>Process</td><td>not-compile-time</td></tr>\n<tr><td>No</td><td>Yes</td><td>No</td><td>---</td><td>Process</td><td>not-compile-time</td></tr>\n<tr><td>Yes</td><td>No</td><td>---</td><td>---</td><td>Evaluate</td><td>---</td></tr>\n<tr><td>No</td><td>No</td><td>Yes</td><td> CTT</td><td>Evaluate</td><td>---</td></tr>\n<tr><td>No</td><td>No</td><td>Yes</td><td> NCT</td><td>Discard</td><td>---</td></tr>\n<tr><td>No</td><td>No</td><td>No</td><td>---</td><td>Discard</td><td>---</td></tr>\n",
+   "new": "<tr><td>Yes</td><td>Yes</td><td>—</td><td>—</td><td>Process</td><td>compile-time-too</td></tr>\n<tr><td>No</td><td>Yes</td><td>Yes</td><td> CTT</td><td>Process</td><td>compile-time-too</td></tr>\n<tr><td>No</td><td>Yes</td><td>Yes</td><td> NCT</td><td>Process</td><td>not-compile-time</td></tr>\n<tr><td>No</td><td>Yes</td><td>No</td><td>—</td><td>Process</td><td>not-compile-time</td></tr>\n<tr><td>Yes</td><td>No</td><td>—</td><td>—</td><td>Evaluate</td><td>—</td></tr>\n<tr><td>No</td><td>No</td><td>Yes</td><td> CTT</td><td>Evaluate</td><td>—</td></tr>\n<tr><td>No</td><td>No</td><td>Yes</td><td> NCT</td><td>Discard</td><td>—</td></tr>\n<tr><td>No</td><td>No</td><td>No</td><td>—</td><td>Discard</td><td>—</td></tr>\n"
+  },
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.3",
+  "names": "Specialized Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.3 Specialized Lambda Lists",
+  "category": "conversion-error",
+  "summary": "closing } missing before the * in the specialized-lambda-list BNF ({var | (var [specializer])}*)",
+  "epub_excerpt": "(<i>var</i> [<i>specializer</i>])<sup>*</sup><br/>",
+  "tex_excerpt": "\\lparen\\star{\\SpecializedVar}  (\\SpecializedVar = \\curly{...})",
+  "fix": {
+   "old": "(<i>var</i> [<i>specializer</i>])<sup>*</sup><br/>",
+   "new": "(<i>var</i> [<i>specializer</i>])<code>}</code><sup>*</sup><br/>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.4",
+  "names": "Macro Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.4 Macro Lambda Lists",
+  "category": "conversion-error",
+  "summary": "reqvars is {var | ↓pattern}* in the TeX (\\star{\\TVar}); the * is missing",
+  "epub_excerpt": "reqvars::= </td><td><code>{</code><i>var</i> | \n↓<i>pattern</i><code>}</code></td>",
+  "tex_excerpt": "\\auxbnf{reqvars}{\\starTVar}",
+  "fix": {
+   "old": "reqvars::= </td><td><code>{</code><i>var</i> | \n↓<i>pattern</i><code>}</code></td>",
+   "new": "reqvars::= </td><td><code>{</code><i>var</i> | \n↓<i>pattern</i><code>}</code><sup>*</sup></td>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.4",
+  "names": "Macro Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.4 Macro Lambda Lists",
+  "category": "conversion-error",
+  "summary": "misplaced closing bracket in restvar: should be [{&rest | &body} {var | ↓pattern}]",
+  "epub_excerpt": "<code>&amp;body</code><code>}</code> <code>]</code><code>{</code><i>var</i> | \n↓<i>pattern</i><code>}</code></td></tr>",
+  "tex_excerpt": "\\auxbnf{restvar}{\\ttbrac{\\curly{{\\rest} | {\\body}} \\param{\\TVar}}}",
+  "fix": {
+   "old": "<code>&amp;body</code><code>}</code> <code>]</code><code>{</code><i>var</i> | \n↓<i>pattern</i><code>}</code></td></tr>",
+   "new": "<code>&amp;body</code><code>}</code> <code>{</code><i>var</i> | \n↓<i>pattern</i><code>}</code><code>]</code></td></tr>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.4",
+  "names": "Macro Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.4 Macro Lambda Lists",
+  "category": "conversion-error",
+  "summary": "the ↓names of the pattern production run together; the TeX has a space between them (and 3.4.5 has them separated)",
+  "epub_excerpt": "<td>(↓wholevar↓reqvars↓optvars↓restvar↓keyvars↓auxvars) |</td>",
+  "tex_excerpt": "\\down{wholevar}\\n \\down{reqvars}\\n ...",
+  "fix": {
+   "old": "<td>(↓wholevar↓reqvars↓optvars↓restvar↓keyvars↓auxvars) |</td>",
+   "new": "<td>(↓wholevar ↓reqvars ↓optvars ↓restvar ↓keyvars ↓auxvars) |</td>"
+  },
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.5",
+  "names": "Destructuring Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.5 Destructuring Lambda Lists",
+  "category": "conversion-error",
+  "summary": "optvars lost the inner {var | ↓lambda-list}: TeX \\VarValueSuppliedP uses \\TVar (= \\curly{var | \\down{lambda-list}}) for the parameter",
+  "epub_excerpt": "                         (<i>var</i> <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup><code>]</code></p><p>\n\nrestvar::= <code>[</code><code>{</code><code>&amp;rest</code>",
+  "tex_excerpt": "\\def\\TVar{\\curly{\\param{var} | \\down{lambda-list}}}  ... \\VarValueSuppliedP = ...\\paren{{\\TVar} \\brac{init-form ...}}",
+  "fix": {
+   "old": "                         (<i>var</i> <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup><code>]</code></p><p>\n\nrestvar::= <code>[</code><code>{</code><code>&amp;rest</code>",
+   "new": "                         (<code>{</code><i>var</i> | ↓<i>lambda-list</i><code>}</code> <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup><code>]</code></p><p>\n\nrestvar::= <code>[</code><code>{</code><code>&amp;rest</code>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.5",
+  "names": "Destructuring Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.5 Destructuring Lambda Lists",
+  "category": "conversion-error",
+  "summary": "keyvars: (keyword-name {var | ↓lambda-list}) lost the inner choice (TeX \\TVar), and \"&allow-other-keys\" is split by a newline (\"& allow-other-keys\")",
+  "epub_excerpt": "(<code>{</code><i>var</i> | (<i>keyword-name</i> <i>var</i>)<code>}</code> \n                         <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup>[<code>&amp;\n                         allow-other-keys</code>]<",
+  "tex_excerpt": "\\KeyVarValueSuppliedP ... \\paren{\\param{keyword-name} {\\TVar}}",
+  "fix": {
+   "old": "(<code>{</code><i>var</i> | (<i>keyword-name</i> <i>var</i>)<code>}</code> \n                         <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup>[<code>&amp;\n                         allow-other-keys</code>]<code>]</code></p><p>",
+   "new": "(<code>{</code><i>var</i> | (<i>keyword-name</i> <code>{</code><i>var</i> | ↓<i>lambda-list</i><code>}</code>)<code>}</code> \n                         <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup>[<code>&amp;allow-other-keys</code>]<code>]</code></p><p>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "7.1.4",
+  "names": "Rules for Initialization Arguments",
+  "file": "text/7-objects/7.1-object-creation-and-initialization.xhtml",
+  "item": "concept:7.1.4 Rules for Initialization Arguments",
+  "category": "conversion-error",
+  "summary": "spelling changed in a table header (TeX and the rest of the book: Initialization)",
+  "epub_excerpt": "Initialisation Argument",
+  "tex_excerpt": "\\bf Form&\\bf Initialization Argument List&...",
+  "fix": {
+   "old": "Initialisation Argument",
+   "new": "Initialization Argument"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.3.3",
+  "names": "Tilde G: General Floating-Point",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.3.3 Tilde G: General Floating-Point",
+  "category": "conversion-error",
+  "summary": "\"~\" of the directive \"~ee@T\" turned into a no-break space",
+  "epub_excerpt": "<i>padchar</i>F <i>ee</i>@T",
+  "tex_excerpt": "\\f{~\\j{ww},\\j{dd},,\\j{overflowchar},\\j{padchar}F~\\j{ee}@T}",
+  "fix": {
+   "old": "<i>padchar</i>F <i>ee</i>@T",
+   "new": "<i>padchar</i>F~<i>ee</i>@T"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.7.4",
+  "names": "Tilde Left-Brace: Iteration",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.7.4 Tilde Left-Brace: Iteration",
+  "category": "conversion-error",
+  "summary": "in prose the TeX tilde before the closing brace (\"~{str~}\") became a no-break space, so the directive reads \"~{str }\"",
+  "epub_excerpt": "<code>~{<i>str</i> }</code>\n\n</p><p>\nThis is an iteration",
+  "tex_excerpt": "\\f{~\\{\\j{str}~\\}} / \\f{~:\\lbr \\j{str}~\\rbr  } ...",
+  "fix": {
+   "old": "<code>~{<i>str</i> }</code>\n\n</p><p>\nThis is an iteration",
+   "new": "<code>~{<i>str</i>~}</code>\n\n</p><p>\nThis is an iteration"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.7.4",
+  "names": "Tilde Left-Brace: Iteration",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.7.4 Tilde Left-Brace: Iteration",
+  "category": "conversion-error",
+  "summary": "in prose the TeX tilde before the closing brace (\"~:{str~}\") became a no-break space, so the directive reads \"~{str }\"",
+  "epub_excerpt": "<code>~:{<i>str</i> } </code> is similar,",
+  "tex_excerpt": "\\f{~\\{\\j{str}~\\}} / \\f{~:\\lbr \\j{str}~\\rbr  } ...",
+  "fix": {
+   "old": "<code>~:{<i>str</i> } </code> is similar,",
+   "new": "<code>~:{<i>str</i>~} </code> is similar,"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.7.4",
+  "names": "Tilde Left-Brace: Iteration",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.7.4 Tilde Left-Brace: Iteration",
+  "category": "conversion-error",
+  "summary": "in prose the TeX tilde before the closing brace (\"~@{str~} and ~{str~}\") became a no-break space, so the directive reads \"~{str }\"",
+  "epub_excerpt": "<code>~@{<i>str</i> }</code>\nis similar to <code>~{<i>str</i> } </code>",
+  "tex_excerpt": "\\f{~\\{\\j{str}~\\}} / \\f{~:\\lbr \\j{str}~\\rbr  } ...",
+  "fix": {
+   "old": "<code>~@{<i>str</i> }</code>\nis similar to <code>~{<i>str</i> } </code>",
+   "new": "<code>~@{<i>str</i>~}</code>\nis similar to <code>~{<i>str</i>~} </code>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.7.4",
+  "names": "Tilde Left-Brace: Iteration",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.7.4 Tilde Left-Brace: Iteration",
+  "category": "conversion-error",
+  "summary": "in prose the TeX tilde before the closing brace (\"~:@{str~}, ~:{str~}, ~@{str~}\") became a no-break space, so the directive reads \"~{str }\"",
+  "epub_excerpt": "<code>~:@{<i>str</i> } </code> \ncombines the features                              \nof <code>~:{<i>str</i> } </code>\nand <code>~@{<i>str</i> } </code>.",
+  "tex_excerpt": "\\f{~\\{\\j{str}~\\}} / \\f{~:\\lbr \\j{str}~\\rbr  } ...",
+  "fix": {
+   "old": "<code>~:@{<i>str</i> } </code> \ncombines the features                              \nof <code>~:{<i>str</i> } </code>\nand <code>~@{<i>str</i> } </code>.",
+   "new": "<code>~:@{<i>str</i>~} </code> \ncombines the features                              \nof <code>~:{<i>str</i>~} </code>\nand <code>~@{<i>str</i>~} </code>."
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.1.3.3.2.1",
+  "names": "Examples of Effect of Readtable Case on the Lisp Printer",
+  "file": "text/22-printer/22.1-the-lisp-printer.xhtml",
+  "item": "concept:22.1.3.3.2.1 Examples of Effect of Readtable Case on the Lisp Printer",
+  "category": "conversion-error",
+  "summary": "last three hyphens of the 50-hyphen ruler were converted to \" - \"",
+  "epub_excerpt": "~%----------------------------------------------- - ~",
+  "tex_excerpt": "~%--------------------------------------------------~ (50 hyphens)",
+  "fix": {
+   "old": "~%----------------------------------------------- - ~",
+   "new": "~%--------------------------------------------------~"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.1.3.3.2.1",
+  "names": "Examples of Effect of Readtable Case on the Lisp Printer",
+  "file": "text/22-printer/22.1-the-lisp-printer.xhtml",
+  "item": "concept:22.1.3.3.2.1 Examples of Effect of Readtable Case on the Lisp Printer",
+  "category": "conversion-error",
+  "summary": "same defect in the printed output ruler (47 hyphens + \" - \" instead of 50 hyphens)",
+  "epub_excerpt": "    ----------------------------------------------- - ",
+  "tex_excerpt": "    -------------------------------------------------- (50 hyphens)",
+  "fix": {
+   "old": "    ----------------------------------------------- - ",
+   "new": "    --------------------------------------------------"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "23.1.2.1",
+  "names": "Examples of Effect of Readtable Case on the Lisp Reader",
+  "file": "text/23-reader/23.1-reader-concepts.xhtml",
+  "item": "concept:23.1.2.1 Examples of Effect of Readtable Case on the Lisp Reader",
+  "category": "conversion-error",
+  "summary": "last three hyphens of the 35-hyphen ruler converted to \" - \"",
+  "epub_excerpt": "~%-------------------------------- - ~",
+  "tex_excerpt": "~%-----------------------------------~ (35 hyphens)",
+  "fix": {
+   "old": "~%-------------------------------- - ~",
+   "new": "~%-----------------------------------~"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "23.1.2.1",
+  "names": "Examples of Effect of Readtable Case on the Lisp Reader",
+  "file": "text/23-reader/23.1-reader-concepts.xhtml",
+  "item": "concept:23.1.2.1 Examples of Effect of Readtable Case on the Lisp Reader",
+  "category": "conversion-error",
+  "summary": "same defect in the output ruler (34 hyphens + \" - \" instead of 37)",
+  "epub_excerpt": " ---------------------------------- - ",
+  "tex_excerpt": " ------------------------------------- (37 hyphens)",
+  "fix": {
+   "old": " ---------------------------------- - ",
+   "new": " -------------------------------------"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "12.2.60",
+  "names": "boole",
+  "file": "text/12-numbers/12.2.60-boole.xhtml",
+  "item": "pattern:hyphen-run-mangled (boole)",
+  "category": "conversion-error",
+  "summary": "(duplicate of g4 boole fix; dropped in consolidation) hyphen runs mangled: each run of 3+ hyphens had its last three turned into \" - \" (dictionary entry; report only)",
+  "epub_excerpt": "~% - Op---- - Decimal-- - Binary- - Bits - ~%\")",
+  "tex_excerpt": "~%---Op-------Decimal-----Binary----Bits---~%\")",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "12.2.60",
+  "names": "boole",
+  "file": "text/12-numbers/12.2.60-boole.xhtml",
+  "item": "pattern:hyphen-run-mangled (boole)",
+  "category": "conversion-error",
+  "summary": "(duplicate of g4 boole fix; dropped in consolidation) same defect in the printed output line",
+  "epub_excerpt": "▷ - Op---- - Decimal-- - Binary- - Bits - ",
+  "tex_excerpt": "\\OUT ---Op-------Decimal-----Binary----Bits---",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: (intro example)",
+  "file": "text/26-glossary/26.1-glossary.xhtml",
+  "item": "concept:26.1 glossary:intro",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "This is an example of an example.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "This is an example of an example.",
+   "new": "\"This is an example of an example.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: apply",
+  "file": "text/26-glossary/a.xhtml",
+  "item": "concept:26.1 glossary:apply",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "Applying the function <a href=\"../12-numbers/12.2.25-plus.xhtml#DictEntry__799\"><b>+</b></a> to a list of integers returns\n\t    the sum of the elements of that list.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "Applying the function <a href=\"../12-numbers/12.2.25-plus.xhtml#DictEntry__799\"><b>+</b></a> to a list of integers returns\n\t    the sum of the elements of that list.",
+   "new": "\"Applying the function <a href=\"../12-numbers/12.2.25-plus.xhtml#DictEntry__799\"><b>+</b></a> to a list of integers returns\n\t    the sum of the elements of that list.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: argument evaluation order",
+  "file": "text/26-glossary/a.xhtml",
+  "item": "concept:26.1 glossary:argument evaluation order",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The argument evaluation order for Common Lisp is left to right.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The argument evaluation order for Common Lisp is left to right.",
+   "new": "\"The argument evaluation order for Common Lisp is left to right.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: atom",
+  "file": "text/26-glossary/a.xhtml",
+  "item": "concept:26.1 glossary:atom",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "A vector is an atom.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "A vector is an atom.",
+   "new": "\"A vector is an atom.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: atomic",
+  "file": "text/26-glossary/a.xhtml",
+  "item": "concept:26.1 glossary:atomic",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The number 3, the symbol <code>foo</code>, and <a href=\"../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336\"><b>nil</b></a> are atomic.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The number 3, the symbol <code>foo</code>, and <a href=\"../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336\"><b>nil</b></a> are atomic.",
+   "new": "\"The number 3, the symbol <code>foo</code>, and <a href=\"../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336\"><b>nil</b></a> are atomic.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: attribute",
+  "file": "text/26-glossary/a.xhtml",
+  "item": "concept:26.1 glossary:attribute",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "An implementation that support fonts\n            might make font information an attribute of a character,\n            while others might represent font information separately from characters.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "An implementation that support fonts\n            might make font information an attribute of a character,\n            while others might represent font information separately from characters.",
+   "new": "\"An implementation that support fonts\n            might make font information an attribute of a character,\n            while others might represent font information separately from characters.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: binding",
+  "file": "text/26-glossary/b.xhtml",
+  "item": "concept:26.1 glossary:binding",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "A lexical binding is a lexical association between a \n            name and its value.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "A lexical binding is a lexical association between a \n            name and its value.",
+   "new": "\"A lexical binding is a lexical association between a \n            name and its value.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: binding",
+  "file": "text/26-glossary/b.xhtml",
+  "item": "concept:26.1 glossary:binding",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes variable bindings.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes variable bindings.",
+   "new": "\"<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes variable bindings.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: binding",
+  "file": "text/26-glossary/b.xhtml",
+  "item": "concept:26.1 glossary:binding",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes bindings of variables.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes bindings of variables.",
+   "new": "\"<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes bindings of variables.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: bound",
+  "file": "text/26-glossary/b.xhtml",
+  "item": "concept:26.1 glossary:bound",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The variables named by a <a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> are bound within\n               its body.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The variables named by a <a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> are bound within\n               its body.",
+   "new": "\"The variables named by a <a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> are bound within\n               its body.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: bound",
+  "file": "text/26-glossary/b.xhtml",
+  "item": "concept:26.1 glossary:bound",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The variable <a href=\"../22-printer/22.4.20-print-escape.xhtml#DictEntry_print_escap_1360\"><b>*print-escape*</b></a> is bound while in\n               the <a href=\"../22-printer/22.4.14-write.xhtml#Dic",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The variable <a href=\"../22-printer/22.4.20-print-escape.xhtml#DictEntry_print_escap_1360\"><b>*print-escape*</b></a> is bound while in\n               the <a href=\"../22-printer/22.4.14-write.xhtml#DictEntry_write_prin1_1354\"><b>princ</b></a> function.",
+   "new": "\"The variable <a href=\"../22-printer/22.4.20-print-escape.xhtml#DictEntry_print_escap_1360\"><b>*print-escape*</b></a> is bound while in\n               the <a href=\"../22-printer/22.4.14-write.xhtml#DictEntry_write_prin1_1354\"><b>princ</b></a> function.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: call",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:call",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "Calling the function <a href=\"../12-numbers/12.2.25-plus.xhtml#DictEntry__799\"><b>+</b></a> with the arguments \n               <code>5</code> and <code>1</code> yields a value of <code>6</code>.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "Calling the function <a href=\"../12-numbers/12.2.25-plus.xhtml#DictEntry__799\"><b>+</b></a> with the arguments \n               <code>5</code> and <code>1</code> yields a value of <code>6</code>.",
+   "new": "\"Calling the function <a href=\"../12-numbers/12.2.25-plus.xhtml#DictEntry__799\"><b>+</b></a> with the arguments \n               <code>5</code> and <code>1</code> yields a value of <code>6</code>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: captured initialization form",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:captured initialization form",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "Each newly added shared slot is set to the result of evaluating\n            the captured initialization form for the slot that was specified\n            in the <a href=\"../7-objects/7.7.25-defclass.xh",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "Each newly added shared slot is set to the result of evaluating\n            the captured initialization form for the slot that was specified\n            in the <a href=\"../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581\"><b>defclass</b></a> form for the new class.",
+   "new": "\"Each newly added shared slot is set to the result of evaluating\n            the captured initialization form for the slot that was specified\n            in the <a href=\"../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581\"><b>defclass</b></a> form for the new class.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: car",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:car",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The function <a href=\"../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921\"><b>rplaca</b></a> modifies the car of a cons.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The function <a href=\"../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921\"><b>rplaca</b></a> modifies the car of a cons.",
+   "new": "\"The function <a href=\"../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921\"><b>rplaca</b></a> modifies the car of a cons.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: car",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:car",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The function <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>car</b></a> returns the car of a cons.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The function <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>car</b></a> returns the car of a cons.",
+   "new": "\"The function <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>car</b></a> returns the car of a cons.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: case",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:case",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The characters <code>#\\A</code> and <code>#\\a</code> have case,\n\t    but the character <code>#\\$</code> has no case.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The characters <code>#\\A</code> and <code>#\\a</code> have case,\n\t    but the character <code>#\\$</code> has no case.",
+   "new": "\"The characters <code>#\\A</code> and <code>#\\a</code> have case,\n\t    but the character <code>#\\$</code> has no case.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: cdr",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:cdr",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The function <a href=\"../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921\"><b>rplacd</b></a> modifies the cdr of a cons.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The function <a href=\"../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921\"><b>rplacd</b></a> modifies the cdr of a cons.",
+   "new": "\"The function <a href=\"../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921\"><b>rplacd</b></a> modifies the cdr of a cons.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: cdr",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:cdr",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The function <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>cdr</b></a> returns the cdr of a cons.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The function <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>cdr</b></a> returns the cdr of a cons.",
+   "new": "\"The function <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>cdr</b></a> returns the cdr of a cons.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: class",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:class",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The class <a href=\"../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782\"><b>integer</b></a> is a subclass of the class <a href=\"../12-numbers/12.2.1-number.xhtml#DictEntry_number_775\"><b>number</b",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The class <a href=\"../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782\"><b>integer</b></a> is a subclass of the class <a href=\"../12-numbers/12.2.1-number.xhtml#DictEntry_number_775\"><b>number</b></a>.",
+   "new": "\"The class <a href=\"../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782\"><b>integer</b></a> is a subclass of the class <a href=\"../12-numbers/12.2.1-number.xhtml#DictEntry_number_775\"><b>number</b></a>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: class",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:class",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The class of the object returned by <a href=\"../10-symbols/10.2.7-gensym.xhtml#DictEntry_gensym_681\"><b>gensym</b></a> \n \t       is <a href=\"../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675\"><b>",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The class of the object returned by <a href=\"../10-symbols/10.2.7-gensym.xhtml#DictEntry_gensym_681\"><b>gensym</b></a> \n \t       is <a href=\"../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675\"><b>symbol</b></a>.",
+   "new": "\"The class of the object returned by <a href=\"../10-symbols/10.2.7-gensym.xhtml#DictEntry_gensym_681\"><b>gensym</b></a> \n \t       is <a href=\"../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675\"><b>symbol</b></a>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: composite stream",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:composite stream",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<a href=\"../21-streams/21.2.38-make-synonym-stream.xhtml#DictEntry_make_synonym_1229\"><b>make-synonym-stream</b></a> creates a composite stream.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<a href=\"../21-streams/21.2.38-make-synonym-stream.xhtml#DictEntry_make_synonym_1229\"><b>make-synonym-stream</b></a> creates a composite stream.",
+   "new": "\"<a href=\"../21-streams/21.2.38-make-synonym-stream.xhtml#DictEntry_make_synonym_1229\"><b>make-synonym-stream</b></a> creates a composite stream.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: compound type specifier",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:compound type specifier",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<code>(vector single-float)</code> is a compound type specifier.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<code>(vector single-float)</code> is a compound type specifier.",
+   "new": "\"<code>(vector single-float)</code> is a compound type specifier.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: constant form",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:constant form",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "A <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>car</b></a> form in which the argument is a\n            <a href=\"../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "A <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>car</b></a> form in which the argument is a\n            <a href=\"../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289\"><b>quote</b></a> form is a constant form.",
+   "new": "\"A <a href=\"../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922\"><b>car</b></a> form in which the argument is a\n            <a href=\"../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289\"><b>quote</b></a> form is a constant form.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: constant object",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:constant object",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "A literal object that has been processed by <a href=\"../24-system-construction/24.2.1-compile-file.xhtml#DictEntry_compile_file_1406\"><b>compile-file</b></a>\n\t    is a constant object.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "A literal object that has been processed by <a href=\"../24-system-construction/24.2.1-compile-file.xhtml#DictEntry_compile_file_1406\"><b>compile-file</b></a>\n\t    is a constant object.",
+   "new": "\"A literal object that has been processed by <a href=\"../24-system-construction/24.2.1-compile-file.xhtml#DictEntry_compile_file_1406\"><b>compile-file</b></a>\n\t    is a constant object.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: constant variable",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:constant variable",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The symbols <a href=\"../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351\"><b>t</b></a>, <a href=\"../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336\"><b>nil</b></a>, <code>:direction</code>, an",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The symbols <a href=\"../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351\"><b>t</b></a>, <a href=\"../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336\"><b>nil</b></a>, <code>:direction</code>, and\n            <a href=\"../12-numbers/12.2.72-most-positive-fixnum.xhtml#DictEntry_most_positiv_846\"><b>most-positive-fixnum</b></a> are constant variables.",
+   "new": "\"The symbols <a href=\"../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351\"><b>t</b></a>, <a href=\"../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336\"><b>nil</b></a>, <code>:direction</code>, and\n            <a href=\"../12-numbers/12.2.72-most-positive-fixnum.xhtml#DictEntry_most_positiv_846\"><b>most-positive-fixnum</b></a> are constant variables.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: constructed stream",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:constructed stream",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "A string stream is a constructed stream.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "A string stream is a constructed stream.",
+   "new": "\"A string stream is a constructed stream.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: correctable",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:correctable",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The function <a href=\"../9-conditions/9.2.12-cerror.xhtml#DictEntry_cerror_637\"><b>cerror</b></a> signals an error \n\t       that is correctable by the <a href=\"../9-conditions/9.2.42-continue.xhtml#Di",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The function <a href=\"../9-conditions/9.2.12-cerror.xhtml#DictEntry_cerror_637\"><b>cerror</b></a> signals an error \n\t       that is correctable by the <a href=\"../9-conditions/9.2.42-continue.xhtml#DictEntry_continue_667\"><b>continue</b></a> <i><a href=\"r.xhtml#restart\">restart</a></i>.",
+   "new": "\"The function <a href=\"../9-conditions/9.2.12-cerror.xhtml#DictEntry_cerror_637\"><b>cerror</b></a> signals an error \n\t       that is correctable by the <a href=\"../9-conditions/9.2.42-continue.xhtml#DictEntry_continue_667\"><b>continue</b></a> <i><a href=\"r.xhtml#restart\">restart</a></i>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: correctable",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:correctable",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<a href=\"../11-packages/11.2.6-import.xhtml#DictEntry_import_721\"><b>import</b></a> signals a correctable error of <i><a href=\"t.xhtml#type\">type</a></i> <a href=\"../11-packages/11.2.29-package-error.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<a href=\"../11-packages/11.2.6-import.xhtml#DictEntry_import_721\"><b>import</b></a> signals a correctable error of <i><a href=\"t.xhtml#type\">type</a></i> <a href=\"../11-packages/11.2.29-package-error.xhtml#DictEntry_package_erro_744\"><b>package-error</b></a>\n\t       if any of the imported symbols has the same name as\n\t        some distinct symbol already accessible in the package.",
+   "new": "\"<a href=\"../11-packages/11.2.6-import.xhtml#DictEntry_import_721\"><b>import</b></a> signals a correctable error of <i><a href=\"t.xhtml#type\">type</a></i> <a href=\"../11-packages/11.2.29-package-error.xhtml#DictEntry_package_erro_744\"><b>package-error</b></a>\n\t       if any of the imported symbols has the same name as\n\t        some distinct symbol already accessible in the package.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: defining form",
+  "file": "text/26-glossary/d.xhtml",
+  "item": "concept:26.1 glossary:defining form",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<a href=\"../5-data-and-control-flow/5.3.2-defun.xhtml#DictEntry_defun_388\"><b>defun</b></a> and <a href=\"../5-data-and-control-flow/5.3.16-defparameter.xhtml#DictEntry_defparameter_402\"><b>defparamete",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<a href=\"../5-data-and-control-flow/5.3.2-defun.xhtml#DictEntry_defun_388\"><b>defun</b></a> and <a href=\"../5-data-and-control-flow/5.3.16-defparameter.xhtml#DictEntry_defparameter_402\"><b>defparameter</b></a> are defining forms.",
+   "new": "\"<a href=\"../5-data-and-control-flow/5.3.2-defun.xhtml#DictEntry_defun_388\"><b>defun</b></a> and <a href=\"../5-data-and-control-flow/5.3.16-defparameter.xhtml#DictEntry_defparameter_402\"><b>defparameter</b></a> are defining forms.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: different",
+  "file": "text/26-glossary/d.xhtml",
+  "item": "concept:26.1 glossary:different",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The strings <code>\"FOO\"</code> and <code>\"foo\"</code> are different under\n\t    <a href=\"../5-data-and-control-flow/5.3.35-equal.xhtml#DictEntry_equal_421\"><b>equal</b></a> but not under <a href=\"../5-",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The strings <code>\"FOO\"</code> and <code>\"foo\"</code> are different under\n\t    <a href=\"../5-data-and-control-flow/5.3.35-equal.xhtml#DictEntry_equal_421\"><b>equal</b></a> but not under <a href=\"../5-data-and-control-flow/5.3.36-equalp.xhtml#DictEntry_equalp_422\"><b>equalp</b></a>.",
+   "new": "\"The strings <code>\"FOO\"</code> and <code>\"foo\"</code> are different under\n\t    <a href=\"../5-data-and-control-flow/5.3.35-equal.xhtml#DictEntry_equal_421\"><b>equal</b></a> but not under <a href=\"../5-data-and-control-flow/5.3.36-equalp.xhtml#DictEntry_equalp_422\"><b>equalp</b></a>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: dimension",
+  "file": "text/26-glossary/d.xhtml",
+  "item": "concept:26.1 glossary:dimension",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The second dimension of that array is 7.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The second dimension of that array is 7.",
+   "new": "\"The second dimension of that array is 7.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: dimension",
+  "file": "text/26-glossary/d.xhtml",
+  "item": "concept:26.1 glossary:dimension",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "This array has six dimensions.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "This array has six dimensions.",
+   "new": "\"This array has six dimensions.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: direct instance",
+  "file": "text/26-glossary/d.xhtml",
+  "item": "concept:26.1 glossary:direct instance",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The function <a href=\"../7-objects/7.7.19-make-instance.xhtml#DictEntry_make_instanc_575\"><b>make-instance</b></a> always returns a \n  \t    direct instance of the class which is (or is named by)\n\t    ",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The function <a href=\"../7-objects/7.7.19-make-instance.xhtml#DictEntry_make_instanc_575\"><b>make-instance</b></a> always returns a \n  \t    direct instance of the class which is (or is named by)\n\t    its first argument.",
+   "new": "\"The function <a href=\"../7-objects/7.7.19-make-instance.xhtml#DictEntry_make_instanc_575\"><b>make-instance</b></a> always returns a \n  \t    direct instance of the class which is (or is named by)\n\t    its first argument.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: documentation string",
+  "file": "text/26-glossary/d.xhtml",
+  "item": "concept:26.1 glossary:documentation string",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The body of code in a <a href=\"../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292\"><b>defmacro</b></a> form can be preceded \n\t    by a documentation string of kind <a href=\".",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The body of code in a <a href=\"../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292\"><b>defmacro</b></a> form can be preceded \n\t    by a documentation string of kind <a href=\"../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338\"><b>function</b></a>.",
+   "new": "\"The body of code in a <a href=\"../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292\"><b>defmacro</b></a> form can be preceded \n\t    by a documentation string of kind <a href=\"../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338\"><b>function</b></a>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: dynamic extent",
+  "file": "text/26-glossary/d.xhtml",
+  "item": "concept:26.1 glossary:dynamic extent",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "Dynamic variable bindings have dynamic extent.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "Dynamic variable bindings have dynamic extent.",
+   "new": "\"Dynamic variable bindings have dynamic extent.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: environment",
+  "file": "text/26-glossary/e.xhtml",
+  "item": "concept:26.1 glossary:environment",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<a href=\"../3-evaluation-and-compilation/3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294\"><b>macroexpand</b></a> takes an optional environment argument.\n\n<p>\n<span id=\"environmentobject\"/>",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<a href=\"../3-evaluation-and-compilation/3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294\"><b>macroexpand</b></a> takes an optional environment argument.\n\n<p>\n<span id=\"environmentobject\"/>",
+   "new": "\"<a href=\"../3-evaluation-and-compilation/3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294\"><b>macroexpand</b></a> takes an optional environment argument.\"\n\n<p>\n<span id=\"environmentobject\"/>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: environment object",
+  "file": "text/26-glossary/e.xhtml",
+  "item": "concept:26.1 glossary:environment object",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<a href=\"../3-evaluation-and-compilation/3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294\"><b>macroexpand</b></a> takes an optional environment argument.\n     (The <i>",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<a href=\"../3-evaluation-and-compilation/3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294\"><b>macroexpand</b></a> takes an optional environment argument.\n     (The <i>",
+   "new": "\"<a href=\"../3-evaluation-and-compilation/3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294\"><b>macroexpand</b></a> takes an optional environment argument.\"\n     (The <i>"
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: establish",
+  "file": "text/26-glossary/e.xhtml",
+  "item": "concept:26.1 glossary:establish",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes lexical bindings.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes lexical bindings.",
+   "new": "\"<a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> establishes lexical bindings.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: exit point",
+  "file": "text/26-glossary/e.xhtml",
+  "item": "concept:26.1 glossary:exit point",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<a href=\"../5-data-and-control-flow/5.3.23-catch.xhtml#DictEntry_catch_409\"><b>catch</b></a> and <a href=\"../5-data-and-control-flow/5.3.22-block.xhtml#DictEntry_block_408\"><b>block</b></a> establish ",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<a href=\"../5-data-and-control-flow/5.3.23-catch.xhtml#DictEntry_catch_409\"><b>catch</b></a> and <a href=\"../5-data-and-control-flow/5.3.22-block.xhtml#DictEntry_block_408\"><b>block</b></a> establish bindings for\n            exit points to which <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a> and <a href=\"../5-data-and-control-flow/5.3.25-return-from.xhtml#DictEntry_return_from_411\"><b>return-from</b></a>,\n\t    respectively, can transfer control and values;\n\t    <a href=\"../5-data-and-control-flow/5.3.27-tagbody.xhtml#DictEntry_tagbody_413\"><b>tagbody</b></a> establishes a binding for an exit point\n\t    with lexical extent to which <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a> can transfer control;\n\t    and <a href=\"../5-data-and-control-flow/5.3.29-unwind-protect.xhtml#DictEntry_unwind_prote_415\"><b>unwind-protect</b></a> establishes an exit point \n\t    through which control might be transferred by \n\t    operators such as <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a>, <a href=\"../5-data-and-control-flow/5.3.25-return-from.xhtml#DictEntry_return_from_411\"><b>return-from</b></a>,\n            and <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a>.",
+   "new": "\"<a href=\"../5-data-and-control-flow/5.3.23-catch.xhtml#DictEntry_catch_409\"><b>catch</b></a> and <a href=\"../5-data-and-control-flow/5.3.22-block.xhtml#DictEntry_block_408\"><b>block</b></a> establish bindings for\n            exit points to which <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a> and <a href=\"../5-data-and-control-flow/5.3.25-return-from.xhtml#DictEntry_return_from_411\"><b>return-from</b></a>,\n\t    respectively, can transfer control and values;\n\t    <a href=\"../5-data-and-control-flow/5.3.27-tagbody.xhtml#DictEntry_tagbody_413\"><b>tagbody</b></a> establishes a binding for an exit point\n\t    with lexical extent to which <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a> can transfer control;\n\t    and <a href=\"../5-data-and-control-flow/5.3.29-unwind-protect.xhtml#DictEntry_unwind_prote_415\"><b>unwind-protect</b></a> establishes an exit point \n\t    through which control might be transferred by \n\t    operators such as <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a>, <a href=\"../5-data-and-control-flow/5.3.25-return-from.xhtml#DictEntry_return_from_411\"><b>return-from</b></a>,\n            and <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: exponent marker",
+  "file": "text/26-glossary/e.xhtml",
+  "item": "concept:26.1 glossary:exponent marker",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The exponent marker `d' in `3.0d7' indicates\n\t    that this number is to be represented as a double float.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The exponent marker `d' in `3.0d7' indicates\n\t    that this number is to be represented as a double float.",
+   "new": "\"The exponent marker `d' in `3.0d7' indicates\n\t    that this number is to be represented as a double float.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: expression",
+  "file": "text/26-glossary/e.xhtml",
+  "item": "concept:26.1 glossary:expression",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The second expression in a <a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> form is a list\n   \t       of bindings.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The second expression in a <a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> form is a list\n   \t       of bindings.",
+   "new": "\"The second expression in a <a href=\"../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404\"><b>let</b></a> form is a list\n   \t       of bindings.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: expression",
+  "file": "text/26-glossary/e.xhtml",
+  "item": "concept:26.1 glossary:expression",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The expression <code>'sample</code> is equivalent to <code>(quote sample)</code>.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The expression <code>'sample</code> is equivalent to <code>(quote sample)</code>.",
+   "new": "\"The expression <code>'sample</code> is equivalent to <code>(quote sample)</code>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: extended lambda list",
+  "file": "text/26-glossary/e.xhtml",
+  "item": "concept:26.1 glossary:extended lambda list",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<a href=\"../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292\"><b>defmacro</b></a> uses extended lambda lists.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<a href=\"../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292\"><b>defmacro</b></a> uses extended lambda lists.",
+   "new": "\"<a href=\"../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292\"><b>defmacro</b></a> uses extended lambda lists.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: feature",
+  "file": "text/26-glossary/f.xhtml",
+  "item": "concept:26.1 glossary:feature",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The <code>:ansi-cl</code> feature is present in all conforming implementations.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The <code>:ansi-cl</code> feature is present in all conforming implementations.",
+   "new": "\"The <code>:ansi-cl</code> feature is present in all conforming implementations.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: finite",
+  "file": "text/26-glossary/f.xhtml",
+  "item": "concept:26.1 glossary:finite",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The type specifier <code>(integer 0 5)</code> denotes a finite type,\n\t    but the type specifiers <a href=\"../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782\"><b>integer</b></a> and <code>(integ",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The type specifier <code>(integer 0 5)</code> denotes a finite type,\n\t    but the type specifiers <a href=\"../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782\"><b>integer</b></a> and <code>(integer 0)</code> do not.",
+   "new": "\"The type specifier <code>(integer 0 5)</code> denotes a finite type,\n\t    but the type specifiers <a href=\"../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782\"><b>integer</b></a> and <code>(integer 0)</code> do not.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: form",
+  "file": "text/26-glossary/f.xhtml",
+  "item": "concept:26.1 glossary:form",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "A <a href=\"../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289\"><b>quote</b></a> form is a constant form.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "A <a href=\"../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289\"><b>quote</b></a> form is a constant form.",
+   "new": "\"A <a href=\"../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289\"><b>quote</b></a> form is a constant form.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: format directive",
+  "file": "text/26-glossary/f.xhtml",
+  "item": "concept:26.1 glossary:format directive",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "In <code>\"~D base 10 = ~8R\"</code>, the character\n     \t       sequences `<code>~D</code>' and `<code>~8R</code>' are format directives.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "In <code>\"~D base 10 = ~8R\"</code>, the character\n     \t       sequences `<code>~D</code>' and `<code>~8R</code>' are format directives.",
+   "new": "\"In <code>\"~D base 10 = ~8R\"</code>, the character\n     \t       sequences `<code>~D</code>' and `<code>~8R</code>' are format directives.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: format directive",
+  "file": "text/26-glossary/f.xhtml",
+  "item": "concept:26.1 glossary:format directive",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "Both <code>\"~3d\"</code> and <code>\"~3,'0D\"</code> are valid uses of the\n\t       `<code>~D</code>' format directive.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "Both <code>\"~3d\"</code> and <code>\"~3,'0D\"</code> are valid uses of the\n\t       `<code>~D</code>' format directive.",
+   "new": "\"Both <code>\"~3d\"</code> and <code>\"~3,'0D\"</code> are valid uses of the\n\t       `<code>~D</code>' format directive.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: further compilation",
+  "file": "text/26-glossary/f.xhtml",
+  "item": "concept:26.1 glossary:further compilation",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "Block compilation and generation of machine-specific instructions\n            are examples of further compilation.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "Block compilation and generation of machine-specific instructions\n            are examples of further compilation.",
+   "new": "\"Block compilation and generation of machine-specific instructions\n            are examples of further compilation.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: glyph",
+  "file": "text/26-glossary/g.xhtml",
+  "item": "concept:26.1 glossary:glyph",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "Graphic characters have associated glyphs.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "Graphic characters have associated glyphs.",
+   "new": "\"Graphic characters have associated glyphs.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: immutable",
+  "file": "text/26-glossary/i.xhtml",
+  "item": "concept:26.1 glossary:immutable",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "Numbers are immutable.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "Numbers are immutable.",
+   "new": "\"Numbers are immutable.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: indefinite extent",
+  "file": "text/26-glossary/i.xhtml",
+  "item": "concept:26.1 glossary:indefinite extent",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "Most Common Lisp objects have indefinite extent.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "Most Common Lisp objects have indefinite extent.",
+   "new": "\"Most Common Lisp objects have indefinite extent.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: indirect instance",
+  "file": "text/26-glossary/i.xhtml",
+  "item": "concept:26.1 glossary:indirect instance",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "An integer is an indirect instance of the class <a href=\"../12-numbers/12.2.1-number.xhtml#DictEntry_number_775\"><b>number</b></a>.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "An integer is an indirect instance of the class <a href=\"../12-numbers/12.2.1-number.xhtml#DictEntry_number_775\"><b>number</b></a>.",
+   "new": "\"An integer is an indirect instance of the class <a href=\"../12-numbers/12.2.1-number.xhtml#DictEntry_number_775\"><b>number</b></a>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: initialization form",
+  "file": "text/26-glossary/i.xhtml",
+  "item": "concept:26.1 glossary:initialization form",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The initialization form for a slot in a <a href=\"../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581\"><b>defclass</b></a> form\n            is introduced by the keyword <code>:initform</code>.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The initialization form for a slot in a <a href=\"../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581\"><b>defclass</b></a> form\n            is introduced by the keyword <code>:initform</code>.",
+   "new": "\"The initialization form for a slot in a <a href=\"../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581\"><b>defclass</b></a> form\n            is introduced by the keyword <code>:initform</code>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: lexical scope",
+  "file": "text/26-glossary/l.xhtml",
+  "item": "concept:26.1 glossary:lexical scope",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The names of parameters to a function normally are lexically scoped.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The names of parameters to a function normally are lexically scoped.",
+   "new": "\"The names of parameters to a function normally are lexically scoped.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: literal",
+  "file": "text/26-glossary/l.xhtml",
+  "item": "concept:26.1 glossary:literal",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "In the form <code>(cons \"one\" '(\"two\"))</code>, \n            the expressions <code>\"one\"</code>, <code>(\"two\")</code>, and <code>\"two\"</code>\n            are literal objects.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "In the form <code>(cons \"one\" '(\"two\"))</code>, \n            the expressions <code>\"one\"</code>, <code>(\"two\")</code>, and <code>\"two\"</code>\n            are literal objects.",
+   "new": "\"In the form <code>(cons \"one\" '(\"two\"))</code>, \n            the expressions <code>\"one\"</code>, <code>(\"two\")</code>, and <code>\"two\"</code>\n            are literal objects.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: modified lambda list",
+  "file": "text/26-glossary/m.xhtml",
+  "item": "concept:26.1 glossary:modified lambda list",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<a href=\"../4-types-and-classes/4.4.25-deftype.xhtml#DictEntry_deftype_360\"><b>deftype</b></a> uses a modified lambda list.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<a href=\"../4-types-and-classes/4.4.25-deftype.xhtml#DictEntry_deftype_360\"><b>deftype</b></a> uses a modified lambda list.",
+   "new": "\"<a href=\"../4-types-and-classes/4.4.25-deftype.xhtml#DictEntry_deftype_360\"><b>deftype</b></a> uses a modified lambda list.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: multiple values",
+  "file": "text/26-glossary/m.xhtml",
+  "item": "concept:26.1 glossary:multiple values",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The function <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> returns multiple values.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The function <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> returns multiple values.",
+   "new": "\"The function <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> returns multiple values.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: multiple values",
+  "file": "text/26-glossary/m.xhtml",
+  "item": "concept:26.1 glossary:multiple values",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The function <a href=\"../4-types-and-classes/4.4.22-values.xhtml#DictEntry_values_357\"><b>values</b></a> returns multiple values.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The function <a href=\"../4-types-and-classes/4.4.22-values.xhtml#DictEntry_values_357\"><b>values</b></a> returns multiple values.",
+   "new": "\"The function <a href=\"../4-types-and-classes/4.4.22-values.xhtml#DictEntry_values_357\"><b>values</b></a> returns multiple values.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: multiple values",
+  "file": "text/26-glossary/m.xhtml",
+  "item": "concept:26.1 glossary:multiple values",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The macro <a href=\"../5-data-and-control-flow/5.3.48-multiple-value-bind.xhtml#DictEntry_multiple_val_434\"><b>multiple-value-bind</b></a> is among the few\n\t       operators in <i>Common Lisp</i> which",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The macro <a href=\"../5-data-and-control-flow/5.3.48-multiple-value-bind.xhtml#DictEntry_multiple_val_434\"><b>multiple-value-bind</b></a> is among the few\n\t       operators in <i>Common Lisp</i> which can detect and manipulate\n \t       multiple values.",
+   "new": "\"The macro <a href=\"../5-data-and-control-flow/5.3.48-multiple-value-bind.xhtml#DictEntry_multiple_val_434\"><b>multiple-value-bind</b></a> is among the few\n\t       operators in <i>Common Lisp</i> which can detect and manipulate\n \t       multiple values.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: name",
+  "file": "text/26-glossary/n.xhtml",
+  "item": "concept:26.1 glossary:name",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The string which is a symbol's name is returned\n\t       by <a href=\"../10-symbols/10.2.11-symbol-name.xhtml#DictEntry_symbol_name_685\"><b>symbol-name</b></a>.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The string which is a symbol's name is returned\n\t       by <a href=\"../10-symbols/10.2.11-symbol-name.xhtml#DictEntry_symbol_name_685\"><b>symbol-name</b></a>.",
+   "new": "\"The string which is a symbol's name is returned\n\t       by <a href=\"../10-symbols/10.2.11-symbol-name.xhtml#DictEntry_symbol_name_685\"><b>symbol-name</b></a>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: named constant",
+  "file": "text/26-glossary/n.xhtml",
+  "item": "concept:26.1 glossary:named constant",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The value of a named constant may not be changed\n            by assignment or by binding.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The value of a named constant may not be changed\n            by assignment or by binding.",
+   "new": "\"The value of a named constant may not be changed\n            by assignment or by binding.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: namespace",
+  "file": "text/26-glossary/n.xhtml",
+  "item": "concept:26.1 glossary:namespace",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The bindings of names to tags is the tag namespace.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The bindings of names to tags is the tag namespace.",
+   "new": "\"The bindings of names to tags is the tag namespace.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: namespace",
+  "file": "text/26-glossary/n.xhtml",
+  "item": "concept:26.1 glossary:namespace",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "A package defines a namespace.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "A package defines a namespace.",
+   "new": "\"A package defines a namespace.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: non-local exit",
+  "file": "text/26-glossary/n.xhtml",
+  "item": "concept:26.1 glossary:non-local exit",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The operators <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a>, <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a>, \n\t    a",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The operators <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a>, <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a>, \n\t    and <a href=\"../5-data-and-control-flow/5.3.25-return-from.xhtml#DictEntry_return_from_411\"><b>return-from</b></a> cause a non-local exit.",
+   "new": "\"The operators <a href=\"../5-data-and-control-flow/5.3.24-go.xhtml#DictEntry_go_410\"><b>go</b></a>, <a href=\"../5-data-and-control-flow/5.3.28-throw.xhtml#DictEntry_throw_414\"><b>throw</b></a>, \n\t    and <a href=\"../5-data-and-control-flow/5.3.25-return-from.xhtml#DictEntry_return_from_411\"><b>return-from</b></a> cause a non-local exit.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: object",
+  "file": "text/26-glossary/o.xhtml",
+  "item": "concept:26.1 glossary:object",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The function <a href=\"../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916\"><b>cons</b></a> creates an object which refers\n               to two other objects.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The function <a href=\"../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916\"><b>cons</b></a> creates an object which refers\n               to two other objects.",
+   "new": "\"The function <a href=\"../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916\"><b>cons</b></a> creates an object which refers\n               to two other objects.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: object",
+  "file": "text/26-glossary/o.xhtml",
+  "item": "concept:26.1 glossary:object",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The function <a href=\"../10-symbols/10.2.10-symbol-function.xhtml#DictEntry_symbol_funct_684\"><b>symbol-function</b></a> takes a function name \n\t       and returns a function object.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The function <a href=\"../10-symbols/10.2.10-symbol-function.xhtml#DictEntry_symbol_funct_684\"><b>symbol-function</b></a> takes a function name \n\t       and returns a function object.",
+   "new": "\"The function <a href=\"../10-symbols/10.2.10-symbol-function.xhtml#DictEntry_symbol_funct_684\"><b>symbol-function</b></a> takes a function name \n\t       and returns a function object.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: object-traversing",
+  "file": "text/26-glossary/o.xhtml",
+  "item": "concept:26.1 glossary:object-traversing",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The operators <a href=\"../14-conses/14.2.34-mapc.xhtml#DictEntry_mapc_mapcar_947\"><b>mapcar</b></a>, <a href=\"../18-hash-tables/18.2.11-maphash.xhtml#DictEntry_maphash_1088\"><b>maphash</b></a>, \n\t    ",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The operators <a href=\"../14-conses/14.2.34-mapc.xhtml#DictEntry_mapc_mapcar_947\"><b>mapcar</b></a>, <a href=\"../18-hash-tables/18.2.11-maphash.xhtml#DictEntry_maphash_1088\"><b>maphash</b></a>, \n\t    <a href=\"../11-packages/11.2.13-with-package-iterator.xhtml#DictEntry_with_package_728\"><b>with-package-iterator</b></a> and <a href=\"../17-sequences/17.3.10-count.xhtml#DictEntry_count_count_1050\"><b>count</b></a>\n \t    perform object-traversing operations.",
+   "new": "\"The operators <a href=\"../14-conses/14.2.34-mapc.xhtml#DictEntry_mapc_mapcar_947\"><b>mapcar</b></a>, <a href=\"../18-hash-tables/18.2.11-maphash.xhtml#DictEntry_maphash_1088\"><b>maphash</b></a>, \n\t    <a href=\"../11-packages/11.2.13-with-package-iterator.xhtml#DictEntry_with_package_728\"><b>with-package-iterator</b></a> and <a href=\"../17-sequences/17.3.10-count.xhtml#DictEntry_count_count_1050\"><b>count</b></a>\n \t    perform object-traversing operations.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: ordinary lambda list",
+  "file": "text/26-glossary/o.xhtml",
+  "item": "concept:26.1 glossary:ordinary lambda list",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<a href=\"../5-data-and-control-flow/5.3.2-defun.xhtml#DictEntry_defun_388\"><b>defun</b></a> uses an ordinary lambda list.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<a href=\"../5-data-and-control-flow/5.3.2-defun.xhtml#DictEntry_defun_388\"><b>defun</b></a> uses an ordinary lambda list.",
+   "new": "\"<a href=\"../5-data-and-control-flow/5.3.2-defun.xhtml#DictEntry_defun_388\"><b>defun</b></a> uses an ordinary lambda list.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: pairwise",
+  "file": "text/26-glossary/p.xhtml",
+  "item": "concept:26.1 glossary:pairwise",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The types <i>A</i>, <i>B</i>, and <i>C</i> are pairwise disjoint if \n            <i>A</i> and <i>B</i> are disjoint,\n            <i>B</i> and <i>C</i> are disjoint, and\n            <i>A</i> and <i>C</",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The types <i>A</i>, <i>B</i>, and <i>C</i> are pairwise disjoint if \n            <i>A</i> and <i>B</i> are disjoint,\n            <i>B</i> and <i>C</i> are disjoint, and\n            <i>A</i> and <i>C</i> are disjoint.",
+   "new": "\"The types <i>A</i>, <i>B</i>, and <i>C</i> are pairwise disjoint if \n            <i>A</i> and <i>B</i> are disjoint,\n            <i>B</i> and <i>C</i> are disjoint, and\n            <i>A</i> and <i>C</i> are disjoint.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: parameter",
+  "file": "text/26-glossary/p.xhtml",
+  "item": "concept:26.1 glossary:parameter",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "In <code>\"~3,'0D\"</code>, the number <code>3</code> and the character\n\t       <code>#\\0</code> are parameters to the <code>~D</code> format directive.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "In <code>\"~3,'0D\"</code>, the number <code>3</code> and the character\n\t       <code>#\\0</code> are parameters to the <code>~D</code> format directive.",
+   "new": "\"In <code>\"~3,'0D\"</code>, the number <code>3</code> and the character\n\t       <code>#\\0</code> are parameters to the <code>~D</code> format directive.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: primary value",
+  "file": "text/26-glossary/p.xhtml",
+  "item": "concept:26.1 glossary:primary value",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The primary value returned by <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> is an\n            integer quotient, truncated toward zero.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The primary value returned by <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> is an\n            integer quotient, truncated toward zero.",
+   "new": "\"The primary value returned by <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> is an\n            integer quotient, truncated toward zero.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: relative",
+  "file": "text/26-glossary/r.xhtml",
+  "item": "concept:26.1 glossary:relative",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The notation <code>#P\"../foo.text\"</code> denotes a relative\n\t       pathname if the host file system is Unix.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The notation <code>#P\"../foo.text\"</code> denotes a relative\n\t       pathname if the host file system is Unix.",
+   "new": "\"The notation <code>#P\"../foo.text\"</code> denotes a relative\n\t       pathname if the host file system is Unix.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: same",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:same",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The symbol <code>car</code>, the string <code>\"car\"</code>, and the string <code>\"CAR\"</code>\n\t       are the <code>same</code> under <a href=\"../16-strings/16.2.10-string=.xhtml#DictEntry_string_str_",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The symbol <code>car</code>, the string <code>\"car\"</code>, and the string <code>\"CAR\"</code>\n\t       are the <code>same</code> under <a href=\"../16-strings/16.2.10-string=.xhtml#DictEntry_string_str_1029\"><b>string-equal</b></a>",
+   "new": "\"The symbol <code>car</code>, the string <code>\"car\"</code>, and the string <code>\"CAR\"</code>\n\t       are the <code>same</code> under <a href=\"../16-strings/16.2.10-string=.xhtml#DictEntry_string_str_1029\"><b>string-equal</b></a>\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: same",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:same",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The conses returned by two successive calls to <a href=\"../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916\"><b>cons</b></a>\n\t       are never the same.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The conses returned by two successive calls to <a href=\"../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916\"><b>cons</b></a>\n\t       are never the same.",
+   "new": "\"The conses returned by two successive calls to <a href=\"../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916\"><b>cons</b></a>\n\t       are never the same.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: same",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:same",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The types specified by <code>(integer 0 1)</code>,\n\t\t\t\t      <code>(unsigned-byte 1)</code>,\n\t\t\t\t  and <code>bit</code> are the same.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The types specified by <code>(integer 0 1)</code>,\n\t\t\t\t      <code>(unsigned-byte 1)</code>,\n\t\t\t\t  and <code>bit</code> are the same.",
+   "new": "\"The types specified by <code>(integer 0 1)</code>,\n\t\t\t\t      <code>(unsigned-byte 1)</code>,\n\t\t\t\t  and <code>bit</code> are the same.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: secondary value",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:secondary value",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The secondary value returned by <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> is a remainder.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The secondary value returned by <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> is a remainder.",
+   "new": "\"The secondary value returned by <a href=\"../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793\"><b>truncate</b></a> is a remainder.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: self-evaluating object",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:self-evaluating object",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "Strings are self-evaluating objects.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "Strings are self-evaluating objects.",
+   "new": "\"Strings are self-evaluating objects.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: shadow",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:shadow",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "That binding of <code>X</code> shadows an outer one.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "That binding of <code>X</code> shadows an outer one.",
+   "new": "\"That binding of <code>X</code> shadows an outer one.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: shadow",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:shadow",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "That <a href=\"../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392\"><b>macrolet</b></a> of <code>F</code> shadows the\n               outer <a href=\"../5-data-and-control-flow/5.3.6-fl",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "That <a href=\"../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392\"><b>macrolet</b></a> of <code>F</code> shadows the\n               outer <a href=\"../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392\"><b>flet</b></a> of <code>F</code>.",
+   "new": "\"That <a href=\"../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392\"><b>macrolet</b></a> of <code>F</code> shadows the\n               outer <a href=\"../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392\"><b>flet</b></a> of <code>F</code>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: shadow",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:shadow",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "That package shadows the symbol <code>cl:car</code> with\n               its own symbol <code>car</code>.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "That package shadows the symbol <code>cl:car</code> with\n               its own symbol <code>car</code>.",
+   "new": "\"That package shadows the symbol <code>cl:car</code> with\n               its own symbol <code>car</code>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: singleton",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:singleton",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<code>(list 'hello)</code> returns a singleton list.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<code>(list 'hello)</code> returns a singleton list.",
+   "new": "\"<code>(list 'hello)</code> returns a singleton list.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: specialized",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:specialized",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<code>(make-array 5 :element-type 'bit)</code> makes an array of length\n\t       five that is specialized for bits.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<code>(make-array 5 :element-type 'bit)</code> makes an array of length\n\t       five that is specialized for bits.",
+   "new": "\"<code>(make-array 5 :element-type 'bit)</code> makes an array of length\n\t       five that is specialized for bits.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: spreadable argument list designator",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:spreadable argument list designator",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The list (1 2 (3 4 5)) is a spreadable argument list designator for\n\t    the list (1 2 3 4 5).",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The list (1 2 (3 4 5)) is a spreadable argument list designator for\n\t    the list (1 2 3 4 5).",
+   "new": "\"The list (1 2 (3 4 5)) is a spreadable argument list designator for\n\t    the list (1 2 3 4 5).\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: standardized",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:standardized",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "All standardized variables that are required to \n\t    hold bidirectional streams have \"<code>-io*</code>\" in their name.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "All standardized variables that are required to \n\t    hold bidirectional streams have \"<code>-io*</code>\" in their name.",
+   "new": "\"All standardized variables that are required to \n\t    hold bidirectional streams have \"<code>-io*</code>\" in their name.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: subform",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 glossary:subform",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "<code>(f x)</code> and <code>x</code>, but not <code>exit</code>, are subforms of\n\t    <code>(return-from exit (f x))</code>.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "<code>(f x)</code> and <code>x</code>, but not <code>exit</code>, are subforms of\n\t    <code>(return-from exit (f x))</code>.",
+   "new": "\"<code>(f x)</code> and <code>x</code>, but not <code>exit</code>, are subforms of\n\t    <code>(return-from exit (f x))</code>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: tail",
+  "file": "text/26-glossary/t.xhtml",
+  "item": "concept:26.1 glossary:tail",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The empty list is a tail of every proper list.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The empty list is a tail of every proper list.",
+   "new": "\"The empty list is a tail of every proper list.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: target",
+  "file": "text/26-glossary/t.xhtml",
+  "item": "concept:26.1 glossary:target",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The target of a synonym stream is \n\t       the value of its synonym stream symbol.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The target of a synonym stream is \n\t       the value of its synonym stream symbol.",
+   "new": "\"The target of a synonym stream is \n\t       the value of its synonym stream symbol.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: type",
+  "file": "text/26-glossary/t.xhtml",
+  "item": "concept:26.1 glossary:type",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The type <a href=\"../15-arrays/15.2.3-vector.xhtml#DictEntry_vector_981\"><b>vector</b></a> is an array type.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The type <a href=\"../15-arrays/15.2.3-vector.xhtml#DictEntry_vector_981\"><b>vector</b></a> is an array type.",
+   "new": "\"The type <a href=\"../15-arrays/15.2.3-vector.xhtml#DictEntry_vector_981\"><b>vector</b></a> is an array type.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: type specifier",
+  "file": "text/26-glossary/t.xhtml",
+  "item": "concept:26.1 glossary:type specifier",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The symbol <code>random-state</code>, the list <code>(integer 3 5)</code>,\n            the list <code>(and list (not null))</code>, and the class named\n            <code>standard-class</code> are type",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The symbol <code>random-state</code>, the list <code>(integer 3 5)</code>,\n            the list <code>(and list (not null))</code>, and the class named\n            <code>standard-class</code> are type specifiers.",
+   "new": "\"The symbol <code>random-state</code>, the list <code>(integer 3 5)</code>,\n            the list <code>(and list (not null))</code>, and the class named\n            <code>standard-class</code> are type specifiers.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: use",
+  "file": "text/26-glossary/u.xhtml",
+  "item": "concept:26.1 glossary:use",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The package <code>cl-user</code> uses the package <code>cl</code>.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The package <code>cl-user</code> uses the package <code>cl</code>.",
+   "new": "\"The package <code>cl-user</code> uses the package <code>cl</code>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: valid array index",
+  "file": "text/26-glossary/v.xhtml",
+  "item": "concept:26.1 glossary:valid array index",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "For a <code>2</code> by <code>3</code> array,\n\t    valid array indices for the first  dimension are <code>0</code> and <code>1</code>, and\n\t    valid array indices for the second dimension are <code>0",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "For a <code>2</code> by <code>3</code> array,\n\t    valid array indices for the first  dimension are <code>0</code> and <code>1</code>, and\n\t    valid array indices for the second dimension are <code>0</code>, <code>1</code> and <code>2</code>.",
+   "new": "\"For a <code>2</code> by <code>3</code> array,\n\t    valid array indices for the first  dimension are <code>0</code> and <code>1</code>, and\n\t    valid array indices for the second dimension are <code>0</code>, <code>1</code> and <code>2</code>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: yield",
+  "file": "text/26-glossary/y.xhtml",
+  "item": "concept:26.1 glossary:yield",
+  "category": "conversion-error",
+  "summary": "TeX \\gexample{...} = {``...''} : the quotation marks around the example sentence were dropped",
+  "epub_excerpt": "The form <code>(+ 2 3)</code> yields <code>5</code>.",
+  "tex_excerpt": "\\gexample{...}",
+  "fix": {
+   "old": "The form <code>(+ 2 3)</code> yields <code>5</code>.",
+   "new": "\"The form <code>(+ 2 3)</code> yields <code>5</code>.\""
+  },
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "Glossary",
+  "file": "text/26-glossary/26.1-glossary.xhtml",
+  "item": "concept:26.1 Glossary (intro)",
+  "category": "conversion-error",
+  "summary": "TeX segment contains all 691 glossary entries (compared separately), so the ratio is meaningless; the intro example sentence lost its quotes (see glossary:intro fix); pronunciation/table ops are noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "A.1.7",
+  "names": "Packages No Longer Required",
+  "file": "text/A-appendix/A.1-removed-language-features.xhtml",
+  "item": "concept:A.1.7 Packages No Longer Required",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.700; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "; ; ",
+  "tex_excerpt": "= ( ) ! 2P:lisp ! ! > 0 #1---; = ( ) ! 2P:user ! ! > 0 #1---; = ( ) ! 2P:system ! ! > 0 #1---",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.1",
+  "names": "Numbers as Tokens",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.1 Numbers as Tokens",
+  "category": "conversion-error",
+  "summary": "section ratio 0.704; real defects: emdash-sign, emdash-slash, emdash-decimal-point, emdash-exponent-marker, emdash-decimal-digit, emdash-digit (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.4.3.1",
+  "names": "Examples of Single-Quote",
+  "file": "text/2-syntax/2.4-standard-macro-characters.xhtml",
+  "item": "concept:2.4.3.1 Examples of Single-Quote",
+  "category": "conversion-error",
+  "summary": "section ratio 0.812; real defects: quote-1, quote-2 (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "11.1.2.2",
+  "names": "The COMMON-LISP-USER Package",
+  "file": "text/11-packages/11.1-package-concepts.xhtml",
+  "item": "concept:11.1.2.2 The COMMON-LISP-USER Package",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.828; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "",
+  "tex_excerpt": "= ( ) ! 2P:common-lisp-user ! ! > 0 #1--- = ( ) ! ",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.1.4.2",
+  "names": "Constituent Traits",
+  "file": "text/2-syntax/2.1-character-syntax.xhtml",
+  "item": "concept:2.1.4.2 Constituent Traits",
+  "category": "conversion-error",
+  "summary": "section ratio 0.853; real defects: ctrait-colon, ctrait-brk1, ctrait-brk2 (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.2.3.1",
+  "names": "Processing of Top Level Forms",
+  "file": "text/3-evaluation-and-compilation/3.2-compilation.xhtml",
+  "item": "concept:3.2.3.1 Processing of Top Level Forms",
+  "category": "conversion-error",
+  "summary": "section ratio 0.897; real defects: emdash-evalwhen (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "7.2.1",
+  "names": "Modifying the Structure of the Instance",
+  "file": "text/7-objects/7.2-changing-the-class-of-an-instance.xhtml",
+  "item": "concept:7.2.1 Modifying the Structure of the Instance",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.901; checked by eye against the TeX: TeX math ($..$, \\sub) vs rendered subscripts",
+  "epub_excerpt": "Cto; Cto; Cfrom",
+  "tex_excerpt": "C to; C to; C from",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.1.3",
+  "names": "A specifier for a rest parameter",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.1.3 A specifier for a rest parameter",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.903; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "; ",
+  "tex_excerpt": "= ( ) ! 2R:&rest ! ! > 0 #1---; = ( ) ! 2R:&key ! ! > 0 #1--- = ( ) ! 2R:&allow-ot",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.7",
+  "names": "Defsetf Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.7 Defsetf Lambda Lists",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.915; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser; figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "; ; ",
+  "tex_excerpt": "0= ( to 0; 0= ( to 0; 0= ( to 0",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "4.2.1",
+  "names": "Data Type Definition",
+  "file": "text/4-types-and-classes/4.2-types.xhtml",
+  "item": "concept:4.2.1 Data Type Definition",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.936; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser; period after \\Figref swallowed by the normaliser regex",
+  "epub_excerpt": "; Figure § Cross-References; ",
+  "tex_excerpt": ".; = ( ) ! TypeInfoXrefs #1--Cross-References; 2pt 2pt",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "12.1.5.4",
+  "names": "Principal Values and Branch Cuts",
+  "file": "text/12-numbers/12.1-number-concepts.xhtml",
+  "item": "concept:12.1.5.4 Principal Values and Branch Cuts",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.939; checked by eye against the TeX: quadrant diagram: TeX \\halign/\\vdots layout vs EPUB table (content equal)",
+  "epub_excerpt": "Figure §; ; : II:",
+  "tex_excerpt": "; #; 5pt # # # II",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.4",
+  "names": "Macro Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.4 Macro Lambda Lists",
+  "category": "conversion-error",
+  "summary": "section ratio 0.940; real defects: macro-reqvars, macro-restvar, macro-pattern-sp (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.5",
+  "names": "Destructuring Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.5 Destructuring Lambda Lists",
+  "category": "conversion-error",
+  "summary": "section ratio 0.941; real defects: destr-optvars, destr-keyvars (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "4.3",
+  "names": "Classes",
+  "file": "text/4-types-and-classes/4.3-classes.xhtml",
+  "item": "concept:4.3 Classes",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.944; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "Figure",
+  "tex_excerpt": "= ( ) ! ObjectSystemClasses #1--Figure",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "11.1.2.1",
+  "names": "The COMMON-LISP Package",
+  "file": "text/11-packages/11.1-package-concepts.xhtml",
+  "item": "concept:11.1.2.1 The COMMON-LISP Package",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.948; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "",
+  "tex_excerpt": "= ( ) ! 2P:common-lisp ! ! > 0 #1--- = ( ) ! 2P:cl",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.1.1.4",
+  "names": "Environment Objects",
+  "file": "text/3-evaluation-and-compilation/3.1-evaluation.xhtml",
+  "item": "concept:3.1.1.4 Environment Objects",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.948; checked by eye against the TeX: same-file section link: link text compared as words instead of §",
+  "epub_excerpt": "3; 1 . 1 . 3 . 1 The Null Lexical Environment .",
+  "tex_excerpt": "§; ",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.1.4",
+  "names": "Character Syntax Types",
+  "file": "text/2-syntax/2.1-character-syntax.xhtml",
+  "item": "concept:2.1.4 Character Syntax Types",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.950; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser; \\t macro = \"terminating macro char\"",
+  "epub_excerpt": "Figure § Possible; Figure; terminating macro char",
+  "tex_excerpt": ". = ( ) ! PossibleSyntaxTypes #1--Possible; = ( ) ! CharSyntaxTypesInStdSyntax #1--Figure; t",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "19.2.2.1.2",
+  "names": "Case in Pathname Components",
+  "file": "text/19-filenames/19.2-pathnames.xhtml",
+  "item": "concept:19.2.2.1.2 Case in Pathname Components",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.952; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "Figure",
+  "tex_excerpt": "= ( ) ! PathnameCaseFuns #1--Figure",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "11.1.2.3",
+  "names": "The KEYWORD Package",
+  "file": "text/11-packages/11.1-package-concepts.xhtml",
+  "item": "concept:11.1.2.3 The KEYWORD Package",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.954; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "",
+  "tex_excerpt": "= ( ) ! 2P:keyword ! ! > 0 #1---",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.3",
+  "names": "Specialized Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.3 Specialized Lambda Lists",
+  "category": "conversion-error",
+  "summary": "section ratio 0.956; real defects: spec-brace (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.7.4",
+  "names": "Tilde Left-Brace: Iteration",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.7.4 Tilde Left-Brace: Iteration",
+  "category": "conversion-error",
+  "summary": "section ratio 0.958; real defects: fmt-brace-0, fmt-brace-1, fmt-brace-2, fmt-brace-3 (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.1.3",
+  "names": "Tilde Ampersand: Fresh-Line",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.1.3 Tilde Ampersand: Fresh-Line",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.959; checked by eye against the TeX: \\minussign / \\partial / tie spacing in TeX math",
+  "epub_excerpt": "n-1",
+  "tex_excerpt": "n- 1",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "6.1.1.2",
+  "names": "Loop Keywords",
+  "file": "text/6-iteration/6.1-the-loop-facility.xhtml",
+  "item": "concept:6.1.1.2 Loop Keywords",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.961; checked by eye against the TeX: same-file section link: link text compared as words instead of §",
+  "epub_excerpt": "6; 1 . 1 . 1 . 1 Simple Loop .",
+  "tex_excerpt": "§; ",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.1.3.3",
+  "names": "Printing Symbols",
+  "file": "text/22-printer/22.1-the-lisp-printer.xhtml",
+  "item": "concept:22.1.3.3 Printing Symbols",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.961; checked by eye against the TeX: same-file section link: link text compared as words instead of §",
+  "epub_excerpt": "22 . 1 . 3 . 3 . 2 Effect of Readtable Case on the",
+  "tex_excerpt": "§",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "21.1.1.1.1",
+  "names": "Input, Output, and Bidirectional Streams",
+  "file": "text/21-streams/21.1-stream-concepts.xhtml",
+  "item": "concept:21.1.1.1.1 Input, Output, and Bidirectional Streams",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.964; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "Figure; Figure",
+  "tex_excerpt": "= ( ) ! InputStreamOps #1--Figure; = ( ) ! OutputStreamOps #1--Figure",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.1.5",
+  "names": "Specifiers for &aux variables",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.1.5 Specifiers for &aux variables",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.966; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "",
+  "tex_excerpt": "= ( ) ! 2R:&aux ! ! > 0 #1---",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "7.2",
+  "names": "Changing the Class of an Instance",
+  "file": "text/7-objects/7.2-changing-the-class-of-an-instance.xhtml",
+  "item": "concept:7.2 Changing the Class of an Instance",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.971; checked by eye against the TeX: TeX math ($..$, \\sub) vs rendered subscripts",
+  "epub_excerpt": "Cfrom; Cto; Cto",
+  "tex_excerpt": "C from; C to; C to",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.1.2",
+  "names": "Specifiers for optional parameters",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.1.2 Specifiers for optional parameters",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.971; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "",
+  "tex_excerpt": "= ( ) ! 2R:&optional ! ! > 0 #1---",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.1.1.2",
+  "names": "Examples of Potential Numbers",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.1.1.2 Examples of Potential Numbers",
+  "category": "conversion-error",
+  "summary": "section ratio 0.974; real defects: underscore (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.2",
+  "names": "Generic Function Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.2 Generic Function Lambda Lists",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.974; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser; figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "&key; ; ",
+  "tex_excerpt": "0=&key; 4pt; 2=02=2=00= 01 by -02=2 1000020=0pt0",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "21.1.3",
+  "names": "Stream Arguments to Standardized Functions",
+  "file": "text/21-streams/21.1-stream-concepts.xhtml",
+  "item": "concept:21.1.3 Stream Arguments to Standardized Functions",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.976; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "Figure",
+  "tex_excerpt": "= ( ) ! OpenOrClosedStreamOps #1--Figure",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.1.3",
+  "names": "Standard Characters",
+  "file": "text/2-syntax/2.1-character-syntax.xhtml",
+  "item": "concept:2.1.3 Standard Characters",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.977; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser; figure caption / \\Figref marker handled differently by the normaliser; table cells glued by the normaliser (no cell separator)",
+  "epub_excerpt": "Figure §; ID Glyph Description; ID Glyph Description",
+  "tex_excerpt": "; IDGlyphDescription; IDGlyphDescription",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "1.4.1.1",
+  "names": "Font Key",
+  "file": "text/1-introduction/1.4-definitions.xhtml",
+  "item": "concept:1.4.1.1 Font Key",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.978; checked by eye against the TeX: same-file section link: link text compared as words instead of §",
+  "epub_excerpt": "1 . 4 . 1 . 4 . 1 Case in Symbols",
+  "tex_excerpt": "§",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "17.1",
+  "names": "Sequence Concepts",
+  "file": "text/17-sequences/17.1-sequence-concepts.xhtml",
+  "item": "concept:17.1 Sequence Concepts",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.979; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "Figure",
+  "tex_excerpt": "= ( ) ! SequenceFunctions #1--Figure",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "21.1.2",
+  "names": "Stream Variables",
+  "file": "text/21-streams/21.1-stream-concepts.xhtml",
+  "item": "concept:21.1.2 Stream Variables",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.979; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "Figure",
+  "tex_excerpt": "= ( ) ! StandardizedStreamVars #1--Figure",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.2.1.1",
+  "names": "Dynamic Control of the Arrangement of Output",
+  "file": "text/22-printer/22.2-the-lisp-pretty-printer.xhtml",
+  "item": "concept:22.2.1.1 Dynamic Control of the Arrangement of Output",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.981; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "Figure §; ",
+  "tex_excerpt": "#1-- .; 1pc ( ) 0pt Figure ! 2 ! ! > 0 #1--- 1 ( )",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "4.3.5.1",
+  "names": "Topological Sorting",
+  "file": "text/4-types-and-classes/4.3-classes.xhtml",
+  "item": "concept:4.3.5.1 Topological Sorting",
+  "category": "uncertain",
+  "summary": "ratio 0.981; checked by eye against the TeX: math symbols: EPUB uses ASCII or Unicode relations/brackets (see pattern:math-ascii-relations)",
+  "epub_excerpt": "∈; < =; ∈",
+  "tex_excerpt": "; ; ",
+  "fix": null,
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "4.2.3",
+  "names": "Type Specifiers",
+  "file": "text/4-types-and-classes/4.2-types.xhtml",
+  "item": "concept:4.2.3 Type Specifiers",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.981; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "Figure; Figure; Figure",
+  "tex_excerpt": "= ( ) ! StandardizedAtomicTypeSpecs #1--Figure; = ( ) ! StandardizedCompoundTypeSpecNames #1--Figu; = ( ) ! TypesAndDeclsNames #1--Figure",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "23.1.2.1",
+  "names": "Examples of Effect of Readtable Case on the Lisp Reader",
+  "file": "text/23-reader/23.1-reader-concepts.xhtml",
+  "item": "concept:23.1.2.1 Examples of Effect of Readtable Case on the Lisp Reader",
+  "category": "conversion-error",
+  "summary": "section ratio 0.982; real defects: dash-read1, dash-read2 (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.3.3",
+  "names": "Tilde G: General Floating-Point",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.3.3 Tilde G: General Floating-Point",
+  "category": "conversion-error",
+  "summary": "section ratio 0.982; real defects: fmt-ee (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "1.4.1.2.3",
+  "names": "Additional Uses for Indirect Definitions in Modified BNF Syntax",
+  "file": "text/1-introduction/1.4-definitions.xhtml",
+  "item": "concept:1.4.1.2.3 Additional Uses for Indirect Definitions in Modified BNF Syntax",
+  "category": "conversion-error",
+  "summary": "section ratio 0.983; real defects: stardown-1, stardown-2, stardown-3 (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.2.1.2",
+  "names": "Format Directive Interface",
+  "file": "text/22-printer/22.2-the-lisp-pretty-printer.xhtml",
+  "item": "concept:22.2.1.2 Format Directive Interface",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.983; checked by eye against the TeX: \\formatOp macro: tilde/colon placement in the normaliser",
+  "epub_excerpt": "~:; ~_",
+  "tex_excerpt": ":; ~",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.1.2.1.2.1",
+  "names": "Special Forms",
+  "file": "text/3-evaluation-and-compilation/3.1-evaluation.xhtml",
+  "item": "concept:3.1.2.1.2.1 Special Forms",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.983; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "Figure",
+  "tex_excerpt": "= ( ) ! CLSpecialOps #1--Figure",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.9.2",
+  "names": "Tilde Circumflex: Escape Upward",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.9.2 Tilde Circumflex: Escape Upward",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.984; checked by eye against the TeX: \\lbr/\\rbr/\\{ \\} rendered by the normaliser as [ ] while EPUB has { }",
+  "epub_excerpt": "{; {; {",
+  "tex_excerpt": "[; [; [",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "9.1.1",
+  "names": "Condition Types",
+  "file": "text/9-conditions/9.1-condition-system-concepts.xhtml",
+  "item": "concept:9.1.1 Condition Types",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.984; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "Figure",
+  "tex_excerpt": "= ( ) ! StandardizedConditionTypes #1--Figure",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "4.3.5",
+  "names": "Determining the Class Precedence List",
+  "file": "text/4-types-and-classes/4.3-classes.xhtml",
+  "item": "concept:4.3.5 Determining the Class Precedence List",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.985; checked by eye against the TeX: TeX math ($..$, \\sub) vs rendered subscripts; math symbols: EPUB uses ASCII or Unicode relations/brackets (see pattern:math-ascii-relations)",
+  "epub_excerpt": "R= ⋃ Rc c ∈ SC; ∈",
+  "tex_excerpt": "R=c SCRc .; ",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.10",
+  "names": "Define-method-combination Arguments Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.10 Define-method-combination Arguments Lambda Lists",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.985; checked by eye against the TeX: figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "Figure §",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "7.6.6.4",
+  "names": "Built-in Method Combination Types",
+  "file": "text/7-objects/7.6-generic-functions-and-methods.xhtml",
+  "item": "concept:7.6.6.4 Built-in Method Combination Types",
+  "category": "uncertain",
+  "summary": "ratio 0.985; checked by eye against the TeX: figure caption / \\Figref marker handled differently by the normaliser; math symbols: EPUB uses ASCII or Unicode relations/brackets (see pattern:math-ascii-relations)",
+  "epub_excerpt": "Figure §; ⟨; an⟩",
+  "tex_excerpt": "; ; an",
+  "fix": null,
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.1",
+  "names": "Ordinary Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.1 Ordinary Lambda Lists",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.985; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser; figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "Figure §; &key; ",
+  "tex_excerpt": "; 0=&key; 4pt",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "7.2.2",
+  "names": "Initializing Newly Added Local Slots",
+  "file": "text/7-objects/7.2-changing-the-class-of-an-instance.xhtml",
+  "item": "concept:7.2.2 Initializing Newly Added Local Slots",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.986; checked by eye against the TeX: TeX math ($..$, \\sub) vs rendered subscripts",
+  "epub_excerpt": "Cfrom; Cto",
+  "tex_excerpt": "C from; C to",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "24.1.2.1.1",
+  "names": "Examples of Feature Expressions",
+  "file": "text/24-system-construction/24.1-system-construction-concepts.xhtml",
+  "item": "concept:24.1.2.1.1 Examples of Feature Expressions",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.986; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser; figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "Figure §; ; ",
+  "tex_excerpt": "; 2pt; 5pt",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "5.1.1.2.1",
+  "names": "Examples of Setf Expansions",
+  "file": "text/5-data-and-control-flow/5.1-generalized-reference.xhtml",
+  "item": "concept:5.1.1.2.1 Examples of Setf Expansions",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.986; checked by eye against the TeX: figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "Figure §; Figure §; Figure §",
+  "tex_excerpt": "; ; ",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.1.3.3.2.1",
+  "names": "Examples of Effect of Readtable Case on the Lisp Printer",
+  "file": "text/22-printer/22.1-the-lisp-printer.xhtml",
+  "item": "concept:22.1.3.3.2.1 Examples of Effect of Readtable Case on the Lisp Printer",
+  "category": "conversion-error",
+  "summary": "section ratio 0.986; real defects: dash-print1, dash-print2 (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "7.6.3",
+  "names": "Agreement on Parameter Specializers and Qualifiers",
+  "file": "text/7-objects/7.6-generic-functions-and-methods.xhtml",
+  "item": "concept:7.6.3 Agreement on Parameter Specializers and Qualifiers",
+  "category": "uncertain",
+  "summary": "ratio 0.987; checked by eye against the TeX: math symbols: EPUB uses ASCII or Unicode relations/brackets (see pattern:math-ascii-relations)",
+  "epub_excerpt": "< =; < =",
+  "tex_excerpt": "; ",
+  "fix": null,
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "22.1.1.1",
+  "names": "Multiple Possible Textual Representations",
+  "file": "text/22-printer/22.1-the-lisp-printer.xhtml",
+  "item": "concept:22.1.1.1 Multiple Possible Textual Representations",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.987; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "Figure",
+  "tex_excerpt": "= ( ) ! StdPrinterControlVars #1--Figure",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "1.4.1.4.3",
+  "names": "Use of the Dot Character",
+  "file": "text/1-introduction/1.4-definitions.xhtml",
+  "item": "concept:1.4.1.4.3 Use of the Dot Character",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.987; checked by eye against the TeX: \\char'056 = period",
+  "epub_excerpt": ".; .",
+  "tex_excerpt": "'056; '056",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.2.1.2",
+  "names": "Syntax of a Ratio",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.2.1.2 Syntax of a Ratio",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.988; checked by eye against the TeX: figure caption / \\Figref marker handled differently by the normaliser; period after \\Figref swallowed by the normaliser regex",
+  "epub_excerpt": "; Figure §",
+  "tex_excerpt": ".; ",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "1.4.1.2.1",
+  "names": "Splicing in Modified BNF Syntax",
+  "file": "text/1-introduction/1.4-definitions.xhtml",
+  "item": "concept:1.4.1.2.1 Splicing in Modified BNF Syntax",
+  "category": "uncertain",
+  "summary": "ratio 0.988; checked by eye against the TeX: math symbols: EPUB uses ASCII or Unicode relations/brackets (see pattern:math-ascii-relations)",
+  "epub_excerpt": "< =; < >; < =",
+  "tex_excerpt": "; ; ",
+  "fix": null,
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "3.4.9",
+  "names": "Define-modify-macro Lambda Lists",
+  "file": "text/3-evaluation-and-compilation/3.4-lambda-lists.xhtml",
+  "item": "concept:3.4.9 Define-modify-macro Lambda Lists",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.989; checked by eye against the TeX: figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "Figure §",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "4.3.1",
+  "names": "Introduction to Classes",
+  "file": "text/4-types-and-classes/4.3-classes.xhtml",
+  "item": "concept:4.3.1 Introduction to Classes",
+  "category": "uncertain",
+  "summary": "ratio 0.990; checked by eye against the TeX: TeX math ($..$, \\sub) vs rendered subscripts; math symbols: EPUB uses ASCII or Unicode relations/brackets (see pattern:math-ascii-relations)",
+  "epub_excerpt": "C; S; S1",
+  "tex_excerpt": "$C$; $S$; $S1$",
+  "fix": null,
+  "confidence": "medium",
+  "rollup": false
+ },
+ {
+  "secno": "7.1.4",
+  "names": "Rules for Initialization Arguments",
+  "file": "text/7-objects/7.1-object-creation-and-initialization.xhtml",
+  "item": "concept:7.1.4 Rules for Initialization Arguments",
+  "category": "conversion-error",
+  "summary": "section ratio 0.993; real defects: initialis (see the per-defect records); remaining ops are normaliser noise",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "7.6.1",
+  "names": "Introduction to Generic Functions",
+  "file": "text/7-objects/7.6-generic-functions-and-methods.xhtml",
+  "item": "concept:7.6.1 Introduction to Generic Functions",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.993; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "Figure",
+  "tex_excerpt": "= ( ) ! StdMethDefOps #1--Figure",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.2.1.1",
+  "names": "Syntax of an Integer",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.2.1.1 Syntax of an Integer",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.994; checked by eye against the TeX: period after \\Figref swallowed by the normaliser regex",
+  "epub_excerpt": "",
+  "tex_excerpt": ".",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.6.2",
+  "names": "Tilde Less-Than-Sign: Justification",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.6.2 Tilde Less-Than-Sign: Justification",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.994; checked by eye against the TeX: \\lbr/\\rbr/\\{ \\} rendered by the normaliser as [ ] while EPUB has { }",
+  "epub_excerpt": "{; }; {",
+  "tex_excerpt": "[; ]; [",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "4.3.7",
+  "names": "Integrating Types and Classes",
+  "file": "text/4-types-and-classes/4.3-classes.xhtml",
+  "item": "concept:4.3.7 Integrating Types and Classes",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.994; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser; TeX math ($..$, \\sub) vs rendered subscripts; period after \\Figref swallowed by the normaliser regex",
+  "epub_excerpt": "I; ; Figure",
+  "tex_excerpt": "$I$; .; = ( ) ! ClassTypeCorrespondence #1--Figure",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "1.4.1.4.4",
+  "names": "NIL",
+  "file": "text/1-introduction/1.4-definitions.xhtml",
+  "item": "concept:1.4.1.4.4 NIL",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.994; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser; figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "Figure §; ",
+  "tex_excerpt": "; 2pt 2pt",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.2",
+  "names": "Constructing Numbers from Tokens",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.2 Constructing Numbers from Tokens",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.994; checked by eye against the TeX: period after \\Figref swallowed by the normaliser regex",
+  "epub_excerpt": "",
+  "tex_excerpt": ".",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "9.1.2.1",
+  "names": "Condition Designators",
+  "file": "text/9-conditions/9.1-condition-system-concepts.xhtml",
+  "item": "concept:9.1.2.1 Condition Designators",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.995; checked by eye against the TeX: bullet item markers (<li>)",
+  "epub_excerpt": "; ; ",
+  "tex_excerpt": "•; •; •",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.4.8.11",
+  "names": "Sharpsign C",
+  "file": "text/2-syntax/2.4-standard-macro-characters.xhtml",
+  "item": "concept:2.4.8.11 Sharpsign C",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.995; checked by eye against the TeX: figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "Figure §",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.4.8.10",
+  "names": "Sharpsign R",
+  "file": "text/2-syntax/2.4-standard-macro-characters.xhtml",
+  "item": "concept:2.4.8.10 Sharpsign R",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.995; checked by eye against the TeX: figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "Figure §",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "1.2",
+  "names": "Organization of the Document",
+  "file": "text/1-introduction/1.2-organization-of-the-document.xhtml",
+  "item": "concept:1.2 Organization of the Document",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.995; checked by eye against the TeX: same-file section link: link text compared as words instead of §",
+  "epub_excerpt": "26 Glossary",
+  "tex_excerpt": "§",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "4.3.1.1",
+  "names": "Standard Metaclasses",
+  "file": "text/4-types-and-classes/4.3-classes.xhtml",
+  "item": "concept:4.3.1.1 Standard Metaclasses",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.996; checked by eye against the TeX: period after \\Figref swallowed by the normaliser regex",
+  "epub_excerpt": "",
+  "tex_excerpt": ".",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.4.5",
+  "names": "Double-Quote",
+  "file": "text/2-syntax/2.4-standard-macro-characters.xhtml",
+  "item": "concept:2.4.5 Double-Quote",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.996; checked by eye against the TeX: figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "Figure §",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "1.9",
+  "names": "Symbols in the COMMON-LISP Package",
+  "file": "text/1-introduction/1.9-symbols-in-the-common-lisp-package.xhtml",
+  "item": "concept:1.9 Symbols in the COMMON-LISP Package",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.996; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "",
+  "tex_excerpt": "= ( ) ! 2P:common-lisp ! ! > 0 #1---",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.3.4",
+  "names": "Tilde Dollarsign: Monetary Floating-Point",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.3.4 Tilde Dollarsign: Monetary Floating-Point",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.996; checked by eye against the TeX: \\minussign / \\partial / tie spacing in TeX math",
+  "epub_excerpt": "q=d+n-1",
+  "tex_excerpt": "q=d+n- 1",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.2.2",
+  "names": "Syntax of a Float",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.2.2 Syntax of a Float",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.996; checked by eye against the TeX: figure caption / \\Figref marker handled differently by the normaliser; period after \\Figref swallowed by the normaliser regex",
+  "epub_excerpt": "; Figure §",
+  "tex_excerpt": ".; ",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "7.5.3",
+  "names": "Inheritance of Slots and Slot Options",
+  "file": "text/7-objects/7.5-slots.xhtml",
+  "item": "concept:7.5.3 Inheritance of Slots and Slot Options",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.997; checked by eye against the TeX: TeX math ($..$, \\sub) vs rendered subscripts",
+  "epub_excerpt": "T1; Tn",
+  "tex_excerpt": "$T1$ $; $ $Tn$",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.4",
+  "names": "Symbols as Tokens",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.4 Symbols as Tokens",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.997; checked by eye against the TeX: figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "Figure §; Figure §",
+  "tex_excerpt": "; ",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.1.1",
+  "names": "Tilde C: Character",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.1.1 Tilde C: Character",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.997; checked by eye against the TeX: \\minussign / \\partial / tie spacing in TeX math",
+  "epub_excerpt": "Control-∂",
+  "tex_excerpt": "Control-",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "7.6.2",
+  "names": "Introduction to Methods",
+  "file": "text/7-objects/7.6-generic-functions-and-methods.xhtml",
+  "item": "concept:7.6.2 Introduction to Methods",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.997; checked by eye against the TeX: math symbols: EPUB uses ASCII or Unicode relations/brackets (see pattern:math-ascii-relations)",
+  "epub_excerpt": "⟨; An⟩; ⟨",
+  "tex_excerpt": "; An; ",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "20.1.3.1",
+  "names": "Examples of Truenames",
+  "file": "text/20-files/20.1-file-system-concepts.xhtml",
+  "item": "concept:20.1.3.1 Examples of Truenames",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.997; checked by eye against the TeX: \\kwdref{newest} -> :newest",
+  "epub_excerpt": ":newest",
+  "tex_excerpt": "newest",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.5",
+  "names": "Valid Patterns for Tokens",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.5 Valid Patterns for Tokens",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.998; checked by eye against the TeX: figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "Figure §",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.3.2",
+  "names": "Tilde E: Exponential Floating-Point",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.3.2 Tilde E: Exponential Floating-Point",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.998; checked by eye against the TeX: \\minussign / \\partial / tie spacing in TeX math",
+  "epub_excerpt": "d-k+1",
+  "tex_excerpt": "d- k+1",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3",
+  "names": "Formatted Output",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3 Formatted Output",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.999; checked by eye against the TeX: figure caption / \\Figref marker handled differently by the normaliser",
+  "epub_excerpt": "Figure §",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.3.5.2",
+  "names": "Tilde Less-Than-Sign: Logical Block",
+  "file": "text/22-printer/22.3-formatted-output.xhtml",
+  "item": "concept:22.3.5.2 Tilde Less-Than-Sign: Logical Block",
+  "category": "normaliser-noise",
+  "summary": "ratio 0.999; checked by eye against the TeX: \\NewlineChar renders as ~<Newline>; normaliser drops it",
+  "epub_excerpt": "~",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "6.1.1.7",
+  "names": "Destructuring",
+  "file": "text/6-iteration/6.1-the-loop-facility.xhtml",
+  "item": "concept:6.1.1.7 Destructuring",
+  "category": "normaliser-noise",
+  "summary": "ratio 1.000; checked by eye against the TeX: TeX layout/index macros (\\Vskip, \\halign preamble, \\idx) rendered as text by the normaliser",
+  "epub_excerpt": "",
+  "tex_excerpt": "-7pt",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "1.4.1.2.3",
+  "names": "Additional Uses for Indirect Definitions",
+  "file": "text/1-introduction/1.4-definitions.xhtml",
+  "item": "concept:1.4.1.2.3 Additional Uses for Indirect Definitions",
+  "category": "conversion-error",
+  "summary": "ratio 0.983; \\stardown lost its arrow x3 (see stardown-1..3 records)",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: alist",
+  "file": "text/26-glossary/a.xhtml",
+  "item": "concept:26.1 glossary:alist",
+  "category": "normaliser-noise",
+  "summary": "pronunciation respelling (TeX accent macros, \\schwa = epsilon as in the book's own key)",
+  "epub_excerpt": "ˈāˌlist",
+  "tex_excerpt": "alist",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: bounding index",
+  "file": "text/26-glossary/b.xhtml",
+  "item": "concept:26.1 glossary:bounding index",
+  "category": "uncertain",
+  "summary": "math \"0 <= istart <= iend <= n\" (ASCII <=) -- see pattern:math-ascii-relations",
+  "epub_excerpt": "< =; < =; < =",
+  "tex_excerpt": "; ; ",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: cadr",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:cadr",
+  "category": "normaliser-noise",
+  "summary": "pronunciation respelling (TeX accent macros, \\schwa = epsilon as in the book's own key)",
+  "epub_excerpt": "ˈkaˌdεr",
+  "tex_excerpt": "kadə r",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: cddr",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:cddr",
+  "category": "normaliser-noise",
+  "summary": "pronunciation respelling (TeX accent macros, \\schwa = epsilon as in the book's own key)",
+  "epub_excerpt": "ˈku̇dεˌdεr; ˈkεˌdu̇dεr",
+  "tex_excerpt": "kudə də r; kədudə r",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: cdr",
+  "file": "text/26-glossary/c.xhtml",
+  "item": "concept:26.1 glossary:cdr",
+  "category": "normaliser-noise",
+  "summary": "pronunciation respelling (TeX accent macros, \\schwa = epsilon as in the book's own key)",
+  "epub_excerpt": "ˈku̇ˌdεr",
+  "tex_excerpt": "kudə r",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: fbound",
+  "file": "text/26-glossary/f.xhtml",
+  "item": "concept:26.1 glossary:fbound",
+  "category": "normaliser-noise",
+  "summary": "pronunciation respelling (TeX accent macros, \\schwa = epsilon as in the book's own key)",
+  "epub_excerpt": "ˈefˌbau̇nd",
+  "tex_excerpt": "efbaund",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: funbound",
+  "file": "text/26-glossary/f.xhtml",
+  "item": "concept:26.1 glossary:funbound",
+  "category": "normaliser-noise",
+  "summary": "pronunciation respelling (TeX accent macros, \\schwa = epsilon as in the book's own key)",
+  "epub_excerpt": "ˈefunbau̇nd",
+  "tex_excerpt": "efunbaund",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: I/O customization variable",
+  "file": "text/26-glossary/i.xhtml",
+  "item": "concept:26.1 glossary:I/O customization variable",
+  "category": "normaliser-noise",
+  "summary": "figure caption from \\showthree",
+  "epub_excerpt": "Figure §",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: plist",
+  "file": "text/26-glossary/p.xhtml",
+  "item": "concept:26.1 glossary:plist",
+  "category": "normaliser-noise",
+  "summary": "pronunciation respelling (TeX accent macros, \\schwa = epsilon as in the book's own key)",
+  "epub_excerpt": "ˈpēˌlist",
+  "tex_excerpt": "pelist",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "glossary: I/O customization variable (figure)",
+  "file": "text/26-glossary/i.xhtml",
+  "item": "concept:26.1 glossary:I/O customization variable",
+  "category": "original-erratum",
+  "summary": "Figure 26-2 lists \"query-io*\" (leading * missing: should be *query-io*); the TeX has the same slip (\\showthree{...}{*debug-io*&*error-io*&query-io*\\cr ...})",
+  "epub_excerpt": "<td>query-io*</td>",
+  "tex_excerpt": "*debug-io*&*error-io*&query-io*\\cr",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "2.3.4",
+  "names": "doubled word",
+  "file": "text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "item": "concept:2.3.4 doubled-word",
+  "category": "original-erratum",
+  "summary": "\"in the the keyword package\": TeX has \"in the \\thepackage{keyword}\" and \\thepackage already starts with \"the\"",
+  "epub_excerpt": "",
+  "tex_excerpt": "a \\term{symbol} in the \\thepackage{keyword}",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "22.2.1.3",
+  "names": "doubled word",
+  "file": "text/22-printer/22.2-the-lisp-pretty-printer.xhtml",
+  "item": "concept:22.2.1.3 doubled-word",
+  "category": "original-erratum",
+  "summary": "\"returned by the the formatter macro\": TeX \"the \\themacro{formatter}\" (\\themacro includes \"the\")",
+  "epub_excerpt": "",
+  "tex_excerpt": "returned by the \\themacro{formatter}",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "A.1.1",
+  "names": "doubled word",
+  "file": "text/A-appendix/A.1-removed-language-features.xhtml",
+  "item": "concept:A.1.1 doubled-word",
+  "category": "original-erratum",
+  "summary": "\"may not appear in the the common-lisp package\": TeX \"the \\thepackage{common-lisp}\"",
+  "epub_excerpt": "",
+  "tex_excerpt": "may not appear in the \\thepackage{common-lisp}",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "doubled word",
+  "file": "text/26-glossary/e.xhtml",
+  "item": "concept:26.1 doubled-word",
+  "category": "original-erratum",
+  "summary": "\"displayed width of of a letter M\" (glossary: em)",
+  "epub_excerpt": "",
+  "tex_excerpt": "equal to the displayed width of of a letter ``M''",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "26.1",
+  "names": "doubled word",
+  "file": "text/26-glossary/s.xhtml",
+  "item": "concept:26.1 doubled-word",
+  "category": "original-erratum",
+  "summary": "\"where the the highest safety level\" (glossary: safe)",
+  "epub_excerpt": "",
+  "tex_excerpt": "where the the highest",
+  "fix": null,
+  "confidence": "high",
+  "rollup": false
+ },
+ {
+  "secno": "1.4",
+  "names": "Notation (math)",
+  "file": "text/1-introduction/1.4-definitions.xhtml",
+  "item": "pattern:math-ascii-relations",
+  "category": "uncertain",
+  "summary": "Math relations are rendered as ASCII in some sections (&lt;= for \\leq, &lt;&gt; for \\neq) but as Unicode in others (4.3.5/4.3.5.1: ∈ ⋃ ≥, 7.6.x ⟨ ⟩). Occurrences: 1.4.1.2.1 (4), 4.3.1 (3), 4.3.5.1 (3), 7.6.3 (1), 7.6.6.4 (1), glossary \"bounding index\" (1), plus dictionary array (15.2.1) and format (22.3.x). Suggest ≤ ≠ throughout; no unique mechanical fix proposed (policy decision).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "medium",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:1 apostrophe-pair",
+  "category": "conversion-error",
+  "summary": "non-dict TeX 2 code sites; EPUB correct 0; defective 2 (2.4.3.1); unmapped 0. Prose ``..'' (≈405 pairs) all render as straight quotes, equal on both sides. Dictionary: 6 TeX code sites (audit flags 4 entries; agents have them).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:2 dollar",
+  "category": "normaliser-noise",
+  "summary": "non-dict TeX 23 \\$ (all in format directives, 22.3, tokens, syntax figures, glossary c): 23 correct, 0 defective; no bare $ in non-dict code; no stray $ in non-dict EPUB. Dictionary: 5 \\$ + 27 math/code $ sites (audit flags 11 entries); EPUB still shows `$|$` in 3.8.9/3.8.10 and `var$<sub>i</sub>$` in 3.8.20 (leads).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:3 dummy",
+  "category": "normaliser-noise",
+  "summary": "non-dict 0 TeX occurrences (\\dummy only appears in setup macros). Dictionary: 31 lines (let, flet, unwind-protect, catch, mapc var); EPUB still has \"-function\"/\"'-tag\" in 5.3.6, 5.3.18, 5.3.29, 5.3.23 (leads).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:4 down-arrow",
+  "category": "conversion-error",
+  "summary": "non-dict TeX 65 \\down/\\stardown sites: 62 correct, 3 defective (1.4.1.2.3 case/ccase/ecase), 0 unmapped. Dictionary 92 sites (audit flags 14 entries).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:5 raw-math",
+  "category": "normaliser-noise",
+  "summary": "non-dict: no raw $ , ^{ , _{ residue in EPUB; ~655 TeX math chunks render as <i>/<sub>; side finding: ASCII relations (see pattern:math-ascii-relations). Dictionary: 355 chunks; residue in 3.8.9, 3.8.10, 3.8.20 (leads).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:6 backslash-chars",
+  "category": "normaliser-noise",
+  "summary": "non-dict TeX: 0 `#\\/` or `\\alfa`; ~100 `#\\\\x` character-name forms: all correct. Dictionary: 5 lines (alpha-char-p #\\alfa still `#\\\\alfa` in EPUB 13.2.8; leads).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:7 chapter-ref",
+  "category": "normaliser-noise",
+  "summary": "non-dict TeX 12 \\chapref/\\seechapter: 12 correct (render \"Chapter <a>N Name</a>\"), 0 defective; dictionary 11 (audit flags 5 See Also sections).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:8 bnf-brackets",
+  "category": "conversion-error",
+  "summary": "non-dict BNFs scanned (1.4, 2.3.1, 3.4.x, 19.3.1): 2 misplaced/missing brackets found (3.4.3 missing }, 3.4.4 restvar ] misplaced) plus 3.4.4 reqvars missing * and 3.4.5 lost inner {var | ↓lambda-list}; all with fixes. Dictionary: agents have `real`.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:glossary-example-quotes",
+  "category": "conversion-error",
+  "summary": "NEW. All 92 \\gexample{...} sentences in the glossary (+ the intro example) lost their quotation marks (TeX {``#1''}). 93 fixes (one per example) in the glossary files.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:tilde-tie-before-closing-brace",
+  "category": "conversion-error",
+  "summary": "NEW. In prose \\f{...} spans the TeX \"~\" (a literal tilde) before a closing \\} / \\rbr became U+00A0 so the directives print as \"~{str }\", \"~:{str }\", \"~@{str }\", \"~:@{str }\"; also \"F~ee@T\" in ~G. 8 sites in 22.3.7.4/22.3.3.3, all fixed. Dictionary has no instance (checked every NBSP inside <code>/<pre>).",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:em-dash-literal",
+  "category": "conversion-error",
+  "summary": "NEW. TeX --- (em dash) left as the three characters \"---\" in two tables (2.3.1 Figure 2-9 legend x6; 3.2.3.1 Figure 3-7 x9 cells); elsewhere the book has 2568 real em dashes.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:hyphen-run-mangled",
+  "category": "conversion-error",
+  "summary": "NEW. Rulers made of hyphens in example code: the last 3 hyphens of each run were replaced by \" - \" (22.1.3.3.2.1 x2, 23.1.2.1 x2, 12.2.60 boole x2 [dictionary]). 6 fixes.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:figure-cell-loss",
+  "category": "conversion-error",
+  "summary": "NEW. Table cells dropped/swapped in figures: 2.1.4.2 (\":\" cell lost; \"[\" and \"]\" swapped), 2.3.1.1.2 (\"_\" became \"-\"). 4 fixes.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:local-macro-ignored-in-bnf",
+  "category": "conversion-error",
+  "summary": "NEW. 3.4.4/3.4.5: BNF macros redefined locally (\\TVar = {var | ↓pattern}) were applied in some places and not others (3.4.5 optvars/keyvars) and \\star dropped for reqvars. See fixes macro-* / destr-*.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:spelling-initialisation",
+  "category": "conversion-error",
+  "summary": "NEW (single instance). 7.1.4 table header: \"Initialisation\" for TeX \"Initialization\".",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ },
+ {
+  "secno": "-",
+  "names": "-",
+  "file": "-",
+  "item": "pattern:doubled-words-from-the-macros",
+  "category": "original-erratum",
+  "summary": "TeX writes \"the \\thepackage{..}\" / \"the \\themacro{..}\" whose macros already contain \"the\": 3 sites (2.3.4, 22.2.1.3, A.1.1) plus plain-text doublings (\"of of\" glossary em, \"the the\" glossary safe, and ~8 dictionary entries). EPUB reproduces them.",
+  "epub_excerpt": "",
+  "tex_excerpt": "",
+  "fix": null,
+  "confidence": "high",
+  "rollup": true
+ }
+]

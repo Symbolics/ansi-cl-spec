@@ -1,0 +1,587 @@
+[
+ {
+  "secno": "3.8.3",
+  "names": "compile",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.3-compile.xhtml",
+  "item": "example:1:109",
+  "category": "implementation-difference",
+  "summary": "(compile 'foo) returns FOO, NIL, NIL in SBCL; book shows only the primary value FOO. EPUB equals TeX.",
+  "epub_excerpt": "(compile 'foo) →  FOO",
+  "tex_excerpt": "(compile 'foo) \\EV FOO",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.5",
+  "names": "eval-when",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.5-eval-when.xhtml",
+  "item": "example:1:90",
+  "category": "implementation-difference",
+  "summary": "SBCL signals STANDARD-READTABLE-MODIFIED-ERROR (package/readtable lock) on set-macro-character in the standard readtable; example text equals TeX.",
+  "epub_excerpt": "(set-macro-character #\\$ ...) →  T",
+  "tex_excerpt": "(set-macro-character #\\$ ...) \\EV T",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.7",
+  "names": "quote",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.7-quote.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "Two lines of the Examples lost their quote characters: ''a became \"a and '''a became \"'a.",
+  "epub_excerpt": "\"a → (QUOTE A) / \"'a → (QUOTE (QUOTE A))",
+  "tex_excerpt": "''a \\EV (QUOTE A) / '''a \\EV (QUOTE (QUOTE A))",
+  "fix": {
+   "old": "\n \"a → (QUOTE A)",
+   "new": "\n ''a → (QUOTE A)"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.7",
+  "names": "quote",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.7-quote.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "(second occurrence, same defect) Two lines of the Examples lost their quote characters: ''a became \"a and '''a became \"'a.",
+  "epub_excerpt": "\"a → (QUOTE A) / \"'a → (QUOTE (QUOTE A))",
+  "tex_excerpt": "''a \\EV (QUOTE A) / '''a \\EV (QUOTE (QUOTE A))",
+  "fix": {
+   "old": "\n \"'a → (QUOTE (QUOTE A))",
+   "new": "\n '''a → (QUOTE (QUOTE A))"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.7",
+  "names": "quote",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.7-quote.xhtml",
+  "item": "example:1:40",
+  "category": "conversion-error",
+  "summary": "Mismatch is caused by the same ''a -> \"a corruption (form read as \"a ... ; actual A). Same fix as text:Examples.",
+  "epub_excerpt": "\"a → (QUOTE A)\n\"'a",
+  "tex_excerpt": "''a \\EV (QUOTE A)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.9",
+  "names": "define-compiler-macro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.9-define-compiler-macro.xhtml",
+  "item": "text:Syntax",
+  "category": "conversion-error",
+  "summary": "Stray TeX math delimiters around the bar: \"$|$\" instead of \"|\" (other entries, e.g. defun, use <i>|</i>).",
+  "epub_excerpt": "[[{<i>declaration</i>}* $|$ <i>documentation</i>]]",
+  "tex_excerpt": "{\\DeclsAndDoc} = \\interleave{\\starparam{declaration} $\\vert$ \\param{documentation}}",
+  "fix": {
+   "old": "[[{<i>declaration</i>}* $|$ <i>documentation</i>]]",
+   "new": "[[{<i>declaration</i>}* <i>|</i> <i>documentation</i>]]"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.9",
+  "names": "define-compiler-macro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.9-define-compiler-macro.xhtml",
+  "item": "example:1:147",
+  "category": "implementation-difference",
+  "summary": "SBCL package lock violation (SB-DEBUG:ARG bound as local function via FLET ARG); example text equals TeX (ratio 1.0). Gensym names also differ.",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.10",
+  "names": "defmacro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.10-defmacro.xhtml",
+  "item": "text:Syntax",
+  "category": "conversion-error",
+  "summary": "Same stray \"$|$\" as in define-compiler-macro.",
+  "epub_excerpt": "[[{<i>declaration</i>}* $|$ <i>documentation</i>]]",
+  "tex_excerpt": "{\\DeclsAndDoc}",
+  "fix": {
+   "old": "[[{<i>declaration</i>}* $|$ <i>documentation</i>]]",
+   "new": "[[{<i>declaration</i>}* <i>|</i> <i>documentation</i>]]"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.10",
+  "names": "defmacro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.10-defmacro.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "In the dm2b definition the double backquote was turned into a single double-quote: TeX is ``(,',form ,,a ...); EPUB has \"(,',form ... which also unbalances the string. (The reported deletion of \"Exceptional Situations: .\" is normaliser noise: the TeX section is \\none and the EPUB omits empty sections by convention.)",
+  "epub_excerpt": "\"(,',form ,,a ,',b ,',(macroexpand c env) ,',d ,',e ,',f))",
+  "tex_excerpt": "``(,',form ,,a ,',b ,',(macroexpand c env) ,',d ,',e ,',f))",
+  "fix": {
+   "old": "\n   \"(,',form ,,a",
+   "new": "\n   ``(,',form ,,a"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.10",
+  "names": "defmacro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.10-defmacro.xhtml",
+  "item": "unparsed:1",
+  "category": "conversion-error",
+  "summary": "Unbalanced form is caused by the \"``\" -> \"\\\"\" corruption in dm2b. Same fix as text:Examples.",
+  "epub_excerpt": "\"(,',form ,,a ...",
+  "tex_excerpt": "``(,',form ,,a ...",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.10",
+  "names": "defmacro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.10-defmacro.xhtml",
+  "item": "example:6:164",
+  "category": "harness-limitation",
+  "summary": "Illustrative prose example (loser ... pool) with an unbound variable; not meant to be evaluated. Text equals TeX.",
+  "epub_excerpt": "(loser (car pool) ((+ x 1)))",
+  "tex_excerpt": "(loser (car pool) ((+ x 1)))",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.10",
+  "names": "defmacro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.10-defmacro.xhtml",
+  "item": "example:7:169",
+  "category": "implementation-difference",
+  "summary": "SBCL returns the secondary value T from macroexpand, the book shows only the primary value. EPUB equals TeX.",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.10",
+  "names": "defmacro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.10-defmacro.xhtml",
+  "item": "example:7:174",
+  "category": "implementation-difference",
+  "summary": "SBCL returns the secondary value T from macroexpand, the book shows only the primary value. EPUB equals TeX.",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.10",
+  "names": "defmacro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.10-defmacro.xhtml",
+  "item": "example:7:175",
+  "category": "implementation-difference",
+  "summary": "SBCL returns the secondary value T from macroexpand, the book shows only the primary value. EPUB equals TeX.",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.10",
+  "names": "defmacro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.10-defmacro.xhtml",
+  "item": "example:8:180",
+  "category": "implementation-difference",
+  "summary": "SBCL returns the secondary value T from macroexpand, the book shows only the primary value. EPUB equals TeX.",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.10",
+  "names": "defmacro",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.10-defmacro.xhtml",
+  "item": "example:8:194",
+  "category": "conversion-error",
+  "summary": "Error \"illegal function call (((SEGUNDO X2) X3 X4))\" arises because dm2b was never defined (its defmacro is unbalanced by the \"``\" -> \"\\\"\" corruption). Same fix as text:Examples.",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.11",
+  "names": "macro-function",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.11-macro-function.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "In the macrolet example, ''yes and ''no became \"yes and \"no (unbalanced strings; the example is meant to return the symbols YES and NO).",
+  "epub_excerpt": "\"yes\n\"no",
+  "tex_excerpt": "''yes\n''no",
+  "fix": {
+   "old": "\n                  \"yes\n                  \"no)))",
+   "new": "\n                  ''yes\n                  ''no)))"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.11",
+  "names": "macro-function",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.11-macro-function.xhtml",
+  "item": "example:2:70",
+  "category": "conversion-error",
+  "summary": "Unbalanced string from '' -> \" corruption makes the example read wrongly (NO unbound). Same fix as text:Examples.",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.12",
+  "names": "macroexpand, macroexpand-1",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.12-macroexpand.xhtml",
+  "item": "example:1:102",
+  "category": "original-erratum",
+  "summary": "TeX itself says (defmacro delta (x y) ...) \\EV EPSILON, but defmacro returns the name DELTA. The EPUB matches the TeX. (Cf. the later example where beta is shadowed with epsilon; probably the draft meant DELTA.)",
+  "epub_excerpt": "(defmacro delta (x y) `(gamma ,x ,y)) →  EPSILON",
+  "tex_excerpt": "(defmacro delta (x y) `(gamma ,x ,y)) \\EV EPSILON",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "3.8.14",
+  "names": "symbol-macrolet",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.14-symbol-macrolet.xhtml",
+  "item": "example:1:97",
+  "category": "harness-limitation",
+  "summary": "\"NOT→(foo foo)\" is the \\NV notation (not-arrow), parsed as a form NOT. EPUB equals TeX \\NV rendering.",
+  "epub_excerpt": "NOT→(foo foo)",
+  "tex_excerpt": "\\NV (foo foo)",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.15",
+  "names": "*macroexpand-hook*",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.15-macroexpand-hook.xhtml",
+  "item": "example:1:54",
+  "category": "original-erratum",
+  "summary": "Book shows output \"Now expanding (MACHOOK 1 2)\" but the hook's format string is \"Now expanding: ~S~%\" (colon). EPUB matches TeX; the draft itself is inconsistent. Value T vs \"true\" is only notation.",
+  "epub_excerpt": "▷ Now expanding (MACHOOK 1 2)",
+  "tex_excerpt": "\\OUT Now expanding (MACHOOK 1 2)",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "3.8.20",
+  "names": "dynamic-extent",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.20-dynamic-extent.xhtml",
+  "item": "text:Description",
+  "category": "conversion-error",
+  "summary": "Raw TeX math markup left in: var$<sub>i</sub>$, v$<sub>ij</sub>$, x$<sub>ijk</sub>$, fn$<sub>i</sub>$ (12 occurrences). TeX is \\param{var$\\sub{i}$} etc. Fix: drop the $ signs, leaving <i>var<sub>i</sub></i> (as used elsewhere, e.g. <i>O<sub>i</sub></i>). One fix replaces the whole first paragraph.",
+  "epub_excerpt": "var$<sub>i</sub>$ ... v$<sub>ij</sub>$ ... x$<sub>ijk</sub>$ ... fn$<sub>i</sub>$",
+  "tex_excerpt": "\\param{var$\\sub{i}$} \\param{v$\\sub{ij}$} \\param{x$\\sub{ijk}$} \\param{fn$\\sub{i}$}",
+  "fix": {
+   "old": "In some containing <i><a href=\"../26-glossary/f.xhtml#form\">form</a></i>, <i>F</i>, this declaration\nasserts for each <i>var$<sub>i</sub>$</i> (which need not be bound by <i>F</i>),\nand for each <i><a href=\"../26-glossary/v.xhtml#value\">value</a></i> <i>v$<sub>ij</sub>$</i> that <i>var$<sub>i</sub>$</i> takes on,\nand for each <i><a href=\"../26-glossary/o.xhtml#object\">object</a></i> <i>x$<sub>ijk</sub>$</i> that \n\n\nis\nan <i><a href=\"../26-glossary/o.xhtml#otherwiseinaccessiblepart\">otherwise inaccessible part</a></i> of <i>v$<sub>ij</sub>$</i> at any time when\n\n\n<i>v$<sub>ij</sub>$</i>\nbecomes the value of <i>var$<sub>i</sub>$</i>,\nthat just after the execution of <i>F</i> terminates, \n<i>x$<sub>ijk</sub>$</i> is either <i><a href=\"../26-glossary/i.xhtml#inaccessible\">inaccessible</a></i>\n(if <i>F</i> established a <i><a href=\"../26-glossary/b.xhtml#binding\">binding</a></i> for <i>var$<sub>i</sub>$</i>)\nor still an <i><a href=\"../26-glossary/o.xhtml#otherwiseinaccessiblepart\">otherwise inaccessible part</a></i> of the current value of \n<i>var$<sub>i</sub>$</i> (if <i>F</i> did not establish a <i><a href=\"../26-glossary/b.xhtml#binding\">binding</a></i> \nfor <i>var$<sub>i</sub>$</i>).\n\n\n\nThe same relation holds for each <i>fn$<sub>i</sub>$</i>, \nexcept that the <i><a href=\"../26-glossary/b.xhtml#binding\">bindings</a></i> are in the <i><a href=\"../26-glossary/f.xhtml#function\">function</a></i> <i><a href=\"../26-glossary/n.xhtml#namespace\">namespace</a></i>.\n\n\n",
+   "new": "In some containing <i><a href=\"../26-glossary/f.xhtml#form\">form</a></i>, <i>F</i>, this declaration\nasserts for each <i>var<sub>i</sub></i> (which need not be bound by <i>F</i>),\nand for each <i><a href=\"../26-glossary/v.xhtml#value\">value</a></i> <i>v<sub>ij</sub></i> that <i>var<sub>i</sub></i> takes on,\nand for each <i><a href=\"../26-glossary/o.xhtml#object\">object</a></i> <i>x<sub>ijk</sub></i> that \n\n\nis\nan <i><a href=\"../26-glossary/o.xhtml#otherwiseinaccessiblepart\">otherwise inaccessible part</a></i> of <i>v<sub>ij</sub></i> at any time when\n\n\n<i>v<sub>ij</sub></i>\nbecomes the value of <i>var<sub>i</sub></i>,\nthat just after the execution of <i>F</i> terminates, \n<i>x<sub>ijk</sub></i> is either <i><a href=\"../26-glossary/i.xhtml#inaccessible\">inaccessible</a></i>\n(if <i>F</i> established a <i><a href=\"../26-glossary/b.xhtml#binding\">binding</a></i> for <i>var<sub>i</sub></i>)\nor still an <i><a href=\"../26-glossary/o.xhtml#otherwiseinaccessiblepart\">otherwise inaccessible part</a></i> of the current value of \n<i>var<sub>i</sub></i> (if <i>F</i> did not establish a <i><a href=\"../26-glossary/b.xhtml#binding\">binding</a></i> \nfor <i>var<sub>i</sub></i>).\n\n\n\nThe same relation holds for each <i>fn<sub>i</sub></i>, \nexcept that the <i><a href=\"../26-glossary/b.xhtml#binding\">bindings</a></i> are in the <i><a href=\"../26-glossary/f.xhtml#function\">function</a></i> <i><a href=\"../26-glossary/n.xhtml#namespace\">namespace</a></i>.\n\n\n"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.20",
+  "names": "dynamic-extent",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.20-dynamic-extent.xhtml",
+  "item": "example:6:192",
+  "category": "original-erratum",
+  "summary": "Example uses STRING-SEARCH, which is not a Common Lisp function (undefined in SBCL). EPUB matches TeX.",
+  "epub_excerpt": "(string-search \"COMMON-LISP\" name)",
+  "tex_excerpt": "(string-search \"COMMON-LISP\" name)",
+  "fix": null,
+  "confidence": "medium"
+ },
+ {
+  "secno": "3.8.21",
+  "names": "type",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.21-type.xhtml",
+  "item": "example:2:187",
+  "category": "implementation-difference",
+  "summary": "SBCL checks the declared (signed-byte 5) type and signals a type error at runtime; the draft deliberately says the consequences are undefined/restrictive for such code. Text equals TeX.",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.21",
+  "names": "type",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.21-type.xhtml",
+  "item": "example:2:188",
+  "category": "implementation-difference",
+  "summary": "SBCL checks the declared (signed-byte 5) type and signals a type error at runtime; the draft deliberately says the consequences are undefined/restrictive for such code. Text equals TeX.",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.30",
+  "names": "constantp",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.30-constantp.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "(constantp ''temp)) became (constantp \"temp)), which unbalances the string and loses the quoted-quote form. NOTE: the TeX itself has a stray extra \")\" after ''temp (an original typo), left as is.",
+  "epub_excerpt": "(constantp \"temp)) → true",
+  "tex_excerpt": "(constantp ''temp)) \\EV true",
+  "fix": {
+   "old": "(constantp \"temp)) → ",
+   "new": "(constantp ''temp)) → "
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "3.8.30",
+  "names": "constantp",
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.30-constantp.xhtml",
+  "item": "unparsed:1",
+  "category": "conversion-error",
+  "summary": "Unbalanced form caused by the '' -> \" corruption (the TeX stray extra paren is also present, an original erratum). Same fix as text:Examples.",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.24",
+  "names": "coerce",
+  "file": "OEBPS/text/4-types-and-classes/4.4.24-coerce.xhtml",
+  "item": "example:2:158",
+  "category": "harness-limitation",
+  "summary": "The paragraph says \"All the following forms should signal an error\"; SBCL signals as expected. Text equals TeX (note the TeX has #\\\\a, rendered #\\a).",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.24",
+  "names": "coerce",
+  "file": "OEBPS/text/4-types-and-classes/4.4.24-coerce.xhtml",
+  "item": "example:2:159",
+  "category": "harness-limitation",
+  "summary": "The paragraph says \"All the following forms should signal an error\"; SBCL signals as expected. Text equals TeX (note the TeX has #\\\\a, rendered #\\a).",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.24",
+  "names": "coerce",
+  "file": "OEBPS/text/4-types-and-classes/4.4.24-coerce.xhtml",
+  "item": "example:2:160",
+  "category": "harness-limitation",
+  "summary": "The paragraph says \"All the following forms should signal an error\"; SBCL signals as expected. Text equals TeX (note the TeX has #\\\\a, rendered #\\a).",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.24",
+  "names": "coerce",
+  "file": "OEBPS/text/4-types-and-classes/4.4.24-coerce.xhtml",
+  "item": "example:2:161",
+  "category": "harness-limitation",
+  "summary": "The paragraph says \"All the following forms should signal an error\"; SBCL signals as expected. Text equals TeX (note the TeX has #\\\\a, rendered #\\a).",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.24",
+  "names": "coerce",
+  "file": "OEBPS/text/4-types-and-classes/4.4.24-coerce.xhtml",
+  "item": "example:2:162",
+  "category": "harness-limitation",
+  "summary": "The paragraph says \"All the following forms should signal an error\"; SBCL signals as expected. Text equals TeX (note the TeX has #\\\\a, rendered #\\a).",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.24",
+  "names": "coerce",
+  "file": "OEBPS/text/4-types-and-classes/4.4.24-coerce.xhtml",
+  "item": "example:2:163",
+  "category": "harness-limitation",
+  "summary": "The paragraph says \"All the following forms should signal an error\"; SBCL signals as expected. Text equals TeX (note the TeX has #\\\\a, rendered #\\a).",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.24",
+  "names": "coerce",
+  "file": "OEBPS/text/4-types-and-classes/4.4.24-coerce.xhtml",
+  "item": "example:2:164",
+  "category": "harness-limitation",
+  "summary": "The paragraph says \"All the following forms should signal an error\"; SBCL signals as expected. Text equals TeX (note the TeX has #\\\\a, rendered #\\a).",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.26",
+  "names": "subtypep",
+  "file": "OEBPS/text/4-types-and-classes/4.4.26-subtypep.xhtml",
+  "item": "text:Description",
+  "category": "conversion-error",
+  "summary": "Lost words \"the intersection of\": TeX reads \"For all T1 and T2 other than *, the intersection of (array T1) and (array T2) is the empty set ...\"; EPUB says \"(array T1) and (array T2) is the empty set\". (TeX also contains a commented-out alternative \"the specified intersection for ...\" which is not in the text; only one variant is live, and the EPUB dropped part of it.)",
+  "epub_excerpt": "For all T1 and T2 other than *, (array T1) and (array T2) is the empty set",
+  "tex_excerpt": "the intersection of (array T1) and (array T2) is the empty set",
+  "fix": {
+   "old": "<code>*</code>, \n    <code>(array <i>T1</i>)</code>\nand <code>(array <i>T2</i>)</code> is the empty set",
+   "new": "<code>*</code>, \nthe intersection of\n    <code>(array <i>T1</i>)</code>\nand <code>(array <i>T2</i>)</code> is the empty set"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.26",
+  "names": "subtypep",
+  "file": "OEBPS/text/4-types-and-classes/4.4.26-subtypep.xhtml",
+  "item": "text:Examples",
+  "category": "conversion-error",
+  "summary": "The predicate name \"dummy\" was lost: (satisfies ) instead of (satisfies dummy).",
+  "epub_excerpt": "(subtypep '(satisfies ) nil)",
+  "tex_excerpt": "(subtypep '(satisfies dummy) nil)",
+  "fix": {
+   "old": "(subtypep '(satisfies ) nil)",
+   "new": "(subtypep '(satisfies dummy) nil)"
+  },
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.26",
+  "names": "subtypep",
+  "file": "OEBPS/text/4-types-and-classes/4.4.26-subtypep.xhtml",
+  "item": "example:1:221",
+  "category": "conversion-error",
+  "summary": "Error (destructuring-bind: too few elements in (SATISFIES)) is caused by the lost \"dummy\". Same fix as text:Examples. (After the fix SBCL will still likely complain about the undefined predicate or return NIL, NIL; that is an implementation matter.)",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.26",
+  "names": "subtypep",
+  "file": "OEBPS/text/4-types-and-classes/4.4.26-subtypep.xhtml",
+  "item": "example:3:260",
+  "category": "harness-limitation",
+  "summary": "<aet-x>/<aet-y> are placeholders for implementation-specific element types (the text says \"Let <aet-x> and <aet-y> be ...\"), not real types. EPUB equals TeX.",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.26",
+  "names": "subtypep",
+  "file": "OEBPS/text/4-types-and-classes/4.4.26-subtypep.xhtml",
+  "item": "example:3:261",
+  "category": "harness-limitation",
+  "summary": "<aet-x>/<aet-y> are placeholders for implementation-specific element types (the text says \"Let <aet-x> and <aet-y> be ...\"), not real types. EPUB equals TeX.",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.27",
+  "names": "type-of",
+  "file": "OEBPS/text/4-types-and-classes/4.4.27-type-of.xhtml",
+  "item": "example:2:108",
+  "category": "implementation-difference",
+  "summary": "type-of/class-of results are implementation-dependent (#c(0 1): book allows COMPLEX or (COMPLEX INTEGER); SBCL returns (COMPLEX RATIONAL)). EPUB equals TeX (OR→ is the \\OV notation).",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.27",
+  "names": "type-of",
+  "file": "OEBPS/text/4-types-and-classes/4.4.27-type-of.xhtml",
+  "item": "example:2:113",
+  "category": "implementation-difference",
+  "summary": "type-of/class-of results are implementation-dependent (\"abc\": book allows STRING or (STRING 3); SBCL returns (SIMPLE-ARRAY CHARACTER (3)), a subtype of STRING, as the neighbouring subtypep example confirms). EPUB equals TeX (OR→ is the \\OV notation).",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.27",
+  "names": "type-of",
+  "file": "OEBPS/text/4-types-and-classes/4.4.27-type-of.xhtml",
+  "item": "example:2:117",
+  "category": "implementation-difference",
+  "summary": "type-of/class-of results are implementation-dependent ((expt 2 40): SBCL returns a (INTEGER 0 ...) range type; book lists several implementation-dependent alternatives). EPUB equals TeX (OR→ is the \\OV notation).",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.27",
+  "names": "type-of",
+  "file": "OEBPS/text/4-types-and-classes/4.4.27-type-of.xhtml",
+  "item": "example:2:125",
+  "category": "implementation-difference",
+  "summary": "type-of/class-of results are implementation-dependent (class-of *foo* is SIMPLE-VECTOR in SBCL; book says VECTOR). EPUB equals TeX (OR→ is the \\OV notation).",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.27",
+  "names": "type-of",
+  "file": "OEBPS/text/4-types-and-classes/4.4.27-type-of.xhtml",
+  "item": "example:2:126",
+  "category": "implementation-difference",
+  "summary": "type-of/class-of results are implementation-dependent ((type-of *foo*) is (SIMPLE-VECTOR 5) in SBCL; book gives VECTOR or (VECTOR T 5)). EPUB equals TeX (OR→ is the \\OV notation).",
+  "epub_excerpt": null,
+  "tex_excerpt": null,
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.28",
+  "names": "typep",
+  "file": "OEBPS/text/4-types-and-classes/4.4.28-typep.xhtml",
+  "item": "text:Examples",
+  "category": "normaliser-noise",
+  "summary": "TeX has ';; \\secref\\RuleOfCanonRepForComplexRationals' (printed 'Section 12.1.5.3 (Rule of Canonical Representation for Complex Rationals)'); EPUB renders 'Section <a>12.1.5.3 Rule of Canonical Representation for Complex Rationals</a>' and the link target exists. Faithful.",
+  "epub_excerpt": "Section <a href=\"../12-numbers/12.1-number-concepts.xhtml#SubSubSectio_Rule_of_Cano_769\">12.1.5.3 Rule of Canonical Representation for Complex Rationals</a>",
+  "tex_excerpt": "\\secref\\RuleOfCanonRepForComplexRationals",
+  "fix": null,
+  "confidence": "high"
+ },
+ {
+  "secno": "4.4.30",
+  "names": "type-error-datum, type-error-expected-type",
+  "file": "OEBPS/text/4-types-and-classes/4.4.30-type-error-datum.xhtml",
+  "item": "text:See Also",
+  "category": "conversion-error",
+  "summary": "{\\secref\\Conditions} (= \"Chapter 9 (Conditions)\") was rendered as bare text \"Conditions\": the word \"Chapter\", the number 9 and the link are lost. Other entries render chapter refs as: Chapter <a href=\"../9-conditions/index.xhtml#Chapter_Conditions_602\">9 Conditions</a>.",
+  "epub_excerpt": "type-error</b></a>,\nConditions",
+  "tex_excerpt": "\\typeref{type-error},\n{\\secref\\Conditions}",
+  "fix": {
+   "old": "</b></a>,\nConditions\n",
+   "new": "</b></a>,\nChapter <a href=\"../9-conditions/index.xhtml#Chapter_Conditions_602\">9 Conditions</a>\n"
+  },
+  "confidence": "high"
+ }
+]

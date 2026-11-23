@@ -1,0 +1,3726 @@
+[
+ {
+  "secno": "20.2.4",
+  "names": [
+   "truename"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/20-files/20.2.4-truename.xhtml",
+  "tex_file": "dict-files.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "20.2.4",
+    "names": "truename",
+    "kind": "Function",
+    "file": "e20-2-4.xhtml",
+    "block": 1,
+    "line": 54,
+    "form_text": "(with-open-file (stream \">vistor>test.text.newest\")\n(values (pathname stream)\n(truename stream)))",
+    "expected_values": [
+     "#P\"S:>vistor>test.text.newest\"",
+     "#P\"S:>vistor>test.text.1\""
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "#P\"S:>vistor>test.text.newest\"",
+       "#P\"S:>vistor>test.text.newest\""
+      ],
+      "italics": [
+       [],
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "#P\"S:>vistor>test.text.newest\"",
+       "#P\"S:>vistor>_temp_._temp_.1\""
+      ],
+      "italics": [
+       [],
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "FILE-DOES-NOT-EXIST The file #P\"/tmp/exwd-i06o3yn7/>vistor>test.text.newest\" does not exist: No such file or directory"
+    }
+   },
+   {
+    "secno": "20.2.4",
+    "names": "truename",
+    "kind": "Function",
+    "file": "e20-2-4.xhtml",
+    "block": 1,
+    "line": 63,
+    "form_text": "(with-open-file (stream \">vistor>test.text.newest\")\n(close stream)\n(values (pathname stream)\n(truename stream)))",
+    "expected_values": [
+     "#P\"S:>vistor>test.text.newest\"",
+     "#P\"S:>vistor>test.text.1\""
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "FILE-DOES-NOT-EXIST The file #P\"/tmp/exwd-i06o3yn7/>vistor>test.text.newest\" does not exist: No such file or directory"
+    }
+   },
+   {
+    "secno": "20.2.4",
+    "names": "truename",
+    "kind": "Function",
+    "file": "e20-2-4.xhtml",
+    "block": 1,
+    "line": 72,
+    "form_text": "(with-open-file (stream \"CMUC::DOC:DUMPER.HLP\")\n(values (pathname stream)\n(truename stream)))",
+    "expected_values": [
+     "#P\"CMUC::DOC:DUMPER.HLP\"",
+     "#P\"CMUC::PS:<DOCUMENTATION>DUMPER.HLP.13\""
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "FILE-DOES-NOT-EXIST The file #P\"/tmp/exwd-i06o3yn7/CMUC::DOC:DUMPER.HLP\" does not exist: No such file or directory"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "20.2.5",
+  "names": [
+   "file-author"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/20-files/20.2.5-file-author.xhtml",
+  "tex_file": "dict-files.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "20.2.5",
+    "names": "file-author",
+    "kind": "Function",
+    "file": "e20-2-5.xhtml",
+    "block": 1,
+    "line": 37,
+    "form_text": "(with-open-file (stream \">relativity>general.text\")\n(file-author s))",
+    "expected_values": [
+     "\"albert\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "FILE-DOES-NOT-EXIST The file #P\"/tmp/exwd-4z5iuki5/>relativity>general.text\" does not exist: No such file or directory"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "20.2.6",
+  "names": [
+   "file-write-date"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/20-files/20.2.6-file-write-date.xhtml",
+  "tex_file": "dict-files.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "20.2.6",
+    "names": "file-write-date",
+    "kind": "Function",
+    "file": "e20-2-6.xhtml",
+    "block": 1,
+    "line": 38,
+    "form_text": "(with-open-file (s \"noel.text\"\n:direction :output :if-exists :error)\n(format s \"~&Dear Santa,~2%I was good this year.  ~\nPlease leave lots of toys.~2%Love, Sue~\n~2%attachments: milk, cookies~%\")\n(truename s))",
+    "expected_values": [
+     "#P\"CUPID:/susan/noel.text\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"/tmp/exwd-v3itq12y/noel.text\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "20.2.6",
+    "names": "file-write-date",
+    "kind": "Function",
+    "file": "e20-2-6.xhtml",
+    "block": 1,
+    "line": 45,
+    "form_text": "(with-open-file (s \"noel.text\")\n(file-write-date s))",
+    "expected_values": [
+     "2902600800"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "4004394831"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "20.2.7",
+  "names": [
+   "rename-file"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/20-files/20.2.7-rename-file.xhtml",
+  "tex_file": "dict-files.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "20.2.7",
+    "names": "rename-file",
+    "kind": "Function",
+    "file": "e20-2-7.xhtml",
+    "block": 1,
+    "line": 40,
+    "form_text": "(with-open-file (stream \"sys:chemistry;lead.text\"\n:direction :output :if-exists :error)\n(princ \"eureka\" stream)\n(values (pathname stream) (truename stream)))",
+    "expected_values": [
+     "#P\"SYS:CHEMISTRY;LEAD.TEXT.NEWEST\"",
+     "#P\"Q:>sys>chem>lead.text.1\""
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-FILE-ERROR no translation for #P\"SYS:CHEMISTRY;LEAD.TEXT.NEWEST\""
+    }
+   },
+   {
+    "secno": "20.2.7",
+    "names": "rename-file",
+    "kind": "Function",
+    "file": "e20-2-7.xhtml",
+    "block": 1,
+    "line": 45,
+    "form_text": "(rename-file \"sys:chemistry;lead.text\" \"gold.text\")",
+    "expected_values": [
+     "#P\"SYS:CHEMISTRY;GOLD.TEXT.NEWEST\"",
+     "#P\"Q:>sys>chem>lead.text.1\"",
+     "#P\"Q:>sys>chem>gold.text.1\""
+    ],
+    "expected_italics": [
+     [],
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-FILE-ERROR no translation for #P\"SYS:CHEMISTRY;LEAD.TEXT.NEWEST\""
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "20.2.8",
+  "names": [
+   "delete-file"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/20-files/20.2.8-delete-file.xhtml",
+  "tex_file": "dict-files.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "20.2.8",
+    "names": "delete-file",
+    "kind": "Function",
+    "file": "e20-2-8.xhtml",
+    "block": 1,
+    "line": 63,
+    "form_text": "(setq p (probe-file \"delete-me.text\"))",
+    "expected_values": [
+     "#P\"R:>fred>delete-me.text.1\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"/tmp/exwd-ci8xx6ul/delete-me.text\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "20.2.10",
+  "names": [
+   "file-error-pathname"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/20-files/20.2.10-file-error-pathname.xhtml",
+  "tex_file": "dict-files.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "See Also",
+    "ratio": 0.5714,
+    "tex_words": 4,
+    "epub_words": 3,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "Chapter §",
+      "epub": "Conditions",
+      "ctx": "file-error ,"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "21.2.10",
+  "names": [
+   "interactive-stream-p"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/21-streams/21.2.10-interactive-stream-p.xhtml",
+  "tex_file": "dict-streams.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "21.2.10",
+    "names": "interactive-stream-p",
+    "kind": "Function",
+    "file": "e21-2-10.xhtml",
+    "block": 1,
+    "line": 33,
+    "form_text": "(when (> measured limit)\n(let ((error (round (* (- measured limit) 100)\nlimit)))\n(unless (if (interactive-stream-p *query-io*)\n(yes-or-no-p \"The frammis is out of tolerance by ~D%.~@\nIs it safe to proceed? \" error)\n(< error 15))  ;15% is acceptable\n(error \"The frammis is out of tolerance by ~D%.\" error))))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable MEASURED is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "21.2.18",
+  "names": [
+   "read-char-no-hang"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/21-streams/21.2.18-read-char-no-hang.xhtml",
+  "tex_file": "dict-streams.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "21.2.18",
+    "names": "read-char-no-hang",
+    "kind": "Function",
+    "file": "e21-2-18.xhtml",
+    "block": 1,
+    "line": 71,
+    "form_text": "(test-it)",
+    "expected_values": [
+     "(#\\a NIL NIL)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "a"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>"
+    }
+   },
+   {
+    "secno": "21.2.18",
+    "names": "read-char-no-hang",
+    "kind": "Function",
+    "file": "e21-2-18.xhtml",
+    "block": 1,
+    "line": 77,
+    "form_text": "(test-it)",
+    "expected_values": [
+     "(#\\a #\\Newline NIL)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "a[Return]"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "21.2.26",
+  "names": [
+   "file-length"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/21-streams/21.2.26-file-length.xhtml",
+  "tex_file": "dict-streams.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "21.2.26",
+    "names": "file-length",
+    "kind": "Function",
+    "file": "e21-2-26.xhtml",
+    "block": 1,
+    "line": 39,
+    "form_text": "(with-open-file (s \"decimal-digits.text\"\n:direction :output :if-exists :error)\n(princ \"0123456789\" s)\n(truename s))",
+    "expected_values": [
+     "#P\"A:>Joe>decimal-digits.text.1\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#P\"/tmp/exwd-qbrot2vc/decimal-digits.text\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "21.2.27",
+  "names": [
+   "file-position"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/21-streams/21.2.27-file-position.xhtml",
+  "tex_file": "dict-streams.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "21.2.27",
+    "names": "file-position",
+    "kind": "Function",
+    "file": "e21-2-27.xhtml",
+    "block": 1,
+    "line": 99,
+    "form_text": "(tester)",
+    "expected_values": [
+     "(0 2 T 2 0 2 5 7)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "(0 2 NIL 3 0 3 5 6 7)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(NIL NIL NIL NIL NIL NIL)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNDEFINED-FUNCTION The function COMMON-LISP-USER::TESTER is undefined."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "21.2.29",
+  "names": [
+   "open"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/21-streams/21.2.29-open.xhtml",
+  "tex_file": "dict-streams.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "21.2.29",
+    "names": "open",
+    "kind": "Function",
+    "file": "e21-2-29.xhtml",
+    "block": 1,
+    "line": 306,
+    "form_text": "(truename s)",
+    "expected_values": [
+     "#<PATHNAME :HOST NIL :DEVICE device-name :DIRECTORY"
+    ],
+    "expected_italics": [
+     [
+      "device-name"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable S is unbound."
+    }
+   },
+   {
+    "secno": "21.2.29",
+    "names": "open",
+    "kind": "Function",
+    "file": "e21-2-29.xhtml",
+    "block": 1,
+    "line": 308,
+    "form_text": "(open s :direction :output :if-exists nil)",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable S is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [
+   {
+    "secno": "21.2.29",
+    "names": "open",
+    "file": "e21-2-29.xhtml",
+    "block": 1,
+    "line": 303,
+    "text": ":NAME \"test\" :TYPE NIL :VERSION :NEWEST>",
+    "reason": "prose"
+   },
+   {
+    "secno": "21.2.29",
+    "names": "open",
+    "file": "e21-2-29.xhtml",
+    "block": 1,
+    "line": 307,
+    "text": "directory-name :NAME filespec :TYPE extension :VERSION 1>",
+    "reason": "prose"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "21.2.31",
+  "names": [
+   "with-open-file"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/21-streams/21.2.31-with-open-file.xhtml",
+  "tex_file": "dict-streams.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "21.2.31",
+    "names": "with-open-file",
+    "kind": "Macro",
+    "file": "e21-2-31.xhtml",
+    "block": 2,
+    "line": 111,
+    "form_text": "(with-open-file (foo \"no-such-file\" :if-does-not-exist nil)\n(read foo))",
+    "expected_values": [
+     "HELLO?"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "hello?"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>"
+    }
+   }
+  ],
+  "example_unparsed": [
+   {
+    "secno": "21.2.31",
+    "names": "with-open-file",
+    "file": "e21-2-31.xhtml",
+    "block": 1,
+    "line": 96,
+    "text": ":NAME \"test\" :TYPE NIL :VERSION :NEWEST>",
+    "reason": "prose"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "21.2.32",
+  "names": [
+   "close"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/21-streams/21.2.32-close.xhtml",
+  "tex_file": "dict-streams.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "21.2.32",
+    "names": "close",
+    "kind": "Function",
+    "file": "e21-2-32.xhtml",
+    "block": 1,
+    "line": 92,
+    "form_text": "(output-stream-p s)",
+    "expected_values": [
+     "true"
+    ],
+    "expected_italics": [
+     [
+      "true"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "21.2.33",
+  "names": [
+   "with-open-stream"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/21-streams/21.2.33-with-open-stream.xhtml",
+  "tex_file": "dict-streams.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.9945,
+    "tex_words": 91,
+    "epub_words": 90,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "delete",
+      "tex": "the",
+      "epub": "",
+      "ctx": "made to assign the"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "21.2.34",
+  "names": [
+   "listen"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/21-streams/21.2.34-listen.xhtml",
+  "tex_file": "dict-streams.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "21.2.34",
+    "names": "listen",
+    "kind": "Function",
+    "file": "e21-2-34.xhtml",
+    "block": 1,
+    "line": 43,
+    "form_text": "(progn (unread-char (read-char)) (list (listen) (read-char)))",
+    "expected_values": [
+     "(T #\\1)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "1"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "21.2.37",
+  "names": [
+   "y-or-n-p",
+   "yes-or-no-p"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/21-streams/21.2.37-y-or-n-p.xhtml",
+  "tex_file": "dict-streams.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "21.2.37",
+    "names": "y-or-n-p, yes-or-no-p",
+    "kind": "Function",
+    "file": "e21-2-37.xhtml",
+    "block": 1,
+    "line": 87,
+    "form_text": "(y-or-n-p \"(t or nil) given by\")",
+    "expected_values": [
+     "true"
+    ],
+    "expected_italics": [
+     [
+      "true"
+     ]
+    ],
+    "expected_output": [
+     "(t or nil) given by (Y or N) Y"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-IMPL::STRING-INPUT-STREAM {1201096843}>"
+    }
+   },
+   {
+    "secno": "21.2.37",
+    "names": "y-or-n-p, yes-or-no-p",
+    "kind": "Function",
+    "file": "e21-2-37.xhtml",
+    "block": 1,
+    "line": 90,
+    "form_text": "(yes-or-no-p \"a ~S message\" 'frightening)",
+    "expected_values": [
+     "false"
+    ],
+    "expected_italics": [
+     [
+      "false"
+     ]
+    ],
+    "expected_output": [
+     "a FRIGHTENING message (Yes or No) no"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<TWO-WAY-STREAM :INPUT-STREAM #<SB-IMPL::STRING-INPUT-STREAM {1201097613}> :OUTPUT-STREAM #<BROADCAST-STREAM {12010976A3}> {1201097713}>"
+    }
+   },
+   {
+    "secno": "21.2.37",
+    "names": "y-or-n-p, yes-or-no-p",
+    "kind": "Function",
+    "file": "e21-2-37.xhtml",
+    "block": 1,
+    "line": 93,
+    "form_text": "(y-or-n-p \"Produce listing file?\")",
+    "expected_values": [
+     "false"
+    ],
+    "expected_italics": [
+     [
+      "false"
+     ]
+    ],
+    "expected_output": [
+     "Produce listing file?",
+     "Please respond with Y or N. n"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-IMPL::STRING-INPUT-STREAM {12010A8BF3}>"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "21.2.53",
+  "names": [
+   "*debug-io*",
+   "*error-output*",
+   "*query-io*",
+   "*standard-input*",
+   "*standard-output*",
+   "*trace-output*"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/21-streams/21.2.53-debug-io.xhtml",
+  "tex_file": "dict-streams.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "21.2.53",
+    "names": "*debug-io*, *error-output*, *query-io*, *standard-input*, *standard-output*, *trace-output*",
+    "kind": "Variable",
+    "file": "e21-2-53.xhtml",
+    "block": 1,
+    "line": 87,
+    "form_text": "(with-output-to-string (*error-output*)\n(warn \"this string is sent to *error-output*\"))",
+    "expected_values": [
+     "\"Warning: this string is sent to *error-output*\n\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"WARNING: this string is sent to *error-output*\n\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "21.2.53",
+    "names": "*debug-io*, *error-output*, *query-io*, *standard-input*, *standard-output*, *trace-output*",
+    "kind": "Variable",
+    "file": "e21-2-53.xhtml",
+    "block": 1,
+    "line": 109,
+    "form_text": "(with-output-to-string (*trace-output*)\n(fact 3))",
+    "expected_values": [
+     "\"\n1 Enter FACT 3\n| 2 Enter FACT 2\n|   3 Enter FACT 1\n|   3 Exit FACT 1\n| 2 Exit FACT 2\n1 Exit FACT 6\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"  0: (FACT 3)\n    1: (FACT 2)\n      2: (FACT 1)\n      2: FACT returned 1\n    1: FACT returned 2\n  0: FACT returned 6\n\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "21.2.56",
+  "names": [
+   "stream-error-stream"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/21-streams/21.2.56-stream-error-stream.xhtml",
+  "tex_file": "dict-streams.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "See Also",
+    "ratio": 0.5714,
+    "tex_words": 4,
+    "epub_words": 3,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "Chapter §",
+      "epub": "Conditions",
+      "ctx": "stream-error ,"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "22.4.5",
+  "names": [
+   "pprint-fill",
+   "pprint-linear",
+   "pprint-tabular"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/22-printer/22.4.5-pprint-fill.xhtml",
+  "tex_file": "dict-printer.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [],
+  "example_unparsed": [
+   {
+    "secno": "22.4.5",
+    "names": "pprint-fill, pprint-linear, pprint-tabular",
+    "file": "e22-4-5.xhtml",
+    "block": 1,
+    "line": 97,
+    "text": "Roads ELM     MAIN",
+    "reason": "prose"
+   },
+   {
+    "secno": "22.4.5",
+    "names": "pprint-fill, pprint-linear, pprint-tabular",
+    "file": "e22-4-5.xhtml",
+    "block": 1,
+    "line": 98,
+    "text": "MAPLE   CENTER",
+    "reason": "prose"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "22.4.12",
+  "names": [
+   "print-unreadable-object"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/22-printer/22.4.12-print-unreadable-object.xhtml",
+  "tex_file": "dict-printer.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "22.4.12",
+    "names": "print-unreadable-object",
+    "kind": "Macro",
+    "file": "e22-4-12.xhtml",
+    "block": 1,
+    "line": 67,
+    "form_text": "(defmethod print-object ((obj airplane) stream)\n(print-unreadable-object (obj stream :type t :identity t)\n(princ (tail-number obj) stream)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "CLASS-NOT-FOUND-ERROR There is no class named COMMON-LISP-USER::AIRPLANE."
+    }
+   },
+   {
+    "secno": "22.4.12",
+    "names": "print-unreadable-object",
+    "kind": "Macro",
+    "file": "e22-4-12.xhtml",
+    "block": 1,
+    "line": 71,
+    "form_text": "(prin1-to-string my-airplane)",
+    "expected_values": [
+     "\"#<Airplane NW0773 36000123135>\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "\"#<FAA:AIRPLANE NW0773 17>\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable MY-AIRPLANE is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "22.4.18",
+  "names": [
+   "*print-case*"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/22-printer/22.4.18-print-case.xhtml",
+  "tex_file": "dict-printer.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "22.4.18",
+    "names": "*print-case*",
+    "kind": "Variable",
+    "file": "e22-4-18.xhtml",
+    "block": 1,
+    "line": 47,
+    "form_text": "(defun test-print-case ()\n(dolist (*print-case* '(:upcase :downcase :capitalize))\n(format t \"~&~S ~S~%\" 'this-and-that '|And-something-elSE|)))",
+    "expected_values": [
+     "TEST-PC"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "TEST-PRINT-CASE"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "22.4.18",
+    "names": "*print-case*",
+    "kind": "Variable",
+    "file": "e22-4-18.xhtml",
+    "block": 1,
+    "line": 56,
+    "form_text": "(test-print-case) ;Implementation A",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "THIS-AND-THAT |And-something-elSE|",
+     "this-and-that a\\n\\d-\\s\\o\\m\\e\\t\\h\\i\\n\\g-\\e\\lse",
+     "This-And-That A\\n\\d-\\s\\o\\m\\e\\t\\h\\i\\n\\g-\\e\\lse"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [
+     "THIS-AND-THAT |And-something-elSE|",
+     "this-and-that |And-something-elSE|",
+     "This-And-That |And-something-elSE|"
+    ],
+    "detail": {}
+   },
+   {
+    "secno": "22.4.18",
+    "names": "*print-case*",
+    "kind": "Variable",
+    "file": "e22-4-18.xhtml",
+    "block": 1,
+    "line": 61,
+    "form_text": "(test-print-case) ;Implementation B",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "THIS-AND-THAT |And-something-elSE|",
+     "this-and-that a|nd-something-el|se",
+     "This-And-That A|nd-something-el|se"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [
+     "THIS-AND-THAT |And-something-elSE|",
+     "this-and-that |And-something-elSE|",
+     "This-And-That |And-something-elSE|"
+    ],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "22.4.23",
+  "names": [
+   "*print-lines*"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/22-printer/22.4.23-print-lines.xhtml",
+  "tex_file": "dict-printer.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "22.4.23",
+    "names": "*print-lines*",
+    "kind": "Variable",
+    "file": "e22-4-23.xhtml",
+    "block": 1,
+    "line": 34,
+    "form_text": "(let ((*print-right-margin* 25) (*print-lines* 3))\n(pprint '(progn (setq a 1 b 2 c 3 d 4))))",
+    "expected_values": null,
+    "expected_italics": [],
+    "expected_output": [
+     "(PROGN (SETQ A 1",
+     "            B 2",
+     "            C 3 ..))"
+    ],
+    "no_values": true,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": null,
+    "actual_no_values": true,
+    "actual_output": [
+     "",
+     "(PROGN",
+     " (SETQ A 1",
+     "       B 2 ..))"
+    ],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "22.4.26",
+  "names": [
+   "*print-pretty*"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/22-printer/22.4.26-print-pretty.xhtml",
+  "tex_file": "dict-printer.tex",
+  "examples_ratio": 0.9856,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9856,
+    "tex_words": 310,
+    "epub_words": 313,
+    "n_diffs": 3,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "#'c",
+      "epub": "#\\b 'c",
+      "ctx": "list \" a \""
+     },
+     {
+      "op": "replace",
+      "tex": "#'C",
+      "epub": "#\\b 'C",
+      "ctx": "LIST \" a \""
+     },
+     {
+      "op": "replace",
+      "tex": "#'C",
+      "epub": "#\\b 'C",
+      "ctx": "LIST \" a \""
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "22.4.27",
+  "names": [
+   "*print-readably*"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/22-printer/22.4.27-print-readably.xhtml",
+  "tex_file": "dict-printer.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "22.4.27",
+    "names": "*print-readably*",
+    "kind": "Variable",
+    "file": "e22-4-27.xhtml",
+    "block": 1,
+    "line": 93,
+    "form_text": "(setf (gethash table 1) 'one)",
+    "expected_values": [
+     "ONE"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR Value of 1 in (SB-KERNEL:%PUTHASH #:KEY 1 #:NEW93) is 1, not a HASH-TABLE."
+    }
+   },
+   {
+    "secno": "22.4.27",
+    "names": "*print-readably*",
+    "kind": "Variable",
+    "file": "e22-4-27.xhtml",
+    "block": 1,
+    "line": 94,
+    "form_text": "(setf (gethash table 2) 'two)",
+    "expected_values": [
+     "TWO"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR Value of 2 in (SB-KERNEL:%PUTHASH #:KEY 2 #:NEW94) is 2, not a HASH-TABLE."
+    }
+   },
+   {
+    "secno": "22.4.27",
+    "names": "*print-readably*",
+    "kind": "Variable",
+    "file": "e22-4-27.xhtml",
+    "block": 1,
+    "line": 103,
+    "form_text": "(let ((*print-readably* t)) (print table))",
+    "expected_values": [
+     "#<HASH-TABLE EQL 0/120 32005763>"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "#S(HASH-TABLE :TEST EQL :SIZE 120 :CONTENTS (1 ONE 2 TWO))"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#<HASH-TABLE :TEST EQL :COUNT 0 {12010DE283}>"
+    ],
+    "actual_no_values": false,
+    "actual_output": [
+     "",
+     "#.(MAKE-HASH-TABLE) "
+    ],
+    "detail": {}
+   },
+   {
+    "secno": "22.4.27",
+    "names": "*print-readably*",
+    "kind": "Variable",
+    "file": "e22-4-27.xhtml",
+    "block": 1,
+    "line": 112,
+    "form_text": "(let ((*print-readably* t)) (print table))",
+    "expected_values": [
+     "#<HASH-TABLE EQL 0/120 32005763>"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "#.(LET ((HASH-TABLE (MAKE-HASH-TABLE)))",
+     "   (SETF (GETHASH 1 HASH-TABLE) ONE)",
+     "   (SETF (GETHASH 2 HASH-TABLE) TWO)",
+     "   HASH-TABLE)"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#<HASH-TABLE :TEST EQL :COUNT 0 {12010DE283}>"
+    ],
+    "actual_no_values": false,
+    "actual_output": [
+     "",
+     "#.(MAKE-HASH-TABLE) "
+    ],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [
+   {
+    "secno": "22.4.27",
+    "names": "*print-readably*",
+    "file": "e22-4-27.xhtml",
+    "block": 1,
+    "line": 98,
+    "text": "Error: Can't print #<HASH-TABLE EQL 0/120 32005763> readably.",
+    "reason": "prose"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "22.4.30",
+  "names": [
+   "print-not-readable-object"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/22-printer/22.4.30-print-not-readable-object.xhtml",
+  "tex_file": "dict-printer.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "See Also",
+    "ratio": 0.5714,
+    "tex_words": 4,
+    "epub_words": 3,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "Chapter §",
+      "epub": "Conditions",
+      "ctx": "print-not-readable ,"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "23.2.2",
+  "names": [
+   "copy-readtable"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/23-reader/23.2.2-copy-readtable.xhtml",
+  "tex_file": "dict-reader.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "23.2.2",
+    "names": "copy-readtable",
+    "kind": "Function",
+    "file": "e23-2-2.xhtml",
+    "block": 1,
+    "line": 54,
+    "form_text": "(copy-readtable table2 *readtable*)",
+    "expected_values": [
+     "#<READTABLE 614000277>"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "STANDARD-READTABLE-MODIFIED-ERROR COPY-READTABLE would modify the standard readtable.\nSee also:\n  The ANSI Standard, Section 2.1.1.2\n  The ANSI Standard, Glossary entry for \"standard readtable\""
+    }
+   },
+   {
+    "secno": "23.2.2",
+    "names": "copy-readtable",
+    "kind": "Function",
+    "file": "e23-2-2.xhtml",
+    "block": 1,
+    "line": 55,
+    "form_text": "zvar",
+    "expected_values": [
+     "VAR"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "123"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "23.2.2",
+    "names": "copy-readtable",
+    "kind": "Function",
+    "file": "e23-2-2.xhtml",
+    "block": 1,
+    "line": 57,
+    "form_text": "zvar",
+    "expected_values": [
+     "VAR"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "123"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "23.2.3",
+  "names": [
+   "make-dispatch-macro-character"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/23-reader/23.2.3-make-dispatch-macro-character.xhtml",
+  "tex_file": "dict-reader.tex",
+  "examples_ratio": 0.9032,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9032,
+    "tex_words": 31,
+    "epub_words": 31,
+    "n_diffs": 3,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "[",
+      "epub": "{",
+      "ctx": "( get-macro-character #\\"
+     },
+     {
+      "op": "replace",
+      "tex": "[",
+      "epub": "{",
+      "ctx": "false ( make-dispatch-macro-character #\\"
+     },
+     {
+      "op": "replace",
+      "tex": "[",
+      "epub": "{",
+      "ctx": "not ( get-macro-character #\\"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "23.2.3",
+    "names": "make-dispatch-macro-character",
+    "kind": "Function",
+    "file": "e23-2-3.xhtml",
+    "block": 1,
+    "line": 58,
+    "form_text": "(make-dispatch-macro-character #\\{)",
+    "expected_values": [
+     "T"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\nSee also:\n  The ANSI Standard, Section 2.1.1.2\n  The ANSI Standard, Glossary entry for \"standard readtable\""
+    }
+   },
+   {
+    "secno": "23.2.3",
+    "names": "make-dispatch-macro-character",
+    "kind": "Function",
+    "file": "e23-2-3.xhtml",
+    "block": 1,
+    "line": 59,
+    "form_text": "(not (get-macro-character #\\{))",
+    "expected_values": [
+     "false"
+    ],
+    "expected_italics": [
+     [
+      "false"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "T"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "23.2.4",
+  "names": [
+   "read",
+   "read-preserving-whitespace"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/23-reader/23.2.4-read.xhtml",
+  "tex_file": "dict-reader.tex",
+  "examples_ratio": 0.9947,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9947,
+    "tex_words": 375,
+    "epub_words": 375,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "#\\/",
+      "epub": "#\\",
+      "ctx": "nil nil t )"
+     },
+     {
+      "op": "replace",
+      "tex": "#\\/",
+      "epub": "#\\",
+      "ctx": ") ) ( set-macro-character"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "23.2.4",
+    "names": "read, read-preserving-whitespace",
+    "kind": "Function",
+    "file": "e23-2-4.xhtml",
+    "block": 1,
+    "line": 105,
+    "form_text": "(read)",
+    "expected_values": [
+     "(QUOTE A)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "'a"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>"
+    }
+   },
+   {
+    "secno": "23.2.4",
+    "names": "read, read-preserving-whitespace",
+    "kind": "Function",
+    "file": "e23-2-4.xhtml",
+    "block": 1,
+    "line": 112,
+    "form_text": "(let ((*readtable* (copy-readtable nil)))\n(set-dispatch-macro-character #\\# #\\{ #'skip-then-read-char)\n(set-dispatch-macro-character #\\# #\\} #'skip-then-read-char)\n(with-input-from-string (is \"#{123 x #}123 y\")\n(format t \"~S ~S\" (read is) (read is))))",
+    "expected_values": [
+     "#\\x",
+     "#\\Space",
+     "NIL"
+    ],
+    "expected_italics": [
+     [],
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [
+     "#\\  X"
+    ],
+    "detail": {}
+   },
+   {
+    "secno": "23.2.4",
+    "names": "read, read-preserving-whitespace",
+    "kind": "Function",
+    "file": "e23-2-4.xhtml",
+    "block": 2,
+    "line": 130,
+    "form_text": "(set-macro-character #\\  #'slash-reader)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\nSee also:\n  The ANSI Standard, Section 2.1.1.2\n  The ANSI Standard, Glossary entry for \"standard readtable\""
+    }
+   },
+   {
+    "secno": "23.2.4",
+    "names": "read, read-preserving-whitespace",
+    "kind": "Function",
+    "file": "e23-2-4.xhtml",
+    "block": 3,
+    "line": 137,
+    "form_text": "(zyedh /usr/games/zork /usr/games/boggle)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable /USR/GAMES/ZORK is unbound."
+    }
+   },
+   {
+    "secno": "23.2.4",
+    "names": "read, read-preserving-whitespace",
+    "kind": "Function",
+    "file": "e23-2-4.xhtml",
+    "block": 4,
+    "line": 143,
+    "form_text": "(zyedh (path usr games zork) (path usr games boggle))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable USR is unbound."
+    }
+   },
+   {
+    "secno": "23.2.4",
+    "names": "read, read-preserving-whitespace",
+    "kind": "Function",
+    "file": "e23-2-4.xhtml",
+    "block": 5,
+    "line": 151,
+    "form_text": "(zyedh (path usr games zork usr games boggle))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable USR is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "23.2.5",
+  "names": [
+   "read-delimited-list"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/23-reader/23.2.5-read-delimited-list.xhtml",
+  "tex_file": "dict-reader.tex",
+  "examples_ratio": 0.9973,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9973,
+    "tex_words": 372,
+    "epub_words": 370,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "delete",
+      "tex": "$",
+      "epub": "",
+      "ctx": "{ a b c"
+     },
+     {
+      "op": "delete",
+      "tex": "$",
+      "epub": "",
+      "ctx": "$ . . ."
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "23.2.5",
+    "names": "read-delimited-list",
+    "kind": "Function",
+    "file": "e23-2-5.xhtml",
+    "block": 1,
+    "line": 75,
+    "form_text": "(read-delimited-list #\\]) 1 2 3 4 5 6 ]",
+    "expected_values": [
+     "(1 2 3 4 5 6)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>"
+    }
+   },
+   {
+    "secno": "23.2.5",
+    "names": "read-delimited-list",
+    "kind": "Function",
+    "file": "e23-2-5.xhtml",
+    "block": 2,
+    "line": 83,
+    "form_text": "#{p q z a}  reads as  ((p q) (p z) (p a) (q z) (q a) (z a))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-READER-ERROR no dispatch function defined for #\\{ Stream: #<dynamic-extent STRING-INPUT-STREAM (unavailable) from \"#{p q z ...\">"
+    }
+   },
+   {
+    "secno": "23.2.5",
+    "names": "read-delimited-list",
+    "kind": "Function",
+    "file": "e23-2-5.xhtml",
+    "block": 3,
+    "line": 96,
+    "form_text": "(set-dispatch-macro-character #\\# #\\{ #'|#{-reader|)",
+    "expected_values": [
+     "T"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "STANDARD-READTABLE-MODIFIED-ERROR SET-DISPATCH-MACRO-CHARACTER would modify the standard readtable.\nSee also:\n  The ANSI Standard, Section 2.1.1.2\n  The ANSI Standard, Glossary entry for \"standard readtable\""
+    }
+   },
+   {
+    "secno": "23.2.5",
+    "names": "read-delimited-list",
+    "kind": "Function",
+    "file": "e23-2-5.xhtml",
+    "block": 3,
+    "line": 97,
+    "form_text": "(set-macro-character #\\} (get-macro-character #\\) nil))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\nSee also:\n  The ANSI Standard, Section 2.1.1.2\n  The ANSI Standard, Glossary entry for \"standard readtable\""
+    }
+   },
+   {
+    "secno": "23.2.5",
+    "names": "read-delimited-list",
+    "kind": "Function",
+    "file": "e23-2-5.xhtml",
+    "block": 4,
+    "line": 107,
+    "form_text": "(set-macro-character #\\} (get-macro-character #\\) nil))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\nSee also:\n  The ANSI Standard, Section 2.1.1.2\n  The ANSI Standard, Glossary entry for \"standard readtable\""
+    }
+   },
+   {
+    "secno": "23.2.5",
+    "names": "read-delimited-list",
+    "kind": "Function",
+    "file": "e23-2-5.xhtml",
+    "block": 5,
+    "line": 111,
+    "form_text": "#{ p q z a}",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-READER-ERROR no dispatch function defined for #\\{ Stream: #<dynamic-extent STRING-INPUT-STREAM (unavailable) from \"#{ p q z...\">"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "23.2.9",
+  "names": [
+   "set-dispatch-macro-character",
+   "get-dispatch-macro-character"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/23-reader/23.2.9-set-dispatch-macro-character.xhtml",
+  "tex_file": "dict-reader.tex",
+  "examples_ratio": 0.9891,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9891,
+    "tex_words": 184,
+    "epub_words": 184,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "#$-reader",
+      "epub": "#-reader",
+      "ctx": ". ( defun |"
+     },
+     {
+      "op": "replace",
+      "tex": "#$-reader",
+      "epub": "#-reader",
+      "ctx": ") ) → |"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "23.2.9",
+    "names": "set-dispatch-macro-character, get-dispatch-macro-character",
+    "kind": "Function",
+    "file": "e23-2-9.xhtml",
+    "block": 1,
+    "line": 85,
+    "form_text": "(set-dispatch-macro-character #\\# #\\{        ;dispatch on #{\n#'(lambda(s c n)\n(let ((list (read s nil (values) t)))  ;list is object after #n{\n(when (consp list)                   ;return nth element of list\n(unless (and n (< 0 n (length list))) (setq n 0))\n(setq list (nth n list)))\nlist)))",
+    "expected_values": [
+     "T"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "STANDARD-READTABLE-MODIFIED-ERROR SET-DISPATCH-MACRO-CHARACTER would modify the standard readtable.\nSee also:\n  The ANSI Standard, Section 2.1.1.2\n  The ANSI Standard, Glossary entry for \"standard readtable\""
+    }
+   },
+   {
+    "secno": "23.2.9",
+    "names": "set-dispatch-macro-character, get-dispatch-macro-character",
+    "kind": "Function",
+    "file": "e23-2-9.xhtml",
+    "block": 1,
+    "line": 92,
+    "form_text": "#{(1 2 3 4)",
+    "expected_values": [
+     "1"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-READER-ERROR no dispatch function defined for #\\{ Stream: #<dynamic-extent STRING-INPUT-STREAM (unavailable) from \"#{(1 2 3...\">"
+    }
+   },
+   {
+    "secno": "23.2.9",
+    "names": "set-dispatch-macro-character, get-dispatch-macro-character",
+    "kind": "Function",
+    "file": "e23-2-9.xhtml",
+    "block": 1,
+    "line": 93,
+    "form_text": "#3{(0 1 2 3)",
+    "expected_values": [
+     "3"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-READER-ERROR no dispatch function defined for #\\{ Stream: #<dynamic-extent STRING-INPUT-STREAM (unavailable) from \"#3{(0 1 ...\">"
+    }
+   },
+   {
+    "secno": "23.2.9",
+    "names": "set-dispatch-macro-character, get-dispatch-macro-character",
+    "kind": "Function",
+    "file": "e23-2-9.xhtml",
+    "block": 1,
+    "line": 94,
+    "form_text": "#{123",
+    "expected_values": [
+     "123"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-READER-ERROR no dispatch function defined for #\\{ Stream: #<dynamic-extent STRING-INPUT-STREAM (unavailable) from \"#{123\">"
+    }
+   },
+   {
+    "secno": "23.2.9",
+    "names": "set-dispatch-macro-character, get-dispatch-macro-character",
+    "kind": "Function",
+    "file": "e23-2-9.xhtml",
+    "block": 2,
+    "line": 103,
+    "form_text": "(set-dispatch-macro-character #\\# #\\$ #'|#$-reader|)",
+    "expected_values": [
+     "T"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNDEFINED-FUNCTION The function COMMON-LISP-USER::|#$-reader| is undefined."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "23.2.10",
+  "names": [
+   "set-macro-character",
+   "get-macro-character"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/23-reader/23.2.10-set-macro-character.xhtml",
+  "tex_file": "dict-reader.tex",
+  "examples_ratio": 0.9944,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9944,
+    "tex_words": 180,
+    "epub_words": 180,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "[",
+      "epub": "{",
+      "ctx": "( get-macro-character #\\"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "23.2.10",
+    "names": "set-macro-character, get-macro-character",
+    "kind": "Function",
+    "file": "e23-2-10.xhtml",
+    "block": 2,
+    "line": 76,
+    "form_text": "(set-macro-character #\\' #'single-quote-reader)",
+    "expected_values": [
+     "T"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\nSee also:\n  The ANSI Standard, Section 2.1.1.2\n  The ANSI Standard, Glossary entry for \"standard readtable\""
+    }
+   },
+   {
+    "secno": "23.2.10",
+    "names": "set-macro-character, get-macro-character",
+    "kind": "Function",
+    "file": "e23-2-10.xhtml",
+    "block": 3,
+    "line": 95,
+    "form_text": "(set-macro-character #\\; #'semicolon-reader)",
+    "expected_values": [
+     "T"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "STANDARD-READTABLE-MODIFIED-ERROR SET-MACRO-CHARACTER would modify the standard readtable.\nSee also:\n  The ANSI Standard, Section 2.1.1.2\n  The ANSI Standard, Glossary entry for \"standard readtable\""
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "23.2.11",
+  "names": [
+   "set-syntax-from-char"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/23-reader/23.2.11-set-syntax-from-char.xhtml",
+  "tex_file": "dict-reader.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "23.2.11",
+    "names": "set-syntax-from-char",
+    "kind": "Function",
+    "file": "e23-2-11.xhtml",
+    "block": 1,
+    "line": 71,
+    "form_text": "(set-syntax-from-char #\\7 #\\;)",
+    "expected_values": [
+     "T"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "STANDARD-READTABLE-MODIFIED-ERROR SET-SYNTAX-FROM-CHAR would modify the standard readtable.\nSee also:\n  The ANSI Standard, Section 2.1.1.2\n  The ANSI Standard, Glossary entry for \"standard readtable\""
+    }
+   },
+   {
+    "secno": "23.2.11",
+    "names": "set-syntax-from-char",
+    "kind": "Function",
+    "file": "e23-2-11.xhtml",
+    "block": 1,
+    "line": 72,
+    "form_text": "123579",
+    "expected_values": [
+     "1235"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "123579"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "23.2.12",
+  "names": [
+   "with-standard-io-syntax"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/23-reader/23.2.12-with-standard-io-syntax.xhtml",
+  "tex_file": "dict-reader.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "23.2.12",
+    "names": "with-standard-io-syntax",
+    "kind": "Macro",
+    "file": "e23-2-12.xhtml",
+    "block": 1,
+    "line": 131,
+    "form_text": "(with-open-file (file pathname :direction :output)\n(with-standard-io-syntax\n(print data file)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable PATHNAME is unbound."
+    }
+   },
+   {
+    "secno": "23.2.12",
+    "names": "with-standard-io-syntax",
+    "kind": "Macro",
+    "file": "e23-2-12.xhtml",
+    "block": 1,
+    "line": 137,
+    "form_text": "(with-open-file (file pathname :direction :input)\n(with-standard-io-syntax\n(setq data (read file))))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable PATHNAME is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "23.2.14",
+  "names": [
+   "*read-default-float-format*"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/23-reader/23.2.14-read-default-float-format.xhtml",
+  "tex_file": "dict-reader.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "23.2.14",
+    "names": "*read-default-float-format*",
+    "kind": "Variable",
+    "file": "e23-2-14.xhtml",
+    "block": 1,
+    "line": 44,
+    "form_text": "(let ((*read-default-float-format* 'double-float))\n(read-from-string \"(1.0 1.0e0 1.0s0 1.0f0 1.0d0 1.0L0)\"))",
+    "expected_values": [
+     "(1.0   1.0   1.0   1.0 1.0   1.0)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "(1.0   1.0   1.0s0 1.0 1.0   1.0)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(1.0d0 1.0d0 1.0   1.0 1.0d0 1.0d0)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(1.0d0 1.0d0 1.0s0 1.0 1.0d0 1.0d0)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(1.0d0 1.0d0 1.0   1.0 1.0d0 1.0L0)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "(1.0d0 1.0d0 1.0s0 1.0 1.0d0 1.0L0)"
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(1.0d0 1.0d0 1.0 1.0 1.0d0 1.0d0)",
+     "35"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "24.2.3",
+  "names": [
+   "load"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/24-system-construction/24.2.3-load.xhtml",
+  "tex_file": "dict-system-construction.tex",
+  "examples_ratio": 0.9709,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9709,
+    "tex_words": 204,
+    "epub_words": 208,
+    "n_diffs": 4,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "----",
+      "epub": "- -",
+      "ctx": "in → true ;"
+     },
+     {
+      "op": "replace",
+      "tex": "----",
+      "epub": "- -",
+      "ctx": "Begin file SETUP ]"
+     },
+     {
+      "op": "replace",
+      "tex": "----",
+      "epub": "- -",
+      "ctx": ") ) ) ;"
+     },
+     {
+      "op": "replace",
+      "tex": "----",
+      "epub": "- -",
+      "ctx": "of file SETUP ]"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "24.2.3",
+    "names": "load",
+    "kind": "Function",
+    "file": "e24-2-3.xhtml",
+    "block": 2,
+    "line": 186,
+    "form_text": "(in-package \"MY-STUFF\")",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "PACKAGE-DOES-NOT-EXIST The name \"MY-STUFF\" does not designate any package."
+    }
+   },
+   {
+    "secno": "24.2.3",
+    "names": "load",
+    "kind": "Function",
+    "file": "e24-2-3.xhtml",
+    "block": 2,
+    "line": 196,
+    "form_text": "(load \"SETUP\")",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-FILE-ERROR Couldn't load \"SETUP\": file does not exist."
+    }
+   },
+   {
+    "secno": "24.2.3",
+    "names": "load",
+    "kind": "Function",
+    "file": "e24-2-3.xhtml",
+    "block": 2,
+    "line": 197,
+    "form_text": "(load-my-system)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-FILE-ERROR Couldn't load #P\"/tmp/claude-1000/-workspaces-lisp-stat/5d101160-5834-444f-8e56-a3cfe2ab8eb0/scratchpad/wt-examples/tools/lisp/FOO.lisp\": file does not exist."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "24.2.4",
+  "names": [
+   "with-compilation-unit"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/24-system-construction/24.2.4-with-compilation-unit.xhtml",
+  "tex_file": "dict-system-construction.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "24.2.4",
+    "names": "with-compilation-unit",
+    "kind": "Macro",
+    "file": "e24-2-4.xhtml",
+    "block": 1,
+    "line": 79,
+    "form_text": "(compile-files \"A\" \"B\" \"C\")",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-FILE-ERROR Failed to find the TRUENAME of /tmp/exwd-tiw87pkh/A.lisp: No such file or directory"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "25.2.1",
+  "names": [
+   "decode-universal-time"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/25-environment/25.2.1-decode-universal-time.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "25.2.1",
+    "names": "decode-universal-time",
+    "kind": "Function",
+    "file": "e25-2-1.xhtml",
+    "block": 1,
+    "line": 53,
+    "form_text": "(decode-universal-time 2414293200)",
+    "expected_values": [
+     "0",
+     "0",
+     "1",
+     "4",
+     "7",
+     "1976",
+     "6",
+     "true",
+     "5"
+    ],
+    "expected_italics": [
+     [],
+     [],
+     [],
+     [],
+     [],
+     [],
+     [],
+     [
+      "true"
+     ],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "0",
+     "0",
+     "5",
+     "4",
+     "7",
+     "1976",
+     "6",
+     "NIL",
+     "0"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "25.2.1",
+    "names": "decode-universal-time",
+    "kind": "Function",
+    "file": "e25-2-1.xhtml",
+    "block": 1,
+    "line": 57,
+    "form_text": "(let* ((here (nth 8 (multiple-value-list (get-decoded-time)))) ;Time zone\n(recently (get-universal-time))\n(a (nthcdr 7 (multiple-value-list (decode-universal-time recently))))\n(b (nthcdr 7 (multiple-value-list (decode-universal-time recently here)))))\n(list a b (equal a b)))",
+    "expected_values": [
+     "((T 5) (NIL 5) NIL)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "((NIL 0) (NIL 0) T)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "25.2.2",
+  "names": [
+   "encode-universal-time"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/25-environment/25.2.2-encode-universal-time.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "25.2.2",
+    "names": "encode-universal-time",
+    "kind": "Function",
+    "file": "e25-2-2.xhtml",
+    "block": 1,
+    "line": 26,
+    "form_text": "(encode-universal-time 0 0 1 4 7 1976)",
+    "expected_values": [
+     "2414293200"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "2414278800"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "25.2.3",
+  "names": [
+   "get-universal-time",
+   "get-decoded-time"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/25-environment/25.2.3-get-universal-time.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "25.2.3",
+    "names": "get-universal-time, get-decoded-time",
+    "kind": "Function",
+    "file": "e25-2-3.xhtml",
+    "block": 1,
+    "line": 45,
+    "form_text": "(get-decoded-time)",
+    "expected_values": [
+     "0",
+     "0",
+     "12",
+     "4",
+     "7",
+     "1976",
+     "6",
+     "true",
+     "5"
+    ],
+    "expected_italics": [
+     [],
+     [],
+     [],
+     [],
+     [],
+     [],
+     [],
+     [
+      "true"
+     ],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "51",
+     "53",
+     "3",
+     "23",
+     "11",
+     "2026",
+     "0",
+     "NIL",
+     "0"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "25.2.3",
+    "names": "get-universal-time, get-decoded-time",
+    "kind": "Function",
+    "file": "e25-2-3.xhtml",
+    "block": 1,
+    "line": 47,
+    "form_text": "(get-universal-time)",
+    "expected_values": [
+     "2414332800"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "4004394831"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "25.2.3",
+    "names": "get-universal-time, get-decoded-time",
+    "kind": "Function",
+    "file": "e25-2-3.xhtml",
+    "block": 1,
+    "line": 49,
+    "form_text": "(get-universal-time)",
+    "expected_values": [
+     "2414333100"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "4004394831"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "25.2.3",
+    "names": "get-universal-time, get-decoded-time",
+    "kind": "Function",
+    "file": "e25-2-3.xhtml",
+    "block": 1,
+    "line": 51,
+    "form_text": "(- * **)",
+    "expected_values": [
+     "300"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "0"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "25.2.8",
+  "names": [
+   "trace",
+   "untrace"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/25-environment/25.2.8-trace.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "25.2.8",
+    "names": "trace, untrace",
+    "kind": "Macro",
+    "file": "e25-2-8.xhtml",
+    "block": 1,
+    "line": 75,
+    "form_text": "(fact 3)",
+    "expected_values": [
+     "6"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "1 Enter FACT 3",
+     "| 2 Enter FACT 2",
+     "|   3 Enter FACT 1",
+     "|   | 4 Enter FACT 0",
+     "|   | 4 Exit FACT 1",
+     "|   3 Exit FACT 1",
+     "| 2 Exit FACT 2",
+     "1 Exit FACT 6"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "6"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "25.2.15",
+  "names": [
+   "documentation",
+   "(setf documentation)"
+  ],
+  "kind": "Standard Generic Function",
+  "file": "OEBPS/text/25-environment/25.2.15-documentation.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Method Signatures",
+    "ratio": 0.942,
+    "tex_words": 551,
+    "epub_words": 570,
+    "n_diffs": 23,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "structure-class",
+      "epub": "standard-class",
+      "ctx": ") documentation ( x"
+     },
+     {
+      "op": "replace",
+      "tex": "structure-class",
+      "epub": "standard-class",
+      "ctx": ") documentation ( x"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "structure-class",
+      "epub": "standard-class",
+      "ctx": ") new-value ( x"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "structure-class",
+      "epub": "standard-class",
+      "ctx": ") new-value ( x"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     },
+     {
+      "op": "replace",
+      "tex": "new-value",
+      "epub": "new value",
+      "ctx": "( setf documentation )"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "25.2.20",
+  "names": [
+   "-"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/25-environment/25.2.20-minus.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "25.2.20",
+    "names": "-",
+    "kind": "Variable",
+    "file": "e25-2-20.xhtml",
+    "block": 1,
+    "line": 30,
+    "form_text": "(format t \"~&Evaluating ~S~%\" -)",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Evaluating (FORMAT T \"~&Evaluating ~S~%\" -)"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [
+     "Evaluating NIL"
+    ],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "25.2.22",
+  "names": [
+   "*",
+   "**",
+   "***"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/25-environment/25.2.22-star.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "25.2.22",
+    "names": "*, **, ***",
+    "kind": "Variable",
+    "file": "e25-2-22.xhtml",
+    "block": 1,
+    "line": 54,
+    "form_text": "(compile *)",
+    "expected_values": [
+     "CUBE-ROOT"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "CUBE-ROOT",
+     "NIL",
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "25.2.24",
+  "names": [
+   "lisp-implementation-type",
+   "lisp-implementation-version"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/25-environment/25.2.24-lisp-implementation-type.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "25.2.24",
+    "names": "lisp-implementation-type, lisp-implementation-version",
+    "kind": "Function",
+    "file": "e25-2-24.xhtml",
+    "block": 1,
+    "line": 53,
+    "form_text": "(lisp-implementation-type)",
+    "expected_values": [
+     "\"ACME Lisp\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "\"Joe's Common Lisp\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"SBCL\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "25.2.24",
+    "names": "lisp-implementation-type, lisp-implementation-version",
+    "kind": "Function",
+    "file": "e25-2-24.xhtml",
+    "block": 1,
+    "line": 56,
+    "form_text": "(lisp-implementation-version)",
+    "expected_values": [
+     "\"1.3a\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "\"V2\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "\"Release 17.3, ECO #6\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"2.6.2\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "25.2.25",
+  "names": [
+   "short-site-name",
+   "long-site-name"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/25-environment/25.2.25-short-site-name.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "25.2.25",
+    "names": "short-site-name, long-site-name",
+    "kind": "Function",
+    "file": "e25-2-25.xhtml",
+    "block": 1,
+    "line": 38,
+    "form_text": "(short-site-name)",
+    "expected_values": [
+     "\"MIT AI Lab\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "\"CMU-CSD\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "25.2.25",
+    "names": "short-site-name, long-site-name",
+    "kind": "Function",
+    "file": "e25-2-25.xhtml",
+    "block": 1,
+    "line": 41,
+    "form_text": "(long-site-name)",
+    "expected_values": [
+     "\"MIT Artificial Intelligence Laboratory\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "\"CMU Computer Science Department\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "25.2.26",
+  "names": [
+   "machine-instance"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/25-environment/25.2.26-machine-instance.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "25.2.26",
+    "names": "machine-instance",
+    "kind": "Function",
+    "file": "e25-2-26.xhtml",
+    "block": 1,
+    "line": 33,
+    "form_text": "(machine-instance)",
+    "expected_values": [
+     "\"ACME.COM\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "\"S/N 123231\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "\"18.26.0.179\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     },
+     {
+      "values": [
+       "\"AA-00-04-00-A7-A4\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"df89647f5223\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "25.2.27",
+  "names": [
+   "machine-type"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/25-environment/25.2.27-machine-type.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "25.2.27",
+    "names": "machine-type",
+    "kind": "Function",
+    "file": "e25-2-27.xhtml",
+    "block": 1,
+    "line": 32,
+    "form_text": "(machine-type)",
+    "expected_values": [
+     "\"DEC PDP-10\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [
+     {
+      "values": [
+       "\"Symbolics LM-2\""
+      ],
+      "italics": [
+       []
+      ],
+      "no_values": false
+     }
+    ],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"X86-64\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "25.2.28",
+  "names": [
+   "machine-version"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/25-environment/25.2.28-machine-version.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "25.2.28",
+    "names": "machine-version",
+    "kind": "Function",
+    "file": "e25-2-28.xhtml",
+    "block": 1,
+    "line": 32,
+    "form_text": "(machine-version)",
+    "expected_values": [
+     "\"KL-10, microcode 9\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"Intel(R) Core(TM) i7-5930K CPU @ 3.50GHz\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "25.2.29",
+  "names": [
+   "software-type",
+   "software-version"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/25-environment/25.2.29-software-type.xhtml",
+  "tex_file": "dict-environment.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "25.2.29",
+    "names": "software-type, software-version",
+    "kind": "Function",
+    "file": "e25-2-29.xhtml",
+    "block": 1,
+    "line": 43,
+    "form_text": "(software-type)",
+    "expected_values": [
+     "\"Multics\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"Linux\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "25.2.29",
+    "names": "software-type, software-version",
+    "kind": "Function",
+    "file": "e25-2-29.xhtml",
+    "block": 1,
+    "line": 44,
+    "form_text": "(software-version)",
+    "expected_values": [
+     "\"1.3x\""
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"6.8.0-110-generic\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ }
+]

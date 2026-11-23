@@ -1,0 +1,3259 @@
+[
+ {
+  "secno": "6.2.1",
+  "names": [
+   "do",
+   "do*"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/6-iteration/6.2.1-do.xhtml",
+  "tex_file": "dict-iteration.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "6.2.1",
+    "names": "do, do*",
+    "kind": "Macro",
+    "file": "e6-2-1.xhtml",
+    "block": 1,
+    "line": 196,
+    "form_text": "(do ((j 0 (+ j 1)))\n(nil)                       ;Do forever.\n(format t \"~%Input ~D:\" j)\n(let ((item (read)))\n(if (null item) (return)   ;Process items until NIL seen.\n(format t \"~&Output ~D: ~S\" j item))))",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Input 0: banana",
+     "Output 0: BANANA",
+     "Input 1: (57 boxes)",
+     "Output 1: (57 BOXES)",
+     "Input 2: NIL"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [
+     "",
+     "Input 0:"
+    ],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>"
+    }
+   },
+   {
+    "secno": "6.2.1",
+    "names": "do, do*",
+    "kind": "Macro",
+    "file": "e6-2-1.xhtml",
+    "block": 2,
+    "line": 218,
+    "form_text": "(do ((x e (cdr x))\n(oldx x x))\n((null x))\nbody)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable E is unbound."
+    }
+   },
+   {
+    "secno": "6.2.1",
+    "names": "do, do*",
+    "kind": "Macro",
+    "file": "e6-2-1.xhtml",
+    "block": 3,
+    "line": 228,
+    "form_text": "(do ((x foo (cdr x))\n(y bar (cdr y))\n(z '() (cons (f (car x) (car y)) z)))\n((or (null x) (null y))\n(nreverse z)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable FOO is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "6.2.4",
+  "names": [
+   "loop"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/6-iteration/6.2.4-loop.xhtml",
+  "tex_file": "dict-iteration.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9737,
+    "tex_words": 545,
+    "epub_words": 521,
+    "n_diffs": 8,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓variable-clause",
+      "epub": "variable-clause",
+      "ctx": "[ ↓name-clause ] {"
+     },
+     {
+      "op": "replace",
+      "tex": "↓main-clause",
+      "epub": "main-clause",
+      "ctx": "↓variable-clause } * {"
+     },
+     {
+      "op": "delete",
+      "tex": "0= { to 0",
+      "epub": "",
+      "ctx": "sum | summing |"
+     },
+     {
+      "op": "delete",
+      "tex": "0= { to 0",
+      "epub": "",
+      "ctx": "| of } hash-table"
+     },
+     {
+      "op": "delete",
+      "tex": "0= { to 0",
+      "epub": "",
+      "ctx": "other-var ) ] |"
+     },
+     {
+      "op": "delete",
+      "tex": "0= { to 0",
+      "epub": "",
+      "ctx": "| of } hash-table"
+     },
+     {
+      "op": "delete",
+      "tex": "0= { to 0",
+      "epub": "",
+      "ctx": "symbol | symbols |"
+     },
+     {
+      "op": "delete",
+      "tex": "0= { to 0",
+      "epub": "",
+      "ctx": "present-symbol | present-symbols |"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "6.2.4",
+    "names": "loop",
+    "kind": "Macro",
+    "file": "e6-2-4.xhtml",
+    "block": 1,
+    "line": 208,
+    "form_text": "(sqrt-advisor)",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Number: 5[Return]",
+     "The square root of 5 is 2.236068.",
+     "Number: 4[Return]",
+     "The square root of 4 is 2.",
+     "Number: done[Return]"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [
+     "Number: "
+    ],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>"
+    }
+   },
+   {
+    "secno": "6.2.4",
+    "names": "loop",
+    "kind": "Macro",
+    "file": "e6-2-4.xhtml",
+    "block": 1,
+    "line": 224,
+    "form_text": "(square-advisor)",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Number: 4[Return]",
+     "The square of 4 is 16.",
+     "Number: 23[Return]",
+     "The square of 23 is 529.",
+     "Number: done[Return]"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [
+     "Number: "
+    ],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "7.7.1",
+  "names": [
+   "function-keywords"
+  ],
+  "kind": "Standard Generic Function",
+  "file": "OEBPS/text/7-objects/7.7.1-function-keywords.xhtml",
+  "tex_file": "dict-objects.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "7.7.1",
+    "names": "function-keywords",
+    "kind": "Standard Generic Function",
+    "file": "e7-7-1.xhtml",
+    "block": 1,
+    "line": 59,
+    "form_text": "(function-keywords (find-method #'gf1 '() (list (find-class 'integer))))",
+    "expected_values": [
+     "()",
+     "false"
+    ],
+    "expected_italics": [
+     [],
+     [
+      "false"
+     ]
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(:C :DEE :E EFF)",
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "7.7.7",
+  "names": [
+   "update-instance-for-redefined-class"
+  ],
+  "kind": "Standard Generic Function",
+  "file": "OEBPS/text/7-objects/7.7.7-update-instance-for-redefined-class.xhtml",
+  "tex_file": "dict-objects.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "7.7.7",
+    "names": "update-instance-for-redefined-class",
+    "kind": "Standard Generic Function",
+    "file": "e7-7-7.xhtml",
+    "block": 1,
+    "line": 95,
+    "form_text": "(defclass position () ())",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining POSITION as a class while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "7.7.8",
+  "names": [
+   "change-class"
+  ],
+  "kind": "Standard Generic Function",
+  "file": "OEBPS/text/7-objects/7.7.8-change-class.xhtml",
+  "tex_file": "dict-objects.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "7.7.8",
+    "names": "change-class",
+    "kind": "Standard Generic Function",
+    "file": "e7-7-8.xhtml",
+    "block": 1,
+    "line": 81,
+    "form_text": "(defclass position () ())",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining POSITION as a class while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   },
+   {
+    "secno": "7.7.8",
+    "names": "change-class",
+    "kind": "Standard Generic Function",
+    "file": "e7-7-8.xhtml",
+    "block": 1,
+    "line": 105,
+    "form_text": "(setq p1 (make-instance 'x-y-position :x 2 :y 0))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-ERROR While computing the class precedence list of the class named COMMON-LISP-USER::X-Y-POSITION.\nThe class named COMMON-LISP:POSITION is a forward referenced class.\nThe class named COMMON-LISP:POSITION is a direct superclass of the class named COMMON-LISP-USER::X-Y-POSITION."
+    }
+   },
+   {
+    "secno": "7.7.8",
+    "names": "change-class",
+    "kind": "Standard Generic Function",
+    "file": "e7-7-8.xhtml",
+    "block": 1,
+    "line": 107,
+    "form_text": "(change-class p1 'rho-theta-position)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable P1 is unbound."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "7.7.21",
+  "names": [
+   "make-load-form"
+  ],
+  "kind": "Standard Generic Function",
+  "file": "OEBPS/text/7-objects/7.7.21-make-load-form.xhtml",
+  "tex_file": "dict-objects.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "7.7.21",
+    "names": "make-load-form",
+    "kind": "Standard Generic Function",
+    "file": "e7-7-21.xhtml",
+    "block": 1,
+    "line": 222,
+    "form_text": "(make-load-form obj1)",
+    "expected_values": [
+     "(MAKE-INSTANCE 'OBJ :X '3.0 :Y '4.0)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(MAKE-INSTANCE (QUOTE #<STANDARD-CLASS COMMON-LISP-USER::OBJ>) :X (QUOTE 3.0) :Y (QUOTE 4.0))"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "7.7.23",
+  "names": [
+   "with-accessors"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/7-objects/7.7.23-with-accessors.xhtml",
+  "tex_file": "dict-objects.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Notes",
+    "ratio": 0.9844,
+    "tex_words": 65,
+    "epub_words": 63,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "delete",
+      "tex": "1",
+      "epub": "",
+      "ctx": "expression of the form:"
+     },
+     {
+      "op": "delete",
+      "tex": "1",
+      "epub": "",
+      "ctx": "into the equivalent of"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "7.7.24",
+  "names": [
+   "with-slots"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/7-objects/7.7.24-with-slots.xhtml",
+  "tex_file": "dict-objects.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Notes",
+    "ratio": 0.9891,
+    "tex_words": 93,
+    "epub_words": 91,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "delete",
+      "tex": "1",
+      "epub": "",
+      "ctx": "expression of the form:"
+     },
+     {
+      "op": "delete",
+      "tex": "1",
+      "epub": "",
+      "ctx": "into the equivalent of"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "7.7.25",
+  "names": [
+   "defclass"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/7-objects/7.7.25-defclass.xhtml",
+  "tex_file": "dict-objects.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9722,
+    "tex_words": 108,
+    "epub_words": 108,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "slot-name",
+      "epub": "slot name",
+      "ctx": "→ new-class slot-specifier ::="
+     },
+     {
+      "op": "replace",
+      "tex": ". initarg-list",
+      "epub": "·initarg-list",
+      "ctx": "class-option ::= ( :default-initargs"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "7.7.26",
+  "names": [
+   "defgeneric"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/7-objects/7.7.26-defgeneric.xhtml",
+  "tex_file": "dict-objects.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9875,
+    "tex_words": 80,
+    "epub_words": 80,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓method-description",
+      "epub": "method-description",
+      "ctx": "[ ↓option | {"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "7.7.27",
+  "names": [
+   "defmethod"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/7-objects/7.7.27-defmethod.xhtml",
+  "tex_file": "dict-objects.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9746,
+    "tex_words": 118,
+    "epub_words": 118,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "* specialized-lambda-list",
+      "epub": "*specialized-lambda-list",
+      "ctx": "function-name { method-qualifier }"
+     },
+     {
+      "op": "replace",
+      "tex": "keywordvar",
+      "epub": "keyword var",
+      "ctx": "{ var | ("
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "7.7.33",
+  "names": [
+   "define-method-combination"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/7-objects/7.7.33-define-method-combination.xhtml",
+  "tex_file": "dict-objects.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Description",
+    "ratio": 0.9996,
+    "tex_words": 2253,
+    "epub_words": 2251,
+    "n_diffs": 2,
+    "diffs": [
+     {
+      "op": "delete",
+      "tex": "$",
+      "epub": "",
+      "ctx": "( operator method-call method-call"
+     },
+     {
+      "op": "delete",
+      "tex": "$",
+      "epub": "",
+      "ctx": "$ . . ."
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "7.7.33",
+    "names": "define-method-combination",
+    "kind": "Macro",
+    "file": "e7-7-33.xhtml",
+    "block": 1,
+    "line": 464,
+    "form_text": "(define-method-combination and :identity-with-one-argument t)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining AND as a method combination while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   },
+   {
+    "secno": "7.7.33",
+    "names": "define-method-combination",
+    "kind": "Macro",
+    "file": "e7-7-33.xhtml",
+    "block": 1,
+    "line": 470,
+    "form_text": "(define-method-combination and\n(&optional (order :most-specific-first))\n((around (:around))\n(primary (and) :order order :required t))\n(let ((form (if (rest primary)\n`(and ,@(mapcar #'(lambda (method)\n`(call-method ,method))\nprimary))\n`(call-method ,(first primary)))))\n(if around\n`(call-method ,(first around)\n(,@(rest around)\n(make-method ,form)))\nform)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining AND as a method combination while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   },
+   {
+    "secno": "7.7.33",
+    "names": "define-method-combination",
+    "kind": "Macro",
+    "file": "e7-7-33.xhtml",
+    "block": 1,
+    "line": 488,
+    "form_text": "(define-method-combination standard ()\n((around (:around))\n(before (:before))\n(primary () :required t)\n(after (:after)))\n(flet ((call-methods (methods)\n(mapcar #'(lambda (method)\n`(call-method ,method))\nmethods)))\n(let ((form (if (or before after (rest primary))\n`(multiple-value-prog1\n(progn ,@(call-methods before)\n(call-method ,(first primary)\n,(rest primary)))\n,@(call-methods (reverse after)))\n`(call-method ,(first primary)))))\n(if around\n`(call-method ,(first around)\n(,@(rest around)\n(make-method ,form)))\nform))))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining STANDARD as a method combination while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   },
+   {
+    "secno": "7.7.33",
+    "names": "define-method-combination",
+    "kind": "Macro",
+    "file": "e7-7-33.xhtml",
+    "block": 1,
+    "line": 511,
+    "form_text": "(define-method-combination or ()\n((methods (or)))\n`(or ,@(mapcar #'(lambda (method)\n`(call-method ,method))\nmethods)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining OR as a method combination while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   },
+   {
+    "secno": "7.7.33",
+    "names": "define-method-combination",
+    "kind": "Macro",
+    "file": "e7-7-33.xhtml",
+    "block": 1,
+    "line": 518,
+    "form_text": "(define-method-combination or\n(&optional (order ':most-specific-first))\n((around (:around))\n(primary (or)))\n;; Process the order argument\n(case order\n(:most-specific-first)\n(:most-specific-last (setq primary (reverse primary)))\n(otherwise (method-combination-error \"~S is an invalid order.~@\n:most-specific-first and :most-specific-last are the possible values.\"\norder)))\n;; Must have a primary method\n(unless primary\n(method-combination-error \"A primary method is required.\"))\n;; Construct the form that calls the primary methods\n(let ((form (if (rest primary)\n`(or ,@(mapcar #'(lambda (method)\n`(call-method ,method))\nprimary))\n`(call-method ,(first primary)))))\n;; Wrap the around methods around that form\n(if around\n`(call-method ,(first around)\n(,@(rest around)\n(make-method ,form)))\nform)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining OR as a method combination while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   },
+   {
+    "secno": "7.7.33",
+    "names": "define-method-combination",
+    "kind": "Macro",
+    "file": "e7-7-33.xhtml",
+    "block": 1,
+    "line": 546,
+    "form_text": "(define-method-combination or\n(&optional (order ':most-specific-first))\n((around (:around))\n(primary (or) :order order :required t))\n(let ((form (if (rest primary)\n`(or ,@(mapcar #'(lambda (method)\n`(call-method ,method))\nprimary))\n`(call-method ,(first primary)))))\n(if around\n`(call-method ,(first around)\n(,@(rest around)\n(make-method ,form)))\nform)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining OR as a method combination while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   },
+   {
+    "secno": "7.7.33",
+    "names": "define-method-combination",
+    "kind": "Macro",
+    "file": "e7-7-33.xhtml",
+    "block": 1,
+    "line": 562,
+    "form_text": "(define-method-combination or :identity-with-one-argument t)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SYMBOL-PACKAGE-LOCKED-ERROR Lock on package COMMON-LISP violated when defining OR as a method combination while in package COMMON-LISP-USER.\nSee also:\n  The SBCL Manual, Node \"Package Locks\"\n  The ANSI Standard, Section 11.1.2.1.2"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "7.7.34",
+  "names": [
+   "find-method"
+  ],
+  "kind": "Standard Generic Function",
+  "file": "OEBPS/text/7-objects/7.7.34-find-method.xhtml",
+  "tex_file": "dict-objects.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "7.7.34",
+    "names": "find-method",
+    "kind": "Standard Generic Function",
+    "file": "e7-7-34.xhtml",
+    "block": 1,
+    "line": 75,
+    "form_text": "(find-method #'some-operation '() (mapcar #'find-class '(integer integer)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": [
+     "Error: No matching method"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-ERROR There is no method on #<STANDARD-GENERIC-FUNCTION COMMON-LISP-USER::SOME-OPERATION (1)> with no qualifiers and specializers (#<BUILT-IN-CLASS COMMON-LISP:INTEGER> #<BUILT-IN-CLASS COMMON-LISP:INTEGER>)."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "8.1.1",
+  "names": [
+   "defstruct"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/8-structures/8.1.1-defstruct.xhtml",
+  "tex_file": "dict-structures.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9825,
+    "tex_words": 171,
+    "epub_words": 171,
+    "n_diffs": 3,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓slot-description",
+      "epub": "slot-description",
+      "ctx": "[ documentation ] {"
+     },
+     {
+      "op": "replace",
+      "tex": "↓constructor-option",
+      "epub": "constructor-option",
+      "ctx": "::= ↓conc-name-option | {"
+     },
+     {
+      "op": "replace",
+      "tex": "↓slot-description",
+      "epub": "slot-description",
+      "ctx": "( :include included-structure-name {"
+     }
+    ]
+   },
+   {
+    "label": "Description",
+    "ratio": 0.9999,
+    "tex_words": 5058,
+    "epub_words": 5057,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "delete",
+      "tex": "(",
+      "epub": "",
+      "ctx": "of the following form:"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "8.1.1",
+    "names": "defstruct",
+    "kind": "Macro",
+    "file": "e8-1-1.xhtml",
+    "block": 3,
+    "line": 1145,
+    "form_text": "(setq ship2 (make-ship :mass *default-ship-mass*\n:x-position 0\n:y-position 0))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNBOUND-VARIABLE The variable *DEFAULT-SHIP-MASS* is unbound."
+    }
+   },
+   {
+    "secno": "8.1.1",
+    "names": "defstruct",
+    "kind": "Macro",
+    "file": "e8-1-1.xhtml",
+    "block": 5,
+    "line": 1209,
+    "form_text": "(setq funny-clown (make-clown))",
+    "expected_values": [
+     "#S(CLOWN)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "#S(CLOWN :NOSE-COLOR RED :FRIZZY-HAIR-P NIL :POLKADOTS NIL)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.10",
+  "names": [
+   "assert"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/9-conditions/9.2.10-assert.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.10",
+    "names": "assert",
+    "kind": "Macro",
+    "file": "e9-2-10.xhtml",
+    "block": 1,
+    "line": 92,
+    "form_text": "(matrix-multiply x y)",
+    "expected_values": [
+     "#2A((54 54 54 54 54)\n(54 54 54 54 54)\n(54 54 54 54 54)\n(54 54 54 54 54)\n(54 54 54 54 54))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Correctable error in MATRIX-MULTIPLY:",
+     "Cannot multiply #<ARRAY ...> by #<ARRAY ...>.",
+     "Restart options:",
+     "1: You will be prompted for one or more new values.",
+     "2: Top level.",
+     "Debug> :continue 1",
+     "Value for A: x",
+     "Value for B: (make-array '(5 3) :initial-element 6)"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-ERROR Cannot multiply #2A((3 3 3 3 3) (3 3 3 3 3) (3 3 3 3 3)) by #2A((7 7 7 7 7) (7 7 7 7 7) (7 7 7 7 7))."
+    }
+   },
+   {
+    "secno": "9.2.10",
+    "names": "assert",
+    "kind": "Macro",
+    "file": "e9-2-10.xhtml",
+    "block": 2,
+    "line": 112,
+    "form_text": "(double-safely t)",
+    "expected_values": [
+     "14"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Correctable error in DOUBLE-SAFELY: The value of (NUMBERP X) must be non-NIL.",
+     "Restart options:",
+     "1: You will be prompted for one or more new values.",
+     "2: Top level.",
+     "Debug> :continue 1",
+     "Value for X: 7"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-ERROR The assertion (NUMBERP X) failed with X = T."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.11",
+  "names": [
+   "error"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/9-conditions/9.2.11-error.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.11",
+    "names": "error",
+    "kind": "Function",
+    "file": "e9-2-11.xhtml",
+    "block": 1,
+    "line": 46,
+    "form_text": "(factorial -1)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": [
+     "Error: -1 is not a valid argument to FACTORIAL.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Return to Lisp Toplevel.",
+     "Debug>"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-ERROR -1 is not a valid argument to FACTORIAL."
+    }
+   },
+   {
+    "secno": "9.2.11",
+    "names": "error",
+    "kind": "Function",
+    "file": "e9-2-11.xhtml",
+    "block": 2,
+    "line": 55,
+    "form_text": "(if (numberp a) (1+ a) (error \"~S is not a number.\" A))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": [
+     "Error: FRED is not a number.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Return to Lisp Toplevel.",
+     "Debug> :Continue 1",
+     "Return to Lisp Toplevel."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-ERROR FRED is not a number."
+    }
+   },
+   {
+    "secno": "9.2.11",
+    "names": "error",
+    "kind": "Function",
+    "file": "e9-2-11.xhtml",
+    "block": 2,
+    "line": 69,
+    "form_text": "(if (numberp a) (1+ a) (error 'not-a-number :argument a))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": [
+     "Error: FRED is not a number.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Return to Lisp Toplevel.",
+     "Debug> :Continue 1",
+     "Return to Lisp Toplevel."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "NOT-A-NUMBER FRED is not a number."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.12",
+  "names": [
+   "cerror"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/9-conditions/9.2.12-cerror.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.12",
+    "names": "cerror",
+    "kind": "Function",
+    "file": "e9-2-12.xhtml",
+    "block": 1,
+    "line": 59,
+    "form_text": "(real-sqrt -9)",
+    "expected_values": [
+     "3.0"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Correctable error in REAL-SQRT: Tried to take sqrt(-9).",
+     "Restart options:",
+     "1: Return sqrt(9) instead.",
+     "2: Top level.",
+     "Debug> :continue 1"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-ERROR Tried to take sqrt(-9)."
+    }
+   },
+   {
+    "secno": "9.2.12",
+    "names": "cerror",
+    "kind": "Function",
+    "file": "e9-2-12.xhtml",
+    "block": 1,
+    "line": 81,
+    "form_text": "(assure-number 'a)",
+    "expected_values": [
+     "1/2"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Correctable error in ASSURE-NUMBER: A is not a number.",
+     "Restart options:",
+     "1: Enter a number.",
+     "2: Top level.",
+     "Debug> :continue 1",
+     "Type a number: 1/2"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "NOT-A-NUMBER A is not a number."
+    }
+   },
+   {
+    "secno": "9.2.12",
+    "names": "cerror",
+    "kind": "Function",
+    "file": "e9-2-12.xhtml",
+    "block": 1,
+    "line": 111,
+    "form_text": "(assure-large-number 'a)",
+    "expected_values": [
+     "88"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Correctable error in ASSURE-LARGE-NUMBER: A is not a large number.",
+     "Restart options:",
+     "1: Enter a number.",
+     "2: Top level.",
+     "Debug> :continue 1",
+     "Type a large number: 88"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-ERROR A is not a large number."
+    }
+   },
+   {
+    "secno": "9.2.12",
+    "names": "cerror",
+    "kind": "Function",
+    "file": "e9-2-12.xhtml",
+    "block": 1,
+    "line": 120,
+    "form_text": "(assure-large-number 37)",
+    "expected_values": [
+     "259"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Correctable error in ASSURE-LARGE-NUMBER: 37 is not a large number.",
+     "Restart options:",
+     "1: Enter a number a bit larger than 37.",
+     "2: Top level.",
+     "Debug> :continue 1",
+     "Type a large number: 259"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-ERROR 37 is not a large number."
+    }
+   },
+   {
+    "secno": "9.2.12",
+    "names": "cerror",
+    "kind": "Function",
+    "file": "e9-2-12.xhtml",
+    "block": 1,
+    "line": 148,
+    "form_text": "(assure-large-number 'a)",
+    "expected_values": [
+     "88"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Correctable error in ASSURE-LARGE-NUMBER: A is not a large number.",
+     "Restart options:",
+     "1: Enter a number.",
+     "2: Top level.",
+     "Debug> :continue 1",
+     "Type a large number: 88"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "NOT-A-LARGE-NUMBER A is not a large number."
+    }
+   },
+   {
+    "secno": "9.2.12",
+    "names": "cerror",
+    "kind": "Function",
+    "file": "e9-2-12.xhtml",
+    "block": 1,
+    "line": 157,
+    "form_text": "(assure-large-number 37)",
+    "expected_values": [
+     "259"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Correctable error in ASSURE-LARGE-NUMBER: A is not a large number.",
+     "Restart options:",
+     "1: Enter a number a bit larger than 37.",
+     "2: Top level.",
+     "Debug> :continue 1",
+     "Type a large number: 259"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "NOT-A-LARGE-NUMBER 37 is not a large number."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.13",
+  "names": [
+   "check-type"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/9-conditions/9.2.13-check-type.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.13",
+    "names": "check-type",
+    "kind": "Macro",
+    "file": "e9-2-13.xhtml",
+    "block": 1,
+    "line": 76,
+    "form_text": "(check-type aardvarks (array * (3)))",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Error: The value of AARDVARKS, (SAM HARRY FRED),",
+     "      is not a 3-long array.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Specify a value to use instead.",
+     "2: Return to Lisp Toplevel.",
+     "Debug> :CONTINUE 1",
+     "Use Value: #(SAM FRED HARRY)"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The value of AARDVARKS is (SAM HARRY FRED), which is not of type (VECTOR * 3)."
+    }
+   },
+   {
+    "secno": "9.2.13",
+    "names": "check-type",
+    "kind": "Macro",
+    "file": "e9-2-13.xhtml",
+    "block": 1,
+    "line": 87,
+    "form_text": "(map 'list #'identity aardvarks)",
+    "expected_values": [
+     "(SAM FRED HARRY)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(SAM HARRY FRED)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "9.2.13",
+    "names": "check-type",
+    "kind": "Macro",
+    "file": "e9-2-13.xhtml",
+    "block": 1,
+    "line": 91,
+    "form_text": "(check-type aardvark-count (integer 0 *) \"A positive integer\")",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": [
+     "Error: The value of AARDVARK-COUNT, FOO, is not a positive integer.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Specify a value to use instead.",
+     "2: Top level.",
+     "Debug> :CONTINUE 2"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The value of AARDVARK-COUNT is FOO, which is not A positive integer."
+    }
+   },
+   {
+    "secno": "9.2.13",
+    "names": "check-type",
+    "kind": "Macro",
+    "file": "e9-2-13.xhtml",
+    "block": 2,
+    "line": 104,
+    "form_text": "(macroexpand '(define-adder add3 3))",
+    "expected_values": [
+     "(defun add3 (x) (+ x 3))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(PROGN (EVAL-WHEN (:COMPILE-TOPLEVEL) (SB-C:%COMPILER-DEFUN (QUOTE ADD3) T NIL NIL)) (SB-IMPL::%DEFUN (QUOTE ADD3) (SB-INT:NAMED-LAMBDA ADD3 (X) (BLOCK ADD3 (+ X 3)))))",
+     "T"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "9.2.13",
+    "names": "check-type",
+    "kind": "Macro",
+    "file": "e9-2-13.xhtml",
+    "block": 2,
+    "line": 107,
+    "form_text": "(macroexpand '(define-adder 7 7))",
+    "expected_values": [
+     "(defun add7 (x) (+ x 7))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Error: The value of NAME, 7, is not a name for an adder function.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Specify a value to use instead.",
+     "2: Top level.",
+     "Debug> :Continue 1",
+     "Specify a value to use instead.",
+     "Type a form to be evaluated and used instead: 'ADD7"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The value of NAME is 7, which is not a name for an adder function."
+    }
+   },
+   {
+    "secno": "9.2.13",
+    "names": "check-type",
+    "kind": "Macro",
+    "file": "e9-2-13.xhtml",
+    "block": 2,
+    "line": 117,
+    "form_text": "(macroexpand '(define-adder add5 something))",
+    "expected_values": [
+     "(defun add5 (x) (+ x 5))"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Error: The value of AMOUNT, SOMETHING, is not an integer.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Specify a value to use instead.",
+     "2: Top level.",
+     "Debug> :Continue 1",
+     "Type a form to be evaluated and used instead: 5"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The value of AMOUNT is SOMETHING, which is not of type INTEGER."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.17",
+  "names": [
+   "signal"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/9-conditions/9.2.17-signal.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.17",
+    "names": "signal",
+    "kind": "Function",
+    "file": "e9-2-17.xhtml",
+    "block": 1,
+    "line": 55,
+    "form_text": "(handler-bind ((arithmetic-error #'handle-division-conditions)\n(arithmetic-error #'handle-other-arithmetic-errors))\n(signal 'arithmetic-error :operation '* :operands '(1.2 b)))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "process terminated during this step (debugger/abort/exit)"
+    }
+   }
+  ],
+  "example_unparsed": [
+   {
+    "secno": "9.2.17",
+    "names": "signal",
+    "file": "e9-2-17.xhtml",
+    "block": 1,
+    "line": 52,
+    "text": "Considering condition for division condition handling",
+    "reason": "prose"
+   },
+   {
+    "secno": "9.2.17",
+    "names": "signal",
+    "file": "e9-2-17.xhtml",
+    "block": 1,
+    "line": 53,
+    "text": "Considering condition for arithmetic condition handling",
+    "reason": "prose"
+   },
+   {
+    "secno": "9.2.17",
+    "names": "signal",
+    "file": "e9-2-17.xhtml",
+    "block": 1,
+    "line": 58,
+    "text": "Considering condition for division condition handling",
+    "reason": "prose"
+   },
+   {
+    "secno": "9.2.17",
+    "names": "signal",
+    "file": "e9-2-17.xhtml",
+    "block": 1,
+    "line": 59,
+    "text": "Considering condition for arithmetic condition handling",
+    "reason": "prose"
+   },
+   {
+    "secno": "9.2.17",
+    "names": "signal",
+    "file": "e9-2-17.xhtml",
+    "block": 1,
+    "line": 60,
+    "text": "Back to Lisp Toplevel",
+    "reason": "prose"
+   },
+   {
+    "secno": "9.2.17",
+    "names": "signal",
+    "file": "e9-2-17.xhtml",
+    "block": 1,
+    "line": 39,
+    "text": "HANDLE-DIVISION-CONDITIONS",
+    "reason": "bare symbol without expectation"
+   },
+   {
+    "secno": "9.2.17",
+    "names": "signal",
+    "file": "e9-2-17.xhtml",
+    "block": 1,
+    "line": 44,
+    "text": "HANDLE-OTHER-ARITHMETIC-ERRORS",
+    "reason": "bare symbol without expectation"
+   },
+   {
+    "secno": "9.2.17",
+    "names": "signal",
+    "file": "e9-2-17.xhtml",
+    "block": 1,
+    "line": 46,
+    "text": "A-CONDITION-WITH-NO-HANDLER",
+    "reason": "bare symbol without expectation"
+   },
+   {
+    "secno": "9.2.17",
+    "names": "signal",
+    "file": "e9-2-17.xhtml",
+    "block": 1,
+    "line": 48,
+    "text": "NIL",
+    "reason": "bare symbol without expectation"
+   },
+   {
+    "secno": "9.2.17",
+    "names": "signal",
+    "file": "e9-2-17.xhtml",
+    "block": 1,
+    "line": 54,
+    "text": "NIL",
+    "reason": "bare symbol without expectation"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.20",
+  "names": [
+   "warn"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/9-conditions/9.2.20-warn.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.20",
+    "names": "warn",
+    "kind": "Function",
+    "file": "e9-2-20.xhtml",
+    "block": 1,
+    "line": 71,
+    "form_text": "(foo most-positive-fixnum)",
+    "expected_values": [
+     "4294967294"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Warning: You're using very big numbers."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "9223372036854775806"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "9.2.20",
+    "names": "warn",
+    "kind": "Function",
+    "file": "e9-2-20.xhtml",
+    "block": 1,
+    "line": 78,
+    "form_text": "(foo most-positive-fixnum)",
+    "expected_values": [
+     "4294967294"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Break: Caveat emptor.",
+     "To continue, type :CONTINUE followed by an option number.",
+     "1: Return from Break.",
+     "2: Abort to Lisp Toplevel.",
+     "Debug> :continue 1",
+     "Warning: You're using very big numbers."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "process terminated during this step (debugger/abort/exit)"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.22",
+  "names": [
+   "invoke-debugger"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/9-conditions/9.2.22-invoke-debugger.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.22",
+    "names": "invoke-debugger",
+    "kind": "Function",
+    "file": "e9-2-22.xhtml",
+    "block": 1,
+    "line": 45,
+    "form_text": "(ignore-errors ;Normally, this would suppress debugger entry\n(handler-bind ((error #'invoke-debugger)) ;But this forces debugger entry\n(error \"Foo.\")))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "process terminated during this step (debugger/abort/exit)"
+    }
+   }
+  ],
+  "example_unparsed": [
+   {
+    "secno": "9.2.22",
+    "names": "invoke-debugger",
+    "file": "e9-2-22.xhtml",
+    "block": 1,
+    "line": 48,
+    "text": "Debug: Foo.",
+    "reason": "prose"
+   },
+   {
+    "secno": "9.2.22",
+    "names": "invoke-debugger",
+    "file": "e9-2-22.xhtml",
+    "block": 1,
+    "line": 49,
+    "text": "To continue, type :CONTINUE followed by an option number:",
+    "reason": "prose"
+   },
+   {
+    "secno": "9.2.22",
+    "names": "invoke-debugger",
+    "file": "e9-2-22.xhtml",
+    "block": 1,
+    "line": 50,
+    "text": "1: Return to Lisp Toplevel.",
+    "reason": "prose"
+   },
+   {
+    "secno": "9.2.22",
+    "names": "invoke-debugger",
+    "file": "e9-2-22.xhtml",
+    "block": 1,
+    "line": 51,
+    "text": "Debug>",
+    "reason": "bare symbol without expectation"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.23",
+  "names": [
+   "break"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/9-conditions/9.2.23-break.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.23",
+    "names": "break",
+    "kind": "Function",
+    "file": "e9-2-23.xhtml",
+    "block": 1,
+    "line": 60,
+    "form_text": "(break \"You got here with arguments: ~:S.\" '(FOO 37 A))",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "BREAK: You got here with these arguments: FOO, 37, A.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Return from BREAK.",
+     "2: Top level.",
+     "Debug> :CONTINUE 1",
+     "Return from BREAK."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "process terminated during this step (debugger/abort/exit)"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.24",
+  "names": [
+   "*debugger-hook*"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/9-conditions/9.2.24-debugger-hook.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.24",
+    "names": "*debugger-hook*",
+    "kind": "Variable",
+    "file": "e9-2-24.xhtml",
+    "block": 1,
+    "line": 59,
+    "form_text": "(let ((*debugger-hook* #'my-debugger))\n(+ 3 'a))",
+    "expected_values": [
+     "9"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Fooey: The argument to +, A, is not a number.",
+     "[1] Supply a replacement for A.",
+     "[2] Return to Cloe Toplevel.",
+     "Choice: 1",
+     "Form to evaluate and use: (+ 5 'b)",
+     "Fooey: The argument to +, B, is not a number.",
+     "[1] Supply a replacement for B.",
+     "[2] Supply a replacement for A.",
+     "[3] Return to Cloe Toplevel.",
+     "Choice: 1",
+     "Form to evaluate and use: 1"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR Value of (QUOTE A) in (+ 3 'A) is A, not a NUMBER."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.25",
+  "names": [
+   "*break-on-signals*"
+  ],
+  "kind": "Variable",
+  "file": "OEBPS/text/9-conditions/9.2.25-break-on-signals.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.25",
+    "names": "*break-on-signals*",
+    "kind": "Variable",
+    "file": "e9-2-25.xhtml",
+    "block": 1,
+    "line": 43,
+    "form_text": "(let ((*break-on-signals* 'error))\n(ignore-errors (error 'simple-error :format-control \"Fooey!\")))",
+    "expected_values": [
+     "NIL",
+     "#<SIMPLE-ERROR 32212257>"
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": [
+     "Break: Fooey!",
+     "BREAK entered because of *BREAK-ON-SIGNALS*.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Continue to signal.",
+     "2: Top level.",
+     "Debug> :CONTINUE 1",
+     "Continue to signal."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "process terminated during this step (debugger/abort/exit)"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.26",
+  "names": [
+   "handler-bind"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/9-conditions/9.2.26-handler-bind.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9545,
+    "tex_words": 22,
+    "epub_words": 22,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓binding",
+      "epub": "binding",
+      "ctx": "handler-bind ( {"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.26",
+    "names": "handler-bind",
+    "kind": "Macro",
+    "file": "e9-2-26.xhtml",
+    "block": 2,
+    "line": 91,
+    "form_text": "(list (trap-errors (signal \"Foo.\") 1)\n(trap-errors (error  \"Bar.\") 2)\n(+ 1 2))",
+    "expected_values": [
+     "(1 NIL 3)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Bar."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(1 NIL 3)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.27",
+  "names": [
+   "handler-case"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/9-conditions/9.2.27-handler-case.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9815,
+    "tex_words": 54,
+    "epub_words": 54,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓error-clause",
+      "epub": "error-clause",
+      "ctx": "expression [ [ {"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "9.2.28",
+  "names": [
+   "ignore-errors"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/9-conditions/9.2.28-ignore-errors.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [],
+  "example_unparsed": [
+   {
+    "secno": "9.2.28",
+    "names": "ignore-errors",
+    "file": "e9-2-28.xhtml",
+    "block": 1,
+    "line": 60,
+    "text": "NIL",
+    "reason": "bare symbol without expectation"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.29",
+  "names": [
+   "define-condition"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/9-conditions/9.2.29-define-condition.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9914,
+    "tex_words": 116,
+    "epub_words": 116,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓slot-spec",
+      "epub": "slot-spec",
+      "ctx": "* ) ( {"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.29",
+    "names": "define-condition",
+    "kind": "Macro",
+    "file": "e9-2-29.xhtml",
+    "block": 1,
+    "line": 314,
+    "form_text": "(define-condition peg/hole-mismatch\n(blocks-world-error)\n((peg-shape  :initarg :peg-shape\n:reader peg/hole-mismatch-peg-shape)\n(hole-shape :initarg :hole-shape\n:reader peg/hole-mismatch-hole-shape))\n(:report (lambda (condition stream)\n(format stream \"A ~A peg cannot go in a ~A hole.\"\n(peg/hole-mismatch-peg-shape  condition)\n(peg/hole-mismatch-hole-shape condition)))))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR Class not yet defined: BLOCKS-WORLD-ERROR"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.30",
+  "names": [
+   "make-condition"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/9-conditions/9.2.30-make-condition.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.30",
+    "names": "make-condition",
+    "kind": "Function",
+    "file": "e9-2-30.xhtml",
+    "block": 1,
+    "line": 53,
+    "form_text": "(error a)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": [
+     "Error: This is your first error.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Return to Lisp Toplevel.",
+     "Debug>"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-ERROR This is your first error."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.32",
+  "names": [
+   "compute-restarts"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/9-conditions/9.2.32-compute-restarts.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.32",
+    "names": "compute-restarts",
+    "kind": "Function",
+    "file": "e9-2-32.xhtml",
+    "block": 1,
+    "line": 80,
+    "form_text": "(restart-case (invoke-a-restart)\n(one () 1)\n(two () 2)\n(nil () :report \"Who knows?\" 'anonymous)\n(one () 'I)\n(two () 'II))",
+    "expected_values": [
+     "II"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "0: ONE",
+     "1: TWO",
+     "2: Who knows?",
+     "3: ONE",
+     "4: TWO",
+     "5: Return to Lisp Toplevel.",
+     "Option: 4"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [
+     "0: ONE",
+     "1: TWO",
+     "2: Who knows?",
+     "3: ONE",
+     "4: TWO",
+     "5: Retry EVAL of current toplevel form.",
+     "6: Ignore error and continue loading file \"/tmp/claude-1000/-workspaces-lisp-stat/5d101160-5834-444f-8e56-a3cfe2ab8eb0/scratchpad/wt-examples/tools/lisp/run-example.lisp\".",
+     "7: Abort loading file \"/tmp/claude-1000/-workspaces-lisp-stat/5d101160-5834-444f-8e56-a3cfe2ab8eb0/scratchpad/wt-examples/tools/lisp/run-example.lisp\".",
+     "8: Abort script, exiting lisp.",
+     "Option: "
+    ],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.34",
+  "names": [
+   "invoke-restart"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/9-conditions/9.2.34-invoke-restart.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.34",
+    "names": "invoke-restart",
+    "kind": "Function",
+    "file": "e9-2-34.xhtml",
+    "block": 1,
+    "line": 41,
+    "form_text": "(foo 'seven)",
+    "expected_values": [
+     "10"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Error: The value SEVEN was not of type NUMBER.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Specify a different value to use.",
+     "2: Return to Lisp Toplevel.",
+     "Debug> (invoke-restart 'store-value 7)"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNDEFINED-FUNCTION The function COMMON-LISP-USER::FOO is undefined."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.35",
+  "names": [
+   "invoke-restart-interactively"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/9-conditions/9.2.35-invoke-restart-interactively.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.35",
+    "names": "invoke-restart-interactively",
+    "kind": "Function",
+    "file": "e9-2-35.xhtml",
+    "block": 1,
+    "line": 61,
+    "form_text": "(add3 'seven)",
+    "expected_values": [
+     "10"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Error: The value SEVEN was not of type NUMBER.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Specify a different value to use.",
+     "2: Return to Lisp Toplevel.",
+     "Debug> (invoke-restart-interactively 'store-value)",
+     "Type a form to evaluate and use: 7"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-TYPE-ERROR The value of X is SEVEN, which is not of type NUMBER."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.36",
+  "names": [
+   "restart-bind"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/9-conditions/9.2.36-restart-bind.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9688,
+    "tex_words": 32,
+    "epub_words": 32,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓key-val-pair",
+      "epub": "key-val-pair",
+      "ctx": "( name function {"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ },
+ {
+  "secno": "9.2.37",
+  "names": [
+   "restart-case"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/9-conditions/9.2.37-restart-case.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.37",
+    "names": "restart-case",
+    "kind": "Macro",
+    "file": "e9-2-37.xhtml",
+    "block": 1,
+    "line": 247,
+    "form_text": "(verify-or-fix-perfect-sundae 'vanilla 'caramel 'cherry)",
+    "expected_values": [
+     "CHOCOLATE",
+     "CARAMEL",
+     "CHERRY"
+    ],
+    "expected_italics": [
+     [],
+     [],
+     []
+    ],
+    "expected_output": [
+     "Error: Bad tasting sundae with VANILLA, CARAMEL, and CHERRY.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Use a new ice cream.",
+     "2: Use a new sauce.",
+     "3: Use a new topping.",
+     "4: Return to Lisp Toplevel.",
+     "Debug> :continue 1",
+     "Use a new ice cream.",
+     "Enter a new ice cream: 'chocolate"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "BAD-TASTING-SUNDAE Bad tasting sundae with VANILLA, CARAMEL, and CHERRY"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.38",
+  "names": [
+   "restart-name"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/9-conditions/9.2.38-restart-name.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.38",
+    "names": "restart-name",
+    "kind": "Function",
+    "file": "e9-2-38.xhtml",
+    "block": 1,
+    "line": 34,
+    "form_text": "(restart-case\n(loop for restart in (compute-restarts)\ncollect (restart-name restart))\n(case1 () :report \"Return 1.\" 1)\n(nil   () :report \"Return 2.\" 2)\n(case3 () :report \"Return 3.\" 3)\n(case1 () :report \"Return 4.\" 4))",
+    "expected_values": [
+     "(CASE1 NIL CASE3 CASE1 ABORT)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(CASE1 NIL CASE3 CASE1 RETRY CONTINUE ABORT ABORT)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.40",
+  "names": [
+   "with-simple-restart"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/9-conditions/9.2.40-with-simple-restart.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.40",
+    "names": "with-simple-restart",
+    "kind": "Macro",
+    "file": "e9-2-40.xhtml",
+    "block": 1,
+    "line": 69,
+    "form_text": "(read-eval-print-loop 1)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "END-OF-FILE end of file on #<SB-SYS:FD-STREAM for \"standard input\" {1200BF82B3}>"
+    }
+   },
+   {
+    "secno": "9.2.40",
+    "names": "with-simple-restart",
+    "kind": "Macro",
+    "file": "e9-2-40.xhtml",
+    "block": 1,
+    "line": 70,
+    "form_text": "(+ 'a 3)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": [
+     "Error: The argument, A, to the function + was of the wrong type.",
+     "      The function expected a number.",
+     "To continue, type :CONTINUE followed by an option number:",
+     "1: Specify a value to use this time.",
+     "2: Return to command level 1.",
+     "3: Exit command level 1.",
+     "4: Return to Lisp Toplevel."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "TYPE-ERROR The value A is not of type NUMBER"
+    }
+   },
+   {
+    "secno": "9.2.40",
+    "names": "with-simple-restart",
+    "kind": "Macro",
+    "file": "e9-2-40.xhtml",
+    "block": 2,
+    "line": 91,
+    "form_text": "(compute-power-of-2 10)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNDEFINED-FUNCTION The function COMMON-LISP-USER::FIXNUMP is undefined."
+    }
+   },
+   {
+    "secno": "9.2.40",
+    "names": "with-simple-restart",
+    "kind": "Macro",
+    "file": "e9-2-40.xhtml",
+    "block": 2,
+    "line": 93,
+    "form_text": "(compute-power-of-2 10000)",
+    "expected_values": [
+     "SOMETHING-BIG"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Error: Power of 2 is too large.",
+     "To continue, type :CONTINUE followed by an option number.",
+     "1: Give up on computing 2^10000.",
+     "2: Return to Lisp Toplevel",
+     "Debug> :continue 1"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "UNDEFINED-FUNCTION The function COMMON-LISP-USER::FIXNUMP is undefined."
+    }
+   }
+  ],
+  "example_unparsed": [
+   {
+    "secno": "9.2.40",
+    "names": "with-simple-restart",
+    "file": "e9-2-40.xhtml",
+    "block": 2,
+    "line": 87,
+    "text": "COMPUTE-FIXNUM-POWER-OF-2",
+    "reason": "bare symbol without expectation"
+   },
+   {
+    "secno": "9.2.40",
+    "names": "with-simple-restart",
+    "file": "e9-2-40.xhtml",
+    "block": 2,
+    "line": 90,
+    "text": "COMPUTE-POWER-OF-2",
+    "reason": "bare symbol without expectation"
+   },
+   {
+    "secno": "9.2.40",
+    "names": "with-simple-restart",
+    "file": "e9-2-40.xhtml",
+    "block": 2,
+    "line": 92,
+    "text": "1024",
+    "reason": "bare symbol without expectation"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.43",
+  "names": [
+   "muffle-warning"
+  ],
+  "kind": "Restart",
+  "file": "OEBPS/text/9-conditions/9.2.43-muffle-warning.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.43",
+    "names": "muffle-warning",
+    "kind": "Restart",
+    "file": "e9-2-43.xhtml",
+    "block": 1,
+    "line": 29,
+    "form_text": "(defun quiet-warning-handler (c)\n(when *all-quiet*\n(let ((r (find-restart 'muffle-warning c)))\n(when r\n(push c *saved-warnings*)\n(invoke-restart r)))))",
+    "expected_values": [
+     "CUSTOM-WARNING-HANDLER"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "QUIET-WARNING-HANDLER"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "9.2.43",
+    "names": "muffle-warning",
+    "kind": "Restart",
+    "file": "e9-2-43.xhtml",
+    "block": 1,
+    "line": 43,
+    "form_text": "(setq saved\n(with-quiet-warnings\n(warn \"Situation #1.\")\n(let ((*all-quiet* nil))\n(warn \"Situation #2.\"))\n(warn \"Situation #3.\")))",
+    "expected_values": [
+     "(#<SIMPLE-WARNING 42744421> #<SIMPLE-WARNING 42744365>)"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Warning: Situation #2."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(#<SIMPLE-WARNING \"Situation #3.\" {1201137313}> #<SIMPLE-WARNING \"Situation #1.\" {1201136AF3}>)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "9.2.46",
+  "names": [
+   "abort",
+   "continue",
+   "muffle-warning",
+   "store-value",
+   "use-value"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/9-conditions/9.2.46-abort.xhtml",
+  "tex_file": "dict-conditions.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "9.2.46",
+    "names": "abort, continue, muffle-warning, store-value, use-value",
+    "kind": "Function",
+    "file": "e9-2-46.xhtml",
+    "block": 1,
+    "line": 89,
+    "form_text": "(abort-on-error (error \"You lose.\"))",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": [
+     "Returned to Lisp Top Level."
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "process terminated during this step (debugger/abort/exit)"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "10.2.9",
+  "names": [
+   "gentemp"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/10-symbols/10.2.9-gentemp.xhtml",
+  "tex_file": "dict-symbols.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "10.2.9",
+    "names": "gentemp",
+    "kind": "Function",
+    "file": "e10-2-9.xhtml",
+    "block": 1,
+    "line": 59,
+    "form_text": "(find-symbol \"FOO1300\")",
+    "expected_values": [
+     "FOO1300",
+     ":INTERNAL"
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "NIL",
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "10.2.9",
+    "names": "gentemp",
+    "kind": "Function",
+    "file": "e10-2-9.xhtml",
+    "block": 1,
+    "line": 60,
+    "form_text": "(intern \"FOO1301\")",
+    "expected_values": [
+     "FOO1301",
+     ":INTERNAL"
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "FOO1301",
+     "NIL"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "10.2.15",
+  "names": [
+   "get"
+  ],
+  "kind": "Accessor",
+  "file": "OEBPS/text/10-symbols/10.2.15-get.xhtml",
+  "tex_file": "dict-symbols.tex",
+  "examples_ratio": 0.9941,
+  "text_sections": [
+   {
+    "label": "Examples",
+    "ratio": 0.9941,
+    "tex_words": 252,
+    "epub_words": 253,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "''thirty-something",
+      "epub": "\" thirty-something",
+      "ctx": "person &optional ( default"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [],
+  "example_unparsed": [
+   {
+    "secno": "10.2.15",
+    "names": "get",
+    "file": "e10-2-15.xhtml",
+    "block": 1,
+    "line": 99,
+    "text": "(defmacro age (person &optional (default \"thirty-something))\n`(get ,person 'age ,default)) →  AGE\n(age *john*) →  THIRTY-SOMETHING\n(age *john* 20) → 20\n(setf (age *john*) 25) → 25\n(age *john*) → 25\n(age *john* 20) → 25",
+    "reason": "unbalanced form"
+   }
+  ],
+  "example_skipped": []
+ },
+ {
+  "secno": "11.2.9",
+  "names": [
+   "shadow"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/11-packages/11.2.9-shadow.xhtml",
+  "tex_file": "dict-packages.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "11.2.9",
+    "names": "shadow",
+    "kind": "Function",
+    "file": "e11-2-9.xhtml",
+    "block": 1,
+    "line": 62,
+    "form_text": "(find-symbol 'car 'temp)",
+    "expected_values": [
+     "CAR",
+     ":INHERITED"
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "TYPE-ERROR The value CAR is not of type STRING when binding SB-IMPL::NAME"
+    }
+   },
+   {
+    "secno": "11.2.9",
+    "names": "shadow",
+    "kind": "Function",
+    "file": "e11-2-9.xhtml",
+    "block": 1,
+    "line": 64,
+    "form_text": "(find-symbol 'car 'temp)",
+    "expected_values": [
+     "TEMP::CAR",
+     ":INTERNAL"
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "TYPE-ERROR The value CAR is not of type STRING when binding SB-IMPL::NAME"
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "11.2.11",
+  "names": [
+   "delete-package"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/11-packages/11.2.11-delete-package.xhtml",
+  "tex_file": "dict-packages.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "11.2.11",
+    "names": "delete-package",
+    "kind": "Function",
+    "file": "e11-2-11.xhtml",
+    "block": 1,
+    "line": 113,
+    "form_text": "(delete-package *bar-package*)",
+    "expected_values": [
+     "T"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": [
+     "Error: Package BAZ uses package BAR.",
+     "If continued, BAZ will be made to unuse-package BAR,",
+     "and then BAR will be deleted.",
+     "Type :CONTINUE to continue.",
+     "Debug> :CONTINUE"
+    ],
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "SIMPLE-PACKAGE-ERROR Package \"BAR\" is used by package:(\"BAZ\")"
+    }
+   },
+   {
+    "secno": "11.2.11",
+    "names": "delete-package",
+    "kind": "Function",
+    "file": "e11-2-11.xhtml",
+    "block": 1,
+    "line": 129,
+    "form_text": "(find-symbol \"FOO\" *baz-package*)",
+    "expected_values": [
+     "NIL",
+     "NIL"
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "FOO:FOO",
+     ":INHERITED"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "11.2.11",
+    "names": "delete-package",
+    "kind": "Function",
+    "file": "e11-2-11.xhtml",
+    "block": 1,
+    "line": 130,
+    "form_text": "(find-symbol \"BAR\" *baz-package*)",
+    "expected_values": [
+     "NIL",
+     "NIL"
+    ],
+    "expected_italics": [
+     [],
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "BAR:BAR",
+     ":INHERITED"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "11.2.11",
+    "names": "delete-package",
+    "kind": "Function",
+    "file": "e11-2-11.xhtml",
+    "block": 1,
+    "line": 137,
+    "form_text": "(package-name *bar-package*)",
+    "expected_values": [
+     "NIL"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "\"BAR\""
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "11.2.11",
+    "names": "delete-package",
+    "kind": "Function",
+    "file": "e11-2-11.xhtml",
+    "block": 1,
+    "line": 142,
+    "form_text": "(package-use-list *baz-package*)",
+    "expected_values": [
+     "()"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(#<PACKAGE \"BAR\">)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   },
+   {
+    "secno": "11.2.11",
+    "names": "delete-package",
+    "kind": "Function",
+    "file": "e11-2-11.xhtml",
+    "block": 1,
+    "line": 144,
+    "form_text": "(package-used-by-list *foo-package*)",
+    "expected_values": [
+     "()"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(#<PACKAGE \"BAR\">)"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "11.2.19",
+  "names": [
+   "defpackage"
+  ],
+  "kind": "Macro",
+  "file": "OEBPS/text/11-packages/11.2.19-defpackage.xhtml",
+  "tex_file": "dict-packages.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [
+   {
+    "label": "Syntax",
+    "ratio": 0.9495,
+    "tex_words": 99,
+    "epub_words": 99,
+    "n_diffs": 5,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "↓symbol-name",
+      "epub": "symbol-name",
+      "ctx": "{ ( :shadow {"
+     },
+     {
+      "op": "replace",
+      "tex": "↓symbol-name",
+      "epub": "symbol-name",
+      "ctx": "( :shadowing-import-from package-name {"
+     },
+     {
+      "op": "replace",
+      "tex": "↓symbol-name",
+      "epub": "symbol-name",
+      "ctx": "( :import-from package-name {"
+     },
+     {
+      "op": "replace",
+      "tex": "↓symbol-name",
+      "epub": "symbol-name",
+      "ctx": "{ ( :export {"
+     },
+     {
+      "op": "replace",
+      "tex": "↓symbol-name",
+      "epub": "symbol-name",
+      "ctx": "{ ( :intern {"
+     }
+    ]
+   }
+  ],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "11.2.19",
+    "names": "defpackage",
+    "kind": "Macro",
+    "file": "e11-2-19.xhtml",
+    "block": 1,
+    "line": 206,
+    "form_text": "(defpackage \"MY-PACKAGE\"\n(:nicknames \"MYPKG\" \"MY-PKG\")\n(:use \"COMMON-LISP\")\n(:shadow \"CAR\" \"CDR\")\n(:shadowing-import-from \"VENDOR-COMMON-LISP\"  \"CONS\")\n(:import-from \"VENDOR-COMMON-LISP\"  \"GC\")\n(:export \"EQ\" \"CONS\" \"FROBOLA\")\n)",
+    "expected_values": null,
+    "expected_italics": null,
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "error",
+    "actual_values": [],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {
+     "error": "PACKAGE-DOES-NOT-EXIST The name \"VENDOR-COMMON-LISP\" does not designate any package."
+    }
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "11.2.23",
+  "names": [
+   "package-nicknames"
+  ],
+  "kind": "Function",
+  "file": "OEBPS/text/11-packages/11.2.23-package-nicknames.xhtml",
+  "tex_file": "dict-packages.tex",
+  "examples_ratio": 1.0,
+  "text_sections": [],
+  "label_diff": null,
+  "example_steps": [
+   {
+    "secno": "11.2.23",
+    "names": "package-nicknames",
+    "kind": "Function",
+    "file": "e11-2-23.xhtml",
+    "block": 1,
+    "line": 37,
+    "form_text": "(package-nicknames (make-package 'temporary\n:nicknames '(\"TEMP\" \"temp\")))",
+    "expected_values": [
+     "(\"temp\" \"TEMP\")"
+    ],
+    "expected_italics": [
+     []
+    ],
+    "expected_output": null,
+    "no_values": false,
+    "alternatives": [],
+    "flags": [],
+    "class": "mismatch",
+    "actual_values": [
+     "(\"TEMP\" \"temp\")"
+    ],
+    "actual_no_values": false,
+    "actual_output": [],
+    "detail": {}
+   }
+  ],
+  "example_unparsed": [],
+  "example_skipped": []
+ },
+ {
+  "secno": "11.2.29",
+  "names": [
+   "package-error"
+  ],
+  "kind": "Condition Type",
+  "file": "OEBPS/text/11-packages/11.2.29-package-error.xhtml",
+  "tex_file": "dict-packages.tex",
+  "examples_ratio": null,
+  "text_sections": [
+   {
+    "label": "See Also",
+    "ratio": 0.5714,
+    "tex_words": 4,
+    "epub_words": 3,
+    "n_diffs": 1,
+    "diffs": [
+     {
+      "op": "replace",
+      "tex": "Chapter §",
+      "epub": "Conditions",
+      "ctx": "package-error-package ,"
+     }
+    ]
+   }
+  ],
+  "label_diff": null
+ }
+]
