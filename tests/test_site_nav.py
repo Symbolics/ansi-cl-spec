@@ -87,7 +87,7 @@ def site(tmp_path):
     dist = tmp_path / "dist"
     dist.mkdir()
     for n in bs.DOWNLOADS:
-        (dist / n).write_text(n)
+        (dist / n).write_text('{"entries": []}' if n == "inventory.json" else n)
     return oebps, bs.build_site(oebps, dist, tmp_path / "site")
 
 
@@ -144,7 +144,7 @@ def test_build_is_deterministic(tmp_path):
     dist = tmp_path / "dist"
     dist.mkdir()
     for n in bs.DOWNLOADS:
-        (dist / n).write_text(n)
+        (dist / n).write_text('{"entries": []}' if n == "inventory.json" else n)
     snap = []
     for name in ("a", "b"):
         out = bs.build_site(oebps, dist, tmp_path / name)

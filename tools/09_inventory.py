@@ -20,6 +20,9 @@ from urllib.parse import quote
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from anchors import _FRAGMENT_SAFE, raw_id  # noqa: E402
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from tools.site import slug as slugmod  # noqa: E402
+
 from lxml import etree  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -148,12 +151,14 @@ def build_records(oebps, cl_symbols, path_map):
                 "path": rel,
                 "anchor": anchor,
                 "href": rel + "#" + fragment(anchor),
+                "short": slugmod.short(name, kind),
                 "secno": secno,
                 "title": title,
                 "legacy": {"path": legacy_of.get(rel), "id": hid},
             })
             recs.append(rec)
     recs.sort(key=lambda r: (r["symbol"], r["path"], r["anchor"]))
+    slugmod.check_unique(r["symbol"] for r in recs)
     return recs
 
 
@@ -178,6 +183,7 @@ def make_inventory(src, cl_symbols, path_map):
         "site": SITE,
         "base": "path values (and the path part of href) are relative to the EPUB's OEBPS/ directory; "
                 "site + href is the page and anchor in the web edition; "
+                "site + short is the extension-less short link (precise: symbol and kind), see README; "
                 "href fragments are URL-encoded, anchor is the raw id; legacy gives the file name and id "
                 "in the original (pre-rename) edition",
         "counts": {

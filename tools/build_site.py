@@ -7,6 +7,7 @@ written into src/:
 
   index.html            landing page (generated)
   nav.xhtml css/ images/ text/   copied from src/OEBPS/, with navigation chrome spliced into each page
+  s/                    short symbol links (tools/site/shortlinks.py); /s/ is reserved
   assets/site.css       stylesheet for the chrome (tools/site/assets/)
   ANSI-Common-Lisp.epub inventory.json inventory.LICENSE   copied from dist/ (run ./build.sh first)
 
@@ -21,7 +22,7 @@ from pathlib import Path
 
 # tools/site/ is imported as tools.site (a top-level name "site" would clash with the stdlib module)
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from tools.site import check, chrome, toc as tocmod  # noqa: E402
+from tools.site import check, chrome, shortlinks, toc as tocmod  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://symbolics.github.io/ansi-cl-spec/"
@@ -127,6 +128,7 @@ def build_site(oebps, dist, out, site=SITE):
         shutil.copyfile(dist / name, out / name)
     (out / "index.html").write_text(landing_page(oebps, site), encoding="utf-8")
     add_navigation(oebps, out)
+    shortlinks.write_short_pages(out / "inventory.json", out, site)
     return out
 
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Validate a built site: every .xhtml parses, and every relative href/src resolves to a file
+"""Validate a built site: every .xhtml parses, and every relative href/src (and meta-refresh url) resolves to a file
 (and, with a fragment, to an existing id in the target). Usage: python3 tools/site/check.py dist/site"""
+import re
 import sys
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -21,6 +22,10 @@ def _scan(path):
         i = el.get("id") or el.get(XML_ID)
         if i:
             ids.add(i)
+        if el.tag.rpartition("}")[2] == "meta" and (el.get("http-equiv") or "").lower() == "refresh":
+            m = re.search(r"url\s*=\s*(\S+)", el.get("content") or "", re.I)
+            if m:
+                links.append(("meta-refresh", m.group(1).strip("'\"")))
         for a in LINK_ATTRS:
             v = el.get(a)
             if v is not None:
@@ -67,7 +72,7 @@ def check_site(site):
             if not target.is_file():
                 errors.append("%s: %s=%r: no such file" % (rel, attr, val))
                 continue
-            if u.fragment and attr == "href" and target.suffix in (".xhtml", ".html"):
+            if u.fragment and attr in ("href", "meta-refresh") and target.suffix in (".xhtml", ".html"):
                 stats["fragments"] += 1
                 t = info(target)
                 if t is not None and unquote(u.fragment) not in t[0]:

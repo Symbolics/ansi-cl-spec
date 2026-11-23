@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 
 import audit
+from tools.site import slug as slugmod  # noqa: E402
 
 TOOLS = Path(__file__).parent.parent / "tools"
 spec = importlib.util.spec_from_file_location("s09", TOOLS / "09_inventory.py")
@@ -92,6 +93,8 @@ def test_records(tmp_path):
     assert st["setf"] is True and st["package"] == "COMMON-LISP" and st["anchor"] == "(setf-documentation)"
     assert st["href"].endswith("#(setf-documentation)")
     assert "setf" not in car
+    assert car["short"] == "s/cadr.accessor" and opt["short"] == "s/&optional.lambda-list-keyword"
+    assert st["short"] == "s/setf-documentation.standard-generic-function"
     # several locations for one symbol
     assert {r["kind"] for r in d["entries"] if r["symbol"] == "*"} == {"function", "variable"}
     assert d["counts"]["symbols"] == 8 and d["counts"]["symbols_with_several_locations"] == 1
@@ -129,7 +132,8 @@ def test_deterministic_and_license(tmp_path):
     assert outs[0] == outs[1]
     inv = json.loads(outs[0][0])
     assert inv["site"] == "https://symbolics.github.io/ansi-cl-spec/" and inv["site"].endswith("/")
-    assert "site + href" in inv["base"]
+    assert "site + href" in inv["base"] and "site + short" in inv["base"]
+    assert all(r["short"] == slugmod.short(r["symbol"], r["kind"]) for r in inv["entries"])
     text = outs[0][1].decode()
     assert text.startswith("Copyright © 2026 Symbolics Pte Ltd\n") and "inventory.json" in text.split("\n")[1]
     assert text.endswith("\n\nLICENSE BODY\n")
@@ -151,3 +155,26 @@ def test_audit_inventory(tmp_path):
     r = audit.audit(tmp_path / "src", syms, False, p)
     errs = [e for e in r["errors"] if e.startswith("inventory")]
     assert any("data-symbol elements" in e for e in errs) and any("inconsistent" in e or "resolve" in e for e in errs)
+
+
+def test_slug_rule():
+    for name, want in [("cadr", "cadr"), ("*print-base*", "*print-base*"), ("&optional", "&optional"),
+                       ("1+", "1+"), ("/=", "_sl="), ("<=", "_lt="), (">=", "_gt="), ("string/=", "string_sl="),
+                       ("/", "_sl"), ("//", "_sl_sl"), ("(setf documentation)", "setf-documentation"),
+                       ("CAR", "car")]:
+        assert slugmod.slug(name) == want
+    for bad in ("a_b", "a b", "a.b", "a#b", "", "(setf )"):
+        with pytest.raises(ValueError):
+            slugmod.slug(bad)
+    with pytest.raises(ValueError, match="both map"):
+        slugmod.check_unique(["car", "CAR"])
+    with pytest.raises(ValueError):
+        slugmod.check_unique(["index"])
+
+
+def test_slug_injective_over_real_inventory():
+    inv = Path(__file__).parent.parent / "dist" / "inventory.json"
+    if not inv.is_file():
+        pytest.skip("run ./build.sh first")
+    names = {r["symbol"] for r in json.loads(inv.read_text())["entries"]}
+    assert len(slugmod.check_unique(names)) == len(names)
