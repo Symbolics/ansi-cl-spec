@@ -66,7 +66,7 @@ That is, a <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>C</i> has
 <code>(class-name <i>C</i>)</code> and <i>C=</i> <code>(find-class <i>S</i>)</code>.
 Notice that it is possible for 
 <code>(find-class <i>S<sub>1</sub></i>)</code> <i>=</i> <code>(find-class <i>S<sub>2</sub></i>)</code>
-and <i>S<sub>1</sub> &lt;&gt;  S<sub>2</sub></i>.
+and <i>S<sub>1</sub> ≠ S<sub>2</sub></i>.
 If <i>C=</i> <code>(find-class <i>S</i>)</code>, we say that <i>C</i> is the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>named</i> <i>S</i>.
 
 </p><p>
@@ -78,11 +78,11 @@ In this case <i>C<sub>2</sub></i> is a <b><i>direct subclass</i></b> of <i>C<sub
 A <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>C<sub>n</sub></i> is a <b><i>superclass</i></b> of 
 a <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>C<sub>1</sub></i> if there exists a series of
 <i>classes</i> <i>C<sub>2</sub>, ... ,C<sub>n-1</sub></i> such that 
-<i>C<sub>i+1</sub></i> is a <i><a href="../26-glossary/d.xhtml#directsuperclass">direct superclass</a></i> of <i>C<sub>i</sub></i> for <i>1  &lt;=  i&lt;n</i>.
+<i>C<sub>i+1</sub></i> is a <i><a href="../26-glossary/d.xhtml#directsuperclass">direct superclass</a></i> of <i>C<sub>i</sub></i> for <i>1 ≤ i&lt;n</i>.
 In this case, <i>C<sub>1</sub></i> is a <b><i>subclass</i></b> of <i>C<sub>n</sub></i>.
 A <i><a href="../26-glossary/c.xhtml#class">class</a></i> is considered neither a <i><a href="../26-glossary/s.xhtml#superclass">superclass</a></i> nor a <i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> of itself.
 That is, if <i>C<sub>1</sub></i> is a <i><a href="../26-glossary/s.xhtml#superclass">superclass</a></i> of <i>C<sub>2</sub></i>, 
-then <i>C<sub>1</sub>  &lt;&gt;  C<sub>2</sub></i>.
+then <i>C<sub>1</sub> ≠ C<sub>2</sub></i>.
 The set of <i>classes</i> consisting of some given <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>C</i> 
 along with all of its <i>superclasses</i> is called "<i>C</i> and its superclasses."
 
@@ -398,7 +398,7 @@ inconsistent. If every <i><a href="../26-glossary/c.xhtml#class">class</a></i> i
 <i>classes</i> is preceded
 by another, then <i>R</i> contains a loop. That is, there is a chain of
 classes <i>C<sub>1</sub>, ... ,C<sub>n</sub></i> such that <i>C<sub>i</sub></i> precedes
-<i>C<sub>i+1</sub></i>, <i>1 &lt;=  i&lt;n</i>, and <i>C<sub>n</sub></i> precedes <i>C<sub>1</sub></i>.
+<i>C<sub>i+1</sub></i>, <i>1 ≤ i&lt;n</i>, and <i>C<sub>n</sub></i> precedes <i>C<sub>1</sub></i>.
 
 </p><p>
 Sometimes there are several <i>classes</i> from <i>S<sub>C</sub></i> with no
@@ -410,8 +410,8 @@ a partial ordering—the <i>R<sub>c</sub></i>, <i>c ∈ S<sub>C</sub></i>, are i
 </p><p>
 In more precise terms, let <i>{N<sub>1</sub>, ... ,N<sub>m</sub>}</i>, <i>m≥2</i>, be
 the <i>classes</i> from <i>S<sub>C</sub></i> with no predecessors.  Let <i>(C<sub>1</sub> ...  C<sub>n</sub>)</i>, <i>n≥1</i>, be the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i>
-constructed so far.  <i>C<sub>1</sub></i> is the most specific <i><a href="../26-glossary/c.xhtml#class">class</a></i>, and <i>C<sub>n</sub></i> is the least specific.  Let <i>1 &lt;=  j &lt;=  n</i> be the largest number
-such that there exists an <i>i</i> where <i>1 &lt;=  i &lt;=  m</i> and <i>N<sub>i</sub></i>
+constructed so far.  <i>C<sub>1</sub></i> is the most specific <i><a href="../26-glossary/c.xhtml#class">class</a></i>, and <i>C<sub>n</sub></i> is the least specific.  Let <i>1 ≤ j ≤ n</i> be the largest number
+such that there exists an <i>i</i> where <i>1 ≤ i ≤ m</i> and <i>N<sub>i</sub></i>
 is a direct <i><a href="../26-glossary/s.xhtml#superclass">superclass</a></i> of <i>C<sub>j</sub></i>; <i>N<sub>i</sub></i> is placed next.
 
 </p><p>
