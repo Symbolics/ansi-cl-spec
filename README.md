@@ -42,8 +42,10 @@ results, send the output elsewhere:
     python3 tools/compare_text.py --epub src/OEBPS/text --out /tmp/audit-text   # fetches dpANS3R into vendor/dpans (or pass --tex DIR)
     python3 tools/examples_run.py --text-dir src/OEBPS/text --out-dir /tmp/audit-examples
 
-Expected: text, 3833/3917 sections at ratio 1.0 and 0 unmatched; examples, match 2208, mismatch 124,
-error 167, impl-dependent 164, no-expectation 198, skipped 153, unparsed 38. The examples run needs
+Expected: text, 3858/3917 sections at ratio 1.0 and 0 unmatched (the 25 below 1.0 since the errata
+corrections are intended deviations, listed in the History note of `audit/text/summary.md`); examples,
+match 2250, mismatch 114, error 145, impl-dependent 177, no-expectation 204, skipped 152, unparsed 34.
+The summaries' History notes are written by hand and are not regenerated. The examples run needs
 `sbcl`; some actual values (timestamps, temp paths, object addresses) differ from run to run, the
 classifications do not.
 
