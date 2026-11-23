@@ -28,6 +28,7 @@ OPF_NS = "http://www.idpf.org/2007/opf"
 DC = "http://purl.org/dc/elements/1.1/"
 
 COPYRIGHT = "Copyright © 2026 Symbolics Pte Ltd"
+SITE = "https://symbolics.github.io/ansi-cl-spec/"  # web edition base URL (tools/build_site.py)
 # kinds of the anchors that are not dictionary-entry names (name -> kind); the generator fails
 # on any other non-entry anchor so a new one is classified deliberately.
 EXTRA_KINDS = {
@@ -174,7 +175,9 @@ def make_inventory(src, cl_symbols, path_map):
         "license": "MS-PL",
         "license_file": "inventory.LICENSE",
         "copyright": COPYRIGHT,
+        "site": SITE,
         "base": "path values (and the path part of href) are relative to the EPUB's OEBPS/ directory; "
+                "site + href is the page and anchor in the web edition; "
                 "href fragments are URL-encoded, anchor is the raw id; legacy gives the file name and id "
                 "in the original (pre-rename) edition",
         "counts": {

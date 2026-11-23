@@ -127,7 +127,9 @@ def test_deterministic_and_license(tmp_path):
         s09.generate(tmp_path / "src", tmp_path / n, syms, pm, lic)
         outs.append(((tmp_path / n / "inventory.json").read_bytes(), (tmp_path / n / "inventory.LICENSE").read_bytes()))
     assert outs[0] == outs[1]
-    json.loads(outs[0][0])
+    inv = json.loads(outs[0][0])
+    assert inv["site"] == "https://symbolics.github.io/ansi-cl-spec/" and inv["site"].endswith("/")
+    assert "site + href" in inv["base"]
     text = outs[0][1].decode()
     assert text.startswith("Copyright © 2026 Symbolics Pte Ltd\n") and "inventory.json" in text.split("\n")[1]
     assert text.endswith("\n\nLICENSE BODY\n")

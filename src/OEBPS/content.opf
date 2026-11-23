@@ -21,9 +21,9 @@
 <dc:source>Draft proposed American National Standard for Information Systems, Programming Language Common Lisp, X3J13/94-101R (dpANS3R), 1994</dc:source>
 <dc:relation>ANSI X3.226-1994 (now INCITS 226-1994 [R2018])</dc:relation>
 <dc:description>A structured EPUB edition of the X3J13 draft proposed ANSI Common Lisp standard (dpANS3R), with per-symbol anchors and a machine-readable symbol inventory. Errors present in the draft are corrected and listed on the Errata and Corrections page. This is not the ANSI standard; the published standard is definitive, and this edition has no formal standing.</dc:description>
-<dc:rights>Copyright © 2026 Symbolics Pte Ltd. All rights reserved. This edition may be copied and distributed only in complete and unmodified form, not for direct commercial advantage, and only with notice that copying, distribution, display or transmission is by permission of Symbolics Pte Ltd. Permission to make modified copies, to make partial copies, or to create derivative works is expressly not granted. Provided "as is", without warranty of any kind, express or implied.</dc:rights>
+<dc:rights>Copyright © 2026 Symbolics Pte Ltd. All rights reserved. This edition may be copied and distributed only in complete and unmodified form, not for direct commercial advantage, and only with notice that copying, distribution, display or transmission is by permission of Symbolics Pte Ltd. Permission to make modified copies, to make partial copies, or to create derivative works is expressly not granted. It is also published as a web edition at https://symbolics.github.io/ansi-cl-spec/ under the same terms. Provided "as is", without warranty of any kind, express or implied.</dc:rights>
 <meta property="dcterms:rightsHolder">Symbolics Pte Ltd</meta>
-<meta property="dcterms:modified">2026-11-23T04:55:35Z</meta>
+<meta property="dcterms:modified">2026-11-23T06:30:00Z</meta>
 <meta name="cover" content="cover-image"/>
 <meta property="schema:accessMode">textual</meta>
 <meta property="schema:accessModeSufficient">textual</meta>
