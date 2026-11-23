@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Step 4: anchors for the CL symbols that have no entry heading, plus a C-index entry for compiler-macro.
+"""Step 4: anchors for the CL symbols that have no entry heading, plus index entries for them.
+
+The doc-type symbols compiler-macro, structure and variable are anchored in the doc-type list of the
+documentation entry (25.2.15); compiler-macro and variable get their own lowercase index entry (placed
+immediately before a same-spelled capitalised kind-group heading, as the index does for class/Class),
+and structure keeps its Sharpsign S link and gains a documentation link. A structure anchor placed
+earlier on the Sharpsign S heading is removed (REMOVALS), so the symbol is anchored exactly once.
 
 Each placement inserts empty <span id=".." data-symbol=".."></span> elements immediately inside the
 start of a target element (found by a regex that must match exactly once). Idempotent;
@@ -42,16 +48,31 @@ PLACEMENTS = [
     (CASE, r"<p>(?=\s*otherwise-clause::=)", ["otherwise"], "p holding the otherwise-clause syntax in the case entry"),
     ("7-objects/7.6-generic-functions-and-methods.xhtml", heading("SubSubSectio_Standard_Met_552"), ["standard"],
      "h4 7.6.6.2 Standard Method Combination"),
-    ("2-syntax/2.4-standard-macro-characters.xhtml", heading("SubSubSectio_Sharpsign_S_173"), ["structure"],
-     "h4 2.4.8.13 Sharpsign S"),
     (DOC, r"<li>(?=<b>compiler-macro</b>)", ["compiler-macro"], "li of the doc-type list in the documentation entry"),
+    (DOC, r"<li>(?=<b>structure</b>)", ["structure"], "li of the doc-type list in the documentation entry"),
     (DOC, r"<li>(?=<b>variable</b>)", ["variable"], "li of the doc-type list in the documentation entry"),
 ]
 
+# anchors an earlier version of this step placed elsewhere: (file, exact span text) removed if present
+REMOVALS = [
+    ("2-syntax/2.4-standard-macro-characters.xhtml", '<span id="structure" data-symbol="structure"></span>'),
+]
+
 INDEX_C = "index/c.xhtml"
-INDEX_ANCHOR = '</p><p><b>compiler-macro-function</b>'
-INDEX_NEW = ('</p><p><b>compiler-macro</b>  <a href="../25-environment/25.2.15-documentation.xhtml#'
-             + name_to_fragment("compiler-macro") + '">documentation, (setf documentation)</a>.\n')
+INDEX_V = "index/v.xhtml"
+INDEX_S = "index/s.xhtml"
+# (index file, name, line that the new entry is inserted before)
+INDEX_ENTRIES = [
+    (INDEX_C, "compiler-macro", "</p><p><b>compiler-macro-function</b>"),
+    (INDEX_V, "variable", "</p><p><b>Variable</b>"),  # before the kind-group heading, like class/Class
+]
+DOC_LINK = '<a href="../25-environment/25.2.15-documentation.xhtml#{}">documentation, (setf documentation)</a>'
+# the structure entry: existing Sharpsign S link (original section anchor), then the documentation link
+STRUCT_OLD = ('<p><b>structure</b>  <a href="../2-syntax/2.4-standard-macro-characters.xhtml'
+              '#SubSubSectio_Sharpsign_S_173">Sharpsign S</a>.\n')
+STRUCT_NEW = ('<p><b>structure</b>  <a href="../2-syntax/2.4-standard-macro-characters.xhtml'
+              '#SubSubSectio_Sharpsign_S_173">Sharpsign S</a>, \n'
+              + DOC_LINK.format(name_to_fragment("structure")) + '.\n')
 
 
 def span(sym):
@@ -72,12 +93,29 @@ def place(text, regex, syms, label):
     return text[:at] + "".join(span(s) for s in syms) + text[at:], len(syms)
 
 
-def add_index_entry(text):
-    if "<b>compiler-macro</b>" in text:
+def add_index_entry(text, name, anchor):
+    """Insert a documentation-link entry for NAME immediately before ANCHOR (must occur once)."""
+    if f"<b>{name}</b>" in text:
         return text, 0
-    if text.count(INDEX_ANCHOR) != 1:
-        raise SystemExit("index/c.xhtml: anchor line not found exactly once")
-    return text.replace(INDEX_ANCHOR, INDEX_NEW + INDEX_ANCHOR), 1
+    if text.count(anchor) != 1:
+        raise SystemExit(f"index entry {name}: anchor {anchor!r} not found exactly once")
+    new = f"</p><p><b>{name}</b>  " + DOC_LINK.format(name_to_fragment(name)) + ".\n"
+    return text.replace(anchor, new + anchor), 1
+
+
+def add_structure_link(text):
+    """Add the documentation link after the Sharpsign S link in the structure entry (index/s.xhtml)."""
+    if "<p><b>structure</b>  " + '<a href="../2-syntax/2.4-standard-macro-characters.xhtml#SubSubSectio_Sharpsign_S_173">Sharpsign S</a>, \n' in text:
+        return text, 0
+    # a tree already repointed by an earlier version of step 5 has #structure on the Sharpsign S link
+    text = text.replace(STRUCT_OLD.replace("#SubSubSectio_Sharpsign_S_173", "#structure"), STRUCT_OLD)
+    if text.count(STRUCT_OLD) != 1:
+        raise SystemExit("index/s.xhtml: structure entry not found in its expected form")
+    return text.replace(STRUCT_OLD, STRUCT_NEW), 1
+
+
+def remove_span(text, span_text):
+    return (text.replace(span_text, "", 1), 1) if span_text in text else (text, 0)
 
 
 def main(argv=None):
@@ -95,14 +133,24 @@ def main(argv=None):
         if k:
             n += k
             print(f"  {', '.join(syms)}: {f}  [{desc}]")
-    new, k = add_index_entry(cache.get(INDEX_C) or (base / INDEX_C).read_bytes().decode("utf-8"))
-    cache[INDEX_C] = new
-    if k:
-        print(f"  index entry compiler-macro: {INDEX_C}")
+    for f, span_text in REMOVALS:
+        cache[f], k = remove_span(cache.get(f) or (base / f).read_bytes().decode("utf-8"), span_text)
+        if k:
+            print(f"  removed {span_text}: {f}")
+    k = 0
+    for f, name, anchor in INDEX_ENTRIES:
+        cache[f], kk = add_index_entry(cache.get(f) or (base / f).read_bytes().decode("utf-8"), name, anchor)
+        if kk:
+            print(f"  index entry {name}: {f}")
+        k += kk
+    cache[INDEX_S], kk = add_structure_link(cache.get(INDEX_S) or (base / INDEX_S).read_bytes().decode("utf-8"))
+    if kk:
+        print(f"  index entry structure: documentation link added in {INDEX_S}")
+    k += kk
     if not a.check:
         for f, t in cache.items():
             (base / f).write_bytes(t.encode("utf-8"))
-    print(f"04_remaining_anchors: {'would add' if a.check else 'added'} {n} anchors, {k} index entry")
+    print(f"04_remaining_anchors: {'would add' if a.check else 'added'} {n} anchors, {k} index changes")
     return 0
 
 

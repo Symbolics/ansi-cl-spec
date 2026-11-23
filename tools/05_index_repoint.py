@@ -20,7 +20,9 @@ TEXT = ROOT / "src" / "OEBPS" / "text"
 
 LL = "3-evaluation-and-compilation/3.4-lambda-lists.xhtml"
 OPT = "3-evaluation-and-compilation/3.8.25-optimize.xhtml"
-# symbol -> (file, old fragment) of the single link to repoint (anchors added in step 4)
+# symbol -> (file, old fragment) of the single link to repoint (anchors added in step 4).
+# `structure` is deliberately absent: its Sharpsign S link keeps the section anchor (step 4 adds its
+# documentation link, which is already per-symbol).
 STEP4 = {
     "&allow-other-keys": (LL, "SubSubSubSec_Suppressing__248"),
     "&aux": (LL, "SubSubSectio_Specifiers_f_250"),
@@ -37,7 +39,6 @@ STEP4 = {
     "speed": (OPT, "DictEntry_optimize_307"),
     "otherwise": ("5-data-and-control-flow/5.3.46-case.xhtml", "DictEntry_case_ccase_432"),
     "standard": ("7-objects/7.6-generic-functions-and-methods.xhtml", "SubSubSectio_Standard_Met_552"),
-    "structure": ("2-syntax/2.4-standard-macro-characters.xhtml", "SubSubSectio_Sharpsign_S_173"),
 }
 
 HEADING_RE = re.compile(r'<h3 id="(DictEntry_[^"]*)" class="entry">(.*?)</h3>', re.S)

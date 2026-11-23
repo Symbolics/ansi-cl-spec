@@ -29,3 +29,8 @@ def test_repoint():
     assert 'zzz</b>  <a href="../14-conses/14.2.9-car.xhtml#DictEntry_car_1">' in new  # name not in entry: left
     assert (st["entry"], st["step4"], len(st["unmatched"])) == (2, 1, 1)
     assert run(new)[0] == new  # idempotent
+
+
+def test_structure_sharpsign_link_not_repointed():
+    t = ('<p><b>structure</b>  <a href="../2-syntax/2.4-standard-macro-characters.xhtml#SubSubSectio_Sharpsign_S_173">S</a>.')
+    assert run(t)[0] == t
