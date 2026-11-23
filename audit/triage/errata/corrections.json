@@ -1,0 +1,656 @@
+[
+ {
+  "id": "E01",
+  "secno": "3.8.12",
+  "names": [
+   "macroexpand",
+   "macroexpand-1"
+  ],
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.12-macroexpand.xhtml",
+  "kind": "example",
+  "what_is_wrong": "The example (defmacro delta ...) is shown returning EPSILON; defmacro returns the macro name.",
+  "correction": "Result shown as DELTA.",
+  "fix": {
+   "old": "`(gamma ,x ,y)) →  EPSILON",
+   "new": "`(gamma ,x ,y)) →  DELTA"
+  },
+  "confidence": "high",
+  "evidence": "TeX dict-eval-compile.tex has \\EV EPSILON too. defmacro returns its name (see defmacro entry; the two preceding lines show ALPHA and BETA). EPSILON is not defined anywhere in the example; DELTA is used later in (macrolet ((alpha (x y) `(delta ,x ,y))) ...). SBCL: (defmacro delta (x y) `(gamma ,x ,y)) => DELTA."
+ },
+ {
+  "id": "E02",
+  "secno": "3.8.15",
+  "names": [
+   "*macroexpand-hook*"
+  ],
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.15-macroexpand-hook.xhtml",
+  "kind": "example",
+  "what_is_wrong": "Hook prints with (format t \"Now expanding: ~S~%\" form) but the shown output lacks the colon.",
+  "correction": "Output line shown as \"Now expanding: (MACHOOK 1 2)\".",
+  "fix": {
+   "old": "▷ Now expanding (MACHOOK",
+   "new": "▷ Now expanding: (MACHOOK"
+  },
+  "confidence": "high",
+  "evidence": "SBCL: (let ((*macroexpand-hook* #'hook)) (macroexpand '(machook 1 2))) prints \"Now expanding: (MACHOOK 1 2)\" and returns (/ (+ 1 2) 2), T."
+ },
+ {
+  "id": "E03",
+  "secno": "3.8.20",
+  "names": [
+   "dynamic-extent"
+  ],
+  "file": "OEBPS/text/3-evaluation-and-compilation/3.8.20-dynamic-extent.xhtml",
+  "kind": "example",
+  "what_is_wrong": "The example calls STRING-SEARCH, which is not a Common Lisp function.",
+  "correction": "Use SEARCH (search \"COMMON-LISP\" name); same argument order (pattern first), same intent (substring test).",
+  "fix": {
+   "old": "(string-search \"COMMON-LISP\" name)",
+   "new": "(search \"COMMON-LISP\" name)"
+  },
+  "confidence": "high",
+  "evidence": "SBCL: STRING-SEARCH undefined; with SEARCH the loop prints \"COMMON-LISP\" and \"COMMON-LISP-USER\" and returns NIL, exactly the example's output (other packages in an implementation may match too, which the example already allows by saying \"some implementations\")."
+ },
+ {
+  "id": "E04",
+  "secno": "5.3.4",
+  "names": [
+   "fboundp"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.4-fboundp.xhtml",
+  "kind": "example",
+  "what_is_wrong": "The example says (fboundp 'nth-value) is false, but NTH-VALUE is a macro and the glossary says the names of macros are fbound (the neighbouring examples give true for with-open-file and unwind-protect).",
+  "correction": "Result shown as true.",
+  "fix": {
+   "old": "(fboundp 'nth-value) → <i><a href=\"../26-glossary/f.xhtml#false\">false</a></i>",
+   "new": "(fboundp 'nth-value) → <i><a href=\"../26-glossary/t.xhtml#true\">true</a></i>"
+  },
+  "confidence": "medium",
+  "evidence": "TeX dict-flow.tex:376 same; dict-flow.tex:5665 defines nth-value as 'Macro'. Glossary 'fbound': 'The names of macros and special operators are fbound'. SBCL: (fboundp 'nth-value) => #<FUNCTION (:MACRO NTH-VALUE)> (true). Medium only because the draft author may have meant a different test; the stated value contradicts the standard either way."
+ },
+ {
+  "id": "E05",
+  "secno": "5.3.28",
+  "names": [
+   "throw"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.28-throw.xhtml",
+  "kind": "example",
+  "what_is_wrong": "The format string is \"The inner catch returns ~s.~%\" (ends with a period) but both the prose and the displayed output omit the period.",
+  "correction": "Add the final period in the prose quotation and in the output line.",
+  "fix": [
+   {
+    "old": ":SECOND-THROW</code>\"\nand then",
+    "new": ":SECOND-THROW.</code>\"\nand then"
+   },
+   {
+    "old": "▷ The inner catch returns :SECOND-THROW\n→ :OUTER-CATCH",
+    "new": "▷ The inner catch returns :SECOND-THROW.\n→ :OUTER-CATCH"
+   }
+  ],
+  "confidence": "high",
+  "evidence": "SBCL transcript: \"The inner catch returns :SECOND-THROW.\" then value :OUTER-CATCH."
+ },
+ {
+  "id": "E06",
+  "secno": "5.3.61",
+  "names": [
+   "defsetf"
+  ],
+  "file": "OEBPS/text/5-data-and-control-flow/5.3.61-defsetf.xhtml",
+  "kind": "example",
+  "what_is_wrong": "The xy example (long-form defsetf with &key ((x x) 0) ((y y) 0)) is rejected by SBCL (\"Unknown &KEY argument\").",
+  "correction": "NOT CORRECTED. The example is consistent with the draft's own text (the defsetf entry says lambda-list variables are bound to temporaries holding the values of the place subforms, so the keywords are evaluated; the printed get-setf-expansion result applies (lambda (&key ...)) to #:t0 #:t1). SBCL instead matches the &key names against gensyms at macroexpansion time, so it cannot run the example; this is an implementation limitation, not a draft error.",
+  "fix": null,
+  "confidence": "low",
+  "evidence": "SBCL: (get-setf-expansion '(xy a b)) => UNKNOWN-KEYWORD-ARGUMENT #:A93; (setf (xy 'x 1) 1) and even (setf (xy x 1) 1) => 'Unknown &KEY argument: #:X5'. No reformulation of the place form can make SBCL accept it, so no edit can make the example runnable there. Suggest the audit reclassify as implementation-difference."
+ },
+ {
+  "id": "E07",
+  "secno": "7.7.1",
+  "names": [
+   "function-keywords"
+  ],
+  "file": "OEBPS/text/7-objects/7.7.1-function-keywords.xhtml",
+  "kind": "example",
+  "what_is_wrong": "The second function-keywords call is applied to the method of GF1 again (which has keywords) but is shown returning (), false; it follows the definition of GF2 (no keywords).",
+  "correction": "Apply it to the method of GF2.",
+  "fix": {
+   "old": "(function-keywords (find-method #'gf1",
+   "new": "(function-keywords (find-method #'gf2"
+  },
+  "confidence": "high",
+  "evidence": "SBCL: (function-keywords (find-method #'gf1 '() (list (find-class 'integer)))) => (:C :DEE :E EFF), NIL (as the entry itself shows two lines earlier); with #'gf2 => NIL, NIL i.e. (), false. Remaining oddity not corrected: the bodies of gf2/gf3 refer to undefined variables b..f (only compile-time warnings; the examples never call them)."
+ },
+ {
+  "id": "E08a",
+  "secno": "9.2.40",
+  "names": [
+   "with-simple-restart"
+  ],
+  "file": "OEBPS/text/9-conditions/9.2.40-with-simple-restart.xhtml",
+  "kind": "example",
+  "what_is_wrong": "The example uses FIXNUMP, which is not a Common Lisp function.",
+  "correction": "Use (typep result 'fixnum).",
+  "fix": {
+   "old": "(unless (fixnump result)",
+   "new": "(unless (typep result 'fixnum)"
+  },
+  "confidence": "high",
+  "evidence": "SBCL: compute-power-of-2 10 => 1024; compute-power-of-2 10000 signals 'Power of 2 is too large.' offering restart 'Give up on computing 2^10000.'; invoking it returns SOMETHING-BIG."
+ },
+ {
+  "id": "E08b",
+  "secno": "9.2.40",
+  "names": [
+   "with-simple-restart"
+  ],
+  "file": "OEBPS/text/9-conditions/9.2.40-with-simple-restart.xhtml",
+  "kind": "example",
+  "what_is_wrong": "In compute-power-of-2, (or (compute-fixnum-power-of-2 x) 'something big) has three arguments to OR and returns SOMETHING, not SOMETHING-BIG as shown.",
+  "correction": "Write 'something-big.",
+  "fix": {
+   "old": "'something big)",
+   "new": "'something-big)"
+  },
+  "confidence": "high",
+  "evidence": "SBCL: with the draft text the restart returns (SOMETHING); with 'something-big it returns SOMETHING-BIG, the value shown in the transcript."
+ },
+ {
+  "id": "E09",
+  "secno": "9.2.43",
+  "names": [
+   "muffle-warning"
+  ],
+  "file": "OEBPS/text/9-conditions/9.2.43-muffle-warning.xhtml",
+  "kind": "example",
+  "what_is_wrong": "defun quiet-warning-handler is shown returning CUSTOM-WARNING-HANDLER.",
+  "correction": "Result shown as QUIET-WARNING-HANDLER.",
+  "fix": {
+   "old": "→  CUSTOM-WARNING-HANDLER",
+   "new": "→  QUIET-WARNING-HANDLER"
+  },
+  "confidence": "high",
+  "evidence": "defun returns the function name; CUSTOM-WARNING-HANDLER is not defined anywhere in the example. SBCL: (defun quiet-warning-handler ...) => QUIET-WARNING-HANDLER; the rest of the example then gives \"WARNING: Situation #2.\" and saved warnings printing Situation #3, Situation #1, as shown."
+ },
+ {
+  "id": "E10",
+  "secno": "11.2.9",
+  "names": [
+   "shadow"
+  ],
+  "file": "OEBPS/text/11-packages/11.2.9-shadow.xhtml",
+  "kind": "example",
+  "what_is_wrong": "FIND-SYMBOL is given the symbol CAR as first argument; it requires a string.",
+  "correction": "Pass the string \"CAR\" (as the earlier example in the same dictionary file does).",
+  "fix": [
+   {
+    "old": "(find-symbol 'car 'temp) →  CAR,",
+    "new": "(find-symbol \"CAR\" 'temp) →  CAR,"
+   },
+   {
+    "old": "(find-symbol 'car 'temp) →  TEMP::CAR",
+    "new": "(find-symbol \"CAR\" 'temp) →  TEMP::CAR"
+   }
+  ],
+  "confidence": "high",
+  "evidence": "SBCL: (find-symbol 'car 'temp) => TYPE-ERROR (not a STRING). With a package made by (make-package 'temp :use '(common-lisp)) (the draft's default :use is implementation-dependent; SBCL defaults to no packages): (find-symbol \"CAR\" 'temp) => CAR, :INHERITED; (shadow 'car 'temp) => T; (find-symbol \"CAR\" 'temp) => TEMP::CAR, :INTERNAL; (package-shadowing-symbols 'temp) => (TEMP::CAR)."
+ },
+ {
+  "id": "E11",
+  "secno": "12.2.43",
+  "names": [
+   "*random-state*"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.43-random-state.xhtml",
+  "kind": "example",
+  "what_is_wrong": "(random) is called with no argument, but RANDOM requires a limit; the printed values (0..96) are those of a call with a limit near 100.",
+  "correction": "Call (random 100). (The values printed are illustrative of any run.)",
+  "fix": {
+   "old": " (list (loop for i from 1 to 10 collect (random))\n       (let ((*random-state* snap-shot))\n         (loop for i from 1 to 10 collect (random)))\n       (loop for i from 1 to 10 collect (random))\n       (let ((*random-state* snap-shot))\n         (loop for i from 1 to 10 collect (random))))\n",
+   "new": " (list (loop for i from 1 to 10 collect (random 100))\n       (let ((*random-state* snap-shot))\n         (loop for i from 1 to 10 collect (random 100)))\n       (loop for i from 1 to 10 collect (random 100))\n       (let ((*random-state* snap-shot))\n         (loop for i from 1 to 10 collect (random 100))))\n"
+  },
+  "confidence": "medium",
+  "evidence": "SBCL: (random) => 'invalid number of arguments: 0'. With (random 100): => ((92 44 95 5 97 58 43 99 37 68) (92 44 95 5 97 58 43 99 37 68) (26 95 16 89 33 17 51 55 42 82) (26 95 16 89 33 17 51 55 42 82)): first = second, third = fourth, as the example claims; numbers differ per implementation/run. The limit 100 is inferred (max printed value 96); medium because the exact limit the author used is unknown, but any positive limit fixes the example. snap-shot is created by the preceding setq at the REPL (undeclared variable; style only)."
+ },
+ {
+  "id": "E12a",
+  "secno": "12.2.23",
+  "names": [
+   "asinh"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.23-sinh.xhtml",
+  "kind": "text",
+  "what_is_wrong": "Range of the inverse hyperbolic sine: \"a number with imaginary part equal to pi/2 is in the range if and only if its imaginary part is non-negative\" -- tautological/impossible; it must be the real part (cf. the preceding clause for -pi/2, which tests the real part).",
+  "correction": "Read \"its real part is non-negative\".",
+  "fix": {
+   "old": "if and only if its imaginary part is non-negative",
+   "new": "if and only if its real part is non-negative"
+  },
+  "confidence": "high",
+  "evidence": "Branch cut is above i (inclusive), continuous with quadrant I (Re >= 0). SBCL: (asinh #c(0d0 2d0)) => #C(1.3169578969248166d0 1.5707963267948966d0) (imag = +pi/2, real >= 0); (asinh #c(0d0 -2d0)) => #C(-1.3169578969248166d0 -1.5707963267948966d0) (imag = -pi/2, real <= 0, matching the draft's own first clause); (asinh #c(0d0 1d0)) => #C(0.0d0 1.5707963267948966d0). TeX dict-numbers.tex:1693 has the same slip."
+ },
+ {
+  "id": "E12b",
+  "secno": "12.2.23",
+  "names": [
+   "atanh"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.23-sinh.xhtml",
+  "kind": "text",
+  "what_is_wrong": "Range of the inverse hyperbolic tangent: \"imaginary part equal to pi/2 ... if and only if its imaginary part is strictly positive\", same slip; the first clause tests the real part.",
+  "correction": "Read \"its real part is strictly positive\".",
+  "fix": {
+   "old": "imaginary\npart is strictly positive.",
+   "new": "real\npart is strictly positive."
+  },
+  "confidence": "high",
+  "evidence": "Cut x>1 is continuous with quadrant I. SBCL: (atanh #c(2d0 0d0)) => #C(0.5493061443340549d0 1.5707963267948966d0) (imag = +pi/2, real part > 0). The entry then says the range equals that of arcsinh with +-pi*i/2 excluded, which only holds with the real-part reading. TeX dict-numbers.tex:1732 has the same slip. Not in the triage records; found while checking 12.2.23."
+ },
+ {
+  "id": "E13",
+  "secno": "14.2.12",
+  "names": [
+   "subst-if-not"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.12-subst.xhtml",
+  "kind": "example",
+  "what_is_wrong": "The stated result of (subst-if-not '(x) #'consp tree1) is (1 X); by the definition every subtree or leaf (including the terminating NIL of each list, cf. the (subst 'foo 'nil ...) example) that does not satisfy CONSP is replaced by (x), which gives a much longer list.",
+  "correction": "Replace the stated result by the value the definition prescribes.",
+  "fix": {
+   "old": "(subst-if-not '(x) #'consp tree1) \n→ (1 X)",
+   "new": "(subst-if-not '(x) #'consp tree1) \n→ ((X) ((X) (X) X) ((X) (X) (X) X) ((X) (X) (X) (X) X) X)"
+  },
+  "confidence": "medium",
+  "evidence": "SBCL: (subst-if-not '(x) #'consp '(1 2)) => ((X) (X) X); (subst-if-not '(x) #'consp tree1) => ((X) ((X) (X) X) ((X) (X) (X) X) ((X) (X) (X) (X) X) X); tree1 unchanged (as the next line of the example requires). No natural reading of the call yields (1 X) (1 kept while the cdr is replaced is the opposite of 'not consp'). Medium: the result is certain, but the author may have intended a different call (e.g. LISTP gives ((X) ((X) (X)) (X) (X))); we only fix the stated value."
+ },
+ {
+  "id": "E14",
+  "secno": "14.2.43",
+  "names": [
+   "intersection",
+   "nintersection"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.43-intersection.xhtml",
+  "kind": "example",
+  "what_is_wrong": "The setq builds the lists with unquoted a, b, c, d (unbound variables). The results shown (C B ...) assume the symbols.",
+  "correction": "Quote the symbols: 'a 'b 'c in list1, 'b 'c 'd in list2.",
+  "fix": [
+   {
+    "old": "(list 1 1 2 3 4 a b c \"A\" \"B\" \"C\" \"d\")",
+    "new": "(list 1 1 2 3 4 'a 'b 'c \"A\" \"B\" \"C\" \"d\")"
+   },
+   {
+    "old": "(list 1 4 5 b c d \"a\" \"B\" \"c\" \"D\")",
+    "new": "(list 1 4 5 'b 'c 'd \"a\" \"B\" \"c\" \"D\")"
+   }
+  ],
+  "confidence": "high",
+  "evidence": "SBCL with the quoted lists: list2 => (1 4 5 B C D \"a\" \"B\" \"c\" \"D\"); (intersection list1 list2) => (C B 4 1 1); :test 'equal => (\"B\" C B 4 1 1); :test #'equalp => (\"d\" \"C\" \"B\" \"A\" C B 4 1 1); all as printed. nintersection results/ordering and the state of list1 afterwards are implementation-dependent (SBCL gives (C B 4 1 1) and list1 => (1)); the example already says so for list1/list2."
+ },
+ {
+  "id": "E15",
+  "secno": "14.2.47",
+  "names": [
+   "set-exclusive-or",
+   "nset-exclusive-or"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.47-set-exclusive-or.xhtml",
+  "kind": "example",
+  "what_is_wrong": "The setq forms (list ((\"a\" . \"b\") ...)) apply the list (\"a\" . \"b\") as a function call (extra parentheses); they cannot be evaluated.",
+  "correction": "Build the lists from quoted data with COPY-LIST (as the intersection entry does for its alist example).",
+  "fix": [
+   {
+    "old": "(setq lst1 (list ((\"a\" . \"b\") (\"c\" . \"d\") (\"e\" . \"f\"))))",
+    "new": "(setq lst1 (copy-list '((\"a\" . \"b\") (\"c\" . \"d\") (\"e\" . \"f\"))))"
+   },
+   {
+    "old": "(setq lst2 (list ((\"c\" . \"a\") (\"e\" . \"b\") (\"d\" . \"a\"))))",
+    "new": "(setq lst2 (copy-list '((\"c\" . \"a\") (\"e\" . \"b\") (\"d\" . \"a\"))))"
+   }
+  ],
+  "confidence": "high",
+  "evidence": "SBCL: (nset-exclusive-or lst1 lst2 :test #'string= :key #'cdr) => ((\"c\" . \"d\") (\"e\" . \"f\") (\"c\" . \"a\") (\"d\" . \"a\")), exactly as printed. lst1/lst2 afterwards are implementation-dependent (SBCL: lst1 => ((\"a\" . \"b\") (\"c\" . \"d\") (\"e\" . \"f\") (\"c\" . \"a\") (\"d\" . \"a\")), lst2 => ((\"c\" . \"a\") (\"d\" . \"a\"))). The draft's printed lst1 is one possible outcome."
+ },
+ {
+  "id": "E16",
+  "secno": "17.3.21",
+  "names": [
+   "merge"
+  ],
+  "file": "OEBPS/text/17-sequences/17.3.21-merge.xhtml",
+  "kind": "example",
+  "what_is_wrong": "Three malformed forms: (copy-seq :nosy\") has an unbalanced string; the two (vector ((red . 1) ...)) forms call a list as a function.",
+  "correction": "Read \"nosy\" (lower case: the printed result \"BnOosYy\" requires lowercase) and (vector '(red . 1) '(blue . 4)) / (vector '(yellow . 2) '(green . 7)).",
+  "fix": [
+   {
+    "old": "(copy-seq :nosy\")",
+    "new": "(copy-seq \"nosy\")"
+   },
+   {
+    "old": "(vector ((red . 1) (blue . 4)))",
+    "new": "(vector '(red . 1) '(blue . 4))"
+   },
+   {
+    "old": "(vector ((yellow . 2) (green . 7)))",
+    "new": "(vector '(yellow . 2) '(green . 7))"
+   }
+  ],
+  "confidence": "high",
+  "evidence": "SBCL: (merge 'string \"BOY\" \"nosy\" #'char-lessp) => \"BnOosYy\" (with \"NOSY\" it would be \"BNOOSYY\", so the triage note suggesting \"NOSY\" is wrong); (merge 'vector #((RED . 1) (BLUE . 4)) #((YELLOW . 2) (GREEN . 7)) #'< :key #'cdr) => #((RED . 1) (YELLOW . 2) (BLUE . 4) (GREEN . 7)). Note (copy-seq \"nosy\") - literal copied, so destructive ops are safe."
+ },
+ {
+  "id": "E17",
+  "secno": "19.4.13",
+  "names": [
+   "wild-pathname-p"
+  ],
+  "file": "OEBPS/text/19-filenames/19.4.13-wild-pathname-p.xhtml",
+  "kind": "example",
+  "what_is_wrong": "(pathname :name \"F*O\") passes keyword arguments to PATHNAME, which takes one argument.",
+  "correction": "Use MAKE-PATHNAME, as the three preceding examples do.",
+  "fix": {
+   "old": "(wild-pathname-p (pathname :name \"F*O\"))",
+   "new": "(wild-pathname-p (make-pathname :name \"F*O\"))"
+  },
+  "confidence": "high",
+  "evidence": "SBCL: (pathname :name \"F*O\") => invalid number of arguments: 2. (wild-pathname-p (make-pathname :name \"F*O\")) => NIL in SBCL; the example's value true is marked ';Most places' and the preceding note says other implementations will behave differently, so the implementation-dependent value is not an error."
+ },
+ {
+  "id": "E18",
+  "secno": "22.4.18",
+  "names": [
+   "*print-case*"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.18-print-case.xhtml",
+  "kind": "example",
+  "what_is_wrong": "defun test-print-case is shown returning TEST-PC.",
+  "correction": "Result shown as TEST-PRINT-CASE.",
+  "fix": {
+   "old": "→  TEST-PC",
+   "new": "→  TEST-PRINT-CASE"
+  },
+  "confidence": "high",
+  "evidence": "defun returns the name; the example later calls (test-print-case). SBCL: (defun test-print-case ...) => TEST-PRINT-CASE."
+ },
+ {
+  "id": "E19",
+  "secno": "22.4.27",
+  "names": [
+   "*print-readably*"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.27-print-readably.xhtml",
+  "kind": "example",
+  "what_is_wrong": "Arguments of GETHASH are in the wrong order: (gethash table 1) instead of (gethash 1 table).",
+  "correction": "Write (gethash 1 table) and (gethash 2 table).",
+  "fix": [
+   {
+    "old": "(setf (gethash table 1) 'one)",
+    "new": "(setf (gethash 1 table) 'one)"
+   },
+   {
+    "old": "(setf (gethash table 2) 'two)",
+    "new": "(setf (gethash 2 table) 'two)"
+   }
+  ],
+  "confidence": "high",
+  "evidence": "SBCL: (setf (gethash 1 table) 'one) => ONE; (setf (gethash 2 table) 'two) => TWO; the draft order signals a type error. The implementation sketches below (#S(HASH-TABLE ... :CONTENTS (1 ONE 2 TWO))) already show key 1 -> ONE."
+ },
+ {
+  "id": "E20",
+  "secno": "26.1",
+  "names": [
+   "glossary: I/O customization variable (Figure 26-2)"
+  ],
+  "file": "OEBPS/text/26-glossary/i.xhtml",
+  "kind": "text",
+  "what_is_wrong": "Figure 26-2 lists \"query-io*\", missing the leading asterisk.",
+  "correction": "Read *query-io*.",
+  "fix": {
+   "old": "<td>query-io*</td>",
+   "new": "<td>*query-io*</td>"
+  },
+  "confidence": "high",
+  "evidence": "The variable is *query-io*; the other entries of the figure all carry both asterisks. TeX concept-glossary.tex has the same slip."
+ },
+ {
+  "id": "D01",
+  "secno": "11.2.16",
+  "names": [
+   "in-package"
+  ],
+  "file": "OEBPS/text/11-packages/11.2.16-in-package.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"the the\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "Causes the the <i>",
+   "new": "Causes the <i>"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D02",
+  "secno": "12.2.59",
+  "names": [
+   "parse-integer"
+  ],
+  "file": "OEBPS/text/12-numbers/12.2.59-parse-integer.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"a a\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "\na a non-empty",
+   "new": "\na non-empty"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D03",
+  "secno": "14.2.11",
+  "names": [
+   "sublis",
+   "nsublis"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.11-sublis.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"structure structure\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "structure structure may",
+   "new": "structure may"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D04",
+  "secno": "14.2.45",
+  "names": [
+   "pushnew"
+  ],
+  "file": "OEBPS/text/14-conses/14.2.45-pushnew.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"part part\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "returns part\npart of",
+   "new": "returns part of"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D05",
+  "secno": "2.3.5",
+  "names": [
+   "Valid Patterns for Tokens (figure)"
+  ],
+  "file": "OEBPS/text/2-syntax/2.3-interpretation-of-tokens.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"the the (\\thepackage)\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "in the the <a",
+   "new": "in the <a"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D06",
+  "secno": "22.2.1.3",
+  "names": [
+   "formatter (pretty printer)"
+  ],
+  "file": "OEBPS/text/22-printer/22.2-the-lisp-pretty-printer.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"the the (\\themacro)\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "returned by the the <a",
+   "new": "returned by the <a"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D07",
+  "secno": "22.4.12",
+  "names": [
+   "print-unreadable-object"
+  ],
+  "file": "OEBPS/text/22-printer/22.4.12-print-unreadable-object.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"the the\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "enclosed in the the angle",
+   "new": "enclosed in the angle"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D08",
+  "secno": "24.2.7",
+  "names": [
+   "*load-pathname*",
+   "*load-truename*"
+  ],
+  "file": "OEBPS/text/24-system-construction/24.2.7-load-pathname.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"the the\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "denoted by the the first",
+   "new": "denoted by the first"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D09",
+  "secno": "26.1 (copy)",
+  "names": [
+   "glossary: copy"
+  ],
+  "file": "OEBPS/text/26-glossary/c.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"to to\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "argument to\n     to the <i>",
+   "new": "argument to\n     the <i>"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D10",
+  "secno": "26.1 (em)",
+  "names": [
+   "glossary: em"
+  ],
+  "file": "OEBPS/text/26-glossary/e.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"of of\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "width of of a letter",
+   "new": "width of a letter"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D11",
+  "secno": "26.1 (safe)",
+  "names": [
+   "glossary: safe"
+  ],
+  "file": "OEBPS/text/26-glossary/s.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"the the\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "where the the highest",
+   "new": "where the highest"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D12",
+  "secno": "4.4.4",
+  "names": [
+   "compiled-function"
+  ],
+  "file": "OEBPS/text/4-types-and-classes/4.4.4-compiled-function.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"a a\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "to be a \na <i>",
+   "new": "to be a <i>"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D13",
+  "secno": "7.7.34",
+  "names": [
+   "find-method"
+  ],
+  "file": "OEBPS/text/7-objects/7.7.34-find-method.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"an an\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "an\nan error of",
+   "new": "an error of"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ },
+ {
+  "id": "D14",
+  "secno": "A.1.1",
+  "names": [
+   "Removed Language Features"
+  ],
+  "file": "OEBPS/text/A-appendix/A.1-removed-language-features.xhtml",
+  "kind": "typo",
+  "what_is_wrong": "Doubled word \"the the (\\thepackage)\" in the draft text.",
+  "correction": "Drop the duplicated word.",
+  "fix": {
+   "old": "in the the <code>",
+   "new": "in the <code>"
+  },
+  "confidence": "high",
+  "evidence": "TeX source has the same doubling (the doubled \"the\" in D05, D06, D14 comes from \"the \\thepackage{..}\"/\"the \\themacro{..}\", whose macros already print \"the\")."
+ }
+]
