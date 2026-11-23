@@ -82,7 +82,7 @@ def test_unknown_macro_keeps_argument_and_is_counted():
 
 
 def test_math_and_ties():
-    assert tt(r"and~$\pi$ is $x^2$") == "and pi is x2"
+    assert tt(r"and~$\pi$ is $x^2$") == "and \u03c0 is x2"
 
 
 def test_normalize_text_folds_dashes_and_quotes():
