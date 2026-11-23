@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.20 sin, cos, tan — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_sin_cos_ta_794" class="entry"><span class="secno">12.2.20</span> <span class="names">sin, cos, tan</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>sin</b>
+<i>radians</i>
+  → <i>number</i>
+<p>
+<b>cos</b>
+<i>radians</i>
+  → <i>number</i>
+</p><p>
+<b>tan</b>
+<i>radians</i>
+  → <i>number</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>radians</i>—a <i><a href="../26-glossary/n.xhtml#number">number</a></i> given in radians.
+
+<p>
+<i>number</i>—a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_sin_cos_ta_794"><b>sin</b></a>, <a href="#DictEntry_sin_cos_ta_794"><b>cos</b></a>, and <a href="#DictEntry_sin_cos_ta_794"><b>tan</b></a> 
+return the sine, cosine, and tangent, respectively, of <i>radians</i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (sin 0) → 0.0
+ (cos 0.7853982) → 0.707107
+ (tan #c(0 1)) → #C(0.0 0.761594)
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>radians</i> is not a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
+Might signal <a href="12.2.78-arithmetic-error.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="12.2.21-asin.xhtml#DictEntry_asin_acos__795"><b>asin</b></a>,
+<a href="12.2.21-asin.xhtml#DictEntry_asin_acos__795"><b>acos</b></a>,
+<a href="12.2.21-asin.xhtml#DictEntry_asin_acos__795"><b>atan</b></a>,
+Section <a href="12.1-number-concepts.xhtml#SubSubSectio_Rule_of_Floa_759">12.1.3.3 Rule of Float Substitutability</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

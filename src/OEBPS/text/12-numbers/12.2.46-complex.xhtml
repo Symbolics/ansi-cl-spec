@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.46 complex — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_complex_820" class="entry"><span class="secno">12.2.46</span> <span class="names">complex</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>complex</b>
+<i>realpart <code>&amp;optional</code> imagpart</i>
+  → <i>complex</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>realpart</i>—a <i>real</i>.
+
+<p>
+<i>imagpart</i>—a <i>real</i>.
+
+</p><p>
+<i>complex</i>—a <i><a href="../26-glossary/r.xhtml#rational">rational</a></i> or a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_complex_820"><b>complex</b></a> returns a <i><a href="../26-glossary/n.xhtml#number">number</a></i> 
+    whose real      part is <i>realpart</i> 
+and whose imaginary part is <i>imagpart</i>.
+
+<p>
+If <i>realpart</i> is a <i><a href="../26-glossary/r.xhtml#rational">rational</a></i>
+and <i>imagpart</i> is the <i><a href="../26-glossary/r.xhtml#rational">rational</a></i> number zero, 
+the result of <a href="#DictEntry_complex_820"><b>complex</b></a> is <i>realpart</i>, a <i><a href="../26-glossary/r.xhtml#rational">rational</a></i>.
+Otherwise, the result is a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i>.
+
+</p><p>
+
+If either <i>realpart</i> or <i>imagpart</i> is a <i><a href="../26-glossary/f.xhtml#float">float</a></i>,
+the non-<i><a href="../26-glossary/f.xhtml#float">float</a></i> is converted to a <i><a href="../26-glossary/f.xhtml#float">float</a></i> 
+before the <i><a href="../26-glossary/c.xhtml#complex">complex</a></i> is created.
+If <i>imagpart</i> is not supplied, the imaginary part is a 
+zero of the same <i><a href="../26-glossary/t.xhtml#type">type</a></i> as <i>realpart</i>; <i>i.e.</i>, 
+<code>(coerce 0 (type-of <i>realpart</i>))</code> is
+effectively used.  
+
+</p><p>
+Type upgrading implies a movement upwards in the type 
+hierarchy lattice.  
+
+In the case of <i>complexes</i>, the <i>type-specifier</i> 
+
+must be a subtype of 
+<code>(upgraded-complex-part-type <i>type-specifier</i>)</code>.
+If <i>type-specifier1</i> is a subtype of <i>type-specifier2</i>, then
+<code>(upgraded-complex-element-type '<i>type-specifier1</i>)</code>
+must also be a subtype of
+<code>(upgraded-complex-element-type '<i>type-specifier2</i>)</code>.  
+Two disjoint types can be upgraded into 
+the same thing.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (complex 0) → 0
+ (complex 0.0) → #C(0.0 0.0)
+ (complex 1 1/2) → #C(1 1/2)
+ (complex 1 .99) → #C(1.0 0.99)
+ (complex 3/2 0.0) → #C(1.5 0.0)
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="12.2.50-realpart.xhtml#DictEntry_realpart_im_824"><b>realpart</b></a>,
+<a href="12.2.50-realpart.xhtml#DictEntry_realpart_im_824"><b>imagpart</b></a>,
+
+
+Section <a href="../2-syntax/2.4-standard-macro-characters.xhtml#SubSubSectio_Sharpsign_C_171">2.4.8.11 Sharpsign C</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

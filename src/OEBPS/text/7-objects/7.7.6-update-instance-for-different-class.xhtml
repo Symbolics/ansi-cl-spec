@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.7.6 update-instance-for-different-class — Standard Generic Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_update_insta_562" class="entry"><span class="secno">7.7.6</span> <span class="names">update-instance-for-different-class</span> <span class="kind">Standard Generic Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>update-instance-for-different-class</b>
+<i>previous current 
+		   <code>&amp;rest</code> initargs
+		   <code>&amp;key</code> <code>&amp;allow-other-keys</code></i>
+  → <i><i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i></i>
+</dd><dt><b>Method Signatures:</b></dt><dd>
+
+<b>update-instance-for-different-class</b>
+<i>(<i>previous</i> <a href="../4-types-and-classes/4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>)
+	        (<i>current</i> <a href="../4-types-and-classes/4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>)
+	        <code>&amp;rest</code> initargs</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>previous</i>—a copy of the original <i><a href="../26-glossary/i.xhtml#instance">instance</a></i>.
+
+<p>
+<i>current</i>—the original <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> (altered).
+
+</p><p>
+<i>initargs</i>—an <i><a href="../26-glossary/i.xhtml#initializationargumentlist">initialization argument list</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The generic function <a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a> is not
+intended to be called by programmers.  Programmers may write
+<i><a href="../26-glossary/m.xhtml#method">methods</a></i> for it.  The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a>
+is called only by the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="7.7.8-change-class.xhtml#DictEntry_change_class_564"><b>change-class</b></a>.
+
+<p>
+The system-supplied primary <i><a href="../26-glossary/m.xhtml#method">method</a></i> on 
+<a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a> checks the validity of
+<i>initargs</i> and signals an error if an <i>initarg</i>
+is supplied that is not declared as valid.  This <i><a href="../26-glossary/m.xhtml#method">method</a></i> then
+initializes <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> with values according to the <i>initargs</i>,
+and initializes the newly added <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> with values according
+to their <code>:initform</code> forms.  It does this by calling the generic
+function <a href="7.7.5-shared-initialize.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a> with the following arguments: the 
+instance (<i>current</i>),
+a list of <i><a href="../26-glossary/n.xhtml#name">names</a></i> of the newly added <i><a href="../26-glossary/s.xhtml#slot">slots</a></i>, and the <i>initargs</i>
+it received.  Newly added <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> are those <i><a href="../26-glossary/l.xhtml#localslot">local slots</a></i> for which
+no <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> of the same name exists in the <i>previous</i> class.
+
+</p><p>
+<i><a href="../26-glossary/m.xhtml#method">Methods</a></i> for <a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a> can be defined to
+specify actions to be taken when an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> is updated.  If only 
+<i><a href="../26-glossary/a.xhtml#aftermethod">after methods</a></i> for <a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a> are
+defined, they will be run after the system-supplied primary <i><a href="../26-glossary/m.xhtml#method">method</a></i> for
+initialization and therefore will not interfere with the default
+behavior of <a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a>.
+
+</p><p>
+<i><a href="../26-glossary/m.xhtml#method">Methods</a></i> on <a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a> can be defined to
+initialize <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> differently from <a href="7.7.8-change-class.xhtml#DictEntry_change_class_564"><b>change-class</b></a>.  The default
+behavior of <a href="7.7.8-change-class.xhtml#DictEntry_change_class_564"><b>change-class</b></a> is described in 
+Section <a href="7.2-changing-the-class-of-an-instance.xhtml#Section_Changing_the_528">7.2 Changing the Class of an Instance</a>.
+
+</p><p>
+The arguments to <a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a> are
+computed by <a href="7.7.8-change-class.xhtml#DictEntry_change_class_564"><b>change-class</b></a>.  When <a href="7.7.8-change-class.xhtml#DictEntry_change_class_564"><b>change-class</b></a> is invoked on
+an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i>, a copy of that <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> is made; <a href="7.7.8-change-class.xhtml#DictEntry_change_class_564"><b>change-class</b></a> then
+destructively alters the original <i><a href="../26-glossary/i.xhtml#instance">instance</a></i>. The first argument to
+<a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a>, <i>previous</i>, is that
+copy; it holds the old <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> values temporarily.  This argument has
+dynamic extent within <a href="7.7.8-change-class.xhtml#DictEntry_change_class_564"><b>change-class</b></a>; if it is referenced in any
+way once <a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a> returns, the
+results are undefined.  The second argument to
+<a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a>, <i>current</i>, is the altered
+original <i><a href="../26-glossary/i.xhtml#instance">instance</a></i>.
+The intended use of <i>previous</i> is to extract old <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> values by using
+<a href="7.7.14-slot-value.xhtml#DictEntry_slot_value_570"><b>slot-value</b></a> or <a href="7.7.24-with-slots.xhtml#DictEntry_with_slots_580"><b>with-slots</b></a> or by invoking 
+a reader generic function, or to run other <i><a href="../26-glossary/m.xhtml#method">methods</a></i> that were applicable to 
+<i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of
+the original <i><a href="../26-glossary/c.xhtml#class">class</a></i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+See the example for the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="7.7.8-change-class.xhtml#DictEntry_change_class_564"><b>change-class</b></a>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+The system-supplied primary <i><a href="../26-glossary/m.xhtml#method">method</a></i> on
+<a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a> signals an error if an
+initialization argument is supplied that is not declared as valid.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="7.7.8-change-class.xhtml#DictEntry_change_class_564"><b>change-class</b></a>,
+<a href="7.7.5-shared-initialize.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a>,
+Section <a href="7.2-changing-the-class-of-an-instance.xhtml#Section_Changing_the_528">7.2 Changing the Class of an Instance</a>,
+Section <a href="7.1-object-creation-and-initialization.xhtml#SubSection_Rules_for_In_524">7.1.4 Rules for Initialization Arguments</a>,
+Section <a href="7.1-object-creation-and-initialization.xhtml#SubSection_Declaring_th_522">7.1.2 Declaring the Validity of Initialization Arguments</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<i>Initargs</i> are declared as valid by using the <code>:initarg</code>
+option to <a href="7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a>, or by defining <i><a href="../26-glossary/m.xhtml#method">methods</a></i>
+for <a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a> or <a href="7.7.5-shared-initialize.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a>.
+The keyword name of each keyword parameter specifier in the <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> of
+any <i><a href="../26-glossary/m.xhtml#method">method</a></i> defined on <a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a>
+or <a href="7.7.5-shared-initialize.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a> is declared as a valid <i>initarg</i> name
+for all <i>classes</i> for which that <i><a href="../26-glossary/m.xhtml#method">method</a></i> is applicable.
+
+<p>
+The value returned by <a href="#DictEntry_update_insta_562"><b>update-instance-for-different-class</b></a> is
+ignored by <a href="7.7.8-change-class.xhtml#DictEntry_change_class_564"><b>change-class</b></a>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

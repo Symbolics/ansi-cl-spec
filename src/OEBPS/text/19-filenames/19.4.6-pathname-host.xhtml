@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>19.4.6 pathname-host, pathname-device, pathname-directory, … — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_pathname_hos_1149" class="entry"><span class="secno">19.4.6</span> <span class="names">pathname-host, pathname-device, pathname-directory, pathname-name, pathname-type, pathname-version</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+
+<p>
+<b>pathname-host</b>
+<i>pathname <code>&amp;key</code> case</i>
+  → <i>host</i>
+</p><p>
+<b>pathname-device</b>
+<i>pathname <code>&amp;key</code> case</i>
+  → <i>device</i>
+</p><p>
+<b>pathname-directory</b>
+<i>pathname <code>&amp;key</code> case</i>
+  → <i>directory</i>
+</p><p>
+<b>pathname-name</b>
+<i>pathname <code>&amp;key</code> case</i>
+  → <i>name</i>
+</p><p>
+<b>pathname-type</b>
+<i>pathname <code>&amp;key</code> case</i>
+  → <i>type</i>
+</p><p>
+<b>pathname-version</b>
+<i>pathname</i>
+  → <i>version</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>pathname</i>—a <i><a href="../26-glossary/p.xhtml#pathnamedesignator">pathname designator</a></i>.
+
+
+<p>
+
+<i>case</i>—one of <code>:local</code> or <code>:common</code>.
+ The default is <code>:local</code>.
+
+
+</p><p>
+
+<i>host</i>—a <i><a href="../26-glossary/v.xhtml#validpathnamehost">valid pathname host</a></i>.
+
+</p><p>
+<i>device</i>—a <i><a href="../26-glossary/v.xhtml#validpathnamedevice">valid pathname device</a></i>.
+
+</p><p>
+
+<i>directory</i>—a <i><a href="../26-glossary/v.xhtml#validpathnamedirectory">valid pathname directory</a></i>.
+
+
+</p><p>
+<i>name</i>—a <i><a href="../26-glossary/v.xhtml#validpathnamename">valid pathname name</a></i>.
+
+</p><p>
+<i>type</i>—a <i><a href="../26-glossary/v.xhtml#validpathnametype">valid pathname type</a></i>.
+
+</p><p>
+<i>version</i>—a <i><a href="../26-glossary/v.xhtml#validpathnameversion">valid pathname version</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+These functions return the components of <i>pathname</i>.
+
+<p>
+If the <i>pathname</i> <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> is a <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i>,
+it represents the name used to open the file. This may be, but is
+not required to be, the actual name of the file. 
+
+</p><p>
+
+If <i>case</i> is supplied,
+it is treated as described in Section <a href="19.2-pathnames.xhtml#SubSubSubSec_Case_in_Path_1108">19.2.2.1.2 Case in Pathname Components</a>.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+
+<pre> (setq q (make-pathname :host "KATHY"
+                        :directory "CHAPMAN" 
+                        :name "LOGIN" :type "COM"))
+→ #P"KATHY::[CHAPMAN]LOGIN.COM"
+ (pathname-host q) → "KATHY"
+ (pathname-name q) → "LOGIN"
+ (pathname-type q) → "COM"
+
+ ;; Because namestrings are used, the results shown in the remaining
+ ;; examples are not necessarily the only possible results.  Mappings
+ ;; from namestring representation to pathname representation are 
+ ;; dependent both on the file system involved and on the implementation
+ ;; (since there may be several implementations which can manipulate the
+ ;; the same file system, and those implementations are not constrained
+ ;; to agree on all details). Consult the documentation for each
+ ;; implementation for specific information on how namestrings are treated
+ ;; that implementation.
+
+ ;; VMS
+ (pathname-directory (parse-namestring "[FOO.*.BAR]BAZ.LSP"))
+→ (:ABSOLUTE "FOO" "BAR")
+ (pathname-directory (parse-namestring "[FOO.*.BAR]BAZ.LSP") :case :common)
+→ (:ABSOLUTE "FOO" "BAR")
+
+ ;; Unix
+ (pathname-directory "foo.l") →  NIL
+ (pathname-device "foo.l") → :UNSPECIFIC
+ (pathname-name "foo.l") → "foo"
+ (pathname-name "foo.l" :case :local) → "foo"
+ (pathname-name "foo.l" :case :common) → "FOO"
+ (pathname-type "foo.l") → "l"
+ (pathname-type "foo.l" :case :local) → "l"
+ (pathname-type "foo.l" :case :common) → "L"
+ (pathname-type "foo") → :UNSPECIFIC
+ (pathname-type "foo" :case :common) → :UNSPECIFIC
+ (pathname-type "foo.") → ""
+ (pathname-type "foo." :case :common) → ""
+ (pathname-directory (parse-namestring "/foo/bar/baz.lisp") :case :local)
+→ (:ABSOLUTE "foo" "bar")
+ (pathname-directory (parse-namestring "/foo/bar/baz.lisp") :case :local)
+→ (:ABSOLUTE "FOO" "BAR")
+ (pathname-directory (parse-namestring "../baz.lisp"))
+→ (:RELATIVE :UP)
+ (PATHNAME-DIRECTORY (PARSE-NAMESTRING "/foo/BAR/../Mum/baz"))
+→ (:ABSOLUTE "foo" "BAR" :UP "Mum")
+ (PATHNAME-DIRECTORY (PARSE-NAMESTRING "/foo/BAR/../Mum/baz") :case :common)
+→ (:ABSOLUTE "FOO" "bar" :UP "Mum")
+ (PATHNAME-DIRECTORY (PARSE-NAMESTRING "/foo/*/bar/baz.l"))
+→ (:ABSOLUTE "foo" :WILD "bar")
+ (PATHNAME-DIRECTORY (PARSE-NAMESTRING "/foo/*/bar/baz.l") :case :common)
+→ (:ABSOLUTE "FOO" :WILD "BAR")
+
+ ;; Symbolics LMFS
+ (pathname-directory (parse-namestring "&gt;foo&gt;**&gt;bar&gt;baz.lisp"))
+→ (:ABSOLUTE "foo" :WILD-INFERIORS "bar")
+ (pathname-directory (parse-namestring "&gt;foo&gt;*&gt;bar&gt;baz.lisp"))
+→ (:ABSOLUTE "foo" :WILD "bar")
+ (pathname-directory (parse-namestring "&gt;foo&gt;*&gt;bar&gt;baz.lisp") :case :common)
+→ (:ABSOLUTE "FOO" :WILD "BAR")
+ (pathname-device (parse-namestring "&gt;foo&gt;baz.lisp")) → :UNSPECIFIC
+</pre>
+
+
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> and the host <i><a href="../26-glossary/f.xhtml#filesystem">file system</a></i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if its first argument is not a <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+
+<a href="19.4.1-pathname.xhtml#DictEntry_pathname_1144"><b>pathname</b></a>,
+<a href="19.4.9-logical-pathname.xhtml#DictEntry_logical_path_1152"><b>logical-pathname</b></a>,
+Section <a href="../20-files/20.1-file-system-concepts.xhtml#Section_File_System__1162">20.1 File System Concepts</a>,
+
+
+Section <a href="19.1-overview-of-filenames.xhtml#SubSection_Pathnames_as_1095">19.1.2 Pathnames as Filenames</a>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>15.2.15 array-displacement — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_array_displa_993" class="entry"><span class="secno">15.2.15</span> <span class="names">array-displacement</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>array-displacement</b>
+<i>array</i>
+  → <i>displaced-to, displaced-index-offset</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>array</i>—an <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
+
+<p>
+<i>displaced-to</i>—an <i>array</i> or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>displaced-index-offset</i>—a non-negative <i><a href="../26-glossary/f.xhtml#fixnum">fixnum</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+If the <i>array</i> is a <i><a href="../26-glossary/d.xhtml#displacedarray">displaced array</a></i>,
+returns the <i><a href="../26-glossary/v.xhtml#value">values</a></i> of the <code>:displaced-to</code> and <code>:displaced-index-offset</code>
+options
+for the <i><a href="../26-glossary/a.xhtml#array">array</a></i> (see the <i><a href="../26-glossary/f.xhtml#function">functions</a></i> <a href="15.2.7-make-array.xhtml#DictEntry_make_array_985"><b>make-array</b></a> and <a href="15.2.8-adjust-array.xhtml#DictEntry_adjust_array_986"><b>adjust-array</b></a>).
+If the <i>array</i> is not a <i><a href="../26-glossary/d.xhtml#displacedarray">displaced array</a></i>,
+<a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> and <code>0</code> are returned.
+
+<p>
+If <a href="#DictEntry_array_displa_993"><b>array-displacement</b></a> is called on an <i>array</i>
+for which a <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> was provided as the
+<code>:displaced-to</code> <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> to <a href="15.2.7-make-array.xhtml#DictEntry_make_array_985"><b>make-array</b></a> 
+or <a href="15.2.8-adjust-array.xhtml#DictEntry_adjust_array_986"><b>adjust-array</b></a>, it must return that <i><a href="../26-glossary/o.xhtml#object">object</a></i>
+as its first value. It is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+whether <a href="#DictEntry_array_displa_993"><b>array-displacement</b></a> returns a <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i>
+<i><a href="../26-glossary/p.xhtml#primaryvalue">primary value</a></i> for any other <i>array</i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq a1 (make-array 5)) → #&lt;ARRAY 5 simple 46115576&gt;
+ (setq a2 (make-array 4 :displaced-to a1
+                        :displaced-index-offset 1))
+→ #&lt;ARRAY 4 indirect 46117134&gt;
+ (array-displacement a2)
+→ #&lt;ARRAY 5 simple 46115576&gt;, 1
+ (setq a3 (make-array 2 :displaced-to a2
+                        :displaced-index-offset 2))
+→ #&lt;ARRAY 2 indirect 46122527&gt;
+
+ (array-displacement a3)
+→ #&lt;ARRAY 4 indirect 46117134&gt;, 2
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>array</i> is not an <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="15.2.7-make-array.xhtml#DictEntry_make_array_985"><b>make-array</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>19.4.8 logical-pathname-translations — Accessor</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_logical_path_1151" class="entry"><span class="secno">19.4.8</span> <span class="names">logical-pathname-translations</span> <span class="kind">Accessor</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>logical-pathname-translations</b>
+<i>host</i>
+  → <i>translations</i>
+<p>
+(<b>setf</b>
+(<b>logical-pathname-translations</b> <i>host</i>) <i>new-translations</i>)
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>host</i>--a <i><a href="../26-glossary/l.xhtml#logicalhostdesignator">logical host designator</a></i>.
+
+<p>
+<i>translations</i>, <i>new-translations</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Returns the host's <i><a href="../26-glossary/l.xhtml#list">list</a></i> of translations.
+Each translation is a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of at least two elements: 
+<i>from-wildcard</i> and <i>to-wildcard</i>.  Any
+    additional elements are <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i>.  
+<i>From-wildcard</i> is a
+    <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> whose host is <i>host</i>.  
+<i>To-wildcard</i> is a <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i>.    
+
+
+<p>
+<code>(setf (logical-pathname-translations <i>host</i>) <i>translations</i>)</code> sets a 
+<i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> host's
+<i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i>translations</i>.  If <i>host</i> 
+is a <i><a href="../26-glossary/s.xhtml#string">string</a></i> that has
+    not been previously used as 
+a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> host, a new 
+<i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> host is defined; 
+otherwise an existing host's translations are
+    replaced.  <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> host names are compared with <a href="../16-strings/16.2.10-string=.xhtml#DictEntry_string_str_1029"><b>string-equal</b></a>.
+
+</p><p>
+    When setting the translations list, each <i>from-wildcard</i> 
+can be a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> whose
+host is <i>host</i> or a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> namestring
+    parseable by <code>(parse-namestring <i><a href="../26-glossary/s.xhtml#string">string</a></i> <i>host</i>)</code>, 
+where <i>host</i>
+    represents the appropriate <i><a href="../26-glossary/o.xhtml#object">object</a></i> as defined 
+by <a href="19.4.12-parse-namestring.xhtml#DictEntry_parse_namest_1155"><b>parse-namestring</b></a>. Each
+    <i>to-wildcard</i> can be anything coercible to a 
+<i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i> by
+    <code>(pathname <i>to-wildcard</i>)</code>.  
+If <i>to-wildcard</i> coerces to a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i>,
+<a href="19.4.15-translate-logical-pathname.xhtml#DictEntry_translate_lo_1158"><b>translate-logical-pathname</b></a> 
+will perform repeated translation steps when
+    it uses it.
+
+</p><p>
+<i>host</i> is either the host component of a 
+<i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> or a
+    <i><a href="../26-glossary/s.xhtml#string">string</a></i> that has been defined 
+as a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> host name by <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> of
+<a href="#DictEntry_logical_path_1151"><b>logical-pathname-translations</b></a>. 
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> ;;;A very simple example of setting up a logical pathname host.  No
+ ;;;translations are necessary to get around file system restrictions, so
+ ;;;all that is necessary is to specify the root of the physical directory
+ ;;;tree that contains the logical file system.
+ ;;;The namestring syntax on the right-hand side is implementation-dependent.
+ (setf (logical-pathname-translations "foo")
+       '(("**;*.*.*"              "MY-LISPM:&gt;library&gt;foo&gt;**&gt;")))
+ 
+ ;;;Sample use of that logical pathname.  The return value
+ ;;;is implementation-dependent.          
+ (translate-logical-pathname "foo:bar;baz;mum.quux.3")
+→ #P"MY-LISPM:&gt;library&gt;foo&gt;bar&gt;baz&gt;mum.quux.3"
+ 
+ ;;;A more complex example, dividing the files among two file servers
+ ;;;and several different directories.  This Unix doesn't support
+ ;;;:WILD-INFERIORS in the directory, so each directory level must
+ ;;;be translated individually.  No file name or type translations
+ ;;;are required except for .MAIL to .MBX.
+ ;;;The namestring syntax on the right-hand side is implementation-dependent.
+ (setf (logical-pathname-translations "prog")
+       '(("RELEASED;*.*.*"        "MY-UNIX:/sys/bin/my-prog/")
+         ("RELEASED;*;*.*.*"      "MY-UNIX:/sys/bin/my-prog/*/")
+         ("EXPERIMENTAL;*.*.*"    "MY-UNIX:/usr/Joe/development/prog/")
+         ("EXPERIMENTAL;DOCUMENTATION;*.*.*"
+                                  "MY-VAX:SYS<i>DISK:[JOE.DOC]")
+         ("EXPERIMENTAL;*;*.*.*"  "MY-UNIX:/usr/Joe/development/prog/*/")
+         ("MAIL;**;*.MAIL"        "MY-VAX:SYS</i>DISK:[JOE.MAIL.PROG...]*.MBX")))
+
+ ;;;Sample use of that logical pathname.  The return value
+ ;;;is implementation-dependent.          
+ (translate-logical-pathname "prog:mail;save;ideas.mail.3")
+→ #P"MY-VAX:SYS$DISK:[JOE.MAIL.PROG.SAVE]IDEAS.MBX.3"
+
+ ;;;Example translations for a program that uses three files main.lisp,
+ ;;;auxiliary.lisp, and documentation.lisp.  These translations might be
+ ;;;supplied by a software supplier as examples.
+
+ ;;;For Unix with long file names
+ (setf (logical-pathname-translations "prog")
+       '(("CODE;*.*.*"             "/lib/prog/")))
+
+ ;;;Sample use of that logical pathname.  The return value
+ ;;;is implementation-dependent.          
+ (translate-logical-pathname "prog:code;documentation.lisp")
+→ #P"/lib/prog/documentation.lisp"
+
+ ;;;For Unix with 14-character file names, using .lisp as the type
+ (setf (logical-pathname-translations "prog")
+       '(("CODE;DOCUMENTATION.*.*" "/lib/prog/docum.*")
+         ("CODE;*.*.*"             "/lib/prog/")))
+
+ ;;;Sample use of that logical pathname.  The return value
+ ;;;is implementation-dependent.          
+ (translate-logical-pathname "prog:code;documentation.lisp")
+→ #P"/lib/prog/docum.lisp"
+
+ ;;;For Unix with 14-character file names, using .l as the type
+ ;;;The second translation shortens the compiled file type to .b
+ (setf (logical-pathname-translations "prog")
+       `(("**;*.LISP.*"            ,(logical-pathname "PROG:**;*.L.*"))
+         (,(compile-file-pathname (logical-pathname "PROG:**;*.LISP.*"))
+                                   ,(logical-pathname "PROG:**;*.B.*"))
+         ("CODE;DOCUMENTATION.*.*" "/lib/prog/documentatio.*")
+         ("CODE;*.*.*"             "/lib/prog/")))
+
+ ;;;Sample use of that logical pathname.  The return value
+ ;;;is implementation-dependent.          
+ (translate-logical-pathname "prog:code;documentation.lisp")
+→ #P"/lib/prog/documentatio.l"
+
+ ;;;For a Cray with 6 character names and no directories, types, or versions.
+ (setf (logical-pathname-translations "prog")
+       (let ((l '(("MAIN" "PGMN")
+                  ("AUXILIARY" "PGAUX")
+                  ("DOCUMENTATION" "PGDOC")))
+             (logpath (logical-pathname "prog:code;"))
+             (phypath (pathname "XXX")))
+         (append
+           ;; Translations for source files
+           (mapcar #'(lambda (x)
+                       (let ((log (first x))
+                             (phy (second x)))
+                         (list (make-pathname :name log
+                                              :type "LISP"
+                                              :version :wild
+                                              :defaults logpath)
+                               (make-pathname :name phy
+                                              :defaults phypath))))
+                   l)
+           ;; Translations for compiled files
+           (mapcar #'(lambda (x)
+                       (let* ((log (first x))
+                              (phy (second x))
+                              (com (compile-file-pathname
+                                     (make-pathname :name log
+                                                    :type "LISP"
+                                                    :version :wild
+                                                    :defaults logpath))))
+                         (setq phy (concatenate 'string phy "B"))
+                         (list com
+                               (make-pathname :name phy
+                                              :defaults phypath))))
+                   l))))
+
+ ;;;Sample use of that logical pathname.  The return value
+ ;;;is implementation-dependent.          
+ (translate-logical-pathname "prog:code;documentation.lisp")
+→ #P"PGDOC"
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+If <i>host</i> is incorrectly supplied, 
+an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> is signaled.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="19.4.9-logical-pathname.xhtml#DictEntry_logical_path_1152"><b>logical-pathname</b></a>,
+
+Section <a href="19.1-overview-of-filenames.xhtml#SubSection_Pathnames_as_1095">19.1.2 Pathnames as Filenames</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+Implementations can define additional <i><a href="../26-glossary/f.xhtml#function">functions</a></i>
+that operate on <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> hosts,
+for example to specify additional translation rules or options.
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>10.2.12 symbol-package — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_symbol_packa_686" class="entry"><span class="secno">10.2.12</span> <span class="names">symbol-package</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>symbol-package</b>
+<i>symbol</i>
+  → <i>contents</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>symbol</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+<p>
+<i>contents</i>—a <i><a href="../26-glossary/p.xhtml#package">package</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns the <i><a href="../26-glossary/h.xhtml#homepackage">home package</a></i> of <i>symbol</i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (in-package "CL-USER") → #&lt;PACKAGE "COMMON-LISP-USER"&gt;
+ (symbol-package 'car) → #&lt;PACKAGE "COMMON-LISP"&gt;
+ (symbol-package 'bus) → #&lt;PACKAGE "COMMON-LISP-USER"&gt;
+ (symbol-package :optional) → #&lt;PACKAGE "KEYWORD"&gt;
+ ;; Gensyms are uninterned, so have no home package.
+ (symbol-package (gensym)) →  NIL
+ (make-package 'pk1) → #&lt;PACKAGE "PK1"&gt;
+ (intern "SAMPLE1" "PK1") →  PK1::SAMPLE1, NIL
+ (export (find-symbol "SAMPLE1" "PK1") "PK1") →  T
+ (make-package 'pk2 :use '(pk1)) → #&lt;PACKAGE "PK2"&gt;
+ (find-symbol "SAMPLE1" "PK2") →  PK1:SAMPLE1, :INHERITED
+ (symbol-package 'pk1::sample1) → #&lt;PACKAGE "PK1"&gt;
+ (symbol-package 'pk2::sample1) → #&lt;PACKAGE "PK1"&gt;
+ (symbol-package 'pk1::sample2) → #&lt;PACKAGE "PK1"&gt;
+ (symbol-package 'pk2::sample2) → #&lt;PACKAGE "PK2"&gt;
+ ;; The next several forms create a scenario in which a symbol
+ ;; is not really uninterned, but is "apparently uninterned",
+ ;; and so SYMBOL-PACKAGE still returns NIL.
+ (setq s3 'pk1::sample3) →  PK1::SAMPLE3
+ (import s3 'pk2) →  T
+ (unintern s3 'pk1) →  T
+ (symbol-package s3) →  NIL
+ (eq s3 'pk2::sample3) →  T
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="../11-packages/11.2.6-import.xhtml#DictEntry_import_721"><b>import</b></a>,
+<a href="../11-packages/11.2.21-intern.xhtml#DictEntry_intern_736"><b>intern</b></a>,
+<a href="../11-packages/11.2.15-unintern.xhtml#DictEntry_unintern_730"><b>unintern</b></a>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>symbol</i> is not a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../11-packages/11.2.21-intern.xhtml#DictEntry_intern_736"><b>intern</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

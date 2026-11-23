@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>25.2.16 room — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_room_1443" class="entry"><span class="secno">25.2.16</span> <span class="names">room</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>room</b>
+<i><code>&amp;optional</code> x</i>
+  → <i><i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i></i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>x</i>—one of <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>, <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, or <code>:default</code>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_room_1443"><b>room</b></a> prints, to <i><a href="../26-glossary/s.xhtml#standardoutput">standard output</a></i>,
+information about the state of internal storage and its management.
+This might include descriptions of the amount of memory in use and 
+the degree of memory compaction, possibly broken down by internal data type if that
+is appropriate.  The nature and format of the printed information is
+<i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.
+The intent is to provide information that a <i><a href="../26-glossary/p.xhtml#programmer">programmer</a></i>
+might use to tune a <i><a href="../26-glossary/p.xhtml#program">program</a></i> for a particular <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>.
+
+<p>
+
+<code>(room nil)</code> prints out a minimal amount of information.
+<code>(room t)</code> prints out a maximal amount of information.
+
+<code>(room)</code> or <code>(room :default)</code> prints out an intermediate amount
+of information that is likely to be useful.
+
+
+</p></dd><dt><b>Side Effects:</b></dt><dd>
+
+Output to <i><a href="../26-glossary/s.xhtml#standardoutput">standard output</a></i>.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a>.
+
+</dd></dl>
+</section>
+</body>
+</html>

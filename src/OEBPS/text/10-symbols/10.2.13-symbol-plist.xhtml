@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>10.2.13 symbol-plist — Accessor</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_symbol_plist_687" class="entry"><span class="secno">10.2.13</span> <span class="names">symbol-plist</span> <span class="kind">Accessor</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>symbol-plist</b>
+<i>symbol</i>
+  → <i>plist</i>
+<p>
+(<b>setf</b>
+(<b>symbol-plist</b> <i>symbol</i>) <i>new-plist</i>)
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>symbol</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+<p>
+<i>plist</i>, <i>new-plist</i>—a <i><a href="../26-glossary/p.xhtml#propertylist">property list</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+<i>Accesses</i> the <i><a href="../26-glossary/p.xhtml#propertylist">property list</a></i> of <i>symbol</i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq sym (gensym)) → #:G9723
+ (symbol-plist sym) → ()
+ (setf (get sym 'prop1) 'val1) →  VAL1
+ (symbol-plist sym) → (PROP1 VAL1)
+ (setf (get sym 'prop2) 'val2) →  VAL2
+ (symbol-plist sym) → (PROP2 VAL2 PROP1 VAL1)
+ (setf (symbol-plist sym) (list 'prop3 'val3)) → (PROP3 VAL3)
+ (symbol-plist sym) → (PROP3 VAL3)
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>symbol</i> is not a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="10.2.15-get.xhtml#DictEntry_get_689"><b>get</b></a>,
+<a href="10.2.16-remprop.xhtml#DictEntry_remprop_690"><b>remprop</b></a>
+
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The use of <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> should be avoided, since a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>'s
+<i><a href="../26-glossary/p.xhtml#propertylist">property list</a></i> is a global resource that can contain information 
+established and depended upon by unrelated programs in the same <i>Lisp image</i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

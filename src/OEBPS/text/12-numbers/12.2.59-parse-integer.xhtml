@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.59 parse-integer — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_parse_intege_833" class="entry"><span class="secno">12.2.59</span> <span class="names">parse-integer</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>parse-integer</b>
+<i>string <code>&amp;key</code> start end radix junk-allowed</i>
+  → <i>integer, pos</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>string</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
+
+<p>
+
+
+<i>start</i>, <i>end</i>—<i><a href="../26-glossary/b.xhtml#boundingindexdesignator">bounding index designators</a></i> of <i>string</i>.
+ The defaults for <i>start</i> and <i>end</i> are <code>0</code> and <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, respectively.
+
+
+
+</p><p>
+<i>radix</i>—a <i><a href="../26-glossary/r.xhtml#radix">radix</a></i>.
+ The default is <code>10</code>.
+
+</p><p>
+<i>junk-allowed</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+ The default is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+</p><p>
+<i>integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> or <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+</p><p>
+<i>pos</i>—a <i><a href="../26-glossary/b.xhtml#boundingindex">bounding index</a></i> of <i>string</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_parse_intege_833"><b>parse-integer</b></a> parses an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> in the specified <i>radix</i>
+from the substring of <i>string</i> delimited by <i>start</i> and <i>end</i>.
+
+<p>
+
+<a href="#DictEntry_parse_intege_833"><b>parse-integer</b></a> expects an optional sign (<code>+</code> or <code>-</code>) followed by
+a a non-empty sequence of digits to be interpreted in the specified <i>radix</i>.
+Optional leading and trailing <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>1</sub> is ignored.
+
+</p><p>
+<a href="#DictEntry_parse_intege_833"><b>parse-integer</b></a> does not recognize the syntactic radix-specifier
+prefixes <code>#O</code>, <code>#B</code>, <code>#X</code>, and <code>#<i>n</i>R</code>, 
+nor does it recognize a trailing decimal point.
+
+</p><p>
+If <i>junk-allowed</i> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>, an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.8-parse-error.xhtml#DictEntry_parse_error_633"><b>parse-error</b></a> is 
+signaled if substring does not consist entirely of the representation of a 
+signed <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, possibly surrounded on either side by <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>1</sub> 
+<i><a href="../26-glossary/c.xhtml#character">characters</a></i>.
+
+</p><p>
+
+The first <i><a href="../26-glossary/v.xhtml#value">value</a></i> returned is either
+    the <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> that was parsed,
+ or else <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if no syntactically correct <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> 
+    was seen but <i>junk-allowed</i> was <i><a href="../26-glossary/t.xhtml#true">true</a></i>.
+
+</p><p>
+
+The second <i><a href="../26-glossary/v.xhtml#value">value</a></i> is either 
+    the index into the <i><a href="../26-glossary/s.xhtml#string">string</a></i> of the delimiter that terminated the parse,
+ or the upper <i><a href="../26-glossary/b.xhtml#boundingindex">bounding index</a></i> of the substring if the parse terminated at
+    the end of the substring (as is always the case if <i>junk-allowed</i> 
+    is <i><a href="../26-glossary/f.xhtml#false">false</a></i>).
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (parse-integer "123") → 123, 3
+ (parse-integer "123" :start 1 :radix 5) → 13, 3
+ (parse-integer "no-integer" :junk-allowed t) →  NIL, 0
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+If <i>junk-allowed</i> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>, 
+an error is signaled if substring does not consist entirely of
+the representation of an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, 
+possibly surrounded on either side by
+<i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>1</sub> characters.
+
+</dd></dl>
+</section>
+</body>
+</html>

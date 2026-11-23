@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.51 with-input-from-string — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_with_input_f_1242" class="entry"><span class="secno">21.2.51</span> <span class="names">with-input-from-string</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>with-input-from-string</b>
+<i>(var string <code>&amp;key</code> index start end)
+			  {<i>declaration</i>}*
+			  {<i>form</i>}*</i><br/>   
+  → <i>{<i>result</i>}*</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>var</i>—a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i><a href="../26-glossary/n.xhtml#name">name</a></i>.
+
+<p>
+<i>string</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>; evaluated to produce a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
+
+</p><p>
+<i>index</i>—a <i><a href="../26-glossary/p.xhtml#place">place</a></i>.
+
+</p><p>
+
+<i>start</i>, <i>end</i>—<i><a href="../26-glossary/b.xhtml#boundingindexdesignator">bounding index designators</a></i> of <i>string</i>.
+ The defaults for <i>start</i> and <i>end</i> are <code>0</code> and <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, respectively.
+
+
+</p><p>
+<i>declaration</i>—a <a href="../3-evaluation-and-compilation/3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="../26-glossary/e.xhtml#expression">expression</a></i>; not evaluated.
+
+</p><p>
+<i>forms</i>—an <i><a href="../26-glossary/i.xhtml#implicitprogn">implicit progn</a></i>.
+
+</p><p>
+<i>result</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>forms</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Creates an
+
+<i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#stringstream">string stream</a></i>, 
+
+provides an opportunity to perform operations on the <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> 
+ (returning zero or more <i><a href="../26-glossary/v.xhtml#value">values</a></i>),
+and then closes the <i><a href="../26-glossary/s.xhtml#stringstream">string stream</a></i>.
+
+<p>
+
+<i>String</i> is evaluated first, and <i>var</i> is bound to
+a character <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#stringstream">string stream</a></i> that supplies 
+<i><a href="../26-glossary/c.xhtml#character">characters</a></i> from the subsequence of the resulting <i><a href="../26-glossary/s.xhtml#string">string</a></i> <i><a href="../26-glossary/b.xhtml#bounded">bounded</a></i> by
+<i>start</i> and <i>end</i>. 
+The body is executed as an <i><a href="../26-glossary/i.xhtml#implicitprogn">implicit progn</a></i>.
+
+</p><p>
+
+The <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#stringstream">string stream</a></i> is automatically closed on exit from
+<a href="#DictEntry_with_input_f_1242"><b>with-input-from-string</b></a>, no matter whether the exit is normal or abnormal.
+
+The <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#stringstream">string stream</a></i> to which the <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i>var</i>
+is <i><a href="../26-glossary/b.xhtml#bound">bound</a></i> has <i><a href="../26-glossary/d.xhtml#dynamicextent">dynamic extent</a></i>;
+its <i><a href="../26-glossary/e.xhtml#extent">extent</a></i> ends when the <i><a href="../26-glossary/f.xhtml#form">form</a></i> is exited.
+
+
+</p><p>
+The <i>index</i> is a pointer within the <i>string</i> to be advanced.
+If <a href="#DictEntry_with_input_f_1242"><b>with-input-from-string</b></a>
+is exited normally, then <i>index</i> will have
+
+as its <i><a href="../26-glossary/v.xhtml#value">value</a></i>
+the index into the <i>string</i> indicating the first character not read
+which is <code>(length <i>string</i>)</code> if all characters were used.
+The place specified by <i>index</i>
+is not updated as reading progresses, but only at the
+end of the operation. 
+
+</p><p>
+
+<i>start</i> and <i>index</i> may both specify the same variable, 
+which is a pointer within the <i>string</i> to be advanced,
+perhaps repeatedly by some containing loop.
+
+</p><p>
+
+The consequences are undefined if an attempt is made to <i><a href="../26-glossary/a.xhtml#assign">assign</a></i> 
+the <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i>var</i>.
+
+
+
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (with-input-from-string (s "XXX1 2 3 4xxx"
+                             :index ind
+                             :start 3 :end 10)
+    (+ (read s) (read s) (read s))) → 6
+ ind → 9
+ (with-input-from-string (s "Animal Crackers" :index j :start 6)
+   (read s)) →  CRACKERS
+</pre>
+The variable <code>j</code> is set to <code>15</code>.
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of the <i><a href="../26-glossary/p.xhtml#place">place</a></i> named by <i>index</i>, if any, is modified.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="21.2.49-make-string-input-stream.xhtml#DictEntry_make_string__1240"><b>make-string-input-stream</b></a>,
+
+Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

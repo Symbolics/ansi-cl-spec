@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.61 defsetf — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_defsetf_447" class="entry"><span class="secno">5.3.61</span> <span class="names">defsetf</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+The "short form":
+
+<p>
+<b>defsetf</b>
+<i>access-fn update-fn [documentation]</i><br/>   
+  → <i>access-fn</i>
+</p><p>
+The "long form":
+
+</p><p>
+<b>defsetf</b>
+<i>access-fn lambda-list ({<i>store-variable</i>}*)
+                          [[{<i>declaration</i>}* <i>|</i> <i>documentation</i>]] {<i>form</i>}*</i><br/>   
+  → <i>access-fn</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>access-fn</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> which names a <i><a href="../26-glossary/f.xhtml#function">function</a></i> or a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>.
+
+<p>
+<i>update-fn</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> naming a <i><a href="../26-glossary/f.xhtml#function">function</a></i> or <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>.
+
+</p><p>
+<i>lambda-list</i>—a <i><a href="../26-glossary/d.xhtml#defsetflambdalist">defsetf lambda list</a></i>.
+
+</p><p>
+<i>store-variable</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> (a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i><a href="../26-glossary/n.xhtml#name">name</a></i>).
+
+</p><p>
+<i>declaration</i>—a <a href="../3-evaluation-and-compilation/3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="../26-glossary/e.xhtml#expression">expression</a></i>; not evaluated.
+
+</p><p>
+<i>documentation</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>; not evaluated.
+
+</p><p>
+<i>form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_defsetf_447"><b>defsetf</b></a> defines how to 
+<a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> a <i><a href="../26-glossary/p.xhtml#place">place</a></i>
+of the form <code>(<i>access-fn</i> ...)</code> for relatively simple cases.
+(See <a href="5.3.62-define-setf-expander.xhtml#DictEntry_define_setf__448"><b>define-setf-expander</b></a> for more general access to this facility.)
+
+It must be the case that the <i><a href="../26-glossary/f.xhtml#function">function</a></i> or <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> named by <i>access-fn</i> 
+evaluates all of its arguments.
+
+
+<p>
+
+<a href="#DictEntry_defsetf_447"><b>defsetf</b></a> may take one of two forms, called the "short form" and the "long form,"
+which are distinguished by the <i><a href="../26-glossary/t.xhtml#type">type</a></i> of the second <i><a href="../26-glossary/a.xhtml#argument">argument</a></i>.
+
+</p><p>
+When the short form is used, 
+
+<i>update-fn</i> must name 
+a <i><a href="../26-glossary/f.xhtml#function">function</a></i> (or <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>) that takes one more argument
+than <i>access-fn</i> takes.  When <a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> is given a <i><a href="../26-glossary/p.xhtml#place">place</a></i>
+that is a call on <i>access-fn</i>, it expands into
+a call on <i>update-fn</i> that is given all the arguments to
+<i>access-fn</i> and also, as its last argument, the new value
+(which must be returned by <i>update-fn</i> as its value).
+
+</p><p>
+
+The long form <a href="#DictEntry_defsetf_447"><b>defsetf</b></a> 
+
+
+resembles <a href="../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a>.
+
+The <i>lambda-list</i> describes the arguments of <i>access-fn</i>. 
+The <i>store-variables</i> describe the
+value 
+
+or values 
+
+to be stored into the <i><a href="../26-glossary/p.xhtml#place">place</a></i>.
+The <i>body</i> must
+compute the expansion of a <a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> of a call on <i>access-fn</i>.
+
+
+
+
+The expansion function is defined in the same <i><a href="../26-glossary/l.xhtml#lexicalenvironment">lexical environment</a></i>
+in which the <a href="#DictEntry_defsetf_447"><b>defsetf</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> appears.
+
+
+</p><p>
+
+During the evaluation of the
+<i>forms</i>, the variables in the <i>lambda-list</i> and the
+
+<i>store-variables</i>
+are bound to names of temporary variables,
+generated as if by <a href="../10-symbols/10.2.7-gensym.xhtml#DictEntry_gensym_681"><b>gensym</b></a>
+
+or <a href="../10-symbols/10.2.9-gentemp.xhtml#DictEntry_gentemp_683"><b>gentemp</b></a>,
+that will be bound by the
+expansion of <a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> 
+to the values of those <i><a href="../26-glossary/s.xhtml#subform">subforms</a></i>.  This binding
+permits the
+<i>forms</i> to be written without regard for order-of-evaluation
+issues.  <a href="#DictEntry_defsetf_447"><b>defsetf</b></a> arranges for the temporary variables to be
+optimized out of the final result in cases where that is possible.  
+
+</p><p>
+
+The body code in <a href="#DictEntry_defsetf_447"><b>defsetf</b></a> is implicitly enclosed in a 
+<i><a href="../26-glossary/b.xhtml#block">block</a></i> whose name is 
+
+<i>access-fn</i>
+
+
+</p><p>
+
+<a href="#DictEntry_defsetf_447"><b>defsetf</b></a> 
+ensures that <i><a href="../26-glossary/s.xhtml#subform">subforms</a></i> 
+of the <i><a href="../26-glossary/p.xhtml#place">place</a></i> are evaluated exactly once.
+
+</p><p>
+<i>Documentation</i> is attached to <i>access-fn</i> as a <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i>
+of kind <a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a>.
+
+</p><p>
+
+
+If a <a href="#DictEntry_defsetf_447"><b>defsetf</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> appears as a <i><a href="../26-glossary/t.xhtml#toplevelform">top level form</a></i>,
+the <i><a href="../26-glossary/c.xhtml#compiler">compiler</a></i> must make the <i><a href="../26-glossary/s.xhtml#setfexpander">setf expander</a></i> available so that
+it may be used to expand calls to <a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> later on in the <i><a href="../26-glossary/f.xhtml#file">file</a></i>.
+Users must ensure that the <i>forms</i>, if any, can be evaluated
+at compile time if the <i>access-fn</i> is used in a <i><a href="../26-glossary/p.xhtml#place">place</a></i>
+later in the same <i><a href="../26-glossary/f.xhtml#file">file</a></i>.
+The <i><a href="../26-glossary/c.xhtml#compiler">compiler</a></i> must make these <i><a href="../26-glossary/s.xhtml#setfexpander">setf expanders</a></i> available to 
+compile-time calls to <a href="5.3.63-get-setf-expansion.xhtml#DictEntry_get_setf_exp_449"><b>get-setf-expansion</b></a> when its <i>environment</i> 
+argument is a value received as the <i><a href="../26-glossary/e.xhtml#environmentparameter">environment parameter</a></i> of a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+The effect of
+
+<pre> (defsetf symbol-value set)
+</pre>
+is built into the <i>Common Lisp</i> system.
+This causes the form <code>(setf (symbol-value foo) fu)</code>
+to expand into <code>(set foo fu)</code>.
+
+<p>
+
+Note that
+
+</p><pre> (defsetf car rplaca)
+</pre>
+would be incorrect because <a href="../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplaca</b></a> does not return its last argument.
+
+<pre> (defun middleguy (x) (nth (truncate (1- (list-length x)) 2) x)) →  MIDDLEGUY
+ (defun set-middleguy (x v)
+    (unless (null x)
+      (rplaca (nthcdr (truncate (1- (list-length x)) 2) x) v))
+    v) →  SET-MIDDLEGUY
+ (defsetf middleguy set-middleguy) →  MIDDLEGUY
+ (setq a (list 'a 'b 'c 'd)
+       b (list 'x)
+       c (list 1 2 3 (list 4 5 6) 7 8 9)) → (1 2 3 (4 5 6) 7 8 9)
+ (setf (middleguy a) 3) → 3
+ (setf (middleguy b) 7) → 7
+ (setf (middleguy (middleguy c)) 'middleguy-symbol) →  MIDDLEGUY-SYMBOL
+ a → (A 3 C D)
+ b → (7)
+ c → (1 2 3 (4 MIDDLEGUY-SYMBOL 6) 7 8 9)
+</pre>
+
+<p>
+
+An example of the use of the long form of <a href="#DictEntry_defsetf_447"><b>defsetf</b></a>:
+
+</p><pre> (defsetf subseq (sequence start &amp;optional end) (new-sequence)
+   `(progn (replace ,sequence ,new-sequence
+                    :start1 ,start :end1 ,end)
+           ,new-sequence)) →  SUBSEQ
+</pre>
+
+<pre> (defvar *xy* (make-array '(10 10)))
+ (defun xy (&amp;key ((x x) 0) ((y y) 0)) (aref *xy* x y)) →  XY
+ (defun set-xy (new-value &amp;key ((x x) 0) ((y y) 0))
+   (setf (aref *xy* x y) new-value)) →  SET-XY
+ (defsetf xy (&amp;key ((x x) 0) ((y y) 0)) (store)
+   `(set-xy ,store 'x ,x 'y ,y)) →  XY
+ (get-setf-expansion '(xy a b))
+→ (#:t0 #:t1),
+   (a b),
+   (#:store),
+   ((lambda (&amp;key ((x #:x)) ((y #:y))) 
+      (set-xy #:store 'x #:x 'y #:y))
+    #:t0 #:t1),
+   (xy #:t0 #:t1)
+ (xy 'x 1) →  NIL
+ (setf (xy 'x 1) 1) → 1
+ (xy 'x 1) → 1
+ (let ((a 'x) (b 'y))
+   (setf (xy a 1 b 2) 3)
+   (setf (xy b 5 a 9) 14))
+→ 14
+ (xy 'y 0 'x 1) → 1
+ (xy 'x 1 'y 2) → 3
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>documentation</b></a>,
+<a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a>,
+
+<a href="5.3.62-define-setf-expander.xhtml#DictEntry_define_setf__448"><b>define-setf-expander</b></a>,
+<a href="5.3.63-get-setf-expansion.xhtml#DictEntry_get_setf_exp_449"><b>get-setf-expansion</b></a>,
+
+Section <a href="5.1-generalized-reference.xhtml#Section_Generalized__368">5.1 Generalized Reference</a>,
+Section <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSection_Syntactic_In_265">3.4.11 Syntactic Interaction of Documentation Strings and Declarations</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+<i>forms</i> must include provision
+for returning the correct value (the value 
+ 
+or values 
+ 
+of <i>store-variable</i>).  
+This is
+handled by <i>forms</i> rather than by <a href="#DictEntry_defsetf_447"><b>defsetf</b></a> because
+in many cases this value can be returned at no extra cost, by calling a
+function that simultaneously stores into the <i><a href="../26-glossary/p.xhtml#place">place</a></i> and 
+returns the correct value.
+
+<p>
+A <a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> of a call on <i>access-fn</i> also evaluates
+all of <i>access-fn</i>'s arguments; it cannot treat any of them specially.
+This means that <a href="#DictEntry_defsetf_447"><b>defsetf</b></a> 
+cannot be used to describe how to store into
+a <i><a href="../26-glossary/g.xhtml#generalizedreference">generalized reference</a></i> to a byte, such as <code>(ldb field reference)</code>.
+
+<a href="5.3.62-define-setf-expander.xhtml#DictEntry_define_setf__448"><b>define-setf-expander</b></a>
+
+is used to handle situations that 
+do not fit the restrictions imposed by <a href="#DictEntry_defsetf_447"><b>defsetf</b></a>
+and gives the user additional control.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.17 destructuring-bind — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_destructurin_403" class="entry"><span class="secno">5.3.17</span> <span class="names">destructuring-bind</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>destructuring-bind</b>
+<i>lambda-list expression {<i>declaration</i>}* {<i>form</i>}*</i><br/>   
+  → <i>{<i>result</i>}*</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+
+
+<i>lambda-list</i>—a <i><a href="../26-glossary/d.xhtml#destructuringlambdalist">destructuring lambda list</a></i>.
+
+<p>
+<i>expression</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
+
+</p><p>
+<i>declaration</i>—a <a href="../3-evaluation-and-compilation/3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="../26-glossary/e.xhtml#expression">expression</a></i>; not evaluated. 
+
+</p><p>
+<i>forms</i>—an <i><a href="../26-glossary/i.xhtml#implicitprogn">implicit progn</a></i>.
+
+</p><p>
+<i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i><a href="../26-glossary/f.xhtml#form">forms</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_destructurin_403"><b>destructuring-bind</b></a> binds the variables specified in <i>lambda-list</i>
+to the corresponding values in the tree structure resulting from the evaluation 
+of <i>expression</i>; then <a href="#DictEntry_destructurin_403"><b>destructuring-bind</b></a> evaluates <i>forms</i>.
+
+<p>
+The <i>lambda-list</i> supports destructuring as described in
+Section <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSection_Destructurin_259">3.4.5 Destructuring Lambda Lists</a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defun iota (n) (loop for i from 1 to n collect i))       ;helper
+ (destructuring-bind ((a &amp;optional (b 'bee)) one two three)
+     `((alpha) ,@(iota 3))
+   (list a b three two one)) → (ALPHA BEE 3 2 1)
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+If the result of evaluating the <i>expression</i> does not match the 
+destructuring pattern, an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> should be signaled. 
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="5.3.6-flet.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a>, <a href="../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

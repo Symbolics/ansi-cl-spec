@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.7.3 allocate-instance — Standard Generic Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_allocate_ins_559" class="entry"><span class="secno">7.7.3</span> <span class="names">allocate-instance</span> <span class="kind">Standard Generic Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>allocate-instance</b>
+<i>class <code>&amp;rest</code> initargs <code>&amp;key</code> <code>&amp;allow-other-keys</code></i>
+  → <i>new-instance</i>
+</dd><dt><b>Method Signatures:</b></dt><dd>
+
+<b>allocate-instance</b>
+<i>(<i>class</i> <a href="../4-types-and-classes/4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a>) <code>&amp;rest</code> initargs</i>
+<p>
+<b>allocate-instance</b>
+<i>(<i>class</i> <a href="../4-types-and-classes/4.4.9-structure-class.xhtml#DictEntry_structure_cl_344"><b>structure-class</b></a>) <code>&amp;rest</code> initargs</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>class</i>—a <i><a href="../26-glossary/c.xhtml#class">class</a></i>.
+
+<p>
+<i>initargs</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/k.xhtml#keywordvaluepair">keyword/value pairs</a></i> 
+		   (initialization argument <i><a href="../26-glossary/n.xhtml#name">names</a></i> and <i><a href="../26-glossary/v.xhtml#value">values</a></i>).
+
+</p><p>
+<i>new-instance</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i> whose <i><a href="../26-glossary/c.xhtml#class">class</a></i> is <i>class</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The generic function <a href="#DictEntry_allocate_ins_559"><b>allocate-instance</b></a> creates and returns
+a new instance of the <i>class</i>, without initializing it.
+When the <i>class</i> is a <i><a href="../26-glossary/s.xhtml#standardclass">standard class</a></i>, this means that
+the <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> are <i><a href="../26-glossary/u.xhtml#unbound">unbound</a></i>; when the <i><a href="../26-glossary/c.xhtml#class">class</a></i> is a
+<i><a href="../26-glossary/s.xhtml#structureclass">structure class</a></i>, this means the <i><a href="../26-glossary/s.xhtml#slot">slots</a></i>' <i><a href="../26-glossary/v.xhtml#value">values</a></i>
+are unspecified.
+
+<p>
+The caller of <a href="#DictEntry_allocate_ins_559"><b>allocate-instance</b></a> is expected to have
+already checked the initialization arguments.
+
+</p><p>
+The <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <a href="#DictEntry_allocate_ins_559"><b>allocate-instance</b></a> is called by
+<a href="7.7.19-make-instance.xhtml#DictEntry_make_instanc_575"><b>make-instance</b></a>, as described in
+Section <a href="7.1-object-creation-and-initialization.xhtml#Section_Object_Creat_520">7.1 Object Creation and Initialization</a>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a>, <a href="7.7.19-make-instance.xhtml#DictEntry_make_instanc_575"><b>make-instance</b></a>, <a href="7.7.39-class-of.xhtml#DictEntry_class_of_595"><b>class-of</b></a>,
+Section <a href="7.1-object-creation-and-initialization.xhtml#Section_Object_Creat_520">7.1 Object Creation and Initialization</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The consequences of adding <i><a href="../26-glossary/m.xhtml#method">methods</a></i> to <a href="#DictEntry_allocate_ins_559"><b>allocate-instance</b></a> is unspecified.
+This capability might be added by the <i>Metaobject Protocol</i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

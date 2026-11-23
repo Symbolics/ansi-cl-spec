@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.8.17 declaim — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_declaim_299" class="entry"><span class="secno">3.8.17</span> <span class="names">declaim</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>declaim</b>
+<i>{<i>declaration-specifier</i>}*</i>
+  → <i><i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i></i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>declaration-specifier</i>—a <i><a href="../26-glossary/d.xhtml#declarationspecifier">declaration specifier</a></i>; not evaluated.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+Establishes the <i><a href="../26-glossary/d.xhtml#declaration">declarations</a></i> specified by the <i>declaration-specifiers</i>.
+
+<p>
+If a use of this macro appears as a <i><a href="../26-glossary/t.xhtml#toplevelform">top level form</a></i> in a <i><a href="../26-glossary/f.xhtml#file">file</a></i> 
+being processed by the <i><a href="../26-glossary/f.xhtml#filecompiler">file compiler</a></i>, the proclamations are also made
+at compile-time.  As with other defining macros, it is unspecified whether or
+not the compile-time side-effects of a <a href="#DictEntry_declaim_299"><b>declaim</b></a> persist after the
+<i><a href="../26-glossary/f.xhtml#file">file</a></i> has been <i>compiled</i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a>,
+<a href="3.8.16-proclaim.xhtml#DictEntry_proclaim_298"><b>proclaim</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

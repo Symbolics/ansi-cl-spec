@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>4.3 Classes</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Classes_319"><span class="secno">4.3</span> Classes</h2>
+<p>
+While the object system is general enough to describe all <i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> <i>classes</i>
+(including, for example, <a href="../12-numbers/12.2.1-number.xhtml#DictEntry_number_775"><b>number</b></a>, <a href="../18-hash-tables/18.2.1-hash-table.xhtml#DictEntry_hash_table_1078"><b>hash-table</b></a>, and
+<a href="../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675"><b>symbol</b></a>), the next figure contains a list of <i>classes</i> that are
+especially relevant to understanding the object system.
+
+</p><table id="fig-4-7" class="fig">
+<caption><span class="figlabel">Figure 4-7.</span> Object System Classes</caption>
+
+  <tbody><tr>
+    <td>built-in-class</td>
+    <td>method-combination</td>
+    <td>standard-object</td>
+  </tr>
+  <tr>
+    <td>class</td>
+    <td>standard-class</td>
+    <td>structure-class</td>
+  </tr>
+  <tr>
+    <td>generic-function</td>
+    <td>standard-generic-function</td>
+    <td>structure-object</td>
+  </tr>
+  <tr>
+    <td>method</td>
+    <td>standard-method</td>
+    <td/>
+  </tr>
+</tbody></table>
+<section>
+<h3 id="SubSection_Introduction_320"><span class="secno">4.3.1</span> Introduction to Classes</h3>
+<p>
+
+A <b><i>class</i></b> is an <i><a href="../26-glossary/o.xhtml#object">object</a></i> that determines the structure and behavior 
+of a set of other <i><a href="../26-glossary/o.xhtml#object">objects</a></i>, which are called its <b><i>instances</i></b>.   
+
+</p><p>
+A <i><a href="../26-glossary/c.xhtml#class">class</a></i> can inherit structure and behavior from other <i>classes</i>.
+A <i><a href="../26-glossary/c.xhtml#class">class</a></i> whose definition refers to other <i>classes</i> for the purpose 
+of inheriting from them is said to be a <i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> of each of
+those <i>classes</i>. The <i>classes</i> that are designated for purposes of
+inheritance are said to be <i>superclasses</i> of the inheriting <i><a href="../26-glossary/c.xhtml#class">class</a></i>.
+
+</p><p>
+A <i><a href="../26-glossary/c.xhtml#class">class</a></i> can have a <i><a href="../26-glossary/n.xhtml#name">name</a></i>. The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="../7-objects/7.7.37-class-name.xhtml#DictEntry_class_name_593"><b>class-name</b></a> 
+takes a <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> and returns its <i><a href="../26-glossary/n.xhtml#name">name</a></i>. 
+The <i><a href="../26-glossary/n.xhtml#name">name</a></i> of an anonymous <i><a href="../26-glossary/c.xhtml#class">class</a></i> is <a href="4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.  A <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> 
+can <i><a href="../26-glossary/n.xhtml#name">name</a></i> a <i><a href="../26-glossary/c.xhtml#class">class</a></i>. The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="../7-objects/7.7.28-find-class.xhtml#DictEntry_find_class_584"><b>find-class</b></a> takes a
+<i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> and returns the <i><a href="../26-glossary/c.xhtml#class">class</a></i> that the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> names.
+A <i><a href="../26-glossary/c.xhtml#class">class</a></i> has a <i><a href="../26-glossary/p.xhtml#propername">proper name</a></i> if the <i><a href="../26-glossary/n.xhtml#name">name</a></i> is a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>
+and if the <i><a href="../26-glossary/n.xhtml#name">name</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> names that <i><a href="../26-glossary/c.xhtml#class">class</a></i>.
+That is, a <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>C</i> has the <i><a href="../26-glossary/p.xhtml#propername">proper name</a></i> <i>S</i> if <i>S=</i>
+<code>(class-name <i>C</i>)</code> and <i>C=</i> <code>(find-class <i>S</i>)</code>.
+Notice that it is possible for 
+<code>(find-class <i>S<sub>1</sub></i>)</code> <i>=</i> <code>(find-class <i>S<sub>2</sub></i>)</code>
+and <i>S<sub>1</sub> &lt;&gt;  S<sub>2</sub></i>.
+If <i>C=</i> <code>(find-class <i>S</i>)</code>, we say that <i>C</i> is the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>named</i> <i>S</i>.
+
+</p><p>
+A <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>C<sub>1</sub></i> is 
+a <b><i>direct superclass</i></b> of a <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>C<sub>2</sub></i>
+if <i>C<sub>2</sub></i> explicitly designates <i>C<sub>1</sub></i> 
+as a <i><a href="../26-glossary/s.xhtml#superclass">superclass</a></i> in its definition.
+In this case <i>C<sub>2</sub></i> is a <b><i>direct subclass</i></b> of <i>C<sub>1</sub></i>.
+A <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>C<sub>n</sub></i> is a <b><i>superclass</i></b> of 
+a <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>C<sub>1</sub></i> if there exists a series of
+<i>classes</i> <i>C<sub>2</sub>, ... ,C<sub>n-1</sub></i> such that 
+<i>C<sub>i+1</sub></i> is a <i><a href="../26-glossary/d.xhtml#directsuperclass">direct superclass</a></i> of <i>C<sub>i</sub></i> for <i>1  &lt;=  i&lt;n</i>.
+In this case, <i>C<sub>1</sub></i> is a <b><i>subclass</i></b> of <i>C<sub>n</sub></i>.
+A <i><a href="../26-glossary/c.xhtml#class">class</a></i> is considered neither a <i><a href="../26-glossary/s.xhtml#superclass">superclass</a></i> nor a <i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> of itself.
+That is, if <i>C<sub>1</sub></i> is a <i><a href="../26-glossary/s.xhtml#superclass">superclass</a></i> of <i>C<sub>2</sub></i>, 
+then <i>C<sub>1</sub>  &lt;&gt;  C<sub>2</sub></i>.
+The set of <i>classes</i> consisting of some given <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>C</i> 
+along with all of its <i>superclasses</i> is called "<i>C</i> and its superclasses."
+
+</p><p>
+Each <i><a href="../26-glossary/c.xhtml#class">class</a></i> has a <b><i>class precedence list</i></b>,
+which is a total ordering on the set of the given <i><a href="../26-glossary/c.xhtml#class">class</a></i> and its <i>superclasses</i>.
+The total ordering is expressed as a list ordered from most specific to least specific.
+The <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> is used in several ways.  In general, more
+specific <i>classes</i> can <b><i>shadow</i></b><sub>1</sub> features that would
+otherwise be inherited from less specific <i>classes</i>.
+The <i><a href="../26-glossary/m.xhtml#method">method</a></i> selection and combination process uses 
+the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> to order <i><a href="../26-glossary/m.xhtml#method">methods</a></i> 
+from most specific to least specific. 
+
+</p><p>
+When a <i><a href="../26-glossary/c.xhtml#class">class</a></i> is defined, the order in which its direct <i>superclasses</i>
+are mentioned in the defining form is important.  Each <i><a href="../26-glossary/c.xhtml#class">class</a></i> has a
+<b><i>local precedence order</i></b>, which is a <i><a href="../26-glossary/l.xhtml#list">list</a></i> consisting of the
+<i><a href="../26-glossary/c.xhtml#class">class</a></i> followed by its <i>direct superclasses</i> in the order mentioned
+in the defining <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
+
+</p><p>
+A <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> is always consistent with the
+<i><a href="../26-glossary/l.xhtml#localprecedenceorder">local precedence order</a></i> of each <i><a href="../26-glossary/c.xhtml#class">class</a></i> in the list.  
+The <i>classes</i> in each <i><a href="../26-glossary/l.xhtml#localprecedenceorder">local precedence order</a></i> appear
+within the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> in the same order.  
+If the <i><a href="../26-glossary/l.xhtml#localprecedenceorder">local precedence orders</a></i> are inconsistent with each other, 
+no <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> can be constructed, and an error is signaled.
+The <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> and its computation is discussed
+in Section <a href="#SubSection_Determining__327">4.3.5 Determining the Class Precedence List</a>.
+
+</p><p>
+<i>classes</i> are organized into a directed acyclic graph.
+There are two distinguished <i>classes</i>, named <a href="4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a> and <a href="4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>.
+The <i><a href="../26-glossary/c.xhtml#class">class</a></i> named <a href="4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a> has no <i>superclasses</i>. 
+It is a <i><a href="../26-glossary/s.xhtml#superclass">superclass</a></i> of every <i><a href="../26-glossary/c.xhtml#class">class</a></i> except itself.  
+The <i><a href="../26-glossary/c.xhtml#class">class</a></i> named <a href="4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a> is an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of 
+the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a> and is a <i><a href="../26-glossary/s.xhtml#superclass">superclass</a></i> of
+every <i><a href="../26-glossary/c.xhtml#class">class</a></i> that is an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a> except itself.
+
+</p><p>
+
+There is a mapping from the object system <i><a href="../26-glossary/c.xhtml#class">class</a></i> space into
+the <i><a href="../26-glossary/t.xhtml#type">type</a></i> space.  Many of the standard <i><a href="../26-glossary/t.xhtml#type">types</a></i> specified 
+in this document have a corresponding <i><a href="../26-glossary/c.xhtml#class">class</a></i> that has the same 
+<i><a href="../26-glossary/n.xhtml#name">name</a></i> as the <i><a href="../26-glossary/t.xhtml#type">type</a></i>. Some <i><a href="../26-glossary/t.xhtml#type">types</a></i> do not have a
+corresponding <i><a href="../26-glossary/c.xhtml#class">class</a></i>. The integration of the <i><a href="../26-glossary/t.xhtml#type">type</a></i> and <i><a href="../26-glossary/c.xhtml#class">class</a></i>
+systems is discussed in Section <a href="#SubSection_Integrating__334">4.3.7 Integrating Types and Classes</a>.
+
+</p><p>
+<i>Classes</i> are represented by <i><a href="../26-glossary/o.xhtml#object">objects</a></i> that are themselves
+<i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of <i>classes</i>. 
+The <i><a href="../26-glossary/c.xhtml#class">class</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> of an <i><a href="../26-glossary/o.xhtml#object">object</a></i> is termed
+the <b><i>metaclass</i></b> of that <i><a href="../26-glossary/o.xhtml#object">object</a></i>. When no misinterpretation is
+possible, the term <i><a href="../26-glossary/m.xhtml#metaclass">metaclass</a></i> is used to refer to a <i><a href="../26-glossary/c.xhtml#class">class</a></i>
+that has <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> that are themselves <i>classes</i>. The <i><a href="../26-glossary/m.xhtml#metaclass">metaclass</a></i>
+determines the form of inheritance used by the <i>classes</i> that are its
+<i><a href="../26-glossary/i.xhtml#instance">instances</a></i> and the representation of the <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of those <i>classes</i>.
+The object system provides a default <i><a href="../26-glossary/m.xhtml#metaclass">metaclass</a></i>, <a href="4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a>, that is
+appropriate for most programs.
+
+
+
+</p><p>
+Except where otherwise specified, all <i>classes</i> mentioned in this
+standard are <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a>,
+all <i><a href="../26-glossary/g.xhtml#genericfunction">generic functions</a></i> are <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> 
+of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.6-standard-generic-function.xhtml#DictEntry_standard_gen_341"><b>standard-generic-function</b></a>,
+and all <i><a href="../26-glossary/m.xhtml#method">methods</a></i> are <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.12-standard-method.xhtml#DictEntry_standard_met_347"><b>standard-method</b></a>.
+
+
+</p>
+<section>
+<h4 id="SubSubSectio_Standard_Met_321"><span class="secno">4.3.1.1</span> Standard Metaclasses</h4>
+<p>
+
+The object system provides a number of predefined <i>metaclasses</i>. 
+These include the <i>classes</i> <a href="4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a>, 
+<a href="4.4.8-built-in-class.xhtml#DictEntry_built_in_cla_343"><b>built-in-class</b></a>, and <a href="4.4.9-structure-class.xhtml#DictEntry_structure_cl_344"><b>structure-class</b></a>:
+
+</p><ul>
+
+<li>
+The <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a> is the default <i><a href="../26-glossary/c.xhtml#class">class</a></i> of 
+<i>classes</i> defined by <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a>.
+
+</li><li> The <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.8-built-in-class.xhtml#DictEntry_built_in_cla_343"><b>built-in-class</b></a> is the <i><a href="../26-glossary/c.xhtml#class">class</a></i> whose
+<i><a href="../26-glossary/i.xhtml#instance">instances</a></i> are <i>classes</i> that have special implementations with
+restricted capabilities.  Any <i><a href="../26-glossary/c.xhtml#class">class</a></i> that corresponds to a standard
+<i><a href="../26-glossary/t.xhtml#type">type</a></i> might be an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of <a href="4.4.8-built-in-class.xhtml#DictEntry_built_in_cla_343"><b>built-in-class</b></a>.
+The predefined <i><a href="../26-glossary/t.xhtml#type">type</a></i> specifiers that are required to have
+corresponding <i>classes</i> are listed in <a href="#fig-4-8">Figure 4-8</a>.  
+It is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> whether each of these <i>classes</i> 
+is implemented as a <i><a href="../26-glossary/b.xhtml#builtinclass">built-in class</a></i>.
+
+</li><li>                     
+All <i>classes</i> defined by means of <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> are
+<i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.9-structure-class.xhtml#DictEntry_structure_cl_344"><b>structure-class</b></a>.
+</li></ul>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Defining_Cla_322"><span class="secno">4.3.2</span> Defining Classes</h3>
+<p>
+
+The macro <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> is used to define a new named <i><a href="../26-glossary/c.xhtml#class">class</a></i>.  
+
+
+</p><p>
+The definition of a <i><a href="../26-glossary/c.xhtml#class">class</a></i> includes:
+
+</p><ul>
+
+<li> The <i><a href="../26-glossary/n.xhtml#name">name</a></i> of the new <i><a href="../26-glossary/c.xhtml#class">class</a></i>. 
+  For newly-defined <i>classes</i> this <i><a href="../26-glossary/n.xhtml#name">name</a></i> is a <i><a href="../26-glossary/p.xhtml#propername">proper name</a></i>.
+
+</li><li> The list of the direct <i>superclasses</i> of the new <i><a href="../26-glossary/c.xhtml#class">class</a></i>. 
+
+</li><li> A set of <b><i>slot specifiers</i></b>.
+  Each <i><a href="../26-glossary/s.xhtml#slotspecifier">slot specifier</a></i> includes the <i><a href="../26-glossary/n.xhtml#name">name</a></i> of the <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> 
+  and zero or more <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> options.  A <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> option pertains 
+  only to a single <i><a href="../26-glossary/s.xhtml#slot">slot</a></i>.  If a <i><a href="../26-glossary/c.xhtml#class">class</a></i> definition contains
+  two <i><a href="../26-glossary/s.xhtml#slotspecifier">slot specifiers</a></i> with the same <i><a href="../26-glossary/n.xhtml#name">name</a></i>, an error is signaled.
+
+</li><li> A set of <i><a href="../26-glossary/c.xhtml#class">class</a></i> options.  
+  Each <i><a href="../26-glossary/c.xhtml#class">class</a></i> option pertains to the <i><a href="../26-glossary/c.xhtml#class">class</a></i> as a whole.  
+
+</li></ul>
+
+<p>
+The <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> options and <i><a href="../26-glossary/c.xhtml#class">class</a></i> options of 
+the <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> form provide mechanisms for the following:
+
+</p><ul>
+
+<li> Supplying a default initial value <i><a href="../26-glossary/f.xhtml#form">form</a></i> 
+for a given <i><a href="../26-glossary/s.xhtml#slot">slot</a></i>.  
+
+</li><li> Requesting that <i><a href="../26-glossary/m.xhtml#method">methods</a></i> for <i><a href="../26-glossary/g.xhtml#genericfunction">generic functions</a></i>
+be automatically generated for reading or writing <i><a href="../26-glossary/s.xhtml#slot">slots</a></i>. 
+
+</li><li> Controlling whether a given <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> is shared by 
+all <i><a href="../26-glossary/i.xhtml#instance">instances</a></i>
+of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> or whether each 
+<i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> has its own <i><a href="../26-glossary/s.xhtml#slot">slot</a></i>.
+
+</li><li> Supplying a set of initialization arguments and initialization
+argument defaults to be used in <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> creation.
+
+</li><li> Indicating that the <i><a href="../26-glossary/m.xhtml#metaclass">metaclass</a></i> is to be other 
+than the default.  The <code>:metaclass</code> option is reserved for future use; 
+an implementation can be extended to make use of the <code>:metaclass</code>
+option.
+
+</li><li> Indicating the expected <i><a href="../26-glossary/t.xhtml#type">type</a></i> for the value stored
+in the <i><a href="../26-glossary/s.xhtml#slot">slot</a></i>.
+
+</li><li> Indicating the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> for the <i><a href="../26-glossary/s.xhtml#slot">slot</a></i>.
+
+</li></ul>
+</section>
+<section>
+<h3 id="SubSection_Creating_Ins_323"><span class="secno">4.3.3</span> Creating Instances of Classes</h3>
+<p>
+
+The generic function <a href="../7-objects/7.7.19-make-instance.xhtml#DictEntry_make_instanc_575"><b>make-instance</b></a> creates and returns a new
+<i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of a <i><a href="../26-glossary/c.xhtml#class">class</a></i>.  
+The object system provides several mechanisms for
+specifying how a new <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> is to be initialized.  For example, it
+is possible to specify the initial values for <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> in newly created
+<i><a href="../26-glossary/i.xhtml#instance">instances</a></i> 
+either by giving arguments to <a href="../7-objects/7.7.19-make-instance.xhtml#DictEntry_make_instanc_575"><b>make-instance</b></a> or by
+providing default initial values.  Further initialization activities
+can be performed by <i><a href="../26-glossary/m.xhtml#method">methods</a></i> written for <i><a href="../26-glossary/g.xhtml#genericfunction">generic functions</a></i> 
+that are
+part of the initialization protocol.  The complete initialization
+protocol is described in Section <a href="../7-objects/7.1-object-creation-and-initialization.xhtml#Section_Object_Creat_520">7.1 Object Creation and Initialization</a>.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Inheritance_324"><span class="secno">4.3.4</span> Inheritance</h3>
+<p>
+
+
+A <i><a href="../26-glossary/c.xhtml#class">class</a></i> can inherit <i><a href="../26-glossary/m.xhtml#method">methods</a></i>, <i><a href="../26-glossary/s.xhtml#slot">slots</a></i>, 
+and some <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> options from its <i>superclasses</i>.  
+Other sections describe the inheritance of <i><a href="../26-glossary/m.xhtml#method">methods</a></i>, 
+the inheritance of <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> and <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> options, 
+and the inheritance of <i><a href="../26-glossary/c.xhtml#class">class</a></i> options.
+</p>
+<section>
+<h4 id="SubSubSectio_Examples_of__325"><span class="secno">4.3.4.1</span> Examples of Inheritance</h4>
+<pre> (defclass C1 () 
+     ((S1 :initform 5.4 :type number) 
+      (S2 :allocation :class)))
+ 
+ (defclass C2 (C1) 
+     ((S1 :initform 5 :type integer)
+      (S2 :allocation :instance)
+      (S3 :accessor C2-S3)))
+</pre>
+
+<p>
+<i><a href="../26-glossary/i.xhtml#instance">Instances</a></i> of the class <code>C1</code> have a <i><a href="../26-glossary/l.xhtml#localslot">local slot</a></i> named <code>S1</code>,
+whose default initial value is 5.4 and
+whose <i><a href="../26-glossary/v.xhtml#value">value</a></i> should always be a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
+The class <code>C1</code> also has a <i><a href="../26-glossary/s.xhtml#sharedslot">shared slot</a></i> named <code>S2</code>.
+
+</p><p>
+There is a <i><a href="../26-glossary/l.xhtml#localslot">local slot</a></i> named <code>S1</code> in <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of <code>C2</code>.
+The default initial value of <code>S1</code> is 5.
+The value of <code>S1</code> should always be of type <code>(and integer number)</code>.
+There are also <i><a href="../26-glossary/l.xhtml#localslot">local slots</a></i> named <code>S2</code> and <code>S3</code> in <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of <code>C2</code>.
+The class <code>C2</code> has a <i><a href="../26-glossary/m.xhtml#method">method</a></i> for <code>C2-S3</code> for reading the value of slot <code>S3</code>;
+there is also a <i><a href="../26-glossary/m.xhtml#method">method</a></i> for <code>(setf C2-S3)</code> that writes the value of <code>S3</code>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Inheritance__326"><span class="secno">4.3.4.2</span> Inheritance of Class Options</h4>
+<p>
+
+The <code>:default-initargs</code> class option is inherited.  The set of
+defaulted initialization arguments for a <i><a href="../26-glossary/c.xhtml#class">class</a></i> is the union of the
+sets of initialization arguments supplied in
+the <code>:default-initargs</code> class options of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> and its <i>superclasses</i>.
+When more than one default initial value <i><a href="../26-glossary/f.xhtml#form">form</a></i> is supplied for a given
+initialization argument, the default initial value <i><a href="../26-glossary/f.xhtml#form">form</a></i> that is used
+is the one supplied by the <i><a href="../26-glossary/c.xhtml#class">class</a></i> that is most specific according to
+the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i>.
+
+</p><p>
+If a given <code>:default-initargs</code> class option specifies an
+initialization argument of the same <i><a href="../26-glossary/n.xhtml#name">name</a></i> more than once, an
+error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../5-data-and-control-flow/5.3.68-program-error.xhtml#DictEntry_program_erro_454"><b>program-error</b></a> is signaled.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Determining__327"><span class="secno">4.3.5</span> Determining the Class Precedence List</h3>
+<p>
+
+
+The <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> form for a <i><a href="../26-glossary/c.xhtml#class">class</a></i> provides a total ordering
+on that <i><a href="../26-glossary/c.xhtml#class">class</a></i> and its direct <i>superclasses</i>.  This ordering is
+called the <b><i>local precedence order</i></b>.  It is an ordered list of the
+<i><a href="../26-glossary/c.xhtml#class">class</a></i> and its direct <i>superclasses</i>. The
+<b><i>class precedence list</i></b> for a class <i>C</i> is a total ordering on
+<i>C</i> and its <i>superclasses</i> that is consistent with the
+<i><a href="../26-glossary/l.xhtml#localprecedenceorder">local precedence orders</a></i> for each of <i>C</i> and its <i>superclasses</i>.
+
+</p><p>
+A <i><a href="../26-glossary/c.xhtml#class">class</a></i> precedes its direct <i>superclasses</i>, 
+and a direct <i><a href="../26-glossary/s.xhtml#superclass">superclass</a></i> precedes all other 
+direct <i>superclasses</i> specified to its right 
+in the <i>superclasses</i> list of the <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> form.  
+For every class <i>C</i>, define </p><p><i>R<sub>C</sub>={(C,C<sub>1</sub>),(C<sub>1</sub>,C<sub>2</sub>), ... ,(C<sub>n</sub>-1,C<sub>n</sub>)}</i> where <i>C<sub>1</sub>, ... ,C<sub>n</sub></i> are
+the direct <i>superclasses</i> of <i>C</i> in the order in which
+they are mentioned in the <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> form. These ordered pairs
+generate the total ordering on the class <i>C</i> and its direct
+<i>superclasses</i>.
+
+</p><p>
+Let <i>S<sub>C</sub></i> be the set of <i>C</i> and its <i>superclasses</i>. Let <i>R</i> be
+</p>
+<table class="ctr">
+<tbody><tr><td>R=</td><td>⋃</td><td>R<sub>c</sub></td></tr>
+<tr><td/><td><sub>c ∈ S<sub>C</sub></sub></td><td/>
+</tr></tbody></table>
+
+<p>
+The set <i>R</i> might or might not generate a partial ordering, depending on
+whether the <i>R<sub>c</sub></i>, <i>c ∈ S<sub>C</sub></i>, are 
+consistent; it is assumed
+that they are consistent and that <i>R</i> generates a partial ordering.
+When the <i>R<sub>c</sub></i> are not consistent, it is said that <i>R</i> is inconsistent.
+
+</p><p>
+To compute the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> for <i>C</i>,
+topologically sort the elements of <i>S<sub>C</sub></i> with respect to the
+partial ordering generated by <i>R</i>.  When the topological
+sort must select a <i><a href="../26-glossary/c.xhtml#class">class</a></i> from a set of two or more 
+<i>classes</i>, none of
+which are preceded by other <i>classes</i> with respect to <i>R</i>,
+the <i><a href="../26-glossary/c.xhtml#class">class</a></i> selected is chosen deterministically, as described below.
+
+</p><p>
+If <i>R</i> is inconsistent, an error is signaled.
+
+</p>
+<section>
+<h4 id="SubSubSectio_Topological__328"><span class="secno">4.3.5.1</span> Topological Sorting</h4>
+<p>
+
+Topological sorting proceeds by finding a class <i>C</i> in <i>S<sub>C</sub></i> such
+that no other <i><a href="../26-glossary/c.xhtml#class">class</a></i> precedes that element according to the elements
+in <i>R</i>.  The class <i>C</i> is placed first in the result.
+Remove <i>C</i> from <i>S<sub>C</sub></i>, and remove all pairs of the form <i>(C,D)</i>,
+<i>D ∈ S<sub>C</sub></i>, from <i>R</i>. Repeat the process, adding
+<i>classes</i> with no predecessors to the end of the result.  Stop when no
+element can be found that has no predecessor.
+
+</p><p>
+If <i>S<sub>C</sub></i> is not empty and the process has stopped, the set <i>R</i> is
+inconsistent. If every <i><a href="../26-glossary/c.xhtml#class">class</a></i> in the finite set of 
+<i>classes</i> is preceded
+by another, then <i>R</i> contains a loop. That is, there is a chain of
+classes <i>C<sub>1</sub>, ... ,C<sub>n</sub></i> such that <i>C<sub>i</sub></i> precedes
+<i>C<sub>i+1</sub></i>, <i>1 &lt;=  i&lt;n</i>, and <i>C<sub>n</sub></i> precedes <i>C<sub>1</sub></i>.
+
+</p><p>
+Sometimes there are several <i>classes</i> from <i>S<sub>C</sub></i> with no
+predecessors.  In this case select the one that has a direct
+<i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> rightmost in the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> computed so far.
+(If there is no such candidate <i><a href="../26-glossary/c.xhtml#class">class</a></i>, <i>R</i> does not generate 
+a partial ordering—the <i>R<sub>c</sub></i>, <i>c ∈ S<sub>C</sub></i>, are inconsistent.)
+
+</p><p>
+In more precise terms, let <i>{N<sub>1</sub>, ... ,N<sub>m</sub>}</i>, <i>m≥2</i>, be
+the <i>classes</i> from <i>S<sub>C</sub></i> with no predecessors.  Let <i>(C<sub>1</sub> ...  C<sub>n</sub>)</i>, <i>n≥1</i>, be the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i>
+constructed so far.  <i>C<sub>1</sub></i> is the most specific <i><a href="../26-glossary/c.xhtml#class">class</a></i>, and <i>C<sub>n</sub></i> is the least specific.  Let <i>1 &lt;=  j &lt;=  n</i> be the largest number
+such that there exists an <i>i</i> where <i>1 &lt;=  i &lt;=  m</i> and <i>N<sub>i</sub></i>
+is a direct <i><a href="../26-glossary/s.xhtml#superclass">superclass</a></i> of <i>C<sub>j</sub></i>; <i>N<sub>i</sub></i> is placed next.
+
+</p><p>
+The effect of this rule for selecting from a set of <i>classes</i> with no
+predecessors is that the <i>classes</i> in a simple <i><a href="../26-glossary/s.xhtml#superclass">superclass</a></i> chain are
+adjacent in the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> and that <i>classes</i> in each
+relatively separated subgraph are adjacent in the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i>.
+For example, let <i>T<sub>1</sub></i> and <i>T<sub>2</sub></i> be subgraphs whose only
+element in common is the class <i>J</i>.
+Suppose that no superclass of <i>J</i> appears in either <i>T<sub>1</sub></i> or <i>T<sub>2</sub></i>,
+and that <i>J</i> is in the superclass chain of every class in both <i>T<sub>1</sub></i> and <i>T<sub>2</sub></i>.
+    Let <i>C<sub>1</sub></i> be the bottom of <i>T<sub>1</sub></i>; 
+and let <i>C<sub>2</sub></i> be the bottom of <i>T<sub>2</sub></i>.
+Suppose <i>C</i> is a <i><a href="../26-glossary/c.xhtml#class">class</a></i> whose direct <i>superclasses</i>
+are <i>C<sub>1</sub></i> and <i>C<sub>2</sub></i> in that order, then the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i>
+for <i>C</i> starts with <i>C</i> and is followed by
+all <i>classes</i> in <i>T<sub>1</sub></i> except <i>J</i>. 
+All the <i>classes</i> of <i>T<sub>2</sub></i> are next.
+The <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>J</i> and its <i>superclasses</i> appear last.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Examples_of__329"><span class="secno">4.3.5.2</span> Examples of Class Precedence List Determination</h4>
+<p>
+
+This example determines a <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> for the
+class <code>pie</code>.  The following <i>classes</i> are defined:
+
+</p><pre> (defclass pie (apple cinnamon) ())
+ 
+ (defclass apple (fruit) ())
+ 
+ (defclass cinnamon (spice) ())
+ 
+ (defclass fruit (food) ())
+
+ (defclass spice (food) ())
+
+ (defclass food () ())
+</pre>
+
+<p>
+
+The set <i>S<sub>pie</sub></i> <i>=</i> <i>{</i><code>pie, apple, cinnamon, fruit, spice, food,
+standard-object, t</code><i>}</i>. The set <i>R</i> <i>=</i> <i>{</i><code>(pie, apple),
+(apple, cinnamon), (apple, fruit), (cinnamon, spice), 
+(fruit, food), (spice, food), (food, standard-object), (standard-object,
+t)</code><i>}</i>.
+
+</p><p>
+The class <code>pie</code> is not preceded by anything, so it comes first;
+the result so far is <code>(pie)</code>.  Remove <code>pie</code> from <i>S</i> and pairs
+mentioning <code>pie</code> from <i>R</i> to get <i>S</i> <i>=</i> <i>{</i><code>apple, cinnamon,
+fruit, spice, food, standard-object, t</code><i>}</i> and <i>R</i> <i>=</i> <i>{</i><code>
+(apple, cinnamon), (apple, fruit), (cinnamon, spice), (fruit,
+food), (spice, food), (food, standard-object),
+(standard-object, t)</code><i>}</i>.
+
+</p><p>
+The class <code>apple</code> is not preceded by anything, so it is next; the
+result is <code>(pie apple)</code>. Removing <code>apple</code> and the relevant
+pairs results in <i>S</i> <i>=</i> <i>{</i><code>cinnamon, fruit, spice, food,
+standard-object, t</code><i>}</i> and <i>R</i> <i>=</i> <i>{</i><code>(cinnamon, spice),
+(fruit, food), (spice, food), (food, standard-object),
+(standard-object, t)</code><i>}</i>.
+
+</p><p>
+The classes <code>cinnamon</code> and <code>fruit</code> are not preceded by
+anything, so the one with a direct <i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> rightmost in the 
+<i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> computed so far goes next.  The class <code>apple</code> is a
+direct <i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> of <code>fruit</code>, and the class <code>pie</code> is a direct
+<i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> of <code>cinnamon</code>.  Because <code>apple</code> appears to the right
+of <code>pie</code> in the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i>, 
+<code>fruit</code> goes next, and the
+result so far is <code>(pie apple fruit)</code>.  <i>S</i> <i>=</i> <i>{</i><code>cinnamon,
+spice, food, standard-object, t</code><i>}</i>; <i>R</i> <i>=</i> <i>{</i><code>(cinnamon,
+spice), (spice, food), (food, standard-object),
+(standard-object, t)</code><i>}</i>.
+
+</p><p>
+The class <code>cinnamon</code> is next, giving the result so far as <code>
+(pie apple fruit cinnamon)</code>.  At this point <i>S</i> <i>=</i> <i>{</i><code>spice,
+food, standard-object, t</code><i>}</i>; <i>R</i> <i>=</i> <i>{</i><code>(spice, food), (food,
+standard-object), (standard-object, t)</code><i>}</i>.
+
+</p><p>
+The classes <code>spice</code>, <code>food</code>, <a href="4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>, and 
+<a href="4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a> are added in that order, and the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> 
+is <code>(pie apple fruit cinnamon spice food standard-object t)</code>.
+
+</p><p>
+It is possible to write a set of <i><a href="../26-glossary/c.xhtml#class">class</a></i> definitions that cannot be 
+ordered.   For example: 
+
+</p><pre> (defclass new-class (fruit apple) ())
+ 
+ (defclass apple (fruit) ())
+</pre>
+
+<p>
+The class <code>fruit</code> must precede <code>apple</code> 
+because the local ordering of <i>superclasses</i> must be preserved.
+The class <code>apple</code> must precede <code>fruit</code> 
+because a <i><a href="../26-glossary/c.xhtml#class">class</a></i> always precedes its own <i>superclasses</i>.
+When this situation occurs, an error is signaled, as happens here
+when the system tries to compute the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> 
+
+of <code>new-class</code>.
+
+</p><p>
+The following might appear to be a conflicting set of definitions:
+
+</p><pre> (defclass pie (apple cinnamon) ())
+ 
+ (defclass pastry (cinnamon apple) ())
+ 
+ (defclass apple () ())
+ 
+ (defclass cinnamon () ())
+</pre>
+
+<p>
+The <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> for <code>pie</code> is 
+<code>(pie apple cinnamon standard-object t)</code>.
+
+</p><p>
+The <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> for <code>pastry</code> is  
+<code>(pastry cinnamon apple standard-object t)</code>.
+
+</p><p>
+It is not a problem for <code>apple</code> to precede <code>cinnamon</code> in the
+ordering of the <i>superclasses</i> of <code>pie</code> but not in the ordering for
+<code>pastry</code>.  However, it is not possible to build a new <i><a href="../26-glossary/c.xhtml#class">class</a></i> that
+has both <code>pie</code> and <code>pastry</code> as <i>superclasses</i>.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Redefining_C_330"><span class="secno">4.3.6</span> Redefining Classes</h3>
+<p>
+
+
+
+A <i><a href="../26-glossary/c.xhtml#class">class</a></i> that is a <i><a href="../26-glossary/d.xhtml#directinstance">direct instance</a></i> of <a href="4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a> can
+be redefined if the new <i><a href="../26-glossary/c.xhtml#class">class</a></i> is also
+
+a <i><a href="../26-glossary/d.xhtml#directinstance">direct instance</a></i> of <a href="4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a>.
+Redefining a <i><a href="../26-glossary/c.xhtml#class">class</a></i> modifies the existing
+<i><a href="../26-glossary/c.xhtml#class">class</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> to reflect the new <i><a href="../26-glossary/c.xhtml#class">class</a></i> definition; it does not
+create a new <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> for the <i><a href="../26-glossary/c.xhtml#class">class</a></i>.  
+Any <i><a href="../26-glossary/m.xhtml#method">method</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> created by a <code>:reader</code>, <code>:writer</code>, 
+or <code>:accessor</code> option specified by the old <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> form is
+removed from the corresponding <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>.
+<i><a href="../26-glossary/m.xhtml#method">Methods</a></i> specified by the new <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> form are added.
+
+</p><p>
+When the class <i>C</i> is redefined, changes are propagated to its <i><a href="../26-glossary/i.xhtml#instance">instances</a></i>
+and to <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of any of its <i>subclasses</i>.  Updating such an
+<i><a href="../26-glossary/i.xhtml#instance">instance</a></i> occurs at an <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> time, but no later than
+the next time a <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> 
+of that <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> is read or written.  Updating an
+<i><a href="../26-glossary/i.xhtml#instance">instance</a></i> 
+does not change its identity as defined by the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="../5-data-and-control-flow/5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a>.
+The updating process may change the <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> of that
+particular <i><a href="../26-glossary/i.xhtml#instance">instance</a></i>, 
+but it does not create a new <i><a href="../26-glossary/i.xhtml#instance">instance</a></i>.  Whether
+updating an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> consumes storage is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</p><p>
+Note that redefining a <i><a href="../26-glossary/c.xhtml#class">class</a></i> may cause <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> to be added or 
+deleted.  If a <i><a href="../26-glossary/c.xhtml#class">class</a></i> is redefined in a way that changes the set of
+<i><a href="../26-glossary/l.xhtml#localslot">local slots</a></i> <i><a href="../26-glossary/a.xhtml#accessible">accessible</a></i> in <i><a href="../26-glossary/i.xhtml#instance">instances</a></i>, the <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> 
+are updated.  It is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> whether <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> 
+are updated if a <i><a href="../26-glossary/c.xhtml#class">class</a></i> is redefined in a way that does not change 
+the set of <i><a href="../26-glossary/l.xhtml#localslot">local slots</a></i> <i><a href="../26-glossary/a.xhtml#accessible">accessible</a></i> in <i><a href="../26-glossary/i.xhtml#instance">instances</a></i>.
+
+</p><p>
+The value of a <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> 
+that is specified as shared both in the old <i><a href="../26-glossary/c.xhtml#class">class</a></i>
+and in the new <i><a href="../26-glossary/c.xhtml#class">class</a></i> is retained.  
+If such a <i><a href="../26-glossary/s.xhtml#sharedslot">shared slot</a></i> was unbound
+in the old <i><a href="../26-glossary/c.xhtml#class">class</a></i>, it is unbound in the new <i><a href="../26-glossary/c.xhtml#class">class</a></i>.  
+<i><a href="../26-glossary/s.xhtml#slot">Slots</a></i> that
+were local in the old <i><a href="../26-glossary/c.xhtml#class">class</a></i> and that are shared in the new 
+<i><a href="../26-glossary/c.xhtml#class">class</a></i> are
+initialized.  Newly added <i><a href="../26-glossary/s.xhtml#sharedslot">shared slots</a></i> are initialized.
+
+</p><p>
+Each newly added <i><a href="../26-glossary/s.xhtml#sharedslot">shared slot</a></i> is set to the result of evaluating the
+
+<i><a href="../26-glossary/c.xhtml#capturedinitializationform">captured initialization form</a></i> for the <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> that was specified 
+in the <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> for the new <i><a href="../26-glossary/c.xhtml#class">class</a></i>.  
+
+If there was no <i><a href="../26-glossary/i.xhtml#initializationform">initialization form</a></i>, the <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> is unbound.
+
+</p><p>
+If a <i><a href="../26-glossary/c.xhtml#class">class</a></i> is redefined in such a way that the set of
+<i><a href="../26-glossary/l.xhtml#localslot">local slots</a></i> <i><a href="../26-glossary/a.xhtml#accessible">accessible</a></i> in an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> 
+is changed, a two-step process of updating the <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of the
+<i><a href="../26-glossary/c.xhtml#class">class</a></i> takes place.  The process may be explicitly started by 
+invoking the generic function <a href="../7-objects/7.7.20-make-instances-obsolete.xhtml#DictEntry_make_instanc_576"><b>make-instances-obsolete</b></a>.  This
+two-step process can happen in other circumstances in some implementations.
+For example, in some implementations this two-step process is
+triggered if the order of <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> in storage is changed.
+
+</p><p>
+The first step modifies the structure of the <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> by adding new
+<i><a href="../26-glossary/l.xhtml#localslot">local slots</a></i> and discarding <i><a href="../26-glossary/l.xhtml#localslot">local slots</a></i> that are not
+defined in the new version of the <i><a href="../26-glossary/c.xhtml#class">class</a></i>.  The second step
+initializes the newly-added <i><a href="../26-glossary/l.xhtml#localslot">local slots</a></i> and performs any other
+user-defined actions. These two steps are further specified
+in the next two sections.
+</p>
+<section>
+<h4 id="SubSubSectio_Modifying_th_331"><span class="secno">4.3.6.1</span> Modifying the Structure of Instances</h4>
+<p>
+
+The first step modifies the structure of <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of the redefined
+<i><a href="../26-glossary/c.xhtml#class">class</a></i> to conform to its new <i><a href="../26-glossary/c.xhtml#class">class</a></i> definition.  
+<i><a href="../26-glossary/l.xhtml#localslot">Local slots</a></i> specified
+by the new <i><a href="../26-glossary/c.xhtml#class">class</a></i> definition that are not specified as either local or
+shared by the old <i><a href="../26-glossary/c.xhtml#class">class</a></i> are added, and <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> 
+not specified as either
+local or shared by the new <i><a href="../26-glossary/c.xhtml#class">class</a></i> definition that are specified as
+local by the old <i><a href="../26-glossary/c.xhtml#class">class</a></i> are discarded. 
+The <i><a href="../26-glossary/n.xhtml#name">names</a></i> of these added and discarded
+<i><a href="../26-glossary/s.xhtml#slot">slots</a></i> are passed as arguments 
+to <a href="../7-objects/7.7.7-update-instance-for-redefined-class.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a>
+as described in the next section.
+
+</p><p>
+The values of <i><a href="../26-glossary/l.xhtml#localslot">local slots</a></i> specified by both the new and old
+<i>classes</i> are retained. If such a <i><a href="../26-glossary/l.xhtml#localslot">local slot</a></i> was unbound,
+it remains unbound.
+
+</p><p>
+The value of a <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> that is specified as shared in the old 
+<i><a href="../26-glossary/c.xhtml#class">class</a></i> and as local in the new <i><a href="../26-glossary/c.xhtml#class">class</a></i> is retained.  If such 
+a <i><a href="../26-glossary/s.xhtml#sharedslot">shared slot</a></i> was unbound, the <i><a href="../26-glossary/l.xhtml#localslot">local slot</a></i> is unbound.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Initializing_332"><span class="secno">4.3.6.2</span> Initializing Newly Added Local Slots</h4>
+<p>
+
+The second step initializes the newly added <i><a href="../26-glossary/l.xhtml#localslot">local slots</a></i> and performs
+any other user-defined actions.  This step is implemented by the generic
+function <a href="../7-objects/7.7.7-update-instance-for-redefined-class.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a>, which is called after
+completion of the first step of modifying the structure of the
+<i><a href="../26-glossary/i.xhtml#instance">instance</a></i>.
+
+</p><p>
+The generic function <a href="../7-objects/7.7.7-update-instance-for-redefined-class.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a> takes
+four required arguments: the <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> being updated after it has
+undergone the first step, a list of the names of <i><a href="../26-glossary/l.xhtml#localslot">local slots</a></i> that were
+added, a list of the names of <i><a href="../26-glossary/l.xhtml#localslot">local slots</a></i> that were discarded, and a
+property list containing the <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> names and values of 
+<i><a href="../26-glossary/s.xhtml#slot">slots</a></i> that were
+discarded and had values.  Included among the discarded <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> are
+<i><a href="../26-glossary/s.xhtml#slot">slots</a></i> that were local in the old <i><a href="../26-glossary/c.xhtml#class">class</a></i> and that are shared in the new
+<i><a href="../26-glossary/c.xhtml#class">class</a></i>.
+
+</p><p>
+The generic function <a href="../7-objects/7.7.7-update-instance-for-redefined-class.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a> also
+takes any number of initialization arguments.  When it is called by
+the system to update an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> whose <i><a href="../26-glossary/c.xhtml#class">class</a></i> 
+has been redefined, no
+initialization arguments are provided.
+
+</p><p>
+There is a system-supplied primary <i><a href="../26-glossary/m.xhtml#method">method</a></i> for 
+<a href="../7-objects/7.7.7-update-instance-for-redefined-class.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a> whose <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializer</a></i>
+for its <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> argument is the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>.  
+First this <i><a href="../26-glossary/m.xhtml#method">method</a></i> checks the validity of initialization arguments and signals an
+error if an initialization argument is supplied that is not declared
+as valid.  (For more information, see Section <a href="../7-objects/7.1-object-creation-and-initialization.xhtml#SubSection_Declaring_th_522">7.1.2 Declaring the Validity of Initialization Arguments</a>.)
+Then it calls the generic function
+<a href="../7-objects/7.7.5-shared-initialize.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a> with the following arguments: the 
+<i><a href="../26-glossary/i.xhtml#instance">instance</a></i>,
+the list of <i><a href="../26-glossary/n.xhtml#name">names</a></i> of 
+the newly added <i><a href="../26-glossary/s.xhtml#slot">slots</a></i>, and the initialization
+arguments it received.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Customizing__333"><span class="secno">4.3.6.3</span> Customizing Class Redefinition</h4>
+<p><i><a href="../26-glossary/m.xhtml#method">Methods</a></i> for <a href="../7-objects/7.7.7-update-instance-for-redefined-class.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a> may be 
+defined to specify actions to be taken when an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> is updated.
+If only <i><a href="../26-glossary/a.xhtml#aftermethod">after methods</a></i> for <a href="../7-objects/7.7.7-update-instance-for-redefined-class.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a> are
+defined, they will be run after the system-supplied primary <i><a href="../26-glossary/m.xhtml#method">method</a></i> for
+initialization and therefore will not interfere with the default
+behavior of <a href="../7-objects/7.7.7-update-instance-for-redefined-class.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a>.  Because no
+initialization arguments are passed to <a href="../7-objects/7.7.7-update-instance-for-redefined-class.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a>
+when it is called by the system, the 
+
+<i><a href="../26-glossary/i.xhtml#initializationform">initialization forms</a></i> for <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> 
+that are filled by <i><a href="../26-glossary/b.xhtml#beforemethod">before methods</a></i> for <a href="../7-objects/7.7.7-update-instance-for-redefined-class.xhtml#DictEntry_update_insta_563"><b>update-instance-for-redefined-class</b></a> 
+will not be evaluated by <a href="../7-objects/7.7.5-shared-initialize.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a>.
+
+</p><p>
+<i><a href="../26-glossary/m.xhtml#method">Methods</a></i> for <a href="../7-objects/7.7.5-shared-initialize.xhtml#DictEntry_shared_initi_561"><b>shared-initialize</b></a> may be defined to customize
+<i><a href="../26-glossary/c.xhtml#class">class</a></i> redefinition.  For more information, see Section <a href="../7-objects/7.1-object-creation-and-initialization.xhtml#SubSection_Shared_Initi_525">7.1.5 Shared-Initialize</a>.
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Integrating__334"><span class="secno">4.3.7</span> Integrating Types and Classes</h3>
+<p>
+
+
+The object system maps the space of <i>classes</i> into the space of <i><a href="../26-glossary/t.xhtml#type">types</a></i>.
+Every <i><a href="../26-glossary/c.xhtml#class">class</a></i> that has a proper name has a corresponding <i><a href="../26-glossary/t.xhtml#type">type</a></i> 
+with the same <i><a href="../26-glossary/n.xhtml#name">name</a></i>.  
+
+</p><p>
+The proper name of every <i><a href="../26-glossary/c.xhtml#class">class</a></i> is a valid <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.  In
+addition, every <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> is a valid <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.  
+Thus the expression <code>(typep <i>object</i> <i>class</i>)</code> evaluates to 
+<i><a href="../26-glossary/t.xhtml#true">true</a></i> if the <i><a href="../26-glossary/c.xhtml#class">class</a></i> of <i>object</i> is <i>class</i> itself or 
+a <i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> of <i><a href="../26-glossary/c.xhtml#class">class</a></i>.  The evaluation of the expression
+<code>(subtypep class1 class2)</code> returns the values 
+
+
+<i><a href="../26-glossary/t.xhtml#true">true</a></i> and <i><a href="../26-glossary/t.xhtml#true">true</a></i> if <code>class1</code> is a subclass of <code>class2</code> or if they are the
+same <i><a href="../26-glossary/c.xhtml#class">class</a></i>; otherwise it returns the values 
+
+
+<i><a href="../26-glossary/f.xhtml#false">false</a></i> and <i><a href="../26-glossary/t.xhtml#true">true</a></i>.
+
+If  <i>I</i> is an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of some <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>C</i> named <i>S</i> 
+and <i>C</i> is an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of <a href="4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a>, 
+the evaluation of the expression <code>(type-of <i>I</i> )</code> returns <i>S</i> 
+if <i>S</i> is the <i><a href="../26-glossary/p.xhtml#propername">proper name</a></i> of <i>C</i>; 
+otherwise, it returns <i>C</i>.
+
+</p><p>
+Because the names of <i>classes</i> 
+and <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i><a href="../26-glossary/o.xhtml#object">objects</a></i> are <i><a href="../26-glossary/t.xhtml#typespecifier">type specifiers</a></i>, they may
+be used in the special form <a href="../3-evaluation-and-compilation/3.8.28-the.xhtml#DictEntry_the_310"><b>the</b></a> and in type declarations.
+
+</p><p>
+Many but not all of the predefined <i><a href="../26-glossary/t.xhtml#typespecifier">type specifiers</a></i> have a
+corresponding <i><a href="../26-glossary/c.xhtml#class">class</a></i> with 
+the same proper name as the <i><a href="../26-glossary/t.xhtml#type">type</a></i>.  These type
+specifiers are listed in <a href="#fig-4-8">Figure 4-8</a>.
+For example, the <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../15-arrays/15.2.1-array.xhtml#DictEntry_array_979"><b>array</b></a> has 
+a corresponding <i><a href="../26-glossary/c.xhtml#class">class</a></i> named <a href="../15-arrays/15.2.1-array.xhtml#DictEntry_array_979"><b>array</b></a>.  
+No <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> that is a
+list, such as <code>(vector double-float 100)</code>, has a corresponding <i><a href="../26-glossary/c.xhtml#class">class</a></i>.
+The <i><a href="../26-glossary/o.xhtml#operator">operator</a></i> <a href="4.4.25-deftype.xhtml#DictEntry_deftype_360"><b>deftype</b></a> does not create any <i>classes</i>.
+
+</p><p>
+Each <i><a href="../26-glossary/c.xhtml#class">class</a></i> that corresponds to a predefined <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> can
+be implemented in one of three ways, at the discretion of each implementation.
+It can be a <i><a href="../26-glossary/s.xhtml#standardclass">standard class</a></i>,
+
+
+a <i><a href="../26-glossary/s.xhtml#structureclass">structure class</a></i>,
+
+
+
+
+or a <i><a href="../26-glossary/s.xhtml#systemclass">system class</a></i>.
+
+
+
+
+</p><p>
+
+A <i><a href="../26-glossary/b.xhtml#builtinclass">built-in class</a></i> is one whose <i><a href="../26-glossary/g.xhtml#generalizedinstance">generalized instances</a></i> have restricted capabilities 
+or special representations.  Attempting to use <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> to define 
+<i>subclasses</i> of a <a href="4.4.8-built-in-class.xhtml#DictEntry_built_in_cla_343"><b>built-in-class</b></a> signals an error.
+
+Calling <a href="../7-objects/7.7.19-make-instance.xhtml#DictEntry_make_instanc_575"><b>make-instance</b></a> to create a <i><a href="../26-glossary/g.xhtml#generalizedinstance">generalized instance</a></i> of a 
+<i><a href="../26-glossary/b.xhtml#builtinclass">built-in class</a></i> signals an error.  Calling <a href="../7-objects/7.7.14-slot-value.xhtml#DictEntry_slot_value_570"><b>slot-value</b></a> on a
+
+<i><a href="../26-glossary/g.xhtml#generalizedinstance">generalized instance</a></i> of a <i><a href="../26-glossary/b.xhtml#builtinclass">built-in class</a></i> signals an error.
+Redefining a <i><a href="../26-glossary/b.xhtml#builtinclass">built-in class</a></i> or using <a href="../7-objects/7.7.8-change-class.xhtml#DictEntry_change_class_564"><b>change-class</b></a> to change
+
+the <i><a href="../26-glossary/c.xhtml#class">class</a></i> of an <i><a href="../26-glossary/o.xhtml#object">object</a></i> to or from a <i><a href="../26-glossary/b.xhtml#builtinclass">built-in class</a></i> signals an error.
+However, <i>built-in classes</i> can be used as <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> 
+in <i><a href="../26-glossary/m.xhtml#method">methods</a></i>.
+
+</p><p>
+It is possible to determine whether a <i><a href="../26-glossary/c.xhtml#class">class</a></i> is a <i><a href="../26-glossary/b.xhtml#builtinclass">built-in class</a></i>
+by checking the <i><a href="../26-glossary/m.xhtml#metaclass">metaclass</a></i>.
+A <i><a href="../26-glossary/s.xhtml#standardclass">standard class</a></i>  is an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a>,
+a <i><a href="../26-glossary/b.xhtml#builtinclass">built-in class</a></i>  is an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.8-built-in-class.xhtml#DictEntry_built_in_cla_343"><b>built-in-class</b></a>, and
+a <i><a href="../26-glossary/s.xhtml#structureclass">structure class</a></i> is an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.9-structure-class.xhtml#DictEntry_structure_cl_344"><b>structure-class</b></a>.
+
+</p><p>
+Each <i><a href="../26-glossary/s.xhtml#structure">structure</a></i> <i><a href="../26-glossary/t.xhtml#type">type</a></i> created by <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> without 
+using the <code>:type</code> option has a corresponding <i><a href="../26-glossary/c.xhtml#class">class</a></i>.  
+
+This <i><a href="../26-glossary/c.xhtml#class">class</a></i> is a <i><a href="../26-glossary/g.xhtml#generalizedinstance">generalized instance</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.9-structure-class.xhtml#DictEntry_structure_cl_344"><b>structure-class</b></a>.  
+
+The <code>:include</code> option of <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> creates a direct
+<i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> 
+that corresponds to the included <i><a href="../26-glossary/s.xhtml#structure">structure</a></i> 
+
+<i><a href="../26-glossary/t.xhtml#type">type</a></i>.
+
+</p><p>
+
+
+
+It is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> whether <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> are involved in the
+operation of <i><a href="../26-glossary/f.xhtml#function">functions</a></i> defined in this specification
+on <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of <i>classes</i> defined in this specification,
+except when <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> are explicitly defined by this specification.
+
+</p><p>
+If in a particular <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> a <i><a href="../26-glossary/c.xhtml#class">class</a></i> defined in this specification
+has <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> that are not defined by this specfication, the names of these <i><a href="../26-glossary/s.xhtml#slot">slots</a></i>
+must not be <i><a href="../26-glossary/e.xhtml#externalsymbol">external symbols</a></i> of <i><a href="../26-glossary/p.xhtml#package">packages</a></i> defined in this specification nor
+otherwise <i><a href="../26-glossary/a.xhtml#accessible">accessible</a></i> in the <code>cl-user</code> <i><a href="../26-glossary/p.xhtml#package">package</a></i>.
+
+
+</p><p>
+                                                    
+The purpose of specifying that many of the standard <i><a href="../26-glossary/t.xhtml#typespecifier">type specifiers</a></i> have a
+corresponding <i><a href="../26-glossary/c.xhtml#class">class</a></i> is to enable users to write <i><a href="../26-glossary/m.xhtml#method">methods</a></i> that
+discriminate on these <i><a href="../26-glossary/t.xhtml#type">types</a></i>.  <i><a href="../26-glossary/m.xhtml#method">Method</a></i> selection requires that a 
+<i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> can be determined for each <i><a href="../26-glossary/c.xhtml#class">class</a></i>. 
+
+</p><p>
+The hierarchical relationships among the <i><a href="../26-glossary/t.xhtml#typespecifier">type specifiers</a></i> are mirrored by
+relationships among the <i>classes</i> corresponding to those <i><a href="../26-glossary/t.xhtml#type">types</a></i>.  
+</p><p>
+<a href="#fig-4-8">Figure 4-8</a> lists the set of <i>classes</i> 
+that correspond to predefined <i><a href="../26-glossary/t.xhtml#typespecifier">type specifiers</a></i>.
+
+</p><table id="fig-4-8" class="fig">
+<caption><span class="figlabel">Figure 4-8.</span> Classes that correspond to pre-defined type specifiers</caption>
+
+  <tbody><tr>
+    <td>arithmetic-error</td>
+    <td>generic-function</td>
+    <td>simple-error</td>
+  </tr>
+  <tr>
+    <td>array</td>
+    <td>hash-table</td>
+    <td>simple-type-error</td>
+  </tr>
+  <tr>
+    <td>bit-vector</td>
+    <td>integer</td>
+    <td>simple-warning</td>
+  </tr>
+  <tr>
+    <td>broadcast-stream</td>
+    <td>list</td>
+    <td>standard-class</td>
+  </tr>
+  <tr>
+    <td>built-in-class</td>
+    <td>logical-pathname</td>
+    <td>standard-generic-function</td>
+  </tr>
+  <tr>
+    <td>cell-error</td>
+    <td>method</td>
+    <td>standard-method</td>
+  </tr>
+  <tr>
+    <td>character</td>
+    <td>method-combination</td>
+    <td>standard-object</td>
+  </tr>
+  <tr>
+    <td>class</td>
+    <td>null</td>
+    <td>storage-condition</td>
+  </tr>
+  <tr>
+    <td>complex</td>
+    <td>number</td>
+    <td>stream</td>
+  </tr>
+  <tr>
+    <td>concatenated-stream</td>
+    <td>package</td>
+    <td>stream-error</td>
+  </tr>
+  <tr>
+    <td>condition</td>
+    <td>package-error</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>cons</td>
+    <td>parse-error</td>
+    <td>string-stream</td>
+  </tr>
+  <tr>
+    <td>control-error</td>
+    <td>pathname</td>
+    <td>structure-class</td>
+  </tr>
+  <tr>
+    <td>division-by-zero</td>
+    <td>print-not-readable</td>
+    <td>structure-object</td>
+  </tr>
+  <tr>
+    <td>echo-stream</td>
+    <td>program-error</td>
+    <td>style-warning</td>
+  </tr>
+  <tr>
+    <td>end-of-file</td>
+    <td>random-state</td>
+    <td>symbol</td>
+  </tr>
+  <tr>
+    <td>error</td>
+    <td>ratio</td>
+    <td>synonym-stream</td>
+  </tr>
+  <tr>
+    <td>file-error</td>
+    <td>rational</td>
+    <td>t</td>
+  </tr>
+  <tr>
+    <td>file-stream</td>
+    <td>reader-error</td>
+    <td>two-way-stream</td>
+  </tr>
+  <tr>
+    <td>float</td>
+    <td>readtable</td>
+    <td>type-error</td>
+  </tr>
+  <tr>
+    <td>floating-point-inexact</td>
+    <td>real</td>
+    <td>unbound-slot</td>
+  </tr>
+  <tr>
+    <td>floating-point-invalid-operation</td>
+    <td>restart</td>
+    <td>unbound-variable</td>
+  </tr>
+  <tr>
+    <td>floating-point-overflow</td>
+    <td>sequence</td>
+    <td>undefined-function</td>
+  </tr>
+  <tr>
+    <td>floating-point-underflow</td>
+    <td>serious-condition</td>
+    <td>vector</td>
+  </tr>
+  <tr>
+    <td>function</td>
+    <td>simple-condition</td>
+    <td>warning</td>
+  </tr>
+</tbody></table>
+
+
+
+<p>
+The <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> information specified in the entries for
+each of these <i>classes</i> are those that are required by the object system.
+
+</p><p>
+Individual implementations may be extended to define other type
+specifiers to have a corresponding <i><a href="../26-glossary/c.xhtml#class">class</a></i>.  Individual implementations
+may be extended to add other <i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> relationships and to add other
+<i><a href="../26-glossary/e.xhtml#element">elements</a></i> to the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence lists</a></i> as long as
+they do not violate the type relationships and disjointness
+requirements specified by this standard.
+A standard <i><a href="../26-glossary/c.xhtml#class">class</a></i> defined with no direct <i>superclasses</i> is guaranteed to
+be disjoint from all of the <i>classes</i> in the table, except for the
+class named <a href="4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>.
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</body>
+</html>

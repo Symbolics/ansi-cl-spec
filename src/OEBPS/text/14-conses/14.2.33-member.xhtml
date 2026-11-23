@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.33 member, member-if, member-if-not — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_member_memb_946" class="entry"><span class="secno">14.2.33</span> <span class="names">member, member-if, member-if-not</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>member</b>
+<i>item      list <code>&amp;key</code> key test test-not</i>
+  → <i>tail</i>
+<p>
+<b>member-if</b>
+<i>predicate list <code>&amp;key</code> key</i>
+  → <i>tail</i>
+</p><p>
+<b>member-if-not</b>
+<i>predicate list <code>&amp;key</code> key</i>
+  → <i>tail</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>item</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+<p>
+<i>list</i>—a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i>.
+
+</p><p>
+<i>predicate</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for 
+		    a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of one <i><a href="../26-glossary/a.xhtml#argument">argument</a></i>
+		    that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>test</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
+  that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>test-not</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for 
+  a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
+  that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>key</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of one argument,
+  or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>tail</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_member_memb_946"><b>member</b></a>, <a href="#DictEntry_member_memb_946"><b>member-if</b></a>, and <a href="#DictEntry_member_memb_946"><b>member-if-not</b></a> each
+search <i>list</i> for <i>item</i> or for a top-level element that 
+<i>satisfies the test</i>.  The argument to the <i>predicate</i> function 
+is an element of <i>list</i>.
+
+<p>
+If some element <i>satisfies the test</i>,
+the tail of <i>list</i> beginning
+with this element is returned; otherwise <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> is returned.
+
+</p><p>
+<i>list</i> is searched on the top level only. 
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (member 2 '(1 2 3)) → (2 3)                                 
+ (member 2 '((1 . 2) (3 . 4)) :test-not #'= :key #'cdr) → ((3 . 4))
+ (member 'e '(a b c d)) →  NIL
+</pre>
+
+<pre> (member-if #'listp '(a b nil c d)) → (NIL C D)
+ (member-if #'numberp '(a #\Space 5/3 foo)) → (5/3 FOO)
+ (member-if-not #'zerop 
+                 '(3 6 9 11 . 12)
+                 :key #'(lambda (x) (mod x 3))) → (11 . 12)
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>list</i> is not a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../17-sequences/17.3.14-find.xhtml#DictEntry_find_find_i_1054"><b>find</b></a>,
+<a href="../17-sequences/17.3.15-position.xhtml#DictEntry_position_po_1055"><b>position</b></a>,
+
+Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+The <code>:test-not</code> parameter is deprecated.
+
+
+<p>
+
+The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_member_memb_946"><b>member-if-not</b></a> is deprecated.
+
+
+</p><p>
+In the following
+
+</p><pre> (member 'a '(g (a y) c a d e a f)) → (A D E A F)
+</pre>
+
+<p>
+the value returned by <a href="#DictEntry_member_memb_946"><b>member</b></a> is <i><a href="../26-glossary/i.xhtml#identical">identical</a></i> to the portion
+of the <i><a href="../26-glossary/l.xhtml#list">list</a></i> beginning with <code>a</code>.  Thus <a href="14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplaca</b></a> on the
+result of <a href="#DictEntry_member_memb_946"><b>member</b></a> can be used to alter the part of the <i><a href="../26-glossary/l.xhtml#list">list</a></i>
+where <code>a</code> was found (assuming a check has been made that <a href="#DictEntry_member_memb_946"><b>member</b></a>
+did not return <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>).
+
+</p></dd></dl>
+</section>
+</body>
+</html>

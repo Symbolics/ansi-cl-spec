@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.44 store-value — Restart</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_store_value_669" class="entry"><span class="secno">9.2.44</span> <span class="names">store-value</span> <span class="kind">Restart</span></h3>
+<dl>
+
+
+<dt><b>Data Arguments Required:</b></dt><dd>
+
+a value to use instead (on an ongoing basis).
+
+</dd><dt><b>Description:</b></dt><dd>
+
+The <a href="#DictEntry_store_value_669"><b>store-value</b></a> <i><a href="../26-glossary/r.xhtml#restart">restart</a></i> is generally used by <i><a href="../26-glossary/h.xhtml#handler">handlers</a></i>
+trying to recover from errors of <i><a href="../26-glossary/t.xhtml#type">types</a></i> such as <a href="9.2.6-cell-error.xhtml#DictEntry_cell_error_631"><b>cell-error</b></a> 
+or <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a>, which may wish to supply a replacement datum to
+be stored permanently.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defun type-error-auto-coerce (c)
+   (when (typep c 'type-error)
+     (let ((r (find-restart 'store-value c)))
+       (handler-case (let ((v (coerce (type-error-datum c)
+                                      (type-error-expected-type c))))
+                       (invoke-restart r v))
+         (error ()))))) →  TYPE-ERROR-AUTO-COERCE
+ (let ((x 3))
+   (handler-bind ((type-error #'type-error-auto-coerce))
+     (check-type x float)
+     x)) → 3.0
+</pre>   
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="9.1-condition-system-concepts.xhtml#SubSubSectio_Restarts_618">9.1.4.2 Restarts</a>,
+Section <a href="9.1-condition-system-concepts.xhtml#SubSubSubSec_Interfaces_t_620">9.1.4.2.2 Interfaces to Restarts</a>,
+<a href="9.2.34-invoke-restart.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a>,
+<a href="#DictEntry_store_value_669"><b>store-value</b></a> (<i><a href="../26-glossary/f.xhtml#function">function</a></i>),
+<a href="../5-data-and-control-flow/5.3.46-case.xhtml#DictEntry_case_ccase_432"><b>ccase</b></a>,
+<a href="9.2.13-check-type.xhtml#DictEntry_check_type_638"><b>check-type</b></a>,
+<a href="../5-data-and-control-flow/5.3.47-typecase.xhtml#DictEntry_typecase_ct_433"><b>ctypecase</b></a>,
+<a href="9.2.45-use-value.xhtml#DictEntry_use_value_670"><b>use-value</b></a> (<i><a href="../26-glossary/f.xhtml#function">function</a></i> and <i><a href="../26-glossary/r.xhtml#restart">restart</a></i>)
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.21 first, second, third, fourth, fifth, sixth, seventh, … — Accessor</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_first_secon_934" class="entry"><span class="secno">14.2.21</span> <span class="names">first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth</span> <span class="kind">Accessor</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<table class="ctr">
+<tbody><tr><td>
+   <b>first</b> <i>list</i></td><td> →  <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>first</b> <i>list</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>second</b> <i>list</i></td><td>→  <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>second</b> <i>list</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>third</b> <i>list</i></td><td> →  <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>third</b> <i>list</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>fourth</b> <i>list</i></td><td> →  <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>fourth</b> <i>list</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>fifth</b> <i>list</i></td><td> →  <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>fifth</b> <i>list</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>sixth</b> <i>list</i></td><td> →  <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>sixth</b> <i>list</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>seventh</b> <i>list</i></td><td> →  <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>seventh</b> <i>list</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>eighth</b> <i>list</i></td><td> →  <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>eighth</b> <i>list</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>ninth</b> <i>list</i></td><td> →  <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>ninth</b> <i>list</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>tenth</b> <i>list</i></td><td> →  <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>tenth</b> <i>list</i>) <i>new-object</i>)</td></tr>
+</tbody></table>
+
+
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>list</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>, 
+
+	       which might be a <i><a href="../26-glossary/d.xhtml#dottedlist">dotted list</a></i> or a <i><a href="../26-glossary/c.xhtml#circularlist">circular list</a></i>.
+
+
+<p>
+<i>object</i>, <i>new-object</i>—an <i>object</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The functions
+
+<a href="#DictEntry_first_secon_934"><b>first</b></a>,
+<a href="#DictEntry_first_secon_934"><b>second</b></a>,
+<a href="#DictEntry_first_secon_934"><b>third</b></a>, 
+<a href="#DictEntry_first_secon_934"><b>fourth</b></a>, 
+<a href="#DictEntry_first_secon_934"><b>fifth</b></a>,
+<a href="#DictEntry_first_secon_934"><b>sixth</b></a>,
+<a href="#DictEntry_first_secon_934"><b>seventh</b></a>,
+<a href="#DictEntry_first_secon_934"><b>eighth</b></a>, 
+<a href="#DictEntry_first_secon_934"><b>ninth</b></a>,
+and
+<a href="#DictEntry_first_secon_934"><b>tenth</b></a>
+
+<i>access</i> the first, second, third, fourth, fifth, sixth, seventh, eighth,
+ninth, and tenth <i><a href="../26-glossary/e.xhtml#element">elements</a></i> of <i>list</i>, respectively.
+Specifically,
+
+<pre> (first <i>list</i>)    == (car <i>list</i>)
+ (second <i>list</i>)   == (car (cdr <i>list</i>))
+ (third <i>list</i>)    == (car (cddr <i>list</i>))
+ (fourth <i>list</i>)   == (car (cdddr <i>list</i>))
+ (fifth <i>list</i>)    == (car (cddddr <i>list</i>))
+ (sixth <i>list</i>)    == (car (cdr (cddddr <i>list</i>)))
+ (seventh <i>list</i>)  == (car (cddr (cddddr <i>list</i>)))
+ (eighth <i>list</i>)   == (car (cdddr (cddddr <i>list</i>)))
+ (ninth <i>list</i>)    == (car (cddddr (cddddr <i>list</i>)))
+ (tenth <i>list</i>)    == (car (cdr (cddddr (cddddr <i>list</i>))))
+</pre>
+
+<p>
+<a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> can also be used with any of these functions to change an
+existing component.  The same equivalences apply.  For example:
+
+</p><pre> (setf (fifth <i>list</i>) <i>new-object</i>) ==(setf (car (cddddr <i>list</i>)) <i>new-object</i>)
+</pre>
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq lst '(1 2 3 (4 5 6) ((V)) vi 7 8 9 10)) 
+→ (1 2 3 (4 5 6) ((V)) VI 7 8 9 10)
+ (first lst) → 1
+ (tenth lst) → 10
+ (fifth lst) → ((V))
+ (second (fourth lst)) → 5
+ (sixth '(1 2 3)) →  NIL
+ (setf (fourth lst) "four") → "four"
+ lst → (1 2 3 "four" ((V)) VI 7 8 9 10)
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>car</b></a>, <a href="14.2.22-nth.xhtml#DictEntry_nth_935"><b>nth</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<a href="#DictEntry_first_secon_934"><b>first</b></a>  is functionally equivalent to <a href="14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>car</b></a>,
+<a href="#DictEntry_first_secon_934"><b>second</b></a> is functionally equivalent to <a href="14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>cadr</b></a>,
+<a href="#DictEntry_first_secon_934"><b>third</b></a>  is functionally equivalent to <a href="14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>caddr</b></a>, and 
+<a href="#DictEntry_first_secon_934"><b>fourth</b></a> is functionally equivalent to <a href="14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>cadddr</b></a>.
+
+<p>
+The ordinal numbering used here is one-origin,
+as opposed to the zero-origin numbering used by <a href="14.2.22-nth.xhtml#DictEntry_nth_935"><b>nth</b></a>:
+
+</p><pre> (fifth x) ==(nth 4 x)
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

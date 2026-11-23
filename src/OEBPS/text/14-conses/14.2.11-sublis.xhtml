@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.11 sublis, nsublis — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_sublis_nsub_924" class="entry"><span class="secno">14.2.11</span> <span class="names">sublis, nsublis</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>sublis</b>
+<i>alist tree <code>&amp;key</code> key test test-not</i>
+  → <i>new-tree</i>
+<p>
+<b>nsublis</b>
+<i>alist tree <code>&amp;key</code> key test test-not</i>
+  → <i>new-tree</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>alist</i>—an <i><a href="../26-glossary/a.xhtml#associationlist">association list</a></i>.
+
+<p>
+
+<i>tree</i>—a <i><a href="../26-glossary/t.xhtml#tree">tree</a></i>.
+
+
+</p><p>
+<i>test</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
+  that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>test-not</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for 
+  a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
+  that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>key</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of one argument,
+  or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+
+<i>new-tree</i>—a <i><a href="../26-glossary/t.xhtml#tree">tree</a></i>.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_sublis_nsub_924"><b>sublis</b></a> makes substitutions for <i><a href="../26-glossary/o.xhtml#object">objects</a></i> in <i>tree</i>
+(a structure of <i>conses</i>).
+
+<a href="#DictEntry_sublis_nsub_924"><b>nsublis</b></a> is like <a href="#DictEntry_sublis_nsub_924"><b>sublis</b></a> 
+but destructively modifies the relevant
+parts of the <i>tree</i>.
+
+<p>
+<a href="#DictEntry_sublis_nsub_924"><b>sublis</b></a> looks at all subtrees and leaves of <i>tree</i>;
+if a subtree or leaf appears as a key in <i>alist</i>
+(that is, the key and the subtree or leaf <i><a href="../26-glossary/s.xhtml#satisfythetest">satisfy the test</a></i>),
+it is replaced by the <i><a href="../26-glossary/o.xhtml#object">object</a></i> with which that key is associated.
+This operation is non-destructive.  In effect, <a href="#DictEntry_sublis_nsub_924"><b>sublis</b></a> can
+perform several <a href="14.2.12-subst.xhtml#DictEntry_subst_subst_925"><b>subst</b></a> operations simultaneously.
+
+
+</p><p>
+If <a href="#DictEntry_sublis_nsub_924"><b>sublis</b></a> succeeds, a new copy of <i>tree</i> is returned in
+which each occurrence of such a subtree or leaf is replaced by the
+<i><a href="../26-glossary/o.xhtml#object">object</a></i> with which it is associated.   If no changes are made, the
+original tree is returned.  The original <i>tree</i> is left unchanged,
+but the result tree may share cells with it.
+
+</p><p>
+<a href="#DictEntry_sublis_nsub_924"><b>nsublis</b></a> is permitted to modify <i>tree</i> 
+but otherwise returns the same values as <a href="#DictEntry_sublis_nsub_924"><b>sublis</b></a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (sublis '((x . 100) (z . zprime))
+         '(plus x (minus g z x p) 4 . x))
+→ (PLUS 100 (MINUS G ZPRIME 100 P) 4 . 100)
+ (sublis '(((+ x y) . (- x y)) ((- x y) . (+ x y)))
+         '(* (/ (+ x y) (+ x p)) (- x y))
+         :test #'equal)
+→ (* (/ (- X Y) (+ X P)) (+ X Y))
+ (setq tree1 '(1 (1 2) ((1 2 3)) (((1 2 3 4)))))
+→ (1 (1 2) ((1 2 3)) (((1 2 3 4))))
+ (sublis '((3 . "three")) tree1) 
+→ (1 (1 2) ((1 2 "three")) (((1 2 "three" 4))))
+ (sublis '((t . "string"))
+          (sublis '((1 . "") (4 . 44)) tree1)
+          :key #'stringp)
+→ ("string" ("string" 2) (("string" 2 3)) ((("string" 2 3 44))))
+ tree1 → (1 (1 2) ((1 2 3)) (((1 2 3 4))))
+ (setq tree2 '("one" ("one" "two") (("one" "Two" "three"))))
+→ ("one" ("one" "two") (("one" "Two" "three"))) 
+ (sublis '(("two" . 2)) tree2) 
+→ ("one" ("one" "two") (("one" "Two" "three"))) 
+ tree2 → ("one" ("one" "two") (("one" "Two" "three"))) 
+ (sublis '(("two" . 2)) tree2 :test 'equal) 
+→ ("one" ("one" 2) (("one" "Two" "three"))) 
+
+ (nsublis '((t . 'temp))
+           tree1
+           :key #'(lambda (x) (or (atom x) (&lt; (list-length x) 3))))
+→ ((QUOTE TEMP) (QUOTE TEMP) QUOTE TEMP) 
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+<a href="#DictEntry_sublis_nsub_924"><b>nsublis</b></a> modifies <i>tree</i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="14.2.12-subst.xhtml#DictEntry_subst_subst_925"><b>subst</b></a>,
+
+Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#SubSection_Compiler_Ter_214">3.2.1 Compiler Terminology</a>,
+
+
+Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+The <code>:test-not</code> parameter is deprecated.
+
+
+<p>
+Because the side-effecting variants (<i>e.g.</i>,  <a href="#DictEntry_sublis_nsub_924"><b>nsublis</b></a>) potentially
+change the path that is being traversed, their effects in the presence
+of shared or circular structure structure may vary in surprising ways
+when compared to their non-side-effecting alternatives.  To see this,
+consider the following side-effect behavior, which might be exhibited by
+some implementations:
+
+</p><pre> (defun test-it (fn)
+   (let* ((shared-piece (list 'a 'b))
+          (data (list shared-piece shared-piece)))
+     (funcall fn '((a . b) (b . a)) data)))
+ (test-it #'sublis) → ((B A) (B A))
+ (test-it #'nsublis) → ((A B) (A B))
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

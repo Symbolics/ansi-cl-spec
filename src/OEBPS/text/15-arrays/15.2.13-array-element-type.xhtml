@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>15.2.13 array-element-type — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_array_elemen_991" class="entry"><span class="secno">15.2.13</span> <span class="names">array-element-type</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>array-element-type</b>
+<i>array</i>
+  → <i>typespec</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>array</i>—an <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
+
+<p>
+<i>typespec</i>—a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+Returns a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> which represents the <i><a href="../26-glossary/a.xhtml#actualarrayelementtype">actual array element type</a></i>
+of the array, which is the set of <i><a href="../26-glossary/o.xhtml#object">objects</a></i> that such an <i>array</i> can hold.
+
+
+(Because of <i><a href="../26-glossary/a.xhtml#array">array</a></i> <i>upgrading</i>, this <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> can in
+some cases denote a <i><a href="../26-glossary/s.xhtml#supertype">supertype</a></i> of the <i><a href="../26-glossary/e.xhtml#expressedarrayelementtype">expressed array element type</a></i>
+of the <i>array</i>.)
+
+
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (array-element-type (make-array 4)) →  T
+ (array-element-type (make-array 12 :element-type '(unsigned-byte 8))) 
+→ <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (array-element-type (make-array 12 :element-type '(unsigned-byte 5)))
+→ <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+</pre>
+
+<pre> (array-element-type (make-array 5 :element-type '(mod 5)))
+</pre>
+could be <code>(mod 5)</code>, <code>(mod 8)</code>, <code>fixnum</code>, <code>t</code>, or any other
+type of which <code>(mod 5)</code> is a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i>.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if its argument is not an <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="15.2.1-array.xhtml#DictEntry_array_979"><b>array</b></a>,
+<a href="15.2.7-make-array.xhtml#DictEntry_make_array_985"><b>make-array</b></a>,
+<a href="../4-types-and-classes/4.4.26-subtypep.xhtml#DictEntry_subtypep_361"><b>subtypep</b></a>,
+<a href="15.2.23-upgraded-array-element-type.xhtml#DictEntry_upgraded_arr_1001"><b>upgraded-array-element-type</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

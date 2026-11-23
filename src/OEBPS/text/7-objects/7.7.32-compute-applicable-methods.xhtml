@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.7.32 compute-applicable-methods — Standard Generic Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_compute_appl_588" class="entry"><span class="secno">7.7.32</span> <span class="names">compute-applicable-methods</span> <span class="kind">Standard Generic Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>compute-applicable-methods</b>
+<i>generic-function function-arguments</i>
+  → <i>methods</i>
+</dd><dt><b>Method Signatures:</b></dt><dd>
+
+<b>compute-applicable-methods</b>
+<i>(<i>generic-function</i> <a href="../4-types-and-classes/4.4.6-standard-generic-function.xhtml#DictEntry_standard_gen_341"><b>standard-generic-function</b></a>)</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>generic-function</i>—a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>.
+
+<p>
+<i>function-arguments</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of arguments for the <i>generic-function</i>.
+
+</p><p>
+<i>methods</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/m.xhtml#method">method</a></i> <i><a href="../26-glossary/o.xhtml#object">objects</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Given a <i>generic-function</i> and a set of 
+<i>function-arguments</i>, the function
+
+
+
+
+
+
+
+
+
+
+<a href="#DictEntry_compute_appl_588"><b>compute-applicable-methods</b></a> returns the set of <i><a href="../26-glossary/m.xhtml#method">methods</a></i>
+that are applicable for those arguments
+sorted according to precedence order.
+See Section <a href="7.6-generic-functions-and-methods.xhtml#SubSection_Method_Selec_547">7.6.6 Method Selection and Combination</a>.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="7.7.27-defmethod.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="7.6-generic-functions-and-methods.xhtml#SubSection_Method_Selec_547">7.6.6 Method Selection and Combination</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

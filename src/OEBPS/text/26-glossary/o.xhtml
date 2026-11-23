@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Glossary — O</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="glossary">
+<section>
+<h3 id="GlossaryEntr_O_1474" class="letter">O</h3>
+<dl>
+<dt id="object"><b>object:</b></dt><dd> <i>n.</i> 
+  1. any Lisp datum. 
+     The function <a href="../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916"><b>cons</b></a> creates an object which refers
+               to two other objects.
+  2. (immediately following the name of a <i><a href="t.xhtml#type">type</a></i>)
+     an <i><a href="#object">object</a></i> which is of that <i><a href="t.xhtml#type">type</a></i>, used to emphasize that the
+     <i><a href="#object">object</a></i> is not just a <i><a href="n.xhtml#name">name</a></i> for an object of that <i><a href="t.xhtml#type">type</a></i>
+     but really an <i><a href="e.xhtml#element">element</a></i> of the <i><a href="t.xhtml#type">type</a></i> in cases where <i><a href="#object">objects</a></i>
+     of that <i><a href="t.xhtml#type">type</a></i> (such as <a href="../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338"><b>function</b></a> or <a href="../4-types-and-classes/4.4.7-class.xhtml#DictEntry_class_342"><b>class</b></a>) are commonly
+     referred to by <i><a href="n.xhtml#name">name</a></i>.
+     The function <a href="../10-symbols/10.2.10-symbol-function.xhtml#DictEntry_symbol_funct_684"><b>symbol-function</b></a> takes a function name 
+	       and returns a function object.
+
+<p>
+<span id="objecttraversing"/></p></dd><dt><b>object-traversing:</b></dt><dd> <i>adj.</i> 
+  operating in succession on components of an <i><a href="#object">object</a></i>.
+  The operators <a href="../14-conses/14.2.34-mapc.xhtml#DictEntry_mapc_mapcar_947"><b>mapcar</b></a>, <a href="../18-hash-tables/18.2.11-maphash.xhtml#DictEntry_maphash_1088"><b>maphash</b></a>, 
+	    <a href="../11-packages/11.2.13-with-package-iterator.xhtml#DictEntry_with_package_728"><b>with-package-iterator</b></a> and <a href="../17-sequences/17.3.10-count.xhtml#DictEntry_count_count_1050"><b>count</b></a>
+ 	    perform object-traversing operations.
+
+<p>
+<span id="open"/></p></dd><dt><b>open:</b></dt><dd> <i>adj.</i>, <i>v.t.</i> (a <i><a href="f.xhtml#file">file</a></i>)
+  1. <i>v.t.</i> to create and return a <i><a href="s.xhtml#stream">stream</a></i> to the <i><a href="f.xhtml#file">file</a></i>.
+  2. <i>adj.</i> (of a <i><a href="s.xhtml#stream">stream</a></i>)
+     having been <i>opened</i><sub>1</sub>, but not yet <i><a href="c.xhtml#closed">closed</a></i>.
+
+<p>
+<span id="operator"/></p></dd><dt><b>operator:</b></dt><dd> <i>n.</i> 
+  1. a <i><a href="f.xhtml#function">function</a></i>, <i><a href="m.xhtml#macro">macro</a></i>, or <i><a href="s.xhtml#specialoperator">special operator</a></i>.
+  2. a <i><a href="s.xhtml#symbol">symbol</a></i> that names
+     such a <i><a href="f.xhtml#function">function</a></i>, <i><a href="m.xhtml#macro">macro</a></i>, or <i><a href="s.xhtml#specialoperator">special operator</a></i>.
+  3. (in a <a href="../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338"><b>function</b></a> <i><a href="s.xhtml#specialform">special form</a></i>)
+     the <i><a href="c.xhtml#cadr">cadr</a></i> of the <a href="../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338"><b>function</b></a> <i><a href="s.xhtml#specialform">special form</a></i>, which 
+     might be either an <i><a href="#operator">operator</a></i><sub>2</sub> or a <i><a href="l.xhtml#lambdaexpression">lambda expression</a></i>.
+
+
+  4. (of a <i><a href="c.xhtml#compoundform">compound form</a></i>)
+     the <i><a href="c.xhtml#car">car</a></i> of the <i><a href="c.xhtml#compoundform">compound form</a></i>, which might be 
+     either an <i><a href="#operator">operator</a></i><sub>2</sub>
+     or a <i><a href="l.xhtml#lambdaexpression">lambda expression</a></i>, and which is never <code>(setf <i><a href="s.xhtml#symbol">symbol</a></i>)</code>.
+
+<p>
+<span id="optimizequality"/></p></dd><dt><b>optimize quality:</b></dt><dd> <i>n.</i> 
+  one of several aspects of a program that might be optimizable by
+  certain compilers.  Since optimizing one such quality
+  might conflict with optimizing another, relative priorities for
+  qualities can be established in an <a href="../3-evaluation-and-compilation/3.8.25-optimize.xhtml#DictEntry_optimize_307"><b>optimize</b></a> <i><a href="d.xhtml#declaration">declaration</a></i>.
+  The <i><a href="s.xhtml#standardized">standardized</a></i> <i>optimize qualities</i> are
+    <code>compilation-speed</code> (speed of the compilation process), 
+
+    <code>debug</code> (ease of debugging),
+
+    <code>safety</code> (run-time error checking),
+    <code>space</code> (both code size and run-time space),
+  and
+    <code>speed</code> (of the object code).
+  <i><a href="i.xhtml#implementation">Implementations</a></i> may define additional <i>optimize qualities</i>.
+
+<p>
+<span id="optionalparameter"/></p></dd><dt><b>optional parameter:</b></dt><dd> <i>n.</i>   A <i><a href="p.xhtml#parameter">parameter</a></i> for which a corresponding positional <i><a href="a.xhtml#argument">argument</a></i>
+  is optional.  If the <i><a href="a.xhtml#argument">argument</a></i> is not supplied, a default value
+  is used.  See also <i><a href="s.xhtml#suppliedpparameter">supplied-p parameter</a></i>.
+
+<p>
+<span id="ordinaryfunction"/></p></dd><dt><b>ordinary function:</b></dt><dd> <i>n.</i> 
+  a <i><a href="f.xhtml#function">function</a></i> that is not a <i><a href="g.xhtml#genericfunction">generic function</a></i>.
+
+<p>
+<span id="ordinarylambdalist"/></p></dd><dt><b>ordinary lambda list:</b></dt><dd> <i>n.</i> 
+  the kind of <i><a href="l.xhtml#lambdalist">lambda list</a></i> used by <a href="../3-evaluation-and-compilation/3.8.1-lambda.xhtml#DictEntry_lambda_283"><b>lambda</b></a>.
+  See <i><a href="m.xhtml#modifiedlambdalist">modified lambda list</a></i> and <i><a href="e.xhtml#extendedlambdalist">extended lambda list</a></i>.
+  <a href="../5-data-and-control-flow/5.3.2-defun.xhtml#DictEntry_defun_388"><b>defun</b></a> uses an ordinary lambda list.
+
+<p>
+<span id="otherwiseinaccessiblepart"/></p></dd><dt><b>otherwise inaccessible part:</b></dt><dd> <i>n.</i> (of an <i><a href="#object">object</a></i>, <i>O<sub>1</sub></i>)
+  an <i><a href="#object">object</a></i>, <i>O<sub>2</sub></i>, which would be made <i><a href="i.xhtml#inaccessible">inaccessible</a></i> if 
+  <i>O<sub>1</sub></i> were made <i><a href="i.xhtml#inaccessible">inaccessible</a></i>.  (Every <i><a href="#object">object</a></i> is an
+  <i><a href="#otherwiseinaccessiblepart">otherwise inaccessible part</a></i> of itself.)
+
+<p>
+<span id="output"/></p></dd><dt><b>output:</b></dt><dd> <i>adj.</i> (of a <i><a href="s.xhtml#stream">stream</a></i>)
+  supporting output operations (<i>i.e.</i>,  being a "data sink").
+  An <i><a href="#output">output</a></i> <i><a href="s.xhtml#stream">stream</a></i> might also be an <i><a href="i.xhtml#input">input</a></i> <i><a href="s.xhtml#stream">stream</a></i>,
+  in which case it is sometimes called a <i><a href="b.xhtml#bidirectional">bidirectional</a></i> <i><a href="s.xhtml#stream">stream</a></i>.
+  See the <i><a href="f.xhtml#function">function</a></i> <a href="../21-streams/21.2.9-input-stream-p.xhtml#DictEntry_input_stream_1200"><b>output-stream-p</b></a>.
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.53 *debug-io*, *error-output*, *query-io*, … — Variable</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_debug_io__1244" class="entry"><span class="secno">21.2.53</span> <span class="names">*debug-io*, *error-output*, *query-io*, *standard-input*, *standard-output*, *trace-output*</span> <span class="kind">Variable</span></h3>
+<dl>
+
+
+<dt><b>Value Type:</b></dt><dd>
+
+For <a href="#DictEntry_debug_io__1244"><b>*standard-input*</b></a>:
+ an <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>
+
+<p>
+For <a href="#DictEntry_debug_io__1244"><b>*error-output*</b></a>, <a href="#DictEntry_debug_io__1244"><b>*standard-output*</b></a>, and <a href="#DictEntry_debug_io__1244"><b>*trace-output*</b></a>:
+ an <i><a href="../26-glossary/o.xhtml#output">output</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
+
+</p><p>
+For <a href="#DictEntry_debug_io__1244"><b>*debug-io*</b></a>, <a href="#DictEntry_debug_io__1244"><b>*query-io*</b></a>:
+ a <i><a href="../26-glossary/b.xhtml#bidirectional">bidirectional</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
+
+</p></dd><dt><b>Initial Value:</b></dt><dd>
+
+<i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>, but
+it must be an <i><a href="../26-glossary/o.xhtml#open">open</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> 
+that is not a  <i><a href="../26-glossary/g.xhtml#generalizedsynonymstream">generalized synonym stream</a></i>
+to an <i>I/O customization variables</i>
+but that might be a <i><a href="../26-glossary/g.xhtml#generalizedsynonymstream">generalized synonym stream</a></i> to 
+the value of some <i>I/O customization variable</i>.
+The initial value might also be a <i><a href="../26-glossary/g.xhtml#generalizedsynonymstream">generalized synonym stream</a></i> 
+to either the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="21.2.54-terminal-io.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a> or to the <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> 
+that is its <i><a href="../26-glossary/v.xhtml#value">value</a></i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+These <i><a href="../26-glossary/v.xhtml#variable">variables</a></i> are collectively called the
+<i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> <i>I/O customization variables</i>.
+They can be <i><a href="../26-glossary/b.xhtml#bound">bound</a></i> or <i>assigned</i> in order to 
+change the default destinations for input and/or output 
+used by various <i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> <i><a href="../26-glossary/o.xhtml#operator">operators</a></i> and facilities.
+
+<p>
+
+The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEntry_debug_io__1244"><b>*debug-io*</b></a>, called <i>debug I/O</i>,
+is a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> to be used for interactive debugging purposes.  
+
+</p><p>
+
+The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEntry_debug_io__1244"><b>*error-output*</b></a>, called <i><a href="../26-glossary/e.xhtml#erroroutput">error output</a></i>,
+is a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> to which warnings and non-interactive error messages should be sent.
+
+</p><p>
+
+The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEntry_debug_io__1244"><b>*query-io*</b></a>, called <i>query I/O</i>,
+is a <i><a href="../26-glossary/b.xhtml#bidirectional">bidirectional</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> 
+to be used when asking questions of the user.  The question should be output 
+to this <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>, and the answer read from it.
+
+</p><p>
+
+The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEntry_debug_io__1244"><b>*standard-input*</b></a>, called <i><a href="../26-glossary/s.xhtml#standardinput">standard input</a></i>,
+is a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> that is used by many <i><a href="../26-glossary/o.xhtml#operator">operators</a></i> 
+as a default source of input when no specific <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>
+is explicitly supplied.
+ 
+
+</p><p>
+The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEntry_debug_io__1244"><b>*standard-output*</b></a>, called <i><a href="../26-glossary/s.xhtml#standardoutput">standard output</a></i>,
+is a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> that is used by many <i><a href="../26-glossary/o.xhtml#operator">operators</a></i> 
+as a default destination for output when no specific <i><a href="../26-glossary/o.xhtml#output">output</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>
+is explicitly supplied.
+
+</p><p>
+
+The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEntry_debug_io__1244"><b>*trace-output*</b></a>, called <i><a href="../26-glossary/t.xhtml#traceoutput">trace output</a></i>,
+is the <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> on which traced functions (see <a href="../25-environment/25.2.8-trace.xhtml#DictEntry_trace_untra_1435"><b>trace</b></a>)
+and the <a href="../25-environment/25.2.10-time.xhtml#DictEntry_time_1437"><b>time</b></a> <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> print their output.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (with-output-to-string (*error-output*)
+   (warn "this string is sent to *error-output*"))
+ → "Warning: this string is sent to *error-output*
+" ;The exact format of this string is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+ (with-input-from-string (*standard-input* "1001")
+    (+ 990 (read))) → 1991                       
+
+ (progn (setq out (with-output-to-string (*standard-output*)
+                     (print "print and format t send things to")
+                     (format t "*standard-output* now going to a string")))
+        :done)
+→ :DONE
+ out
+→ "
+\"print and format t send things to\" *standard-output* now going to a string"
+
+ (defun fact (n) (if (&lt; n 2) 1 (* n (fact (- n 1)))))
+→  FACT
+ (trace fact)
+→ (FACT)
+;; Of course, the format of traced output is implementation-dependent.
+ (with-output-to-string (*trace-output*)
+   (fact 3)) 
+→ "
+1 Enter FACT 3
+| 2 Enter FACT 2
+|   3 Enter FACT 1
+|   3 Exit FACT 1
+| 2 Exit FACT 2
+1 Exit FACT 6"
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="21.2.54-terminal-io.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>,
+<a href="21.2.7-synonym-stream.xhtml#DictEntry_synonym_stre_1198"><b>synonym-stream</b></a>,
+<a href="../25-environment/25.2.10-time.xhtml#DictEntry_time_1437"><b>time</b></a>,
+<a href="../25-environment/25.2.8-trace.xhtml#DictEntry_trace_untra_1435"><b>trace</b></a>,
+Chapter <a href="../9-conditions/index.xhtml#Chapter_Conditions_602">9 Conditions</a>,
+Chapter <a href="../23-reader/index.xhtml#Chapter_Reader_1372">23 Reader</a>,
+Chapter <a href="../22-printer/index.xhtml#Chapter_Printer_1249">22 Printer</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+The intent of the constraints on the initial <i><a href="../26-glossary/v.xhtml#value">value</a></i> 
+of the <i>I/O customization variables</i> is to ensure that it
+is always safe to <i><a href="../26-glossary/b.xhtml#bind">bind</a></i> or <i><a href="../26-glossary/a.xhtml#assign">assign</a></i> such a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> to 
+the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of another <i>I/O customization variable</i>, without
+unduly restricting <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> flexibility.
+
+
+<p>
+It is common for an <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> to make
+the initial <i><a href="../26-glossary/v.xhtml#value">values</a></i> of <a href="#DictEntry_debug_io__1244"><b>*debug-io*</b></a> and <a href="#DictEntry_debug_io__1244"><b>*query-io*</b></a> 
+be the <i><a href="../26-glossary/s.xhtml#same">same</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>, 
+and to make
+the initial <i><a href="../26-glossary/v.xhtml#value">values</a></i> of <a href="#DictEntry_debug_io__1244"><b>*error-output*</b></a> and <a href="#DictEntry_debug_io__1244"><b>*standard-output*</b></a> 
+be the <i><a href="../26-glossary/s.xhtml#same">same</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
+
+</p><p>
+The functions <a href="21.2.37-y-or-n-p.xhtml#DictEntry_y_or_n_p_ye_1228"><b>y-or-n-p</b></a> and <a href="21.2.37-y-or-n-p.xhtml#DictEntry_y_or_n_p_ye_1228"><b>yes-or-no-p</b></a> use <i>query I/O</i>
+for their input and output.
+
+</p><p>
+
+
+In the normal <i>Lisp read-eval-print loop</i>,
+input is read from <i><a href="../26-glossary/s.xhtml#standardinput">standard input</a></i>.
+Many input functions, including <a href="../23-reader/23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> and <a href="21.2.17-read-char.xhtml#DictEntry_read_char_1208"><b>read-char</b></a>,
+take a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> argument that defaults to <i><a href="../26-glossary/s.xhtml#standardinput">standard input</a></i>.
+
+</p><p>
+
+In the normal <i>Lisp read-eval-print loop</i>, output is sent to <i><a href="../26-glossary/s.xhtml#standardoutput">standard output</a></i>.
+Many output functions, including <a href="../22-printer/22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>print</b></a> and <a href="21.2.21-write-char.xhtml#DictEntry_write_char_1212"><b>write-char</b></a>, 
+take a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> argument that defaults to <i><a href="../26-glossary/s.xhtml#standardoutput">standard output</a></i>.
+
+</p><p>
+
+A program that wants, for example, to divert output to a file should do so by 
+<i><a href="../26-glossary/b.xhtml#binding">binding</a></i> <a href="#DictEntry_debug_io__1244"><b>*standard-output*</b></a>; that way error messages sent to
+<a href="#DictEntry_debug_io__1244"><b>*error-output*</b></a> can still get to the user by going through
+<a href="21.2.54-terminal-io.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a> (if <a href="#DictEntry_debug_io__1244"><b>*error-output*</b></a> is bound to <a href="21.2.54-terminal-io.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>),
+which is usually what is desired.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

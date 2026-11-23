@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.38 make-synonym-stream — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_make_synonym_1229" class="entry"><span class="secno">21.2.38</span> <span class="names">make-synonym-stream</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>make-synonym-stream</b>
+<i>symbol</i>
+  → <i>synonym-stream</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>symbol</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> that names a <i><a href="../26-glossary/d.xhtml#dynamicvariable">dynamic variable</a></i>.
+
+<p>
+
+<i>synonym-stream</i>—a <i><a href="../26-glossary/s.xhtml#synonymstream">synonym stream</a></i>.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns a <i><a href="../26-glossary/s.xhtml#synonymstream">synonym stream</a></i> whose <i><a href="../26-glossary/s.xhtml#synonymstreamsymbol">synonym stream symbol</a></i> is <i>symbol</i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq a-stream (make-string-input-stream "a-stream")
+        b-stream (make-string-input-stream "b-stream"))
+→ #&lt;String Input Stream&gt; 
+ (setq s-stream (make-synonym-stream 'c-stream))
+→ #&lt;SYNONYM-STREAM for C-STREAM&gt; 
+ (setq c-stream a-stream)
+→ #&lt;String Input Stream&gt; 
+ (read s-stream) →  A-STREAM
+ (setq c-stream b-stream)
+→ #&lt;String Input Stream&gt; 
+ (read s-stream) →  B-STREAM
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if its argument is not a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="21.1-stream-concepts.xhtml#Section_Stream_Conce_1179">21.1 Stream Concepts</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

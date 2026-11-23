@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Glossary — R</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="glossary">
+<section>
+<h3 id="GlossaryEntr_R_1477" class="letter">R</h3>
+<dl>
+<dt id="radix"><b>radix:</b></dt><dd> <i>n.</i>   an <i><a href="i.xhtml#integer">integer</a></i> between 2 and 36, inclusive, which can be used 
+  to designate a base with respect to which certain kinds of numeric
+  input or output are performed.  
+
+  (There are <i>n</i> valid digit characters for any given <i><a href="#radix">radix</a></i> <i>n</i>,
+   and those digits are the first <i>n</i> digits in the sequence
+   <code>0</code>, <code>1</code>, <i> ... </i>, <code>9</code>, <code>A</code>, <code>B</code>, <i> ... </i>, <code>Z</code>,
+   which have the weights   
+   <code>0</code>, <code>1</code>, <i> ... </i>, <code>9</code>, <code>10</code>, <code>11</code>, <i> ... </i>, <code>35</code>,
+   respectively.
+   Case is not significant in parsing numbers of radix greater
+   than <code>10</code>, so "9b8a" and "9B8A" denote the same <i><a href="#radix">radix</a></i>
+   <code>16</code> number.)
+
+<p>
+<span id="randomstate"/></p></dd><dt><b>random state:</b></dt><dd> <i>n.</i> 
+  an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../12-numbers/12.2.39-random-state.xhtml#DictEntry_random_state_813"><b>random-state</b></a>.
+
+<p>
+<span id="rank"/></p></dd><dt><b>rank:</b></dt><dd> <i>n.</i> 
+  a non-negative <i><a href="i.xhtml#integer">integer</a></i> indicating the number of
+  <i><a href="d.xhtml#dimension">dimensions</a></i> of an <i><a href="a.xhtml#array">array</a></i>.
+
+<p>
+<span id="ratio"/></p></dd><dt><b>ratio:</b></dt><dd> <i>n.</i> 
+  an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../12-numbers/12.2.7-ratio.xhtml#DictEntry_ratio_781"><b>ratio</b></a>.
+
+<p>
+<span id="ratiomarker"/></p></dd><dt><b>ratio marker:</b></dt><dd> <i>n.</i> 
+  a character which is used in the textual notation for a <i><a href="#ratio">ratio</a></i>
+  to separate the numerator from the denominator, and which
+  is <i><a href="s.xhtml#slash">slash</a></i> in the <i><a href="s.xhtml#standardreadtable">standard readtable</a></i>.
+  See Section <a href="../2-syntax/2.1-character-syntax.xhtml#Section_Character_Sy_108">2.1 Character Syntax</a>.
+
+<p>
+<span id="rational"/></p></dd><dt><b>rational:</b></dt><dd> <i>n.</i> 
+  an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../12-numbers/12.2.6-rational.xhtml#DictEntry_rational_780"><b>rational</b></a>.
+
+<p>
+<span id="read"/></p></dd><dt><b>read:</b></dt><dd> <i>v.t.</i> 
+
+  1. (a <i><a href="b.xhtml#binding">binding</a></i> or <i><a href="s.xhtml#slot">slot</a></i> or component)
+     to obtain the <i><a href="v.xhtml#value">value</a></i> of the <i><a href="b.xhtml#binding">binding</a></i> or <i><a href="s.xhtml#slot">slot</a></i>.
+
+  2. (an <i><a href="o.xhtml#object">object</a></i> from a <i><a href="s.xhtml#stream">stream</a></i>)
+     to parse an <i><a href="o.xhtml#object">object</a></i> from its representation on the <i><a href="s.xhtml#stream">stream</a></i>.
+
+<p>
+<span id="readably"/></p></dd><dt><b>readably:</b></dt><dd> <i>adv.</i> (of a manner of printing an <i><a href="o.xhtml#object">object</a></i> <i>O<sub>1</sub></i>)
+  in such a way as to permit the <i>Lisp Reader</i> to later <i>parse</i>
+  the printed output into an <i><a href="o.xhtml#object">object</a></i> <i>O<sub>2</sub></i> that is <i><a href="s.xhtml#similar">similar</a></i> to <i>O<sub>1</sub></i>.
+
+<p>
+<span id="reader"/></p></dd><dt><b>reader:</b></dt><dd> <i>n.</i>   1. a <i><a href="f.xhtml#function">function</a></i> that <i><a href="#read">reads</a></i><sub>1</sub> a <i><a href="v.xhtml#variable">variable</a></i> or <i><a href="s.xhtml#slot">slot</a></i>.
+  2. the <i>Lisp reader</i>.
+
+<p>
+<span id="readermacro"/></p></dd><dt><b>reader macro:</b></dt><dd> <i>n.</i>   1. a textual notation introduced by dispatch on one or two <i><a href="c.xhtml#character">characters</a></i> 
+     that defines special-purpose syntax for use by the <i>Lisp reader</i>,
+     and that is implemented by a <i><a href="#readermacrofunction">reader macro function</a></i>.
+     See Section <a href="../2-syntax/2.2-reader-algorithm.xhtml#Section_Reader_Algor_126">2.2 Reader Algorithm</a>.
+  2. the <i><a href="c.xhtml#character">character</a></i> or <i><a href="c.xhtml#character">characters</a></i> that introduce
+     a <i><a href="#readermacro">reader macro</a></i><sub>1</sub>; that is,
+        a <i><a href="m.xhtml#macrocharacter">macro character</a></i>
+     or the conceptual pairing of a <i><a href="d.xhtml#dispatchingmacrocharacter">dispatching macro character</a></i> and the
+          <i><a href="c.xhtml#character">character</a></i> that follows it.
+  (A <i><a href="#readermacro">reader macro</a></i> is not a kind of <i><a href="m.xhtml#macro">macro</a></i>.)
+
+<p>
+<span id="readermacrofunction"/></p></dd><dt><b>reader macro function:</b></dt><dd> <i>n.</i>   a <i><a href="f.xhtml#function">function</a></i> <i><a href="d.xhtml#designator">designator</a></i> that denotes a <i><a href="f.xhtml#function">function</a></i>
+  that implements a <i><a href="#readermacro">reader macro</a></i><sub>2</sub>.
+  See the <i><a href="f.xhtml#function">functions</a></i> <a href="../23-reader/23.2.10-set-macro-character.xhtml#DictEntry_set_macro_ch_1390"><b>set-macro-character</b></a> and <a href="../23-reader/23.2.9-set-dispatch-macro-character.xhtml#DictEntry_set_dispatch_1389"><b>set-dispatch-macro-character</b></a>.
+
+<p>
+<span id="readtable"/></p></dd><dt><b>readtable:</b></dt><dd> <i>n.</i>   an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../23-reader/23.2.1-readtable.xhtml#DictEntry_readtable_1381"><b>readtable</b></a>.
+
+<p>
+<span id="readtablecase"/></p></dd><dt><b>readtable case:</b></dt><dd> <i>n.</i>   an attribute of a <i><a href="#readtable">readtable</a></i>
+  whose value is a <i><a href="c.xhtml#casesensitivitymode">case sensitivity mode</a></i>,
+  and that selects the manner in which <i><a href="c.xhtml#character">characters</a></i>
+       in a <i><a href="s.xhtml#symbol">symbol</a></i>'s <i><a href="n.xhtml#name">name</a></i> are to be treated by
+            the <i>Lisp reader</i>
+        and the <i>Lisp printer</i>.
+  See Section <a href="../23-reader/23.1-reader-concepts.xhtml#SubSection_Effect_of_Re_1375">23.1.2 Effect of Readtable Case on the Lisp Reader</a> and Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSubSec_Effect_of_Re_1265">22.1.3.3.2 Effect of Readtable Case on the Lisp Printer</a>.
+
+<p>
+<span id="readtabledesignator"/></p></dd><dt><b>readtable designator:</b></dt><dd> <i>n.</i>   a <i><a href="d.xhtml#designator">designator</a></i> for a <i><a href="#readtable">readtable</a></i>; that is,
+  an <i><a href="o.xhtml#object">object</a></i> that denotes a <i><a href="#readtable">readtable</a></i>
+  and that is one of:
+       <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> (denoting the <i><a href="s.xhtml#standardreadtable">standard readtable</a></i>),
+    or a <i><a href="#readtable">readtable</a></i> (denoting itself).
+
+<p>
+<span id="recognizablesubtype"/></p></dd><dt><b>recognizable subtype:</b></dt><dd> <i>n.</i> (of a <i><a href="t.xhtml#type">type</a></i>)
+  a <i><a href="s.xhtml#subtype">subtype</a></i> of the <i><a href="t.xhtml#type">type</a></i> which can be reliably detected 
+  to be such by the <i><a href="i.xhtml#implementation">implementation</a></i>.
+  See the <i><a href="f.xhtml#function">function</a></i> <a href="../4-types-and-classes/4.4.26-subtypep.xhtml#DictEntry_subtypep_361"><b>subtypep</b></a>.
+
+<p>
+<span id="reference"/></p></dd><dt><b>reference:</b></dt><dd> <i>n.</i>, <i>v.t.</i> 
+  1. <i>n.</i> an act or occurrence of referring to an <i><a href="o.xhtml#object">object</a></i>,
+     a <i><a href="b.xhtml#binding">binding</a></i>, an <i><a href="e.xhtml#exitpoint">exit point</a></i>, a <i><a href="t.xhtml#tag">tag</a></i>, 
+     or an <i><a href="e.xhtml#environment">environment</a></i>.
+
+  2. <i>v.t.</i> to refer to an <i><a href="o.xhtml#object">object</a></i>, a <i><a href="b.xhtml#binding">binding</a></i>, an
+     <i><a href="e.xhtml#exitpoint">exit point</a></i>, a <i><a href="t.xhtml#tag">tag</a></i>, or an <i><a href="e.xhtml#environment">environment</a></i>,
+     usually by <i><a href="n.xhtml#name">name</a></i>.
+
+<p>
+<span id="registeredpackage"/></p></dd><dt><b>registered package:</b></dt><dd> <i>n.</i>   a <i><a href="p.xhtml#package">package</a></i> <i><a href="o.xhtml#object">object</a></i> that is installed in the <i><a href="p.xhtml#packageregistry">package registry</a></i>.
+  (Every <i><a href="#registeredpackage">registered package</a></i> has a <i><a href="n.xhtml#name">name</a></i> that is a <i><a href="s.xhtml#string">string</a></i>,
+   as well as zero or more <i><a href="s.xhtml#string">string</a></i> nicknames.
+   All <i><a href="p.xhtml#package">packages</a></i> that are initially specified by <i>Common Lisp</i> 
+   or created by <a href="../11-packages/11.2.12-make-package.xhtml#DictEntry_make_package_727"><b>make-package</b></a> or <a href="../11-packages/11.2.19-defpackage.xhtml#DictEntry_defpackage_734"><b>defpackage</b></a>
+   are <i><a href="#registeredpackage">registered packages</a></i>.  <i><a href="#registeredpackage">Registered packages</a></i> can be turned into
+   <i><a href="u.xhtml#unregisteredpackage">unregistered packages</a></i> by <a href="../11-packages/11.2.11-delete-package.xhtml#DictEntry_delete_packa_726"><b>delete-package</b></a>.)
+
+<p>
+<span id="relative"/></p></dd><dt><b>relative:</b></dt><dd> <i>adj.</i>   1. (of a <i><a href="t.xhtml#time">time</a></i>)
+     representing an offset from an <i><a href="a.xhtml#absolute">absolute</a></i> <i><a href="t.xhtml#time">time</a></i>
+     in the units appropriate to that time.
+     For example, 
+     a <i><a href="#relative">relative</a></i> <i><a href="i.xhtml#internaltime">internal time</a></i> is the difference between
+     two <i><a href="a.xhtml#absolute">absolute</a></i> <i><a href="i.xhtml#internaltime">internal times</a></i>, and is measured in
+     <i><a href="i.xhtml#internaltimeunit">internal time units</a></i>.
+  2. (of a <i><a href="p.xhtml#pathname">pathname</a></i>)
+     representing a position in a directory hierarchy by motion 
+     from a position other than the root, which might therefore vary.
+     The notation <code>#P"../foo.text"</code> denotes a relative
+	       pathname if the host file system is Unix.
+  See <i><a href="a.xhtml#absolute">absolute</a></i>.
+
+<p>
+<span id="repertoire"/></p></dd><dt><b>repertoire:</b></dt><dd> <i>n.</i>, <i>ISO</i>   a <i><a href="s.xhtml#subtype">subtype</a></i> of <a href="../13-characters/13.2.1-character.xhtml#DictEntry_character_884"><b>character</b></a>.  See Section <a href="../13-characters/13.1-character-concepts.xhtml#SubSubSectio_Character_Re_864">13.1.2.2 Character Repertoires</a>.
+
+<p>
+<span id="report"/></p></dd><dt><b>report:</b></dt><dd> <i>n.</i> (of a <i><a href="c.xhtml#condition">condition</a></i>)
+  to <i><a href="c.xhtml#call">call</a></i> the <i><a href="f.xhtml#function">function</a></i> <a href="../22-printer/22.4.11-print-object.xhtml#DictEntry_print_object_1351"><b>print-object</b></a> on the <i><a href="c.xhtml#condition">condition</a></i> 
+  in an <i><a href="e.xhtml#environment">environment</a></i> where the <i><a href="v.xhtml#value">value</a></i> of <a href="../22-printer/22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> is <i><a href="f.xhtml#false">false</a></i>.
+
+<p>
+<span id="reportmessage"/></p></dd><dt><b>report message:</b></dt><dd> <i>n.</i>   the text that is output by a <i><a href="c.xhtml#conditionreporter">condition reporter</a></i>.
+
+<p>
+<span id="requiredparameter"/></p></dd><dt><b>required parameter:</b></dt><dd> <i>n.</i>   A <i><a href="p.xhtml#parameter">parameter</a></i> for which a corresponding positional <i><a href="a.xhtml#argument">argument</a></i>
+  must be supplied when <i>calling</i> the <i><a href="f.xhtml#function">function</a></i>.
+
+<p>
+<span id="restlist"/></p></dd><dt><b>rest list:</b></dt><dd> <i>n.</i> (of a <i><a href="f.xhtml#function">function</a></i> having a <i><a href="#restparameter">rest parameter</a></i>)
+  The <i><a href="l.xhtml#list">list</a></i> to which the <i><a href="#restparameter">rest parameter</a></i> is <i><a href="b.xhtml#bound">bound</a></i> on some
+  particular <i><a href="c.xhtml#call">call</a></i> to the <i><a href="f.xhtml#function">function</a></i>.
+
+<p>
+<span id="restparameter"/></p></dd><dt><b>rest parameter:</b></dt><dd> <i>n.</i>   A <i><a href="p.xhtml#parameter">parameter</a></i> which was introduced by <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a>.
+
+<p>
+<span id="restart"/></p></dd><dt><b>restart:</b></dt><dd> <i>n.</i> 
+  an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.31-restart.xhtml#DictEntry_restart_656"><b>restart</b></a>.
+
+<p>
+<span id="restartdesignator"/></p></dd><dt><b>restart designator:</b></dt><dd> <i>n.</i>   a <i><a href="d.xhtml#designator">designator</a></i> for a <i><a href="#restart">restart</a></i>; that is,
+  an <i><a href="o.xhtml#object">object</a></i> that denotes a <i><a href="#restart">restart</a></i>
+  and that is one of:
+       a <i><a href="n.xhtml#nonnil">non-nil</a></i> <i><a href="s.xhtml#symbol">symbol</a></i> 
+	 (denoting the most recently established <i><a href="a.xhtml#active">active</a></i>
+	  <i><a href="#restart">restart</a></i> whose <i><a href="n.xhtml#name">name</a></i> is that <i><a href="s.xhtml#symbol">symbol</a></i>),
+    or a <i><a href="#restart">restart</a></i> (denoting itself).
+
+<p>
+<span id="restartfunction"/></p></dd><dt><b>restart function:</b></dt><dd> <i>n.</i>   a <i><a href="f.xhtml#function">function</a></i> that invokes a <i><a href="#restart">restart</a></i>, as if by <a href="../9-conditions/9.2.34-invoke-restart.xhtml#DictEntry_invoke_resta_659"><b>invoke-restart</b></a>.
+  The primary purpose of a <i><a href="#restartfunction">restart function</a></i> is to provide an alternate
+  interface. By convention, a <i><a href="#restartfunction">restart function</a></i> usually has the same name 
+  as the <i><a href="#restart">restart</a></i> which it invokes. The next figure shows a list of the
+  <i><a href="s.xhtml#standardized">standardized</a></i> <i><a href="#restartfunction">restart functions</a></i>.
+
+<table id="fig-26-4" class="fig">
+<caption><span class="figlabel">Figure 26-4.</span> Standardized Restart Functions</caption>
+
+  <tbody><tr>
+    <td>abort</td>
+    <td>muffle-warning</td>
+    <td>use-value</td>
+  </tr>
+  <tr>
+    <td>continue</td>
+    <td>store-value</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+<span id="return"/></p></dd><dt><b>return:</b></dt><dd> <i>v.t.</i> (of <i><a href="v.xhtml#value">values</a></i>)
+  1. (from a <i><a href="b.xhtml#block">block</a></i>) to transfer control and <i><a href="v.xhtml#value">values</a></i> from the <i><a href="b.xhtml#block">block</a></i>;
+     that is, to cause the <i><a href="b.xhtml#block">block</a></i> to <i><a href="y.xhtml#yield">yield</a></i> the <i><a href="v.xhtml#value">values</a></i> immediately
+     without doing any further evaluation of the <i><a href="f.xhtml#form">forms</a></i> in its body.
+  2. (from a <i><a href="f.xhtml#form">form</a></i>) to <i><a href="y.xhtml#yield">yield</a></i> the <i><a href="v.xhtml#value">values</a></i>.
+
+<p>
+<span id="returnvalue"/></p></dd><dt><b>return value:</b></dt><dd> <i>n.</i> <i>Trad.</i> 
+  a <i><a href="v.xhtml#value">value</a></i><sub>1</sub>
+
+<p>
+<span id="rightparenthesis"/></p></dd><dt><b>right-parenthesis:</b></dt><dd> <i>n.</i>   the <i><a href="s.xhtml#standardcharacter">standard character</a></i> "<code>)</code>",
+  that is variously called
+      "right parenthesis"
+   or "close parenthesis"
+  See <a href="../2-syntax/2.1-character-syntax.xhtml#fig-2-5">Figure 2-5</a>.
+
+<p>
+<span id="runtime"/></p></dd><dt><b>run time:</b></dt><dd> <i>n.</i>   1. <i><a href="l.xhtml#loadtime">load time</a></i>
+  2. <i><a href="e.xhtml#executiontime">execution time</a></i>
+
+<p>
+<span id="runtimecompiler"/></p></dd><dt><b>run-time compiler:</b></dt><dd> <i>n.</i>   refers to the <a href="../3-evaluation-and-compilation/3.8.3-compile.xhtml#DictEntry_compile_285"><b>compile</b></a> function or to <i><a href="i.xhtml#implicitcompilation">implicit compilation</a></i>, 
+  for which the compilation and run-time <i><a href="e.xhtml#environment">environments</a></i> are maintained 
+  in the same <i>Lisp image</i>.
+
+<p>
+<span id="runtimedefinition"/></p></dd><dt><b>run-time definition:</b></dt><dd> <i>n.</i>   a definition in the <i><a href="#runtimeenvironment">run-time environment</a></i>.
+
+<p>
+<span id="runtimeenvironment"/></p></dd><dt><b>run-time environment:</b></dt><dd> <i>n.</i>   the <i><a href="e.xhtml#environment">environment</a></i> in which a program is <i>executed</i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

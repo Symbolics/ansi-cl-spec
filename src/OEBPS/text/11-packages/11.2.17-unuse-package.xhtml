@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>11.2.17 unuse-package — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_unuse_packag_732" class="entry"><span class="secno">11.2.17</span> <span class="names">unuse-package</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>unuse-package</b>
+<i>packages-to-unuse <code>&amp;optional</code> package</i>
+  → <i><a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+</i><p><i></i>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>packages-to-unuse</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for
+			    a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/p.xhtml#packagedesignator">package designators</a></i>.
+
+
+<p>
+
+
+
+<i>package</i>—a <i><a href="../26-glossary/p.xhtml#packagedesignator">package designator</a></i>.
+ The default is the <i><a href="../26-glossary/c.xhtml#currentpackage">current package</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_unuse_packag_732"><b>unuse-package</b></a> causes <i>package</i> to cease inheriting
+all the <i><a href="../26-glossary/e.xhtml#externalsymbol">external symbols</a></i> of 
+<i>packages-to-unuse</i>; <a href="#DictEntry_unuse_packag_732"><b>unuse-package</b></a> undoes
+the effects of <a href="11.2.18-use-package.xhtml#DictEntry_use_package_733"><b>use-package</b></a>.   The 
+<i>packages-to-unuse</i> 
+are removed from the <i><a href="../26-glossary/u.xhtml#uselist">use list</a></i> of <i>package</i>.
+
+<p>
+
+
+
+Any <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> that have been
+<i>imported</i> into <i>package</i> continue to be <i><a href="../26-glossary/p.xhtml#present">present</a></i> in <i>package</i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (in-package "COMMON-LISP-USER") → #&lt;PACKAGE "COMMON-LISP-USER"&gt;
+ (export (intern "SHOES" (make-package 'temp)) 'temp) →  T
+ (find-symbol "SHOES") →  NIL, NIL
+ (use-package 'temp) →  T
+ (find-symbol "SHOES") →  SHOES, :INHERITED
+ (find (find-package 'temp) (package-use-list 'common-lisp-user)) → #&lt;PACKAGE "TEMP"&gt;
+ (unuse-package 'temp) →  T
+ (find-symbol "SHOES") →  NIL, NIL
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The <i><a href="../26-glossary/u.xhtml#uselist">use list</a></i> of <i>package</i> is modified.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+Current state of the package system.
+
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="11.2.18-use-package.xhtml#DictEntry_use_package_733"><b>use-package</b></a>, <a href="11.2.25-package-use-list.xhtml#DictEntry_package_use__740"><b>package-use-list</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

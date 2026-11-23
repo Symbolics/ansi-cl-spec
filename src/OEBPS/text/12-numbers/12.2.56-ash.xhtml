@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.56 ash — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_ash_830" class="entry"><span class="secno">12.2.56</span> <span class="names">ash</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>ash</b>
+<i>integer count</i>
+  → <i>shifted-integer</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+<p>
+<i>count</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>shifted-integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_ash_830"><b>ash</b></a> performs the arithmetic shift operation on the binary
+representation of <i>integer</i>, which is treated as if it were binary.
+
+<p>
+<a href="#DictEntry_ash_830"><b>ash</b></a> shifts <i>integer</i> arithmetically left by <i>count</i> bit
+positions if <i>count</i> is positive,
+or right <i>count</i> bit positions if <i>count</i> is negative.
+The shifted value of the same sign 
+as <i>integer</i> is returned.
+
+</p><p>
+Mathematically speaking, <a href="#DictEntry_ash_830"><b>ash</b></a> performs the computation
+<code>floor</code>(<i>integer</i>· <i>2<sup><i>count</i></sup></i>).
+
+Logically, <a href="#DictEntry_ash_830"><b>ash</b></a> 
+moves all of the bits in <i>integer</i> to the left,
+adding zero-bits at the right, or moves them to the right,
+discarding bits.  
+
+</p><p>
+<a href="#DictEntry_ash_830"><b>ash</b></a> is defined to behave as if <i>integer</i> were 
+represented in two's complement form, regardless of
+how <i><a href="../26-glossary/i.xhtml#integer">integers</a></i> are represented internally.
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (ash 16 1) → 32
+ (ash 16 0) → 16
+ (ash 16 -1) → 8
+ (ash -100000000000000000000000000000000 -100) → -79
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>integer</i> is not an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>count</i> is not an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+Might signal <a href="12.2.78-arithmetic-error.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a>.
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (logbitp <i>j</i> (ash <i>n</i> <i>k</i>))
+ ==(and (&gt;= <i>j</i> <i>k</i>) (logbitp (- <i>j</i> <i>k</i>) <i>n</i>))
+</pre>
+</dd></dl>
+</section>
+</body>
+</html>

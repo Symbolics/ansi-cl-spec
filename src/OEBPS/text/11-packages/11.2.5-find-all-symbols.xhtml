@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>11.2.5 find-all-symbols — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_find_all_sym_720" class="entry"><span class="secno">11.2.5</span> <span class="names">find-all-symbols</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>find-all-symbols</b>
+<i>string</i>
+  → <i>symbols</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>string</i>—a <i><a href="../26-glossary/s.xhtml#stringdesignator">string designator</a></i>.
+
+<p>
+<i>symbols</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_find_all_sym_720"><b>find-all-symbols</b></a> searches
+ every <i><a href="../26-glossary/r.xhtml#registeredpackage">registered package</a></i>
+ for <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> that have a
+<i><a href="../26-glossary/n.xhtml#name">name</a></i> that is the <i><a href="../26-glossary/s.xhtml#same">same</a></i> (under <a href="../16-strings/16.2.10-string=.xhtml#DictEntry_string_str_1029"><b>string=</b></a>) as
+<i>string</i>.  A <i><a href="../26-glossary/l.xhtml#list">list</a></i> of all such <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> is returned.
+Whether or how the <i><a href="../26-glossary/l.xhtml#list">list</a></i> is ordered is
+<i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (find-all-symbols 'car)
+→ (CAR)
+OR→(CAR VEHICLES:CAR)
+OR→(VEHICLES:CAR CAR)
+ (intern "CAR" (make-package 'temp :use nil)) →  TEMP::CAR, NIL
+ (find-all-symbols 'car)
+→ (TEMP::CAR CAR)
+OR→(CAR TEMP::CAR)
+OR→(TEMP::CAR CAR VEHICLES:CAR)
+OR→(CAR TEMP::CAR VEHICLES:CAR)
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="11.2.3-find-symbol.xhtml#DictEntry_find_symbol_718"><b>find-symbol</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

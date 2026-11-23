@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.23 sinh, cosh, tanh, asinh, acosh, atanh — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_sinh_cosh__797" class="entry"><span class="secno">12.2.23</span> <span class="names">sinh, cosh, tanh, asinh, acosh, atanh</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>sinh</b>
+<i>number</i>
+  → <i>result</i>
+<p>
+<b>cosh</b>
+<i>number</i>
+  → <i>result</i>
+</p><p>
+<b>tanh</b>
+<i>number</i>
+  → <i>result</i>
+</p><p>
+<b>asinh</b>
+<i>number</i>
+  → <i>result</i>
+</p><p>
+<b>acosh</b>
+<i>number</i>
+  → <i>result</i>
+</p><p>
+<b>atanh</b>
+<i>number</i>
+  → <i>result</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>number</i>—a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
+
+<p>
+<i>result</i>—a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+These functions compute the hyperbolic sine, cosine, tangent,
+arc sine, arc cosine, and arc tangent functions, 
+which are mathematically defined for an argument <i>x</i>
+as given in the next figure.
+
+<table id="fig-12-16" class="fig">
+<caption><span class="figlabel">Figure 12-16.</span> Mathematical definitions for hyperbolic functions</caption>
+<tbody><tr><th>Function</th>
+<th>Definition</th>
+</tr>
+
+  <tr>
+    <td>Hyperbolic sine</td>
+    <td><i> (e<sup>x</sup>-e<sup>-x</sup>)/2                       </i></td>
+  </tr>
+  <tr>
+    <td>Hyperbolic cosine</td>
+    <td><i> (e<sup>x</sup>+e<sup>-x</sup>)/2                       </i></td>
+  </tr>
+  <tr>
+    <td>Hyperbolic tangent</td>
+    <td><i> (e<sup>x</sup>-e<sup>-x</sup>)/(e<sup>x</sup>+e<sup>-x</sup>)            </i></td>
+  </tr>
+  <tr>
+    <td>Hyperbolic arc sine</td>
+    <td><i> <code>log </code> (x+sqrt(1+x<sup>2</sup>))            </i></td>
+  </tr>
+  <tr>
+    <td>
+
+Hyperbolic arc cosine</td>
+    <td><i> 2 <code>log </code> (sqrt((x+1)/2) + sqrt((x-1)/2)) </i></td>
+  </tr>
+  <tr>
+    <td>
+
+Hyperbolic arc tangent</td>
+    <td><i> (<code>log </code> (1+x) - <code>log </code>(1-x))/2   </i></td>
+  </tr>
+</tbody></table>
+
+
+
+<p>
+
+The following definition for the inverse hyperbolic cosine
+determines the range and branch cuts:
+
+</p><p><i> <code>arccosh </code> z = 2 <code>log </code> (sqrt((z+1)
+/2) + sqrt((z-1)/2)). </i></p>
+
+
+<p>
+The branch cut for the inverse hyperbolic cosine function
+lies along the real axis to the left of <i>1</i> (inclusive), extending
+indefinitely along the negative real axis, continuous with quadrant II
+and (between <i>0</i> and <i>1</i>) with quadrant I.
+The range is that half-strip of the complex plane containing numbers whose
+real part is non-negative and whose imaginary
+part is between <i>- pi </i> (exclusive) and <i> pi </i> (inclusive).
+A number with real part zero is in the range 
+if its imaginary part is between zero (inclusive) and <i> pi </i> (inclusive).
+
+</p><p>
+
+The following definition for the inverse hyperbolic sine determines
+the range and branch cuts:
+
+</p><p><i> <code>arcsinh </code> z = <code>log </code> (z+sqrt(1+z<sup>2</sup>)). </i></p>
+
+<p>
+The branch cut for the inverse hyperbolic sine function is in two pieces:
+one along the positive imaginary axis above <i>i</i>
+(inclusive), continuous with quadrant I, and one along the negative imaginary
+axis below <i>-i</i> (inclusive), continuous with quadrant III.
+The range is that strip of the complex plane containing numbers whose imaginary
+part is between <i>- pi /2</i> and <i> pi /2</i>.  A number with imaginary
+part equal to <i>- pi /2</i> is in the range if and only if its real
+part is non-positive; a number with imaginary part equal to <i> pi /2</i> is in
+the range if and only if its imaginary part is non-negative.
+
+</p><p>
+
+The following definition for the inverse hyperbolic tangent
+determines the range and branch cuts:
+
+</p><p><i> <code>arctanh </code> z = (<code>log </code> (1+z) - <code>log </code> (1-z))/2. </i></p> 
+
+<p>
+Note that:
+
+</p><p><i> i <code>arctan </code> z = <code>arctanh </code> iz. </i></p>
+
+
+<p>
+
+The branch cut for the inverse hyperbolic tangent function
+is in two pieces: one along the negative real axis to the left of
+<i>-1</i> (inclusive), continuous with quadrant III, and one along
+the positive real axis to the right of <i>1</i> (inclusive), continuous with
+quadrant I.  The points <i>-1</i> and <i>1</i> are excluded from the
+domain.
+The range is that strip of the complex plane containing
+numbers whose imaginary part is between <i>- pi /2</i> and
+<i> pi /2</i>.  A number with imaginary part equal to <i>- pi /2</i>
+is in the range if and only if its real part is strictly negative; a number with
+imaginary part equal to <i> pi /2</i> is in the range if and only if its imaginary
+part is strictly positive.  
+Thus the range of the inverse hyperbolic tangent function is identical to
+that of the inverse hyperbolic sine function with the points
+<i>- pi  i/2</i> and <i> pi  i/2</i> excluded.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (sinh 0) → 0.0 
+ (cosh (complex 0 -1)) → #C(0.540302 -0.0)
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>number</i> is not a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
+Might signal <a href="12.2.78-arithmetic-error.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="12.2.35-log.xhtml#DictEntry_log_809"><b>log</b></a>,
+<a href="12.2.38-sqrt.xhtml#DictEntry_sqrt_isqrt_812"><b>sqrt</b></a>,
+Section <a href="12.1-number-concepts.xhtml#SubSubSectio_Rule_of_Floa_759">12.1.3.3 Rule of Float Substitutability</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The result of <a href="#DictEntry_sinh_cosh__797"><b>acosh</b></a> may be a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i> even if <i>number</i> 
+is not a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i>; this occurs when <i>number</i> is less than one.
+Also, the result of <a href="#DictEntry_sinh_cosh__797"><b>atanh</b></a> may be a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i> even if <i>number</i> 
+is not a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i>; this occurs when the absolute value of <i>number</i> 
+is greater than one.
+
+<p>
+
+The branch cut formulae are mathematically correct, assuming
+completely accurate computation.  
+Implementors should consult a good text on
+numerical analysis.  The formulae given above are not necessarily
+the simplest ones for real-valued computations; they are chosen
+to define the branch cuts in desirable ways for the complex case.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

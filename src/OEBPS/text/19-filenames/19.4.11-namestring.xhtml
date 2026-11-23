@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>19.4.11 namestring, file-namestring, directory-namestring, … — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_namestring__1154" class="entry"><span class="secno">19.4.11</span> <span class="names">namestring, file-namestring, directory-namestring, host-namestring, enough-namestring</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>namestring</b>
+<i>pathname</i>
+  → <i>namestring</i>
+<p>
+<b>file-namestring</b>
+<i>pathname</i>
+  → <i>namestring</i>
+</p><p>
+<b>directory-namestring</b>
+<i>pathname</i>
+  → <i>namestring</i>
+</p><p>
+<b>host-namestring</b>
+<i>pathname</i>
+  → <i>namestring</i>
+</p><p>
+<b>enough-namestring</b>
+<i>pathname <code>&amp;optional</code> defaults</i>
+  → <i>namestring</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>pathname</i>—a <i><a href="../26-glossary/p.xhtml#pathnamedesignator">pathname designator</a></i>.
+                 
+
+<p>
+
+<i>defaults</i>—a <i><a href="../26-glossary/p.xhtml#pathnamedesignator">pathname designator</a></i>.
+
+ The default is the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="19.4.10-default-pathname-defaults.xhtml#DictEntry_default_pat_1153"><b>*default-pathname-defaults*</b></a>.
+
+</p><p>
+<i>namestring</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i> or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+
+
+<p>
+These functions convert <i>pathname</i> into a namestring.
+
+The name represented by <i>pathname</i> is returned as a <i><a href="../26-glossary/n.xhtml#namestring">namestring</a></i>
+in an <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> canonical form.
+
+</p><p>
+
+<a href="#DictEntry_namestring__1154"><b>namestring</b></a> returns the full form of <i>pathname</i>.
+
+</p><p>
+<a href="#DictEntry_namestring__1154"><b>file-namestring</b></a> returns just the name, type, and version
+ components of <i>pathname</i>.
+
+</p><p>
+<a href="#DictEntry_namestring__1154"><b>directory-namestring</b></a> returns the directory name portion.
+
+</p><p>
+<a href="#DictEntry_namestring__1154"><b>host-namestring</b></a> returns the host name. 
+
+
+</p><p>
+<a href="#DictEntry_namestring__1154"><b>enough-namestring</b></a> returns an abbreviated namestring 
+ that is just sufficient to identify the file named by <i>pathname</i>
+ when considered relative to the <i>defaults</i>.
+ It is required that
+
+</p><pre> (merge-pathnames (enough-namestring pathname defaults) defaults)
+==(merge-pathnames (parse-namestring pathname nil defaults) defaults)
+</pre>
+in all cases, and the result of <a href="#DictEntry_namestring__1154"><b>enough-namestring</b></a> is
+the shortest reasonable <i><a href="../26-glossary/s.xhtml#string">string</a></i> that will satisfy this criterion.
+
+<p>
+It is not necessarily possible to construct a valid <i><a href="../26-glossary/n.xhtml#namestring">namestring</a></i> 
+by concatenating some of the three shorter <i><a href="../26-glossary/n.xhtml#namestring">namestrings</a></i> in some order.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (namestring "getty")            
+→ "getty"
+ (setq q (make-pathname :host "kathy" 
+                         :directory 
+                           (pathname-directory *default-pathname-defaults*)
+                         :name "getty")) 
+→ #S(PATHNAME :HOST "kathy" :DEVICE NIL :DIRECTORY <i>directory-name</i> 
+       :NAME "getty" :TYPE NIL :VERSION NIL)
+ (file-namestring q) → "getty"
+ (directory-namestring q) → <i>directory-name</i>
+ (host-namestring q) → "kathy" 
+</pre>
+
+<pre> ;;;Using Unix syntax and the wildcard conventions used by the
+ ;;;particular version of Unix on which this example was created:
+ (namestring
+   (translate-pathname "/usr/dmr/hacks/frob.l"
+                       "/usr/d*/hacks/*.l"
+                       "/usr/d*/backup/hacks/backup-*.*"))
+→ "/usr/dmr/backup/hacks/backup-frob.l"
+ (namestring
+   (translate-pathname "/usr/dmr/hacks/frob.l"
+                       "/usr/d*/hacks/fr*.l"
+                       "/usr/d*/backup/hacks/backup-*.*"))
+→ "/usr/dmr/backup/hacks/backup-ob.l"
+ 
+ ;;;This is similar to the above example but uses two different hosts,
+ ;;;U: which is a Unix and V: which is a VMS.  Note the translation
+ ;;;of file type and alphabetic case conventions.
+ (namestring
+   (translate-pathname "U:/usr/dmr/hacks/frob.l"
+                       "U:/usr/d*/hacks/*.l"
+                       "V:SYS$DISK:[D*.BACKUP.HACKS]BACKUP-*.*"))
+→ "V:SYS$DISK:[DMR.BACKUP.HACKS]BACKUP-FROB.LSP"
+ (namestring
+   (translate-pathname "U:/usr/dmr/hacks/frob.l"
+                       "U:/usr/d*/hacks/fr*.l"
+                       "V:SYS$DISK:[D*.BACKUP.HACKS]BACKUP-*.*"))
+→ "V:SYS$DISK:[DMR.BACKUP.HACKS]BACKUP-OB.LSP"
+</pre>
+ 
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+
+<a href="../20-files/20.2.4-truename.xhtml#DictEntry_truename_1171"><b>truename</b></a>,
+<a href="19.4.17-merge-pathnames.xhtml#DictEntry_merge_pathna_1160"><b>merge-pathnames</b></a>,
+<a href="19.4.1-pathname.xhtml#DictEntry_pathname_1144"><b>pathname</b></a>,
+<a href="19.4.2-logical-pathname.xhtml#DictEntry_logical_path_1145"><b>logical-pathname</b></a>,
+Section <a href="../20-files/20.1-file-system-concepts.xhtml#Section_File_System__1162">20.1 File System Concepts</a>,
+
+
+Section <a href="19.1-overview-of-filenames.xhtml#SubSection_Pathnames_as_1095">19.1.2 Pathnames as Filenames</a>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

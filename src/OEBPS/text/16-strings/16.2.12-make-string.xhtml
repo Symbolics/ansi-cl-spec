@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>16.2.12 make-string — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_make_string_1031" class="entry"><span class="secno">16.2.12</span> <span class="names">make-string</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>make-string</b>
+<i>size <code>&amp;key</code> initial-element element-type</i>
+  → <i>string</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>size</i>—a <i><a href="../26-glossary/v.xhtml#validarraydimension">valid array dimension</a></i>.
+
+
+<p>
+
+<i>initial-element</i>—a <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
+
+ The default is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</p><p>
+
+<i>element-type</i>—a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+ The default is <a href="../13-characters/13.2.1-character.xhtml#DictEntry_character_884"><b>character</b></a>.
+
+
+</p><p>
+<i>string</i>—a <i><a href="../26-glossary/s.xhtml#simplestring">simple string</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_make_string_1031"><b>make-string</b></a> returns a <i><a href="../26-glossary/s.xhtml#simplestring">simple string</a></i> of length <i>size</i>
+whose elements have been initialized to <i>initial-element</i>.
+
+<p>
+
+The <i>element-type</i> names the <i><a href="../26-glossary/t.xhtml#type">type</a></i> of the <i><a href="../26-glossary/e.xhtml#element">elements</a></i> of the <i><a href="../26-glossary/s.xhtml#string">string</a></i>;
+a <i><a href="../26-glossary/s.xhtml#string">string</a></i> is constructed of the most <i><a href="../26-glossary/s.xhtml#specialized">specialized</a></i>
+<i><a href="../26-glossary/t.xhtml#type">type</a></i> that can accommodate <i><a href="../26-glossary/e.xhtml#element">elements</a></i> of the given <i><a href="../26-glossary/t.xhtml#type">type</a></i>.  
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (make-string 10 :initial-element #\5) → "5555555555"
+ (length (make-string 10)) → 10
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

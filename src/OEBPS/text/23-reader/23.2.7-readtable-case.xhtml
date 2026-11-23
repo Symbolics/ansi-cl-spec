@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>23.2.7 readtable-case — Accessor</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_readtable_ca_1387" class="entry"><span class="secno">23.2.7</span> <span class="names">readtable-case</span> <span class="kind">Accessor</span></h3>
+<dl>
+
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>readtable-case</b>
+<i>readtable</i>
+  → <i>mode</i>
+<p>
+
+
+(<b>setf</b>
+(<b>readtable-case</b> <i>readtable</i>) <i>mode</i>)
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>readtable</i>—a <i><a href="../26-glossary/r.xhtml#readtable">readtable</a></i>.
+
+<p>
+<i>mode</i>—a <i><a href="../26-glossary/c.xhtml#casesensitivitymode">case sensitivity mode</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<i>Accesses</i> the <i><a href="../26-glossary/r.xhtml#readtablecase">readtable case</a></i> of <i>readtable</i>,
+which affects the way in which the <i>Lisp Reader</i>  reads  <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>
+          and the way in which the <i>Lisp Printer</i> writes <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+See Section <a href="23.1-reader-concepts.xhtml#SubSubSectio_Examples_of__1376">23.1.2.1 Examples of Effect of Readtable Case on the Lisp Reader</a> and Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSubSub_Examples_of__1266">22.1.3.3.2.1 Examples of Effect of Readtable Case on the Lisp Printer</a>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>readtable</i> is not a <i><a href="../26-glossary/r.xhtml#readtable">readtable</a></i>.
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>mode</i> is not a <i><a href="../26-glossary/c.xhtml#casesensitivitymode">case sensitivity mode</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="23.2.17-readtable.xhtml#DictEntry_readtable_1397"><b>*readtable*</b></a>,
+<a href="../22-printer/22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a>,
+Section <a href="../2-syntax/2.2-reader-algorithm.xhtml#Section_Reader_Algor_126">2.2 Reader Algorithm</a>,
+Section <a href="23.1-reader-concepts.xhtml#SubSection_Effect_of_Re_1375">23.1.2 Effect of Readtable Case on the Lisp Reader</a>,
+Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSubSec_Effect_of_Re_1265">22.1.3.3.2 Effect of Readtable Case on the Lisp Printer</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<a href="23.2.2-copy-readtable.xhtml#DictEntry_copy_readtab_1382"><b>copy-readtable</b></a> copies the <i><a href="../26-glossary/r.xhtml#readtablecase">readtable case</a></i> of the <i>readtable</i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

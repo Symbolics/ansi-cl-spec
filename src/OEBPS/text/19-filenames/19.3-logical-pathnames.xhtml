@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>19.3 Logical Pathnames</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Logical_Path_1129"><span class="secno">19.3</span> Logical Pathnames</h2>
+<section>
+<h3 id="SubSection_Syntax_of_Lo_1130"><span class="secno">19.3.1</span> Syntax of Logical Pathname Namestrings</h3>
+<p>
+
+
+
+The syntax of a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> <i><a href="../26-glossary/n.xhtml#namestring">namestring</a></i> is as follows.
+
+(Note that unlike many notational descriptions in this document,
+ this is a syntactic description of character sequences,
+ not a structural description of <i><a href="../26-glossary/o.xhtml#object">objects</a></i>.)
+
+</p><p>
+
+logical-pathname::= [↓host <i>host-marker</i>] <br/>
+ [↓<i>relative-directory-marker</i>]
+ <code>{</code>↓directory <i>directory-marker</i><code>}</code><sup>*</sup> <br/>
+ [↓name] 
+ [<i>type-marker</i> ↓type 
+ [<i>version-marker</i> ↓version]]</p><p>
+
+host::= ↓word</p><p>
+
+directory::= ↓word | ↓wildcard-word | ↓wild-inferiors-word</p><p>
+
+name::= ↓word | ↓wildcard-word</p><p>
+
+type::= ↓word | ↓wildcard-word</p><p>
+
+version::= ↓pos-int | <i>newest-word</i> | <i>wildcard-version</i></p><p>
+<i>host-marker</i>—a <i><a href="../26-glossary/c.xhtml#colon">colon</a></i>.
+
+</p><p>
+<i>relative-directory-marker</i>—a <i><a href="../26-glossary/s.xhtml#semicolon">semicolon</a></i>.
+
+</p><p>
+<i>directory-marker</i>—a <i><a href="../26-glossary/s.xhtml#semicolon">semicolon</a></i>.
+
+</p><p>
+<i>type-marker</i>—a <i><a href="../26-glossary/d.xhtml#dot">dot</a></i>.
+
+</p><p>
+<i>version-marker</i>—a <i><a href="../26-glossary/d.xhtml#dot">dot</a></i>.
+
+</p><p>
+<i>wild-inferiors-word</i>—The two character sequence "<code>**</code>" (two <i><a href="../26-glossary/a.xhtml#asterisk">asterisks</a></i>).
+
+</p><p>
+<i>newest-word</i>—The six character sequence "<code>newest</code>" 
+		   or the six character sequence "<code>NEWEST</code>".
+
+</p><p>
+<i>wildcard-version</i>—an <i><a href="../26-glossary/a.xhtml#asterisk">asterisk</a></i>.
+
+</p><p>
+<i>wildcard-word</i>—one or more <i><a href="../26-glossary/a.xhtml#asterisk">asterisks</a></i>, uppercase letters,
+   digits, and hyphens, including at least one <i><a href="../26-glossary/a.xhtml#asterisk">asterisk</a></i>, 
+   with no two <i><a href="../26-glossary/a.xhtml#asterisk">asterisks</a></i> adjacent.
+
+</p><p>
+<i>word</i>—one or more uppercase letters, digits, and hyphens.
+
+</p><p>
+<i>pos-int</i>—a positive <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+</p>
+<section>
+<h4 id="SubSubSectio_Additional_I_1131"><span class="secno">19.3.1.1</span> Additional Information about Parsing Logical Pathname Namestrings</h4>
+<section>
+<h5 id="SubSubSubSec_The_Host_par_1132"><span class="secno">19.3.1.1.1</span> The Host part of a Logical Pathname Namestring</h5>
+<p>
+
+The <i>host</i> must have been defined as a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> host;
+this can be done by using <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> of <a href="19.4.8-logical-pathname-translations.xhtml#DictEntry_logical_path_1151"><b>logical-pathname-translations</b></a>.
+
+</p><p>
+The <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> host name <code>"SYS"</code> is reserved for the implementation.
+The existence and meaning of <code>SYS:</code> <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathnames</a></i> 
+is <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_Device_p_1133"><span class="secno">19.3.1.1.2</span> The Device part of a Logical Pathname Namestring</h5>
+<p>
+
+There is no syntax for a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> device since
+the device component of a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> is always <code>:unspecific</code>;
+see Section <a href="#SubSubSectio_Unspecific_C_1141">19.3.2.1 Unspecific Components of a Logical Pathname</a>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_Director_1134"><span class="secno">19.3.1.1.3</span> The Directory part of a Logical Pathname Namestring</h5>
+<p>
+
+If a <i>relative-directory-marker</i> precedes the <i>directories</i>,
+the directory component parsed is as <i><a href="../26-glossary/r.xhtml#relative">relative</a></i>;
+otherwise, the directory component is parsed as <i><a href="../26-glossary/a.xhtml#absolute">absolute</a></i>.
+
+</p><p>
+If a <i>wild-inferiors-marker</i> is specified,
+it parses into <code>:wild-inferiors</code>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_Type_par_1135"><span class="secno">19.3.1.1.4</span> The Type part of a Logical Pathname Namestring</h5>
+<p>
+
+The <i>type</i> of a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> for a <i><a href="../26-glossary/s.xhtml#sourcefile">source file</a></i>
+is <code>"LISP"</code>.   This should be translated into whatever type is 
+appropriate in a physical pathname.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_The_Version__1136"><span class="secno">19.3.1.1.5</span> The Version part of a Logical Pathname Namestring</h5>
+<p>
+
+Some <i><a href="../26-glossary/f.xhtml#filesystem">file systems</a></i> do not have <i>versions</i>. 
+<i><a href="../26-glossary/l.xhtml#logicalpathname">Logical pathname</a></i> translation to such a <i><a href="../26-glossary/f.xhtml#filesystem">file system</a></i>
+ignores the <i>version</i>.
+This implies that a program cannot rely on being able to store
+more than one version of a file named by a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i>.
+
+</p><p>
+If a <i>wildcard-version</i> is specified,
+it parses into <code>:wild</code>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Wildcard_Wor_1137"><span class="secno">19.3.1.1.6</span> Wildcard Words in a Logical Pathname Namestring</h5>
+<p>
+
+Each <i><a href="../26-glossary/a.xhtml#asterisk">asterisk</a></i> in a <i>wildcard-word</i> matches a sequence of 
+zero or more characters.  The <i>wildcard-word</i> "<code>*</code>" 
+parses into <code>:wild</code>; other <i>wildcard-words</i> parse into <i><a href="../26-glossary/s.xhtml#string">strings</a></i>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Lowercase_Le_1138"><span class="secno">19.3.1.1.7</span> Lowercase Letters in a Logical Pathname Namestring</h5>
+<p>
+
+When parsing <i>words</i> and <i>wildcard-words</i>,
+lowercase letters are translated to uppercase.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Other_Syntax_1139"><span class="secno">19.3.1.1.8</span> Other Syntax in a Logical Pathname Namestring</h5>
+<p>
+
+The consequences of using characters other than those specified here
+in a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> <i><a href="../26-glossary/n.xhtml#namestring">namestring</a></i> are unspecified.
+
+</p><p>
+
+
+The consequences of using any value not specified here as a 
+<i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> component are unspecified.
+
+
+
+</p>
+</section>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Logical_Path_1140"><span class="secno">19.3.2</span> Logical Pathname Components</h3>
+<section>
+<h4 id="SubSubSectio_Unspecific_C_1141"><span class="secno">19.3.2.1</span> Unspecific Components of a Logical Pathname</h4>
+<p>
+
+
+The device component of a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> is always <code>:unspecific</code>;
+no other component of a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> can be <code>:unspecific</code>.  
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Null_Strings_1142"><span class="secno">19.3.2.2</span> Null Strings as Components of a Logical Pathname</h4>
+<p>
+
+The null string, <code>""</code>, is not a valid value for any component of a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i>.
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</section>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.24 go — Special Operator</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_go_410" class="entry"><span class="secno">5.3.24</span> <span class="names">go</span> <span class="kind">Special Operator</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>go</b>
+<i>tag</i>
+  →  <b>|</b> 
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>tag</i>—a <i><a href="../26-glossary/g.xhtml#gotag">go tag</a></i>.
+
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_go_410"><b>go</b></a> transfers control to the point in the body 
+of an enclosing <a href="5.3.27-tagbody.xhtml#DictEntry_tagbody_413"><b>tagbody</b></a> form labeled by a
+tag <a href="5.3.34-eql.xhtml#DictEntry_eql_420"><b>eql</b></a> to <i>tag</i>.  
+
+
+If there is no such <i>tag</i>  in the body, the
+bodies of lexically containing <a href="5.3.27-tagbody.xhtml#DictEntry_tagbody_413"><b>tagbody</b></a> <i><a href="../26-glossary/f.xhtml#form">forms</a></i>
+(if any) are examined as well.
+If several tags are <a href="5.3.34-eql.xhtml#DictEntry_eql_420"><b>eql</b></a> 
+to <i>tag</i>, control is transferred to
+whichever matching <i>tag</i> 
+is contained in the innermost <a href="5.3.27-tagbody.xhtml#DictEntry_tagbody_413"><b>tagbody</b></a> form that
+contains the <a href="#DictEntry_go_410"><b>go</b></a>.
+The consequences are undefined
+if there is no matching <i>tag</i> lexically visible
+to the point of the <a href="#DictEntry_go_410"><b>go</b></a>.
+
+<p>
+The transfer of control initiated by <a href="#DictEntry_go_410"><b>go</b></a> is performed
+as described in Section <a href="5.2-transfer-of-control-to-an-exit-point.xhtml#Section_Transfer_of__385">5.2 Transfer of Control to an Exit Point</a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (tagbody
+   (setq val 2)
+   (go lp)
+   (incf val 3)
+   lp (incf val 4)) →  NIL
+ val → 6 
+</pre>
+
+<p>
+The following is in error because there is a normal exit 
+of the <a href="5.3.27-tagbody.xhtml#DictEntry_tagbody_413"><b>tagbody</b></a> before the 
+<a href="#DictEntry_go_410"><b>go</b></a> is executed.
+
+</p><pre> (let ((a nil)) 
+   (tagbody t (setq a #'(lambda () (go t))))
+   (funcall a))
+</pre>
+
+<p>
+The following is in error because the <a href="5.3.27-tagbody.xhtml#DictEntry_tagbody_413"><b>tagbody</b></a> is passed over
+before the <a href="#DictEntry_go_410"><b>go</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> is executed.
+
+</p><pre> (funcall (block nil
+            (tagbody a (return #'(lambda () (go a))))))
+</pre>
+
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="5.3.27-tagbody.xhtml#DictEntry_tagbody_413"><b>tagbody</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

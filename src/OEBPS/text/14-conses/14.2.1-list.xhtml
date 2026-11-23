@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.1 list — System Class</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_list_914" class="entry"><span class="secno">14.2.1</span> <span class="names">list</span> <span class="kind">System Class</span></h3>
+<dl>
+
+
+<dt><b>Class Precedence List:</b></dt><dd>
+
+<a href="#DictEntry_list_914"><b>list</b></a>,
+<a href="../17-sequences/17.3.1-sequence.xhtml#DictEntry_sequence_1041"><b>sequence</b></a>,
+<a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+A <b><i>list</i></b> is a chain of <i>conses</i> in which the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of each
+<i><a href="../26-glossary/c.xhtml#cons">cons</a></i> is an <i><a href="../26-glossary/e.xhtml#element">element</a></i> of the <i><a href="../26-glossary/l.xhtml#list">list</a></i>, and the <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i> of
+each <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> is either the next link in the chain or a terminating
+<i><a href="../26-glossary/a.xhtml#atom">atom</a></i>.
+
+<p>
+A <b><i>proper list</i></b> is a chain of <i>conses</i> terminated by 
+the <b><i>empty list</i></b>, <code>()</code>, which is  itself a <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i>.
+A <b><i>dotted list</i></b> is a <i><a href="../26-glossary/l.xhtml#list">list</a></i> which has a terminating <i><a href="../26-glossary/a.xhtml#atom">atom</a></i> 
+that is not the <i><a href="../26-glossary/e.xhtml#emptylist">empty list</a></i>.
+A <b><i>circular list</i></b> is a chain of <i>conses</i> that has no termination
+because some <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> in the chain is the <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i> of a later <i><a href="../26-glossary/c.xhtml#cons">cons</a></i>.
+
+</p><p>
+<i><a href="../26-glossary/d.xhtml#dottedlist">Dotted lists</a></i> and <i><a href="../26-glossary/c.xhtml#circularlist">circular lists</a></i> are also <i><a href="../26-glossary/l.xhtml#list">lists</a></i>, but usually
+the unqualified term "list" within this specification means <i><a href="../26-glossary/p.xhtml#properlist">proper list</a></i>.
+Nevertheless, the <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_list_914"><b>list</b></a> unambiguously includes <i><a href="../26-glossary/d.xhtml#dottedlist">dotted lists</a></i> 
+and <i><a href="../26-glossary/c.xhtml#circularlist">circular lists</a></i>.
+
+</p><p>
+For each <i><a href="../26-glossary/e.xhtml#element">element</a></i> of a <i><a href="../26-glossary/l.xhtml#list">list</a></i> there is a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i>.
+The <i><a href="../26-glossary/e.xhtml#emptylist">empty list</a></i> has no <i><a href="../26-glossary/e.xhtml#element">elements</a></i> and is not a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i>.
+
+</p><p>
+
+The <i><a href="../26-glossary/t.xhtml#type">types</a></i> <a href="14.2.3-cons.xhtml#DictEntry_cons_916"><b>cons</b></a> and <a href="14.2.2-null.xhtml#DictEntry_null_915"><b>null</b></a> form an <i><a href="../26-glossary/e.xhtml#exhaustivepartition">exhaustive partition</a></i> 
+of the <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_list_914"><b>list</b></a>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="../2-syntax/2.4-standard-macro-characters.xhtml#SubSection_Left_Parenth_143">2.4.1 Left-Parenthesis</a>,
+Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Lis_1268">22.1.3.5 Printing Lists and Conses</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

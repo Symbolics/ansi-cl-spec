@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.9 car, cdr, caar, cadr, cdar, cddr, caaar, caadr, cadar, … — Accessor</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_car____cdr_922" class="entry"><span class="secno">14.2.9</span> <span class="names">car, cdr, caar, cadr, cdar, cddr, caaar, caadr, cadar, caddr, cdaar, cdadr, cddar, cdddr, caaaar, caaadr, caadar, caaddr, cadaar, cadadr, caddar, cadddr, cdaaar, cdaadr, cdadar, cdaddr, cddaar, cddadr, cdddar, cddddr</span> <span class="kind">Accessor</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<table class="ctr">
+<tbody><tr><td>
+   <b>car </b><i>x</i></td><td>→  <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>car</b> <i>x</i>) 
+<i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cdr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cdr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td/><td/></tr>
+<tr><td>
+   <b>caar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>caar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cadr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cadr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cdar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cdar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cddr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cddr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td/><td/></tr>
+<tr><td>
+   <b>caaar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>caaar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>caadr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>caadr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cadar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cadar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>caddr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>caddr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+
+   <b>cdaar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cdaar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cdadr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cdadr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cddar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cddar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cdddr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cdddr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td/><td/></tr>
+<tr><td>
+   <b>caaaar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>caaaar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>caaadr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>caaadr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>caadar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>caadar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>caaddr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>caaddr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cadaar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cadaar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cadadr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cadadr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>caddar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>caddar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cadddr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cadddr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cdaaar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cdaaar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cdaadr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cdaadr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cdadar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cdadar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cdaddr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cdaddr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cddaar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cddaar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cddadr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cddadr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cdddar </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cdddar</b> <i>x</i>) <i>new-object</i>)</td></tr>
+<tr><td>
+   <b>cddddr </b><i>x</i></td><td>→ <i>object</i></td><td>|</td><td>(<b>setf</b> (<b>cddddr</b> <i>x</i>) <i>new-object</i>)</td></tr>
+</tbody></table>
+
+
+</dd><dt><b>Pronunciation:</b></dt><dd>
+
+<a href="#DictEntry_car____cdr_922"><b>cadr</b></a>: <span class="pron">[ ˈkaˌdεr ]</span>
+
+<p>
+<a href="#DictEntry_car____cdr_922"><b>caddr</b></a>: <span class="pron">[ ˈkadεˌdεr ]</span>
+  	     or <span class="pron">[ ˈkaˌdu̇dεr ]</span>
+
+</p><p>
+<a href="#DictEntry_car____cdr_922"><b>cdr</b></a>: <span class="pron">[ ˈku̇ˌdεr ]</span>
+
+</p><p>
+<a href="#DictEntry_car____cdr_922"><b>cddr</b></a>: <span class="pron">[ ˈku̇dεˌdεr ]</span>
+  	    or <span class="pron">[ ˈkεˌdu̇dεr ]</span>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>x</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
+
+<p>
+<i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+</p><p>
+<i>new-object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+If <i>x</i> is a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i>, <a href="#DictEntry_car____cdr_922"><b>car</b></a> returns the <i><a href="../26-glossary/c.xhtml#car">car</a></i> 
+of that <i><a href="../26-glossary/c.xhtml#cons">cons</a></i>.  If <i>x</i> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, <a href="#DictEntry_car____cdr_922"><b>car</b></a> returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+<p>
+
+If <i>x</i> is a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i>, <a href="#DictEntry_car____cdr_922"><b>cdr</b></a> returns the <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i> 
+of that <i><a href="../26-glossary/c.xhtml#cons">cons</a></i>.  If <i>x</i> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, <a href="#DictEntry_car____cdr_922"><b>cdr</b></a> returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i><a href="../26-glossary/f.xhtml#function">Functions</a></i> are provided which perform compositions of up to four
+<a href="#DictEntry_car____cdr_922"><b>car</b></a> and <a href="#DictEntry_car____cdr_922"><b>cdr</b></a> operations.  Their <i><a href="../26-glossary/n.xhtml#name">names</a></i> consist of 
+a <code>C</code>, followed by two, three, or four occurrences of <code>A</code> or <code>D</code>, 
+and finally an <code>R</code>.  The series of <code>A</code>'s and <code>D</code>'s in each
+<i><a href="../26-glossary/f.xhtml#function">function</a></i>'s <i><a href="../26-glossary/n.xhtml#name">name</a></i> is chosen to identify the series of 
+<a href="#DictEntry_car____cdr_922"><b>car</b></a> and <a href="#DictEntry_car____cdr_922"><b>cdr</b></a> operations that is performed by the function.
+The order in which the <code>A</code>'s and <code>D</code>'s appear is the inverse of the
+order in which the corresponding operations are performed.  The next figure 
+defines the relationships precisely.
+
+</p><table id="fig-14-6" class="fig">
+<caption><span class="figlabel">Figure 14-6.</span> CAR and CDR variants</caption>
+<tbody><tr><th>This <i>place</i> <i> ... </i></th>
+<th>Is equivalent to this <i>place</i> <i> ... </i></th>
+</tr>
+
+  <tr>
+    <td><code>(caar <i>x</i>)</code></td>
+    <td><code>(car (car <i>x</i>))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cadr <i>x</i>)</code></td>
+    <td><code>(car (cdr <i>x</i>))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cdar <i>x</i>)</code></td>
+    <td><code>(cdr (car <i>x</i>))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cddr <i>x</i>)</code></td>
+    <td><code>(cdr (cdr <i>x</i>))</code></td>
+  </tr>
+  <tr>
+    <td><code>(caaar <i>x</i>)</code></td>
+    <td><code>(car (car (car <i>x</i>)))</code></td>
+  </tr>
+  <tr>
+    <td><code>(caadr <i>x</i>)</code></td>
+    <td><code>(car (car (cdr <i>x</i>)))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cadar <i>x</i>)</code></td>
+    <td><code>(car (cdr (car <i>x</i>)))</code></td>
+  </tr>
+  <tr>
+    <td><code>(caddr <i>x</i>)</code></td>
+    <td><code>(car (cdr (cdr <i>x</i>)))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cdaar <i>x</i>)</code></td>
+    <td><code>(cdr (car (car <i>x</i>)))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cdadr <i>x</i>)</code></td>
+    <td><code>(cdr (car (cdr <i>x</i>)))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cddar <i>x</i>)</code></td>
+    <td><code>(cdr (cdr (car <i>x</i>)))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cdddr <i>x</i>)</code></td>
+    <td><code>(cdr (cdr (cdr <i>x</i>)))</code></td>
+  </tr>
+  <tr>
+    <td><code>(caaaar <i>x</i>)</code></td>
+    <td><code>(car (car (car (car <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(caaadr <i>x</i>)</code></td>
+    <td><code>(car (car (car (cdr <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(caadar <i>x</i>)</code></td>
+    <td><code>(car (car (cdr (car <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(caaddr <i>x</i>)</code></td>
+    <td><code>(car (car (cdr (cdr <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cadaar <i>x</i>)</code></td>
+    <td><code>(car (cdr (car (car <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cadadr <i>x</i>)</code></td>
+    <td><code>(car (cdr (car (cdr <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(caddar <i>x</i>)</code></td>
+    <td><code>(car (cdr (cdr (car <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cadddr <i>x</i>)</code></td>
+    <td><code>(car (cdr (cdr (cdr <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cdaaar <i>x</i>)</code></td>
+    <td><code>(cdr (car (car (car <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cdaadr <i>x</i>)</code></td>
+    <td><code>(cdr (car (car (cdr <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cdadar <i>x</i>)</code></td>
+    <td><code>(cdr (car (cdr (car <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cdaddr <i>x</i>)</code></td>
+    <td><code>(cdr (car (cdr (cdr <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cddaar <i>x</i>)</code></td>
+    <td><code>(cdr (cdr (car (car <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cddadr <i>x</i>)</code></td>
+    <td><code>(cdr (cdr (car (cdr <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cdddar <i>x</i>)</code></td>
+    <td><code>(cdr (cdr (cdr (car <i>x</i>))))</code></td>
+  </tr>
+  <tr>
+    <td><code>(cddddr <i>x</i>)</code></td>
+    <td><code>(cdr (cdr (cdr (cdr <i>x</i>))))</code></td>
+  </tr>
+</tbody></table>
+
+
+<p>
+<a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> can also be used with any of these functions to change an
+existing component of <i>x</i>, but <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> will not make new
+components.  So, for example, the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> 
+can be assigned with <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> of <a href="#DictEntry_car____cdr_922"><b>car</b></a>,
+but the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> cannot be assigned with <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> of <a href="#DictEntry_car____cdr_922"><b>car</b></a>.
+Similarly, the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> whose <i><a href="../26-glossary/c.xhtml#car">car</a></i>
+is a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> can be assigned with <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> of <a href="#DictEntry_car____cdr_922"><b>caar</b></a>,
+but neither <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> nor a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> whose car is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> can be assigned
+with <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> of <a href="#DictEntry_car____cdr_922"><b>caar</b></a>.
+
+</p><p>
+
+The argument <i>x</i> is permitted to be a <i><a href="../26-glossary/d.xhtml#dottedlist">dotted list</a></i> 
+or a <i><a href="../26-glossary/c.xhtml#circularlist">circular list</a></i>.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (car nil) →  NIL  
+ (cdr '(1 . 2)) → 2
+ (cdr '(1 2)) → (2)
+ (cadr '(1 2)) → 2 
+ (car '(a b c)) →  A
+ (cdr '(a b c)) → (B C)
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+The functions <a href="#DictEntry_car____cdr_922"><b>car</b></a> and <a href="#DictEntry_car____cdr_922"><b>cdr</b></a> 
+should signal <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if they receive an argument which is not a
+<i><a href="../26-glossary/l.xhtml#list">list</a></i>.  The other functions (<a href="#DictEntry_car____cdr_922"><b>caar</b></a>, <a href="#DictEntry_car____cdr_922"><b>cadr</b></a>,
+<i> ... </i> <a href="#DictEntry_car____cdr_922"><b>cddddr</b></a>) should behave for the purpose of
+error checking as if defined by appropriate calls to <a href="#DictEntry_car____cdr_922"><b>car</b></a> and
+<a href="#DictEntry_car____cdr_922"><b>cdr</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplaca</b></a>, <a href="14.2.21-first.xhtml#DictEntry_first_secon_934"><b>first</b></a>, <a href="14.2.32-rest.xhtml#DictEntry_rest_945"><b>rest</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+The <i><a href="../26-glossary/c.xhtml#car">car</a></i> of a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> can also be altered by using <a href="14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplaca</b></a>,
+and the <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i> of a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> can be altered by using <a href="14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplacd</b></a>.
+
+<pre>(car <i>x</i>)    ==(first <i>x</i>)
+(cadr <i>x</i>)   ==(second <i>x</i>) ==(car (cdr <i>x</i>))
+(caddr <i>x</i>)  ==(third <i>x</i>)  ==(car (cdr (cdr <i>x</i>)))
+(cadddr <i>x</i>) ==(fourth <i>x</i>) ==(car (cdr (cdr (cdr <i>x</i>))))
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

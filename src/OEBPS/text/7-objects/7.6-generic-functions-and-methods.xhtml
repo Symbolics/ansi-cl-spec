@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.6 Generic Functions and Methods</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Generic_Func_540"><span class="secno">7.6</span> Generic Functions and Methods</h2>
+<section>
+<h3 id="SubSection_Introduction_541"><span class="secno">7.6.1</span> Introduction to Generic Functions</h3>
+<p>
+
+
+A <b><i>generic function</i></b> is a function whose behavior depends on
+the <i>classes</i> or identities of the <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i> supplied to it.
+A <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> 
+
+is associated with 
+     a set of <i><a href="../26-glossary/m.xhtml#method">methods</a></i>,
+     a <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i>,
+     a <i><a href="../26-glossary/m.xhtml#methodcombination">method combination</a></i><sub>2</sub>, 
+ and other information.
+
+</p><p>
+Like an <i><a href="../26-glossary/o.xhtml#ordinaryfunction">ordinary function</a></i>, a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> takes <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>,
+performs a series of operations, and perhaps returns useful <i><a href="../26-glossary/v.xhtml#value">values</a></i>.
+An <i><a href="../26-glossary/o.xhtml#ordinaryfunction">ordinary function</a></i> has a single body of <i><a href="../26-glossary/c.xhtml#code">code</a></i> that is always <i>executed</i>
+when the <i><a href="../26-glossary/f.xhtml#function">function</a></i> is called.  A <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> has a set of bodies
+of <i><a href="../26-glossary/c.xhtml#code">code</a></i> of which a subset is selected for <i>execution</i>. The selected
+bodies of <i><a href="../26-glossary/c.xhtml#code">code</a></i> and the manner of their combination are determined by
+the <i>classes</i> or identities of one or more of the <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i> to the
+<i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> and by its <i><a href="../26-glossary/m.xhtml#methodcombination">method combination</a></i>.
+
+</p><p>
+<i><a href="../26-glossary/o.xhtml#ordinaryfunction">Ordinary functions</a></i> and <i><a href="../26-glossary/g.xhtml#genericfunction">generic functions</a></i> are called with identical syntax.
+
+</p><p>
+<i><a href="../26-glossary/g.xhtml#genericfunction">Generic functions</a></i> are true <i><a href="../26-glossary/f.xhtml#function">functions</a></i> that can be passed as <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
+and used as the first <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> to <a href="../5-data-and-control-flow/5.3.7-funcall.xhtml#DictEntry_funcall_393"><b>funcall</b></a> and <a href="../5-data-and-control-flow/5.3.1-apply.xhtml#DictEntry_apply_387"><b>apply</b></a>.
+
+</p><p>
+A <i><a href="../26-glossary/b.xhtml#binding">binding</a></i> of a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i> to a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>
+can be <i>established</i> in one of several ways.  It can be
+<i>established</i> in the <i><a href="../26-glossary/g.xhtml#globalenvironment">global environment</a></i> by 
+ <a href="7.7.2-ensure-generic-function.xhtml#DictEntry_ensure_gener_558"><b>ensure-generic-function</b></a>,
+ <a href="7.7.27-defmethod.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a> (implicitly, due to <a href="7.7.2-ensure-generic-function.xhtml#DictEntry_ensure_gener_558"><b>ensure-generic-function</b></a>)
+or
+ <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> (also implicitly, due to <a href="7.7.2-ensure-generic-function.xhtml#DictEntry_ensure_gener_558"><b>ensure-generic-function</b></a>).
+
+No <i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> mechanism is provided for <i>establishing</i> a
+<i><a href="../26-glossary/b.xhtml#binding">binding</a></i> of a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i> to a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>
+in the <i><a href="../26-glossary/l.xhtml#lexicalenvironment">lexical environment</a></i>.
+
+
+
+
+
+
+
+
+
+</p><p>
+When a <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> form is evaluated, one of three actions
+is taken (due to <a href="7.7.2-ensure-generic-function.xhtml#DictEntry_ensure_gener_558"><b>ensure-generic-function</b></a>):
+
+</p><ul>
+
+<li> If a generic function of the given name already exists,
+the existing generic function object is modified.  Methods specified
+by the current <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> form are added, and any methods in the
+existing generic function that were defined by a previous <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a>
+form are removed.  Methods added by the current <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> 
+form might replace methods defined by <a href="7.7.27-defmethod.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a>, 
+<a href="7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a>, <a href="../9-conditions/9.2.29-define-condition.xhtml#DictEntry_define_condi_654"><b>define-condition</b></a>, or <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a>.  
+No other methods in the generic function are affected
+or replaced.
+
+</li><li> If the given name names 
+    an <i><a href="../26-glossary/o.xhtml#ordinaryfunction">ordinary function</a></i>, 
+    a  <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>,
+ or a <i><a href="../26-glossary/s.xhtml#specialoperator">special operator</a></i>, 
+an error is signaled.
+
+</li><li> Otherwise a generic function is created with the
+methods specified by the method definitions in the <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a>
+form.
+
+</li></ul>
+
+<p>
+Some <i><a href="../26-glossary/o.xhtml#operator">operators</a></i> permit specification of the options of a
+<i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>, such as 
+the <i><a href="../26-glossary/t.xhtml#type">type</a></i> of <i><a href="../26-glossary/m.xhtml#methodcombination">method combination</a></i> it uses 
+or its <i><a href="../26-glossary/a.xhtml#argumentprecedenceorder">argument precedence order</a></i>.
+These <i><a href="../26-glossary/o.xhtml#operator">operators</a></i> will be referred to as
+"operators that specify generic function options."
+
+
+
+
+The only <i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> <i><a href="../26-glossary/o.xhtml#operator">operator</a></i> in this category is <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a>.
+
+
+
+
+
+
+
+
+
+</p><p>
+Some <i><a href="../26-glossary/o.xhtml#operator">operators</a></i> define <i><a href="../26-glossary/m.xhtml#method">methods</a></i> for a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>.
+These <i><a href="../26-glossary/o.xhtml#operator">operators</a></i> will be referred to as
+<b><i>method-defining operators</i></b>;
+their associated <i><a href="../26-glossary/f.xhtml#form">forms</a></i> are called <i><a href="../26-glossary/m.xhtml#methoddefiningform">method-defining forms</a></i>.
+The <i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> <i><a href="../26-glossary/m.xhtml#methoddefiningoperator">method-defining operators</a></i> are listed in the next figure.
+
+
+
+
+
+
+
+
+</p><table id="fig-7-1" class="fig">
+<caption><span class="figlabel">Figure 7-1.</span> Standardized Method-Defining Operators</caption>
+
+  <tbody><tr>
+    <td>defgeneric</td>
+    <td>defmethod</td>
+    <td>defclass</td>
+  </tr>
+  <tr>
+    <td>define-condition</td>
+    <td>defstruct</td>
+    <td/>
+  </tr>
+</tbody></table><p>
+
+
+
+Note that of the <i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> <i><a href="../26-glossary/m.xhtml#methoddefiningoperator">method-defining operators</a></i>
+
+
+only <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a>
+can specify <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> options.
+<a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> and any <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="../26-glossary/o.xhtml#operator">operators</a></i>
+that can specify <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> options
+are also referred to as "operators that specify generic function options."
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Introduction_542"><span class="secno">7.6.2</span> Introduction to Methods</h3>
+<p><i><a href="../26-glossary/m.xhtml#method">Methods</a></i> define the class-specific or identity-specific behavior
+and operations of a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>. 
+
+</p><p>
+
+
+A <i><a href="../26-glossary/m.xhtml#method">method</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> 
+
+is associated with 
+
+     <i><a href="../26-glossary/c.xhtml#code">code</a></i> that implements the method's behavior,
+     a sequence of <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> 
+       that specify when the given <i><a href="../26-glossary/m.xhtml#method">method</a></i> is applicable,
+     a <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i>,
+ and a sequence of <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i> that are used by the method combination
+       facility to distinguish among <i><a href="../26-glossary/m.xhtml#method">methods</a></i>.
+
+</p><p>
+A method object is not a function and cannot be invoked as a function. 
+Various mechanisms in the object system take a method object and invoke its method
+function, as is the case when a generic function is invoked.  When this
+occurs it is said that the method is invoked or called.
+
+</p><p>
+A method-defining form contains the <i><a href="../26-glossary/c.xhtml#code">code</a></i> that is to be run when the
+arguments to the generic function cause the method that it defines to
+be invoked.  When a method-defining form is evaluated, a method object
+is created and one of four actions is taken:
+
+</p><ul>
+
+<li> If a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> of the given name already exists
+and if a <i>method object</i> already exists that agrees with the new one on
+<i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> and <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i>, the new <i>method object</i> replaces
+the old one.  For a definition of one method agreeing with another on
+<i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> and <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i>, 
+see Section <a href="#SubSection_Agreement_on_543">7.6.3 Agreement on Parameter Specializers and Qualifiers</a>.
+
+</li><li> If a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> of the given name already exists
+and if there is no <i>method object</i> that agrees with the new one on
+<i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> and <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i>, the existing <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>
+<i><a href="../26-glossary/o.xhtml#object">object</a></i> is modified to contain the new <i><a href="../26-glossary/m.xhtml#method">method</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+</li><li> If the given <i><a href="../26-glossary/n.xhtml#name">name</a></i> names an <i><a href="../26-glossary/o.xhtml#ordinaryfunction">ordinary function</a></i>, a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>,
+or a <i><a href="../26-glossary/s.xhtml#specialoperator">special operator</a></i>, an error is signaled.
+
+</li><li> Otherwise a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> is created with the <i><a href="../26-glossary/m.xhtml#method">method</a></i>
+specified by the <i><a href="../26-glossary/m.xhtml#methoddefiningform">method-defining form</a></i>.
+
+</li></ul>
+
+<p>
+If the <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> of a new <i><a href="../26-glossary/m.xhtml#method">method</a></i> is not
+<i><a href="../26-glossary/c.xhtml#congruent">congruent</a></i> with the <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> of the <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>,
+an error is signaled.  If a <i><a href="../26-glossary/m.xhtml#methoddefiningoperator">method-defining operator</a></i> that cannot specify
+<i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> options creates a new <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>, 
+a <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> for that <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> is derived from the
+<i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> of the <i><a href="../26-glossary/m.xhtml#method">method</a></i> in the <i><a href="../26-glossary/m.xhtml#methoddefiningform">method-defining form</a></i> in such a way
+as to be <i><a href="../26-glossary/c.xhtml#congruent">congruent</a></i> with it.  For a discussion of <b><i>congruence</i></b>,
+see Section <a href="#SubSection_Congruent_La_544">7.6.4 Congruent Lambda-lists for all Methods of a Generic Function</a>.
+
+</p><p>
+Each method has a <i><a href="../26-glossary/s.xhtml#specializedlambdalist">specialized lambda list</a></i>, which determines
+when that method can be applied.  A <i><a href="../26-glossary/s.xhtml#specializedlambdalist">specialized lambda list</a></i> is like
+an <i><a href="../26-glossary/o.xhtml#ordinarylambdalist">ordinary lambda list</a></i> except that a specialized parameter
+may occur instead of the name of a required parameter.  A specialized parameter
+is a list <code>(<i>variable-name</i> <i>parameter-specializer-name</i>)</code>,
+where <i>parameter-specializer-name</i> is one of the following:
+
+</p><ul>
+
+<li>a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>
+
+<p>
+denotes a <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializer</a></i> which is the <i><a href="../26-glossary/c.xhtml#class">class</a></i> 
+named by that <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</p></li><li>a <i><a href="../26-glossary/c.xhtml#class">class</a></i>
+
+<p>
+denotes a <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializer</a></i> which is the <i><a href="../26-glossary/c.xhtml#class">class</a></i> itself.
+
+
+</p></li><li><code>(eql <i>form</i>)</code>
+
+<p>
+denotes a <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializer</a></i> which satisfies the <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>
+<code>(eql <i>object</i>)</code>, where <i>object</i> is the 
+result of evaluating <i>form</i>.  The form <i>form</i> is evaluated in 
+the lexical environment in which the method-defining form is evaluated.
+Note that <i>form</i> is evaluated only once, at the time the method is
+defined, not each time the generic function is called.
+</p></li></ul>
+
+<p>
+<i><a href="../26-glossary/p.xhtml#parameterspecializername">Parameter specializer names</a></i> are used in macros intended as the
+user-level interface (<a href="7.7.27-defmethod.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a>), while <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i>
+are used in the functional interface.
+
+</p><p>
+Only required parameters may be specialized, and there must be a
+<i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializer</a></i> for each required parameter.  For notational
+simplicity, if some required parameter in a <i><a href="../26-glossary/s.xhtml#specializedlambdalist">specialized lambda list</a></i> in
+a method-defining form is simply a variable name, its 
+<i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializer</a></i> defaults to the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>.
+
+</p><p>
+Given a generic function and a set of arguments, an applicable
+method is a method for that generic function whose parameter
+specializers are satisfied by their corresponding arguments.  The
+following definition specifies what it means for a method to be
+applicable and for an argument to satisfy a <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializer</a></i>.
+
+</p><p>
+
+Let <i>⟨ A<sub>1</sub>,  ... , A<sub>n</sub>⟩</i> be the required
+arguments to a generic function in order. Let <i>⟨ P<sub>1</sub>,
+ ... , P<sub>n</sub>⟩</i> be the <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> corresponding to
+the required parameters of the method <i>M</i> in order.  The method <i>M</i> is
+applicable when each <i>A<sub>i</sub></i> is of the <i><a href="../26-glossary/t.xhtml#type">type</a></i> specified by 
+the <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> <i>P<sub>i</sub></i>.
+
+
+
+Because every valid <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializer</a></i> is 
+also a valid <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>, the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="../4-types-and-classes/4.4.28-typep.xhtml#DictEntry_typep_363"><b>typep</b></a> can be used during method
+selection to determine whether an argument satisfies a <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializer</a></i>.  
+
+</p><p>
+A method all of whose <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> are 
+the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a> is called a <b><i>default method</i></b>; it is always applicable but
+may be shadowed by a more specific method.
+
+</p><p>
+Methods can have <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i>, which give the method combination
+procedure a way to distinguish among methods.  A method that has one
+or more <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i> is called a <i><a href="../26-glossary/q.xhtml#qualifiedmethod">qualified method</a></i>.
+A method with no <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i> is called an <i><a href="../26-glossary/u.xhtml#unqualifiedmethod">unqualified method</a></i>. 
+A <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i> is any <i><a href="../26-glossary/n.xhtml#nonlist">non-list</a></i>.
+
+
+
+The <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i> defined by the <i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> method combination types 
+are <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>.
+
+</p><p>
+In this specification, the terms "<i><a href="../26-glossary/p.xhtml#primarymethod">primary method</a></i>" and 
+"<i><a href="../26-glossary/a.xhtml#auxiliarymethod">auxiliary method</a></i>" are used to partition <i><a href="../26-glossary/m.xhtml#method">methods</a></i>
+within a method combination type according to their intended use.  
+In standard method combination, <i><a href="../26-glossary/p.xhtml#primarymethod">primary methods</a></i> are 
+<i><a href="../26-glossary/u.xhtml#unqualifiedmethod">unqualified methods</a></i> 
+and <i><a href="../26-glossary/a.xhtml#auxiliarymethod">auxiliary methods</a></i> are methods with a single <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i> 
+that is one of <code>:around</code>, <code>:before</code>, or <code>:after</code>.
+<i><a href="../26-glossary/m.xhtml#method">Methods</a></i> with these <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i> are called <i><a href="../26-glossary/a.xhtml#aroundmethod">around methods</a></i>,
+<i><a href="../26-glossary/b.xhtml#beforemethod">before methods</a></i>, and <i><a href="../26-glossary/a.xhtml#aftermethod">after methods</a></i>, respectively.
+When a method combination type is defined using the short form of
+
+<a href="7.7.33-define-method-combination.xhtml#DictEntry_define_metho_589"><b>define-method-combination</b></a>, <i><a href="../26-glossary/p.xhtml#primarymethod">primary methods</a></i> are 
+methods qualified with the name of the type of method combination, 
+and auxiliary methods have the <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i> <code>:around</code>.
+Thus the terms "<i><a href="../26-glossary/p.xhtml#primarymethod">primary method</a></i>" and "<i><a href="../26-glossary/a.xhtml#auxiliarymethod">auxiliary method</a></i>"
+have only a relative definition within a given method combination type.
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Agreement_on_543"><span class="secno">7.6.3</span> Agreement on Parameter Specializers and Qualifiers</h3>
+<p>
+
+
+Two <i><a href="../26-glossary/m.xhtml#method">methods</a></i> are said to agree with each other on <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i>
+and <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i> if the following conditions hold:
+
+</p><ul>
+
+<li>1. Both methods have the same number of required parameters.
+Suppose the <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> of the two methods are
+<i>P<sub>1,1</sub> ...  P<sub>1,n</sub></i> and <i>P<sub>2,1</sub> ...  P<sub>2,n</sub></i>.
+
+</li><li>2. For each <i>1 &lt;=  i &lt;=  n</i>, <i>P<sub>1,i</sub></i> agrees with <i>P<sub>2,i</sub></i>.
+The <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializer</a></i> <i>P<sub>1,i</sub></i> agrees with <i>P<sub>2,i</sub></i> if
+<i>P<sub>1,i</sub></i> and <i>P<sub>2,i</sub></i> are the same class or if 
+<i>P<sub>1,i</sub>=<code>(<b>eql</b> </code></i><code/><code><i>object</i><sub>1</sub><i>)</i></code>,
+<i>P<sub>2,i</sub>=<code>(<b>eql</b> </code></i><code/><code><i>object</i><sub>2</sub><i>)</i></code>, and
+<code>(<b>eql</b> <i><i>object</i><sub>1</sub></i> <i><i>object</i><sub>2</sub></i>)</code>.
+Otherwise <i>P<sub>1,i</sub></i> and <i>P<sub>2,i</sub></i> do not agree.
+
+</li><li>3. The two <i><a href="../26-glossary/l.xhtml#list">lists</a></i> of <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i> are the <i><a href="../26-glossary/s.xhtml#same">same</a></i> 
+under <a href="../5-data-and-control-flow/5.3.35-equal.xhtml#DictEntry_equal_421"><b>equal</b></a>.
+
+</li></ul>
+</section>
+<section>
+<h3 id="SubSection_Congruent_La_544"><span class="secno">7.6.4</span> Congruent Lambda-lists for all Methods of a Generic Function</h3>
+<p>
+
+
+These rules define the congruence of a set of <i><a href="../26-glossary/l.xhtml#lambdalist">lambda lists</a></i>, including the
+<i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> of each method for a given generic function and the
+<i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> specified for the generic function itself, if given.
+
+</p><ul>
+
+<li>1. Each <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> must have the same number of required
+parameters.
+
+</li><li>2. Each <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> must have the same number of optional
+parameters.  Each method can supply its own default for an optional
+parameter.
+
+</li><li>3. If any <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> mentions <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a> or <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a>, each
+<i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> must mention one or both of them.
+
+</li><li>4. If the <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i>
+mentions <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a>, each
+method must accept all of the keyword names mentioned after <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a>,
+either by accepting them explicitly, by specifying <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a>,
+or by specifying <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a> but not <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a>.
+Each method can accept additional keyword arguments of its own.  The
+checking of the validity of keyword names is done in the generic
+function, not in each method.
+
+A method is invoked as if the keyword
+argument pair whose name is <code>:allow-other-keys</code> and whose value
+is <i><a href="../26-glossary/t.xhtml#true">true</a></i> were supplied, though no such argument pair will be passed.
+
+
+</li><li>5. The use of <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a> need not be consistent
+across <i><a href="../26-glossary/l.xhtml#lambdalist">lambda lists</a></i>.  If <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a> is mentioned in 
+the <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> of any applicable <i><a href="../26-glossary/m.xhtml#method">method</a></i> or of the <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>,
+any keyword arguments may be mentioned in the call to the <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>.
+
+</li><li>6. The use of <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_250"><b>&amp;aux</b></a> need not be consistent across methods.
+
+<p>
+If a <i><a href="../26-glossary/m.xhtml#methoddefiningoperator">method-defining operator</a></i> that cannot specify <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> options
+creates a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>, and if the <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> for the method
+mentions keyword arguments, the <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> of the generic function
+will mention <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a> (but no keyword arguments).
+
+</p></li></ul>
+</section>
+<section>
+<h3 id="SubSection_Keyword_Argu_545"><span class="secno">7.6.5</span> Keyword Arguments in Generic Functions and Methods</h3>
+<p>
+
+
+When a generic function or any of its methods mentions 
+<a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a> in a <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i>, the specific set of keyword
+arguments accepted by the generic function varies according to the
+applicable methods.  The set of keyword arguments accepted by the
+generic function for a particular call is the union of the keyword
+arguments accepted by all applicable methods and the keyword arguments
+mentioned after <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a> in the generic function definition,
+if any.  A method that has <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a> but not <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a> does not affect the
+set of acceptable keyword arguments.  If
+the <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> of any applicable method or of the generic
+function definition contains <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a>, all
+keyword arguments are accepted by the generic function.
+
+</p><p>
+The <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> congruence rules require that each method
+accept all of the keyword arguments mentioned after <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a> in the
+generic function definition, by accepting them explicitly, by
+specifying <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a>, or by specifying <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a> but
+not <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_247"><b>&amp;key</b></a>.  Each method can accept additional keyword arguments
+of its own, in addition to the keyword arguments mentioned in the
+generic function definition.
+
+</p><p>
+If a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> is passed a keyword argument that no applicable
+method accepts, an error should be signaled; see Section <a href="../3-evaluation-and-compilation/3.5-error-checking-in-function-calls.xhtml#Section_Error_Checki_266">3.5 Error Checking in Function Calls</a>.
+</p>
+<section>
+<h4 id="SubSubSectio_Examples_of__546"><span class="secno">7.6.5.1</span> Examples of Keyword Arguments in Generic Functions and Methods</h4>
+<p>
+
+For example, suppose there are two methods defined for <code>width</code>
+as follows:
+
+</p><pre> (defmethod width ((c character-class) &amp;key font) ...)
+ 
+ (defmethod width ((p picture-class) &amp;key pixel-size) ...)
+</pre>
+
+<p>
+ Assume that there are no other methods and no generic
+function definition for <code>width</code>. The evaluation of the
+following form should signal an error because 
+the keyword argument <code>:pixel-size</code> is not accepted by the applicable method.
+
+</p><pre> (width (make-instance `character-class :char #\Q) 
+        :font 'baskerville :pixel-size 10)
+</pre>
+
+<p>
+The evaluation of the following form should signal an error.
+
+</p><pre> (width (make-instance `picture-class :glyph (glyph #\Q)) 
+        :font 'baskerville :pixel-size 10)
+</pre>
+
+<p>
+The evaluation of the following form will not signal an error
+if the class named <code>character-picture-class</code> is a subclass of
+both <code>picture-class</code> and <code>character-class</code>.
+
+</p><pre> (width (make-instance `character-picture-class :char #\Q)
+        :font 'baskerville :pixel-size 10)
+</pre>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Method_Selec_547"><span class="secno">7.6.6</span> Method Selection and Combination</h3>
+<p>
+
+
+When a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> is called with particular arguments, it must
+determine the code to execute.  This code is called the 
+<b><i>effective method</i></b> for those <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>.
+The <i><a href="../26-glossary/e.xhtml#effectivemethod">effective method</a></i> is a 
+combination of the <i><a href="../26-glossary/a.xhtml#applicablemethod">applicable methods</a></i> in the <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>
+that <i><a href="../26-glossary/c.xhtml#call">calls</a></i> some or all of the <i><a href="../26-glossary/m.xhtml#method">methods</a></i>.
+
+</p><p>
+
+
+
+
+If a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> is called and no <i><a href="../26-glossary/m.xhtml#method">methods</a></i> are 
+<i><a href="../26-glossary/a.xhtml#applicable">applicable</a></i>, the <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <a href="7.7.16-no-applicable-method.xhtml#DictEntry_no_applicabl_572"><b>no-applicable-method</b></a>
+is invoked, with the <i>results</i> from that call being used as the
+<i>results</i> of the call to the original <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>.  Calling
+<a href="7.7.16-no-applicable-method.xhtml#DictEntry_no_applicabl_572"><b>no-applicable-method</b></a> takes precedence over checking for acceptable
+keyword arguments; see Section <a href="#SubSection_Keyword_Argu_545">7.6.5 Keyword Arguments in Generic Functions and Methods</a>.
+
+
+</p><p>
+When the <i><a href="../26-glossary/e.xhtml#effectivemethod">effective method</a></i> has been determined,
+it is invoked with the same <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i> as were passed to the <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>.  
+Whatever <i><a href="../26-glossary/v.xhtml#value">values</a></i> it returns are returned as the <i><a href="../26-glossary/v.xhtml#value">values</a></i>
+of the <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>.
+</p>
+<section>
+<h4 id="SubSubSectio_Determining__548"><span class="secno">7.6.6.1</span> Determining the Effective Method</h4>
+<p>
+
+
+The effective method is determined by the following three-step procedure:
+
+</p><ul>
+
+<li>1.Select the applicable methods.
+
+</li><li>2.Sort the applicable methods by precedence order, putting
+the most specific method first.
+
+</li><li>3.Apply method combination to the sorted list of
+applicable methods, producing the effective method.
+
+</li></ul>
+<section>
+<h5 id="SubSubSubSec_Selecting_th_549"><span class="secno">7.6.6.1.1</span> Selecting the Applicable Methods</h5>
+<p>
+
+
+This step is described in Section <a href="#SubSection_Introduction_542">7.6.2 Introduction to Methods</a>.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Sorting_the__550"><span class="secno">7.6.6.1.2</span> Sorting the Applicable Methods by Precedence Order</h5>
+<p>
+
+To compare the precedence of two methods, their <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i>
+are examined in order.  The default examination order is from left to
+right, but an alternative order may be specified by the 
+<code>:argument-precedence-order</code> option to <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> or to any of
+the other operators that specify generic function options.
+
+</p><p>
+The corresponding <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> from each method are
+compared.  When a pair of <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> agree, the next
+pair are compared for agreement.  If all corresponding parameter
+specializers agree, the two methods must have different
+<i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i>; in this case, either method can be selected to precede the
+other.  For information about agreement, see Section <a href="#SubSection_Agreement_on_543">7.6.3 Agreement on Parameter Specializers and Qualifiers</a>.
+
+</p><p>
+If some corresponding <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> do not agree, the first
+pair of <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> that do not agree determines the
+precedence.  If both <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> are classes, the more
+specific of the two methods is the method whose <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializer</a></i>
+appears earlier in the <i><a href="../26-glossary/c.xhtml#classprecedencelist">class precedence list</a></i> of the corresponding
+argument.  Because of the way in which the set of applicable methods
+is chosen, the <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> are guaranteed to be present in
+the class precedence list of the class of the argument.
+
+</p><p>
+If just one of a pair of corresponding <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> is <code>(eql <i>object</i>)</code>,
+the <i><a href="../26-glossary/m.xhtml#method">method</a></i> with that <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializer</a></i> precedes the
+other <i><a href="../26-glossary/m.xhtml#method">method</a></i>.  If both <i><a href="../26-glossary/p.xhtml#parameterspecializer">parameter specializers</a></i> are <a href="../4-types-and-classes/4.4.23-eql.xhtml#DictEntry_eql_358"><b>eql</b></a>
+<i><a href="../26-glossary/e.xhtml#expression">expressions</a></i>, the
+specializers must agree (otherwise the two <i><a href="../26-glossary/m.xhtml#method">methods</a></i> would
+not both have been applicable to this argument).
+
+</p><p>
+The resulting list of <i><a href="../26-glossary/a.xhtml#applicablemethod">applicable methods</a></i> has the most specific
+<i><a href="../26-glossary/m.xhtml#method">method</a></i> first and the least specific <i><a href="../26-glossary/m.xhtml#method">method</a></i> last.    
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Applying_met_551"><span class="secno">7.6.6.1.3</span> Applying method combination to the sorted list of applicable methods</h5>
+<p>
+
+
+In the simple case—if standard method combination is used and all
+applicable methods are primary methods—the 
+
+effective method is the most specific method.
+That method can call the next most specific
+method by using the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a>.  The method that
+<a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> will call is referred to as the 
+<b><i>next method</i></b>.  The predicate <a href="7.7.29-next-method-p.xhtml#DictEntry_next_method__585"><b>next-method-p</b></a> tests whether a next
+method exists.  If <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> is called and there is no
+next most specific method, the generic function <a href="7.7.17-no-next-method.xhtml#DictEntry_no_next_meth_573"><b>no-next-method</b></a>
+is invoked.
+
+</p><p>
+In general, the effective method is some combination of the applicable
+methods.  It is described by a <i><a href="../26-glossary/f.xhtml#form">form</a></i> that contains calls to some or
+all of the applicable methods, returns the value or values that will
+be returned as the value or values of the generic function, and
+optionally makes some of the methods accessible by means of 
+<a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a>.
+
+</p><p>
+The role of each method in the effective method is determined by its
+
+<i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i> and the specificity of the method.  A <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i>
+serves to mark a method, and the meaning of a <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i> is
+determined by the way that these marks are used by this step
+of the procedure.  If an applicable method has an unrecognized
+<i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i>, this step signals an error and does not include that method
+in the effective method.
+
+</p><p>
+When standard method combination is used together with qualified methods, 
+the effective method is produced as described in Section <a href="#SubSubSectio_Standard_Met_552">7.6.6.2 Standard Method Combination</a>.
+
+</p><p>
+Another type of method combination can be specified by using the
+<code>:method-combination</code> option of <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> or
+of any of the other operators that specify generic function options.  In
+this way this step of the procedure can be customized.
+
+</p><p>
+New types of method combination can be defined by using 
+the <a href="7.7.33-define-method-combination.xhtml#DictEntry_define_metho_589"><b>define-method-combination</b></a> <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>. 
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Standard_Met_552"><span class="secno">7.6.6.2</span> Standard Method Combination</h4>
+<p>
+
+Standard method combination is supported by the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.6-standard-generic-function.xhtml#DictEntry_standard_gen_341"><b>standard-generic-function</b></a>.
+It is used if no other type of method
+combination is specified or if the built-in method combination type
+<b>standard</b> is specified. 
+
+</p><p>
+Primary methods define the main action of the effective method,  
+while auxiliary methods modify that action in one of three ways.
+A primary method has no method <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i>.
+
+</p><p>
+An auxiliary method is a method whose 
+
+<i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i> is <code>:before</code>, <code>:after</code>, or <code>:around</code>.
+Standard method combination
+allows no more than one <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i> per method; if a method definition
+specifies more than one <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i> per method, an error is signaled.
+
+</p><ul>
+
+<li>
+A <i><a href="../26-glossary/b.xhtml#beforemethod">before method</a></i> has the keyword <code>:before</code> as its only <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i>.
+A <i><a href="../26-glossary/b.xhtml#beforemethod">before method</a></i> specifies <i><a href="../26-glossary/c.xhtml#code">code</a></i> that is to be run before any 
+<i><a href="../26-glossary/p.xhtml#primarymethod">primary methods</a></i>.
+
+</li><li>
+An <i><a href="../26-glossary/a.xhtml#aftermethod">after method</a></i> has the keyword <code>:after</code> as its only <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i>.
+An <i><a href="../26-glossary/a.xhtml#aftermethod">after method</a></i> specifies <i><a href="../26-glossary/c.xhtml#code">code</a></i> that is to be run after
+<i><a href="../26-glossary/p.xhtml#primarymethod">primary methods</a></i>.
+
+</li><li>
+An <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i> has the keyword <code>:around</code> as its only <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i>.
+An <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i> specifies <i><a href="../26-glossary/c.xhtml#code">code</a></i> that is to be run instead of other
+<i><a href="../26-glossary/a.xhtml#applicablemethod">applicable methods</a></i>,
+
+
+but which might contain explicit <i><a href="../26-glossary/c.xhtml#code">code</a></i>
+which calls some of those <i>shadowed</i> <i><a href="../26-glossary/m.xhtml#method">methods</a></i>
+(via <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a>).
+
+</li></ul>
+
+<p>
+The semantics of standard method combination is as follows:
+
+</p><ul>
+
+<li> If there are any <i><a href="../26-glossary/a.xhtml#aroundmethod">around methods</a></i>, the most specific
+<i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i> is called.  It supplies the value or values of the
+generic function.
+
+</li><li> Inside the body of an <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i>, 
+<a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> can be used to call the <i><a href="../26-glossary/n.xhtml#nextmethod">next method</a></i>.  When the next
+method returns, the <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i> can execute more code,
+perhaps based on the returned value or values.
+
+
+
+The <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <a href="7.7.17-no-next-method.xhtml#DictEntry_no_next_meth_573"><b>no-next-method</b></a> is invoked if <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> is used and
+there is no <i><a href="../26-glossary/a.xhtml#applicablemethod">applicable method</a></i> to call.  The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="7.7.29-next-method-p.xhtml#DictEntry_next_method__585"><b>next-method-p</b></a>
+may be used to determine whether a <i><a href="../26-glossary/n.xhtml#nextmethod">next method</a></i> exists.
+
+</li><li> 
+If an <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i> invokes <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a>,
+the next most specific <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i>
+is called, if one is applicable.  If there are no <i><a href="../26-glossary/a.xhtml#aroundmethod">around methods</a></i> 
+or if <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> is called by the least
+specific <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i>, the other methods are called as
+follows:
+<ul>
+<li>-- All the <i><a href="../26-glossary/b.xhtml#beforemethod">before methods</a></i> are called, in
+most-specific-first order.  Their values are ignored.
+An error is signaled if <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> is used in a
+<i><a href="../26-glossary/b.xhtml#beforemethod">before method</a></i>.
+
+</li><li>-- The most specific primary method is called.  Inside the
+body of a primary method, <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> may be used to call
+the next most specific primary method.  When that method returns, the
+previous primary method can execute more code, perhaps based on the
+returned value or values.  The generic function <a href="7.7.17-no-next-method.xhtml#DictEntry_no_next_meth_573"><b>no-next-method</b></a>
+is invoked if <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> is used and there are no more
+applicable primary methods.  The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="7.7.29-next-method-p.xhtml#DictEntry_next_method__585"><b>next-method-p</b></a> may be
+used to determine whether a <i><a href="../26-glossary/n.xhtml#nextmethod">next method</a></i> exists.  If <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a>
+is not used, only the most specific <i><a href="../26-glossary/p.xhtml#primarymethod">primary method</a></i> is called.
+
+</li><li>-- All the <i><a href="../26-glossary/a.xhtml#aftermethod">after methods</a></i> are called in
+most-specific-last order.  Their values are ignored.
+An error is signaled if <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> is used in an
+<i><a href="../26-glossary/a.xhtml#aftermethod">after method</a></i>.
+</li></ul>
+</li><li> If no <i><a href="../26-glossary/a.xhtml#aroundmethod">around methods</a></i> were invoked, the most
+specific primary method supplies the value or values returned by the
+generic function.  The value or values returned by the invocation of
+<a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> in the least specific <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i> are
+those returned by the most specific primary method.
+
+</li></ul>
+
+<p>
+In standard method combination, if there is an applicable method
+but no applicable primary method, an error is signaled.
+
+</p><p>
+The <i><a href="../26-glossary/b.xhtml#beforemethod">before methods</a></i> are run in most-specific-first order while
+the <i><a href="../26-glossary/a.xhtml#aftermethod">after methods</a></i> are run in least-specific-first order.  The
+design rationale for this difference can be illustrated with an
+example.  Suppose class <i>C<sub>1</sub></i> modifies the behavior of its
+superclass, <i>C<sub>2</sub></i>, by adding <i><a href="../26-glossary/b.xhtml#beforemethod">before methods</a></i> and <i><a href="../26-glossary/a.xhtml#aftermethod">after methods</a></i>.
+Whether the behavior of the class <i>C<sub>2</sub></i> is defined
+directly by methods on <i>C<sub>2</sub></i> or is inherited from its superclasses
+does not affect the relative order of invocation of methods on
+instances of the class <i>C<sub>1</sub></i>.  Class <i>C<sub>1</sub></i>'s 
+<i><a href="../26-glossary/b.xhtml#beforemethod">before method</a></i> runs before all of class <i>C<sub>2</sub></i>'s methods.  
+Class <i>C<sub>1</sub></i>'s <i><a href="../26-glossary/a.xhtml#aftermethod">after method</a></i> runs after all of class <i>C<sub>2</sub></i>'s methods.
+
+</p><p>
+By contrast, all <i><a href="../26-glossary/a.xhtml#aroundmethod">around methods</a></i> run before any other methods
+run.  Thus a less specific <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i> runs before a more
+specific primary method.
+
+</p><p>
+If only primary methods are used and if <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> is not
+used, only the most specific method is invoked; that is, more specific
+methods shadow more general ones. 
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Declarative__553"><span class="secno">7.6.6.3</span> Declarative Method Combination</h4>
+<p>
+
+The macro <a href="7.7.33-define-method-combination.xhtml#DictEntry_define_metho_589"><b>define-method-combination</b></a> defines new forms of method
+combination.  It provides a mechanism for customizing the production
+of the effective method. The default procedure for producing an
+effective method is described in Section <a href="#SubSubSectio_Determining__548">7.6.6.1 Determining the Effective Method</a>.
+There are two forms of
+<a href="7.7.33-define-method-combination.xhtml#DictEntry_define_metho_589"><b>define-method-combination</b></a>.  The short form is a simple facility while
+the long form is more powerful and more verbose.  The long form
+resembles <a href="../3-evaluation-and-compilation/3.8.10-defmacro.xhtml#DictEntry_defmacro_292"><b>defmacro</b></a> in that the body is an expression that
+computes a Lisp form; it provides mechanisms for implementing
+arbitrary control structures within method combination and for
+arbitrary processing of method <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i>.  
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Built_in_Met_554"><span class="secno">7.6.6.4</span> Built-in Method Combination Types</h4>
+<p>
+
+
+The object system provides a set of built-in method combination types.  To
+specify that a generic function is to use one of these method
+combination types, the name of the method combination type is given as
+the argument to the <code>:method-combination</code> option to 
+<a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> or to the <code>:method-combination</code> option to any of the
+other operators that specify generic function options.
+
+</p><p>
+The names of the built-in  method combination types are listed in the next figure.
+
+
+
+
+
+
+
+
+
+
+
+</p><table id="fig-7-2" class="fig">
+<caption><span class="figlabel">Figure 7-2.</span> Built-in Method Combination Types</caption>
+
+  <tbody><tr>
+    <td>+</td>
+    <td>append</td>
+    <td>max</td>
+    <td>nconc</td>
+    <td>progn</td>
+  </tr>
+  <tr>
+    <td>and</td>
+    <td>list</td>
+    <td>min</td>
+    <td>or</td>
+    <td>standard</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+The semantics of the <b>standard</b> built-in method combination type is
+described in Section <a href="#SubSubSectio_Standard_Met_552">7.6.6.2 Standard Method Combination</a>.  The other
+built-in method combination types are called simple built-in method
+combination types.
+
+</p><p>
+The simple built-in method combination types act as though they were
+defined by the short form of <a href="7.7.33-define-method-combination.xhtml#DictEntry_define_metho_589"><b>define-method-combination</b></a>.  
+They recognize two roles for <i><a href="../26-glossary/m.xhtml#method">methods</a></i>:
+
+</p><ul>
+
+<li> An <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i> has the keyword symbol 
+<code>:around</code> as its sole <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i>.  The meaning of 
+<code>:around</code> <i><a href="../26-glossary/m.xhtml#method">methods</a></i> is the same as in standard method combination.
+Use of the functions <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> and <a href="7.7.29-next-method-p.xhtml#DictEntry_next_method__585"><b>next-method-p</b></a>
+is supported in <i><a href="../26-glossary/a.xhtml#aroundmethod">around methods</a></i>.
+
+</li><li> A primary method has the name of the method combination
+type as its sole <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i>.  For example, the built-in method
+combination type <code>and</code> recognizes methods whose sole <i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i> is
+<code>and</code>; these are primary methods. Use of the functions 
+<a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> and <a href="7.7.29-next-method-p.xhtml#DictEntry_next_method__585"><b>next-method-p</b></a> is not supported 
+in <i><a href="../26-glossary/p.xhtml#primarymethod">primary methods</a></i>.
+
+</li></ul>
+
+<p>
+The semantics of the simple built-in method combination types is as
+follows:
+
+</p><ul>
+<li>                                                    
+If there are any <i><a href="../26-glossary/a.xhtml#aroundmethod">around methods</a></i>, the most specific <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i>
+is called.   It supplies the value or values of the <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>. 
+
+</li><li> Inside the body of an <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i>, the function
+<a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> can be used to call the <i><a href="../26-glossary/n.xhtml#nextmethod">next method</a></i>.
+
+
+
+The <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <a href="7.7.17-no-next-method.xhtml#DictEntry_no_next_meth_573"><b>no-next-method</b></a> is invoked if 
+<a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> is used and there is no applicable method to call.
+The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="7.7.29-next-method-p.xhtml#DictEntry_next_method__585"><b>next-method-p</b></a> may be used to determine whether a
+<i><a href="../26-glossary/n.xhtml#nextmethod">next method</a></i> exists. When the <i><a href="../26-glossary/n.xhtml#nextmethod">next method</a></i> returns, 
+the <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i> can execute more code,
+perhaps based on the returned value or values.
+
+</li><li> If an <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i> invokes <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a>,
+the next most specific <i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i> is
+called, if one is applicable.  If there are no <i><a href="../26-glossary/a.xhtml#aroundmethod">around methods</a></i>
+or if <a href="7.7.31-call-next-method.xhtml#DictEntry_call_next_me_587"><b>call-next-method</b></a> is called by the least specific
+<i><a href="../26-glossary/a.xhtml#aroundmethod">around method</a></i>, a Lisp form derived from the name of the built-in
+method combination type and from the list of applicable primary
+methods is evaluated to produce the value of the generic function.
+Suppose the name of the method combination type is <i>operator</i>
+
+
+
+
+
+
+
+
+
+
+
+
+
+and the call to the generic function is of the form
+
+<p><i>(<i>generic-function</i> a<sub>1</sub> ...  a<sub>n</sub>)</i>
+
+</p></li><li> Let <i>M<sub>1</sub>, ... ,M<sub>k</sub></i> be the applicable primary methods
+in order; then the derived Lisp form is
+
+<p>
+<i/>(<i>operator</i> ⟨ M<sub>1</sub>
+ a<sub>1</sub> ...  a<sub>n</sub>⟩ ... ⟨
+M<sub>k</sub> a<sub>1</sub> ...  a<sub>n</sub>⟩)<i/>
+
+</p></li><li> If the expression <i>⟨ M<sub>i</sub>  a<sub>1</sub> ...  
+a<sub>n</sub>⟩</i> is
+evaluated, the method <i>M<sub>i</sub></i> will be applied to the arguments
+<i>a<sub>1</sub> ...  a<sub>n</sub></i>.  
+For example,
+
+if <i>operator</i> is <code>or</code>,
+the expression <i>⟨ M<sub>i</sub>  a<sub>1</sub> ...  
+a<sub>n</sub>⟩</i> is
+evaluated only if <i>⟨ M<sub>j</sub>  a<sub>1</sub> ...  
+a<sub>n</sub>⟩</i>,
+<i>1 &lt;=  j&lt;i</i>, returned <code>nil</code>.
+
+</li><li> The default order for the primary methods is 
+<code>:most-specific-first</code>.  However, the order can be reversed by supplying
+<code>:most-specific-last</code> as the second argument to the <code>:method-combination</code> option.
+</li></ul>
+
+<p>
+The simple built-in method combination types require exactly one
+<i><a href="../26-glossary/q.xhtml#qualifier">qualifier</a></i> per method.  An error is signaled if there are applicable
+methods with no <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i> or with <i><a href="../26-glossary/q.xhtml#qualifier">qualifiers</a></i> that are not supported
+by the method combination type. An error is signaled if there are
+applicable <i><a href="../26-glossary/a.xhtml#aroundmethod">around methods</a></i> and no applicable primary
+methods.
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Inheritance__555"><span class="secno">7.6.7</span> Inheritance of Methods</h3>
+<p>
+
+
+A subclass inherits methods in the sense that any method applicable to
+all instances of a class is also applicable to all instances of any
+subclass of that class.
+
+</p><p>
+The inheritance of methods acts the same way regardless of 
+which of the <i><a href="../26-glossary/m.xhtml#methoddefiningoperator">method-defining operators</a></i> created the methods.
+
+</p><p>
+The inheritance of methods is described in detail in 
+Section <a href="#SubSection_Method_Selec_547">7.6.6 Method Selection and Combination</a>.
+
+</p>
+</section>
+</section>
+</section>
+</body>
+</html>

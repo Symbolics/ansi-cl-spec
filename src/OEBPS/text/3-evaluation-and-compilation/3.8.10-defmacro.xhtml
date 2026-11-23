@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.8.10 defmacro — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_defmacro_292" class="entry"><span class="secno">3.8.10</span> <span class="names">defmacro</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>defmacro</b>
+<i>name lambda-list [[{<i>declaration</i>}* $|$ <i>documentation</i>]] {<i>form</i>}*</i><br/>   
+  → <i>name</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>. 
+
+<p>
+<i>lambda-list</i>—a <i><a href="../26-glossary/m.xhtml#macrolambdalist">macro lambda list</a></i>.
+
+</p><p>
+<i>declaration</i>—a <a href="3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="../26-glossary/e.xhtml#expression">expression</a></i>; not evaluated.
+
+</p><p>
+<i>documentation</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>; not evaluated.
+
+</p><p>
+<i>form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Defines <i>name</i> as a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> 
+by associating a <i><a href="../26-glossary/m.xhtml#macrofunction">macro function</a></i> with that <i>name</i>
+in the global environment.
+
+The <i><a href="../26-glossary/m.xhtml#macrofunction">macro function</a></i> is defined in the same <i><a href="../26-glossary/l.xhtml#lexicalenvironment">lexical environment</a></i>
+in which the <a href="#DictEntry_defmacro_292"><b>defmacro</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> appears.
+
+
+<p>
+ 
+
+The parameter variables in <i>lambda-list</i> are bound to
+destructured portions of the macro call.
+
+</p><p>
+The expansion function
+accepts two arguments, a <i><a href="../26-glossary/f.xhtml#form">form</a></i> and an 
+<i><a href="../26-glossary/e.xhtml#environment">environment</a></i>.  The expansion function returns a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.  
+The body of the expansion function is specified by <i>forms</i>.
+<i>Forms</i> are executed in order.  The value of the
+last <i>form</i> executed is returned as the expansion of the
+<i><a href="../26-glossary/m.xhtml#macro">macro</a></i>.
+
+
+The body <i>forms</i> of the expansion function (but not the <i>lambda-list</i>)
+
+are implicitly enclosed in a <i><a href="../26-glossary/b.xhtml#block">block</a></i> whose name is <i>name</i>.
+
+
+</p><p>
+The <i>lambda-list</i> conforms to the requirements described in Section <a href="3.4-lambda-lists.xhtml#SubSection_Macro_Lambda_254">3.4.4 Macro Lambda Lists</a>.
+
+</p><p>
+
+<i>Documentation</i> is attached as a <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> 
+    to <i>name</i> (as kind <a href="../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338"><b>function</b></a>)
+and to the <i><a href="../26-glossary/m.xhtml#macrofunction">macro function</a></i>.
+
+
+</p><p>
+
+<a href="#DictEntry_defmacro_292"><b>defmacro</b></a> can be used to redefine a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> or to replace
+a <i><a href="../26-glossary/f.xhtml#function">function</a></i> definition with a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> definition.
+
+</p><p>
+
+Recursive expansion of the <i><a href="../26-glossary/f.xhtml#form">form</a></i> returned must terminate,
+including the expansion of other <i><a href="../26-glossary/m.xhtml#macro">macros</a></i> which are <i><a href="../26-glossary/s.xhtml#subform">subforms</a></i>
+of other <i><a href="../26-glossary/f.xhtml#form">forms</a></i> returned.
+
+</p><p>
+
+The consequences are undefined if the result of fully macroexpanding
+a <i><a href="../26-glossary/f.xhtml#form">form</a></i>
+contains any <i><a href="../26-glossary/c.xhtml#circular">circular</a></i> <i><a href="../26-glossary/l.xhtml#liststructure">list structure</a></i> except in <i>literal objects</i>.
+
+
+</p><p>
+
+
+If a <a href="#DictEntry_defmacro_292"><b>defmacro</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> appears as a <i><a href="../26-glossary/t.xhtml#toplevelform">top level form</a></i>,
+the <i><a href="../26-glossary/c.xhtml#compiler">compiler</a></i> must store the <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> definition at compile time,
+so that occurrences of the macro later on in the file can be expanded correctly.
+Users must ensure that the body of the <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> can be evaluated at 
+compile time if it is referenced within the <i><a href="../26-glossary/f.xhtml#file">file</a></i> being <i>compiled</i>.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defmacro mac1 (a b) "Mac1 multiplies and adds" 
+            `(+ ,a (* ,b 3))) →  MAC1 
+ (mac1 4 5) → 19 
+ (documentation 'mac1 'function) → "Mac1 multiplies and adds" 
+ (defmacro mac2 (&amp;optional (a 2 b) (c 3 d) &amp;rest x) `'(,a ,b ,c ,d ,x)) →  MAC2 
+ (mac2 6) → (6 T 3 NIL NIL) 
+ (mac2 6 3 8) → (6 T 3 T (8)) 
+ (defmacro mac3 (&amp;whole r a &amp;optional (b 3) &amp;rest x &amp;key c (d a))
+    `'(,r ,a ,b ,c ,d ,x)) →  MAC3 
+ (mac3 1 6 :d 8 :c 9 :d 10) → ((MAC3 1 6 :D 8 :C 9 :D 10) 1 6 9 8 (:D 8 :C 9 :D 10)) 
+</pre>
+
+
+<p>
+
+The stipulation that
+an embedded <i><a href="../26-glossary/d.xhtml#destructuringlambdalist">destructuring lambda list</a></i> is permitted only
+where <i><a href="../26-glossary/o.xhtml#ordinarylambdalist">ordinary lambda list</a></i> syntax would permit a parameter name
+but not a <i><a href="../26-glossary/l.xhtml#list">list</a></i> is made to prevent ambiguity.  For example,
+the following is not valid:
+
+</p><pre> (defmacro loser (x &amp;optional (a b &amp;rest c) &amp;rest z)
+   ...)
+</pre>
+because <i><a href="../26-glossary/o.xhtml#ordinarylambdalist">ordinary lambda list</a></i> syntax does permit a 
+<i><a href="../26-glossary/l.xhtml#list">list</a></i> following <code>&amp;optional</code>;
+the list <code>(a b &amp;rest c)</code> would be interpreted as describing an
+optional parameter named <code>a</code> whose default value is that of the
+form <code>b</code>, with a supplied-p parameter named <a href="3.4-lambda-lists.xhtml#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a> (not valid),
+and an extraneous symbol <code>c</code> in the list (also not valid).  An almost
+correct way to express this is
+
+<pre> (defmacro loser (x &amp;optional ((a b &amp;rest c)) &amp;rest z)
+   ...)
+</pre>
+The extra set of parentheses removes the ambiguity.  However, the
+definition is now incorrect because a macro call such as <code>(loser (car pool))</code>
+would not provide any argument form for the lambda list <code>(a b &amp;rest c)</code>,
+and so the default value against which to match the <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i> would be
+<a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> because no explicit default value was specified.  
+The consequences of this are  unspecified
+since the empty list, <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, does not have <i><a href="../26-glossary/f.xhtml#form">forms</a></i> to satisfy the
+parameters <code>a</code> and <code>b</code>.  The fully correct definition would be either
+
+<pre> (defmacro loser (x &amp;optional ((a b &amp;rest c) '(nil nil)) &amp;rest z)
+   ...)
+</pre>
+or
+
+<pre> (defmacro loser (x &amp;optional ((&amp;optional a b &amp;rest c)) &amp;rest z)
+   ...)
+</pre>
+These differ slightly: the first requires that if the macro call
+specifies <code>a</code> explicitly then it must also specify <code>b</code> explicitly,
+whereas the second does not have this requirement.  For example,
+
+<pre> (loser (car pool) ((+ x 1)))
+</pre>
+would be a valid call for the second definition but not for the first.
+
+<pre> (defmacro dm1a (&amp;whole x) `',x)
+ (macroexpand '(dm1a))  → (QUOTE (DM1A))
+ (macroexpand '(dm1a a)) is an error.
+ 
+ (defmacro dm1b (&amp;whole x a &amp;optional b) `'(,x ,a ,b))
+ (macroexpand '(dm1b))  is an error.
+ (macroexpand '(dm1b q))  → (QUOTE ((DM1B Q) Q NIL))
+ (macroexpand '(dm1b q r)) → (QUOTE ((DM1B Q R) Q R))
+ (macroexpand '(dm1b q r s)) is an error.
+</pre>
+
+<pre> (defmacro dm2a (&amp;whole form a b) `'(form ,form a ,a b ,b))
+ (macroexpand '(dm2a x y)) → (QUOTE (FORM (DM2A X Y) A X B Y))
+ (dm2a x y) → (FORM (DM2A X Y) A X B Y)
+
+ (defmacro dm2b (&amp;whole form a (&amp;whole b (c . d) &amp;optional (e 5)) 
+                 &amp;body f &amp;environment env)
+   "(,',form ,,a ,',b ,',(macroexpand c env) ,',d ,',e ,',f))
+ ;Note that because backquote is involved, implementations may differ
+ ;slightly in the nature (though not the functionality) of the expansion.
+ (macroexpand '(dm2b x1 (((incf x2) x3 x4)) x5 x6))
+ → (LIST* '(DM2B X1 (((INCF X2) X3 X4))
+                   X5 X6)
+            X1
+            '((((INCF X2) X3 X4)) (SETQ X2 (+ X2 1)) (X3 X4) 5 (X5 X6))),
+     T
+ (let ((x1 5))
+   (macrolet ((segundo (x) `(cadr ,x)))
+     (dm2b x1 (((segundo x2) x3 x4)) x5 x6)))
+ → ((DM2B X1 (((SEGUNDO X2) X3 X4)) X5 X6)
+      5 (((SEGUNDO X2) X3 X4)) (CADR X2) (X3 X4) 5 (X5 X6))
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+
+<a href="3.8.9-define-compiler-macro.xhtml#DictEntry_define_compi_291"><b>define-compiler-macro</b></a>,
+
+<a href="../5-data-and-control-flow/5.3.17-destructuring-bind.xhtml#DictEntry_destructurin_403"><b>destructuring-bind</b></a>, 
+<a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>documentation</b></a>,
+<a href="3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294"><b>macroexpand</b></a>,
+<a href="3.8.15-macroexpand-hook.xhtml#DictEntry_macroexpand_297"><b>*macroexpand-hook*</b></a>,
+<a href="../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a>, 
+<a href="3.8.11-macro-function.xhtml#DictEntry_macro_functi_293"><b>macro-function</b></a>, 
+Section <a href="3.1-evaluation.xhtml#Section_Evaluation_187">3.1 Evaluation</a>,
+Section <a href="3.2-compilation.xhtml#Section_Compilation_213">3.2 Compilation</a>,
+Section <a href="3.4-lambda-lists.xhtml#SubSection_Syntactic_In_265">3.4.11 Syntactic Interaction of Documentation Strings and Declarations</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

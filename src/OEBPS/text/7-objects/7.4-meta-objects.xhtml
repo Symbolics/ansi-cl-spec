@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.4 Meta-Objects</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Meta_Objects_534"><span class="secno">7.4</span> Meta-Objects</h2>
+<p>
+The implementation of the object system manipulates <i>classes</i>, <i><a href="../26-glossary/m.xhtml#method">methods</a></i>,
+and <i><a href="../26-glossary/g.xhtml#genericfunction">generic functions</a></i>.  The object system contains a set of 
+<i><a href="../26-glossary/g.xhtml#genericfunction">generic functions</a></i> defined by <i><a href="../26-glossary/m.xhtml#method">methods</a></i> on <i>classes</i>; 
+the behavior of those <i><a href="../26-glossary/g.xhtml#genericfunction">generic functions</a></i> defines the behavior of
+the object system.  The <i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of the <i>classes</i> on which those
+<i><a href="../26-glossary/m.xhtml#method">methods</a></i> are defined are called meta-objects.
+</p>
+<section>
+<h3 id="SubSection_Standard_Met_535"><span class="secno">7.4.1</span> Standard Meta-objects</h3>
+<p>
+
+The object system supplies a set of meta-objects, called standard meta-objects.
+These include the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a> and
+<i><a href="../26-glossary/i.xhtml#instance">instances</a></i> of the classes <a href="../4-types-and-classes/4.4.12-standard-method.xhtml#DictEntry_standard_met_347"><b>standard-method</b></a>, 
+<a href="../4-types-and-classes/4.4.6-standard-generic-function.xhtml#DictEntry_standard_gen_341"><b>standard-generic-function</b></a>, and <a href="../4-types-and-classes/4.4.15-method-combination.xhtml#DictEntry_method_combi_350"><b>method-combination</b></a>.
+
+</p><ul>
+
+<li> 
+The <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.12-standard-method.xhtml#DictEntry_standard_met_347"><b>standard-method</b></a> is the default <i><a href="../26-glossary/c.xhtml#class">class</a></i> of 
+<i><a href="../26-glossary/m.xhtml#method">methods</a></i> defined by the 
+ <a href="7.7.27-defmethod.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a> and
+ <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a> <i><a href="../26-glossary/f.xhtml#form">forms</a></i>.
+
+
+
+
+
+
+
+
+
+
+
+
+</li><li>
+The <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.6-standard-generic-function.xhtml#DictEntry_standard_gen_341"><b>standard-generic-function</b></a> is the default <i><a href="../26-glossary/c.xhtml#class">class</a></i> of 
+<i><a href="../26-glossary/g.xhtml#genericfunction">generic functions</a></i> defined by the forms
+  <a href="7.7.27-defmethod.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a>,
+  <a href="7.7.26-defgeneric.xhtml#DictEntry_defgeneric_582"><b>defgeneric</b></a>,
+
+
+
+
+
+
+
+
+ and
+  <a href="7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a>.
+
+</li><li> The <i><a href="../26-glossary/c.xhtml#class">class</a></i> named <a href="../4-types-and-classes/4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a> 
+is an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a> 
+and is a <i><a href="../26-glossary/s.xhtml#superclass">superclass</a></i> of every <i><a href="../26-glossary/c.xhtml#class">class</a></i> that is an
+<i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of <a href="../4-types-and-classes/4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a> except itself and 
+<a href="../4-types-and-classes/4.4.9-structure-class.xhtml#DictEntry_structure_cl_344"><b>structure-class</b></a>.
+
+</li><li> Every <i><a href="../26-glossary/m.xhtml#method">method</a></i> combination object is 
+an <i><a href="../26-glossary/i.xhtml#instance">instance</a></i> of a <i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> of <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.15-method-combination.xhtml#DictEntry_method_combi_350"><b>method-combination</b></a>.
+
+</li></ul>
+</section>
+</section>
+</section>
+</body>
+</html>

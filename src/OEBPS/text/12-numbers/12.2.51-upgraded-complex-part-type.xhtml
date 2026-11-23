@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.51 upgraded-complex-part-type — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_upgraded_com_825" class="entry"><span class="secno">12.2.51</span> <span class="names">upgraded-complex-part-type</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>upgraded-complex-part-type</b>
+<i>typespec <code>&amp;optional</code> environment</i>
+  → <i>upgraded-typespec</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>typespec</i>—a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+
+<p>
+<i>environment</i>—an <i><a href="../26-glossary/e.xhtml#environment">environment</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+  The default is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, denoting the <i><a href="../26-glossary/n.xhtml#nulllexicalenvironment">null lexical environment</a></i>
+	   and the and current <i><a href="../26-glossary/g.xhtml#globalenvironment">global environment</a></i>.
+
+
+</p><p>
+<i>upgraded-typespec</i>—a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_upgraded_com_825"><b>upgraded-complex-part-type</b></a> returns the part type of the
+most specialized <i><a href="../26-glossary/c.xhtml#complex">complex</a></i> number representation that can
+hold parts of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <i>typespec</i>.
+
+<p>
+
+The <i>typespec</i> is a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of 
+(and possibly <i><a href="../26-glossary/t.xhtml#typeequivalent">type equivalent</a></i> to)
+the <i>upgraded-typespec</i>.
+
+</p><p>
+The purpose of <a href="#DictEntry_upgraded_com_825"><b>upgraded-complex-part-type</b></a>
+is to reveal how an implementation does its <i>upgrading</i>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="12.2.2-complex.xhtml#DictEntry_complex_776"><b>complex</b></a> (<i><a href="../26-glossary/f.xhtml#function">function</a></i> and <i><a href="../26-glossary/t.xhtml#type">type</a></i>)
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>16.2.3 simple-string — Type</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_simple_strin_1022" class="entry"><span class="secno">16.2.3</span> <span class="names">simple-string</span> <span class="kind">Type</span></h3>
+<dl>
+
+
+<dt><b>Supertypes:</b></dt><dd>
+
+<a href="#DictEntry_simple_strin_1022"><b>simple-string</b></a>,
+
+<a href="16.2.7-string.xhtml#DictEntry_string_1026"><b>string</b></a>,
+<a href="../15-arrays/15.2.3-vector.xhtml#DictEntry_vector_981"><b>vector</b></a>,
+<a href="../15-arrays/15.2.2-simple-array.xhtml#DictEntry_simple_array_980"><b>simple-array</b></a>,
+<a href="../15-arrays/15.2.1-array.xhtml#DictEntry_array_979"><b>array</b></a>,
+<a href="../17-sequences/17.3.1-sequence.xhtml#DictEntry_sequence_1041"><b>sequence</b></a>,
+<a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+
+
+
+A <i><a href="../26-glossary/s.xhtml#simplestring">simple string</a></i> is a specialized one-dimensional
+<i><a href="../26-glossary/s.xhtml#simplearray">simple array</a></i> whose <i><a href="../26-glossary/e.xhtml#element">elements</a></i> are of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../13-characters/13.2.1-character.xhtml#DictEntry_character_884"><b>character</b></a> or a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../13-characters/13.2.1-character.xhtml#DictEntry_character_884"><b>character</b></a>.
+When used as a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> for object creation,
+<a href="#DictEntry_simple_strin_1022"><b>simple-string</b></a> means <code>(simple-array character (<i>size</i>))</code>.
+
+
+</dd><dt><b>Compound Type Specifier Kind:</b></dt><dd>
+
+Abbreviating.
+
+</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+
+<code>(simple-string <code>[</code>size<code>]</code>)</code>
+
+</dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+
+
+<i>size</i>—a non-negative <i><a href="../26-glossary/f.xhtml#fixnum">fixnum</a></i>,
+	    or the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a>.
+
+
+</dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+
+This denotes the union of all <i><a href="../26-glossary/t.xhtml#type">types</a></i>
+<code>(simple-array <i>c</i> (<i>size</i>))</code> for all <i><a href="../26-glossary/s.xhtml#subtype">subtypes</a></i> <i>c</i> of
+<a href="../13-characters/13.2.1-character.xhtml#DictEntry_character_884"><b>character</b></a>; that is, the set of <i><a href="../26-glossary/s.xhtml#simplestring">simple strings</a></i> of size <i>size</i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>15.2.1 array — System Class</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_array_979" class="entry"><span class="secno">15.2.1</span> <span class="names">array</span> <span class="kind">System Class</span></h3>
+<dl>
+
+
+<dt><b>Class Precedence List:</b></dt><dd>
+
+<a href="#DictEntry_array_979"><b>array</b></a>,
+<a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+An <i><a href="../26-glossary/a.xhtml#array">array</a></i> contains <i><a href="../26-glossary/o.xhtml#object">objects</a></i> arranged according to a
+Cartesian coordinate system.
+
+
+An <i><a href="../26-glossary/a.xhtml#array">array</a></i> provides mappings from a set of
+
+<i><a href="../26-glossary/f.xhtml#fixnum">fixnums</a></i>
+
+<i>{i<sub>0</sub>,i<sub>1</sub>,...,i<sub>r-1</sub>}</i> to corresponding <i><a href="../26-glossary/e.xhtml#element">elements</a></i>
+of the <i><a href="../26-glossary/a.xhtml#array">array</a></i>, 
+where <i>0 &lt;= i<sub>j</sub> &lt; d<sub>j</sub></i>,
+<i>r</i> is the rank of the array, and <i>d<sub>j</sub></i> is the size of <i><a href="../26-glossary/d.xhtml#dimension">dimension</a></i> <i>j</i> of
+the array.
+
+<p>
+When an <i><a href="../26-glossary/a.xhtml#array">array</a></i> is created, the program requesting its creation may
+declare that all <i><a href="../26-glossary/e.xhtml#element">elements</a></i> are of a particular <i><a href="../26-glossary/t.xhtml#type">type</a></i>, 
+called the <i><a href="../26-glossary/e.xhtml#expressedarrayelementtype">expressed array element type</a></i>.
+The implementation is permitted to <i><a href="../26-glossary/u.xhtml#upgrade">upgrade</a></i> this type in order to 
+produce the <i><a href="../26-glossary/a.xhtml#actualarrayelementtype">actual array element type</a></i>,
+which is the <i><a href="../26-glossary/e.xhtml#elementtype">element type</a></i> for the <i><a href="../26-glossary/a.xhtml#array">array</a></i> is actually <i><a href="../26-glossary/s.xhtml#specialized">specialized</a></i>.
+See the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="15.2.23-upgraded-array-element-type.xhtml#DictEntry_upgraded_arr_1001"><b>upgraded-array-element-type</b></a>.
+
+</p></dd><dt><b>Compound Type Specifier Kind:</b></dt><dd>
+
+Specializing.
+
+</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+
+<code>(array <code>[</code><code>{</code>element-type | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a><code>}</code> [dimension-spec]<code>]</code>)</code>
+
+<p>
+
+dimension-spec::= rank | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a> | (<code>{</code>dimension | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a><code>}</code><sup>*</sup>)</p></dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+
+<i>dimension</i>—a <i><a href="../26-glossary/v.xhtml#validarraydimension">valid array dimension</a></i>.
+
+<p>
+<i>element-type</i>—a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+
+</p><p>
+
+<i>rank</i>—a non-negative <i><a href="../26-glossary/f.xhtml#fixnum">fixnum</a></i>.
+
+
+</p></dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+
+This denotes the set of <i><a href="../26-glossary/a.xhtml#array">arrays</a></i> whose
+  <i><a href="../26-glossary/e.xhtml#elementtype">element type</a></i>,  <i><a href="../26-glossary/r.xhtml#rank">rank</a></i>,  and <i><a href="../26-glossary/d.xhtml#dimension">dimensions</a></i>
+match any given
+  <i>element-type</i>, <i>rank</i>, and <i>dimensions</i>.
+Specifically:
+
+<p>
+If <i>element-type</i> is the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a>,
+<i><a href="../26-glossary/a.xhtml#array">arrays</a></i> are not excluded on the basis of their <i><a href="../26-glossary/e.xhtml#elementtype">element type</a></i>.
+Otherwise, only those <i>arrays</i> are included whose <i><a href="../26-glossary/a.xhtml#actualarrayelementtype">actual array element type</a></i>
+
+is the result of <i>upgrading</i> <i>element-type</i>;
+see Section <a href="15.1-array-concepts.xhtml#SubSubSectio_Array_Upgrad_976">15.1.2.1 Array Upgrading</a>.
+
+
+
+
+
+</p><p>
+If the <i>dimension-spec</i> is a <i>rank</i>,
+the set includes only those <i>arrays</i> having that <i><a href="../26-glossary/r.xhtml#rank">rank</a></i>.
+If the <i>dimension-spec</i> is a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i>dimensions</i>,
+the set includes only those <i>arrays</i> having a <i><a href="../26-glossary/r.xhtml#rank">rank</a></i>
+given by the <i><a href="../26-glossary/l.xhtml#length">length</a></i> of the <i>dimensions</i>,
+and having the indicated <i>dimensions</i>; 
+in this case, <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a> matches any value for the corresponding <i><a href="../26-glossary/d.xhtml#dimension">dimension</a></i>.
+If the <i>dimension-spec</i> is the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a>,
+the set is not restricted on the basis of <i><a href="../26-glossary/r.xhtml#rank">rank</a></i> or <i><a href="../26-glossary/d.xhtml#dimension">dimension</a></i>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../22-printer/22.4.16-print-array.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a>,
+<a href="15.2.10-aref.xhtml#DictEntry_aref_988"><b>aref</b></a>,
+<a href="15.2.7-make-array.xhtml#DictEntry_make_array_985"><b>make-array</b></a>,
+<a href="15.2.3-vector.xhtml#DictEntry_vector_981"><b>vector</b></a>,
+Section <a href="../2-syntax/2.4-standard-macro-characters.xhtml#SubSubSectio_Sharpsign_A_172">2.4.8.12 Sharpsign A</a>,
+Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Oth_1271">22.1.3.8 Printing Other Arrays</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+Note that the type <code>(array t)</code>     
+is a proper <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of the type <code>(array *)</code>.
+The reason is that the type <code>(array t)</code> is the set of <i><a href="../26-glossary/a.xhtml#array">arrays</a></i> 
+that can
+hold any <i><a href="../26-glossary/o.xhtml#object">object</a></i> (the <i><a href="../26-glossary/e.xhtml#element">elements</a></i> are of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>,  which includes
+all <i><a href="../26-glossary/o.xhtml#object">objects</a></i>).
+On the other hand, the type <code>(array *)</code>
+is the set of all <i><a href="../26-glossary/a.xhtml#array">arrays</a></i> whatsoever, including for example
+<i><a href="../26-glossary/a.xhtml#array">arrays</a></i> that can hold only <i><a href="../26-glossary/c.xhtml#character">characters</a></i>. 
+The type <code>(array character)</code> 
+is not a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of the type <code>(array t)</code>; 
+the two sets                                              
+are <i><a href="../26-glossary/d.xhtml#disjoint">disjoint</a></i> because the type <code>(array character)</code> is not the
+set of all <i><a href="../26-glossary/a.xhtml#array">arrays</a></i> that can hold 
+<i><a href="../26-glossary/c.xhtml#character">characters</a></i>, but rather the set of
+<i><a href="../26-glossary/a.xhtml#array">arrays</a></i> 
+that are specialized to hold precisely <i><a href="../26-glossary/c.xhtml#character">characters</a></i> and no
+other <i><a href="../26-glossary/o.xhtml#object">objects</a></i>. 
+
+</dd></dl>
+</section>
+</body>
+</html>

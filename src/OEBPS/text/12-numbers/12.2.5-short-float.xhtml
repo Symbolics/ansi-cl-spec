@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.5 short-float, single-float, double-float, long-float — Type</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_short_float_779" class="entry"><span class="secno">12.2.5</span> <span class="names">short-float, single-float, double-float, long-float</span> <span class="kind">Type</span></h3>
+<dl>
+
+
+<dt><b>Supertypes:</b></dt><dd>
+
+<a href="#DictEntry_short_float_779"><b>short-float</b></a>: 
+ <a href="#DictEntry_short_float_779"><b>short-float</b></a>,
+ <a href="12.2.74-float.xhtml#DictEntry_float_848"><b>float</b></a>, 
+ 
+ <a href="12.2.3-real.xhtml#DictEntry_real_777"><b>real</b></a>,
+ 
+ <a href="12.2.1-number.xhtml#DictEntry_number_775"><b>number</b></a>,
+ <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+
+<p>
+<a href="#DictEntry_short_float_779"><b>single-float</b></a>: 
+ <a href="#DictEntry_short_float_779"><b>single-float</b></a>,
+ <a href="12.2.74-float.xhtml#DictEntry_float_848"><b>float</b></a>, 
+ 
+ <a href="12.2.3-real.xhtml#DictEntry_real_777"><b>real</b></a>,
+ 
+ <a href="12.2.1-number.xhtml#DictEntry_number_775"><b>number</b></a>,
+ <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</p><p>
+<a href="#DictEntry_short_float_779"><b>double-float</b></a>: 
+ <a href="#DictEntry_short_float_779"><b>double-float</b></a>,
+ <a href="12.2.74-float.xhtml#DictEntry_float_848"><b>float</b></a>, 
+ 
+ <a href="12.2.3-real.xhtml#DictEntry_real_777"><b>real</b></a>,
+ 
+ <a href="12.2.1-number.xhtml#DictEntry_number_775"><b>number</b></a>,
+ <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</p><p>
+<a href="#DictEntry_short_float_779"><b>long-float</b></a>: 
+ <a href="#DictEntry_short_float_779"><b>long-float</b></a>,
+ <a href="12.2.74-float.xhtml#DictEntry_float_848"><b>float</b></a>, 
+ 
+ <a href="12.2.3-real.xhtml#DictEntry_real_777"><b>real</b></a>,
+ 
+ <a href="12.2.1-number.xhtml#DictEntry_number_775"><b>number</b></a>,
+ <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+For the four defined <i><a href="../26-glossary/s.xhtml#subtype">subtypes</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="12.2.74-float.xhtml#DictEntry_float_848"><b>float</b></a>, it is true that
+
+intermediate between the <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_short_float_779"><b>short-float</b></a> and the <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_short_float_779"><b>long-float</b></a> are
+the <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_short_float_779"><b>single-float</b></a> and the <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_short_float_779"><b>double-float</b></a>.
+The precise definition of these categories is 
+<i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i>.
+The precision (measured in "bits", computed as <i>p<i>log</i><sub>2</sub>b</i>)
+and the exponent size (also measured in "bits," computed as
+<i><i>log</i><sub>2</sub>(n+1)</i>, where <i>n</i> is the maximum exponent value) is recommended
+to be at least as great
+as the values in the next figure. 
+Each of the defined <i><a href="../26-glossary/s.xhtml#subtype">subtypes</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="12.2.74-float.xhtml#DictEntry_float_848"><b>float</b></a> might or might not have a minus zero.
+
+<table id="fig-12-12" class="fig">
+<caption><span class="figlabel">Figure 12-12.</span> Recommended Minimum Floating-Point Precision and Exponent Size</caption>
+
+  <tbody><tr>
+    <td><b>Format</b></td>
+    <td>
+     <b>Minimum Precision</b></td>
+    <td>
+     <b>Minimum Exponent Size</b></td>
+  </tr>
+  <tr>
+    <td>
+Short</td>
+    <td>13 bits</td>
+    <td>5 bits</td>
+  </tr>
+  <tr>
+    <td>Single</td>
+    <td>24 bits</td>
+    <td>8 bits</td>
+  </tr><tr><td>
+Double</td>
+    <td>50 bits</td>
+    <td>8 bits</td>
+  </tr><tr><td>
+Long</td>
+    <td>50 bits</td>
+    <td>8 bits</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+
+
+
+There can be fewer than four internal 
+representations for <i><a href="../26-glossary/f.xhtml#float">floats</a></i>. 
+If there are fewer distinct representations, the following rules apply:
+</p><ul>
+<li>-- If there is only one, it is 
+
+the <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_short_float_779"><b>single-float</b></a>.
+In this representation, an <i><a href="../26-glossary/o.xhtml#object">object</a></i> is simultaneously of <i><a href="../26-glossary/t.xhtml#type">types</a></i> 
+<a href="#DictEntry_short_float_779"><b>single-float</b></a>, <a href="#DictEntry_short_float_779"><b>double-float</b></a>, <a href="#DictEntry_short_float_779"><b>short-float</b></a>, 
+and <a href="#DictEntry_short_float_779"><b>long-float</b></a>.
+</li><li>-- Two internal representations can be arranged in either of the
+following ways:
+<ul>
+<li> Two <i><a href="../26-glossary/t.xhtml#type">types</a></i> are provided: <a href="#DictEntry_short_float_779"><b>single-float</b></a> and
+<a href="#DictEntry_short_float_779"><b>short-float</b></a>.  An <i><a href="../26-glossary/o.xhtml#object">object</a></i> is simultaneously 
+of <i><a href="../26-glossary/t.xhtml#type">types</a></i> <a href="#DictEntry_short_float_779"><b>single-float</b></a>, <a href="#DictEntry_short_float_779"><b>double-float</b></a>, and <a href="#DictEntry_short_float_779"><b>long-float</b></a>.
+</li><li> Two <i><a href="../26-glossary/t.xhtml#type">types</a></i> are provided: <a href="#DictEntry_short_float_779"><b>single-float</b></a> and
+<a href="#DictEntry_short_float_779"><b>double-float</b></a>. An <i><a href="../26-glossary/o.xhtml#object">object</a></i> is simultaneously of <i><a href="../26-glossary/t.xhtml#type">types</a></i>
+<a href="#DictEntry_short_float_779"><b>single-float</b></a> and <a href="#DictEntry_short_float_779"><b>short-float</b></a>, or
+<a href="#DictEntry_short_float_779"><b>double-float</b></a> and <a href="#DictEntry_short_float_779"><b>long-float</b></a>.
+</li></ul>
+</li><li>-- Three internal representations can be arranged in either
+of the following ways:
+<ul>
+<li> Three <i><a href="../26-glossary/t.xhtml#type">types</a></i> are provided: <a href="#DictEntry_short_float_779"><b>short-float</b></a>, 
+<a href="#DictEntry_short_float_779"><b>single-float</b></a>, and <a href="#DictEntry_short_float_779"><b>double-float</b></a>.
+An <i><a href="../26-glossary/o.xhtml#object">object</a></i> can simultaneously be of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_short_float_779"><b>double-float</b></a>
+and <a href="#DictEntry_short_float_779"><b>long-float</b></a>.
+</li><li> Three <i><a href="../26-glossary/t.xhtml#type">types</a></i> are provided: 
+<a href="#DictEntry_short_float_779"><b>single-float</b></a>, <a href="#DictEntry_short_float_779"><b>double-float</b></a>,
+and <a href="#DictEntry_short_float_779"><b>long-float</b></a>. An <i><a href="../26-glossary/o.xhtml#object">object</a></i> can simultaneously
+be of <i><a href="../26-glossary/t.xhtml#type">types</a></i> <a href="#DictEntry_short_float_779"><b>single-float</b></a> and <a href="#DictEntry_short_float_779"><b>short-float</b></a>.
+</li></ul>
+</li></ul>          
+
+</dd><dt><b>Compound Type Specifier Kind:</b></dt><dd>
+
+Abbreviating.
+
+</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+
+<code>(short-float <code>[</code>short-lower-limit   [short-upper-limit]<code>]</code>)</code>
+<code>(single-float <code>[</code>single-lower-limit [single-upper-limit]<code>]</code>)</code>
+<code>(double-float <code>[</code>double-lower-limit [double-upper-limit]<code>]</code>)</code>
+<code>(long-float <code>[</code>long-lower-limit     [long-upper-limit]<code>]</code>)</code>
+
+</dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+
+<i>short-lower-limit</i>, <i>short-upper-limit</i>—<i><a href="../26-glossary/i.xhtml#intervaldesignator">interval designators</a></i> 
+					   for <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_short_float_779"><b>short-float</b></a>.
+ The defaults for each of <i>lower-limit</i> and <i>upper-limit</i> is the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="12.2.24-star.xhtml#DictEntry__798"><b>*</b></a>.
+
+<p>
+<i>single-lower-limit</i>, <i>single-upper-limit</i>—<i><a href="../26-glossary/i.xhtml#intervaldesignator">interval designators</a></i> 
+					   for <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_short_float_779"><b>single-float</b></a>.
+ The defaults for each of <i>lower-limit</i> and <i>upper-limit</i> is the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="12.2.24-star.xhtml#DictEntry__798"><b>*</b></a>.
+
+</p><p>
+<i>double-lower-limit</i>, <i>double-upper-limit</i>—<i><a href="../26-glossary/i.xhtml#intervaldesignator">interval designators</a></i> 
+					   for <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_short_float_779"><b>double-float</b></a>.
+ The defaults for each of <i>lower-limit</i> and <i>upper-limit</i> is the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="12.2.24-star.xhtml#DictEntry__798"><b>*</b></a>.
+
+</p><p>
+<i>long-lower-limit</i>, <i>long-upper-limit</i>—<i><a href="../26-glossary/i.xhtml#intervaldesignator">interval designators</a></i> 
+					   for <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_short_float_779"><b>long-float</b></a>.
+ The defaults for each of <i>lower-limit</i> and <i>upper-limit</i> is the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="12.2.24-star.xhtml#DictEntry__798"><b>*</b></a>.
+
+</p></dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+
+Each of these denotes the set of <i><a href="../26-glossary/f.xhtml#float">floats</a></i> of the indicated <i><a href="../26-glossary/t.xhtml#type">type</a></i> 
+that are on the interval specified by the <i><a href="../26-glossary/i.xhtml#intervaldesignator">interval designators</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

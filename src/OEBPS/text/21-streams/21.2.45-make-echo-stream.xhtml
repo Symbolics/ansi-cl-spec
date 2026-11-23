@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.45 make-echo-stream — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_make_echo_st_1236" class="entry"><span class="secno">21.2.45</span> <span class="names">make-echo-stream</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+
+<p>
+<b>make-echo-stream</b>
+<i>input-stream output-stream</i>
+  → <i>echo-stream</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>input-stream</i>—an <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
+
+<p>
+<i>output-stream</i>—an <i><a href="../26-glossary/o.xhtml#output">output</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
+
+</p><p>
+<i>echo-stream</i>—an <i><a href="../26-glossary/e.xhtml#echostream">echo stream</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Creates and returns an <i><a href="../26-glossary/e.xhtml#echostream">echo stream</a></i> 
+that takes input  from <i>input-stream</i>
+and  sends output to   <i>output-stream</i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (let ((out (make-string-output-stream)))
+    (with-open-stream 
+        (s (make-echo-stream
+            (make-string-input-stream "this-is-read-and-echoed")
+            out))
+      (read s)
+      (format s " * this-is-direct-output")
+      (get-output-stream-string out)))
+→ "this-is-read-and-echoed * this-is-direct-output"
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="21.2.44-echo-stream-input-stream.xhtml#DictEntry_echo_stream__1235"><b>echo-stream-input-stream</b></a>,
+<a href="21.2.44-echo-stream-input-stream.xhtml#DictEntry_echo_stream__1235"><b>echo-stream-output-stream</b></a>,
+<a href="21.2.42-make-two-way-stream.xhtml#DictEntry_make_two_way_1233"><b>make-two-way-stream</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.61 boole-1, boole-2, boole-and, boole-andc1, boole-andc2, … — Constant Variable</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_boole_1_____835" class="entry"><span class="secno">12.2.61</span> <span class="names">boole-1, boole-2, boole-and, boole-andc1, boole-andc2, boole-c1, boole-c2, boole-clr, boole-eqv, boole-ior, boole-nand, boole-nor, boole-orc1, boole-orc2, boole-set, boole-xor</span> <span class="kind">Constant Variable</span></h3>
+<dl>
+
+
+<dt><b>Constant Value:</b></dt><dd>
+
+The identity and nature of the <i><a href="../26-glossary/v.xhtml#value">values</a></i> of each of these <i><a href="../26-glossary/v.xhtml#variable">variables</a></i> 
+is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>,
+except that it must be <i><a href="../26-glossary/d.xhtml#distinct">distinct</a></i> from each of the <i><a href="../26-glossary/v.xhtml#value">values</a></i> of the others,
+and it must be a valid first <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> to the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="12.2.60-boole.xhtml#DictEntry_boole_834"><b>boole</b></a>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+Each of these <i><a href="../26-glossary/c.xhtml#constant">constants</a></i> has a <i><a href="../26-glossary/v.xhtml#value">value</a></i> which is one of the 
+sixteen possible <i><a href="../26-glossary/b.xhtml#bitwiselogicaloperationspecifier">bit-wise logical operation specifiers</a></i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (boole boole-ior 1 16) → 17
+ (boole boole-and -2 5) → 4
+ (boole boole-eqv 17 15) → -31
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="12.2.60-boole.xhtml#DictEntry_boole_834"><b>boole</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

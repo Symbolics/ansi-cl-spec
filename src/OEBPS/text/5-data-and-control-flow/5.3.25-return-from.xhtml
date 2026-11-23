@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.25 return-from — Special Operator</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_return_from_411" class="entry"><span class="secno">5.3.25</span> <span class="names">return-from</span> <span class="kind">Special Operator</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>return-from</b>
+<i><i>name</i> [<i>result</i>]</i>
+  →  <b>|</b> 
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>name</i>—a <i><a href="../26-glossary/b.xhtml#blocktag">block tag</a></i>; not evaluated.
+
+<p>
+<i>result</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>; evaluated.
+  The default is <a href="5.3.30-nil.xhtml#DictEntry_nil_416"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Returns control and <i><a href="../26-glossary/m.xhtml#multiplevalues">multiple values</a></i><sub>2</sub> from a lexically enclosing <i><a href="../26-glossary/b.xhtml#block">block</a></i>.
+
+<p>
+A <a href="5.3.22-block.xhtml#DictEntry_block_408"><b>block</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> named <i>name</i> must lexically enclose
+the occurrence of <a href="#DictEntry_return_from_411"><b>return-from</b></a>;  any <i><a href="../26-glossary/v.xhtml#value">values</a></i> <i>yielded</i>
+by the <i><a href="../26-glossary/e.xhtml#evaluation">evaluation</a></i> of <i>result</i> are immediately returned from
+the innermost such lexically enclosing <i><a href="../26-glossary/b.xhtml#block">block</a></i>.
+
+</p><p>
+The transfer of control initiated by <a href="#DictEntry_return_from_411"><b>return-from</b></a> is performed
+as described in Section <a href="5.2-transfer-of-control-to-an-exit-point.xhtml#Section_Transfer_of__385">5.2 Transfer of Control to an Exit Point</a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (block alpha (return-from alpha) 1) →  NIL
+ (block alpha (return-from alpha 1) 2) → 1
+ (block alpha (return-from alpha (values 1 2)) 3) → 1, 2
+ (let ((a 0))
+    (dotimes (i 10) (incf a) (when (oddp i) (return)))
+    a) → 2
+ (defun temp (x)
+    (if x (return-from temp '))
+    44) →  TEMP
+ (temp nil) → 44
+ (temp t) →  DUMMY
+ (block out
+   (flet ((exit (n) (return-from out n)))
+     (block out (exit 1)))
+   2) → 1
+ (block nil   
+   (unwind-protect (return-from nil 1)
+     (return-from nil 2)))
+→ 2
+ (dolist (flag '(nil t))
+   (block nil
+     (let ((x 5))
+       (declare (special x))
+       (unwind-protect (return-from nil)
+         (print x))))
+   (print 'here))
+▷5
+▷ HERE
+▷5
+▷ HERE
+→  NIL
+ (dolist (flag '(nil t))
+   (block nil
+     (let ((x 5))
+       (declare (special x))
+       (unwind-protect
+           (if flag (return-from nil))
+         (print x))))
+   (print 'here))
+▷5
+▷ HERE
+▷5
+▷ HERE
+→  NIL
+</pre>
+
+<p>
+The following has undefined consequences because the <a href="5.3.22-block.xhtml#DictEntry_block_408"><b>block</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i>
+exits normally before the <a href="#DictEntry_return_from_411"><b>return-from</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> is attempted.
+
+</p><pre> (funcall (block nil #'(lambda () (return-from nil)))) is an error.
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="5.3.22-block.xhtml#DictEntry_block_408"><b>block</b></a>,
+<a href="5.3.26-return.xhtml#DictEntry_return_412"><b>return</b></a>,
+Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

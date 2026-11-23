@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>20.2.7 rename-file — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_rename_file_1174" class="entry"><span class="secno">20.2.7</span> <span class="names">rename-file</span> <span class="kind">Function</span></h3>
+<dl>
+      <dt><b>Syntax:</b></dt><dd><b>rename-file</b> <i>filespec new-name</i>   → <i>defaulted-new-name,
+        old-truename, new-truename</i> </dd><dt><b>Arguments and Values:</b></dt><dd><i>filespec</i>—a <i><a href="../26-glossary/p.xhtml#pathnamedesignator">pathname
+        designator</a></i>. <p><i>new-name</i>—a <i><a href="../26-glossary/p.xhtml#pathnamedesignator">pathname designator</a></i> other than a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>. </p>
+        <p><i>defaulted-new-name</i>—a <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i>
+        </p>
+        <p><i>old-truename</i>—a <i><a href="../26-glossary/p.xhtml#physicalpathname">physical
+        pathname</a></i>. </p>
+        <p><i>new-truename</i>—a <i><a href="../26-glossary/p.xhtml#physicalpathname">physical
+        pathname</a></i>. </p>
+      </dd><dt><b>Description:</b></dt><dd><a href="#DictEntry_rename_file_1174"><b>rename-file</b></a> modifies the file system in
+        such a way that the file indicated by <i>filespec</i> is renamed to <i>defaulted-new-name</i>.
+        <p>It is an error to specify a filename containing a <i><a href="../26-glossary/w.xhtml#wild">wild</a></i> component, for <i>filespec</i> to contain a <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> component where the file system does not permit a <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> component, or for the result of defaulting missing
+        components of <i>new-name</i> from <i>filespec</i> to contain a <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> component
+        where the file system does not permit a <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> component. </p>
+        <p>If <i>new-name</i> is a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical
+        pathname</a></i>, <a href="#DictEntry_rename_file_1174"><b>rename-file</b></a> returns a <i><a href="../26-glossary/l.xhtml#logicalpathname">logical pathname</a></i> as its <i><a href="../26-glossary/p.xhtml#primaryvalue">primary value</a></i>. </p>
+        <p><a href="#DictEntry_rename_file_1174"><b>rename-file</b></a> returns three
+        values if successful. The <i><a href="../26-glossary/p.xhtml#primaryvalue">primary value</a></i>,
+        <i>defaulted-new-name</i>, is the resulting name which is composed of <i>new-name</i> with
+        any missing components filled in by performing a <a href="../19-filenames/19.4.17-merge-pathnames.xhtml#DictEntry_merge_pathna_1160"><b>merge-pathnames</b></a>
+        operation using <i>filespec</i> as the defaults. The <i><a href="../26-glossary/s.xhtml#secondaryvalue">secondary value</a></i>, <i>old-truename</i>, is
+        the <i><a href="../26-glossary/t.xhtml#truename">truename</a></i> of the <i><a href="../26-glossary/f.xhtml#file">file</a></i> before it was renamed. The <i><a href="../26-glossary/t.xhtml#tertiaryvalue">tertiary value</a></i>, <i>new-truename</i>, is the
+        <i><a href="../26-glossary/t.xhtml#truename">truename</a></i> of the <i><a href="../26-glossary/f.xhtml#file">file</a></i> after it was renamed. </p>
+        <p>If the <i>filespec</i> <i><a href="../26-glossary/d.xhtml#designator">designator</a></i>
+        is an open <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>, then the <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> itself and the file associated with it are
+        affected (if the <i><a href="../26-glossary/f.xhtml#filesystem">file system</a></i> permits). </p>
+      </dd><dt><b>Examples:</b></dt><dd><pre>;; An example involving logical pathnames.
+ (with-open-file (stream "sys:chemistry;lead.text"
+                         :direction :output :if-exists :error)
+   (princ "eureka" stream)
+   (values (pathname stream) (truename stream)))
+→ #P"SYS:CHEMISTRY;LEAD.TEXT.NEWEST", #P"Q:&gt;sys&gt;chem&gt;lead.text.1"
+ (rename-file "sys:chemistry;lead.text" "gold.text")
+→ #P"SYS:CHEMISTRY;GOLD.TEXT.NEWEST",
+   #P"Q:&gt;sys&gt;chem&gt;lead.text.1",
+   #P"Q:&gt;sys&gt;chem&gt;gold.text.1"
+</pre>
+      </dd><dt><b>Exceptional Situations:</b></dt><dd>If the renaming operation is not successful, an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="20.2.9-file-error.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> is
+        signaled. <p>An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="20.2.9-file-error.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> might be signaled if <i>filespec</i> is <i><a href="../26-glossary/w.xhtml#wild">wild</a></i>. </p>
+      </dd><dt><b>See Also:</b></dt><dd><a href="20.2.4-truename.xhtml#DictEntry_truename_1171"><b>truename</b></a>, <a href="../19-filenames/19.4.1-pathname.xhtml#DictEntry_pathname_1144"><b>pathname</b></a>, <a href="../19-filenames/19.4.2-logical-pathname.xhtml#DictEntry_logical_path_1145"><b>logical-pathname</b></a>, Section <a href="20.1-file-system-concepts.xhtml#Section_File_System__1162">20.1
+        File System Concepts</a>, Section <a href="../19-filenames/19.1-overview-of-filenames.xhtml#SubSection_Pathnames_as_1095">19.1.2 Pathnames as
+        Filenames</a> </dd></dl>
+</section>
+</body>
+</html>

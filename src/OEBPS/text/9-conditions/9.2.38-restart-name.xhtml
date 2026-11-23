@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.38 restart-name — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_restart_name_663" class="entry"><span class="secno">9.2.38</span> <span class="names">restart-name</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>restart-name</b>
+<i>restart</i>
+  → <i>name</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>restart</i>—a <i><a href="../26-glossary/r.xhtml#restart">restart</a></i>.
+
+<p>
+<i>name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Returns the name of the <i>restart</i>,
+or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if the <i>restart</i> is not named.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (restart-case 
+     (loop for restart in (compute-restarts)
+               collect (restart-name restart))
+   (case1 () :report "Return 1." 1)
+   (nil   () :report "Return 2." 2)
+   (case3 () :report "Return 3." 3)
+   (case1 () :report "Return 4." 4))
+→ (CASE1 NIL CASE3 CASE1 ABORT)
+ ;; In the example above the restart named ABORT was not created
+ ;; explicitly, but was implicitly supplied by the system.
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="9.2.32-compute-restarts.xhtml#DictEntry_compute_rest_657"><b>compute-restarts</b></a>
+<a href="9.2.33-find-restart.xhtml#DictEntry_find_restart_658"><b>find-restart</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

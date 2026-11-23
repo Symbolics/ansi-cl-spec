@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>18.2.12 with-hash-table-iterator — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_with_hash_ta_1089" class="entry"><span class="secno">18.2.12</span> <span class="names">with-hash-table-iterator</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>with-hash-table-iterator</b>
+<i>(name hash-table) 
+	           {<i>declaration</i>}* {<i>form</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>name</i>—a name suitable for the first argument to <a href="../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a>.
+
+<p>
+<i>hash-table</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>, evaluated once, that should produce a <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i>.
+
+</p><p>
+<i>declaration</i>—a <a href="../3-evaluation-and-compilation/3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="../26-glossary/e.xhtml#expression">expression</a></i>; not evaluated.
+
+</p><p>
+<i>forms</i>—an <i><a href="../26-glossary/i.xhtml#implicitprogn">implicit progn</a></i>.
+
+</p><p>
+<i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by <i>forms</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Within the lexical scope of the body, <i>name</i> is defined via <a href="../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a> 
+such that successive invocations of <code>(<i>name</i>)</code> return the items,
+one by one, from the <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i> that is obtained by evaluating
+<i>hash-table</i> only once.
+
+<p>
+An invocation <code>(<i>name</i>)</code> returns three values as follows:
+
+</p><ul>
+
+
+<li>1. A <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i> that is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if an entry is returned.
+</li><li>2. The key from the <i>hash-table</i> entry.
+</li><li>3. The value from the <i>hash-table</i> entry.
+</li></ul>
+After all entries have been returned by successive invocations of
+<code>(<i>name</i>)</code>, then only one value is returned, namely <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+<p>
+
+It is unspecified what happens if any of the implicit interior state 
+of an iteration is returned outside the dynamic extent of the 
+<a href="#DictEntry_with_hash_ta_1089"><b>with-hash-table-iterator</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i>
+such as by returning some <i><a href="../26-glossary/c.xhtml#closure">closure</a></i> over the invocation <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
+
+</p><p>
+Any number of invocations of <a href="#DictEntry_with_hash_ta_1089"><b>with-hash-table-iterator</b></a> 
+can be nested, and the body of the innermost one can invoke all of the
+locally <i>established</i> <i><a href="../26-glossary/m.xhtml#macro">macros</a></i>, provided all of those <i><a href="../26-glossary/m.xhtml#macro">macros</a></i>
+have <i><a href="../26-glossary/d.xhtml#distinct">distinct</a></i> names.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+The following function should return <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a> on any 
+<i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i>, and signal
+an error if the usage of <a href="#DictEntry_with_hash_ta_1089"><b>with-hash-table-iterator</b></a> does not agree
+with the corresponding usage of <a href="18.2.11-maphash.xhtml#DictEntry_maphash_1088"><b>maphash</b></a>.
+
+<pre> (defun test-hash-table-iterator (hash-table)
+   (let ((all-entries '())
+         (generated-entries '())
+         (unique (list nil)))
+     (maphash #'(lambda (key value) (push (list key value) all-entries))
+              hash-table)
+     (with-hash-table-iterator (generator-fn hash-table)
+       (loop     
+         (multiple-value-bind (more? key value) (generator-fn)
+           (unless more? (return))
+           (unless (eql value (gethash key hash-table unique))
+             (error "Key ~S not found for value ~S" key value))
+           (push (list key value) generated-entries))))
+     (unless (= (length all-entries)
+                (length generated-entries)
+                (length (union all-entries generated-entries
+                               :key #'car :test (hash-table-test hash-table))))
+       (error "Generated entries and Maphash entries don't correspond"))
+     t))
+</pre>
+<p>
+The following could be an acceptable definition of 
+<a href="18.2.11-maphash.xhtml#DictEntry_maphash_1088"><b>maphash</b></a>, implemented by <a href="#DictEntry_with_hash_ta_1089"><b>with-hash-table-iterator</b></a>.
+
+</p><pre> (defun maphash (function hash-table)
+   (with-hash-table-iterator (next-entry hash-table)
+     (loop (multiple-value-bind (more key value) (next-entry)
+             (unless more (return nil))
+             (funcall function key value)))))
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+The consequences are undefined if the local function named <i>name</i>
+<i>established</i> by <a href="#DictEntry_with_hash_ta_1089"><b>with-hash-table-iterator</b></a> is called after it has
+returned <i><a href="../26-glossary/f.xhtml#false">false</a></i> as its <i><a href="../26-glossary/p.xhtml#primaryvalue">primary value</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+
+Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

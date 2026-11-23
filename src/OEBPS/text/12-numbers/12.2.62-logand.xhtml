@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.62 logand, logandc1, logandc2, logeqv, logior, lognand, … — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_logand__log_836" class="entry"><span class="secno">12.2.62</span> <span class="names">logand, logandc1, logandc2, logeqv, logior, lognand, lognor, lognot, logorc1, logorc2, logxor</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>logand</b>
+<i><code>&amp;rest</code> integers</i>
+  → <i>result-integer</i>
+<p>
+<b>logandc1</b>
+<i>integer-1 integer-2</i>
+  → <i>result-integer</i>
+</p><p>
+<b>logandc2</b>
+<i>integer-1 integer-2</i>
+  → <i>result-integer</i>
+</p><p>
+<b>logeqv</b>
+<i><code>&amp;rest</code> integers</i>
+  → <i>result-integer</i>
+</p><p>
+<b>logior</b>
+<i><code>&amp;rest</code> integers</i>
+  → <i>result-integer</i>
+</p><p>
+<b>lognand</b>
+<i>integer-1 integer-2</i>
+  → <i>result-integer</i>
+</p><p>
+<b>lognor</b>
+<i>integer-1 integer-2</i>
+  → <i>result-integer</i>
+</p><p>
+<b>lognot</b>
+<i>integer</i>
+  → <i>result-integer</i>
+
+
+
+
+
+
+
+
+
+</p><p>
+<b>logorc1</b>
+<i>integer-1 integer-2</i>
+  → <i>result-integer</i>
+</p><p>
+<b>logorc2</b>
+<i>integer-1 integer-2</i>
+  → <i>result-integer</i>
+</p><p>
+<b>logxor</b>
+<i><code>&amp;rest</code> integers</i>
+  → <i>result-integer</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>integers</i>—<i><a href="../26-glossary/i.xhtml#integer">integers</a></i>.
+
+<p>
+<i>integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>integer-1</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>integer-2</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>result-integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The <i><a href="../26-glossary/f.xhtml#function">functions</a></i>
+       <a href="#DictEntry_logand__log_836"><b>logandc1</b></a>,
+       <a href="#DictEntry_logand__log_836"><b>logandc2</b></a>,
+       <a href="#DictEntry_logand__log_836"><b>logand</b></a>,
+       <a href="#DictEntry_logand__log_836"><b>logeqv</b></a>,
+       <a href="#DictEntry_logand__log_836"><b>logior</b></a>,
+
+       <a href="#DictEntry_logand__log_836"><b>lognand</b></a>,
+       <a href="#DictEntry_logand__log_836"><b>lognor</b></a>, 
+       <a href="#DictEntry_logand__log_836"><b>lognot</b></a>,
+       <a href="#DictEntry_logand__log_836"><b>logorc1</b></a>, 
+       <a href="#DictEntry_logand__log_836"><b>logorc2</b></a>,
+   and <a href="#DictEntry_logand__log_836"><b>logxor</b></a>
+perform bit-wise logical operations on their <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>,
+that are treated as if they were binary.
+
+<p>
+The next figure lists the meaning of each of the <i><a href="../26-glossary/f.xhtml#function">functions</a></i>.
+Where an `identity' is shown, it indicates the <i><a href="../26-glossary/v.xhtml#value">value</a></i> <i>yielded</i>
+by the <i><a href="../26-glossary/f.xhtml#function">function</a></i> when no <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i> are supplied.
+
+
+
+</p><table id="fig-12-18" class="fig">
+<caption><span class="figlabel">Figure 12-18.</span> Bit-wise Logical Operations on Integers</caption>
+<tbody><tr><th>Function</th>
+<th>Identity</th>
+<th>Operation performed</th>
+</tr>
+
+  <tr>
+    <td><a href="#DictEntry_logand__log_836"><b>logandc1</b></a></td>
+    <td>—</td>
+    <td>and complement of <i>integer-1</i> with <i>integer-2</i></td>
+  </tr>
+  <tr>
+    <td><a href="#DictEntry_logand__log_836"><b>logandc2</b></a></td>
+    <td>—</td>
+    <td>and <i>integer-1</i> with complement of <i>integer-2</i></td>
+  </tr>
+  <tr>
+    <td><a href="#DictEntry_logand__log_836"><b>logand</b></a></td>
+    <td><code>-1</code></td>
+    <td>and</td>
+  </tr>
+  <tr>
+    <td><a href="#DictEntry_logand__log_836"><b>logeqv</b></a></td>
+    <td><code>-1</code></td>
+    <td>equivalence (exclusive nor)</td>
+  </tr>
+  <tr>
+    <td><a href="#DictEntry_logand__log_836"><b>logior</b></a></td>
+    <td><code>0</code></td>
+    <td>inclusive or</td>
+  </tr>
+  <tr>
+    <td><a href="#DictEntry_logand__log_836"><b>lognand</b></a></td>
+    <td>—</td>
+    <td>complement of <i>integer-1</i> and <i>integer-2</i></td>
+  </tr>
+  <tr>
+    <td><a href="#DictEntry_logand__log_836"><b>lognor</b></a></td>
+    <td>—</td>
+    <td>complement of <i>integer-1</i> or <i>integer-2</i></td>
+  </tr>
+  <tr>
+    <td><a href="#DictEntry_logand__log_836"><b>lognot</b></a></td>
+    <td>—</td>
+    <td>complement</td>
+  </tr>
+  <tr>
+    <td><a href="#DictEntry_logand__log_836"><b>logorc1</b></a></td>
+    <td>—</td>
+    <td>or complement of <i>integer-1</i> with <i>integer-2</i></td>
+
+  </tr>
+  <tr>
+    <td><a href="#DictEntry_logand__log_836"><b>logorc2</b></a></td>
+    <td>—</td>
+    <td>or <i>integer-1</i> with complement of <i>integer-2</i></td>
+  </tr>
+  <tr>
+    <td><a href="#DictEntry_logand__log_836"><b>logxor</b></a></td>
+    <td><code>0</code></td>
+    <td>exclusive or</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+Negative <i>integers</i> are treated as if they were in two's-complement notation.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (logior 1 2 4 8) → 15
+ (logxor 1 3 7 15) → 10
+ (logeqv) → -1
+ (logand 16 31) → 16
+ (lognot 0) → -1
+ (lognot 1) → -2
+ (lognot -1) → 0
+ (lognot (1+ (lognot 1000))) → 999
+
+;;; In the following example, m is a mask.  For each bit in
+;;; the mask that is a 1, the corresponding bits in x and y are
+;;; exchanged.  For each bit in the mask that is a 0, the 
+;;; corresponding bits of x and y are left unchanged.
+ (flet ((show (m x y)
+          (format t "~%m = #o~6,'0O~%x = #o~6,'0O~%y = #o~6,'0O~%"
+                  m x y)))
+   (let ((m #o007750)
+         (x #o452576)
+         (y #o317407))
+     (show m x y)
+     (let ((z (logand (logxor x y) m)))
+       (setq x (logxor z x))
+       (setq y (logxor z y))
+       (show m x y))))
+▷ m = #o007750
+▷ x = #o452576
+▷ y = #o317407
+▷
+▷ m = #o007750
+▷ x = #o457426
+▷ y = #o312557
+→  NIL
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if any argument is not an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="12.2.60-boole.xhtml#DictEntry_boole_834"><b>boole</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+<code>(logbitp <i>k</i> -1)</code> returns <i><a href="../26-glossary/t.xhtml#true">true</a></i> for all values of <i>k</i>.
+
+<p>
+
+Because the following functions are not associative,
+they take exactly two arguments rather than any number
+of arguments.
+
+</p><pre> (lognand <i>n1</i> <i>n2</i>) ==(lognot (logand <i>n1</i> <i>n2</i>))
+ (lognor <i>n1</i> <i>n2</i>) ==(lognot (logior <i>n1</i> <i>n2</i>))
+ (logandc1 <i>n1</i> <i>n2</i>) ==(logand (lognot <i>n1</i>) <i>n2</i>)
+ (logandc2 <i>n1</i> <i>n2</i>) ==(logand <i>n1</i> (lognot <i>n2</i>))
+ (logiorc1 <i>n1</i> <i>n2</i>) ==(logior (lognot <i>n1</i>) <i>n2</i>)
+ (logiorc2 <i>n1</i> <i>n2</i>) ==(logior <i>n1</i> (lognot <i>n2</i>))
+ (logbitp <i>j</i> (lognot <i>x</i>)) ==(not (logbitp <i>j</i> <i>x</i>))
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

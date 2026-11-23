@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>4.4.5 generic-function — System Class</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_generic_func_340" class="entry"><span class="secno">4.4.5</span> <span class="names">generic-function</span> <span class="kind">System Class</span></h3>
+<dl>
+
+
+<dt><b>Class Precedence List:</b></dt><dd>
+
+<a href="#DictEntry_generic_func_340"><b>generic-function</b></a>,
+<a href="../5-data-and-control-flow/5.3.8-function.xhtml#DictEntry_function_394"><b>function</b></a>,
+<a href="4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+
+
+</dd><dt><b>Description:</b></dt><dd>
+
+A <b><i>generic function</i></b> is a <i><a href="../26-glossary/f.xhtml#function">function</a></i> whose behavior
+depends on the <i>classes</i> or identities of the <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
+supplied to it.  A generic function object contains a set of
+<i><a href="../26-glossary/m.xhtml#method">methods</a></i>, a <i><a href="../26-glossary/l.xhtml#lambdalist">lambda list</a></i>, a <i><a href="../26-glossary/m.xhtml#methodcombination">method combination</a></i> <i><a href="../26-glossary/t.xhtml#type">type</a></i>, 
+and other information.  The <i><a href="../26-glossary/m.xhtml#method">methods</a></i>
+define the class-specific behavior and operations of the <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>;
+a <i><a href="../26-glossary/m.xhtml#method">method</a></i> is said to <i><a href="../26-glossary/s.xhtml#specialize">specialize</a></i> a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i>.
+When invoked, a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> executes a subset of its
+<i><a href="../26-glossary/m.xhtml#method">methods</a></i> based on the <i>classes</i> or identities of its <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>.
+
+<p>
+A <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> can be used in the same ways that an
+ordinary <i><a href="../26-glossary/f.xhtml#function">function</a></i> can be used; specifically, a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> can
+be used as an argument to <a href="../5-data-and-control-flow/5.3.7-funcall.xhtml#DictEntry_funcall_393"><b>funcall</b></a> and <a href="../5-data-and-control-flow/5.3.1-apply.xhtml#DictEntry_apply_387"><b>apply</b></a>,
+and can be given a global or a local name.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

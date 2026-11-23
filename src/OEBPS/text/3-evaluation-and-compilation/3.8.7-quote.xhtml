@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.8.7 quote — Special Operator</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_quote_289" class="entry"><span class="secno">3.8.7</span> <span class="names">quote</span> <span class="kind">Special Operator</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>quote</b>
+<i>object</i>
+  → <i>object</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>; not evaluated.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+The <a href="#DictEntry_quote_289"><b>quote</b></a> <i><a href="../26-glossary/s.xhtml#specialoperator">special operator</a></i> just returns <i>object</i>.
+
+<p>
+
+The consequences are undefined if <i>literal objects</i> (including
+<i><a href="../26-glossary/q.xhtml#quotedobject">quoted objects</a></i>) are destructively modified.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq a 1) → 1
+ (quote (setq a 3)) → (SETQ A 3)
+ a → 1
+ 'a →  A
+ "a → (QUOTE A) 
+ "'a → (QUOTE (QUOTE A))
+ (setq a 43) → 43
+ (list a (cons a 3)) → (43 (43 . 3))
+ (list (quote a) (quote (cons a 3))) → (A (CONS A 3)) 
+ 1 → 1
+ '1 → 1
+ "foo" → "foo"
+ '"foo" → "foo"
+ (car '(a b)) →  A
+ '(car '(a b)) → (CAR (QUOTE (A B)))
+ #(car '(a b)) → #(CAR (QUOTE (A B)))
+ '#(car '(a b)) → #(CAR (QUOTE (A B)))
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="3.1-evaluation.xhtml#Section_Evaluation_187">3.1 Evaluation</a>,
+Section <a href="../2-syntax/2.4-standard-macro-characters.xhtml#SubSection_Single_Quote_145">2.4.3 Single-Quote</a>,
+
+Section <a href="3.2-compilation.xhtml#SubSection_Compiler_Ter_214">3.2.1 Compiler Terminology</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The textual notation <code>'<i>object</i></code> is equivalent to <code>(quote <i>object</i>)</code>;
+see Section <a href="3.2-compilation.xhtml#SubSection_Compiler_Ter_214">3.2.1 Compiler Terminology</a>.
+
+<p>
+
+Some <i><a href="../26-glossary/o.xhtml#object">objects</a></i>, called <i><a href="../26-glossary/s.xhtml#selfevaluatingobject">self-evaluating objects</a></i>, 
+do not require quotation by <a href="#DictEntry_quote_289"><b>quote</b></a>.  
+However, <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> and <i><a href="../26-glossary/l.xhtml#list">lists</a></i> are used to represent parts of programs,
+and so would not be useable as constant data in a program without <a href="#DictEntry_quote_289"><b>quote</b></a>.
+Since <a href="#DictEntry_quote_289"><b>quote</b></a> suppresses the <i><a href="../26-glossary/e.xhtml#evaluation">evaluation</a></i> of these <i><a href="../26-glossary/o.xhtml#object">objects</a></i>,
+they become data rather than program.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>11.2.4 find-package — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_find_package_719" class="entry"><span class="secno">11.2.4</span> <span class="names">find-package</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>find-package</b>
+<i>name</i>
+  → <i>package</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>name</i>—a <i><a href="../26-glossary/s.xhtml#stringdesignator">string designator</a></i> or a <i><a href="../26-glossary/p.xhtml#package">package</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+
+<p>
+<i>package</i>—a <i><a href="../26-glossary/p.xhtml#package">package</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+If <i>name</i> is a <i><a href="../26-glossary/s.xhtml#stringdesignator">string designator</a></i>,
+<a href="#DictEntry_find_package_719"><b>find-package</b></a> locates and returns the
+<i><a href="../26-glossary/p.xhtml#package">package</a></i> whose name or nickname is <i>name</i>.
+
+
+This
+search is case sensitive.
+If there is no such <i><a href="../26-glossary/p.xhtml#package">package</a></i>,
+<a href="#DictEntry_find_package_719"><b>find-package</b></a> returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+<p>
+
+If <i>name</i> is a <i><a href="../26-glossary/p.xhtml#package">package</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i>,
+that <i><a href="../26-glossary/p.xhtml#package">package</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> is returned.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (find-package 'common-lisp) → #&lt;PACKAGE "COMMON-LISP"&gt;
+ (find-package "COMMON-LISP-USER") → #&lt;PACKAGE "COMMON-LISP-USER"&gt;
+ (find-package 'not-there) →  NIL
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The set of <i><a href="../26-glossary/p.xhtml#package">packages</a></i> created by the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>.
+
+<p>
+<a href="11.2.19-defpackage.xhtml#DictEntry_defpackage_734"><b>defpackage</b></a>,
+<a href="11.2.11-delete-package.xhtml#DictEntry_delete_packa_726"><b>delete-package</b></a>,
+<a href="11.2.12-make-package.xhtml#DictEntry_make_package_727"><b>make-package</b></a>,
+<a href="11.2.8-rename-package.xhtml#DictEntry_rename_packa_723"><b>rename-package</b></a>
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="11.2.12-make-package.xhtml#DictEntry_make_package_727"><b>make-package</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

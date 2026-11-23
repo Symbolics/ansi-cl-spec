@@ -1,0 +1,1309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>8.1.1 defstruct — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_defstruct_600" class="entry"><span class="secno">8.1.1</span> <span class="names">defstruct</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>defstruct</b>
+<i>name-and-options [documentation] {<i>slot-description</i>}*</i><br/>   
+  → <i>structure-name</i>
+<p>
+
+name-and-options::= structure-name |
+			  (structure-name [[↓options]])</p><p>
+
+
+options::= ↓conc-name-option          |<br/>
+                 {<i>constructor-option</i>}*    |<br/>
+                 ↓copier-option             |<br/>
+                 ↓include-option            |<br/>
+                 ↓initial-offset-option     |<br/>
+                 ↓named-option	          |<br/>
+                 ↓predicate-option          |<br/>
+                 ↓printer-option            |<br/>
+                 ↓type-option</p><p>
+
+
+conc-name-option::= <code>:conc-name</code>         | 
+		   	  (<code>:conc-name</code>) |
+		   	  (<code>:conc-name</code> <i>conc-name</i>)</p><p>
+
+constructor-option::= <code>:constructor</code>         |<br/>
+			    (<code>:constructor</code>) |<br/>
+			    (<code>:constructor</code> <i>constructor-name</i>) |<br/>
+			    (<code>:constructor</code> 
+				   <i>constructor-name</i>
+				   <i>constructor-arglist</i>)</p><p>
+
+copier-option::= <code>:copier</code>         | 
+		       (<code>:copier</code>) |
+		       (<code>:copier</code> <i>copier-name</i>)</p><p>
+
+predicate-option::= <code>:predicate</code>         |
+			  (<code>:predicate</code>) |
+			  (<code>:predicate</code> <i>predicate-name</i>)</p><p>
+
+include-option::= (<code>:include</code> <i>included-structure-name</i>
+					     {<i>slot-description</i>}*)</p><p>
+
+
+printer-option::= ↓print-object-option | ↓print-function-option</p><p>
+
+print-object-option::= (<code>:print-object</code> <i>printer-name</i>) |
+			     (<code>:print-object</code>)</p><p>
+
+
+print-function-option::= (<code>:print-function</code> <i>printer-name</i>) |
+			       (<code>:print-function</code>)</p><p>
+
+type-option::= (<code>:type</code> <i>type</i>)</p><p>
+
+named-option::= <code>:named</code></p><p>
+
+initial-offset-option::= (<code>:initial-offset</code> <i>initial-offset</i>)</p><p>
+
+
+slot-description::= <i>slot-name</i> | <br/>
+			  (<i>slot-name</i>
+				 [<i>slot-initform</i>
+				       [[↓slot-option]]])</p><p>
+
+slot-option::= <code>:type</code> <i>slot-type</i> | <br/>
+		     <code>:read-only</code> <i>slot-read-only-p</i></p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>conc-name</i>—a <i><a href="../26-glossary/s.xhtml#stringdesignator">string designator</a></i>.
+
+<p>
+<i>constructor-arglist</i>—a <i><a href="../26-glossary/b.xhtml#boalambdalist">boa lambda list</a></i>.
+
+</p><p>
+<i>constructor-name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</p><p>
+<i>copier-name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</p><p>
+<i>included-structure-name</i>—an already-defined <i><a href="../26-glossary/s.xhtml#structurename">structure name</a></i>.
+
+
+Note that a <i><a href="../26-glossary/d.xhtml#derivedtype">derived type</a></i> is not permissible, 
+even if it would expand into a <i><a href="../26-glossary/s.xhtml#structurename">structure name</a></i>.
+
+
+
+</p><p>
+<i>initial-offset</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+</p><p>
+<i>predicate-name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</p><p>
+
+<i>printer-name</i>—a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i> or a <i><a href="../26-glossary/l.xhtml#lambdaexpression">lambda expression</a></i>.
+
+
+</p><p>
+
+<i>slot-name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</p><p>
+<i>slot-initform</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
+
+</p><p>
+<i>slot-read-only-p</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>structure-name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</p><p>
+<i>type</i>—one of the <i><a href="../26-glossary/t.xhtml#typespecifier">type specifiers</a></i>
+		    <a href="../14-conses/14.2.1-list.xhtml#DictEntry_list_914"><b>list</b></a>,
+		    <a href="../15-arrays/15.2.3-vector.xhtml#DictEntry_vector_981"><b>vector</b></a>,
+	         or <code>(vector <i>size</i>)</code>,
+		 or some other <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> defined 
+		    by the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> to be appropriate.
+
+</p><p>
+
+<i>documentation</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>; not evaluated.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_defstruct_600"><b>defstruct</b></a> defines a structured <i><a href="../26-glossary/t.xhtml#type">type</a></i>, named <i>structure-type</i>,
+with named slots as specified by the <i>slot-options</i>.
+
+<p>
+
+<a href="#DictEntry_defstruct_600"><b>defstruct</b></a> defines <i><a href="../26-glossary/r.xhtml#reader">readers</a></i> for the slots and
+arranges for <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> to work properly on such
+<i><a href="../26-glossary/r.xhtml#reader">reader</a></i> functions.
+Also, unless overridden, it
+     defines a predicate named <code><i>name</i>-p</code>,
+     defines a constructor function named <code>make-<i>constructor-name</i></code>,
+ and defines a copier function named <code>copy-<i>constructor-name</i></code>.
+
+
+
+All names of automatically created functions might automatically
+be declared <a href="../3-evaluation-and-compilation/3.8.22-inline.xhtml#DictEntry_inline_noti_304"><b>inline</b></a> (at the discretion of the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>).
+
+</p><p>
+
+If <i>documentation</i> is supplied, it is attached to <i>structure-name</i>
+as a <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> of kind <b>structure</b>,
+
+and unless <code>:type</code> is used, the <i>documentation</i> is also attached 
+to <i>structure-name</i> as a <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> of kind
+<a href="../3-evaluation-and-compilation/3.8.21-type.xhtml#DictEntry_type_303"><b>type</b></a> and as a <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> to the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> 
+for the <i><a href="../26-glossary/c.xhtml#class">class</a></i> named <i>structure-name</i>.
+
+
+</p><p>
+
+<a href="#DictEntry_defstruct_600"><b>defstruct</b></a> defines a constructor function that is used to
+create instances of the structure created by <a href="#DictEntry_defstruct_600"><b>defstruct</b></a>.
+The default name is <code>make-<i>structure-name</i></code>.
+A different name can be supplied
+by giving the name as the argument to the <i>constructor</i> option.
+<a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> indicates that no constructor function will be created.
+
+</p><p>
+
+After a new structure type has been defined, instances of that type
+normally can be created by using the constructor function for the
+type.
+A call to a constructor function is of the following form:
+
+</p><p>
+(<code>constructor-function-name</code><br/>
+ <code>slot-keyword-1 form-1</code><br/>
+ <code>slot-keyword-2 form-2</code><br/>
+ <i> ... </i>)
+
+</p><p>
+
+The arguments to the constructor function are all keyword arguments.  Each
+slot keyword argument must  be 
+a keyword whose name corresponds to the name of a structure slot.  
+All the <i>keywords</i> and <i>forms</i>
+are evaluated.  
+
+If a slot is not initialized in this way, 
+it is initialized by evaluating <i>slot-initform</i> in the slot description
+
+at the time the constructor function is called.
+
+
+
+
+
+If no <i>slot-initform</i> is supplied, 
+the consequences are undefined if an attempt is later made to read the slot's value
+before a value is explicitly assigned.
+
+
+</p><p>
+
+Each <i>slot-initform</i> supplied for a <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> component,
+when used by the constructor function for an otherwise unsupplied
+component, is re-evaluated on every call to the
+constructor function.  
+
+The <i>slot-initform</i> is not evaluated 
+        unless it is needed in the creation of a particular structure
+        instance.  If it is never needed, there can be no type-mismatch
+        error, even if the <i><a href="../26-glossary/t.xhtml#type">type</a></i> 
+of the slot is specified; no warning
+        should be issued in this case.
+
+
+For example, in the following sequence, only the last call is an error.
+
+</p><pre> (defstruct person (name 007 :type string)) 
+ (make-person :name "James")
+ (make-person)
+</pre>
+
+<p>
+It is as if the <i>slot-initforms</i> were 
+used as <i><a href="../26-glossary/i.xhtml#initializationform">initialization forms</a></i> for the <i><a href="../26-glossary/k.xhtml#keywordparameter">keyword parameters</a></i> 
+of the constructor function.
+
+</p><p>
+
+The <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> which name the slots must not be used by the 
+<i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> as the <i><a href="../26-glossary/n.xhtml#name">names</a></i> for the <i><a href="../26-glossary/l.xhtml#lambdavariable">lambda variables</a></i>
+in the constructor function, since one or more of those <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>
+might have been proclaimed <a href="../3-evaluation-and-compilation/3.8.26-special.xhtml#DictEntry_special_308"><b>special</b></a> or might be defined as
+the name of a <i><a href="../26-glossary/c.xhtml#constantvariable">constant variable</a></i>.
+The slot default init forms are evaluated 
+in the <i><a href="../26-glossary/l.xhtml#lexicalenvironment">lexical environment</a></i> in which the <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> form itself appears and
+in the <i><a href="../26-glossary/d.xhtml#dynamicenvironment">dynamic environment</a></i> in which the call to the constructor function appears.
+
+
+</p><p>
+For example, if the form <code>(gensym)</code> were used as an initialization form,
+either in the constructor-function call or as the default initialization form
+in <a href="#DictEntry_defstruct_600"><b>defstruct</b></a>, then every call to the constructor function would call
+<a href="../10-symbols/10.2.7-gensym.xhtml#DictEntry_gensym_681"><b>gensym</b></a> once to generate a new <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</p><p>
+
+
+Each <i>slot-description</i> in <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> can specify zero or more
+<i>slot-options</i>.  
+
+A <i>slot-option</i> consists of a pair of a keyword and a value
+(which is not a form to be evaluated, but the value itself).  For example:
+
+</p><pre> (defstruct ship
+   (x-position 0.0 :type short-float)
+   (y-position 0.0 :type short-float)
+   (x-velocity 0.0 :type short-float)
+   (y-velocity 0.0 :type short-float)
+   (mass *default-ship-mass* :type short-float :read-only t))
+</pre>
+This specifies that each slot always contains a <i><a href="../26-glossary/s.xhtml#shortfloat">short float</a></i>,
+and that the last slot cannot be altered once a ship is constructed.
+
+<p>
+  
+
+The available slot-options are:
+</p><ul>
+
+<li><code><code>:type</code> <i>type</i></code> 
+
+<p>
+This specifies that the contents of the
+slot is always of type <i>type</i>.  This is entirely
+analogous to the declaration of a variable or function; it
+effectively declares the result type of the <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> function.  
+
+
+
+It is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> whether the <i><a href="../26-glossary/t.xhtml#type">type</a></i> is checked 
+    when initializing a slot
+ or when assigning to it.
+<i>Type</i> is not evaluated; it must be a valid <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+
+</p></li><li><code><code>:read-only</code> <i>x</i></code>
+
+<p>
+When <i>x</i> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>,
+this specifies that this slot cannot be
+altered; it will always contain the value supplied at construction time.
+<a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> will not accept the <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> function for this slot.
+If <i>x</i> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>, this slot-option has no effect.
+<i>X</i> is not evaluated.
+
+</p><p>
+
+When this option is <i><a href="../26-glossary/f.xhtml#false">false</a></i> or unsupplied,
+it is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> whether the ability to <i><a href="../26-glossary/w.xhtml#write">write</a></i>
+the slot is implemented by a <i><a href="../26-glossary/s.xhtml#setffunction">setf function</a></i> or a <i><a href="../26-glossary/s.xhtml#setfexpander">setf expander</a></i>.
+
+
+</p></li></ul>
+
+<p>
+
+The following keyword options are available for use with <a href="#DictEntry_defstruct_600"><b>defstruct</b></a>.  
+A <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> option can be either a keyword or a <i><a href="../26-glossary/l.xhtml#list">list</a></i>
+of a keyword and arguments for that keyword; 
+
+specifying the keyword by itself is equivalent to specifying a list consisting of
+the keyword and no arguments.
+The syntax for <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> options differs from the pair syntax 
+used for slot-options.  No part of any of these options is evaluated.
+</p><ul>
+
+<li><code>:conc-name</code>
+
+<p>
+This provides for automatic prefixing of names of <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> (or <i><a href="../26-glossary/a.xhtml#access">access</a></i>) functions.
+The default behavior is to begin the names of all the <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> functions of
+a structure with the name of the structure followed by a hyphen.
+
+</p><p>
+
+<code>:conc-name</code> supplies an alternate
+prefix to be used.  If a hyphen is to be used as a separator,
+it must be supplied as part of the prefix.
+If <code>:conc-name</code> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> or no argument is supplied, 
+then no prefix is used;
+then the names of the <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> functions
+are the same as the slot names.
+If a <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i> prefix is given,
+the name of the <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> <i><a href="../26-glossary/f.xhtml#function">function</a></i> for each slot is constructed by
+concatenating that prefix and the name of the slot, and interning the resulting
+<i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> in the <i><a href="../26-glossary/p.xhtml#package">package</a></i> that is current at the time the 
+<a href="#DictEntry_defstruct_600"><b>defstruct</b></a> form is expanded.
+
+</p><p>
+
+Note that no matter what is supplied for <code>:conc-name</code>,
+slot keywords that match the slot names with no prefix attached are used
+with a constructor function.
+The <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> function name is used
+in conjunction with <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a>.  Here is an example:
+
+</p><pre> (defstruct (door (:conc-name dr-)) knob-color width material) →  DOOR
+ (setq my-door (make-door :knob-color 'red :width 5.0)) 
+→ #S(DOOR :KNOB-COLOR RED :WIDTH 5.0 :MATERIAL NIL)
+ (dr-width my-door) → 5.0
+ (setf (dr-width my-door) 43.7) → 43.7
+ (dr-width my-door) → 43.7
+</pre>
+
+<p>
+Whether or not the <code>:conc-name</code> option is explicitly supplied, 
+the following rule governs name conflicts of generated <i><a href="../26-glossary/r.xhtml#reader">reader</a></i>
+(or <i><a href="../26-glossary/a.xhtml#accessor">accessor</a></i>) names:
+For any <i><a href="../26-glossary/s.xhtml#structure">structure</a></i> <i><a href="../26-glossary/t.xhtml#type">type</a></i> <i>S<sub>1</sub></i> 
+having a <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> function named <i>R</i> for a slot named <i>X<sub>1</sub></i>
+that is inherited by another <i><a href="../26-glossary/s.xhtml#structure">structure</a></i> <i><a href="../26-glossary/t.xhtml#type">type</a></i> <i>S<sub>2</sub></i> 
+that would have a <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> function with the same name <i>R</i> for a slot named <i>X<sub>2</sub></i>,
+no definition for <i>R</i> is generated by the definition of <i>S<sub>2</sub></i>;
+instead, the definition of <i>R</i> is inherited from the definition of <i>S<sub>1</sub></i>.
+(In such a case, if <i>X<sub>1</sub></i> and <i>X<sub>2</sub></i> are different slots,
+the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> might signal a style warning.)
+
+</p></li><li><code>:constructor</code>
+
+<p>
+
+This option takes zero, one, or two arguments.
+If at least one argument is supplied and the first argument is not <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, then
+that argument is a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> which specifies the name of the 
+constructor function.  If the argument is not supplied (or if the option itself is not
+supplied), the name of the constructor is produced by concatenating the
+string <code>"MAKE-"</code> and the name of the structure, interning the name
+in whatever <i><a href="../26-glossary/p.xhtml#package">package</a></i> is current at the time <a href="#DictEntry_defstruct_600"><b>defstruct</b></a>
+is expanded.  If the argument is provided and is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+no constructor function is defined.
+
+
+</p><p>
+
+
+If <code>:constructor</code> is given as
+<code>(:constructor <i>name</i> <i>arglist</i>)</code>, 
+then instead of making a keyword
+driven constructor function, <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> 
+defines a "positional" constructor function,
+taking arguments whose meaning is determined by the argument's position
+and possibly by keywords.
+<i>Arglist</i> is used to describe what the arguments to the
+constructor will be. In the simplest case something like
+<code>(:constructor make-foo (a b c))</code> defines <code>make-foo</code> to be
+a three-argument 
+constructor function whose arguments are used to initialize the
+slots named <code>a</code>, <code>b</code>, and <code>c</code>.
+
+</p><p>
+
+Because a constructor of this type operates "By Order of Arguments,"
+it is sometimes known as a "boa constructor."
+
+</p><p>
+For information on how the <i>arglist</i> for a "boa constructor" is
+processed, see Section <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSection_Boa_Lambda_L_260">3.4.6 Boa Lambda Lists</a>.
+
+</p><p>
+
+It is permissible to use the
+<code>:constructor</code> option more than once, so that you can define several
+different constructor functions, each taking different parameters.
+
+</p><p>
+
+<a href="#DictEntry_defstruct_600"><b>defstruct</b></a> creates the default-named keyword constructor function
+only if no explicit <code>:constructor</code> options are specified, or if the
+<code>:constructor</code> option is specified without a <i>name</i> argument.
+
+</p><p>
+<code>(:constructor nil)</code> is meaningful only when there are no other
+<code>:constructor</code> options specified.  It prevents <a href="#DictEntry_defstruct_600"><b>defstruct</b></a>
+from generating any constructors at all.
+
+</p><p>
+Otherwise, <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> creates a constructor function corresponding
+to each supplied <code>:constructor</code> option.  It is permissible to specify
+multiple keyword constructor functions as well as multiple 
+"boa constructors".
+
+
+
+</p></li><li><code>:copier</code>
+
+<p>
+
+This option takes one argument, a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>,
+which specifies the name of the copier
+function.  If the argument is not provided or if the option itself is not
+provided, the name of the copier is produced by concatenating the
+string <code>"COPY-"</code> and the name of the structure, interning the name
+in whatever <i><a href="../26-glossary/p.xhtml#package">package</a></i> is current at the time <a href="#DictEntry_defstruct_600"><b>defstruct</b></a>
+is expanded.
+If the argument is provided and is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, no copier function is defined.
+
+</p><p>
+
+
+
+
+The automatically defined copier function is a function of
+one <i><a href="../26-glossary/a.xhtml#argument">argument</a></i>,
+
+which must be of the structure type being defined.
+
+The copier function creates a <i><a href="../26-glossary/f.xhtml#fresh">fresh</a></i> 
+structure that has the same <i><a href="../26-glossary/t.xhtml#type">type</a></i> as its <i><a href="../26-glossary/a.xhtml#argument">argument</a></i>,
+and that has the <i><a href="../26-glossary/s.xhtml#same">same</a></i> component values as the original 
+structure; that is, the component values are not copied recursively.
+
+If the <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> <code>:type</code> option was not used,
+the following equivalence applies:
+
+</p><pre> (<i>copier-name</i> x) = (copy-structure (the <i>structure-name</i> x))
+</pre>
+
+
+
+</li><li><code>:include</code>
+
+<p>
+
+This option is used for building a new structure definition as
+an extension of another structure definition.  For example:
+
+</p><pre> (defstruct person name age sex)
+</pre>
+To make a new structure to represent an astronaut
+that has the
+attributes of name, age, and sex, and <i><a href="../26-glossary/f.xhtml#function">functions</a></i>
+that operate on <code>person</code> structures, <code>astronaut</code> is defined
+with <code>:include</code> as follows:
+
+<pre> (defstruct (astronaut (:include person)
+                       (:conc-name astro-))
+    helmet-size
+    (favorite-beverage 'tang))
+</pre>
+
+<p>
+
+<code>:include</code> causes the structure being defined
+to have the same slots as the included structure.
+This is done in such a way
+that the <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> functions for the included
+structure also work on the structure being defined.
+In this example, an
+<code>astronaut</code> therefore has five slots: the three defined in
+<code>person</code> and the two defined in <code>astronaut</code>
+itself.  The <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> functions defined by the <code>person</code> structure
+can be applied to instances of the <code>astronaut</code> structure, and they
+work correctly.
+Moreover, <code>astronaut</code> has its own <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> functions for
+components defined by the <code>person</code> structure.
+The following examples illustrate the 
+use of <code>astronaut</code> structures:
+
+</p><pre> (setq x (make-astronaut :name 'buzz
+                         :age 45.
+                         :sex t
+                         :helmet-size 17.5))
+ (person-name x) →  BUZZ
+ (astro-name x) →  BUZZ
+ (astro-favorite-beverage x) →  TANG
+</pre>
+
+<pre> (reduce #'+ astros :key #'person-age) ; obtains the total of the ages 
+                                       ; of the possibly empty
+                                       ; sequence of astros
+</pre>
+
+The difference between the <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> functions <code>person-name</code> and <code>astro-name</code>
+is that <code>person-name</code> can be correctly applied to any <code>person</code>,
+including an <code>astronaut</code>, while <code>astro-name</code> can be correctly
+applied only to an <code>astronaut</code>.  An implementation might 
+check for incorrect use of <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> functions.
+
+<p>
+
+At most one <code>:include</code> can be supplied in a single <a href="#DictEntry_defstruct_600"><b>defstruct</b></a>.
+The argument to <code>:include</code> is required and must be the
+name of some previously defined structure.  If the structure being
+defined has no <code>:type</code> option, then the included structure must
+also have had no <code>:type</code> option supplied for it.
+If the structure being defined has a <code>:type</code> option,
+then the included structure must have been declared with a <code>:type</code>
+option specifying the same representation <i><a href="../26-glossary/t.xhtml#type">type</a></i>.
+
+</p><p>
+
+If no <code>:type</code> option is involved, then
+the structure name of the including structure definition
+becomes the name of a <i><a href="../26-glossary/d.xhtml#datatype">data type</a></i>, and therefore
+a valid <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> recognizable by <a href="../4-types-and-classes/4.4.28-typep.xhtml#DictEntry_typep_363"><b>typep</b></a>; it becomes
+a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of the included structure.  
+In the above example,
+<code>astronaut</code> is a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of <code>person</code>; hence
+
+</p><pre> (typep (make-astronaut) 'person) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+</pre>
+indicating that all operations on persons also
+work on astronauts.
+
+<p>
+
+The structure using <code>:include</code> can specify default values or
+slot-options for the included slots different from those the included
+structure specifies, by giving the <code>:include</code> option as:
+
+</p><pre> (:include <i>included-structure-name</i> {<i>slot-description</i>}*)
+</pre>
+Each <i>slot-description</i> must have a <i>slot-name</i> 
+
+
+that is the same
+as that of some slot in the included structure.
+If a <i>slot-description</i> has no <i>slot-initform</i>,
+then in the new structure the slot has no initial value.
+Otherwise its initial value form is replaced by
+the <i>slot-initform</i> in the <i>slot-description</i>.
+A normally writable slot can be made read-only.
+If a slot is read-only in the included structure, then it
+must also be so in the including structure.
+If a <i><a href="../26-glossary/t.xhtml#type">type</a></i> is supplied for a slot, it must be 
+
+
+a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of
+
+the
+<i><a href="../26-glossary/t.xhtml#type">type</a></i> specified in the included structure.
+
+<p>
+
+For example, if the
+default age for an astronaut is <code>45</code>, then 
+
+</p><pre> (defstruct (astronaut (:include person (age 45)))
+    helmet-size
+    (favorite-beverage 'tang))
+</pre>
+
+<p>
+If <code>:include</code> is used with the <code>:type</code>
+option, then the effect is first to skip over as many representation
+elements as needed to represent the included structure, then to
+skip over any additional elements supplied by the <code>:initial-offset</code>
+option, and then to begin allocation of elements from that point.
+For example:
+
+</p><pre> (defstruct (binop (:type list) :named (:initial-offset 2))
+   (operator '? :type symbol)   
+   operand-1
+   operand-2) →  BINOP
+ (defstruct (annotated-binop (:type list)
+                             (:initial-offset 3)
+                             (:include binop))
+  commutative associative identity) →  ANNOTATED-BINOP
+ (make-annotated-binop :operator '*
+                       :operand-1 'x
+                       :operand-2 5
+                       :commutative t
+                       :associative t
+                       :identity 1)
+   → (NIL NIL BINOP * X 5 NIL NIL NIL T T 1)
+</pre>
+The first two <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> elements stem from the <code>:initial-offset</code> of <code>2</code>
+in the definition of <code>binop</code>.  The next four elements contain the
+structure name and three slots for <code>binop</code>.  The next three <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> elements
+stem from the <code>:initial-offset</code> of <code>3</code> in the definition of
+<code>annotated-binop</code>.  The last three list elements contain the additional
+slots for an <code>annotated-binop</code>.
+
+</li><li><code>:initial-offset</code>
+
+<p>
+
+<code>:initial-offset</code> instructs <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> to skip over a certain
+number of slots before it starts allocating the slots described in the
+body.  This option's argument is the number of slots <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> 
+should skip.  <code>:initial-offset</code> can be used only if <code>:type</code> is also supplied.
+
+</p><p>
+
+<code>:initial-offset</code> allows 
+slots to be allocated beginning at a representational
+element other than the first.  For example, the form
+
+</p><pre> (defstruct (binop (:type list) (:initial-offset 2))
+   (operator '? :type symbol)
+   operand-1
+   operand-2) →  BINOP
+</pre>
+would result in the following behavior for <code>make-binop</code>:
+
+<pre> (make-binop :operator '+ :operand-1 'x :operand-2 5)
+→ (NIL NIL + X 5)
+ (make-binop :operand-2 4 :operator '*)
+→ (NIL NIL * NIL 4)
+</pre>
+The selector functions
+<code>binop-operator</code>, <code>binop-operand-1</code>,
+and <code>binop-operand-2</code> would be essentially equivalent to <a href="../14-conses/14.2.21-first.xhtml#DictEntry_first_secon_934"><b>third</b></a>,
+<a href="../14-conses/14.2.21-first.xhtml#DictEntry_first_secon_934"><b>fourth</b></a>, and <a href="../14-conses/14.2.21-first.xhtml#DictEntry_first_secon_934"><b>fifth</b></a>, respectively.
+Similarly, the form
+
+<pre> (defstruct (binop (:type list) :named (:initial-offset 2))
+   (operator '? :type symbol)
+   operand-1
+   operand-2) →  BINOP
+</pre>
+would result in the following behavior for <code>make-binop</code>:
+
+<pre> (make-binop :operator '+ :operand-1 'x :operand-2 5) → (NIL NIL BINOP + X 5)
+ (make-binop :operand-2 4 :operator '*) → (NIL NIL BINOP * NIL 4)
+</pre>
+
+<p>
+The first two <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> elements stem from the <code>:initial-offset</code> of <code>2</code>
+in the definition of <code>binop</code>.  The next four elements contain the
+structure name and three slots for <code>binop</code>.  
+
+</p></li><li><code>:named</code>
+
+<p>
+
+<code>:named</code> specifies that the structure is named.
+If no <code>:type</code> is supplied,
+then the structure is always named.
+
+</p><p>
+
+For example:
+
+</p><pre> (defstruct (binop (:type list))
+   (operator '? :type symbol)
+   operand-1
+   operand-2) →  BINOP
+</pre>
+This defines a constructor function <code>make-binop</code> and three
+selector functions, namely <code>binop-operator</code>, <code>binop-operand-1</code>,
+and <code>binop-operand-2</code>.  (It does not, however, define a predicate
+<code>binop-p</code>, for reasons explained below.)
+
+<p>
+
+The effect of <code>make-binop</code> is simply to construct a list of length three:
+
+</p><pre> (make-binop :operator '+ :operand-1 'x :operand-2 5) → (+ X 5)  
+ (make-binop :operand-2 4 :operator '*) → (* NIL 4)
+</pre>
+It is just like the function <code>list</code> except that it takes
+keyword arguments and performs slot defaulting appropriate to the <code>binop</code>
+conceptual data type.  Similarly, the selector functions
+<code>binop-operator</code>, <code>binop-operand-1</code>,
+and <code>binop-operand-2</code> are essentially equivalent to <a href="../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>car</b></a>,
+<a href="../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>cadr</b></a>, and <a href="../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>caddr</b></a>, respectively.  They might not be
+completely equivalent because,
+for example, an implementation would be justified in adding error-checking
+code to ensure that the argument to each selector function is a length-3
+list.
+
+<p>
+
+<code>binop</code> is a conceptual data type in that it is not made a part of
+the <i>Common Lisp</i> type system.  <a href="../4-types-and-classes/4.4.28-typep.xhtml#DictEntry_typep_363"><b>typep</b></a> does not recognize <code>binop</code> as
+a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>, and <a href="../4-types-and-classes/4.4.27-type-of.xhtml#DictEntry_type_of_362"><b>type-of</b></a> returns <code>list</code> when
+given a <code>binop</code> structure.  There is no way to distinguish a data
+structure constructed by <code>make-binop</code> from any other <i><a href="../26-glossary/l.xhtml#list">list</a></i> that 
+happens to have the correct structure.
+
+</p><p>
+
+There is not any way to recover the structure name <code>binop</code> from
+a structure created by <code>make-binop</code>.  This can only be done
+if the structure is named.
+A named structure has the property that, given an instance of the
+structure, the structure name (that names the type) can be reliably
+recovered.  For structures defined
+with no <code>:type</code> option, the structure name actually becomes part
+of the <i>Common Lisp</i> data-type system.  <a href="../4-types-and-classes/4.4.27-type-of.xhtml#DictEntry_type_of_362"><b>type-of</b></a>,
+when applied to such a structure, returns the structure name
+as the <i><a href="../26-glossary/t.xhtml#type">type</a></i> of the <i><a href="../26-glossary/o.xhtml#object">object</a></i>;
+<a href="../4-types-and-classes/4.4.28-typep.xhtml#DictEntry_typep_363"><b>typep</b></a> recognizes
+the structure name as a valid <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+
+</p><p>
+For structures defined with a <code>:type</code> option, <a href="../4-types-and-classes/4.4.27-type-of.xhtml#DictEntry_type_of_362"><b>type-of</b></a> 
+returns a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> such as <code>list</code> or <code>(vector t)</code>,
+depending on the type supplied to the <code>:type</code> option.
+The structure name does not become a valid <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+However,
+if the <code>:named</code> option is also supplied, then the first component
+of the structure (as created by a <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> constructor function)
+always contains the structure name.  This allows the structure name
+to be recovered from an instance of the structure and allows a reasonable
+predicate for the conceptual type to be defined:
+the automatically defined
+<i>name-p</i> predicate for the structure operates by first
+checking that its argument is of the proper type (<a href="../14-conses/14.2.1-list.xhtml#DictEntry_list_914"><b>list</b></a>, 
+<code>(vector t)</code>,
+or whatever) and then checking whether the first component contains
+the appropriate type name.
+
+</p><p>
+Consider the <code>binop</code> example shown above, modified only to
+include the <code>:named</code> option:
+
+</p><pre> (defstruct (binop (:type list) :named)
+   (operator '? :type symbol)
+   operand-1
+   operand-2) →  BINOP
+</pre>
+As before, this defines a constructor function <code>make-binop</code> and three
+selector functions <code>binop-operator</code>, <code>binop-operand-1</code>,
+and <code>binop-operand-2</code>.  It also defines a predicate <code>binop-p</code>.
+The effect of <code>make-binop</code> is now to construct a list of length four:
+
+<pre> (make-binop :operator '+ :operand-1 'x :operand-2 5) → (BINOP + X 5)
+ (make-binop :operand-2 4 :operator '*) → (BINOP * NIL 4)
+</pre>
+The structure has the same layout as before except that the structure name
+<code>binop</code> is included as the first list element.
+The selector functions
+<code>binop-operator</code>, <code>binop-operand-1</code>,
+and <code>binop-operand-2</code> are essentially equivalent to <a href="../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>cadr</b></a>,
+<a href="../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>caddr</b></a>, and <a href="../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>cadddr</b></a>, respectively.
+The predicate <code>binop-p</code> is more or less equivalent to this
+definition:
+
+<pre> (defun binop-p (x)
+   (and (consp x) (eq (car x) 'binop))) →  BINOP-P
+</pre>
+The name <code>binop</code> is still not a valid <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> recognizable
+to <a href="../4-types-and-classes/4.4.28-typep.xhtml#DictEntry_typep_363"><b>typep</b></a>, but at least there is a way of distinguishing <code>binop</code>
+structures from other similarly defined structures.
+
+</li><li><code>:predicate</code>
+
+<p>
+
+This option takes one argument, which specifies the name of the type predicate.
+If the argument is not supplied or if the option itself is not
+supplied, the name of the predicate is made by concatenating the
+name of the structure to the string <code>"-P"</code>, interning the name
+in whatever <i><a href="../26-glossary/p.xhtml#package">package</a></i> is current at the time <a href="#DictEntry_defstruct_600"><b>defstruct</b></a>
+is expanded.
+If the argument is provided and is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, no predicate is defined.
+A predicate can be defined only if the structure is named;
+if <code>:type</code> is supplied and <code>:named</code> is not supplied,
+then <code>:predicate</code> must either be unsupplied or have the value <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></li><li><code>:print-function</code>, <code>:print-object</code>
+
+<p>
+The <code>:print-function</code> and <code>:print-object</code> 
+
+options
+specify that a <a href="../22-printer/22.4.11-print-object.xhtml#DictEntry_print_object_1351"><b>print-object</b></a>
+<i><a href="../26-glossary/m.xhtml#method">method</a></i> for <i><a href="../26-glossary/s.xhtml#structure">structures</a></i> of type <i>structure-name</i> should be generated.
+These options are not synonyms, but do perform a similar service;
+the choice of which option (<code>:print-function</code> or <code>:print-object</code>) is used 
+affects how the function named <i>printer-name</i> is called.
+Only one of these options may be used, and
+
+these options may be used only if <code>:type</code> is not supplied.
+
+</p><p>
+If the <code>:print-function</code> option is used, 
+then when a structure of type <i>structure-name</i> is to be printed,
+the designated printer function is called on three <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>:
+
+</p><ul> 
+
+<li>-- the structure to be printed
+	      (a <i><a href="../26-glossary/g.xhtml#generalizedinstance">generalized instance</a></i> of <i>structure-name</i>).
+
+</li><li>-- a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> to print to.
+
+</li><li>-- an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> indicating the current depth.
+	      The magnitude of this integer may vary between <i><a href="../26-glossary/i.xhtml#implementation">implementations</a></i>;
+	      however, it can reliably be compared against <a href="../22-printer/22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a>
+	      to determine whether depth abbreviation is appropriate.
+
+</li></ul>
+
+<p>
+Specifying <code>(:print-function <i>printer-name</i>)</code>
+is approximately equivalent to specifying:
+
+</p><pre> (defmethod print-object ((object <i>structure-name</i>) stream)
+   (funcall (function <i>printer-name</i>) object stream &lt;&lt;current-print-depth&gt;&gt;))
+</pre>
+
+<p>
+where the &lt;&lt;current-print-depth&gt;&gt; represents the printer's belief of
+how deep it is currently printing.  It is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+whether &lt;&lt;current-print-depth&gt;&gt; is always 0 and <i>*print-level*</i>,
+if <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i>, is re-bound to successively smaller values as printing
+descends recursively, or whether <i>current-print-depth</i> varies in 
+value as printing descends recursively and <i>*print-level*</i> remains
+constant during the same traversal.
+
+</p><p>
+If the <code>:print-object</code> option is used, then
+when a structure of type <i>structure-name</i> is to be printed,
+the designated printer function is called on two arguments:
+
+</p><ul>
+
+<li>-- the structure to be printed.
+
+</li><li>-- the stream to print to.
+
+</li></ul>
+
+<p>
+Specifying <code>(:print-object <i>printer-name</i>)</code> is equivalent to specifying:
+
+</p><pre> (defmethod print-object ((object <i>structure-name</i>) stream)
+   (funcall (function <i>printer-name</i>) object stream))
+</pre>
+
+<p>
+
+
+
+    If no <code>:type</code> option is supplied,
+and if either a <code>:print-function</code> or a <code>:print-object</code> option is supplied,
+and if no <i>printer-name</i> is supplied,
+then a <a href="../22-printer/22.4.11-print-object.xhtml#DictEntry_print_object_1351"><b>print-object</b></a> <i><a href="../26-glossary/m.xhtml#method">method</a></i> <i><a href="../26-glossary/s.xhtml#specialized">specialized</a></i> for <i>structure-name</i>
+is generated that calls a function that implements the default printing behavior for
+structures using <code>#S</code> notation; see Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Str_1275">22.1.3.12 Printing Structures</a>.
+
+</p><p>
+If neither a <code>:print-function</code> 
+       nor a <code>:print-object</code> option 
+is supplied,
+then <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> does not generate a <a href="../22-printer/22.4.11-print-object.xhtml#DictEntry_print_object_1351"><b>print-object</b></a> <i><a href="../26-glossary/m.xhtml#method">method</a></i>
+<i><a href="../26-glossary/s.xhtml#specialized">specialized</a></i> for <i>structure-name</i> and some default behavior is inherited
+either from a structure named in an <code>:include</code> option 
+    or from the default behavior for printing structures;
+see the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="../22-printer/22.4.11-print-object.xhtml#DictEntry_print_object_1351"><b>print-object</b></a> and Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Str_1275">22.1.3.12 Printing Structures</a>.
+
+
+
+</p><p>
+
+
+
+
+
+
+
+
+
+When <a href="../22-printer/22.4.19-print-circle.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>,
+a user-defined print function can print <i><a href="../26-glossary/o.xhtml#object">objects</a></i> 
+to the supplied <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> using  
+    <a href="../22-printer/22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>write</b></a>,
+    <a href="../22-printer/22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>prin1</b></a>,
+    <a href="../22-printer/22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>princ</b></a>, 
+ or <a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>
+and expect circularities to be detected and printed using the <code>#<i>n</i>#</code> syntax.
+This applies to <i><a href="../26-glossary/m.xhtml#method">methods</a></i> on <a href="../22-printer/22.4.11-print-object.xhtml#DictEntry_print_object_1351"><b>print-object</b></a> in addition to
+<code>:print-function</code> options.
+If a user-defined print function prints to a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> other than the one
+that was supplied, then circularity detection starts over for that <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>. 
+See the <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <a href="../22-printer/22.4.19-print-circle.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a>.
+
+
+</p></li><li><code>:type</code>
+
+<p>
+
+<code>:type</code> explicitly specifies the representation to be used for
+the structure.  Its argument must be one of these <i><a href="../26-glossary/t.xhtml#type">types</a></i>:
+
+</p><ul>
+
+<li><a href="../15-arrays/15.2.3-vector.xhtml#DictEntry_vector_981"><b>vector</b></a>
+
+<p>
+This produces the same result as specifying <code>(vector t)</code>.
+The structure is represented
+as a general <i><a href="../26-glossary/v.xhtml#vector">vector</a></i>, storing components as vector elements.
+The first component is vector 
+element 1 if the structure is <code>:named</code>, and element 0 otherwise.
+
+</p></li><li><code>(vector <i>element-type</i>)</code>
+
+<p>
+The structure is represented as a (possibly specialized) <i><a href="../26-glossary/v.xhtml#vector">vector</a></i>, storing
+components as vector elements.  Every component must be of a <i><a href="../26-glossary/t.xhtml#type">type</a></i> 
+that can be stored in a <i><a href="../26-glossary/v.xhtml#vector">vector</a></i> of the <i><a href="../26-glossary/t.xhtml#type">type</a></i> specified.  
+The first component is vector
+element 1 if the structure is <code>:named</code>, and element 0 otherwise.
+The structure can be <code>:named</code> only if the <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675"><b>symbol</b></a> 
+is a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of the supplied <i>element-type</i>.
+
+</p></li><li><a href="../14-conses/14.2.1-list.xhtml#DictEntry_list_914"><b>list</b></a>
+
+<p>
+The structure is represented as a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
+The first component is the <i><a href="../26-glossary/c.xhtml#cadr">cadr</a></i> if the structure is <code>:named</code>,
+and the <i><a href="../26-glossary/c.xhtml#car">car</a></i> if it is not <code>:named</code>.
+</p></li></ul>                           
+
+<p>
+
+Specifying this option has the effect of forcing
+a specific representation and of forcing the components to be
+stored in the order specified in <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> 
+in corresponding successive elements of the specified representation.
+It also prevents the structure name from becoming a valid
+<i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> recognizable by <a href="../4-types-and-classes/4.4.28-typep.xhtml#DictEntry_typep_363"><b>typep</b></a>.
+
+</p><p>
+
+For example:
+
+</p><pre> (defstruct (quux (:type list) :named) x y)
+</pre>
+
+<p>
+should make a constructor that builds a <i><a href="../26-glossary/l.xhtml#list">list</a></i> exactly like the one
+that <a href="../14-conses/14.2.1-list.xhtml#DictEntry_list_914"><b>list</b></a> produces, 
+with <code>quux</code> as its <i><a href="../26-glossary/c.xhtml#car">car</a></i>.
+
+
+</p><p>
+If this type is defined:
+
+</p><pre> (deftype quux () '(satisfies quux-p))
+</pre>
+then this form
+
+<pre> (typep (make-quux) 'quux)
+</pre>
+should return precisely what this one does
+
+<pre> (typep (list 'quux nil nil) 'quux)
+</pre>
+
+
+<p>
+
+If <code>:type</code> is not supplied,
+
+the structure is represented as an <i><a href="../26-glossary/o.xhtml#object">object</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.13-structure-object.xhtml#DictEntry_structure_ob_348"><b>structure-object</b></a>.
+
+</p><p>
+
+<a href="#DictEntry_defstruct_600"><b>defstruct</b></a> without a <code>:type</code> option defines a <i><a href="../26-glossary/c.xhtml#class">class</a></i> with
+the structure name as its name. The <i><a href="../26-glossary/m.xhtml#metaclass">metaclass</a></i> of structure
+<i><a href="../26-glossary/i.xhtml#instance">instances</a></i> is <a href="../4-types-and-classes/4.4.9-structure-class.xhtml#DictEntry_structure_cl_344"><b>structure-class</b></a>.  
+
+</p></li></ul>
+
+<p>
+
+The consequences of redefining a <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> structure are undefined.
+
+
+</p><p>
+In the case where no <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> options have been supplied, 
+the following functions are automatically defined to operate 
+on instances of the new structure:
+
+</p><ul>
+<li><b>Predicate</b>
+
+<p>
+A predicate with the name <code><i>structure-name</i>-p</code> is defined to
+test membership in the structure type.  The predicate 
+<code>(<i>structure-name</i>-p <i>object</i>)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if an <i>object</i> 
+is of this <i><a href="../26-glossary/t.xhtml#type">type</a></i>; otherwise it is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.  <a href="../4-types-and-classes/4.4.28-typep.xhtml#DictEntry_typep_363"><b>typep</b></a> can also
+be used with the name of the new <i><a href="../26-glossary/t.xhtml#type">type</a></i> to test whether an 
+<i><a href="../26-glossary/o.xhtml#object">object</a></i>
+belongs to the <i><a href="../26-glossary/t.xhtml#type">type</a></i>. 
+Such a function call has the form 
+<code>(typep <i>object</i> '<i>structure-name</i>)</code>.
+
+</p></li><li><b>Component reader functions</b>
+
+<p>
+<i><a href="../26-glossary/r.xhtml#reader">Reader</a></i> functions are defined to <i><a href="../26-glossary/r.xhtml#read">read</a></i> the components of the
+structure.  For each slot name, there is a corresponding
+<i><a href="../26-glossary/r.xhtml#reader">reader</a></i> function with the name <code><i>structure-name</i>-<i>slot-name</i></code>.
+This function <i><a href="../26-glossary/r.xhtml#read">reads</a></i> the contents of that slot.  
+Each <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> function takes one argument, which is
+an instance of the structure type.  
+<a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> can be used with any of these <i><a href="../26-glossary/r.xhtml#reader">reader</a></i> functions
+to alter the slot contents.
+
+</p></li><li><b>Constructor function</b>
+
+<p>
+A constructor function with the name <code>make-<i>structure-name</i></code>
+is defined.  This function creates and returns new 
+instances of the structure type.
+
+</p></li><li><b>Copier function</b>
+
+<p>
+A copier function with the name <code>copy-<i>structure-name</i></code> is defined.
+The copier function takes an object of the structure type and creates a
+new object of the same  type that is a copy of the first.  The copier
+function creates a new structure with the same component entries
+
+as the original.  Corresponding components of the two structure instances
+are <a href="../4-types-and-classes/4.4.23-eql.xhtml#DictEntry_eql_358"><b>eql</b></a>.
+</p></li></ul>
+
+<p>
+
+
+If a <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> appears as a <i><a href="../26-glossary/t.xhtml#toplevelform">top level form</a></i>,
+the <i><a href="../26-glossary/c.xhtml#compiler">compiler</a></i> must make the <i><a href="../26-glossary/s.xhtml#structure">structure</a></i> <i><a href="../26-glossary/t.xhtml#type">type</a></i> name recognized
+as a valid <i><a href="../26-glossary/t.xhtml#type">type</a></i> name in subsequent declarations (as for <a href="../4-types-and-classes/4.4.25-deftype.xhtml#DictEntry_deftype_360"><b>deftype</b></a>)
+and make the structure slot readers known to <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a>.  In addition, the
+<i><a href="../26-glossary/c.xhtml#compiler">compiler</a></i> must save enough information about the <i><a href="../26-glossary/s.xhtml#structure">structure</a></i> <i><a href="../26-glossary/t.xhtml#type">type</a></i>
+so that further <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> definitions can use <code>:include</code> in a subsequent
+<a href="../4-types-and-classes/4.4.25-deftype.xhtml#DictEntry_deftype_360"><b>deftype</b></a> in the same <i><a href="../26-glossary/f.xhtml#file">file</a></i> to refer to the <i><a href="../26-glossary/s.xhtml#structure">structure</a></i> <i><a href="../26-glossary/t.xhtml#type">type</a></i> name.
+The functions which <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> generates are not defined 
+in the compile time environment, although the <i><a href="../26-glossary/c.xhtml#compiler">compiler</a></i> may save enough
+information about the functions to code subsequent calls inline.
+The <code>#S</code> <i><a href="../26-glossary/r.xhtml#readermacro">reader macro</a></i> might or might not recognize the newly defined 
+<i><a href="../26-glossary/s.xhtml#structure">structure</a></i> <i><a href="../26-glossary/t.xhtml#type">type</a></i> name at compile time.  
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+An example of a structure definition follows:
+
+<pre> (defstruct ship
+   x-position
+   y-position
+   x-velocity
+   y-velocity
+   mass)
+</pre>
+This declares that every <code>ship</code> is an <i><a href="../26-glossary/o.xhtml#object">object</a></i> 
+with five named components.
+The evaluation of this form does the following:
+
+<ul>
+<li>1.
+It defines <code>ship-x-position</code> to be a function
+of one argument, a ship, that returns the <code>x-position</code>
+of the ship; <code>ship-y-position</code>
+and the other components are given similar function definitions.
+These functions are called the <i><a href="../26-glossary/a.xhtml#access">access</a></i> functions, as they
+are used to <i><a href="../26-glossary/a.xhtml#access">access</a></i> elements of the structure.
+
+</li><li>2.
+<code>ship</code> becomes the name of a <i><a href="../26-glossary/t.xhtml#type">type</a></i> of which instances
+of ships are elements.  <code>ship</code> becomes acceptable to <a href="../4-types-and-classes/4.4.28-typep.xhtml#DictEntry_typep_363"><b>typep</b></a>,
+for example; <code>(typep x 'ship)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if <code>x</code> is a ship
+and false if <code>x</code> is any <i><a href="../26-glossary/o.xhtml#object">object</a></i> other than a ship.
+
+
+
+</li><li>3.
+A function named <code>ship-p</code> of 
+one argument is defined; it is a predicate
+that is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if its argument is a ship and is <i><a href="../26-glossary/f.xhtml#false">false</a></i> otherwise.
+
+</li><li>4.
+A function called <code>make-ship</code> is defined that, when invoked,
+creates a data structure with five components, suitable for use with
+the <i><a href="../26-glossary/a.xhtml#access">access</a></i> functions.  Thus executing
+
+<pre> (setq ship2 (make-ship))
+</pre>
+sets <code>ship2</code> to a newly created <code>ship</code> <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+One can supply the initial values of any desired component in the call
+to <code>make-ship</code> by using keyword arguments in this way:
+
+<pre> (setq ship2 (make-ship :mass *default-ship-mass*
+                        :x-position 0
+                        :y-position 0))
+</pre>
+This constructs a new ship and initializes three of its components.
+This function is called the "constructor function"
+because it constructs a new structure.
+
+</li><li>5.
+A function called <code>copy-ship</code> of one argument
+is defined that, when given a <code>ship</code> <i><a href="../26-glossary/o.xhtml#object">object</a></i>,
+creates a new <code>ship</code> <i><a href="../26-glossary/o.xhtml#object">object</a></i> that is a copy of the given one.
+This function is called the "copier function."
+</li></ul>
+
+<p>
+
+<a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> can be used to alter the components of a <code>ship</code>:
+
+</p><pre> (setf (ship-x-position ship2) 100)
+</pre>
+This alters the <code>x-position</code> of <code>ship2</code> to be <code>100</code>.
+This works because <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> behaves as if
+it generates an appropriate <a href="../5-data-and-control-flow/5.3.61-defsetf.xhtml#DictEntry_defsetf_447"><b>defsetf</b></a>
+for each <i><a href="../26-glossary/a.xhtml#access">access</a></i> function.
+
+<pre>;;;
+;;; Example 1
+;;; define town structure type
+;;; area, watertowers, firetrucks, population, elevation are its components
+;;;
+ (defstruct town
+             area
+             watertowers
+             (firetrucks 1 :type fixnum)    ;an initialized slot
+             population 
+             (elevation 5128 :read-only t)) ;a slot that can't be changed
+→  TOWN
+;create a town instance
+ (setq town1 (make-town :area 0 :watertowers 0)) → #S(TOWN...)
+;town's predicate recognizes the new instance
+ (town-p town1) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+;new town's area is as specified by make-town
+ (town-area town1) → 0
+;new town's elevation has initial value
+ (town-elevation town1) → 5128
+;setf recognizes reader function
+ (setf (town-population town1) 99) → 99
+ (town-population town1) → 99
+;copier function makes a copy of town1
+ (setq town2 (copy-town town1)) → #S(TOWN...)
+ (= (town-population town1) (town-population town2))  → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+;since elevation is a read-only slot, its value can be set only
+;when the structure is created
+ (setq town3 (make-town :area 0 :watertowers 3 :elevation 1200))
+→ #S(TOWN...)
+;;;
+;;; Example 2
+;;; define clown structure type
+;;; this structure uses a nonstandard prefix
+;;;
+ (defstruct (clown (:conc-name bozo-))
+             (nose-color 'red)         
+             frizzy-hair-p polkadots) →  CLOWN
+ (setq funny-clown (make-clown)) → #S(CLOWN)
+;use non-default reader name
+ (bozo-nose-color funny-clown) →  RED        
+ (defstruct (klown (:constructor make-up-klown) ;similar def using other
+             (:copier clone-klown)              ;customizing keywords
+             (:predicate is-a-bozo-p))
+             nose-color frizzy-hair-p polkadots) →  klown
+;custom constructor now exists
+ (fboundp 'make-up-klown) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+;;;
+;;; Example 3
+;;; define a vehicle structure type
+;;; then define a truck structure type that includes 
+;;; the vehicle structure
+;;;
+ (defstruct vehicle name year (diesel t :read-only t)) →  VEHICLE
+ (defstruct (truck (:include vehicle (year 79)))
+             load-limit                          
+             (axles 6)) →  TRUCK
+ (setq x (make-truck :name 'mac :diesel t :load-limit 17))
+→ #S(TRUCK...)
+;vehicle readers work on trucks
+ (vehicle-name x)
+→  MAC
+;default taken from :include clause 
+ (vehicle-year x)
+→ 79 
+ (defstruct (pickup (:include truck))     ;pickup type includes truck
+             camper long-bed four-wheel-drive) →  PICKUP
+ (setq x (make-pickup :name 'king :long-bed t)) → #S(PICKUP...)
+;:include default inherited
+ (pickup-year x) → 79
+;;;
+;;; Example 4
+;;; use of BOA constructors
+;;;
+ (defstruct (dfs-boa                      ;BOA constructors
+               (:constructor make-dfs-boa (a b c)) 
+               (:constructor create-dfs-boa
+                 (a &amp;optional b (c 'cc) &amp;rest d &amp;aux e (f 'ff))))
+             a b c d e f) →  DFS-BOA
+;a, b, and c set by position, and the rest are uninitialized
+ (setq x (make-dfs-boa 1 2 3)) → #(DFS-BOA...)
+ (dfs-boa-a x) → 1
+;a and b set, c and f defaulted
+ (setq x (create-dfs-boa 1 2)) → #(DFS-BOA...)
+ (dfs-boa-b x) → 2
+ (eq (dfs-boa-c x) 'cc) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+;a, b, and c set, and the rest are collected into d
+ (setq x (create-dfs-boa 1 2 3 4 5 6)) → #(DFS-BOA...)
+ (dfs-boa-d x) → (4 5 6)
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+
+If any two slot names (whether present directly or inherited by the <code>:include</code> option)
+are the <i><a href="../26-glossary/s.xhtml#same">same</a></i> under <a href="../16-strings/16.2.10-string=.xhtml#DictEntry_string_str_1029"><b>string=</b></a>,
+<a href="#DictEntry_defstruct_600"><b>defstruct</b></a> should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../5-data-and-control-flow/5.3.68-program-error.xhtml#DictEntry_program_erro_454"><b>program-error</b></a>.
+
+
+<p>
+
+The consequences are undefined if the <i>included-structure-name</i> 
+does not name a <i>structure type</i>.
+
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>documentation</b></a>,
+<a href="../22-printer/22.4.11-print-object.xhtml#DictEntry_print_object_1351"><b>print-object</b></a>,
+<a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a>,
+<a href="../4-types-and-classes/4.4.26-subtypep.xhtml#DictEntry_subtypep_361"><b>subtypep</b></a>,
+<a href="../4-types-and-classes/4.4.27-type-of.xhtml#DictEntry_type_of_362"><b>type-of</b></a>,
+<a href="../4-types-and-classes/4.4.28-typep.xhtml#DictEntry_typep_363"><b>typep</b></a>,
+Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#Section_Compilation_213">3.2 Compilation</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+The <i>printer-name</i> should observe the values of
+such printer-control variables as <a href="../22-printer/22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a>.
+
+<p>
+The restriction against issuing a warning for type mismatches between
+a <i>slot-initform</i> and the corresponding slot's <code>:type</code> option is
+necessary because a <i>slot-initform</i> must be specified in order to
+specify slot options; in some cases, no suitable default may exist.
+
+</p><p>
+The mechanism by which <a href="#DictEntry_defstruct_600"><b>defstruct</b></a> arranges for slot accessors to
+be usable with <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a> is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>; 
+for example, it may use <i><a href="../26-glossary/s.xhtml#setffunction">setf functions</a></i>, <i><a href="../26-glossary/s.xhtml#setfexpander">setf expanders</a></i>, or
+some other <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> mechanism known to that
+<i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>'s <i><a href="../26-glossary/c.xhtml#code">code</a></i> for <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

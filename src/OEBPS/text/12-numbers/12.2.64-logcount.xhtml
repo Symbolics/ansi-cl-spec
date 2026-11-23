@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.64 logcount — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_logcount_838" class="entry"><span class="secno">12.2.64</span> <span class="names">logcount</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>logcount</b>
+<i>integer</i>
+  → <i>number-of-on-bits</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>integer</i>—an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+<p>
+<i>number-of-on-bits</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Computes and returns the number of bits 
+in the two's-complement binary representation of <i>integer</i>
+that are `on' or `set'.
+If <i>integer</i> is negative, the <code>0</code> bits are counted;
+otherwise, the <code>1</code> bits are counted.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (logcount 0) → 0
+ (logcount -1) → 0
+ (logcount 7) → 3
+ (logcount  13) → 3 ;Two's-complement binary: ...0001101
+ (logcount -13) → 2 ;Two's-complement binary: ...1110011
+ (logcount  30) → 4 ;Two's-complement binary: ...0011110
+ (logcount -30) → 4 ;Two's-complement binary: ...1100010
+ (logcount (expt 2 100)) → 1
+ (logcount (- (expt 2 100))) → 100
+ (logcount (- (1+ (expt 2 100)))) → 1
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if its argument is not an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+Even if the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> does not represent <i><a href="../26-glossary/i.xhtml#integer">integers</a></i> internally
+in two's complement binary, <a href="#DictEntry_logcount_838"><b>logcount</b></a> behaves as if it did.
+
+<p>
+The following identity always holds:
+
+</p><pre>    (logcount <i>x</i>)
+ ==(logcount (- (+ <i>x</i> 1)))
+ ==(logcount (lognot <i>x</i>))
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

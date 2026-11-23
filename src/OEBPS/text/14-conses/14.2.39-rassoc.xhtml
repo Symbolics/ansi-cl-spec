@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.39 rassoc, rassoc-if, rassoc-if-not — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_rassoc_rass_952" class="entry"><span class="secno">14.2.39</span> <span class="names">rassoc, rassoc-if, rassoc-if-not</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>rassoc</b>
+<i>item      alist  <code>&amp;key</code> key test test-not</i>
+  → <i>entry</i>
+<p>
+<b>rassoc-if</b>
+<i>predicate alist <code>&amp;key</code> key</i>
+  → <i>entry</i>
+</p><p>
+<b>rassoc-if-not</b>
+<i>predicate alist <code>&amp;key</code> key</i>
+  → <i>entry</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>item</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+<p>
+<i>alist</i>—an <i><a href="../26-glossary/a.xhtml#associationlist">association list</a></i>.
+
+</p><p>
+<i>predicate</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for
+		    a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of one <i><a href="../26-glossary/a.xhtml#argument">argument</a></i>
+		    that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>test</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
+  that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>test-not</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for 
+  a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
+  that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>key</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of one argument,
+  or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>entry</i>—a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> that is an <i><a href="../26-glossary/e.xhtml#element">element</a></i> of the <i>alist</i>,
+		or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_rassoc_rass_952"><b>rassoc</b></a>, <a href="#DictEntry_rassoc_rass_952"><b>rassoc-if</b></a>, and <a href="#DictEntry_rassoc_rass_952"><b>rassoc-if-not</b></a>
+return the first <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> whose <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i> 
+<i>satisfies the test</i>.
+If no such <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> is found, <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> is returned.
+
+<p>
+If <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> appears in <i>alist</i> in place of a pair, it is  ignored.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq alist '((1 . "one") (2 . "two") (3 . 3))) 
+→ ((1 . "one") (2 . "two") (3 . 3))
+ (rassoc 3 alist) → (3 . 3)
+ (rassoc "two" alist) →  NIL
+ (rassoc "two" alist :test 'equal) → (2 . "two")
+ (rassoc 1 alist :key #'(lambda (x) (if (numberp x) (/ x 3)))) → (3 . 3)
+ (rassoc 'a '((a . b) (b . c) (c . a) (z . a))) → (C . A)
+ (rassoc-if #'stringp alist) → (1 . "one")
+ (rassoc-if-not #'vectorp alist) → (3 . 3)
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="14.2.36-assoc.xhtml#DictEntry_assoc_assoc_949"><b>assoc</b></a>,
+
+Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+The <code>:test-not</code> parameter is deprecated.
+
+
+<p>
+
+The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_rassoc_rass_952"><b>rassoc-if-not</b></a> is deprecated.
+
+
+</p><p>
+It is possible to <a href="14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplaca</b></a> the result of <a href="#DictEntry_rassoc_rass_952"><b>rassoc</b></a>, 
+provided that it is not <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, in order to "update" <i>alist</i>. 
+
+</p><p>
+The expressions
+
+</p><pre> (rassoc item list :test fn)
+</pre>
+and
+
+<pre> (find item list :test fn :key #'cdr)
+</pre>
+are equivalent in meaning, except when the <code>item</code> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> and <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> appears in place of a pair in the <i>alist</i>.
+See the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="14.2.36-assoc.xhtml#DictEntry_assoc_assoc_949"><b>assoc</b></a>. 
+
+</dd></dl>
+</section>
+</body>
+</html>

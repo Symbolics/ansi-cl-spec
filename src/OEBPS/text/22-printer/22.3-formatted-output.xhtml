@@ -1,0 +1,1979 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>22.3 Formatted Output</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Formatted_Ou_1287"><span class="secno">22.3</span> Formatted Output</h2>
+<p>
+
+
+<a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> is useful for producing nicely formatted text, producing
+good-looking messages, and so on.  <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> can generate and return
+a <i><a href="../26-glossary/s.xhtml#string">string</a></i> or output to <i>destination</i>.
+
+</p><p>
+The <i>control-string</i> argument to <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> is actually a <i><a href="../26-glossary/f.xhtml#formatcontrol">format control</a></i>.
+
+
+
+That is, it can be either a <i><a href="../26-glossary/f.xhtml#formatstring">format string</a></i> or a <i><a href="../26-glossary/f.xhtml#function">function</a></i>,
+for example a <i><a href="../26-glossary/f.xhtml#function">function</a></i> returned
+by the <a href="22.4.2-formatter.xhtml#DictEntry_formatter_1342"><b>formatter</b></a> <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>.
+
+</p><p>
+If it is a <i><a href="../26-glossary/f.xhtml#function">function</a></i>, the <i><a href="../26-glossary/f.xhtml#function">function</a></i> is called with the appropriate
+output stream as its first argument and the data arguments to <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>
+as its remaining arguments.  The function should perform whatever output is 
+necessary and return the unused tail of the arguments (if any).
+
+</p><p>
+The compilation process performed by <a href="22.4.2-formatter.xhtml#DictEntry_formatter_1342"><b>formatter</b></a> produces a <i><a href="../26-glossary/f.xhtml#function">function</a></i>
+that would do with its <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i> as the <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> interpreter
+would do with those <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>.
+
+</p><p>
+The remainder of this section describes what happens if the <i>control-string</i>
+is a <i><a href="../26-glossary/f.xhtml#formatstring">format string</a></i>.  
+
+
+</p><p>
+<i>Control-string</i> is composed of simple text (<i><a href="../26-glossary/c.xhtml#character">characters</a></i>) 
+and embedded directives.
+
+</p><p>
+
+<a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> writes the simple text as is;
+each embedded directive specifies further text output 
+that is to appear at the corresponding point within the simple text.  
+Most directives use one or more elements of <i>args</i> to
+create their output.
+
+</p><p>
+
+A directive consists of a <i><a href="../26-glossary/t.xhtml#tilde">tilde</a></i>,
+optional prefix parameters
+separated by commas, optional <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> and <i><a href="../26-glossary/a.xhtml#atsign">at-sign</a></i> modifiers,
+and a single character indicating what kind of directive this is.
+
+There is no required ordering between the <i><a href="../26-glossary/a.xhtml#atsign">at-sign</a></i> and <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> modifier.
+
+The <i><a href="../26-glossary/c.xhtml#case">case</a></i> of the directive character is ignored.
+Prefix parameters are notated as signed (sign is optional) decimal numbers,
+or as a <i><a href="../26-glossary/s.xhtml#singlequote">single-quote</a></i> followed by a character.
+For example, <code>~5,'0d</code> can be used
+to print an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> 
+in decimal radix in five columns with leading zeros,
+or <code>~5,'*d</code> to get leading asterisks.
+
+</p><p>
+
+In place of a prefix parameter to a directive, <code>V</code> (or <code>v</code>) can be used. 
+In this case, <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> takes an argument from <i>args</i> as a parameter to
+the directive.  The argument should be an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> or <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
+If the <i>arg</i> used by a <code>V</code> parameter is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+the effect is as if the parameter had been omitted.
+<code>#</code> can be used in place of a prefix parameter; it
+represents the number of <i>args</i> remaining to be processed.
+When used within a recursive format, in the context of <code>~?</code> or <code>~{</code>,
+the <code>#</code> prefix parameter represents the number of <i><a href="../26-glossary/f.xhtml#formatargument">format arguments</a></i>
+remaining within the recursive call.
+
+</p><p>
+Examples of <i><a href="../26-glossary/f.xhtml#formatstring">format strings</a></i>:
+
+</p><table id="fig-22-6" class="fig">
+<caption><span class="figlabel">Figure 22-6.</span> Examples of format control strings</caption>
+
+  <tbody><tr>
+    <td><code>"~S"</code></td>
+    <td>;This is an S directive with no parameters or modifiers.</td>
+  </tr>
+  <tr>
+    <td><code>"~3,-4:@s"</code></td>
+    <td>;This is an S directive with two parameters, <code>3</code> and <code>-4</code>,</td>
+  </tr>
+  <tr>
+    <td>	</td>
+    <td>; and both the <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> and <i><a href="../26-glossary/a.xhtml#atsign">at-sign</a></i> flags.</td>
+  </tr>
+  <tr>
+    <td><code>"~,+4S"</code></td>
+    <td>;Here the first prefix parameter is omitted and takes</td>
+  </tr>
+  <tr>
+    <td>	</td>
+    <td>; on its default value, while the second parameter is <code>4</code>.</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+<a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> sends the output to <i>destination</i>.
+If <i>destination</i> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+<a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> creates and returns a <i><a href="../26-glossary/s.xhtml#string">string</a></i> 
+containing the output from <i>control-string</i>.
+If <i>destination</i> is <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i>, 
+it must be a <i><a href="../26-glossary/s.xhtml#string">string</a></i> with a <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>, 
+a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>, or the symbol <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>.
+If <i>destination</i> is a <i><a href="../26-glossary/s.xhtml#string">string</a></i> with a <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>, 
+the output is added to the end of the <i><a href="../26-glossary/s.xhtml#string">string</a></i>. 
+If <i>destination</i> is a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>, 
+the output is sent to that <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>. 
+If <i>destination</i> is <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>,
+the output is sent to <i><a href="../26-glossary/s.xhtml#standardoutput">standard output</a></i>.
+
+</p><p>
+
+In the description of the directives that follows,
+the term <i>arg</i> in general
+refers to the next item of the set of <i>args</i> to be processed.
+The word or phrase at the beginning of each description is a mnemonic
+for the directive.
+
+<a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> directives do not bind any of the printer control
+variables (<b>*print-...*</b>) except as specified in the following
+descriptions.
+   Implementations may specify the binding of new, implementation-specific 
+printer control variables for each <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> directive, but they
+    may neither bind any standard printer control variables not
+    specified in description of a <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> 
+directive nor fail to bind
+    any standard printer control variables as specified in the
+    description.
+
+</p>
+<section>
+<h3 id="SubSection_FORMAT_Basic_1288"><span class="secno">22.3.1</span> FORMAT Basic Output</h3>
+<section>
+<h4 id="SubSubSectio_Tilde_C_Cha_1289"><span class="secno">22.3.1.1</span> Tilde C: Character</h4>
+<p>
+The next <i>arg</i> should be a <i><a href="../26-glossary/c.xhtml#character">character</a></i>; 
+it is printed
+according to the modifier flags.
+
+</p><p>
+
+
+<code>~C</code> prints the <i><a href="../26-glossary/c.xhtml#character">character</a></i> 
+as if by using <a href="../21-streams/21.2.21-write-char.xhtml#DictEntry_write_char_1212"><b>write-char</b></a> if it is a <i>simple character</i>.
+<i><a href="../26-glossary/c.xhtml#character">Characters</a></i> that are not <i><a href="../26-glossary/s.xhtml#simple">simple</a></i>
+are not necessarily printed as if by <a href="../21-streams/21.2.21-write-char.xhtml#DictEntry_write_char_1212"><b>write-char</b></a>,
+but are displayed in an <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i>, abbreviated format.
+For example,
+
+</p><pre> (format nil "~C" #\A) → "A"
+ (format nil "~C" #\Space) → " "
+</pre>
+
+
+<p>
+
+<code>~:C</code> is the same as <code>~C</code> for <i><a href="../26-glossary/p.xhtml#printing">printing</a></i> <i><a href="../26-glossary/c.xhtml#character">characters</a></i>,
+but other <i><a href="../26-glossary/c.xhtml#character">characters</a></i> are "spelled out."  The intent is that this
+is a "pretty" format for printing characters.
+For <i><a href="../26-glossary/s.xhtml#simple">simple</a></i> <i><a href="../26-glossary/c.xhtml#character">characters</a></i> that are not <i><a href="../26-glossary/p.xhtml#printing">printing</a></i>,
+what is spelled out is the <i><a href="../26-glossary/n.xhtml#name">name</a></i> of the <i><a href="../26-glossary/c.xhtml#character">character</a></i> (see <a href="../13-characters/13.2.20-char-name.xhtml#DictEntry_char_name_903"><b>char-name</b></a>).
+For <i><a href="../26-glossary/c.xhtml#character">characters</a></i> that are not <i><a href="../26-glossary/s.xhtml#simple">simple</a></i> and not <i><a href="../26-glossary/p.xhtml#printing">printing</a></i>,
+what is spelled out is <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i>.
+For example, 
+
+</p><pre> (format nil "~:C" #\A) → "A"
+ (format nil "~:C" #\Space) → "Space"
+;; This next example assumes an implementation-defined "Control" attribute.
+ (format nil "~:C" #\Control-Space)
+→ "Control-Space"
+OR→"c-Space"
+</pre>
+
+<p>
+
+<code>~:@C</code> prints what <code>~:C</code> would, and then
+if the <i><a href="../26-glossary/c.xhtml#character">character</a></i> requires unusual shift keys on the keyboard to type it,
+this fact is mentioned.  For example,
+</p><pre> (format nil "~:@C" #\Control-Partial) → "Control-∂ (Top-F)"  
+</pre>
+
+
+<p>
+This is the format used for telling the user about a key he is expected to type,
+in prompts, for instance.  The precise output may depend not only
+on the implementation, but on the particular I/O devices in use.
+
+</p><p>
+
+<code>~@C</code> 
+prints the <i><a href="../26-glossary/c.xhtml#character">character</a></i> in a way that the <i>Lisp reader</i> can understand,
+using <code>#\</code> syntax.
+
+</p><p>
+
+<code>~@C</code>  binds <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>.
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Percen_1290"><span class="secno">22.3.1.2</span> Tilde Percent: Newline</h4>
+<p>
+This outputs a <code>#\Newline</code> character, thereby terminating the current
+output line and beginning a new one.
+<code>~<i>n</i>%</code> outputs <i>n</i> newlines.
+No <i>arg</i> is used.  
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Ampers_1291"><span class="secno">22.3.1.3</span> Tilde Ampersand: Fresh-Line</h4>
+<p>
+Unless it can be determined that the output stream
+is already at the beginning of a line,
+this outputs a newline.
+<code>~<i>n</i>&amp;</code> calls <a href="../21-streams/21.2.19-terpri.xhtml#DictEntry_terpri_fres_1210"><b>fresh-line</b></a>
+and then outputs <i>n</i>-1 newlines.
+<code>~0&amp;</code> does nothing.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Vertic_1292"><span class="secno">22.3.1.4</span> Tilde Vertical-Bar: Page</h4>
+<p>
+This outputs a page separator character, if possible.
+<code>~<i>n</i>|</code> does this <i>n</i> times.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Tilde_1293"><span class="secno">22.3.1.5</span> Tilde Tilde: Tilde</h4>
+<p>
+This outputs a <i><a href="../26-glossary/t.xhtml#tilde">tilde</a></i>.  <code>~<i>n</i>~</code> outputs <i>n</i> tildes.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_FORMAT_Radix_1294"><span class="secno">22.3.2</span> FORMAT Radix Control</h3>
+<section>
+<h4 id="SubSubSectio_Tilde_R_Rad_1295"><span class="secno">22.3.2.1</span> Tilde R: Radix</h4>
+<p>
+<code>~<i>n</i>R</code> prints <i>arg</i> in radix <i>n</i>.
+The modifier flags and any remaining parameters are used as for
+the <code>~D</code> directive.
+<code>~D</code> is the same as <code>~10R</code>.  
+The full form is 
+<code>~<i>radix</i>,<i>mincol</i>,<i>padchar</i>,<i>commachar</i>,<i>comma-interval</i>R</code>.
+
+</p><p>
+
+If no prefix parameters are given to <code>~R</code>, then a different
+interpretation is given.  The argument should be an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+For example, if <i>arg</i> is 4:
+
+</p><ul>
+<li>
+<code>~R</code> prints <i>arg</i> as a cardinal English number: <code>four</code>.
+
+</li><li>
+<code>~:R</code> prints <i>arg</i> as an ordinal English number: <code>fourth</code>.
+
+</li><li>   
+<code>~@R</code> prints <i>arg</i> as a Roman numeral: <code>IV</code>.
+
+</li><li>      
+<code>~:@R</code> prints <i>arg</i> as an old Roman numeral: <code>IIII</code>.
+</li></ul>
+
+<p>
+
+For example:
+
+</p><pre> (format nil "~,,' ,4:B" 13) → "1101"
+ (format nil "~,,' ,4:B" 17) → "1 0001"
+ (format nil "~19,0,' ,4:B" 3333) → "0000 1101 0000 0101"
+ (format nil "~3,,,' ,2:R" 17) → "1 22"
+ (format nil "~,,'|,2:D" #xFFFF) →  "6|55|35"
+</pre>
+
+
+<p>
+
+If and only if the first parameter, <i>n</i>, is supplied,
+<code>~R</code> binds
+     <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+     <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>, 
+     <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-base*</b></a> to <i>n</i>,
+
+ and <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+
+</p><p>
+If and only if no parameters are supplied,
+<code>~R</code> binds <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-base*</b></a> to <code>10</code>.
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_D_Dec_1296"><span class="secno">22.3.2.2</span> Tilde D: Decimal</h4>
+<p>
+An <i>arg</i>, which should be an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, 
+is printed in decimal radix.
+<code>~D</code> will never put a decimal point after the number.
+
+</p><p>
+
+<code>~<i>mincol</i>D</code> uses 
+a column width of <i>mincol</i>; spaces are inserted on
+the left if the number requires fewer than <i>mincol</i> columns for its digits
+and sign.  If the number doesn't fit in <i>mincol</i> columns, additional columns
+are used as needed.
+
+</p><p>
+
+<code>~<i>mincol</i>,<i>padchar</i>D</code> uses <i>padchar</i> as the pad character
+instead of space.
+
+</p><p>
+
+If <i>arg</i> is not an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, it is printed in <code>~A</code> format and decimal base.
+
+</p><p>
+
+The <code>@</code> modifier causes the number's sign to be printed always; the default
+is to print it only if the number is negative.
+
+The <code>:</code> modifier causes commas to be printed between groups of digits;
+<i>commachar</i> may be used to change the character used as the comma.
+<i>comma-interval</i> 
+must be an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> and defaults to 3.  When the <code>:</code> 
+modifier is given to any of
+these directives, the <i>commachar</i> 
+is printed between groups of <i>comma-interval</i>
+digits.
+
+
+</p><p>
+Thus the most general form of <code>~D</code> is
+<code>~<i>mincol</i>,<i>padchar</i>,<i>commachar</i>,<i>comma-interval</i>D</code>.
+
+</p><p>
+
+<code>~D</code> binds
+     <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+     <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+     <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-base*</b></a> to <code>10</code>,
+
+ and <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_B_Bin_1297"><span class="secno">22.3.2.3</span> Tilde B: Binary</h4>
+<p>
+This is just like <code>~D</code> but prints in binary radix (radix 2)
+instead of decimal.  The full form is therefore
+<code>~<i>mincol</i>,<i>padchar</i>,<i>commachar</i>,<i>comma-interval</i>B</code>.
+
+</p><p>
+
+<code>~B</code> binds
+     <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+     <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+     <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-base*</b></a> to <code>2</code>,
+
+ and <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_O_Oct_1298"><span class="secno">22.3.2.4</span> Tilde O: Octal</h4>
+<p>
+This is just like <code>~D</code> but prints in octal radix (radix 8)
+instead of decimal.  The full form is therefore
+<code>~<i>mincol</i>,<i>padchar</i>,<i>commachar</i>,<i>comma-interval</i>O</code>.
+
+</p><p>
+
+<code>~O</code> binds
+     <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+     <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+     <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-base*</b></a> to <code>8</code>,
+
+ and <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_X_Hex_1299"><span class="secno">22.3.2.5</span> Tilde X: Hexadecimal</h4>
+<p>
+This is just like <code>~D</code> but prints in hexadecimal radix
+(radix 16) instead of decimal.  The full form is therefore
+<code>~<i>mincol</i>,<i>padchar</i>,<i>commachar</i>,<i>comma-interval</i>X</code>.
+
+</p><p>
+
+<code>~X</code> binds
+     <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+     <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+     <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-base*</b></a> to <code>16</code>,
+
+ and <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_FORMAT_Float_1300"><span class="secno">22.3.3</span> FORMAT Floating-Point Printers</h3>
+<section>
+<h4 id="SubSubSectio_Tilde_F_Fix_1301"><span class="secno">22.3.3.1</span> Tilde F: Fixed-Format Floating-Point</h4>
+<p>
+The next <i>arg</i> is printed as a <i><a href="../26-glossary/f.xhtml#float">float</a></i>.
+
+</p><p>
+
+The full form is <code>~<i>w</i>,<i>d</i>,<i>k</i>,<i>overflowchar</i>,<i>padchar</i>F</code>.
+The parameter <i>w</i>
+is the width of the field to be printed; <i>d</i> is the number
+of digits to print after the decimal point; <i>k</i> is a scale factor
+that defaults to zero.
+
+</p><p>
+
+Exactly <i>w</i> characters will
+be output.  First, leading copies of the character <i>padchar</i>
+(which defaults to a space) are printed, if necessary, to pad the
+field on the left.
+If the <i>arg</i> is negative, then a minus sign is printed;
+if the <i>arg</i> is not negative, then a plus sign is printed
+if and only if the <code>@</code>
+modifier was supplied.  Then a sequence
+of digits, containing a single embedded decimal point, is printed;
+this represents the magnitude of the value of <i>arg</i> times <i>10<sup><i>k</i></sup></i>,
+rounded to <i>d</i> fractional digits.                         
+When rounding up and rounding down would produce printed values
+equidistant from the scaled value of <i>arg</i>, then the implementation
+is free to use either one.  For example, printing the argument
+<code>6.375</code> using the format <code>~4,2F</code> may correctly produce
+either <code>6.37</code> or <code>6.38</code>.
+Leading zeros are not permitted, except that a single
+zero digit is output before the decimal point if the printed value
+is less than one, and this single zero digit is not output
+at all if <i>w</i>=<i>d</i>+1.
+
+</p><p>
+
+If it is impossible to print the value in the required format in a field
+of width <i>w</i>, then one of two actions is taken.  If the
+parameter <i>overflowchar</i> is supplied, then <i>w</i> copies of that
+parameter are printed instead of the scaled value of <i>arg</i>.
+If the <i>overflowchar</i> parameter is omitted, then the scaled value
+is printed using more than <i>w</i> characters, as many more as may be
+needed.
+
+</p><p>
+
+If the <i>w</i> parameter is omitted, then the field is of variable width.
+In effect, a value is chosen
+for <i>w</i> in such a way that no leading pad characters need to be printed
+and exactly <i>d</i> characters will follow the decimal point.
+For example, the directive <code>~,2F</code> will print exactly
+two digits after the decimal point and as many as necessary before the
+decimal point.
+
+</p><p>
+
+If the parameter <i>d</i> is omitted, then there is no constraint
+on the number of digits to appear after the decimal point.
+A value is chosen for <i>d</i> in such a way that as many digits
+as possible may be printed subject to the width constraint
+imposed by the parameter <i>w</i> and the constraint that no trailing
+zero digits may appear in the fraction, except that if the
+fraction to be printed is zero, then a single zero digit should
+appear after the decimal point if permitted by the width constraint.
+
+</p><p>
+
+If both <i>w</i> and <i>d</i> are omitted, then the effect is to print
+the value using ordinary free-format output; <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>prin1</b></a> uses this format
+for any number whose magnitude is either zero or between
+<i>10<sup>-3</sup></i> (inclusive) and <i>10<sup>7</sup></i> (exclusive).
+
+</p><p>
+
+If <i>w</i> is omitted, then if the magnitude of <i>arg</i> is so large (or, if
+<i>d</i> is also omitted, so small) that more than 100 digits would have to
+be printed, then an implementation is free, at its discretion, to print
+the number using exponential notation instead, as if by the directive
+<code>~E</code> (with all parameters to <code>~E</code> defaulted, not
+taking their values from the <code>~F</code> directive).
+
+</p><p>
+
+If <i>arg</i> is a <i><a href="../26-glossary/r.xhtml#rational">rational</a></i> 
+number, then it is coerced to be a <i><a href="../26-glossary/s.xhtml#singlefloat">single float</a></i>
+and then printed.  Alternatively, an implementation is permitted to
+process a <i><a href="../26-glossary/r.xhtml#rational">rational</a></i> 
+number by any other method that has essentially the
+same behavior but avoids loss of precision or overflow
+because of the coercion.  If <i>w</i> and <i>d</i> are
+not supplied and the number has no exact decimal representation,
+for example <code>1/3</code>, some precision cutoff must be chosen
+by the implementation since only a finite number of digits may be printed.
+
+</p><p>
+
+If <i>arg</i> is a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i> number or some non-numeric
+<i><a href="../26-glossary/o.xhtml#object">object</a></i>, 
+then it is printed using the format directive <code>~<i>w</i>D</code>,
+thereby printing it in decimal radix and a minimum field width of <i>w</i>.
+
+</p><p>
+
+<code>~F</code> binds
+    <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+
+ and <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_E_Exp_1302"><span class="secno">22.3.3.2</span> Tilde E: Exponential Floating-Point</h4>
+<p>
+The next <i>arg</i> is printed as a <i><a href="../26-glossary/f.xhtml#float">float</a></i> in exponential notation.
+
+</p><p>
+
+The full form is
+<code>~<i>w</i>,<i>d</i>,<i>e</i>,<i>k</i>,<i>overflowchar</i>,<i>padchar</i>,<i>exponentchar</i>E</code>.
+The parameter <i>w</i>
+is the width of the field to be printed; <i>d</i> is the number
+of digits to print after the decimal point; <i>e</i> is the number
+of digits to use when printing the exponent;
+<i>k</i> is a scale factor that defaults to one (not zero).
+
+</p><p>
+
+Exactly <i>w</i> characters will
+be output.  First, leading copies of the character <i>padchar</i>
+(which defaults to a space) are printed, if necessary, to pad the
+field on the left.
+If the <i>arg</i> is negative, then a minus sign is printed;
+if the <i>arg</i> is not negative, then a plus sign is printed
+if and only if the <code>@</code>
+modifier was supplied.  Then a sequence
+of digits containing a single embedded decimal point is printed.
+The form of this sequence of digits depends on the scale factor <i>k</i>.
+If <i>k</i> is zero, then <i>d</i> digits are printed after the decimal
+point, and a single zero digit appears before the decimal point if
+the total field width will permit it.  If <i>k</i> is positive,
+then it must be strictly less than <i>d</i>+2;  <i>k</i> significant digits
+are printed before the decimal point, and <i>d</i>-<i>k</i>+1
+digits are printed after the decimal point.  If <i>k</i> is negative,
+then it must be strictly greater than - <i>d</i>;
+a single zero digit appears before the decimal point if
+the total field width will permit it, and after the decimal point
+are printed first
+- <i>k</i> zeros and then <i>d</i>+<i>k</i> significant digits.
+The printed fraction must be properly rounded.         
+When rounding up and rounding down would produce printed values
+equidistant from the scaled value of <i>arg</i>, then the implementation
+is free to use either one.  For example, printing the argument
+<code>637.5</code> using the format <code>~8,2E</code> may correctly produce
+either <code>6.37E+2</code> or <code>6.38E+2</code>.
+
+</p><p>
+
+Following the digit sequence, the exponent is printed.
+First the character parameter <i>exponentchar</i> is printed; if this
+parameter is omitted, then the <i><a href="../26-glossary/e.xhtml#exponentmarker">exponent marker</a></i> that
+<a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>prin1</b></a> would use is printed, as determined from the
+type of the <i><a href="../26-glossary/f.xhtml#float">float</a></i> and the current value of
+<a href="../23-reader/23.2.14-read-default-float-format.xhtml#DictEntry_read_defaul_1394"><b>*read-default-float-format*</b></a>.
+Next, either a plus sign or a minus sign
+is printed, followed by <i>e</i> digits representing the power of
+ten by which the printed fraction must be multiplied
+to properly represent the rounded value of <i>arg</i>.
+
+</p><p>
+
+If it is impossible to print the value in the required format in a field
+of width <i>w</i>, possibly because <i>k</i> is too large or too small
+or because the exponent cannot be printed in <i>e</i> character positions,
+then one of two actions is taken.  If the
+parameter <i>overflowchar</i> is supplied, then <i>w</i> copies of that
+parameter are printed instead of the scaled value of <i>arg</i>.
+If the <i>overflowchar</i> parameter is omitted, then the scaled value
+is printed using more than <i>w</i> characters, as many more as may be
+needed; if the problem is that <i>d</i> is too small for the supplied <i>k</i>
+or that <i>e</i> is too small, then a larger value is used for <i>d</i> or <i>e</i>
+as may be needed.
+
+</p><p>
+
+If the <i>w</i> parameter is omitted, then the field is of variable width.
+In effect a value is chosen
+for <i>w</i> in such a way that no leading pad characters need to be printed.
+
+</p><p>
+
+If the parameter <i>d</i> is omitted, then there is no constraint
+on the number of digits to appear.
+A value is chosen for <i>d</i> in such a way that as many digits
+as possible may be printed subject to the width constraint
+imposed by the parameter <i>w</i>, the constraint of the scale factor <i>k</i>,
+and the constraint that no trailing
+zero digits may appear in the fraction, except that if the
+fraction to be printed is zero then a single zero digit should
+appear after the decimal point.
+
+</p><p>
+
+If the parameter <i>e</i> is omitted, then the exponent is printed
+using the smallest number of digits necessary to represent its value.
+
+</p><p>
+
+If all of <i>w</i>, <i>d</i>, and <i>e</i> are omitted, then the effect is to print
+the value using ordinary free-format exponential-notation output;
+<a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>prin1</b></a> uses 
+
+
+a similar
+
+format for any non-zero number whose magnitude
+is less than <i>10<sup>-3</sup></i> or greater than or equal to <i>10<sup>7</sup></i>.
+
+The only difference is that the <code>~E</code> 
+directive always prints a plus or minus sign in front of the
+    exponent, while <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>prin1</b></a> omits the plus sign if the exponent is
+    non-negative.
+
+
+</p><p>
+
+If <i>arg</i> is a <i><a href="../26-glossary/r.xhtml#rational">rational</a></i> 
+number, then it is coerced to be a <i><a href="../26-glossary/s.xhtml#singlefloat">single float</a></i>
+and then printed.  Alternatively, an implementation is permitted to
+process a <i><a href="../26-glossary/r.xhtml#rational">rational</a></i> 
+number by any other method that has essentially the
+same behavior but avoids loss of precision or overflow
+because of the coercion.  If <i>w</i> and <i>d</i> are
+unsupplied and the number has no exact decimal representation,
+for example <code>1/3</code>, some precision cutoff must be chosen
+by the implementation since only a finite number of digits may be printed.
+
+</p><p>
+
+If <i>arg</i> is a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i> number or some non-numeric
+<i><a href="../26-glossary/o.xhtml#object">object</a></i>, 
+then it is printed using the format directive <code>~<i>w</i>D</code>,
+thereby printing it in decimal radix and a minimum field width of <i>w</i>.
+
+</p><p>
+
+<code>~E</code> binds
+     <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+
+ and <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_G_Gen_1303"><span class="secno">22.3.3.3</span> Tilde G: General Floating-Point</h4>
+<p>
+The next <i>arg</i> is printed as a <i><a href="../26-glossary/f.xhtml#float">float</a></i> 
+in either fixed-format or exponential notation as appropriate.
+
+</p><p>
+
+The full form is <code>~<i>w</i>,<i>d</i>,<i>e</i>,<i>k</i>,<i>overflowchar</i>,<i>padchar</i>,<i>exponentchar</i>G</code>.
+The format in which to print <i>arg</i> depends on the magnitude (absolute
+value) of the <i>arg</i>.  Let <i>n</i> be an integer such that
+<i>10<sup><i>n</i></sup>-1</i> <i>&lt;=</i> |<i>arg</i>| &lt; <i>10<sup><i>n</i></sup></i>.
+Let <i>ee</i> equal <i>e</i>+2, or 4 if <i>e</i> is omitted.
+Let <i>ww</i> equal <i>w</i>-<i>ee</i>,
+or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if <i>w</i> is omitted.  If <i>d</i> is omitted, first let <i>q</i>
+be the number of digits needed to print <i>arg</i> with no loss
+of information and without leading or trailing zeros;
+then let <i>d</i> equal <code>(max <i>q</i> (min <i>n</i> 7))</code>.
+Let <i>dd</i> equal <i>d</i>-<i>n</i>.
+
+</p><p>
+
+If 0 <i>&lt;=</i> <i>dd</i> <i>&lt;=</i> <i>d</i>, then <i>arg</i> is printed
+as if by the format directives
+
+</p><p>
+
+<code>~<i>ww</i>,<i>dd</i>,,<i>overflowchar</i>,<i>padchar</i>F <i>ee</i>@T</code>
+
+</p><p>
+Note that the scale factor <i>k</i> is not passed to the <code>~F</code>
+directive.  For all other values of <i>dd</i>, <i>arg</i> is printed as if
+by the format directive
+
+</p><p>
+<code>~<i>w</i>,<i>d</i>,<i>e</i>,<i>k</i>,<i>overflowchar</i>,<i>padchar</i>,<i>exponentchar</i>E</code>
+
+</p><p>
+
+In either case, an <code>@</code>
+modifier is supplied to the <code>~F</code>
+or <code>~E</code> directive if and only if one was supplied to the
+<code>~G</code> directive.
+
+</p><p>
+
+<code>~G</code> binds
+     <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+
+ and <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Dollar_1304"><span class="secno">22.3.3.4</span> Tilde Dollarsign: Monetary Floating-Point</h4>
+<p>
+The next <i>arg</i> is printed as a <i><a href="../26-glossary/f.xhtml#float">float</a></i> in fixed-format notation.  
+
+</p><p>
+
+The full form is <code>~<i>d</i>,<i>n</i>,<i>w</i>,<i>padchar</i>$</code>.
+The parameter <i>d</i> is the number
+of digits to print after the decimal point (default value 2);
+<i>n</i> is the minimum number of digits to print before the decimal
+point (default value 1);
+<i>w</i> is the minimum total width of the field to be printed (default
+value 0).
+
+</p><p>
+
+First padding and the sign are output.
+If the <i>arg</i> is negative, then a minus sign is printed;
+if the <i>arg</i> is not negative, then a plus sign is printed
+if and only if the <code>@</code> modifier was supplied.  
+If the <code>:</code> modifier is used, the sign appears before any padding,
+and otherwise after the padding.
+If <i>w</i> is supplied and the number of other characters to be output
+is less than <i>w</i>, then copies of <i>padchar</i> (which defaults
+to a space) are output to
+make the total field width equal <i>w</i>.
+Then <i>n</i> digits are printed for the integer part of <i>arg</i>,
+with leading zeros if necessary; then a decimal point;
+then <i>d</i> digits of fraction, properly rounded.
+
+</p><p>
+
+If the magnitude of <i>arg</i> is so large that more than <i>m</i> digits would
+have to be printed, where <i>m</i> is the larger of <i>w</i> and 100, then an
+implementation is free, at its discretion, to print the number using
+exponential notation instead, as if by the directive
+<code>~<i>w</i>,<i>q</i>,,,,<i>padchar</i>E</code>, where <i>w</i> and <i>padchar</i> are
+present or omitted according to whether they were present or omitted in
+the <code>~$</code> directive, and where <i>q</i>=<i>d</i>+<i>n</i>-1,
+where <i>d</i> and <i>n</i> are the (possibly default) values given to the
+<code>~$</code> directive.
+
+</p><p>
+
+If <i>arg</i> is a <i><a href="../26-glossary/r.xhtml#rational">rational</a></i> 
+number, then it is coerced to be a <i><a href="../26-glossary/s.xhtml#singlefloat">single float</a></i>
+and then printed.  Alternatively, an implementation is permitted to
+process a <i><a href="../26-glossary/r.xhtml#rational">rational</a></i> number by any 
+other method that has essentially the
+same behavior but avoids loss of precision or overflow
+because of the coercion.
+
+</p><p>
+
+If <i>arg</i> is a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i> number or some non-numeric
+<i><a href="../26-glossary/o.xhtml#object">object</a></i>,
+then it is printed using the format directive <code>~<i>w</i>D</code>,
+thereby printing it in decimal radix and a minimum field width of <i>w</i>.
+
+</p><p>
+
+<code>~$</code> binds <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+
+ and <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_FORMAT_Print_1305"><span class="secno">22.3.4</span> FORMAT Printer Operations</h3>
+<section>
+<h4 id="SubSubSectio_Tilde_A_Aes_1306"><span class="secno">22.3.4.1</span> Tilde A: Aesthetic</h4>
+<p>
+An <i>arg</i>, any <i><a href="../26-glossary/o.xhtml#object">object</a></i>, 
+is printed without escape characters
+(as by <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>princ</b></a>).  If <i>arg</i> is a <i><a href="../26-glossary/s.xhtml#string">string</a></i>, 
+its <i><a href="../26-glossary/c.xhtml#character">characters</a></i>
+will be output verbatim.
+If <i>arg</i> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> it will be printed as <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>;
+the <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> modifier (<code>~:A</code>) will cause an <i>arg</i> of <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> to be printed as <code>()</code>,
+but if <i>arg</i> is a composite structure, such as a <i><a href="../26-glossary/l.xhtml#list">list</a></i> or <i><a href="../26-glossary/v.xhtml#vector">vector</a></i>,
+any contained occurrences of <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> will still be printed as <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+
+<code>~<i>mincol</i>A</code> inserts spaces on the right, if necessary, to make the
+width at least <i>mincol</i> columns.  The <code>@</code>
+modifier causes the spaces
+to be inserted on the left rather than the right.
+
+</p><p>
+
+<code>~<i>mincol</i>,<i>colinc</i>,<i>minpad</i>,<i>padchar</i>A</code> 
+is the full form of <code>~A</code>,
+which allows control of the padding.
+The <i><a href="../26-glossary/s.xhtml#string">string</a></i> is padded on the right (or on the left if the
+<code>@</code> modifier is used) with at least <i>minpad</i> copies
+of <i>padchar</i>; padding characters are then inserted <i>colinc</i> characters
+at a time until the total width is at least <i>mincol</i>.
+The defaults are <code>0</code> for <i>mincol</i> and <i>minpad</i>, <code>1</code> for <i>colinc</i>,
+and the space character for <i>padchar</i>.
+
+</p><p>
+
+<code>~A</code> binds <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+
+and <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_S_Sta_1307"><span class="secno">22.3.4.2</span> Tilde S: Standard</h4>
+<p>
+This is just like <code>~A</code>, but <i>arg</i> is printed with escape
+characters (as by <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>prin1</b></a> rather than <code>princ</code>).  The output is
+therefore suitable for input to <a href="../23-reader/23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>.  <code>~S</code> accepts
+all the arguments and modifiers that <code>~A</code> does.
+
+</p><p>
+
+<code>~S</code> binds <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>.
+
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_W_Wri_1308"><span class="secno">22.3.4.3</span> Tilde W: Write</h4>
+<p>
+An argument, any <i><a href="../26-glossary/o.xhtml#object">object</a></i>, is printed obeying every printer control
+variable (as by <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>write</b></a>).  In addition, <code>~W</code> interacts correctly with depth
+abbreviation, by not resetting the depth counter to zero.  <code>~W</code> does not
+accept parameters.  If given the <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> modifier, <code>~W</code> binds <a href="22.4.26-print-pretty.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a>
+to <i><a href="../26-glossary/t.xhtml#true">true</a></i>.  If given the <i><a href="../26-glossary/a.xhtml#atsign">at-sign</a></i> modifier, <code>~W</code> binds <a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a>
+and <a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a> to <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<code>~W</code> provides automatic support for the detection of circularity and
+sharing.  If the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="22.4.19-print-circle.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a> is not <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> and <code>~W</code> is applied
+to an argument that is a circular (or shared) reference, an appropriate 
+<code>#<i>n</i>#</code> marker is inserted in the output instead of printing the argument.
+
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_FORMAT_Prett_1309"><span class="secno">22.3.5</span> FORMAT Pretty Printer Operations</h3>
+<p>
+The following constructs provide access to the <i><a href="../26-glossary/p.xhtml#prettyprinter">pretty printer</a></i>:
+</p>
+<section>
+<h4 id="SubSubSectio_Tilde_Unders_1310"><span class="secno">22.3.5.1</span> Tilde Underscore: Conditional Newline</h4>
+<p>
+Without any modifiers, <code>~_</code> is the same as <code>(pprint-newline :linear)</code>.
+<code>~@_</code>  is the same as <code>(pprint-newline :miser)</code>.
+<code>~:_</code>  is the same as <code>(pprint-newline :fill)</code>.
+<code>~:@_</code> is the same as <code>(pprint-newline :mandatory)</code>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Less_T_1311"><span class="secno">22.3.5.2</span> Tilde Less-Than-Sign: Logical Block</h4>
+<p>
+<code>~&lt;...~:&gt;</code>
+
+</p><p>
+If <code>~:&gt;</code> is used to terminate a <code>~&lt;...~&gt;</code>,
+the directive is equivalent to a call to <a href="22.4.7-pprint-logical-block.xhtml#DictEntry_pprint_logic_1347"><b>pprint-logical-block</b></a>.
+The argument corresponding to the <code>~&lt;...~:&gt;</code> directive is treated in
+the same way as the <i><a href="../26-glossary/l.xhtml#list">list</a></i> argument to <a href="22.4.7-pprint-logical-block.xhtml#DictEntry_pprint_logic_1347"><b>pprint-logical-block</b></a>,
+thereby providing automatic support for non-<i><a href="../26-glossary/l.xhtml#list">list</a></i> arguments and
+the detection of circularity, sharing, and depth abbreviation.  
+The portion of the <i>control-string</i> nested within the <code>~&lt;...~:&gt;</code>
+specifies the <code>:prefix</code> (or <code>:per-line-prefix</code>), <code>:suffix</code>,
+and body of the <a href="22.4.7-pprint-logical-block.xhtml#DictEntry_pprint_logic_1347"><b>pprint-logical-block</b></a>.
+
+</p><p>
+The <i>control-string</i> portion enclosed by <code>~&lt;...~:&gt;</code> can be divided
+into segments <code>~&lt;<i>prefix</i>~;<i>body</i>~;<i>suffix</i>~:&gt;</code>
+by <code>~;</code> directives.  If the first section is terminated by <code>~@;</code>, 
+it specifies a per-line prefix rather than a simple prefix.  
+The <i>prefix</i> and <i>suffix</i> cannot contain format directives.  
+An error is signaled if either the prefix or suffix fails to be a
+constant string or if the enclosed portion is divided into more than three segments.
+
+</p><p>
+If the enclosed portion is divided into only two segments, the <i>suffix</i>
+defaults to the null string.  If the enclosed portion consists of only
+a single segment, both the <i>prefix</i> and the <i>suffix</i> default to 
+the null string.  If the <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> modifier is used (<i>i.e.</i>,  <code>~:&lt;...~:&gt;</code>),
+the <i>prefix</i> and <i>suffix</i> default to <code>"("</code> and <code>")"</code>
+(respectively) instead of the null string.
+
+</p><p>
+The body segment can be any arbitrary <i><a href="../26-glossary/f.xhtml#formatstring">format string</a></i>.
+This <i><a href="../26-glossary/f.xhtml#formatstring">format string</a></i> is applied to the elements of the list
+corresponding to the <code>~&lt;...~:&gt;</code> directive as a whole.
+Elements are extracted from this list using <a href="22.4.9-pprint-pop.xhtml#DictEntry_pprint_pop_1349"><b>pprint-pop</b></a>,
+thereby providing automatic support for malformed lists, and the detection
+of circularity, sharing, and length abbreviation.
+Within the body segment, <code>~^</code> acts like <a href="22.4.4-pprint-exit-if-list-exhausted.xhtml#DictEntry_pprint_exit__1344"><b>pprint-exit-if-list-exhausted</b></a>.
+
+</p><p>
+<code>~&lt;...~:&gt;</code> supports a feature not supported by <a href="22.4.7-pprint-logical-block.xhtml#DictEntry_pprint_logic_1347"><b>pprint-logical-block</b></a>.
+If <code>~:@&gt;</code> is used to terminate the directive (<i>i.e.</i>,  <code>~&lt;...~:@&gt;</code>), 
+then a fill-style conditional newline is automatically inserted after each
+group of blanks immediately contained in the body (except for blanks
+after a ~<i>&lt;Newline&gt;</i> directive).  This makes it easy to achieve the
+equivalent of paragraph filling.
+
+</p><p>
+If the <i><a href="../26-glossary/a.xhtml#atsign">at-sign</a></i> modifier is used with <code>~&lt;...~:&gt;</code>, the entire remaining argument
+list is passed to the directive as its argument.  All of the remaining
+arguments are always consumed by <code>~@&lt;...~:&gt;</code>, even if they are not all used
+by the <i><a href="../26-glossary/f.xhtml#formatstring">format string</a></i> nested in the directive.  Other than the difference in
+its argument, <code>~@&lt;...~:&gt;</code> is exactly the same as <code>~&lt;...~:&gt;</code> except that
+circularity detection is not applied if <code>~@&lt;...~:&gt;</code> is encountered at top
+level in a <i><a href="../26-glossary/f.xhtml#formatstring">format string</a></i>.  This ensures that circularity detection is
+applied only to data lists, not to <i><a href="../26-glossary/f.xhtml#formatargument">format argument</a></i> <i><a href="../26-glossary/l.xhtml#list">lists</a></i>.
+
+</p><p>
+<code>" . #<i>n</i>#"</code> is printed if circularity or sharing has to be indicated
+for its argument as a whole.
+
+</p><p>
+To a considerable extent, the basic form of the directive <code>~&lt;...~&gt;</code> is
+incompatible with the dynamic control of the arrangement of output by
+<code>~W</code>, <code>~_</code>, <code>~&lt;...~:&gt;</code>, <code>~I</code>, and <code>~:T</code>.  As a result, an error 
+is signaled if any of these directives is nested within <code>~&lt;...~&gt;</code>.  
+Beyond this, an error is also signaled if the <code>~&lt;...~:;...~&gt;</code> form of
+<code>~&lt;...~&gt;</code> is used in the same <i><a href="../26-glossary/f.xhtml#formatstring">format string</a></i> with 
+<code>~W</code>, <code>~_</code>, <code>~&lt;...~:&gt;</code>, <code>~I</code>, or <code>~:T</code>.
+
+</p><p>
+See also Section <a href="#SubSubSectio_Tilde_Less_T_1316">22.3.6.2 Tilde Less-Than-Sign: Justification</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_I_Ind_1312"><span class="secno">22.3.5.3</span> Tilde I: Indent</h4>
+<p>
+<code>~<i>n</i>I</code>  is the same as <code>(pprint-indent :block n)</code>.
+
+</p><p>
+<code>~<i>n</i>:I</code> is the same as <code>(pprint-indent :current n)</code>.
+In both cases, <i>n</i> defaults to zero, if it is omitted.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Slash_1313"><span class="secno">22.3.5.4</span> Tilde Slash: Call Function</h4>
+<p>
+<code>~/<i>name</i>/</code>
+
+</p><p>
+User defined functions can be called from within a format
+string by using the directive <code>~/<i>name</i>/</code>.
+The <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> modifier, the <i><a href="../26-glossary/a.xhtml#atsign">at-sign</a></i> modifier, and arbitrarily many parameters 
+can be specified with the <code>~/<i>name</i>/</code> directive.
+<i>name</i> can be any arbitrary string that does not contain a "/".
+All of the characters in <i>name</i> are treated as if they were upper case.
+If <i>name</i> contains a single <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> (<code>:</code>) or double <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> (<code>::</code>),
+then everything up to but not including the first <code>":"</code> or <code>"::"</code>
+is taken to be a <i><a href="../26-glossary/s.xhtml#string">string</a></i> that names a <i><a href="../26-glossary/p.xhtml#package">package</a></i>.
+Everything after the first <code>":"</code> or <code>"::"</code> (if any) is taken to be a 
+<i><a href="../26-glossary/s.xhtml#string">string</a></i> that names a <code>symbol</code>.  The function corresponding to a 
+<code>~/name/</code> directive is obtained by looking up the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>
+that has the indicated name in the indicated <i><a href="../26-glossary/p.xhtml#package">package</a></i>.
+If <i>name</i> does not contain a <code>":"</code> or <code>"::"</code>,
+
+then the whole <i>name</i> string is looked up in the <code>common-lisp-user</code> <i><a href="../26-glossary/p.xhtml#package">package</a></i>. 
+
+</p><p>
+When a <code>~/name/</code> directive is encountered,
+the indicated function is called with four or more arguments.
+The first four arguments are:
+     the output stream,
+     the <i><a href="../26-glossary/f.xhtml#formatargument">format argument</a></i> corresponding to the directive,
+     a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i> that is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if the <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> modifier was used,
+ and a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i> that is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if the <i><a href="../26-glossary/a.xhtml#atsign">at-sign</a></i> modifier was used.
+The remaining arguments consist of any parameters specified with the directive.
+The function should print the argument appropriately.
+Any values returned by the function are ignored.
+
+</p><p>
+The three <i><a href="../26-glossary/f.xhtml#function">functions</a></i> 
+      <a href="22.4.5-pprint-fill.xhtml#DictEntry_pprint_fill_1345"><b>pprint-linear</b></a>,
+      <a href="22.4.5-pprint-fill.xhtml#DictEntry_pprint_fill_1345"><b>pprint-fill</b></a>,
+  and <a href="22.4.5-pprint-fill.xhtml#DictEntry_pprint_fill_1345"><b>pprint-tabular</b></a>
+are specifically designed so that they can be called by <code>~/.../</code>
+(<i>i.e.</i>,  <code>~/pprint-linear/</code>, <code>~/pprint-fill/</code>, and <code>~/pprint-tabular/</code>).
+In particular they take <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> and <i><a href="../26-glossary/a.xhtml#atsign">at-sign</a></i> arguments.
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_FORMAT_Layou_1314"><span class="secno">22.3.6</span> FORMAT Layout Control</h3>
+<section>
+<h4 id="SubSubSectio_Tilde_T_Tab_1315"><span class="secno">22.3.6.1</span> Tilde T: Tabulate</h4>
+<p>
+This spaces over to a given column.
+<code>~<i>colnum</i>,<i>colinc</i>T</code> will output
+sufficient spaces to move the cursor to column <i>colnum</i>.  If the cursor
+is already at or beyond column <i>colnum</i>, it will output spaces to move it to
+column <i>colnum</i>+<i>k</i>*<i>colinc</i> for the smallest positive integer
+<i>k</i> possible, unless <i>colinc</i> is zero, in which case no spaces
+are output if the cursor is already at or beyond column <i>colnum</i>.
+<i>colnum</i> and <i>colinc</i> default to <code>1</code>.
+
+</p><p>
+
+If for some reason the current absolute column position cannot be determined
+by direct inquiry,
+<a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> 
+may be able to deduce the current column position by noting         
+that certain directives (such as <code>~%</code>, or <code>~&amp;</code>,
+or <code>~A</code> 
+with the argument being a string containing a newline) cause
+the column position to be reset to zero, and counting the number of characters
+emitted since that point.  If that fails, <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> 
+may attempt a
+similar deduction on the riskier assumption that the destination was
+at column zero when <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> 
+was invoked.  If even this heuristic fails
+or is implementationally inconvenient, at worst
+the <code>~T</code> operation will simply output two spaces.
+
+</p><p>
+
+<code>~@T</code> performs relative tabulation.
+<code>~<i>colrel</i>,<i>colinc</i>@T</code> outputs <i>colrel</i> spaces
+and then outputs the smallest non-negative
+number of additional spaces necessary to move the cursor
+to a column that is a multiple                                       
+of <i>colinc</i>.  For example, the directive 
+<code>~3,8@T</code> outputs
+three spaces and then moves the cursor to a "standard multiple-of-eight
+tab stop" if not at one already.
+If the current output column cannot be determined, however,
+then <i>colinc</i> is ignored, and exactly <i>colrel</i> spaces are output.
+
+</p><p>
+If the <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> modifier is used with the <code>~T</code> directive,
+the tabbing computation is done relative to the horizontal position where the
+section immediately containing the directive begins, rather than with
+respect to a horizontal position of zero.  The numerical parameters are
+both interpreted as being in units of <i><a href="../26-glossary/e.xhtml#em">ems</a></i> and both default to <code>1</code>.
+<code>~<i>n</i>,<i>m</i>:T</code> is the same as 
+  <code>(pprint-tab :section <i>n</i> <i>m</i>)</code>.
+<code>~<i>n</i>,<i>m</i>:@T</code> is the same as
+  <code>(pprint-tab :section-relative <i>n</i> <i>m</i>)</code>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Less_T_1316"><span class="secno">22.3.6.2</span> Tilde Less-Than-Sign: Justification</h4>
+<p>
+
+<code>~<i>mincol</i>,<i>colinc</i>,<i>minpad</i>,<i>padchar</i>&lt;<i>str</i>~&gt;</code>
+
+</p><p>
+This justifies the text produced by processing <i>str</i>
+within a field at least <i>mincol</i> columns wide.  <i>str</i>
+may be divided up into segments with <code>~;</code>, in which case the
+spacing is evenly divided between the text segments.
+
+</p><p>
+
+With no modifiers, the leftmost text segment is left justified in the
+field, and the rightmost text segment is right justified.  If there is
+only one text element, as a special case, it is right justified.
+The <code>:</code> modifier causes                                            
+spacing to be introduced before the first text segment;  the 
+<code>@</code> modifier causes spacing to be added after the last.
+The <i>minpad</i> parameter (default <code>0</code>) is the minimum number of
+padding characters to be output between each segment.
+The padding character is supplied by <i>padchar</i>,
+which defaults to the space character.
+If the total width needed to satisfy these constraints is greater
+than <i>mincol</i>, then the width used is <i>mincol</i>+<i>k</i>*<i>colinc</i>
+for the smallest possible non-negative integer value <i>k</i>.
+<i>colinc</i> defaults to <code>1</code>, and <i>mincol</i> defaults to <code>0</code>.
+
+</p><p>
+
+Note that <i>str</i> may include <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> directives.
+All the clauses in <i>str</i> are processed in order;
+it is the resulting pieces of text that are justified.
+
+</p><p>
+
+The <code>~^</code> directive may be used to terminate processing of the
+clauses prematurely, in which case only the completely processed clauses
+are justified.
+
+</p><p>
+
+If the first clause of a <code>~&lt;</code> 
+is terminated with <code>~:;</code> instead of
+<code>~;</code>, then it is used in a special way.  All of the clauses are
+processed (subject to <code>~^</code>, of course), but the 
+first one is not used
+in performing the spacing and padding.  When the padded result has been
+determined, then if it will fit on the current line of output, it is
+output, and the text for the first clause is discarded.  If, however, the
+padded text will not fit on the current line, then the text segment for
+the first clause is output before the padded text.  The first clause
+ought to contain a newline (such as a <code>~%</code> directive).  The first
+clause is always processed, and so any arguments it refers to will be
+used; the decision is whether to use the resulting segment of text, not
+whether to process the first clause.  If the <code>~:;</code> has a prefix
+parameter <i>n</i>, then the padded text must fit on the current line with
+<i>n</i> character positions to spare to avoid outputting the first clause's
+text.  For example, the control string
+
+</p><pre> "~%;; ~{ ~&lt;~%;; ~1:; ~S~&gt;~^ ,~} .~%"
+</pre>
+
+<p>
+can be used to print a list of items separated by commas without
+breaking items over line boundaries, beginning each line with
+<code>;; </code>.  The prefix parameter 
+<code>1</code> in <code>~1:;</code> accounts for the width of the
+comma that will follow the justified item if it is not the last
+element in the list, or the period 
+if it is.  If <code>~:;</code> has a second
+prefix parameter, then it is used as the width of the line,
+thus overriding the natural line width of the output stream.  To make
+the preceding example use a line width of 50, one would write
+
+</p><pre> "~%;; ~{ ~&lt;~%;; ~1,50:; ~S~&gt;~^ ,~} .~%"
+</pre><p>
+
+If the second argument is not supplied, then <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> uses the
+line width of the <i>destination</i> output stream.
+If this cannot be determined (for example, when producing a 
+<i><a href="../26-glossary/s.xhtml#string">string</a></i> result), then <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> uses <code>72</code> as the line length.
+
+</p><p>
+See also Section <a href="#SubSubSectio_Tilde_Less_T_1311">22.3.5.2 Tilde Less-Than-Sign: Logical Block</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Greate_1317"><span class="secno">22.3.6.3</span> Tilde Greater-Than-Sign: End of Justification</h4>
+<p>
+<code>~&gt;</code> terminates a <code>~&lt;</code>.
+The consequences of using it elsewhere are undefined.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_FORMAT_Contr_1318"><span class="secno">22.3.7</span> FORMAT Control-Flow Operations</h3>
+<section>
+<h4 id="SubSubSectio_Tilde_Asteri_1319"><span class="secno">22.3.7.1</span> Tilde Asterisk: Go-To</h4>
+<p>
+The next <i>arg</i> is ignored.
+<code>~<i>n</i>*</code> ignores the next <i>n</i> arguments.
+
+</p><p>
+
+<code>~:*</code> backs up in the list of
+arguments so that the argument last processed will be processed again.
+<code>~<i>n</i>:*</code> backs up <i>n</i> arguments.
+
+</p><p>
+
+When within a <code>~{</code> construct
+(see below), the ignoring (in either direction) is relative to the list
+of arguments being processed by the iteration.
+
+</p><p>
+
+<code>~<i>n</i>@*</code> 
+goes to the <i>n</i>th <i>arg</i>, where 0 means the first one;
+<i>n</i> defaults to 0, so <code>~@*</code> goes back to the first <i>arg</i>.      
+Directives after a <code>~<i>n</i>@*</code>
+will take arguments in sequence beginning with the one gone to.
+When within a <code>~{</code> construct, the "goto"
+is relative to the list of arguments being processed by the iteration.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Left_B_1320"><span class="secno">22.3.7.2</span> Tilde Left-Bracket: Conditional Expression</h4>
+<p>
+
+<code>~[<i>str0</i>~;<i>str1</i>~;<i>...</i>~;<i>strn</i>~]</code>
+
+</p><p>
+This is a set of control strings, called <i>clauses</i>, one of which is
+chosen and used.  The clauses are separated by <code>~;</code>
+and the construct is terminated by <code>~]</code>.  For example,
+
+</p><p>
+<code>"~[Siamese~;Manx~;Persian~] Cat"</code>
+
+</p><p>
+The <i>arg</i>th
+clause is selected, where the first clause is number 0.
+If a prefix parameter is given (as <code>~<i>n</i>[</code>),
+then the parameter is used instead of an argument.    
+If <i>arg</i> is out of range then no clause is selected
+and no error is signaled.
+After the selected alternative has been processed, the control string
+continues after the <code>~]</code>.
+
+</p><p>
+
+<code>~[<i>str0</i>~;<i>str1</i>~;<i>...</i>~;<i>strn</i>~:;<i>default</i>~]</code>
+has a default case.
+If the <i>last</i> <code>~;</code> used to separate clauses
+is <code>~:;</code> instead, then the last clause is an else clause
+that is performed if no other clause is selected.
+For example:
+
+</p><p>
+<code>"~[Siamese~;Manx~;Persian~:;Alley~] Cat"</code>
+
+</p><p>
+
+
+<code>~:[<i>alternative</i>~;<i>consequent</i>~]</code> 
+selects the <i>alternative</i> control string if <i>arg</i> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+and selects the <i>consequent</i> control string otherwise.
+
+</p><p>
+
+<code>~@[<i>consequent</i>~]</code> 
+tests the argument.  If it is <i><a href="../26-glossary/t.xhtml#true">true</a></i>,           
+then the argument is not used up by the <code>~[</code> command
+but remains as the next one to be processed,
+and the one clause <i>consequent</i> is processed.
+If the <i>arg</i> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>, then the argument is used up,
+and the clause is not processed.
+The clause therefore should normally use exactly one argument,
+and may expect it to be <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i>.
+For example:
+
+</p><pre> (setq *print-level* nil *print-length* 5)
+ (format nil
+        "~@[ print level = ~D~]~@[ print length = ~D~]"
+        *print-level* *print-length*)
+→  " print length = 5"
+</pre>
+
+<p>
+Note also that
+
+</p><pre> (format <i>stream</i> "...~@[<i>str</i>~]..." ...)
+==(format <i>stream</i> "...~:[~;~:*<i>str</i>~]..." ...)
+</pre>
+
+<p>
+
+The combination of <code>~[</code> and <code>#</code> is useful, for
+example, for dealing with English conventions for printing lists:
+
+</p><pre> (setq foo "Items:~#[ none~; ~S~; ~S and ~S~
+           ~:;~@{~#[~; and~] ~S~^ ,~}~].")
+ (format nil foo) →  "Items: none."
+ (format nil foo 'foo) →  "Items: FOO."
+ (format nil foo 'foo 'bar) →  "Items: FOO and BAR."
+ (format nil foo 'foo 'bar 'baz) →  "Items: FOO, BAR, and BAZ."
+ (format nil foo 'foo 'bar 'baz 'quux) →  "Items: FOO, BAR, BAZ, and QUUX."
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Right__1321"><span class="secno">22.3.7.3</span> Tilde Right-Bracket: End of Conditional Expression</h4>
+<p>
+<code>~]</code> terminates a <code>~[</code>.
+The consequences of using it elsewhere are undefined.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Left_B_1322"><span class="secno">22.3.7.4</span> Tilde Left-Brace: Iteration</h4>
+<p>
+
+<code>~{<i>str</i> }</code>
+
+</p><p>
+This is an iteration construct.  The argument should be a <i><a href="../26-glossary/l.xhtml#list">list</a></i>,
+which is used as a set of arguments 
+as if for a recursive call to <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>.
+The <i><a href="../26-glossary/s.xhtml#string">string</a></i> <i>str</i> is used repeatedly as the control string.
+Each iteration can absorb as many elements of the <i><a href="../26-glossary/l.xhtml#list">list</a></i> as it likes
+as arguments;
+if <i>str</i> uses up two arguments by itself, then two elements of the
+<i><a href="../26-glossary/l.xhtml#list">list</a></i> will get used up each time around the loop.
+If before any iteration step the <i><a href="../26-glossary/l.xhtml#list">list</a></i> 
+is empty, then the iteration is terminated.
+Also, if a prefix parameter <i>n</i> is given, then there will be at most <i>n</i>
+repetitions of processing of <i>str</i>.  
+Finally, the <code>~^</code> directive can be
+used to terminate the iteration prematurely.
+
+</p><p>
+
+For example:
+
+</p><pre> (format nil "The winners are:~{ ~S~}." 
+         '(fred harry jill)) 
+→ "The winners are: FRED HARRY JILL."                           
+ (format nil "Pairs:~{ &lt;~S,~S&gt;~}." 
+         '(a 1 b 2 c 3))
+→ "Pairs: &lt;A,1&gt; &lt;B,2&gt; &lt;C,3&gt;."
+</pre>
+
+<p>
+
+<code>~:{<i>str</i> } </code> is similar, 
+but the argument should be a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of sublists.
+At each repetition step, one sublist 
+is used as the set of arguments for
+processing <i>str</i>; on the next repetition, a new sublist 
+is used, whether
+or not all of the last sublist had been processed.  
+For example:
+
+</p><pre> (format nil "Pairs:~:{&lt;~S,~S&gt;~} ." 
+                 '((a 1) (b 2) (c 3)))
+→ "Pairs: &lt;A,1&gt; &lt;B,2&gt; &lt;C,3&gt;."
+</pre>
+
+<p>
+
+<code>~@{<i>str</i> }</code>
+is similar to <code>~{<i>str</i> } </code>, but instead of
+using one argument that is a list, all the remaining arguments
+are used as the list of arguments for the iteration.
+Example:
+
+</p><pre> (format nil "Pairs:~@{&lt;~S,~S&gt;~} ." 'a 1 'b 2 'c 3)
+→ "Pairs: &lt;A,1&gt; &lt;B,2&gt; &lt;C,3&gt;."
+</pre><p>
+If the iteration is terminated before all the remaining arguments are
+consumed, then any arguments not processed by the iteration remain to be
+processed by any directives following the iteration construct.
+
+</p><p>
+
+<code>~:@{<i>str</i> } </code> 
+combines the features                              
+of <code>~:{<i>str</i> } </code>
+and <code>~@{<i>str</i> } </code>.
+All the remaining arguments
+are used, and each one must be a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
+On each iteration, the next argument is 
+used as a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of arguments to <i>str</i>.
+Example:
+
+</p><pre> (format nil "Pairs:~:@{&lt;~S,~S&gt;~} ." 
+              '(a 1) '(b 2) '(c 3)) 
+→ "Pairs: &lt;A,1&gt; &lt;B,2&gt; &lt;C,3&gt;."
+</pre><p>
+
+Terminating the repetition construct with <code>~:}</code> 
+instead of <code>~} </code>
+forces <i>str</i> to be processed at least once, even if the initial
+list of arguments is null. However, this will not override an explicit
+prefix parameter of zero.
+
+</p><p>
+
+If <i>str</i> is empty, then an argument is used as <i>str</i>.  
+It must be a <i><a href="../26-glossary/f.xhtml#formatcontrol">format control</a></i>
+and precede any arguments processed by the iteration.  As an example,
+the following are equivalent:
+
+</p><pre>    (apply #'format stream string arguments)
+ ==(format stream "~1{~:}" string arguments)
+</pre>
+
+<p>
+This will use <code>string</code> as a formatting string.  
+The <code>~1{</code> says it will                 
+be processed at most once, and the <code>~:}</code> 
+says it will be processed at least once.
+Therefore it is processed exactly once, using <code>arguments</code> as the arguments.
+This case may be handled more clearly by the <code>~?</code> directive,
+but this general feature of <code>~{ </code>
+is more powerful than <code>~?</code>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Right__1323"><span class="secno">22.3.7.5</span> Tilde Right-Brace: End of Iteration</h4>
+<p>
+<code>~}</code> terminates a <code>~{</code>.
+The consequences of using it elsewhere are undefined.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Questi_1324"><span class="secno">22.3.7.6</span> Tilde Question-Mark: Recursive Processing</h4>
+<p>
+The next <i>arg</i> must be a <i><a href="../26-glossary/f.xhtml#formatcontrol">format control</a></i>, and the one after it a <i><a href="../26-glossary/l.xhtml#list">list</a></i>;
+both are consumed by the <code>~?</code> directive.
+The two are processed as a <i>control-string</i>, with the elements of the <i><a href="../26-glossary/l.xhtml#list">list</a></i> 
+as the arguments.  Once the recursive processing
+has been finished, the processing of the control
+string containing the <code>~?</code> directive is resumed.
+Example:
+
+</p><pre> (format nil "~? ~D" "&lt;~A ~D&gt;" '("Foo" 5) 7) → "&lt;Foo 5&gt; 7"
+ (format nil "~? ~D" "&lt;~A ~D&gt;" '("Foo" 5 14) 7) → "&lt;Foo 5&gt; 7"
+</pre><p>
+Note that in the second example three arguments are supplied
+to the <i><a href="../26-glossary/f.xhtml#formatstring">format string</a></i> <code>"&lt;~A ~D&gt;"</code>, but only two are processed
+and the third is therefore ignored.
+
+</p><p>
+
+With the <code>@</code>
+modifier, only one <i>arg</i> is directly consumed.
+The <i>arg</i> must be a <i><a href="../26-glossary/s.xhtml#string">string</a></i>; 
+it is processed as part of the control
+string as if it had appeared in place of the <code>~@?</code> construct,
+and any directives in the recursively processed control string may      
+consume arguments of the control string containing the <code>~@?</code>
+directive.
+Example:
+
+</p><pre> (format nil "~@? ~D" "&lt;~A ~D&gt;" "Foo" 5 7) → "&lt;Foo 5&gt; 7"
+ (format nil "~@? ~D" "&lt;~A ~D&gt;" "Foo" 5 14 7) → "&lt;Foo 5&gt; 14"
+</pre>
+</section>
+</section>
+<section>
+<h3 id="SubSection_FORMAT_Misce_1325"><span class="secno">22.3.8</span> FORMAT Miscellaneous Operations</h3>
+<section>
+<h4 id="SubSubSectio_Tilde_Left_P_1326"><span class="secno">22.3.8.1</span> Tilde Left-Paren: Case Conversion</h4>
+<p>
+
+<code>~(<i>str</i>~)</code>
+
+</p><p>
+The contained control string <i>str</i> is processed, and what it produces
+is subject to case conversion.
+
+</p><p>
+
+With no flags, every <i><a href="../26-glossary/u.xhtml#uppercase">uppercase</a></i> <i><a href="../26-glossary/c.xhtml#character">character</a></i>
+is converted to the corresponding <i><a href="../26-glossary/l.xhtml#lowercase">lowercase</a></i> <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
+
+</p><p>
+
+<code>~:(</code> capitalizes all words, as if by <a href="../16-strings/16.2.8-string-upcase.xhtml#DictEntry_string_upcas_1027"><b>string-capitalize</b></a>.
+
+</p><p>
+
+<code>~@(</code> 
+capitalizes just the first word and forces the rest to lower
+case.
+
+</p><p>
+
+<code>~:@(</code> converts every lowercase character
+to the corresponding uppercase character.
+
+</p><p>
+
+In this example <code>~@(</code> is used to cause the first word
+produced by <code>~@R</code> to be capitalized:
+
+</p><pre> (format nil "~@R ~(~@R~)" 14 14) 
+→ "XIV xiv"
+ (defun f (n) (format nil "~@(~R~) error~:P detected." n)) →  F
+ (f 0) → "Zero errors detected."
+ (f 1) → "One error detected."
+ (f 23) → "Twenty-three errors detected."
+</pre>
+
+<p>
+
+When case conversions appear nested, the outer conversion dominates,
+as illustrated in the following example:
+
+</p><pre> (format nil "~@(how is ~:(BOB SMITH~)?~)")
+ → "How is bob smith?"
+ NOT→"How is Bob Smith?"
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Right__1327"><span class="secno">22.3.8.2</span> Tilde Right-Paren: End of Case Conversion</h4>
+<p>
+<code>~)</code> terminates a <code>~(</code>.
+The consequences of using it elsewhere are undefined.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_P_Plu_1328"><span class="secno">22.3.8.3</span> Tilde P: Plural</h4>
+<p>
+If <i>arg</i> is not <a href="../4-types-and-classes/4.4.23-eql.xhtml#DictEntry_eql_358"><b>eql</b></a> 
+to the integer <code>1</code>, a lowercase <code>s</code> is
+printed; if <i>arg</i> is <a href="../4-types-and-classes/4.4.23-eql.xhtml#DictEntry_eql_358"><b>eql</b></a> to <code>1</code>, nothing is printed.  
+If <i>arg</i> is a floating-point <code>1.0</code>, the <code>s</code> is
+printed.
+
+</p><p>
+
+<code>~:P</code> does the same thing, 
+after doing a <code>~:*</code> to back up one argument;
+that is, it prints a lowercase <code>s</code> if the previous argument was not
+<code>1</code>.  
+
+</p><p>
+
+<code>~@P</code> 
+prints <code>y</code> if the argument is <code>1</code>, or <code>ies</code> if it is
+not.  <code>~:@P</code> does the same thing, but backs up first.
+
+</p><pre> (format nil "~D tr~:@P/~D win~:P" 7 1) → "7 tries/1 win"
+ (format nil "~D tr~:@P/~D win~:P" 1 0) → "1 try/0 wins"
+ (format nil "~D tr~:@P/~D win~:P" 1 3) → "1 try/3 wins"
+</pre>
+</section>
+</section>
+<section>
+<h3 id="SubSection_FORMAT_Misce_1329"><span class="secno">22.3.9</span> FORMAT Miscellaneous Pseudo-Operations</h3>
+<section>
+<h4 id="SubSubSectio_Tilde_Semico_1330"><span class="secno">22.3.9.1</span> Tilde Semicolon: Clause Separator</h4>
+<p>
+This separates clauses in <code>~[</code> and <code>~&lt;</code> constructs.
+The consequences of using it elsewhere are undefined.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Circum_1331"><span class="secno">22.3.9.2</span> Tilde Circumflex: Escape Upward</h4>
+<p>
+
+<code>~^</code>
+
+</p><p>
+This is an escape construct.  If there are no more arguments remaining to
+be processed, then the immediately           
+enclosing <code>~{ </code> or <code>~&lt;</code> construct
+is terminated.  If there is no such enclosing construct, then the entire
+formatting operation is terminated.  
+In the <code>~&lt;</code> case, the formatting
+is performed, but no more segments are processed before doing the
+justification.     
+<code>~^</code> may appear anywhere in a <code>~{ </code>
+construct.
+
+</p><pre> (setq donestr "Done.~^ ~D warning~:P.~^ ~D error~:P.")
+→ "Done.~^ ~D warning~:P.~^ ~D error~:P."
+ (format nil donestr) → "Done."
+ (format nil donestr 3) → "Done. 3 warnings."
+ (format nil donestr 1 5) → "Done. 1 warning. 5 errors."
+</pre>
+
+<p>
+
+If a prefix parameter is given, then termination occurs if the parameter
+is zero.  (Hence <code>~^</code> is equivalent to 
+<code>~#^</code>.)  If two
+parameters are given, termination occurs if they are equal.
+  If three
+parameters are given, termination occurs if the first is less than or
+equal to the second and the second is less than or equal to the third.
+Of course, this is useless if all the prefix parameters are constants; at
+least one of them should be a <code>#</code> or a <code>V</code> parameter.
+
+</p><p>
+
+If <code>~^</code> is used within a <code>~:{ </code> 
+construct, then it terminates
+the current iteration step because in the standard case it tests for
+remaining arguments of the current step only; the next iteration step
+commences immediately.  <code>~:^</code> is used to terminate
+the iteration process.
+
+<code>~:^</code> 
+may be used only if the command it would terminate is 
+<code>~:{ </code> or <code>~:@{ </code>.
+The entire iteration process is terminated if and only if the sublist that is
+supplying the arguments for the current iteration step is the last sublist in
+the case of <code>~:{</code>, 
+or the last <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>        
+argument in the case of <code>~:@{ </code>. 
+<code>~:^</code> is not
+equivalent to <code>~#:^</code>; 
+the latter terminates the entire iteration if and only if no
+arguments remain for the current iteration step.
+For example:
+
+</p><pre> (format nil "~:{ ~@?~:^ ...~} " '(("a") ("b"))) → "a...b"
+</pre>
+
+
+<p>
+
+If <code>~^</code> appears within a control string being processed
+under the control of a <code>~?</code> directive, but not within
+any <code>~{ </code> or <code>~&lt;</code> construct within that string,
+then the string being
+processed will be terminated, thereby ending processing
+of the <code>~?</code> directive.  Processing then
+continues within the string   
+containing the <code>~?</code> directive at the point following that directive.
+
+</p><p>
+
+If <code>~^</code>                                          
+appears within a <code>~[</code> or <code>~(</code> construct,
+then all the commands up to the <code>~^</code> are properly selected
+or case-converted,                   
+the <code>~[</code> or <code>~(</code> processing is terminated,
+and the outward search continues         
+for a <code>~{ </code> or <code>~&lt;</code> construct
+to be terminated.  For example:
+
+</p><pre> (setq tellstr "~@(~@[~R~]~^ ~A!~)")
+→ "~@(~@[~R~]~^ ~A!~)"
+ (format nil tellstr 23) → "Twenty-three!"
+ (format nil tellstr nil "losers") → " Losers!"
+ (format nil tellstr 23 "losers") → "Twenty-three losers!"
+</pre>
+
+<p>
+
+Following are examples of the use of <code>~^</code> 
+within a <code>~&lt;</code> construct.
+
+</p><pre> (format nil "~15&lt;~S~;~^~S~;~^~S~&gt;" 'foo)
+→  "            FOO"
+ (format nil "~15&lt;~S~;~^~S~;~^~S~&gt;" 'foo 'bar)
+→  "FOO         BAR"
+ (format nil "~15&lt;~S~;~^~S~;~^~S~&gt;" 'foo 'bar 'baz)
+→  "FOO   BAR   BAZ"
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Tilde_Newlin_1332"><span class="secno">22.3.9.3</span> Tilde Newline: Ignored Newline</h4>
+<p>
+<i><a href="../26-glossary/t.xhtml#tilde">Tilde</a></i> immediately followed by a <i><a href="../26-glossary/n.xhtml#newline">newline</a></i> ignores the <i><a href="../26-glossary/n.xhtml#newline">newline</a></i>
+and any following non-newline <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>1</sub> characters.
+With a <code>:</code>,
+ the <i><a href="../26-glossary/n.xhtml#newline">newline</a></i> is ignored, 
+ but any following <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>1</sub> is left in place.
+With an <code>@</code>,
+ the <i><a href="../26-glossary/n.xhtml#newline">newline</a></i> is left in place,
+ but any following <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>1</sub> is ignored.
+For example:
+
+</p><pre> (defun type-clash-error (fn nargs argnum right-type wrong-type)
+   (format *error-output*
+           "~&amp;~S requires its ~:[~:R~;~*~]~ 
+           argument to be of type ~S,~%but it was called ~
+           with an argument of type ~S.~%"
+           fn (eql nargs 1) argnum right-type wrong-type))
+ (type-clash-error 'aref nil 2 'integer 'vector)  prints:
+AREF requires its second argument to be of type INTEGER,
+but it was called with an argument of type VECTOR.
+NIL
+ (type-clash-error 'car 1 1 'list 'short-float)  prints:
+CAR requires its argument to be of type LIST,
+but it was called with an argument of type SHORT-FLOAT.
+NIL
+</pre><p>
+Note that in this example newlines appear in the output only as specified
+by the <code>~&amp;</code> and <code>~%</code> directives; the 
+actual newline characters
+in the control string are suppressed because each is preceded by a tilde.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Additional_I_1333"><span class="secno">22.3.10</span> Additional Information about FORMAT Operations</h3>
+<section>
+<h4 id="SubSubSectio_Nesting_of_F_1334"><span class="secno">22.3.10.1</span> Nesting of FORMAT Operations</h4>
+<p>
+
+The case-conversion, conditional, iteration, and justification
+constructs can contain other formatting constructs by bracketing them.
+These constructs must nest properly with respect to each other.
+For example, it is not legitimate to put the start of a case-conversion
+construct in each arm of a conditional and the
+end of the case-conversion construct outside the conditional:
+
+</p><pre> (format nil "~:[abc~:@(def~;ghi~
+:@(jkl~]mno~)" x) ;Invalid!
+</pre><p>
+This notation is invalid because the <code>~[...~;...~]</code>
+and <code>~(...~)</code> constructs are not properly nested.
+
+</p><p>
+
+The processing indirection caused by the <code>~?</code> directive
+is also a kind of nesting for the purposes of this rule of proper nesting.
+It is not permitted to
+start a bracketing construct within a string processed
+under control of a <code>~?</code>                                      
+directive and end the construct at some point after the <code>~?</code> construct
+in the string containing that construct, or vice versa.
+For example, this situation is invalid:
+
+</p><pre> (format nil "~@?ghi~)" "abc~@(def") ;Invalid!
+</pre><p>
+This notation
+is invalid because the <code>~?</code>
+and <code>~(...~)</code> constructs are not properly nested.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Missing_and__1335"><span class="secno">22.3.10.2</span> Missing and Additional FORMAT Arguments</h4>
+<p>
+
+The consequences are undefined if no <i>arg</i> remains for a directive 
+requiring an argument.  However, it is permissible for one or more <i>args</i> 
+to remain unprocessed by a directive; such <i>args</i> are ignored.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Additional_F_1336"><span class="secno">22.3.10.3</span> Additional FORMAT Parameters</h4>
+<p>
+
+The consequences are undefined if a format directive is given more parameters 
+than it is described here as accepting.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Undefined_FO_1337"><span class="secno">22.3.10.4</span> Undefined FORMAT Modifier Combinations</h4>
+<p>
+
+The consequences are undefined if <i><a href="../26-glossary/c.xhtml#colon">colon</a></i> or <i><a href="../26-glossary/a.xhtml#atsign">at-sign</a></i> modifiers
+are given to a directive in a combination not specifically described
+here as being meaningful.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Examples_of__1338"><span class="secno">22.3.11</span> Examples of FORMAT</h3>
+<pre> (format nil "foo") → "foo"
+ (setq x 5) → 5
+ (format nil "The answer is ~D." x) → "The answer is 5."
+ (format nil "The answer is ~3D." x) → "The answer is   5."
+ (format nil "The answer is ~3,'0D." x) → "The answer is 005."
+ (format nil "The answer is ~:D." (expt 47 x))
+→ "The answer is 229,345,007."
+ (setq y "elephant") → "elephant"
+ (format nil "Look at the ~A!" y) → "Look at the elephant!"
+ (setq n 3) → 3
+ (format nil "~D item~:P found." n) → "3 items found."
+ (format nil "~R dog~:[s are~; is~] here." n (= n 1))
+→ "three dogs are here."
+ (format nil "~R dog~:*~[s are~; is~:;s are~] here." n)
+→ "three dogs are here."
+ (format nil "Here ~[are~;is~:;are~] ~:*~R pupp~:@P." n)
+→ "Here are three puppies."
+</pre>
+
+<pre> (defun foo (x)
+   (format nil "~6,2F|~6,2,1,'*F|~6,2,,'?F|~6F|~,2F|~F"
+           x x x x x x)) →  FOO
+ (foo 3.14159)  → "  3.14| 31.42|  3.14|3.1416|3.14|3.14159"
+ (foo -3.14159) → " -3.14|-31.42| -3.14|-3.142|-3.14|-3.14159"
+ (foo 100.0)    → "100.00|******|100.00| 100.0|100.00|100.0"
+ (foo 1234.0)   → "1234.00|******|??????|1234.0|1234.00|1234.0"
+ (foo 0.006)    → "  0.01|  0.06|  0.01| 0.006|0.01|0.006"
+</pre>
+
+<pre> (defun foo (x)  
+    (format nil
+           "~9,2,1,,'*E|~10,3,2,2,'?,,'$E|~
+            ~9,3,2,-2,'%@E|~9,2E"
+           x x x x))
+ (foo 3.14159)  → "  3.14E+0| 31.42$-01|+.003E+03|  3.14E+0"
+ (foo -3.14159) → " -3.14E+0|-31.42$-01|-.003E+03| -3.14E+0"
+ (foo 1100.0)   → "  1.10E+3| 11.00$+02|+.001E+06|  1.10E+3"
+ (foo 1100.0L0) → "  1.10L+3| 11.00$+02|+.001L+06|  1.10L+3"
+ (foo 1.1E13)   → "*********| 11.00$+12|+.001E+16| 1.10E+13"
+ (foo 1.1L120)  → "*********|??????????|%%%%%%%%%|1.10L+120"
+ (foo 1.1L1200) → "*********|??????????|%%%%%%%%%|1.10L+1200"
+</pre><p>
+
+
+
+
+
+
+
+
+
+
+As an example of the effects of varying the scale factor, the code
+
+</p><pre> (dotimes (k 13)
+   (format t "~%Scale factor ~2D: |~13,6,2,VE|"
+           (- k 5) (- k 5) 3.14159))
+</pre><p>
+produces the following output:
+
+</p><pre>Scale factor -5: | 0.000003E+06|
+Scale factor -4: | 0.000031E+05|
+Scale factor -3: | 0.000314E+04|
+Scale factor -2: | 0.003142E+03|
+Scale factor -1: | 0.031416E+02|
+Scale factor  0: | 0.314159E+01|
+Scale factor  1: | 3.141590E+00|
+Scale factor  2: | 31.41590E-01|
+Scale factor  3: | 314.1590E-02|
+Scale factor  4: | 3141.590E-03|
+Scale factor  5: | 31415.90E-04|
+Scale factor  6: | 314159.0E-05|
+Scale factor  7: | 3141590.E-06|
+</pre>
+
+<pre> (defun foo (x)
+   (format nil "~9,2,1,,'*G|~9,3,2,3,'?,,'$G|~9,3,2,0,'%G|~9,2G"
+          x x x x))                                     
+ (foo 0.0314159) → "  3.14E-2|314.2$-04|0.314E-01|  3.14E-2"
+ (foo 0.314159)  → "  0.31   |0.314    |0.314    | 0.31    "
+ (foo 3.14159)   → "   3.1   | 3.14    | 3.14    |  3.1    "
+ (foo 31.4159)   → "   31.   | 31.4    | 31.4    |  31.    "
+ (foo 314.159)   → "  3.14E+2| 314.    | 314.    |  3.14E+2"
+ (foo 3141.59)   → "  3.14E+3|314.2$+01|0.314E+04|  3.14E+3"
+ (foo 3141.59L0) → "  3.14L+3|314.2$+01|0.314L+04|  3.14L+3"
+ (foo 3.14E12)   → "*********|314.0$+10|0.314E+13| 3.14E+12"
+ (foo 3.14L120)  → "*********|?????????|%%%%%%%%%|3.14L+120"
+ (foo 3.14L1200) → "*********|?????????|%%%%%%%%%|3.14L+1200"
+</pre>
+
+<pre> (format nil "~10&lt;foo~;bar~&gt;")   → "foo    bar"
+ (format nil "~10:&lt;foo~;bar~&gt;")  → "  foo  bar"
+ (format nil "~10&lt;foobar~&gt;")     → "    foobar"
+ (format nil "~10:&lt;foobar~&gt;")    → "    foobar"
+ (format nil "~10:@&lt;foo~;bar~&gt;") → "  foo bar "
+ (format nil "~10@&lt;foobar~&gt;")    → "foobar    "
+ (format nil "~10:@&lt;foobar~&gt;")   → "  foobar  "
+</pre>
+
+<pre>  (FORMAT NIL "Written to ~A." #P"foo.bin")
+  → "Written to foo.bin."
+</pre>
+</section>
+<section>
+<h3 id="SubSection_Notes_about__1339"><span class="secno">22.3.12</span> Notes about FORMAT</h3>
+<p>
+
+
+Formatted output is performed not only by <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>,
+but by certain other functions that accept a <i><a href="../26-glossary/f.xhtml#formatcontrol">format control</a></i>
+the way <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> does.  For example, error-signaling functions
+such as <a href="../9-conditions/9.2.12-cerror.xhtml#DictEntry_cerror_637"><b>cerror</b></a> accept <i><a href="../26-glossary/f.xhtml#formatcontrol">format controls</a></i>.
+
+
+</p><p>
+Note that the meaning of <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> and <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a> as destinations to <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> 
+are different than those of <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> and <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a> as <i><a href="../26-glossary/s.xhtml#streamdesignator">stream designators</a></i>.
+
+</p><p>
+The <code>~^</code> should appear only at the beginning of a <code>~&lt;</code> clause,
+because it aborts the entire clause in which it appears (as well as
+all following clauses).                                     
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</body>
+</html>

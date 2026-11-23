@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>25.2.15 documentation, (setf documentation) — Standard Generic Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_documentatio_1442" class="entry"><span class="secno">25.2.15</span> <span class="names">documentation, (setf documentation)</span> <span class="kind">Standard Generic Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>documentation</b>
+<i>x doc-type</i>
+  → <i>documentation</i>
+<p>
+<b>(setf documentation)</b>
+<i>new-value x doc-type</i>
+  → <i>new-value</i>
+
+</p></dd><dt><b>Argument Precedence Order:</b></dt><dd>
+
+<i>doc-type</i>, <i>object</i>
+
+</dd><dt><b>Method Signatures:</b></dt><dd>
+
+
+
+
+<p>
+<b>Functions, Macros, and Special Forms:</b></p><p>
+<b>documentation</b> (<i>x</i> <b>function</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>function</b>) (<i>doc-type </i> (<code>eql 'function</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>list</b>) (<i>doc-type </i>(<code>eql 'function</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>list</b>) (<i>doc-type </i>(<code>eql 'compiler-macro</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i>(<code>eql 'function</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i>(<code>eql 'compiler-macro</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i>(<code>eql 'setf</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>function</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>function</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>list</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>list</b>) (<i>doc-type</i> (<code>eql 'compiler-macro</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'function</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'compiler-macro</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'setf</code>))<br/>
+</p><p>
+<b>Method Combinations:</b></p><p>
+<b>documentation</b> (<i>x</i> <b>method-combination</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>method-combination</b>) (<i>doc-type </i> (<code>eql 'method-combination</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'method-combination</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>method-combination</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>method-combination</b>) (<i>doc-type</i> (<code>eql 'method-combination</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'method-combination</code>))<br/>
+
+</p><p>
+<b>Methods:</b></p><p>
+<b>documentation</b> (<i>x</i> <b>standard-method</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-method</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>
+
+</p><p>
+<b>Packages:</b></p><p>
+<b>documentation</b> (<i>x</i> <b>package</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>package</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>
+
+</p><p>
+<b>Types, Classes, and Structure Names:</b></p><p>
+<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 't</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>standard-class</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'type</code>))<br/>
+<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'structure</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 't</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>standard-class</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'type</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'structure</code>))<br/>
+
+</p><p>
+<b>Variables:</b></p><p>
+<b>documentation</b> (<i>x</i> <b>symbol</b>) (<i>doc-type </i> (<code>eql 'variable</code>))<br/>
+<b>(setf documentation)</b> <i>new value</i> (<i>x</i> <b>symbol</b>) (<i>doc-type</i> (<code>eql 'variable</code>))<br/>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>x</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+
+
+
+<p>
+<i>doc-type</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+
+</p><p>
+<i>documentation</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>new-value</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <a href="#DictEntry_documentatio_1442"><b>documentation</b></a> returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i>
+associated with the given <i><a href="../26-glossary/o.xhtml#object">object</a></i> if it is available;
+otherwise it returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+<p>
+The <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <code>(setf documentation)</code> updates the 
+<i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> associated with <i>x</i> to <i>new-value</i>.
+If <i>x</i> is a <i><a href="../26-glossary/l.xhtml#list">list</a></i>,
+it must be of the form <code>(setf <i>symbol</i>)</code>.
+
+</p><p>
+<i><a href="../26-glossary/d.xhtml#documentationstring">Documentation strings</a></i> are made available for debugging purposes.
+<i><a href="../26-glossary/c.xhtml#conformingprogram">Conforming programs</a></i> are permitted to use <i><a href="../26-glossary/d.xhtml#documentationstring">documentation strings</a></i>
+when they are present, but should not depend for their correct behavior on 
+the presence of those <i><a href="../26-glossary/d.xhtml#documentationstring">documentation strings</a></i>.
+An <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> is permitted to discard <i><a href="../26-glossary/d.xhtml#documentationstring">documentation strings</a></i> 
+at any time for <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i> reasons.
+
+</p><p>
+
+The nature of the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> returned depends on the
+<i>doc-type</i>, as follows:
+
+</p><ul>
+
+<li><b>compiler-macro</b>
+
+<p>
+Returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> of the <i><a href="../26-glossary/c.xhtml#compilermacro">compiler macro</a></i>
+whose <i><a href="../26-glossary/n.xhtml#name">name</a></i> is the <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i> <i>x</i>.
+
+
+</p></li><li><a href="../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338"><b>function</b></a>
+
+<p>
+If <i>x</i> is a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i>,
+returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> of 
+the <i><a href="../26-glossary/f.xhtml#function">function</a></i>, <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>, or <i><a href="../26-glossary/s.xhtml#specialoperator">special operator</a></i> 
+whose <i><a href="../26-glossary/n.xhtml#name">name</a></i> is <i>x</i>.
+
+</p><p>
+If <i>x</i> is a <i><a href="../26-glossary/f.xhtml#function">function</a></i>,
+returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> associated with <i>x</i>.
+
+</p></li><li><a href="../4-types-and-classes/4.4.15-method-combination.xhtml#DictEntry_method_combi_350"><b>method-combination</b></a>
+
+<p>
+If <i>x</i> is a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>,
+returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> of
+the <i><a href="../26-glossary/m.xhtml#methodcombination">method combination</a></i>
+whose <i><a href="../26-glossary/n.xhtml#name">name</a></i> is <i>x</i>.
+
+</p><p>
+If <i>x</i> is a <i><a href="../26-glossary/m.xhtml#methodcombination">method combination</a></i>,
+returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> associated with <i>x</i>.
+
+</p></li><li><a href="#DictEntry_documentatio_1442"><b>setf</b></a>
+
+<p>
+Returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> of 
+
+the <i><a href="../26-glossary/s.xhtml#setfexpander">setf expander</a></i>
+
+whose <i><a href="../26-glossary/n.xhtml#name">name</a></i> is the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <i>x</i>.
+
+</p></li><li><b>structure</b>
+
+<p>
+
+Returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> 
+associated with the <i><a href="../26-glossary/s.xhtml#structurename">structure name</a></i> <i>x</i>.
+
+</p></li><li><a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+
+<p>
+
+Returns a <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> specialized on the <i><a href="../26-glossary/c.xhtml#class">class</a></i> of
+the argument <i>x</i> itself.
+For example, if <i>x</i> is a <i><a href="../26-glossary/f.xhtml#function">function</a></i>,
+the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> associated with the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <i>x</i> is returned.
+
+</p></li><li><a href="../3-evaluation-and-compilation/3.8.21-type.xhtml#DictEntry_type_303"><b>type</b></a>
+
+<p>
+If <i>x</i> is a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>,
+returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i>
+whose <i><a href="../26-glossary/n.xhtml#name">name</a></i> is the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <i>x</i>,
+if there is such a <i><a href="../26-glossary/c.xhtml#class">class</a></i>.
+Otherwise, it returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> of the <i><a href="../26-glossary/t.xhtml#type">type</a></i> 
+which is the <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <i>x</i>.
+
+</p><p>
+If <i>x</i> is a <i><a href="../26-glossary/s.xhtml#structureclass">structure class</a></i> or <i><a href="../26-glossary/s.xhtml#standardclass">standard class</a></i>,
+returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> associated with
+the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i>x</i>.
+
+</p></li><li><b>variable</b>
+
+<p>
+Returns the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> of
+the <i><a href="../26-glossary/d.xhtml#dynamicvariable">dynamic variable</a></i> or <i><a href="../26-glossary/c.xhtml#constantvariable">constant variable</a></i>
+whose <i><a href="../26-glossary/n.xhtml#name">name</a></i> is the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <i>x</i>.
+
+</p></li></ul>
+
+<p>
+
+
+A <i><a href="../26-glossary/c.xhtml#conformingimplementation">conforming implementation</a></i> or a <i><a href="../26-glossary/c.xhtml#conformingprogram">conforming program</a></i>
+may extend the set of <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> that are acceptable as the <i>doc-type</i>.
+</p></dd><dt><b>Notes:</b></dt><dd>
+
+
+This standard prescribes no means to retrieve the <i><a href="../26-glossary/d.xhtml#documentationstring">documentation strings</a></i>
+for individual slots specified in a <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> form, but 
+<i><a href="../26-glossary/i.xhtml#implementation">implementations</a></i> might still provide debugging tools and/or
+programming language extensions which manipulate this information.
+Implementors wishing to provide such support are encouraged to consult the
+<i>Metaobject Protocol</i> for suggestions about how this might be done.
+
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.7.16 no-applicable-method — Standard Generic Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_no_applicabl_572" class="entry"><span class="secno">7.7.16</span> <span class="names">no-applicable-method</span> <span class="kind">Standard Generic Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>no-applicable-method</b>
+<i>generic-function <code>&amp;rest</code> function-arguments</i>
+  → <i>{<i>result</i>}*</i>
+</dd><dt><b>Method Signatures:</b></dt><dd>
+
+<b>no-applicable-method</b>
+<i>(<i>generic-function</i> <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>)
+				     <code>&amp;rest</code> function-arguments</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>generic-function</i>—a <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> 
+
+
+			   on which no <i><a href="../26-glossary/a.xhtml#applicablemethod">applicable method</a></i> was found.  
+
+<p>
+<i>function-arguments</i>—<i><a href="../26-glossary/a.xhtml#argument">arguments</a></i> to the <i>generic-function</i>.
+
+</p><p>
+<i>result</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The generic function <a href="#DictEntry_no_applicabl_572"><b>no-applicable-method</b></a> is called when a
+<i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> 
+
+
+is invoked
+and no <i><a href="../26-glossary/m.xhtml#method">method</a></i> on that <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> is applicable.
+
+The <i><a href="../26-glossary/d.xhtml#defaultmethod">default method</a></i> signals an error.
+
+<p>
+The generic function <a href="#DictEntry_no_applicabl_572"><b>no-applicable-method</b></a> is not intended
+to be called by programmers.  Programmers may write <i><a href="../26-glossary/m.xhtml#method">methods</a></i> for it.
+
+</p></dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+The default <i><a href="../26-glossary/m.xhtml#method">method</a></i> signals an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>13.2.8 alpha-char-p — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_alpha_char_p_891" class="entry"><span class="secno">13.2.8</span> <span class="names">alpha-char-p</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>alpha-char-p</b>
+<i>character</i>
+  → <i>generalized-boolean</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>character</i>—a <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
+
+<p>
+<i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns <i><a href="../26-glossary/t.xhtml#true">true</a></i> if <i>character</i> is an <i><a href="../26-glossary/a.xhtml#alphabetic">alphabetic</a></i><sub>1</sub> <i><a href="../26-glossary/c.xhtml#character">character</a></i>; otherwise, returns <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (alpha-char-p #\a) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+ (alpha-char-p #\5) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+ (alpha-char-p #\Newline) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+ ;; This next example presupposes an implementation
+ ;; in which #\\alfa is a defined character.
+ (alpha-char-p #\\alfa) → <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+None.
+(In particular, the results of this predicate are independent 
+of any special syntax which might have been enabled in the <i><a href="../26-glossary/c.xhtml#currentreadtable">current readtable</a></i>.)
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>character</i> is not a <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="13.2.9-alphanumericp.xhtml#DictEntry_alphanumeric_892"><b>alphanumericp</b></a>,
+Section <a href="13.1-character-concepts.xhtml#SubSection_Documentatio_882">13.1.10 Documentation of Implementation-Defined Scripts</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

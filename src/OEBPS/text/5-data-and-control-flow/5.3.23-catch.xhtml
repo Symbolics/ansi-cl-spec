@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.23 catch — Special Operator</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_catch_409" class="entry"><span class="secno">5.3.23</span> <span class="names">catch</span> <span class="kind">Special Operator</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>catch</b>
+<i><i>tag</i> {<i>form</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>tag</i>—a <i><a href="../26-glossary/c.xhtml#catchtag">catch tag</a></i>; evaluated.
+
+<p>
+<i>forms</i>—an <i><a href="../26-glossary/i.xhtml#implicitprogn">implicit progn</a></i>.
+
+</p><p>
+<i>results</i>—if the <i>forms</i> exit normally,
+	           the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>forms</i>;
+		  if a throw occurs to the <i>tag</i>,
+		   the <i><a href="../26-glossary/v.xhtml#value">values</a></i> that are thrown.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_catch_409"><b>catch</b></a> is used as the destination of a non-local 
+control transfer by <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a>.
+<i>Tags</i> are used to find the <a href="#DictEntry_catch_409"><b>catch</b></a>
+to which a <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a> is transferring control.
+<code>(catch 'foo <i>form</i>)</code> catches a 
+<code>(throw 'foo <i>form</i>)</code> but not a
+<code>(throw 'bar <i>form</i>)</code>.
+
+<p>
+
+The order of execution of <a href="#DictEntry_catch_409"><b>catch</b></a> follows:
+
+</p><ul>
+<li>1. <i>Tag</i> is evaluated.
+It serves as the name of the
+<a href="#DictEntry_catch_409"><b>catch</b></a>.  
+
+</li><li>2. <i>Forms</i> are then evaluated as an implicit <a href="5.3.59-progn.xhtml#DictEntry_progn_445"><b>progn</b></a>,
+and the results of the last <i>form</i> are returned unless a 
+<a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a> occurs.
+
+</li><li>3. If a <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a> occurs 
+during the execution of one of the <i>forms</i>, control
+is transferred  to the <a href="#DictEntry_catch_409"><b>catch</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> whose <i>tag</i> 
+is <a href="5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a> to
+the tag argument of the <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a>
+and which is the most recently established <a href="#DictEntry_catch_409"><b>catch</b></a> with that 
+<i>tag</i>.
+
+No further evaluation of <i>forms</i> occurs.
+
+
+</li><li>4. The <i>tag</i> <i>established</i> 
+by <a href="#DictEntry_catch_409"><b>catch</b></a> is <i>disestablished</i>
+just before the results are returned.
+
+</li></ul>
+
+<p>
+
+
+
+If during the execution of one of the <i>forms</i>, a <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a>
+is executed whose tag is <a href="5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a> to the <a href="#DictEntry_catch_409"><b>catch</b></a> tag, 
+then the values specified by the <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a> are
+returned as the result of the dynamically most recently established
+<a href="#DictEntry_catch_409"><b>catch</b></a> form with that tag.
+
+
+
+</p><p>
+The mechanism for <a href="#DictEntry_catch_409"><b>catch</b></a> and <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a> works even
+if <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a> is not within the lexical scope of <a href="#DictEntry_catch_409"><b>catch</b></a>.
+<a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a> must occur within the <i><a href="../26-glossary/d.xhtml#dynamicextent">dynamic extent</a></i> 
+of the <i><a href="../26-glossary/e.xhtml#evaluation">evaluation</a></i> of the body of a <a href="#DictEntry_catch_409"><b>catch</b></a> with a corresponding <i>tag</i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (catch '-tag 1 2 (throw '-tag 3) 4) → 3
+ (catch '-tag 1 2 3 4) → 4
+ (defun throw-back (tag) (throw tag t)) →  THROW-BACK
+ (catch '-tag (throw-back '-tag) 2) →  T
+
+ ;; Contrast behavior of this example with corresponding example of BLOCK.
+ (catch 'c
+   (flet ((c1 () (throw 'c 1)))
+     (catch 'c (c1) (print 'unreachable))
+     2)) → 2
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="5.3.67-control-error.xhtml#DictEntry_control_erro_453"><b>control-error</b></a> is signaled
+if <a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a> is done
+when there is no suitable <a href="#DictEntry_catch_409"><b>catch</b></a> <i>tag</i>. 
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="5.3.28-throw.xhtml#DictEntry_throw_414"><b>throw</b></a>, Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#Section_Evaluation_187">3.1 Evaluation</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+It is customary for <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> to be used
+as <i>tags</i>, but any <i><a href="../26-glossary/o.xhtml#object">object</a></i> is permitted.  
+However, numbers should not be
+used because the comparison is done using <a href="5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a>.
+
+<p>
+<a href="#DictEntry_catch_409"><b>catch</b></a> differs from <a href="5.3.22-block.xhtml#DictEntry_block_408"><b>block</b></a> in that 
+<a href="#DictEntry_catch_409"><b>catch</b></a>
+tags have dynamic <i><a href="../26-glossary/s.xhtml#scope">scope</a></i> while 
+<a href="5.3.22-block.xhtml#DictEntry_block_408"><b>block</b></a> names have <i><a href="../26-glossary/l.xhtml#lexicalscope">lexical scope</a></i>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

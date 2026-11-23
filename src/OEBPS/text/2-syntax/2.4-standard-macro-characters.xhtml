@@ -1,0 +1,1521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>2.4 Standard Macro Characters</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Standard_Mac_142"><span class="secno">2.4</span> Standard Macro Characters</h2>
+<p>
+
+If the reader encounters a <i><a href="../26-glossary/m.xhtml#macrocharacter">macro character</a></i>,
+then its associated <i><a href="../26-glossary/r.xhtml#readermacrofunction">reader macro function</a></i> 
+is invoked and may produce an <i><a href="../26-glossary/o.xhtml#object">object</a></i> to be returned.
+This <i><a href="../26-glossary/f.xhtml#function">function</a></i> may read the <i><a href="../26-glossary/c.xhtml#character">characters</a></i> 
+following the <i><a href="../26-glossary/m.xhtml#macrocharacter">macro character</a></i> in the <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> 
+in any syntax and return the <i><a href="../26-glossary/o.xhtml#object">object</a></i> represented by that syntax.
+
+</p><p>
+
+Any <i><a href="../26-glossary/c.xhtml#character">character</a></i> can be made to be a <i><a href="../26-glossary/m.xhtml#macrocharacter">macro character</a></i>.
+The <i><a href="../26-glossary/m.xhtml#macrocharacter">macro characters</a></i> defined initially in a <i><a href="../26-glossary/c.xhtml#conformingimplementation">conforming implementation</a></i>
+include
+the following:
+</p>
+<section>
+<h3 id="SubSection_Left_Parenth_143"><span class="secno">2.4.1</span> Left-Parenthesis</h3>
+<p>
+
+
+
+The <i><a href="../26-glossary/l.xhtml#leftparenthesis">left-parenthesis</a></i> initiates reading of a <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
+<a href="../23-reader/23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> is called recursively to read successive <i><a href="../26-glossary/o.xhtml#object">objects</a></i>
+until a right parenthesis is found in the input <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
+A <i><a href="../26-glossary/l.xhtml#list">list</a></i> of the <i><a href="../26-glossary/o.xhtml#object">objects</a></i> read is returned.  Thus
+
+</p><pre> (a b c)
+</pre><p>
+is read as a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of three <i><a href="../26-glossary/o.xhtml#object">objects</a></i>
+(the <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> <code>a</code>, <code>b</code>, and <code>c</code>).
+The right parenthesis need not immediately follow the printed representation of
+the last <i><a href="../26-glossary/o.xhtml#object">object</a></i>; <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>2</sub>                              
+characters and comments may precede it.
+
+</p><p>
+
+If no <i><a href="../26-glossary/o.xhtml#object">objects</a></i> precede the right parenthesis, 
+it reads as a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of zero <i><a href="../26-glossary/o.xhtml#object">objects</a></i> 
+(the <i><a href="../26-glossary/e.xhtml#emptylist">empty list</a></i>).
+
+</p><p>
+
+If a <i><a href="../26-glossary/t.xhtml#token">token</a></i> that is just a dot
+not immediately preceded by an escape character
+is read after some <i><a href="../26-glossary/o.xhtml#object">object</a></i>
+then exactly one more <i><a href="../26-glossary/o.xhtml#object">object</a></i> must follow the dot,
+possibly preceded or followed by <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>2</sub> or a comment,
+followed by the right parenthesis:
+
+</p><pre> (a b c . d)
+</pre><p>
+This means that the <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i> of the last <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> in the 
+<i><a href="../26-glossary/l.xhtml#list">list</a></i> is not <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+but rather the <i><a href="../26-glossary/o.xhtml#object">object</a></i> whose representation followed the dot.
+The above example might have been the result of evaluating
+
+</p><pre> (cons 'a (cons 'b (cons 'c 'd)))
+</pre><p>
+Similarly,
+
+</p><pre> (cons 'this-one 'that-one) → (this-one . that-one)
+</pre><p>
+It is permissible for the <i><a href="../26-glossary/o.xhtml#object">object</a></i> 
+following the dot to be a <i><a href="../26-glossary/l.xhtml#list">list</a></i>:
+
+</p><pre> (a b c d . (e f . (g))) ==(a b c d e f g)
+</pre>
+
+<p>
+For information on how the <i>Lisp printer</i> prints <i><a href="../26-glossary/l.xhtml#list">lists</a></i> and <i>conses</i>,
+see Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Lis_1268">22.1.3.5 Printing Lists and Conses</a>.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Right_Parent_144"><span class="secno">2.4.2</span> Right-Parenthesis</h3>
+<p>
+The <i><a href="../26-glossary/r.xhtml#rightparenthesis">right-parenthesis</a></i> is invalid 
+except when used in conjunction with the left parenthesis character.
+For more information, see Section <a href="2.2-reader-algorithm.xhtml#Section_Reader_Algor_126">2.2 Reader Algorithm</a>.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Single_Quote_145"><span class="secno">2.4.3</span> Single-Quote</h3>
+<p>
+<b>Syntax:</b>  <code>'&lt;&lt;exp&gt;&gt;</code>
+
+</p><p>
+A <i><a href="../26-glossary/s.xhtml#singlequote">single-quote</a></i> introduces an <i><a href="../26-glossary/e.xhtml#expression">expression</a></i> to be "quoted."
+<i><a href="../26-glossary/s.xhtml#singlequote">Single-quote</a></i> followed by an <i><a href="../26-glossary/e.xhtml#expression">expression</a></i> <i>exp</i> 
+is treated by the <i>Lisp reader</i> as an abbreviation for
+and is parsed identically to the <i><a href="../26-glossary/e.xhtml#expression">expression</a></i> <code>(quote <i>exp</i>)</code>.
+See the <i><a href="../26-glossary/s.xhtml#specialoperator">special operator</a></i> <a href="../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289"><b>quote</b></a>.
+</p>
+<section>
+<h4 id="SubSubSectio_Examples_of__146"><span class="secno">2.4.3.1</span> Examples of Single-Quote</h4>
+<pre> 'foo →  FOO
+ "foo → (QUOTE FOO)
+ (car "foo) →  QUOTE
+</pre>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Semicolon_147"><span class="secno">2.4.4</span> Semicolon</h3>
+<p>
+<b>Syntax:</b> <code>;&lt;&lt;text&gt;&gt;</code>
+
+</p><p>
+A <i><a href="../26-glossary/s.xhtml#semicolon">semicolon</a></i> introduces <i><a href="../26-glossary/c.xhtml#character">characters</a></i> that are to be ignored,
+such as comments.  The <i><a href="../26-glossary/s.xhtml#semicolon">semicolon</a></i> and all <i><a href="../26-glossary/c.xhtml#character">characters</a></i> up to
+and including the next <i><a href="../26-glossary/n.xhtml#newline">newline</a></i> or end of file are ignored.
+</p>
+<section>
+<h4 id="SubSubSectio_Examples_of__148"><span class="secno">2.4.4.1</span> Examples of Semicolon</h4>
+<pre> (+ 3 ; three
+    4)
+→ 7    
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Notes_about__149"><span class="secno">2.4.4.2</span> Notes about Style for Semicolon</h4>
+<p>
+
+Some text editors make assumptions about desired indentation based on
+the number of <i><a href="../26-glossary/s.xhtml#semicolon">semicolons</a></i> that begin a comment.  The following style 
+conventions are common, although not by any means universal.
+</p>
+<section>
+<h5 id="SubSubSubSec_Use_of_Singl_150"><span class="secno">2.4.4.2.1</span> Use of Single Semicolon</h5>
+<p>
+
+Comments that begin with a single <i><a href="../26-glossary/s.xhtml#semicolon">semicolon</a></i> are all aligned to 
+the same column at the right (sometimes called the "comment column").
+The text of such a comment generally applies only to the line on which it appears.
+Occasionally two or three contain a single sentence together;
+this is sometimes indicated by indenting all but the first with an additional
+space (after the <i><a href="../26-glossary/s.xhtml#semicolon">semicolon</a></i>).
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Use_of_Doubl_151"><span class="secno">2.4.4.2.2</span> Use of Double Semicolon</h5>
+<p>
+
+Comments that begin with a double <i><a href="../26-glossary/s.xhtml#semicolon">semicolon</a></i> are all aligned to
+the same level of indentation as a <i><a href="../26-glossary/f.xhtml#form">form</a></i> would be at that same
+position in the <i><a href="../26-glossary/c.xhtml#code">code</a></i>.
+
+
+
+The text of such a comment usually describes
+    the state of the <i><a href="../26-glossary/p.xhtml#program">program</a></i> at the point where the comment occurs,
+    the <i><a href="../26-glossary/c.xhtml#code">code</a></i> which follows the comment,
+ or both.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Use_of_Tripl_152"><span class="secno">2.4.4.2.3</span> Use of Triple Semicolon</h5>
+<p>
+
+Comments that begin with a triple <i><a href="../26-glossary/s.xhtml#semicolon">semicolon</a></i> are all aligned to
+the left margin.  Usually they are used prior to a definition or set
+of definitions, rather than within a definition.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Use_of_Quadr_153"><span class="secno">2.4.4.2.4</span> Use of Quadruple Semicolon</h5>
+<p>
+
+Comments that begin with a quadruple <i><a href="../26-glossary/s.xhtml#semicolon">semicolon</a></i> are all aligned to
+the left margin, and generally contain only a short piece of text that
+serve as a title for the code which follows, and might be used in the
+header or footer of a program that prepares code for presentation as 
+a hardcopy document.
+
+
+</p>
+</section>
+<section>
+<h5 id="SubSubSubSec_Examples_of__154"><span class="secno">2.4.4.2.5</span> Examples of Style for Semicolon</h5>
+<pre>;;;; Math Utilities
+
+;;; FIB computes the the Fibonacci function in the traditional
+;;; recursive way.
+
+(defun fib (n)
+  (check-type n integer)
+  ;; At this point we're sure we have an integer argument.
+  ;; Now we can get down to some serious computation.
+  (cond ((&lt; n 0)
+         ;; Hey, this is just supposed to be a simple example.
+         ;; Did you really expect me to handle the general case?
+         (error "FIB got ~D as an argument." n))
+        ((&lt; n 2) n)             ;fib[0]=0 and fib[1]=1
+        ;; The cheap cases didn't work.
+        ;; Nothing more to do but recurse.
+        (t (+ (fib (- n 1))     ;The traditional formula
+              (fib (- n 2)))))) ; is fib[n-1]+fib[n-2].
+</pre>
+</section>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Double_Quote_155"><span class="secno">2.4.5</span> Double-Quote</h3>
+<p>
+<b>Syntax:</b> <code>"&lt;&lt;text&gt;&gt;"</code>
+
+</p><p>
+The <i><a href="../26-glossary/d.xhtml#doublequote">double-quote</a></i> is used to begin and end a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
+When a <i><a href="../26-glossary/d.xhtml#doublequote">double-quote</a></i> is encountered,
+<i><a href="../26-glossary/c.xhtml#character">characters</a></i> are read from the <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> 
+and accumulated until another <i><a href="../26-glossary/d.xhtml#doublequote">double-quote</a></i> is encountered.
+If a <i><a href="../26-glossary/s.xhtml#singleescape">single escape</a></i> <i><a href="../26-glossary/c.xhtml#character">character</a></i> is seen,
+the <i><a href="../26-glossary/s.xhtml#singleescape">single escape</a></i> <i><a href="../26-glossary/c.xhtml#character">character</a></i> is discarded,
+the next <i><a href="../26-glossary/c.xhtml#character">character</a></i> is accumulated, and accumulation continues.
+
+The accumulated <i><a href="../26-glossary/c.xhtml#character">characters</a></i> 
+up to but not including the matching <i><a href="../26-glossary/d.xhtml#doublequote">double-quote</a></i> 
+are made into a <i><a href="../26-glossary/s.xhtml#simplestring">simple string</a></i> and returned.
+
+It is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+which <i><a href="../26-glossary/a.xhtml#attribute">attributes</a></i> of the accumulated characters are removed in this process.
+
+
+</p><p>
+Examples of the use of the <i><a href="../26-glossary/d.xhtml#doublequote">double-quote</a></i> character are in the next figure. 
+
+</p><table id="fig-2-18" class="fig">
+<caption><span class="figlabel">Figure 2-18.</span> Examples of the use of double-quote</caption>
+
+  <tbody><tr>
+    <td><code>"Foo"</code></td>
+    <td>;A string with three characters in it</td>
+  </tr>
+  <tr>
+    <td><code>""</code>			</td>
+    <td>;An empty string</td>
+  </tr>
+  <tr>
+    <td><code>"\"APL\\360?\" he cried."</code></td>
+    <td>;A string with twenty characters</td>
+  </tr>
+  <tr>
+    <td><code>"|x| = |-x|"</code></td>
+    <td>;A ten-character string</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+Note that to place a single escape character or a <i><a href="../26-glossary/d.xhtml#doublequote">double-quote</a></i> into a string,
+such a character must be preceded by a single escape character.
+Note, too, that a multiple escape character need not be quoted by a 
+single escape character within a string.
+
+</p><p>
+For information on how the <i>Lisp printer</i> prints <i><a href="../26-glossary/s.xhtml#string">strings</a></i>,
+see Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Str_1267">22.1.3.4 Printing Strings</a>.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Backquote_156"><span class="secno">2.4.6</span> Backquote</h3>
+<p>
+The <i><a href="../26-glossary/b.xhtml#backquote">backquote</a></i> introduces a template of a data structure to be built.  
+For example, writing
+
+</p><pre> `(cond ((numberp ,x) ,@y) (t (print ,x) ,@y))
+</pre><p>
+is roughly equivalent to writing
+
+</p><pre> (list 'cond 
+       (cons (list 'numberp x) y) 
+       (list* 't (list 'print x) y))
+</pre><p>
+Where a comma
+occurs in the template, 
+the <i><a href="../26-glossary/e.xhtml#expression">expression</a></i>
+following the comma is to be evaluated to produce an <i><a href="../26-glossary/o.xhtml#object">object</a></i> to
+be inserted at that point.  Assume <code>b</code> has the value 3, for example, then
+evaluating the <i><a href="../26-glossary/f.xhtml#form">form</a></i> denoted by <code>`(a b ,b ,(+ b 1) b)</code> produces
+the result <code>(a b 3 4 b)</code>.
+
+</p><p>
+
+If a comma is immediately followed by an <i><a href="../26-glossary/a.xhtml#atsign">at-sign</a></i>, 
+then the <i><a href="../26-glossary/f.xhtml#form">form</a></i> following the <i><a href="../26-glossary/a.xhtml#atsign">at-sign</a></i>
+is evaluated to produce a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/o.xhtml#object">objects</a></i>.
+These <i><a href="../26-glossary/o.xhtml#object">objects</a></i> are then "spliced" into place in the template.  For
+example, if <code>x</code> has the value <code>(a b c)</code>, then
+
+</p><pre> `(x ,x ,@x foo ,(cadr x) bar ,(cdr x) baz ,@(cdr x))
+→ (x (a b c) a b c foo b bar (b c) baz b c)
+</pre><p>
+
+The backquote syntax can be summarized formally as follows.
+
+</p><ul>
+<li>
+<code>`<i>basic</i></code> is the same as <code>'<i>basic</i></code>,
+that is, <code>(quote <i>basic</i>)</code>, for any <i><a href="../26-glossary/e.xhtml#expression">expression</a></i> 
+<i>basic</i> that is not a <i><a href="../26-glossary/l.xhtml#list">list</a></i> or a general <i><a href="../26-glossary/v.xhtml#vector">vector</a></i>.
+
+</li><li>
+<code>`,<i>form</i></code> is the same as <i>form</i>, for any <i>form</i>, provided
+that the representation of <i>form</i> does not begin with <i><a href="../26-glossary/a.xhtml#atsign">at-sign</a></i>
+or <i><a href="../26-glossary/d.xhtml#dot">dot</a></i>.  (A similar caveat holds for all occurrences of a form after a <i><a href="../26-glossary/c.xhtml#comma">comma</a></i>.)
+
+</li><li>
+<code>`,@<i>form</i></code> has undefined consequences.
+
+</li><li>
+<code>`(x1 x2 x3 ... xn . atom)</code>
+may be interpreted to mean
+
+<pre> (append [ x1][ x2][ x3]... [ xn](quote atom))
+</pre>
+where the brackets are used to indicate
+a transformation of an <i>xj</i> as follows:
+
+<ul>
+<li>--
+<code>[<i>form</i>]</code> is interpreted as <code>(list `<i>form</i>)</code>, 
+which contains a backquoted form that must then be further interpreted.
+
+</li><li>--
+<code>[,<i>form</i>]</code> is interpreted as <code>(list <i>form</i>)</code>.
+
+</li><li>--
+<code>[,@<i>form</i>]</code> is interpreted as <i>form</i>.
+</li></ul>
+
+</li><li>
+<code>`(x1 x2 x3 ... xn)</code> may be interpreted to mean
+the same as the backquoted form
+<code>`(x1 x2 x3 ... xn . <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>)</code>,
+thereby reducing it to the previous case.
+
+</li><li>
+<code>`(x1 x2 x3 ... xn . ,form)</code> may be interpreted to mean
+
+<pre> (append [ x1][ x2][ x3]... [ xn] form)
+</pre>
+where the brackets indicate a transformation of an <code>xj</code> as described above.
+
+</li><li>
+<code>`(x1 x2 x3 ... xn . ,@form)</code> has undefined consequences.
+
+</li><li>
+<code>`#(x1 x2 x3 ... xn)</code> may be interpreted to mean
+<code>(apply #'vector `(x1 x2 x3 ... xn))</code>.
+</li></ul>
+
+<p>
+
+Anywhere "<code>,@</code>" may be used, the syntax "<code>,.</code>" may be used instead
+to indicate that it is permissible to operate <i>destructively</i> on 
+the <i><a href="../26-glossary/l.xhtml#liststructure">list structure</a></i>  produced by the form following the "<code>,.</code>" 
+(in effect, to use <a href="../14-conses/14.2.25-nconc.xhtml#DictEntry_nconc_938"><b>nconc</b></a> instead of <a href="../14-conses/14.2.26-append.xhtml#DictEntry_append_939"><b>append</b></a>).
+
+</p><p>
+
+If the backquote syntax is nested, the innermost backquoted form
+should be expanded first.  This means that if several commas occur
+in a row, the leftmost one belongs to the innermost <i><a href="../26-glossary/b.xhtml#backquote">backquote</a></i>.
+
+</p><p>
+
+
+
+An <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> is free to interpret a backquoted <i><a href="../26-glossary/f.xhtml#form">form</a></i> <i>F<sub>1</sub></i>
+as any <i><a href="../26-glossary/f.xhtml#form">form</a></i> <i>F<sub>2</sub></i> that, when evaluated, will produce a result that is
+the <i><a href="../26-glossary/s.xhtml#same">same</a></i> under <a href="../5-data-and-control-flow/5.3.35-equal.xhtml#DictEntry_equal_421"><b>equal</b></a> as the result implied by the above definition, 
+provided that the side-effect behavior of the substitute <i><a href="../26-glossary/f.xhtml#form">form</a></i> <i>F<sub>2</sub></i> 
+is also consistent with the description given above.
+
+The constructed
+copy of the template might or might not share <i><a href="../26-glossary/l.xhtml#list">list</a></i> structure with the
+template itself.  As an example, the above definition implies that
+
+</p><pre> `((,a b) ,c ,@d)
+</pre><p>
+will be interpreted as if it were
+
+</p><pre> (append (list (append (list a) (list 'b) '<a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>)) (list c) d '<a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>)
+</pre><p>
+but it could also be legitimately interpreted to mean any of the following:
+
+</p><pre> (append (list (append (list a) (list 'b))) (list c) d)
+ (append (list (append (list a) '(b))) (list c) d)
+ (list* (cons a '(b)) c d)
+ (list* (cons a (list 'b)) c d)
+ (append (list (cons a '(b))) (list c) d)
+ (list* (cons a '(b)) c (copy-list d))
+</pre>
+<section>
+<h4 id="SubSubSectio_Notes_about__157"><span class="secno">2.4.6.1</span> Notes about Backquote</h4>
+<p>
+
+Since the exact manner in which the <i>Lisp reader</i> will parse
+an <i><a href="../26-glossary/e.xhtml#expression">expression</a></i> involving the <i><a href="../26-glossary/b.xhtml#backquote">backquote</a></i> <i><a href="../26-glossary/r.xhtml#readermacro">reader macro</a></i> 
+is not specified, an <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> is free to choose any
+representation that preserves the semantics described.
+
+</p><p>
+Often an <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> will choose a representation that facilitates
+pretty printing of the expression, so that <code>(pprint `(a ,b))</code> will display
+<code>`(a ,b)</code> and not, for example, <code>(list 'a b)</code>.  However, this is not a
+requirement.
+
+</p><p>
+Implementors who have no particular reason to make one choice or another
+might wish to refer to <i>IEEE Standard for the Scheme Programming Language</i>, which identifies a popular choice of
+representation for such expressions that might provide useful to be useful
+compatibility for some user communities.  There is no requirement, however,
+that any <i><a href="../26-glossary/c.xhtml#conformingimplementation">conforming implementation</a></i> use this particular representation.
+This information is provided merely for cross-reference purposes.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Comma_158"><span class="secno">2.4.7</span> Comma</h3>
+<p>
+The <i><a href="../26-glossary/c.xhtml#comma">comma</a></i> is part of the backquote syntax; see Section <a href="#SubSection_Backquote_156">2.4.6 Backquote</a>.
+<i><a href="../26-glossary/c.xhtml#comma">Comma</a></i> is invalid if used other than inside the body of a 
+backquote <i><a href="../26-glossary/e.xhtml#expression">expression</a></i> as described above.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Sharpsign_159"><span class="secno">2.4.8</span> Sharpsign</h3>
+<p>
+<i><a href="../26-glossary/s.xhtml#sharpsign">Sharpsign</a></i> is a <i><a href="../26-glossary/n.xhtml#nonterminating">non-terminating</a></i> <i><a href="../26-glossary/d.xhtml#dispatchingmacrocharacter">dispatching macro character</a></i>.
+It reads an optional 
+
+sequence of digits and then one more character,
+and uses that character to select a <i><a href="../26-glossary/f.xhtml#function">function</a></i> to run as a
+<i><a href="../26-glossary/r.xhtml#readermacrofunction">reader macro function</a></i>.
+
+</p><p>
+
+The <i><a href="../26-glossary/s.xhtml#standardsyntax">standard syntax</a></i> includes constructs introduced by the <code>#</code> character.
+The syntax of these constructs is as follows:
+a character that identifies the type of construct is 
+followed by arguments in some form.
+If the character is a letter, its <i><a href="../26-glossary/c.xhtml#case">case</a></i> is not important;
+<code>#O</code> and <code>#o</code> are considered to be equivalent, for example.
+
+</p><p>
+
+Certain <code>#</code> constructs allow an unsigned decimal number to appear
+between the <code>#</code> and the character.
+
+</p><p>
+
+The <i><a href="../26-glossary/r.xhtml#readermacro">reader macros</a></i> associated with the <i><a href="../26-glossary/d.xhtml#dispatchingmacrocharacter">dispatching macro character</a></i> <code>#</code>
+are described later in this section and summarized in the next figure.
+
+</p><table id="fig-2-19" class="fig">
+<caption><span class="figlabel">Figure 2-19.</span> Standard # Dispatching Macro Character Syntax</caption>
+<tbody><tr><th>dispatch char</th>
+<th>purpose</th>
+<th>dispatch char</th>
+<th>purpose</th>
+</tr>
+
+  <tr>
+    <td>Backspace</td>
+    <td>signals error</td>
+    <td><code>{</code></td>
+    <td>undefined*</td>
+  </tr>
+  <tr>
+    <td>Tab</td>
+    <td>signals error</td>
+    <td><code>}</code></td>
+    <td>undefined*</td>
+  </tr>
+  <tr>
+    <td>Newline</td>
+    <td>signals error</td>
+    <td>+</td>
+    <td>read-time conditional</td>
+  </tr>
+  <tr>
+    <td>Linefeed</td>
+    <td>signals error</td>
+    <td>-</td>
+    <td>read-time conditional</td>
+  </tr>
+  <tr>
+    <td>Page</td>
+    <td>signals error</td>
+    <td>.</td>
+    <td>read-time evaluation</td>
+  </tr>
+  <tr>
+    <td>Return</td>
+    <td>signals error</td>
+    <td>/</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td>Space</td>
+    <td>signals error</td>
+    <td>A, a</td>
+    <td>array</td>
+  </tr>
+  <tr>
+    <td>!</td>
+    <td>undefined*</td>
+    <td>B, b</td>
+    <td>binary rational</td>
+  </tr>
+  <tr>
+    <td><code>"</code></td>
+    <td>undefined</td>
+    <td>C, c</td>
+    <td>complex number</td>
+  </tr>
+  <tr>
+    <td>#</td>
+    <td>reference to = label</td>
+    <td>D, d</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td>$</td>
+    <td>undefined</td>
+    <td>E, e</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td>%</td>
+    <td>undefined</td>
+    <td>F, f</td>
+    <td>undefined</td>
+  </tr><tr><td>
+&amp;</td>
+    <td>undefined</td>
+    <td>G, g</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td>'</td>
+    <td>function abbreviation</td>
+    <td>H, h</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td>(</td>
+    <td>simple vector</td>
+    <td>I, i</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td>)</td>
+    <td>signals error</td>
+    <td>J, j</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td><code>*</code></td>
+    <td>bit vector</td>
+    <td>K, k</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td>,</td>
+    <td>undefined</td>
+    <td>L, l</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td>:</td>
+    <td>uninterned symbol</td>
+    <td>M, m</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td>;</td>
+    <td>undefined</td>
+    <td>N, n</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td><code>&lt;</code></td>
+    <td>signals error</td>
+    <td>O, o</td>
+    <td>octal rational</td>
+  </tr>
+  <tr>
+    <td><code>=</code></td>
+    <td>labels following object</td>
+    <td>P, p</td>
+    <td>pathname</td>
+  </tr>
+  <tr>
+    <td><code>&gt;</code></td>
+    <td>undefined</td>
+    <td>Q, q</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td>?</td>
+    <td>undefined*</td>
+    <td>R, r</td>
+    <td>radix-<i>n</i> rational</td>
+  </tr>
+  <tr>
+    <td>@</td>
+    <td>undefined</td>
+    <td>S, s</td>
+    <td>structure</td>
+  </tr>
+  <tr>
+    <td>[</td>
+    <td>undefined*</td>
+    <td>T, t</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td><code>\</code></td>
+    <td>character object</td>
+    <td>U, u</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td>]</td>
+    <td>undefined*</td>
+    <td>V, v</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td>^</td>
+    <td>undefined</td>
+    <td>W, w</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td><code>_</code></td>
+    <td>undefined</td>
+    <td>X, x</td>
+    <td>hexadecimal rational</td>
+  </tr>
+  <tr>
+    <td>`</td>
+    <td>undefined</td>
+    <td>Y, y</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td><code>|</code></td>
+    <td>balanced comment</td>
+    <td>Z, z</td>
+    <td>undefined</td>
+  </tr>
+  <tr>
+    <td><code>~</code></td>
+    <td>undefined</td>
+    <td>Rubout</td>
+    <td>undefined</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+
+
+The combinations marked by an asterisk (*) are explicitly reserved to the
+user.  No <i><a href="../26-glossary/c.xhtml#conformingimplementation">conforming implementation</a></i> defines them.
+
+</p><p>
+Note also that <i><a href="../26-glossary/d.xhtml#digit">digits</a></i> do not appear in the preceding table.  This is
+
+
+
+
+
+
+
+
+
+
+
+
+
+because the notations <code>#0</code>, <code>#1</code>, ..., <code>#9</code> are
+reserved for another purpose which occupies the same syntactic space.
+When a <i><a href="../26-glossary/d.xhtml#digit">digit</a></i> follows a <i><a href="../26-glossary/s.xhtml#sharpsign">sharpsign</a></i>,
+it is not treated as a dispatch character.
+Instead, an unsigned integer argument is accumulated 
+and passed as an <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> to the <i><a href="../26-glossary/r.xhtml#readermacro">reader macro</a></i> 
+for the <i><a href="../26-glossary/c.xhtml#character">character</a></i> that follows the digits.
+For example,
+<code>#2A((1 2) (3 4))</code> is a use of <code>#A</code> with an argument of <code>2</code>.
+</p>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Ba_160"><span class="secno">2.4.8.1</span> Sharpsign Backslash</h4>
+<p>
+<b>Syntax:</b> <code>#\&lt;&lt;x&gt;&gt;</code>
+
+</p><p>
+When the <i><a href="../26-glossary/t.xhtml#token">token</a></i> <i>x</i> is a single <i><a href="../26-glossary/c.xhtml#character">character</a></i> long, 
+this parses as the literal <i><a href="../26-glossary/c.xhtml#character">character</a></i> <i>char</i>.
+
+<i><a href="../26-glossary/u.xhtml#uppercase">Uppercase</a></i> and <i><a href="../26-glossary/l.xhtml#lowercase">lowercase</a></i> letters are distinguished after <code>#\</code>;
+<code>#\A</code> and <code>#\a</code> denote different <i><a href="../26-glossary/c.xhtml#character">character</a></i> <i><a href="../26-glossary/o.xhtml#object">objects</a></i>.
+Any single <i><a href="../26-glossary/c.xhtml#character">character</a></i> works after <code>#\</code>,
+even those that are normally special to <a href="../23-reader/23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>, 
+such as <i><a href="../26-glossary/l.xhtml#leftparenthesis">left-parenthesis</a></i> and <i><a href="../26-glossary/r.xhtml#rightparenthesis">right-parenthesis</a></i>.
+
+</p><p>
+
+In the single <i><a href="../26-glossary/c.xhtml#character">character</a></i> case,
+the <i>x</i> must be followed by a non-constituent <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
+After <code>#\</code> is read,
+the reader backs up over the <i><a href="../26-glossary/s.xhtml#slash">slash</a></i> and then reads a <i><a href="../26-glossary/t.xhtml#token">token</a></i>,
+treating the initial <i><a href="../26-glossary/s.xhtml#slash">slash</a></i> as a <i><a href="../26-glossary/s.xhtml#singleescape">single escape</a></i> <i><a href="../26-glossary/c.xhtml#character">character</a></i>
+(whether it really is or not in the <i><a href="../26-glossary/c.xhtml#currentreadtable">current readtable</a></i>).
+
+</p><p>
+When the <i><a href="../26-glossary/t.xhtml#token">token</a></i> <i>x</i> is more than one <i><a href="../26-glossary/c.xhtml#character">character</a></i> long,
+
+the <i>x</i> must have the syntax of a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> 
+with no embedded <i><a href="../26-glossary/p.xhtml#packagemarker">package markers</a></i>.
+In this case, the <i><a href="../26-glossary/s.xhtml#sharpsign">sharpsign</a></i> <i><a href="../26-glossary/b.xhtml#backslash">backslash</a></i> notation
+parses as the <i><a href="../26-glossary/c.xhtml#character">character</a></i> whose <i><a href="../26-glossary/n.xhtml#name">name</a></i> is <code>(string-upcase <i>x</i>)</code>;
+see Section <a href="../13-characters/13.1-character-concepts.xhtml#SubSection_Character_Na_879">13.1.7 Character Names</a>.
+
+</p><p>
+For information about how the <i>Lisp printer</i> prints <i><a href="../26-glossary/c.xhtml#character">character</a></i> <i><a href="../26-glossary/o.xhtml#object">objects</a></i>,
+see Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Cha_1262">22.1.3.2 Printing Characters</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Si_161"><span class="secno">2.4.8.2</span> Sharpsign Single-Quote</h4>
+<p>
+Any <i>expression</i> preceded by <code>#'</code> 
+(<i><a href="../26-glossary/s.xhtml#sharpsign">sharpsign</a></i> followed by <i><a href="../26-glossary/s.xhtml#singlequote">single-quote</a></i>),
+as in <code>#'<i>expression</i></code>,
+is treated by the <i>Lisp reader</i> as an abbreviation for and parsed identically 
+to the <i><a href="../26-glossary/e.xhtml#expression">expression</a></i> <code>(function <i>expression</i>)</code>.
+See <a href="../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338"><b>function</b></a>.  For example,
+
+</p><pre>(apply #'+ l) ==(apply (function +) l)
+</pre>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Le_162"><span class="secno">2.4.8.3</span> Sharpsign Left-Parenthesis</h4>
+<p>
+<code>#(</code> and <code>)</code> are used to notate a <i><a href="../26-glossary/s.xhtml#simplevector">simple vector</a></i>. 
+
+</p><p>
+
+If an unsigned decimal integer
+appears between the <code>#</code> and <code>(</code>,
+it specifies explicitly the length of the <i><a href="../26-glossary/v.xhtml#vector">vector</a></i>.  
+The consequences are undefined if the number of <i><a href="../26-glossary/o.xhtml#object">objects</a></i> 
+specified before the closing <code>)</code>
+exceeds the unsigned decimal integer.
+If the number of <i><a href="../26-glossary/o.xhtml#object">objects</a></i> supplied before the closing <code>)</code>
+is less than the unsigned decimal integer but greater than zero,
+the last <i><a href="../26-glossary/o.xhtml#object">object</a></i>
+is used to fill all
+remaining elements of the <i><a href="../26-glossary/v.xhtml#vector">vector</a></i>.
+The consequences are undefined if the unsigned decimal integer is non-zero and
+number of <i><a href="../26-glossary/o.xhtml#object">objects</a></i> supplied before the closing <code>)</code>
+is zero.
+For example,
+
+</p><pre> #(a b c c c c)
+ #6(a b c c c c)
+ #6(a b c)
+ #6(a b c c)
+</pre>
+
+<p>
+all mean the same thing: a <i><a href="../26-glossary/v.xhtml#vector">vector</a></i> of length <code>6</code>
+with <i><a href="../26-glossary/e.xhtml#element">elements</a></i> <code>a</code>, <code>b</code>, and four occurrences of <code>c</code>.  
+Other examples follow:
+
+</p><pre> #(a b c)               ;A vector of length 3
+ #(2 3 5 7 11 13 17 19 23 29 31 37 41 43 47)
+                        ;A vector containing the primes below 50
+ #()                    ;An empty vector
+</pre><p>
+The notation <code>#()</code> denotes an empty <i><a href="../26-glossary/v.xhtml#vector">vector</a></i>, as does <code>#0()</code>.
+
+</p><p>
+For information on how the <i>Lisp printer</i> prints <i><a href="../26-glossary/v.xhtml#vector">vectors</a></i>,
+see Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Str_1267">22.1.3.4 Printing Strings</a>,
+    Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Bit_1269">22.1.3.6 Printing Bit Vectors</a>,
+ or Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Oth_1270">22.1.3.7 Printing Other Vectors</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_As_163"><span class="secno">2.4.8.4</span> Sharpsign Asterisk</h4>
+<p>
+
+
+<b>Syntax:</b> <code>#*&lt;&lt;bits&gt;&gt;</code>
+
+</p><p>
+
+A <i><a href="../26-glossary/s.xhtml#simplebitvector">simple bit vector</a></i> is constructed containing the indicated <i><a href="../26-glossary/b.xhtml#bit">bits</a></i>
+(<code>0</code>'s and <code>1</code>'s), where the leftmost <i>bit</i> has index zero 
+and the subsequent <i>bits</i> have increasing indices.
+
+</p><p>
+<b>Syntax:</b> <code>#&lt;&lt;n&gt;&gt;*&lt;&lt;bits&gt;&gt;</code>
+
+</p><p>
+
+With an argument <i>n</i>,
+the <i><a href="../26-glossary/v.xhtml#vector">vector</a></i> to be created is of <i><a href="../26-glossary/l.xhtml#length">length</a></i> <i>n</i>.
+If the number of <i>bits</i> is less than <i>n</i> but greater than zero,
+the last bit is used to fill all remaining bits of the <i><a href="../26-glossary/b.xhtml#bitvector">bit vector</a></i>.
+
+</p><p>
+The notations <code>#*</code> and <code>#0*</code> each denote an empty <i><a href="../26-glossary/b.xhtml#bitvector">bit vector</a></i>.
+
+</p><p>
+
+Regardless of whether the optional numeric argument <i>n</i> is provided,
+the <i><a href="../26-glossary/t.xhtml#token">token</a></i> that follows the <i><a href="../26-glossary/a.xhtml#asterisk">asterisk</a></i> is delimited by 
+a normal <i><a href="../26-glossary/t.xhtml#token">token</a></i> delimiter.
+However, (unless the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="../23-reader/23.2.16-read-suppress.xhtml#DictEntry_read_suppre_1396"><b>*read-suppress*</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>)
+an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../23-reader/23.2.18-reader-error.xhtml#DictEntry_reader_error_1398"><b>reader-error</b></a> is signaled 
+     if that <i><a href="../26-glossary/t.xhtml#token">token</a></i> is not composed entirely of <code>0</code>'s and <code>1</code>'s,
+  or if <i>n</i> was supplied 
+        and the <i><a href="../26-glossary/t.xhtml#token">token</a></i> is composed of more than <i>n</i> <i>bits</i>,
+  or if <i>n</i> is greater than one, but no <i>bits</i> were specified.
+Neither a <i><a href="../26-glossary/s.xhtml#singleescape">single escape</a></i> nor a <i><a href="../26-glossary/m.xhtml#multipleescape">multiple escape</a></i> is permitted in this <i><a href="../26-glossary/t.xhtml#token">token</a></i>.
+
+
+</p><p>
+For information on how the <i>Lisp printer</i> prints <i><a href="../26-glossary/b.xhtml#bitvector">bit vectors</a></i>,
+see Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Bit_1269">22.1.3.6 Printing Bit Vectors</a>.
+</p>
+<section>
+<h5 id="SubSubSubSec_Examples_of__164"><span class="secno">2.4.8.4.1</span> Examples of Sharpsign Asterisk</h5>
+<p>
+
+For example, 
+</p><pre>  #*101111
+ #6*101111
+ #6*101
+ #6*1011
+</pre><p>
+all mean the same thing: a <i><a href="../26-glossary/v.xhtml#vector">vector</a></i> of length <code>6</code>
+with <i><a href="../26-glossary/e.xhtml#element">elements</a></i> <code>1</code>, <code>0</code>, <code>1</code>, <code>1</code>, <code>1</code>, and <code>1</code>.
+
+</p><p>
+For example:
+
+</p><pre> #*         ;An empty bit-vector
+</pre>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Co_165"><span class="secno">2.4.8.5</span> Sharpsign Colon</h4>
+<p>
+<b>Syntax:</b>  <code>#:&lt;&lt;symbol-name&gt;&gt;</code>
+
+</p><p>
+<code>#:</code> introduces an <i><a href="../26-glossary/u.xhtml#uninterned">uninterned</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> whose <i><a href="../26-glossary/n.xhtml#name">name</a></i> 
+is <i>symbol-name</i>.  Every time this syntax is encountered,
+a <i><a href="../26-glossary/d.xhtml#distinct">distinct</a></i> <i><a href="../26-glossary/u.xhtml#uninterned">uninterned</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> is created.
+The <i>symbol-name</i> must have the syntax of a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> 
+with no <i><a href="../26-glossary/p.xhtml#packageprefix">package prefix</a></i>.
+
+</p><p>
+For information on how the <i>Lisp reader</i> 
+prints <i><a href="../26-glossary/u.xhtml#uninterned">uninterned</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>,
+see Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Sym_1263">22.1.3.3 Printing Symbols</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Do_166"><span class="secno">2.4.8.6</span> Sharpsign Dot</h4>
+<p>
+<code>#.<i>foo</i></code> is read as the <i><a href="../26-glossary/o.xhtml#object">object</a></i> resulting from the evaluation
+of the <i><a href="../26-glossary/o.xhtml#object">object</a></i> represented by <i>foo</i>.
+The evaluation is done during the <a href="../23-reader/23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> process,
+when the <code>#.</code> notation is encountered.
+The <code>#.</code> syntax therefore performs a read-time evaluation of <i>foo</i>.
+
+</p><p>
+The normal effect of <code>#.</code> is inhibited when the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="../23-reader/23.2.15-read-eval.xhtml#DictEntry_read_eval_1395"><b>*read-eval*</b></a> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+
+
+In that situation, an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../23-reader/23.2.18-reader-error.xhtml#DictEntry_reader_error_1398"><b>reader-error</b></a> is signaled.
+
+
+</p><p>
+
+For an <i><a href="../26-glossary/o.xhtml#object">object</a></i>
+that does not have a convenient printed
+representation, a <i><a href="../26-glossary/f.xhtml#form">form</a></i> that computes the <i><a href="../26-glossary/o.xhtml#object">object</a></i> can be given using
+the <code>#.</code> notation.
+
+
+
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_B_167"><span class="secno">2.4.8.7</span> Sharpsign B</h4>
+<p>
+<code>#B</code><i>rational</i> reads <i>rational</i> in binary (radix 2).
+For example, 
+
+</p><pre> #B1101 ==13 ;1101<i><sub>2</sub></i>
+ #b101/11 ==5/3
+</pre>
+
+<p>
+
+The consequences are undefined if the token immediately following
+the <code>#B</code> does not have the syntax of a binary (<i>i.e.</i>,  radix 2) <i><a href="../26-glossary/r.xhtml#rational">rational</a></i>.
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_O_168"><span class="secno">2.4.8.8</span> Sharpsign O</h4>
+<p>
+<code>#O</code><i>rational</i> reads <i>rational</i> in octal (radix 8).
+For example, 
+
+</p><pre> #o37/15 ==31/13
+ #o777 ==511
+ #o105 ==69 ;105<i><sub>8</sub></i>
+</pre>
+
+<p>
+
+The consequences are undefined if the token immediately following
+the <code>#O</code> does not have the syntax of an octal (<i>i.e.</i>,  radix 8) <i><a href="../26-glossary/r.xhtml#rational">rational</a></i>.
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_X_169"><span class="secno">2.4.8.9</span> Sharpsign X</h4>
+<p>
+<code>#X</code><i>rational</i> reads <i>rational</i> in hexadecimal (radix 16).
+The digits above <code>9</code> are the letters <code>A</code> through <code>F</code> (the lowercase
+letters <code>a</code> through <code>f</code> are also acceptable).  For example,
+
+</p><pre> #xF00 ==3840             
+ #x105 ==261 ;105<i><sub>16</sub></i>
+</pre>
+
+<p>
+
+The consequences are undefined if the token immediately following
+the <code>#X</code> does not have the syntax of a hexadecimal (<i>i.e.</i>,  radix 16) <i><a href="../26-glossary/r.xhtml#rational">rational</a></i>.
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_R_170"><span class="secno">2.4.8.10</span> Sharpsign R</h4>
+<p>
+
+<code>#<i>n</i>R</code>
+
+</p><p>
+<code>#<i>radix</i>R<i>rational</i></code> reads <i>rational</i> in radix <i>radix</i>.
+<i>radix</i> must consist of only digits
+that are interpreted as an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>
+in decimal radix; its value must be between 2 and 36 (inclusive).
+Only valid digits
+for the specified radix may be used.
+
+</p><p>
+
+For example, <code>#3r102</code> is another way of writing <code>11</code> (decimal), 
+and <code>#11R32</code>
+is another way of writing <code>35</code> (decimal).  
+For radices larger than 10, letters of
+the alphabet are used in order for the digits after <code>9</code>.
+No alternate <code>#</code> notation exists for the decimal radix since a
+decimal point suffices.
+
+</p><p>
+The next figure contains examples of the use of <code>#B</code>,
+<code>#O</code>, <code>#X</code>, and <code>#R</code>.
+
+</p><table id="fig-2-20" class="fig">
+<caption><span class="figlabel">Figure 2-20.</span> Radix Indicator Example</caption>
+
+  <tbody><tr>
+    <td><code>#2r11010101</code></td>
+    <td>;Another way of writing <code>213</code> decimal</td>
+  </tr>
+  <tr>
+    <td><code>#b11010101</code></td>
+    <td>;Ditto</td>
+  </tr>
+  <tr>
+    <td><code>#b+11010101</code></td>
+    <td>;Ditto</td>
+  </tr>
+  <tr>
+    <td><code>#o325</code></td>
+    <td>;Ditto, in octal radix</td>
+  </tr>
+  <tr>
+    <td><code>#xD5</code></td>
+    <td>;Ditto, in hexadecimal radix</td>
+  </tr>
+  <tr>
+    <td><code>#16r+D5</code></td>
+    <td>;Ditto</td>
+  </tr>
+  <tr>
+    <td><code>#o-300</code></td>
+    <td>;Decimal <code>-192</code>, written in base 8</td>
+  </tr>
+  <tr>
+    <td><code>#3r-21010</code></td>
+    <td>;Same thing in base 3</td>
+  </tr>
+  <tr>
+    <td><code>#25R-7H</code></td>
+    <td>;Same thing in base 25</td>
+  </tr>
+  <tr>
+    <td><code>#xACCEDED</code></td>
+    <td>;<code>181202413</code>, in hexadecimal radix</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+
+The consequences are undefined if the token immediately following
+the <code>#<i>n</i>R</code> does not have the syntax of a <i><a href="../26-glossary/r.xhtml#rational">rational</a></i> in radix <i>n</i>.
+
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_C_171"><span class="secno">2.4.8.11</span> Sharpsign C</h4>
+<p>
+
+
+
+<code>#C</code> reads a following <i><a href="../26-glossary/o.xhtml#object">object</a></i>, which must be a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of
+length two whose <i><a href="../26-glossary/e.xhtml#element">elements</a></i> are both <i>reals</i>.
+These <i>reals</i> denote, respectively,
+the real and imaginary parts of a <i><a href="../26-glossary/c.xhtml#complex">complex</a></i> number.
+
+
+If the two parts as notated are not of the same data type,
+then they are converted 
+according to the rules of floating-point <i><a href="../26-glossary/c.xhtml#contagion">contagion</a></i>
+described in Section <a href="../12-numbers/12.1-number-concepts.xhtml#SubSubSectio_Contagion_in_751">12.1.1.2 Contagion in Numeric Operations</a>.
+
+</p><p>
+<code>#C(<i>real</i> <i>imag</i>)</code> is equivalent to 
+<code>#.(complex (quote <i>real</i>) (quote <i>imag</i>))</code>,
+
+except that <code>#C</code> is not affected by <a href="../23-reader/23.2.15-read-eval.xhtml#DictEntry_read_eval_1395"><b>*read-eval*</b></a>.
+See the <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="../12-numbers/12.2.2-complex.xhtml#DictEntry_complex_776"><b>complex</b></a>.
+
+</p><p>
+The next figure contains examples of the use of <code>#C</code>.
+
+</p><table id="fig-2-21" class="fig">
+<caption><span class="figlabel">Figure 2-21.</span> Complex Number Example</caption>
+
+  <tbody><tr>
+    <td><code>#C(3.0s1 2.0s-1)</code></td>
+    <td>;A <i><a href="../26-glossary/c.xhtml#complex">complex</a></i> with <i>small float</i> parts.</td>
+  </tr>
+  <tr>
+    <td><code>#C(5 -3)      </code></td>
+    <td>;A "Gaussian integer"</td>
+  </tr>
+  <tr>
+    <td><code>#C(5/3 7.0) </code></td>
+    <td>;Will be converted internally to <code>#C(1.66666 7.0)</code></td>
+  </tr>
+  <tr>
+    <td><code>#C(0 1)</code></td>
+    <td>;The imaginary unit; that is, i.</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+For further information, 
+see Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSubSec_Printing_Com_1260">22.1.3.1.4 Printing Complexes</a> and Section <a href="2.3-interpretation-of-tokens.xhtml#SubSubSectio_Syntax_of_a__137">2.3.2.3 Syntax of a Complex</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_A_172"><span class="secno">2.4.8.12</span> Sharpsign A</h4>
+<p>
+
+<code>#<i>n</i>A</code>
+
+</p><p>
+<code>#<i>n</i><code>A</code><i>object</i></code> constructs an <i>n</i>-dimensional <i><a href="../26-glossary/a.xhtml#array">array</a></i>,
+using <i>object</i> as the value of the <code>:initial-contents</code> argument
+to <a href="../15-arrays/15.2.7-make-array.xhtml#DictEntry_make_array_985"><b>make-array</b></a>.
+
+</p><p>
+
+For example, <code>#2A((0 1 5) (foo 2 (hot dog)))</code> represents a 2-by-3 matrix:
+
+</p><pre> 0       1       5
+ foo     2       (hot dog)
+</pre><p>
+In contrast, <code>#1A((0 1 5) (foo 2 (hot dog)))</code> 
+represents a <i><a href="../26-glossary/v.xhtml#vector">vector</a></i> of <i><a href="../26-glossary/l.xhtml#length">length</a></i> <code>2</code> 
+whose <i><a href="../26-glossary/e.xhtml#element">elements</a></i> are <i><a href="../26-glossary/l.xhtml#list">lists</a></i>:
+
+</p><pre> (0 1 5) (foo 2 (hot dog))
+</pre>
+<p><code>#0A((0 1 5) (foo 2 (hot dog)))</code> represents a zero-dimensional
+<i><a href="../26-glossary/a.xhtml#array">array</a></i> whose sole element is a <i><a href="../26-glossary/l.xhtml#list">list</a></i>:
+
+</p><pre> ((0 1 5) (foo 2 (hot dog)))
+</pre>
+<p><code>#0A foo</code> represents 
+a zero-dimensional <i><a href="../26-glossary/a.xhtml#array">array</a></i> whose sole element is the 
+<i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <code>foo</code>.
+The notation <code>#1A foo</code> is not valid because <code>foo</code> is
+not a <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i>.
+
+</p><p>
+If some <i><a href="../26-glossary/d.xhtml#dimension">dimension</a></i> of the <i><a href="../26-glossary/a.xhtml#array">array</a></i>
+whose representation is being parsed is found to be <code>0</code>,
+all <i><a href="../26-glossary/d.xhtml#dimension">dimensions</a></i> to the right 
+(<i>i.e.</i>,  the higher numbered <i><a href="../26-glossary/d.xhtml#dimension">dimensions</a></i>)
+are also considered to be <code>0</code>.
+
+</p><p>
+For information on how the <i>Lisp printer</i> prints <i><a href="../26-glossary/a.xhtml#array">arrays</a></i>,
+see Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Str_1267">22.1.3.4 Printing Strings</a>,
+    Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Bit_1269">22.1.3.6 Printing Bit Vectors</a>,
+    Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Oth_1270">22.1.3.7 Printing Other Vectors</a>,
+ or Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Oth_1271">22.1.3.8 Printing Other Arrays</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_S_173"><span class="secno">2.4.8.13</span> Sharpsign S</h4>
+<p>
+<code>#s(name slot1 value1 slot2 value2 ...)</code>
+denotes a <i><a href="../26-glossary/s.xhtml#structure">structure</a></i>.  This is valid only if <i>name</i> is the name
+of a <i><a href="../26-glossary/s.xhtml#structure">structure</a></i> <i><a href="../26-glossary/t.xhtml#type">type</a></i> already defined by <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> 
+and if the <i><a href="../26-glossary/s.xhtml#structure">structure</a></i> <i><a href="../26-glossary/t.xhtml#type">type</a></i> has a standard constructor function.
+Let <i>cm</i> stand for the name of this constructor function;
+then this syntax is equivalent to
+
+</p><pre> #.(cm keyword1 'value1 keyword2 'value2 ...)
+</pre>
+
+<p>
+where each <i>keywordj</i> is the result of computing
+
+</p><pre> (intern (string slotj) (find-package 'keyword))
+</pre>
+
+<p>
+The net effect is that the constructor function is called with the specified
+slots having the specified values. 
+
+(This coercion feature is deprecated; in the future, keyword names will 
+ be taken in the package they are read in, so <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> that are 
+ actually in the <a href="../10-symbols/10.2.2-keyword.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="../26-glossary/p.xhtml#package">package</a></i> should be used if that is what is desired.)
+
+
+</p><p>
+Whatever <i><a href="../26-glossary/o.xhtml#object">object</a></i> the constructor function returns
+is returned by the <code>#S</code> syntax.
+
+</p><p>
+For information on how the <i>Lisp printer</i> prints <i><a href="../26-glossary/s.xhtml#structure">structures</a></i>,
+see Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Str_1275">22.1.3.12 Printing Structures</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_P_174"><span class="secno">2.4.8.14</span> Sharpsign P</h4>
+<p>
+<code>#P</code> reads a following <i><a href="../26-glossary/o.xhtml#object">object</a></i>, which must be a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
+
+</p><p>
+
+
+<code>#P&lt;&lt;expression&gt;&gt;</code> is equivalent to 
+<code>#.(parse-namestring '&lt;&lt;expression&gt;&gt;)</code>,
+
+except that <code>#P</code> is not affected by <a href="../23-reader/23.2.15-read-eval.xhtml#DictEntry_read_eval_1395"><b>*read-eval*</b></a>.
+
+</p><p>
+For information on how the <i>Lisp printer</i> prints <i><a href="../26-glossary/p.xhtml#pathname">pathnames</a></i>,
+see Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Pat_1274">22.1.3.11 Printing Pathnames</a>.
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Eq_175"><span class="secno">2.4.8.15</span> Sharpsign Equal-Sign</h4>
+<p>
+
+<code>#<i>n</i>=</code>
+
+</p><p>
+<code>#<i>n</i>=<i>object</i></code> reads as whatever <i><a href="../26-glossary/o.xhtml#object">object</a></i>
+has <i>object</i> as its printed representation.  However, that <i><a href="../26-glossary/o.xhtml#object">object</a></i>
+is labeled by <i>n</i>, a required unsigned decimal integer, for
+possible reference by the syntax <code>#<i>n</i>#</code>.
+The scope of the label is the <i><a href="../26-glossary/e.xhtml#expression">expression</a></i> being read by the outermost
+call to <a href="../23-reader/23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>; within this <i><a href="../26-glossary/e.xhtml#expression">expression</a></i>,
+the same label may not appear twice.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Sh_176"><span class="secno">2.4.8.16</span> Sharpsign Sharpsign</h4>
+<p>
+
+<code>#<i>n</i>#</code>
+
+</p><p>
+<code>#<i>n</i>#</code>, where <i>n</i> is a required unsigned decimal
+<i><a href="../26-glossary/i.xhtml#integer">integer</a></i>,
+provides a reference to some <i><a href="../26-glossary/o.xhtml#object">object</a></i> labeled by <code>#<i>n</i>=</code>;
+that is, <code>#<i>n</i>#</code> represents a pointer to the same 
+(<a href="../5-data-and-control-flow/5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a>) <i><a href="../26-glossary/o.xhtml#object">object</a></i> labeled by <code>#<i>n</i>=</code>.
+For example, a structure created in the variable <code>y</code> by this code:
+
+</p><pre> (setq x (list 'p 'q))
+ (setq y (list (list 'a 'b) x 'foo x))
+ (rplacd (last y) (cdr y))
+</pre><p>
+could be represented in this way:
+
+</p><pre> ((a b) . #1=(#2=(p q) foo #2# . #1#))
+</pre><p>
+Without this notation, but with <a href="../22-printer/22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a> set to <code>10</code>
+and <a href="../22-printer/22.4.19-print-circle.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a> set to <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+the structure would print in this way:
+
+</p><pre> ((a b) (p q) foo (p q) (p q) foo (p q) (p q) foo (p q) ...)
+</pre><p>
+A reference <code>#<i>n</i>#</code> may only occur after a label <code>#<i>n</i>=</code>;
+forward references are not permitted.  The reference
+may not appear as the labeled object itself (that is,
+<code>#<i>n</i>=#<i>n</i>#</code>) may not be written 
+because the <i><a href="../26-glossary/o.xhtml#object">object</a></i>
+labeled by <code>#<i>n</i>=</code> is not well defined in this case.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Pl_177"><span class="secno">2.4.8.17</span> Sharpsign Plus</h4>
+<p>
+<code>#+</code> provides a read-time conditionalization facility;
+the syntax is <code>#+<i>test</i> <i>expression</i></code>.
+If the <i><a href="../26-glossary/f.xhtml#featureexpression">feature expression</a></i> <i>test</i> succeeds,
+then this textual notation represents an <i><a href="../26-glossary/o.xhtml#object">object</a></i>
+ whose printed representation is <i>expression</i>.
+If the <i><a href="../26-glossary/f.xhtml#featureexpression">feature expression</a></i> <i>test</i> fails,
+then this textual notation is treated as <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>2</sub>; 
+ that is, it is as if the "<code>#+</code> <i>test</i> <i>expression</i>" 
+ did not appear and only a <i><a href="../26-glossary/s.xhtml#space">space</a></i> appeared in its place.
+
+</p><p>
+
+For a detailed description of success and failure in <i><a href="../26-glossary/f.xhtml#featureexpression">feature expressions</a></i>,
+see Section <a href="../24-system-construction/24.1-system-construction-concepts.xhtml#SubSubSectio_Feature_Expr_1403">24.1.2.1 Feature Expressions</a>.
+
+</p><p>
+
+<code>#+</code> operates by first reading the <i><a href="../26-glossary/f.xhtml#featureexpression">feature expression</a></i>
+and then skipping over the <i>form</i> if the <i><a href="../26-glossary/f.xhtml#featureexpression">feature expression</a></i> fails.
+
+While reading the <i>test</i>, the <i><a href="../26-glossary/c.xhtml#currentpackage">current package</a></i> is the <a href="../10-symbols/10.2.2-keyword.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="../26-glossary/p.xhtml#package">package</a></i>.
+
+Skipping over the <i>form</i> is accomplished by <i><a href="../26-glossary/b.xhtml#binding">binding</a></i> 
+<a href="../23-reader/23.2.16-read-suppress.xhtml#DictEntry_read_suppre_1396"><b>*read-suppress*</b></a> to <i><a href="../26-glossary/t.xhtml#true">true</a></i> and then calling <a href="../23-reader/23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>.
+
+</p><p>
+For examples, see Section <a href="../24-system-construction/24.1-system-construction-concepts.xhtml#SubSubSubSec_Examples_of__1404">24.1.2.1.1 Examples of Feature Expressions</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Mi_178"><span class="secno">2.4.8.18</span> Sharpsign Minus</h4>
+<p>
+<code>#-</code> is like <code>#+</code> 
+except that it skips the <i>expression</i> if the <i>test</i> succeeds; 
+that is,
+
+</p><pre>#-<i>test</i> <i>expression</i> ==#+(not <i>test</i>) <i>expression</i>
+</pre>
+
+<p>
+For examples, see Section <a href="../24-system-construction/24.1-system-construction-concepts.xhtml#SubSubSubSec_Examples_of__1404">24.1.2.1.1 Examples of Feature Expressions</a>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Ve_179"><span class="secno">2.4.8.19</span> Sharpsign Vertical-Bar</h4>
+<p>
+<code>#|...|#</code> is treated as a comment by the reader.
+It must be balanced with respect to other occurrences of <code>#|</code> and <code>|#</code>,
+but otherwise may contain any characters whatsoever.
+</p>
+<section>
+<h5 id="SubSubSubSec_Examples_of__180"><span class="secno">2.4.8.19.1</span> Examples of Sharpsign Vertical-Bar</h5>
+<p>
+
+The following are some examples that exploit the <code>#|...|#</code> notation:
+
+</p><pre>;;; In this example, some debugging code is commented out with #|...|#
+;;; Note that this kind of comment can occur in the middle of a line
+;;; (because a delimiter marks where the end of the comment occurs)
+;;; where a semicolon comment can only occur at the end of a line 
+;;; (because it comments out the rest of the line).
+ (defun add3 (n) #|(format t "~&amp;Adding 3 to ~D." n)|# (+ n 3))
+
+;;; The examples that follow show issues related to #| ... |# nesting.
+
+;;; In this first example, #| and |# always occur properly paired,
+;;; so nesting works naturally.
+ (defun mention-fun-fact-1a ()
+   (format t "CL uses ; and #|...|# in comments."))
+→  MENTION-FUN-FACT-1A
+ (mention-fun-fact-1a)
+▷ CL uses ; and #|...|# in comments.
+→  NIL
+ #| (defun mention-fun-fact-1b ()
+      (format t "CL uses ; and #|...|# in comments.")) |#
+ (fboundp 'mention-fun-fact-1b) →  NIL
+
+;;; In this example, vertical-bar followed by sharpsign needed to appear
+;;; in a string without any matching sharpsign followed by vertical-bar
+;;; having preceded this.  To compensate, the programmer has included a
+;;; slash separating the two characters.  In case 2a, the slash is 
+;;; unnecessary but harmless, but in case 2b, the slash is critical to
+;;; allowing the outer #| ... |# pair match.  If the slash were not present,
+;;; the outer comment would terminate prematurely.
+ (defun mention-fun-fact-2a ()
+   (format t "Don't use |\# unmatched or you'll get in trouble!"))
+→  MENTION-FUN-FACT-2A
+ (mention-fun-fact-2a)
+▷ Don't use |# unmatched or you'll get in trouble!
+→  NIL
+ #| (defun mention-fun-fact-2b ()
+      (format t "Don't use |\# unmatched or you'll get in trouble!") |#
+ (fboundp 'mention-fun-fact-2b) →  NIL
+
+;;; In this example, the programmer attacks the mismatch problem in a
+;;; different way.  The sharpsign vertical bar in the comment is not needed
+;;; for the correct parsing of the program normally (as in case 3a), but 
+;;; becomes important to avoid premature termination of a comment when such 
+;;; a program is commented out (as in case 3b).
+ (defun mention-fun-fact-3a () ; #|
+   (format t "Don't use |# unmatched or you'll get in trouble!"))
+→  MENTION-FUN-FACT-3A
+ (mention-fun-fact-3a)
+▷ Don't use |# unmatched or you'll get in trouble!
+→  NIL
+ #|
+ (defun mention-fun-fact-3b () ; #|
+   (format t "Don't use |# unmatched or you'll get in trouble!"))
+ |#
+ (fboundp 'mention-fun-fact-3b) →  NIL
+</pre>
+</section>
+<section>
+<h5 id="SubSubSubSec_Notes_about__181"><span class="secno">2.4.8.19.2</span> Notes about Style for Sharpsign Vertical-Bar</h5>
+<p>
+
+Some text editors that purport to understand Lisp syntax treat any <code>|...|</code>
+as balanced pairs that cannot nest (as if they were just balanced pairs of 
+the multiple escapes used in notating certain symbols).  To compensate for 
+this deficiency, some programmers use the notation <code>#||...#||...||#...||#</code>
+instead of <code>#|...#|...|#...|#</code>.   Note that this alternate usage is not
+a different <i><a href="../26-glossary/r.xhtml#readermacro">reader macro</a></i>; it merely exploits the fact that the additional
+vertical-bars occur within the comment in a way that tricks certain text editor
+into better supporting nested comments.  As such, one might sometimes see code
+like:
+
+</p><pre> #|| (+ #|| 3 ||# 4 5) ||# 
+</pre>
+
+<p>
+Such code is equivalent to:
+
+</p><pre> #| (+ #| 3 |# 4 5) |#
+</pre>
+</section>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Le_182"><span class="secno">2.4.8.20</span> Sharpsign Less-Than-Sign</h4>
+<p>
+<code> #&lt;</code> is not valid reader syntax.
+The <i>Lisp reader</i> will signal an error 
+
+of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../23-reader/23.2.18-reader-error.xhtml#DictEntry_reader_error_1398"><b>reader-error</b></a>
+
+on encountering <code>#&lt;</code>.
+This syntax is typically used in the printed representation 
+of <i><a href="../26-glossary/o.xhtml#object">objects</a></i> that cannot be read back in.  
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Wh_183"><span class="secno">2.4.8.21</span> Sharpsign Whitespace</h4>
+<p>
+<code>#</code> followed immediately by <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>1</sub> is not valid reader syntax.
+The <i>Lisp reader</i> will signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../23-reader/23.2.18-reader-error.xhtml#DictEntry_reader_error_1398"><b>reader-error</b></a> if it
+encounters the reader macro notation <code>#<i>&lt;Newline&gt;</i></code> or <code>#<i>&lt;Space&gt;</i></code>.
+
+
+</p>
+</section>
+<section>
+<h4 id="SubSubSectio_Sharpsign_Ri_184"><span class="secno">2.4.8.22</span> Sharpsign Right-Parenthesis</h4>
+<p>
+This is not valid reader syntax.
+
+</p><p>
+
+The <i>Lisp reader</i> will signal an error 
+
+of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../23-reader/23.2.18-reader-error.xhtml#DictEntry_reader_error_1398"><b>reader-error</b></a>
+
+
+upon encountering <code>#)</code>.
+
+
+
+
+</p>
+</section>
+</section>
+<section>
+<h3 id="SubSection_Re_Reading_A_185"><span class="secno">2.4.9</span> Re-Reading Abbreviated Expressions</h3>
+<p>
+
+Note that the <i>Lisp reader</i> will 
+
+generally
+signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../23-reader/23.2.18-reader-error.xhtml#DictEntry_reader_error_1398"><b>reader-error</b></a>
+when reading an <i><a href="../26-glossary/e.xhtml#expression">expression</a></i><sub>2</sub> that has been
+abbreviated because of length or level limits 
+(see <a href="../22-printer/22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a>,
+     <a href="../22-printer/22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a>,
+ and <a href="../22-printer/22.4.23-print-lines.xhtml#DictEntry_print_lines_1363"><b>*print-lines*</b></a>)
+due to restrictions on "<code>..</code>", "<code>...</code>", "<code>#</code>" followed by <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>1</sub>,
+
+and "<code>#)</code>".
+
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</body>
+</html>

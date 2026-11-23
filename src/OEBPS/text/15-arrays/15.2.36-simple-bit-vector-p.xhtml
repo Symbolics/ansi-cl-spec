@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>15.2.36 simple-bit-vector-p — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_simple_bit_v_1014" class="entry"><span class="secno">15.2.36</span> <span class="names">simple-bit-vector-p</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>simple-bit-vector-p</b>
+<i>object</i>
+  → <i>generalized-boolean</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+<p>
+<i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns <i><a href="../26-glossary/t.xhtml#true">true</a></i> if <i>object</i> is of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="15.2.6-simple-bit-vector.xhtml#DictEntry_simple_bit_v_984"><b>simple-bit-vector</b></a>; otherwise, returns <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+           
+<pre> (simple-bit-vector-p (make-array 6)) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+ (simple-bit-vector-p #*) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="15.2.27-simple-vector-p.xhtml#DictEntry_simple_vecto_1005"><b>simple-vector-p</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (simple-bit-vector-p <i>object</i>) ==(typep <i>object</i> 'simple-bit-vector)
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

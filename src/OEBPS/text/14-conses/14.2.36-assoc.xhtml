@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.36 assoc, assoc-if, assoc-if-not — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_assoc_assoc_949" class="entry"><span class="secno">14.2.36</span> <span class="names">assoc, assoc-if, assoc-if-not</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>assoc</b>
+<i>item      alist <code>&amp;key</code> key test test-not</i>
+  → <i>entry</i>
+<p>
+<b>assoc-if</b>
+<i>predicate alist <code>&amp;key</code> key</i>
+  → <i>entry</i>
+</p><p>
+<b>assoc-if-not</b>
+<i>predicate alist <code>&amp;key</code> key</i>
+  → <i>entry</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>item</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+<p>
+<i>alist</i>—an <i><a href="../26-glossary/a.xhtml#associationlist">association list</a></i>.
+
+</p><p>
+<i>predicate</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for 
+		    a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of one <i><a href="../26-glossary/a.xhtml#argument">argument</a></i>
+		    that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>test</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
+  that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>test-not</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for 
+  a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
+  that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>key</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of one argument,
+  or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>entry</i>—a <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> that is an <i><a href="../26-glossary/e.xhtml#element">element</a></i> of <i>alist</i>,
+	        or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+
+<a href="#DictEntry_assoc_assoc_949"><b>assoc</b></a>, <a href="#DictEntry_assoc_assoc_949"><b>assoc-if</b></a>, and <a href="#DictEntry_assoc_assoc_949"><b>assoc-if-not</b></a>
+return the first <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> in <i>alist</i> whose <i><a href="../26-glossary/c.xhtml#car">car</a></i> <i>satisfies the test</i>,
+or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if no such <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> is found.
+
+
+<p>
+For <a href="#DictEntry_assoc_assoc_949"><b>assoc</b></a>, <a href="#DictEntry_assoc_assoc_949"><b>assoc-if</b></a>, and <a href="#DictEntry_assoc_assoc_949"><b>assoc-if-not</b></a>, if <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> appears
+in <i>alist</i> in place of a pair, it is ignored.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (setq values '((x . 100) (y . 200) (z . 50))) → ((X . 100) (Y . 200) (Z . 50))
+ (assoc 'y values) → (Y . 200)
+ (rplacd (assoc 'y values) 201) → (Y . 201)
+ (assoc 'y values) → (Y . 201)
+ (setq alist '((1 . "one")(2 . "two")(3 . "three"))) 
+→ ((1 . "one") (2 . "two") (3 . "three"))
+ (assoc 2 alist) → (2 . "two")
+ (assoc-if #'evenp alist) → (2 . "two")
+ (assoc-if-not #'(lambda(x) (&lt; x 3)) alist) → (3 . "three")
+ (setq alist '(("one" . 1)("two" . 2))) → (("one" . 1) ("two" . 2))
+ (assoc "one" alist) →  NIL
+ (assoc "one" alist :test #'equalp) → ("one" . 1)
+ (assoc "two" alist :key #'(lambda(x) (char x 2))) →  NIL 
+ (assoc #\o alist :key #'(lambda(x) (char x 2))) → ("two" . 2)
+ (assoc 'r '((a . b) (c . d) (r . x) (s . y) (r . z))) →  (R . X)
+ (assoc 'goo '((foo . bar) (zoo . goo))) →  NIL
+ (assoc '2 '((1 a b c) (2 b c d) (-7 x y z))) → (2 B C D)
+ (setq alist '(("one" . 1) ("2" . 2) ("three" . 3)))
+→ (("one" . 1) ("2" . 2) ("three" . 3))
+ (assoc-if-not #'alpha-char-p alist
+               :key #'(lambda (x) (char x 0))) → ("2" . 2)
+</pre>
+
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>alist</i> is not an <i><a href="../26-glossary/a.xhtml#associationlist">association list</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="14.2.39-rassoc.xhtml#DictEntry_rassoc_rass_952"><b>rassoc</b></a>,
+<a href="../17-sequences/17.3.14-find.xhtml#DictEntry_find_find_i_1054"><b>find</b></a>,
+<a href="../4-types-and-classes/4.4.18-member.xhtml#DictEntry_member_353"><b>member</b></a>,
+<a href="../17-sequences/17.3.15-position.xhtml#DictEntry_position_po_1055"><b>position</b></a>,
+
+Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+The <code>:test-not</code> parameter is deprecated.
+
+
+<p>
+
+The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_assoc_assoc_949"><b>assoc-if-not</b></a> is deprecated.
+
+
+</p><p>
+It is possible to <a href="14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplacd</b></a> the result of <a href="#DictEntry_assoc_assoc_949"><b>assoc</b></a>, provided
+that it is not <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+in order to "update" <i>alist</i>. 
+
+</p><p>
+
+The two expressions
+
+</p><pre> (assoc item list :test fn)
+</pre>
+and
+
+<pre> (find item list :test fn :key #'car)
+</pre>
+are equivalent in meaning with one exception:
+if <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> appears in <i>alist</i> in place of a pair,
+and <i>item</i> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+<a href="../17-sequences/17.3.14-find.xhtml#DictEntry_find_find_i_1054"><b>find</b></a> will compute the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of the <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> in <i>alist</i>,
+find that it is equal to <i>item</i>, and return <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+whereas <a href="#DictEntry_assoc_assoc_949"><b>assoc</b></a> will ignore the <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> in <i>alist</i> and continue
+to search for an actual <i><a href="../26-glossary/c.xhtml#cons">cons</a></i> whose <i><a href="../26-glossary/c.xhtml#car">car</a></i> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</dd></dl>
+</section>
+</body>
+</html>

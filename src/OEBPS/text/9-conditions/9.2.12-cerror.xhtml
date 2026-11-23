@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.12 cerror — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_cerror_637" class="entry"><span class="secno">9.2.12</span> <span class="names">cerror</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>cerror</b>
+<i>continue-format-control datum <code>&amp;rest</code> arguments</i>
+  → <i><a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i><p><i></i>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>Continue-format-control</i>—a <i><a href="../26-glossary/f.xhtml#formatcontrol">format control</a></i>.
+
+
+<p>
+<i>datum</i>, <i>arguments</i>—<i><a href="../26-glossary/d.xhtml#designator">designators</a></i> for a <i><a href="../26-glossary/c.xhtml#condition">condition</a></i> 
+ of default type <a href="9.2.14-simple-error.xhtml#DictEntry_simple_error_639"><b>simple-error</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_cerror_637"><b>cerror</b></a> effectively invokes <a href="9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> on the
+<i><a href="../26-glossary/c.xhtml#condition">condition</a></i> named by <i>datum</i>.  As with any function that
+implicitly calls <a href="9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a>, if the <i><a href="../26-glossary/c.xhtml#condition">condition</a></i> is not handled,
+<code>(invoke-debugger <i>condition</i>)</code> is executed.  While signaling is going on,
+and while in the debugger if it is reached, it is possible to continue
+code execution (<i>i.e.</i>,  to return from <a href="#DictEntry_cerror_637"><b>cerror</b></a>) using the <a href="9.2.42-continue.xhtml#DictEntry_continue_667"><b>continue</b></a> <i><a href="../26-glossary/r.xhtml#restart">restart</a></i>.
+
+
+
+<p>
+If <i>datum</i> is a <i><a href="../26-glossary/c.xhtml#condition">condition</a></i>, <i>arguments</i> can be supplied,
+but are used only in conjunction with the <i>continue-format-control</i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (defun real-sqrt (n)
+   (when (minusp n)
+     (setq n (- n))
+     (cerror "Return sqrt(~D) instead." "Tried to take sqrt(-~D)." n))
+   (sqrt n))
+
+ (real-sqrt 4)
+→ 2.0
+
+ (real-sqrt -9)
+▷ Correctable error in REAL-SQRT: Tried to take sqrt(-9).
+▷ Restart options:
+▷ 1: Return sqrt(9) instead.
+▷ 2: Top level.
+▷ Debug&gt; <span class="user">:continue 1</span>
+→ 3.0
+ 
+ (define-condition not-a-number (error)
+   ((argument :reader not-a-number-argument :initarg :argument))
+   (:report (lambda (condition stream)
+              (format stream "~S is not a number." 
+                      (not-a-number-argument condition)))))
+ 
+ (defun assure-number (n)
+   (loop (when (numberp n) (return n))
+         (cerror "Enter a number."
+                 'not-a-number :argument n)
+         (format t "~&amp;Type a number: ")
+         (setq n (read))
+         (fresh-line)))
+
+ (assure-number 'a)
+▷ Correctable error in ASSURE-NUMBER: A is not a number.
+▷ Restart options:
+▷ 1: Enter a number.
+▷ 2: Top level.
+▷ Debug&gt; <span class="user">:continue 1</span>
+▷ Type a number: <span class="user">1/2</span>
+→ 1/2
+
+ (defun assure-large-number (n)
+   (loop (when (and (numberp n) (&gt; n 73)) (return n))
+         (cerror "Enter a number~:[~; a bit larger than ~D~]."
+                 "~*~A is not a large number." 
+                 (numberp n) n)
+         (format t "~&amp;Type a large number: ")
+         (setq n (read))
+         (fresh-line)))
+ 
+ (assure-large-number 10000)
+→ 10000
+
+
+
+
+
+
+
+
+
+
+ (assure-large-number 'a)
+▷ Correctable error in ASSURE-LARGE-NUMBER: A is not a large number.
+▷ Restart options:
+▷ 1: Enter a number.
+▷ 2: Top level.
+▷ Debug&gt; <span class="user">:continue 1</span>
+▷ Type a large number: <span class="user">88</span>
+→ 88
+
+ (assure-large-number 37)
+▷ Correctable error in ASSURE-LARGE-NUMBER: 37 is not a large number.
+▷ Restart options:
+▷ 1: Enter a number a bit larger than 37.
+▷ 2: Top level.
+▷ Debug&gt; <span class="user">:continue 1</span>
+▷ Type a large number: <span class="user">259</span>
+→ 259
+ 
+ (define-condition not-a-large-number (error)
+   ((argument :reader not-a-large-number-argument :initarg :argument))
+   (:report (lambda (condition stream)
+              (format stream "~S is not a large number." 
+                      (not-a-large-number-argument condition)))))
+ 
+ (defun assure-large-number (n)
+   (loop (when (and (numberp n) (&gt; n 73)) (return n))
+         (cerror "Enter a number~3*~:[~; a bit larger than ~*~D~]."
+                 'not-a-large-number
+                 :argument n 
+                 :ignore (numberp n)
+                 :ignore n
+                 :allow-other-keys t)
+         (format t "~&amp;Type a large number: ")
+         (setq n (read))
+         (fresh-line)))
+ 
+
+ (assure-large-number 'a)
+▷ Correctable error in ASSURE-LARGE-NUMBER: A is not a large number.
+▷ Restart options:
+▷ 1: Enter a number.
+▷ 2: Top level.
+▷ Debug&gt; <span class="user">:continue 1</span>
+▷ Type a large number: <span class="user">88</span>
+→ 88
+ 
+ (assure-large-number 37)
+▷ Correctable error in ASSURE-LARGE-NUMBER: A is not a large number.
+▷ Restart options:
+▷ 1: Enter a number a bit larger than 37.
+▷ 2: Top level.
+▷ Debug&gt; <span class="user">:continue 1</span>
+▷ Type a large number: <span class="user">259</span>
+→ 259
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="9.2.25-break-on-signals.xhtml#DictEntry_break_on_si_650"><b>*break-on-signals*</b></a>.
+
+
+<p>
+Existing handler bindings.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a>, <a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>, <a href="9.2.26-handler-bind.xhtml#DictEntry_handler_bind_651"><b>handler-bind</b></a>,
+<a href="9.2.25-break-on-signals.xhtml#DictEntry_break_on_si_650"><b>*break-on-signals*</b></a>, <a href="../4-types-and-classes/4.4.31-simple-type-error.xhtml#DictEntry_simple_type__366"><b>simple-type-error</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+If <i>datum</i> is a <i><a href="../26-glossary/c.xhtml#condition">condition</a></i> <i><a href="../26-glossary/t.xhtml#type">type</a></i> rather than a 
+<i><a href="../26-glossary/s.xhtml#string">string</a></i>, the <a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> directive <code>~*</code> may be especially
+useful in the <i>continue-format-control</i> in order to ignore the
+<i><a href="../26-glossary/k.xhtml#keyword">keywords</a></i> in the <i><a href="../26-glossary/i.xhtml#initializationargumentlist">initialization argument list</a></i>.  For example:
+
+<pre>(cerror "enter a new value to replace ~*~s" 
+        'not-a-number
+        :argument a)
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

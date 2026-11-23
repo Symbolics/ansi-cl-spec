@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.45 when, unless — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_when_unless_431" class="entry"><span class="secno">5.3.45</span> <span class="names">when, unless</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>when</b>
+<i>test-form {<i>form</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+<p>
+<b>unless</b>
+<i>test-form {<i>form</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>test-form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
+
+<p>
+<i>forms</i>—an <i><a href="../26-glossary/i.xhtml#implicitprogn">implicit progn</a></i>.
+
+</p><p>
+<i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> of the <i><a href="../26-glossary/f.xhtml#form">forms</a></i>
+    in a  <a href="#DictEntry_when_unless_431"><b>when</b></a>   <i><a href="../26-glossary/f.xhtml#form">form</a></i> if the <i>test-form</i> <i><a href="../26-glossary/y.xhtml#yield">yields</a></i> <i><a href="../26-glossary/t.xhtml#true">true</a></i> 
+ or in an <a href="#DictEntry_when_unless_431"><b>unless</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> if the <i>test-form</i> <i><a href="../26-glossary/y.xhtml#yield">yields</a></i> <i><a href="../26-glossary/f.xhtml#false">false</a></i>;
+ otherwise <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_when_unless_431"><b>when</b></a> and <a href="#DictEntry_when_unless_431"><b>unless</b></a> allow the execution of <i>forms</i> 
+to be dependent on a single <i>test-form</i>.
+
+<p>
+
+In a <a href="#DictEntry_when_unless_431"><b>when</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i>,
+if the <i>test-form</i> <i><a href="../26-glossary/y.xhtml#yield">yields</a></i> <i><a href="../26-glossary/t.xhtml#true">true</a></i>,
+the <i>forms</i> are <i>evaluated</i> in order from left to right
+and the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>forms</i> 
+are returned from the <a href="#DictEntry_when_unless_431"><b>when</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i>. 
+Otherwise, if the <i>test-form</i> <i><a href="../26-glossary/y.xhtml#yield">yields</a></i> <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+the <i>forms</i> are not <i>evaluated</i>,
+and the <a href="#DictEntry_when_unless_431"><b>when</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+
+In an <a href="#DictEntry_when_unless_431"><b>unless</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i>,
+if the <i>test-form</i> <i><a href="../26-glossary/y.xhtml#yield">yields</a></i> <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+the <i>forms</i> are <i>evaluated</i> in order from left to right
+and the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>forms</i> 
+are returned from the <a href="#DictEntry_when_unless_431"><b>unless</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i>. 
+Otherwise, if the <i>test-form</i> <i><a href="../26-glossary/y.xhtml#yield">yields</a></i> <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+the <i>forms</i> are not <i>evaluated</i>,
+and the <a href="#DictEntry_when_unless_431"><b>unless</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (when t 'hello) →  HELLO
+ (unless t 'hello) →  NIL
+ (when nil 'hello) →  NIL
+ (unless nil 'hello) →  HELLO
+ (when t) →  NIL
+ (unless nil) →  NIL
+ (when t (prin1 1) (prin1 2) (prin1 3))
+▷123
+→ 3
+ (unless t (prin1 1) (prin1 2) (prin1 3)) →  NIL
+ (when nil (prin1 1) (prin1 2) (prin1 3)) →  NIL
+ (unless nil (prin1 1) (prin1 2) (prin1 3))
+▷123
+→ 3
+ (let ((x 3))
+   (list (when (oddp x) (incf x) (list x))
+         (when (oddp x) (incf x) (list x))
+         (unless (oddp x) (incf x) (list x))
+         (unless (oddp x) (incf x) (list x))
+         (if (oddp x) (incf x) (list x)) 
+         (if (oddp x) (incf x) (list x)) 
+         (if (not (oddp x)) (incf x) (list x)) 
+         (if (not (oddp x)) (incf x) (list x))))
+→ ((4) NIL (5) NIL 6 (6) 7 (7))
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../4-types-and-classes/4.4.20-and.xhtml#DictEntry_and_355"><b>and</b></a>,
+<a href="5.3.42-cond.xhtml#DictEntry_cond_428"><b>cond</b></a>,
+<a href="5.3.43-if.xhtml#DictEntry_if_429"><b>if</b></a>,
+<a href="../4-types-and-classes/4.4.21-or.xhtml#DictEntry_or_356"><b>or</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(and <i>test</i> (progn <code>{</code><i>form</i><code>}</code>+))
+ (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(cond (<i>test</i> <code>{</code><i>form</i><code>}</code>+))
+ (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(if <i>test</i> (progn <code>{</code><i>form</i><code>}</code>+) nil)
+ (when <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(unless (not <i>test</i>) <code>{</code><i>form</i><code>}</code>+)
+ (unless <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(cond ((not <i>test</i>) <code>{</code><i>form</i><code>}</code>+))
+ (unless <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(if <i>test</i> nil (progn <code>{</code><i>form</i><code>}</code>+))
+ (unless <i>test</i> <code>{</code><i>form</i><code>}</code>+) ==(when (not <i>test</i>) <code>{</code><i>form</i><code>}</code>+)
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

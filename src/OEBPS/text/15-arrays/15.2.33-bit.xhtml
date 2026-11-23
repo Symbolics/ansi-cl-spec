@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>15.2.33 bit, sbit — Accessor</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_bit_sbit_1011" class="entry"><span class="secno">15.2.33</span> <span class="names">bit, sbit</span> <span class="kind">Accessor</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<table>
+<tbody><tr><td>bit <i>bit-array</i> <code>&amp;rest</code> <i>subscripts</i></td><td>→  
+<i>bit</i></td></tr>
+<tr><td>sbit <i>bit-array</i> <code>&amp;rest</code> <i>subscripts</i></td><td>→  
+<i>new-bit</i></td></tr>
+</tbody></table><p>
+(<b>setf</b>(<b>bit</b> <i>bit-array</i> &amp;rest <i>subscrips</i>) <i>new-bit</i>)<br/>
+(<b>setf</b>(<b>sbit</b> <i>bit-array</i> &amp;rest <i>subscrips</i>) <i>new-bit</i>)
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>bit-array</i>—for <a href="#DictEntry_bit_sbit_1011"><b>bit</b></a>,  a <i><a href="../26-glossary/b.xhtml#bitarray">bit array</a></i>;
+		    for <a href="#DictEntry_bit_sbit_1011"><b>sbit</b></a>, a <i><a href="../26-glossary/s.xhtml#simplebitarray">simple bit array</a></i>.
+
+<p>
+<i>subscripts</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i>valid array indices</i> 
+		     for the <i>bit-array</i>.
+
+</p><p>
+<i>bit</i>—a <i><a href="../26-glossary/b.xhtml#bit">bit</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+<a href="#DictEntry_bit_sbit_1011"><b>bit</b></a> and <a href="#DictEntry_bit_sbit_1011"><b>sbit</b></a> <i><a href="../26-glossary/a.xhtml#access">access</a></i> the <i>bit-array</i> 
+<i><a href="../26-glossary/e.xhtml#element">element</a></i> specified by <i>subscripts</i>.
+
+<p>
+
+These <i><a href="../26-glossary/f.xhtml#function">functions</a></i> ignore the <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i> when <i>accessing</i> <i><a href="../26-glossary/e.xhtml#element">elements</a></i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (bit (setq ba (make-array 8 
+                            :element-type 'bit 
+                            :initial-element 1))
+       3) → 1
+ (setf (bit ba 3) 0) → 0
+ (bit ba 3) → 0
+ (sbit ba 5) → 1
+ (setf (sbit ba 5) 1) → 1
+ (sbit ba 5) → 1
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="15.2.10-aref.xhtml#DictEntry_aref_988"><b>aref</b></a>,
+
+Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#SubSection_Compiler_Ter_214">3.2.1 Compiler Terminology</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+<a href="#DictEntry_bit_sbit_1011"><b>bit</b></a> and <a href="#DictEntry_bit_sbit_1011"><b>sbit</b></a> are like <a href="15.2.10-aref.xhtml#DictEntry_aref_988"><b>aref</b></a>
+except that they require <i>arrays</i> to be
+a <i><a href="../26-glossary/b.xhtml#bitarray">bit array</a></i> and a <i><a href="../26-glossary/s.xhtml#simplebitarray">simple bit array</a></i>, respectively.
+
+<p>
+
+<a href="#DictEntry_bit_sbit_1011"><b>bit</b></a> and <a href="#DictEntry_bit_sbit_1011"><b>sbit</b></a>, unlike <a href="../16-strings/16.2.6-char.xhtml#DictEntry_char_schar_1025"><b>char</b></a> and <a href="../16-strings/16.2.6-char.xhtml#DictEntry_char_schar_1025"><b>schar</b></a>,
+allow the first argument to be an <i><a href="../26-glossary/a.xhtml#array">array</a></i> of any <i><a href="../26-glossary/r.xhtml#rank">rank</a></i>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

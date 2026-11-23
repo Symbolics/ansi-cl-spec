@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.64 setf, psetf — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_setf_psetf_450" class="entry"><span class="secno">5.3.64</span> <span class="names">setf, psetf</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>setf</b>
+<i>{<i>pair</i>}*</i>
+  → <i>{<i>result</i>}*</i>
+<p>
+
+<b>psetf</b>
+<i>{<i>pair</i>}*</i>
+  → <i><a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i></p><p>
+
+pair::= place newvalue</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>place</i>—a <i><a href="../26-glossary/p.xhtml#place">place</a></i>.
+
+<p>
+<i>newvalue</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
+
+</p><p>
+
+
+
+<i>results</i>—the <i><a href="../26-glossary/m.xhtml#multiplevalues">multiple values</a></i><sub>2</sub> 
+                  returned by the storing form for the last <i>place</i>,
+                  or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if there are no <i>pairs</i>.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_setf_psetf_450"><b>setf</b></a> changes the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <i>place</i> to be <i>newvalue</i>.
+
+
+
+<p>
+
+<code>(setf place newvalue)</code> 
+expands into an update form that stores the 
+result 
+of evaluating
+<i>newvalue</i> into the location referred to by <i>place</i>.
+   Some <i>place</i> forms 
+involve uses of accessors that take optional arguments. 
+   Whether those optional arguments are permitted by 
+<a href="#DictEntry_setf_psetf_450"><b>setf</b></a>, or what their use
+   is, is up to the 
+<a href="#DictEntry_setf_psetf_450"><b>setf</b></a> expander function and is not under the control
+   of <a href="#DictEntry_setf_psetf_450"><b>setf</b></a>. 
+The documentation for any <i><a href="../26-glossary/f.xhtml#function">function</a></i> 
+that accepts <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a>, <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a>,
+   or <code>&amp;key</code> arguments and that 
+claims to be usable with <a href="#DictEntry_setf_psetf_450"><b>setf</b></a> must specify
+   how those arguments are treated.
+
+
+</p><p>
+
+If more than one <i>pair</i> is supplied,
+the <i>pairs</i> are processed sequentially; that is,
+
+</p><pre> (setf place-1 newvalue-1
+       place-2 newvalue-2
+       ...
+       place-N newvalue-N)
+</pre>
+is precisely equivalent to
+
+<pre> (progn (setf place-1 newvalue-1)
+        (setf place-2 newvalue-2)
+        ...
+        (setf place-N newvalue-N))
+</pre>
+
+
+For <a href="#DictEntry_setf_psetf_450"><b>psetf</b></a>, 
+if more than one <i>pair</i> is supplied then the assignments of new values to places are
+done in parallel.  More precisely, all <i><a href="../26-glossary/s.xhtml#subform">subforms</a></i> (in both the <i>place</i>
+and <i>newvalue</i> <i><a href="../26-glossary/f.xhtml#form">forms</a></i>) that are to be evaluated
+are evaluated from left to right; after all evaluations have been performed,
+all of the assignments are performed in an unpredictable order.
+<p>
+For detailed treatment of the expansion of <a href="#DictEntry_setf_psetf_450"><b>setf</b></a> and <a href="#DictEntry_setf_psetf_450"><b>psetf</b></a>,
+see Section <a href="5.1-generalized-reference.xhtml#SubSection_Kinds_of_Pla_374">5.1.2 Kinds of Places</a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq x (cons 'a 'b) y (list 1 2 3)) → (1 2 3) 
+ (setf (car x) 'x (cadr y) (car x) (cdr x) y) → (1 X 3) 
+ x → (X 1 X 3) 
+ y → (1 X 3) 
+ (setq x (cons 'a 'b) y (list 1 2 3)) → (1 2 3) 
+ (psetf (car x) 'x (cadr y) (car x) (cdr x) y) →  NIL 
+ x → (X 1 A 3) 
+ y → (1 A 3) 
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="5.3.62-define-setf-expander.xhtml#DictEntry_define_setf__448"><b>define-setf-expander</b></a>,
+<a href="5.3.61-defsetf.xhtml#DictEntry_defsetf_447"><b>defsetf</b></a>,
+<a href="../3-evaluation-and-compilation/3.8.15-macroexpand-hook.xhtml#DictEntry_macroexpand_297"><b>*macroexpand-hook*</b></a>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="5.3.62-define-setf-expander.xhtml#DictEntry_define_setf__448"><b>define-setf-expander</b></a>,
+<a href="5.3.61-defsetf.xhtml#DictEntry_defsetf_447"><b>defsetf</b></a>,
+<a href="../3-evaluation-and-compilation/3.8.12-macroexpand.xhtml#DictEntry_macroexpand_294"><b>macroexpand-1</b></a>,
+<a href="5.3.66-rotatef.xhtml#DictEntry_rotatef_452"><b>rotatef</b></a>,
+<a href="5.3.65-shiftf.xhtml#DictEntry_shiftf_451"><b>shiftf</b></a>,
+Section <a href="5.1-generalized-reference.xhtml#Section_Generalized__368">5.1 Generalized Reference</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

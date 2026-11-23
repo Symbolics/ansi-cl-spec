@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>15.2.3 vector — System Class</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_vector_981" class="entry"><span class="secno">15.2.3</span> <span class="names">vector</span> <span class="kind">System Class</span></h3>
+<dl>
+
+
+<dt><b>Class Precedence List:</b></dt><dd>
+
+<a href="#DictEntry_vector_981"><b>vector</b></a>,
+<a href="15.2.1-array.xhtml#DictEntry_array_979"><b>array</b></a>,
+<a href="../17-sequences/17.3.1-sequence.xhtml#DictEntry_sequence_1041"><b>sequence</b></a>,
+<a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+Any one-dimensional <i><a href="../26-glossary/a.xhtml#array">array</a></i> is a <i><a href="../26-glossary/v.xhtml#vector">vector</a></i>.
+
+<p>
+
+The <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_vector_981"><b>vector</b></a> is a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="15.2.1-array.xhtml#DictEntry_array_979"><b>array</b></a>; 
+for all <i><a href="../26-glossary/t.xhtml#type">types</a></i> <code>x</code>, <code>(vector x)</code> is the same as <code>(array x (*))</code>.
+
+</p><p>
+
+The <i><a href="../26-glossary/t.xhtml#type">type</a></i> <code>(vector t)</code>, the <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../16-strings/16.2.1-string.xhtml#DictEntry_string_1020"><b>string</b></a>, and the <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="15.2.5-bit-vector.xhtml#DictEntry_bit_vector_983"><b>bit-vector</b></a>
+are <i><a href="../26-glossary/d.xhtml#disjoint">disjoint</a></i> <i><a href="../26-glossary/s.xhtml#subtype">subtypes</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_vector_981"><b>vector</b></a>.
+
+</p></dd><dt><b>Compound Type Specifier Kind:</b></dt><dd>
+
+Specializing.
+
+</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+
+
+<code>(vector <code>[</code><code>{</code>element-type | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a><code>}</code> [<code>{</code>size | <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a><code>}</code>]<code>]</code>)</code>
+
+</dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+
+
+<i>size</i>—a non-negative <i><a href="../26-glossary/f.xhtml#fixnum">fixnum</a></i>.
+
+
+<p>
+<i>element-type</i>—a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+
+</p></dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+
+This denotes the set of specialized <i><a href="../26-glossary/v.xhtml#vector">vectors</a></i>
+whose <i><a href="../26-glossary/e.xhtml#elementtype">element type</a></i> and <i>dimension</i> match the specified values.
+Specifically:
+
+<p>
+If <i>element-type</i> is the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a>,
+<i><a href="../26-glossary/v.xhtml#vector">vectors</a></i> are not excluded on the basis of their <i><a href="../26-glossary/e.xhtml#elementtype">element type</a></i>.
+Otherwise, only those <i>vectors</i> are included whose <i><a href="../26-glossary/a.xhtml#actualarrayelementtype">actual array element type</a></i>
+
+is the result of <i>upgrading</i> <i>element-type</i>;
+see Section <a href="15.1-array-concepts.xhtml#SubSubSectio_Array_Upgrad_976">15.1.2.1 Array Upgrading</a>.
+
+
+</p><p>
+If a <i>size</i> is specified,
+the set includes only those <i>vectors</i> whose only <i><a href="../26-glossary/d.xhtml#dimension">dimension</a></i>
+is <i>size</i>.
+If the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="../25-environment/25.2.22-star.xhtml#DictEntry____1449"><b>*</b></a> is specified instead of a <i>size</i>,
+the set is not restricted on the basis of <i><a href="../26-glossary/d.xhtml#dimension">dimension</a></i>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="15.1-array-concepts.xhtml#SubSubSectio_Required_Kin_977">15.1.2.2 Required Kinds of Specialized Arrays</a>,
+Section <a href="../2-syntax/2.4-standard-macro-characters.xhtml#SubSubSectio_Sharpsign_Le_162">2.4.8.3 Sharpsign Left-Parenthesis</a>,
+Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Oth_1270">22.1.3.7 Printing Other Vectors</a>,
+Section <a href="../2-syntax/2.4-standard-macro-characters.xhtml#SubSubSectio_Sharpsign_A_172">2.4.8.12 Sharpsign A</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The <i><a href="../26-glossary/t.xhtml#type">type</a></i> <code>(vector <i>e</i> <i>s</i>)</code> 
+is equivalent to the <i><a href="../26-glossary/t.xhtml#type">type</a></i> <code>(array <i>e</i> (<i>s</i>))</code>.
+
+<p>
+The type <code>(vector bit)</code> has the name <a href="15.2.5-bit-vector.xhtml#DictEntry_bit_vector_983"><b>bit-vector</b></a>.
+
+</p><p>
+The union of all <i><a href="../26-glossary/t.xhtml#type">types</a></i> <code>(vector <i>C</i>)</code>, 
+where <i>C</i> is any <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of <a href="../13-characters/13.2.1-character.xhtml#DictEntry_character_884"><b>character</b></a>,
+has the name <a href="../16-strings/16.2.1-string.xhtml#DictEntry_string_1020"><b>string</b></a>.
+
+
+
+</p><p>
+
+<code>(vector *)</code> refers to all <i><a href="../26-glossary/v.xhtml#vector">vectors</a></i> 
+regardless of element type, <code>(vector <i>type-specifier</i>)</code>
+refers only to those <i><a href="../26-glossary/v.xhtml#vector">vectors</a></i> 
+that can result from giving <i>type-specifier</i> as the
+<code>:element-type</code> argument to <a href="15.2.7-make-array.xhtml#DictEntry_make_array_985"><b>make-array</b></a>.  
+
+
+</p></dd></dl>
+</section>
+</body>
+</html>

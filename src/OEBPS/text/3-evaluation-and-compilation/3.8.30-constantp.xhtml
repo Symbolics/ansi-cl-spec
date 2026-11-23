@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.8.30 constantp — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_constantp_312" class="entry"><span class="secno">3.8.30</span> <span class="names">constantp</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>constantp</b>
+<i>form <code>&amp;optional</code> environment</i>
+  → <i>generalized-boolean</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
+
+<p>
+<i>environment</i>—an <i><a href="../26-glossary/e.xhtml#environment">environment</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+ The default is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+
+Returns <i><a href="../26-glossary/t.xhtml#true">true</a></i> if <i>form</i> can be determined
+by the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> to be a <i><a href="../26-glossary/c.xhtml#constantform">constant form</a></i> 
+in the indicated <i>environment</i>; 
+otherwise, it returns <i><a href="../26-glossary/f.xhtml#false">false</a></i> indicating either 
+    that the <i><a href="../26-glossary/f.xhtml#form">form</a></i> is not a <i><a href="../26-glossary/c.xhtml#constantform">constant form</a></i>
+ or that it cannot be determined whether or not <i><a href="../26-glossary/f.xhtml#form">form</a></i> is a <i><a href="../26-glossary/c.xhtml#constantform">constant form</a></i>.
+
+<p>
+The following kinds of <i><a href="../26-glossary/f.xhtml#form">forms</a></i> are considered <i><a href="../26-glossary/c.xhtml#constantform">constant forms</a></i>:
+</p><ul>
+<li>
+
+
+  <i><a href="../26-glossary/s.xhtml#selfevaluatingobject">Self-evaluating objects</a></i> 
+  (such as <i><a href="../26-glossary/n.xhtml#number">numbers</a></i>, 
+           <i><a href="../26-glossary/c.xhtml#character">characters</a></i>,
+       and the various kinds of <i><a href="../26-glossary/a.xhtml#array">arrays</a></i>)
+  are always considered <i><a href="../26-glossary/c.xhtml#constantform">constant forms</a></i> 
+  and must be recognized as such by <a href="#DictEntry_constantp_312"><b>constantp</b></a>.
+
+</li><li>
+  <i><a href="../26-glossary/c.xhtml#constantvariable">Constant variables</a></i>, such as <i><a href="../26-glossary/k.xhtml#keyword">keywords</a></i>,
+  symbols defined by <i>Common Lisp</i> as constant (such as <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>, and <a href="../12-numbers/12.2.22-pi.xhtml#DictEntry_pi_796"><b>pi</b></a>),
+  and symbols declared as constant by the user in the indicated <i>environment</i>
+   using <a href="../5-data-and-control-flow/5.3.15-defconstant.xhtml#DictEntry_defconstant_401"><b>defconstant</b></a>
+  are always considered <i><a href="../26-glossary/c.xhtml#constantform">constant forms</a></i>
+  and must be recognized as such by <a href="#DictEntry_constantp_312"><b>constantp</b></a>.
+
+</li><li>
+  <a href="3.8.7-quote.xhtml#DictEntry_quote_289"><b>quote</b></a> <i><a href="../26-glossary/f.xhtml#form">forms</a></i> are always considered <i><a href="../26-glossary/c.xhtml#constantform">constant forms</a></i>
+  and must be recognized as such by <a href="#DictEntry_constantp_312"><b>constantp</b></a>.
+
+</li><li> 
+  An <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> is permitted, but not required, to detect
+  additional <i><a href="../26-glossary/c.xhtml#constantform">constant forms</a></i>.  If it does, it is also permitted,
+  but not required, to make use of information in the <i>environment</i>.
+  Examples of <i><a href="../26-glossary/c.xhtml#constantform">constant forms</a></i> for which <a href="#DictEntry_constantp_312"><b>constantp</b></a> might
+  or might not return <i><a href="../26-glossary/t.xhtml#true">true</a></i> are:
+    <code>(sqrt pi)</code>,
+    <code>(+ 3 2)</code>,
+    <code>(length '(a b c))</code>,
+  and
+    <code>(let ((x 7)) (zerop x))</code>.
+</li></ul>
+
+<p>
+If an <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> chooses to make use of the <i>environment</i>
+information, such actions as expanding <i><a href="../26-glossary/m.xhtml#macro">macros</a></i> or performing function
+inlining are permitted to be used, but not required; 
+however, expanding <i><a href="../26-glossary/c.xhtml#compilermacro">compiler macros</a></i> is not permitted.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (constantp 1) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+ (constantp 'temp) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+ (constantp "temp)) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+ (defconstant this-is-a-constant 'never-changing) →  THIS-IS-A-CONSTANT 
+ (constantp 'this-is-a-constant) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+ (constantp "temp") → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+ (setq a 6) → 6 
+ (constantp a) → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+ (constantp '(sin pi)) → <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (constantp '(car '(x))) → <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (constantp '(eql x x)) → <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (constantp '(typep x 'nil)) → <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (constantp '(typep x 't)) → <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (constantp '(values this-is-a-constant)) → <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (constantp '(values 'x 'y)) → <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+ (constantp '(let ((a '(a b c))) (+ (length a) 6))) → <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The state of the global environment (<i>e.g.</i>,  which <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> have been
+declared to be the <i><a href="../26-glossary/n.xhtml#name">names</a></i> of <i><a href="../26-glossary/c.xhtml#constantvariable">constant variables</a></i>).
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../5-data-and-control-flow/5.3.15-defconstant.xhtml#DictEntry_defconstant_401"><b>defconstant</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>4.1 Introduction</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Introduction_314"><span class="secno">4.1</span> Introduction</h2>
+<p>
+
+
+A <i><a href="../26-glossary/t.xhtml#type">type</a></i> is a (possibly infinite) set of <i><a href="../26-glossary/o.xhtml#object">objects</a></i>.
+An <i><a href="../26-glossary/o.xhtml#object">object</a></i> can belong to more than one <i><a href="../26-glossary/t.xhtml#type">type</a></i>.  
+<i><a href="../26-glossary/t.xhtml#type">Types</a></i> are never explicitly represented as <i><a href="../26-glossary/o.xhtml#object">objects</a></i> by <i>Common Lisp</i>.
+Instead, they are referred to indirectly by the use of <i><a href="../26-glossary/t.xhtml#typespecifier">type specifiers</a></i>,
+which are <i><a href="../26-glossary/o.xhtml#object">objects</a></i> that denote <i><a href="../26-glossary/t.xhtml#type">types</a></i>.
+
+</p><p>
+New <i><a href="../26-glossary/t.xhtml#type">types</a></i> can be defined using <a href="4.4.25-deftype.xhtml#DictEntry_deftype_360"><b>deftype</b></a>, <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a>, 
+<a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a>, and <a href="../9-conditions/9.2.29-define-condition.xhtml#DictEntry_define_condi_654"><b>define-condition</b></a>.
+
+</p><p>
+The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="4.4.28-typep.xhtml#DictEntry_typep_363"><b>typep</b></a>, a set membership test, is used to determine
+whether a given <i><a href="../26-glossary/o.xhtml#object">object</a></i> is of a given <i><a href="../26-glossary/t.xhtml#type">type</a></i>.  The function
+<a href="4.4.26-subtypep.xhtml#DictEntry_subtypep_361"><b>subtypep</b></a>, a subset test, is used to determine whether a
+given <i><a href="../26-glossary/t.xhtml#type">type</a></i> is a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of another given <i><a href="../26-glossary/t.xhtml#type">type</a></i>.  The
+function <a href="4.4.27-type-of.xhtml#DictEntry_type_of_362"><b>type-of</b></a> returns a particular <i><a href="../26-glossary/t.xhtml#type">type</a></i> to
+which a given <i><a href="../26-glossary/o.xhtml#object">object</a></i> belongs, even though that <i><a href="../26-glossary/o.xhtml#object">object</a></i>
+must belong to one or more other <i><a href="../26-glossary/t.xhtml#type">types</a></i> as well.
+(For example, every <i><a href="../26-glossary/o.xhtml#object">object</a></i> is of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>, 
+ but <a href="4.4.27-type-of.xhtml#DictEntry_type_of_362"><b>type-of</b></a> always returns a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>
+ for a <i><a href="../26-glossary/t.xhtml#type">type</a></i> more specific than <a href="4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>.)
+
+</p><p>
+
+<i><a href="../26-glossary/o.xhtml#object">Objects</a></i>, not <i><a href="../26-glossary/v.xhtml#variable">variables</a></i>, have <i><a href="../26-glossary/t.xhtml#type">types</a></i>.
+Normally, any <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> can have any <i><a href="../26-glossary/o.xhtml#object">object</a></i> as its <i><a href="../26-glossary/v.xhtml#value">value</a></i>.
+It is possible to declare that a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> takes on only 
+values of a given <i><a href="../26-glossary/t.xhtml#type">type</a></i> by making an explicit <i><a href="../26-glossary/t.xhtml#typedeclaration">type declaration</a></i>.
+
+<i><a href="../26-glossary/t.xhtml#type">Types</a></i> are arranged in a directed acyclic graph, except
+for the presence of equivalences. 
+
+</p><p>
+<i><a href="../26-glossary/d.xhtml#declaration">Declarations</a></i> can be made about <i><a href="../26-glossary/t.xhtml#type">types</a></i> using <a href="../3-evaluation-and-compilation/3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a>, 
+<a href="../3-evaluation-and-compilation/3.8.16-proclaim.xhtml#DictEntry_proclaim_298"><b>proclaim</b></a>, <a href="../3-evaluation-and-compilation/3.8.17-declaim.xhtml#DictEntry_declaim_299"><b>declaim</b></a>, or <a href="../3-evaluation-and-compilation/3.8.28-the.xhtml#DictEntry_the_310"><b>the</b></a>.
+For more information about <i><a href="../26-glossary/d.xhtml#declaration">declarations</a></i>,
+see Section <a href="../3-evaluation-and-compilation/3.3-declarations.xhtml#Section_Declarations_235">3.3 Declarations</a>.
+
+</p><p>
+Among the fundamental <i><a href="../26-glossary/o.xhtml#object">objects</a></i> of the object system are <i>classes</i>.
+A <i><a href="../26-glossary/c.xhtml#class">class</a></i> determines the structure and behavior of a set of
+other <i><a href="../26-glossary/o.xhtml#object">objects</a></i>, which are called its <i><a href="../26-glossary/i.xhtml#instance">instances</a></i>. 
+Every <i><a href="../26-glossary/o.xhtml#object">object</a></i> is a <i><a href="../26-glossary/d.xhtml#directinstance">direct instance</a></i> of a <i><a href="../26-glossary/c.xhtml#class">class</a></i>.
+The <i><a href="../26-glossary/c.xhtml#class">class</a></i> of an <i><a href="../26-glossary/o.xhtml#object">object</a></i> determines the set of
+operations that can be performed on the <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+For more information, see Section <a href="4.3-classes.xhtml#Section_Classes_319">4.3 Classes</a>.
+
+</p><p>
+It is possible to write <i><a href="../26-glossary/f.xhtml#function">functions</a></i> that have behavior <i><a href="../26-glossary/s.xhtml#specialized">specialized</a></i>
+to the class of the <i><a href="../26-glossary/o.xhtml#object">objects</a></i> which are their <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>.
+For more information, see Section <a href="../7-objects/7.6-generic-functions-and-methods.xhtml#Section_Generic_Func_540">7.6 Generic Functions and Methods</a>.
+
+</p><p>
+The <i><a href="../26-glossary/c.xhtml#class">class</a></i> of the <i><a href="../26-glossary/c.xhtml#class">class</a></i> of an <i><a href="../26-glossary/o.xhtml#object">object</a></i> 
+is called its <b><i>metaclass</i></b>.
+For more information about <i>metaclasses</i>,
+see Section <a href="../7-objects/7.4-meta-objects.xhtml#Section_Meta_Objects_534">7.4 Meta-Objects</a>.
+
+
+</p>
+</section>
+</section>
+</body>
+</html>

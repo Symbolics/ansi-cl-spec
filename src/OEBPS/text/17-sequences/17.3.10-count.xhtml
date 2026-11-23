@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>17.3.10 count, count-if, count-if-not — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_count_count_1050" class="entry"><span class="secno">17.3.10</span> <span class="names">count, count-if, count-if-not</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>count</b>
+<i>item sequence <code>&amp;key</code> from-end start end key test test-not</i>
+  → <i>n</i>
+<p>
+<b>count-if</b>
+<i>predicate sequence <code>&amp;key</code> from-end start end key</i>
+  → <i>n</i>
+</p><p>
+<b>count-if-not</b>
+<i>predicate sequence <code>&amp;key</code> from-end start end key</i>
+  → <i>n</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>item</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+<p>
+<i>sequence</i>—a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
+
+</p><p>
+<i>predicate</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of one <i><a href="../26-glossary/a.xhtml#argument">argument</a></i>
+  that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>from-end</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+  The default is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+</p><p>
+<i>test</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
+  that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+<i>test-not</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for 
+  a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of two <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i>
+  that returns a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p><p>
+
+
+<i>start</i>, <i>end</i>—<i><a href="../26-glossary/b.xhtml#boundingindexdesignator">bounding index designators</a></i> of <i>sequence</i>.
+ The defaults for <i>start</i> and <i>end</i> are <code>0</code> and <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, respectively.
+
+
+
+</p><p>
+<i>key</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/f.xhtml#function">function</a></i> of one argument,
+  or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>n</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> 
+	    less than or equal to the <i><a href="../26-glossary/l.xhtml#length">length</a></i> of <i>sequence</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_count_count_1050"><b>count</b></a>, <a href="#DictEntry_count_count_1050"><b>count-if</b></a>, and <a href="#DictEntry_count_count_1050"><b>count-if-not</b></a> 
+count and return the number of <i><a href="../26-glossary/e.xhtml#element">elements</a></i> in 
+the <i>sequence</i> <i><a href="../26-glossary/b.xhtml#bounded">bounded</a></i> by <i>start</i> and <i>end</i>
+that <i><a href="../26-glossary/s.xhtml#satisfythetest">satisfy the test</a></i>.
+
+<p>
+The <i>from-end</i> has no direct effect on the result.
+However, if <i>from-end</i> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>,
+the <i><a href="../26-glossary/e.xhtml#element">elements</a></i> of <i>sequence</i> will be supplied as <i><a href="../26-glossary/a.xhtml#argument">arguments</a></i> to
+      the <i>test</i>,
+      <i>test-not</i>,
+  and <i>key</i> in reverse order,
+which may change the side-effects, if any, of those functions.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (count #\a "how many A's are there in here?") → 2
+ (count-if-not #'oddp '((1) (2) (3) (4)) :key #'car) → 2
+ (count-if #'upper-case-p "The Crying of Lot 49" :start 4) → 2 
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should be prepared to signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>sequence</i> is not a <i><a href="../26-glossary/p.xhtml#propersequence">proper sequence</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+Section <a href="17.2-rules-about-test-functions.xhtml#Section_Rules_about__1035">17.2 Rules about Test Functions</a>,
+
+Section <a href="../3-evaluation-and-compilation/3.6-traversal-rules-and-side-effects.xhtml#Section_Traversal_Ru_277">3.6 Traversal Rules and Side Effects</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+The <code>:test-not</code> <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> is deprecated.
+
+
+<p>
+
+The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_count_count_1050"><b>count-if-not</b></a> is deprecated.
+
+
+</p></dd></dl>
+</section>
+</body>
+</html>

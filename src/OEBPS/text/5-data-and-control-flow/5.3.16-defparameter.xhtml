@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.16 defparameter, defvar — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_defparameter_402" class="entry"><span class="secno">5.3.16</span> <span class="names">defparameter, defvar</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>defparameter</b>
+<i>name         initial-value [documentation] </i>
+  → <i>name</i>
+<p>
+<b>defvar</b>
+<i>name <code>[</code>initial-value [documentation]<code>]</code></i>
+  → <i>name</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>; not evaluated.
+
+<p>
+<i>initial-value</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>; 
+     for <a href="#DictEntry_defparameter_402"><b>defparameter</b></a>, it is always <i>evaluated</i>,
+ but for <a href="#DictEntry_defparameter_402"><b>defvar</b></a> it is <i>evaluated</i> 
+     only if <i>name</i> is not already <i><a href="../26-glossary/b.xhtml#bound">bound</a></i>.
+
+</p><p>
+
+<i>documentation</i>—a <i>string</i>; not evaluated.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_defparameter_402"><b>defparameter</b></a> and <a href="#DictEntry_defparameter_402"><b>defvar</b></a> <i><a href="../26-glossary/e.xhtml#establish">establish</a></i> <i>name</i> 
+as a <i><a href="../26-glossary/d.xhtml#dynamicvariable">dynamic variable</a></i>.
+
+<p>
+<a href="#DictEntry_defparameter_402"><b>defparameter</b></a> unconditionally
+<i><a href="../26-glossary/a.xhtml#assign">assigns</a></i> the <i>initial-value</i> to the <i><a href="../26-glossary/d.xhtml#dynamicvariable">dynamic variable</a></i> named <i>name</i>.
+<a href="#DictEntry_defparameter_402"><b>defvar</b></a>, by contrast, <i><a href="../26-glossary/a.xhtml#assign">assigns</a></i> <i>initial-value</i> (if supplied) 
+to the <i><a href="../26-glossary/d.xhtml#dynamicvariable">dynamic variable</a></i> named <i>name</i> 
+only if <i>name</i> is not already <i><a href="../26-glossary/b.xhtml#bound">bound</a></i>.
+
+</p><p>
+
+If no <i>initial-value</i> is supplied,
+<a href="#DictEntry_defparameter_402"><b>defvar</b></a> leaves the <i><a href="../26-glossary/v.xhtml#valuecell">value cell</a></i> of 
+the <i><a href="../26-glossary/d.xhtml#dynamicvariable">dynamic variable</a></i> named <i>name</i> undisturbed;
+    if <i>name</i> was previously <i><a href="../26-glossary/b.xhtml#bound">bound</a></i>, its old <i><a href="../26-glossary/v.xhtml#value">value</a></i> persists,
+and if it was previously <i><a href="../26-glossary/u.xhtml#unbound">unbound</a></i>, it remains <i><a href="../26-glossary/u.xhtml#unbound">unbound</a></i>.
+
+
+</p><p>
+If <i>documentation</i> is supplied, it is attached to <i>name</i> as a
+<i><a href="../26-glossary/d.xhtml#documentationstring">documentation string</a></i> of kind <b>variable</b>. 
+
+</p><p>
+
+<a href="#DictEntry_defparameter_402"><b>defparameter</b></a> and <a href="#DictEntry_defparameter_402"><b>defvar</b></a> normally appear as a <i><a href="../26-glossary/t.xhtml#toplevelform">top level form</a></i>, 
+but it is meaningful for them to appear as <i><a href="../26-glossary/n.xhtml#nontoplevelform">non-top-level forms</a></i>.  However,
+the compile-time side effects described below only take place when
+they appear as <i><a href="../26-glossary/t.xhtml#toplevelform">top level forms</a></i>.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defparameter *p* 1) → *P*
+ *p* → 1
+ (constantp '*p*) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+ (setq *p* 2) → 2
+ (defparameter *p* 3) → *P*
+ *p* → 3
+
+ (defvar *v* 1) → *V*
+ *v* → 1
+ (constantp '*v*) → <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+ (setq *v* 2) → 2
+ (defvar *v* 3) → *V*
+ *v* → 2
+
+ (defun foo ()
+   (let ((*p* 'p) (*v* 'v))
+     (bar))) →  FOO
+ (defun bar () (list *p* *v*)) →  BAR
+ (foo) → (P V)
+</pre>
+
+<p>
+The principal operational distinction between <a href="#DictEntry_defparameter_402"><b>defparameter</b></a> and <a href="#DictEntry_defparameter_402"><b>defvar</b></a>
+is that <a href="#DictEntry_defparameter_402"><b>defparameter</b></a> makes an unconditional assignment to <i>name</i>,
+while <a href="#DictEntry_defparameter_402"><b>defvar</b></a> makes a conditional one.  In practice, this means that
+<a href="#DictEntry_defparameter_402"><b>defparameter</b></a> is useful in situations where loading or reloading the definition
+would want to pick up a new value of the variable, while <a href="#DictEntry_defparameter_402"><b>defvar</b></a> is used in
+situations where the old value would want to be retained if the file were loaded or reloaded.
+For example, one might create a file which contained:
+
+</p><pre> (defvar *the-interesting-numbers* '())
+ (defmacro define-interesting-number (name n)
+   `(progn (defvar ,name ,n)
+           (pushnew ,name *the-interesting-numbers*)
+           ',name))
+ (define-interesting-number *my-height* 168) ;cm
+ (define-interesting-number *my-weight* 13)  ;stones
+</pre>
+
+<p>
+Here the initial value, <code>()</code>, for the variable <code>*the-interesting-numbers*</code>
+is just a seed that we are never likely to want to reset to something else
+once something has been grown from it.  As such, we have used <a href="#DictEntry_defparameter_402"><b>defvar</b></a> 
+to avoid having the <code>*interesting-numbers*</code> information reset if the file is
+loaded a second time.  It is true that the two calls to
+<b>define-interesting-number</b> here would be reprocessed, but
+if there were additional calls in another file, they would not be and that 
+information would be lost.  On the other hand, consider the following code:
+
+</p><pre> (defparameter *default-beep-count* 3)
+ (defun beep (&amp;optional (n *default-beep-count*))
+   (dotimes (i n) (si:%beep 1000. 100000.) (sleep 0.1)))
+</pre>
+
+<p>
+Here we could easily imagine editing the code to change the initial value of
+<code>*default-beep-count*</code>, and then reloading the file to pick up the new value.
+In order to make value updating easy, we have used <a href="#DictEntry_defparameter_402"><b>defparameter</b></a>.
+
+</p><p>
+On the other hand, there is potential value to using <a href="#DictEntry_defparameter_402"><b>defvar</b></a> in this
+situation.  For example, suppose that someone had predefined an alternate
+value for <code>*default-beep-count*</code>, or had loaded the file and then manually
+changed the value.  In both cases, if we had used <a href="#DictEntry_defparameter_402"><b>defvar</b></a> instead of
+<a href="#DictEntry_defparameter_402"><b>defparameter</b></a>, those user preferences would not be overridden by
+(re)loading the file.
+
+</p><p>
+The choice of whether to use <a href="#DictEntry_defparameter_402"><b>defparameter</b></a> or <a href="#DictEntry_defparameter_402"><b>defvar</b></a> has
+visible consequences to programs, but is nevertheless often made for subjective
+reasons.
+
+</p></dd><dt><b>Side Effects:</b></dt><dd>
+
+
+
+If a <a href="#DictEntry_defparameter_402"><b>defvar</b></a> or <a href="#DictEntry_defparameter_402"><b>defparameter</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> appears as a <i><a href="../26-glossary/t.xhtml#toplevelform">top level form</a></i>,
+the <i><a href="../26-glossary/c.xhtml#compiler">compiler</a></i> must recognize that the <i>name</i> has been
+proclaimed <a href="../3-evaluation-and-compilation/3.8.26-special.xhtml#DictEntry_special_308"><b>special</b></a>.  However, it must neither <i><a href="../26-glossary/e.xhtml#evaluate">evaluate</a></i> 
+the <i>initial-value</i> <i><a href="../26-glossary/f.xhtml#form">form</a></i> nor <i><a href="../26-glossary/a.xhtml#assign">assign</a></i> the 
+<i><a href="../26-glossary/d.xhtml#dynamicvariable">dynamic variable</a></i> named <i>name</i> at compile time.
+
+
+<p>
+There may be additional (<i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i>) compile-time or 
+run-time side effects, as long as such effects do not interfere with the
+correct operation of <i><a href="../26-glossary/c.xhtml#conformingprogram">conforming programs</a></i>.
+
+</p></dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="#DictEntry_defparameter_402"><b>defvar</b></a> is affected by whether <i>name</i> is already <i><a href="../26-glossary/b.xhtml#bound">bound</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../3-evaluation-and-compilation/3.8.17-declaim.xhtml#DictEntry_declaim_299"><b>declaim</b></a>, 
+<a href="5.3.15-defconstant.xhtml#DictEntry_defconstant_401"><b>defconstant</b></a>,
+<a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>documentation</b></a>,
+Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#Section_Compilation_213">3.2 Compilation</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+It is customary to name <i><a href="../26-glossary/d.xhtml#dynamicvariable">dynamic variables</a></i> with an <i><a href="../26-glossary/a.xhtml#asterisk">asterisk</a></i>
+at the beginning and end of the name.  e.g., <code>*foo*</code> is a good name for
+a <i><a href="../26-glossary/d.xhtml#dynamicvariable">dynamic variable</a></i>, but not for a <i><a href="../26-glossary/l.xhtml#lexicalvariable">lexical variable</a></i>;
+<code>foo</code> is a good name for a <i><a href="../26-glossary/l.xhtml#lexicalvariable">lexical variable</a></i>, 
+but not for a <i><a href="../26-glossary/d.xhtml#dynamicvariable">dynamic variable</a></i>.
+This naming convention is observed for all <i><a href="../26-glossary/d.xhtml#definedname">defined names</a></i> in <i>Common Lisp</i>;
+however, neither <i><a href="../26-glossary/c.xhtml#conformingprogram">conforming programs</a></i> nor <i><a href="../26-glossary/c.xhtml#conformingimplementation">conforming implementations</a></i>
+are obliged to adhere to this convention.
+
+<p>
+The intent of the permission for additional side effects is to allow
+<i><a href="../26-glossary/i.xhtml#implementation">implementations</a></i> to do normal "bookkeeping" that accompanies
+definitions.  For example, the <i><a href="../26-glossary/m.xhtml#macroexpansion">macro expansion</a></i> of a <a href="#DictEntry_defparameter_402"><b>defvar</b></a>
+or <a href="#DictEntry_defparameter_402"><b>defparameter</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i> might include code that arranges to
+record the name of the source file in which the definition occurs.
+
+</p><p>
+<a href="#DictEntry_defparameter_402"><b>defparameter</b></a> and <a href="#DictEntry_defparameter_402"><b>defvar</b></a> might be defined as follows:
+
+</p><pre> (defmacro defparameter (name initial-value 
+                         &amp;optional (documentation nil documentation-p))
+   `(progn (declaim (special ,name))
+           (setf (symbol-value ',name) ,initial-value)
+           ,(when documentation-p
+              `(setf (documentation ',name 'variable) ',documentation))
+           ',name))
+ (defmacro defvar (name &amp;optional
+                        (initial-value nil initial-value-p)
+                        (documentation nil documentation-p))
+   `(progn (declaim (special ,name))
+           ,(when initial-value-p
+              `(unless (boundp ',name)
+                 (setf (symbol-value ',name) ,initial-value)))
+           ,(when documentation-p
+              `(setf (documentation ',name 'variable) ',documentation))
+           ',name))
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.48 get-output-stream-string — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_get_output_s_1239" class="entry"><span class="secno">21.2.48</span> <span class="names">get-output-stream-string</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>get-output-stream-string</b>
+<i>string-output-stream</i>
+  → <i>string</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>string-output-stream</i>—a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
+
+<p>
+<i>string</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns a <i><a href="../26-glossary/s.xhtml#string">string</a></i> containing, in order, all the <i><a href="../26-glossary/c.xhtml#character">characters</a></i> 
+that have been output to <i>string-output-stream</i>.
+This operation clears any <i><a href="../26-glossary/c.xhtml#character">characters</a></i> on <i>string-output-stream</i>,
+so the <i>string</i> contains only those <i><a href="../26-glossary/c.xhtml#character">characters</a></i> which have been output
+   since the last call to <a href="#DictEntry_get_output_s_1239"><b>get-output-stream-string</b></a>
+or since the creation of the <i>string-output-stream</i>,
+whichever occurred most recently.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq a-stream (make-string-output-stream)
+        a-string "abcdefghijklm") → "abcdefghijklm"
+ (write-string a-string a-stream) → "abcdefghijklm"
+ (get-output-stream-string a-stream) → "abcdefghijklm"
+ (get-output-stream-string a-stream) → ""
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The <i>string-output-stream</i> is cleared.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+The consequences are undefined if <i>stream-output-string</i> is <i><a href="../26-glossary/c.xhtml#closed">closed</a></i>.
+
+
+<p>
+The consequences are undefined if <i>string-output-stream</i> is a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> that
+was not produced by <a href="21.2.50-make-string-output-stream.xhtml#DictEntry_make_string__1241"><b>make-string-output-stream</b></a>.
+
+The consequences are undefined if <i>string-output-stream</i> was 
+created implicitly by <a href="21.2.52-with-output-to-string.xhtml#DictEntry_with_output__1243"><b>with-output-to-string</b></a> or <a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="21.2.50-make-string-output-stream.xhtml#DictEntry_make_string__1241"><b>make-string-output-stream</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

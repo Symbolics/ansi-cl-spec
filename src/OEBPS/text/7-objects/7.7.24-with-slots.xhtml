@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.7.24 with-slots — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_with_slots_580" class="entry"><span class="secno">7.7.24</span> <span class="names">with-slots</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>with-slots</b>
+<i>({<i>slot-entry</i>}*)
+		          instance-form 
+                          {<i>declaration</i>}* {<i>form</i>}*</i><br/>   
+  → <i>{<i>result</i>}*</i>
+<p>
+
+slot-entry::= slot-name | (variable-name slot-name)</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>slot-name</i>—a <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> <i><a href="../26-glossary/n.xhtml#name">name</a></i>; not evaluated.
+
+<p>
+<i>variable-name</i>—a <i>variable name</i>; not evaluated.
+
+</p><p>
+<i>instance-form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>; evaluted to produce <i>instance</i>.
+
+</p><p>
+<i>instance</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+</p><p>
+<i>declaration</i>—a <a href="../3-evaluation-and-compilation/3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="../26-glossary/e.xhtml#expression">expression</a></i>; not evaluated.
+
+</p><p>
+<i>forms</i>—an <i><a href="../26-glossary/i.xhtml#implicitprogn">implicit progn</a></i>.
+
+</p><p>
+<i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>forms</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The macro <a href="#DictEntry_with_slots_580"><b>with-slots</b></a> <i>establishes</i> a
+
+<i><a href="../26-glossary/l.xhtml#lexicalenvironment">lexical environment</a></i>
+for referring to the <i><a href="../26-glossary/s.xhtml#slot">slots</a></i> in the <i>instance</i> 
+named by the given <i>slot-names</i> 
+as though they were <i><a href="../26-glossary/v.xhtml#variable">variables</a></i>.  Within such a context
+the value of the <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> can be specified by using its slot name, as if
+it were a lexically bound variable.  Both <a href="7.7.38-setf-class-name.xhtml#DictEntry_setf_class__594"><b>setf</b></a> and <a href="../5-data-and-control-flow/5.3.20-setq.xhtml#DictEntry_setq_406"><b>setq</b></a>
+can be used to set the value of the <i><a href="../26-glossary/s.xhtml#slot">slot</a></i>.
+
+<p>
+The macro <a href="#DictEntry_with_slots_580"><b>with-slots</b></a> translates an appearance of the slot 
+name as a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> into a call to <a href="7.7.14-slot-value.xhtml#DictEntry_slot_value_570"><b>slot-value</b></a>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defclass thing ()
+           ((x :initarg :x :accessor thing-x)
+            (y :initarg :y :accessor thing-y)))
+→ #&lt;STANDARD-CLASS THING 250020173&gt;
+ (defmethod (setf thing-x) :before (new-x (thing thing))
+   (format t "~&amp;Changing X from ~D to ~D in ~S.~%"
+           (thing-x thing) new-x thing))
+ (setq thing (make-instance 'thing :x 0 :y 1)) → #&lt;THING 62310540&gt;
+ (with-slots (x y) thing (incf x) (incf y)) → 2
+ (values (thing-x thing) (thing-y thing)) → 1, 2
+ (setq thing1 (make-instance 'thing :x 1 :y 2)) → #&lt;THING 43135676&gt;
+ (setq thing2 (make-instance 'thing :x 7 :y 8)) → #&lt;THING 43147374&gt;
+ (with-slots ((x1 x) (y1 y))
+             thing1
+   (with-slots ((x2 x) (y2 y))
+               thing2
+     (list (list x1 (thing-x thing1) y1 (thing-y thing1)
+                 x2 (thing-x thing2) y2 (thing-y thing2))
+           (setq x1 (+ y1 x2))
+           (list x1 (thing-x thing1) y1 (thing-y thing1)
+                 x2 (thing-x thing2) y2 (thing-y thing2))
+           (setf (thing-x thing2) (list x1))
+           (list x1 (thing-x thing1) y1 (thing-y thing1)
+                 x2 (thing-x thing2) y2 (thing-y thing2)))))
+▷ Changing X from 7 to (9) in #&lt;THING 43147374&gt;.
+→ ((1 1 2 2 7 7 8 8)
+     9
+     (9 9 2 2 7 7 8 8) 
+     (9)
+     (9 9 2 2 (9) (9) 8 8))
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+The consequences are undefined if any <i>slot-name</i> is not the name
+of a <i><a href="../26-glossary/s.xhtml#slot">slot</a></i> in the <i>instance</i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="7.7.23-with-accessors.xhtml#DictEntry_with_accesso_579"><b>with-accessors</b></a>,
+<a href="7.7.14-slot-value.xhtml#DictEntry_slot_value_570"><b>slot-value</b></a>,
+<a href="../3-evaluation-and-compilation/3.8.14-symbol-macrolet.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+A <a href="#DictEntry_with_slots_580"><b>with-slots</b></a> expression of the form:
+
+<code>(with-slots</code> (<i><i>slot-entry</i><sub>1</sub>
+ ... <i>slot-entry</i><sub>n</sub></i>) <i>instance-form</i>
+<i><i>form</i><sub>1</sub>
+ ... <i>form</i><sub>k</sub></i>)<br/><i/>
+
+<p>
+ expands into the equivalent of
+
+</p>
+<table class="ctr">
+<tbody><tr><td><code>(let ((</code><i>in</i> <i>instance-form</i><code>))</code></td></tr>
+<tr><td>  <code>(symbol-macrolet (</code><i><i>Q</i><sub>1</sub> ... 
+<i>Q</i><sub>n</sub></i><code>)</code> <i><i>form</i><sub>1</sub>
+ ... <i>form</i><sub>k</sub></i><code>))
+</code><br/><i/></td></tr>
+</tbody></table>
+
+<p>
+ where <i><i>Q</i><sub>i</sub></i> is 
+
+</p><code>(</code><i/><i><i>slot-entry</i><sub>i</sub></i> () 
+<code>(slot-value </code><i>in</i> '<i><i>slot-entry</i><sub>i</sub></i><code>))
+</code><i/>
+
+<p>
+ if <i><i>slot-entry</i><sub>i</sub></i> is a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>
+and is
+
+</p>
+<code>(</code><i/><i><i>variable-name</i><sub>i</sub></i> () 
+<code>(slot-value </code><i>in</i> '<i><i>slot-name</i><sub>i</sub></i><code>))</code><i/>
+
+<p>
+ if <i><i>slot-entry</i><sub>i</sub></i>
+is of the form 
+</p>
+<code>(</code><i/><i><i>variable-name</i><sub>i</sub></i> 
+<i><i>slot-name</i><sub>i</sub></i><code>)</code><i/>
+
+</dd></dl>
+</section>
+</body>
+</html>

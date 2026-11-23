@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.23 write-string, write-line — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_write_string_1214" class="entry"><span class="secno">21.2.23</span> <span class="names">write-string, write-line</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>write-string</b>
+<i>string <code>&amp;optional</code> output-stream <code>&amp;key</code> start end</i>
+  → <i>string</i>
+<p>
+<b>write-line</b>
+<i>string <code>&amp;optional</code> output-stream <code>&amp;key</code> start end</i>
+  → <i>string</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>string</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
+
+<p>
+<i>output-stream</i> -- an <i><a href="../26-glossary/o.xhtml#output">output</a></i> <i><a href="../26-glossary/s.xhtml#streamdesignator">stream designator</a></i>.
+ The default is <i><a href="../26-glossary/s.xhtml#standardoutput">standard output</a></i>.
+
+</p><p>
+
+
+<i>start</i>, <i>end</i>—<i><a href="../26-glossary/b.xhtml#boundingindexdesignator">bounding index designators</a></i> of <i>string</i>.
+ The defaults for <i>start</i> and <i>end</i> are <code>0</code> and <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, respectively.
+
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_write_string_1214"><b>write-string</b></a> writes the <i><a href="../26-glossary/c.xhtml#character">characters</a></i> of 
+the subsequence of <i>string</i> <i><a href="../26-glossary/b.xhtml#bounded">bounded</a></i> by <i>start</i> and <i>end</i>
+to <i>output-stream</i>.
+<a href="#DictEntry_write_string_1214"><b>write-line</b></a> does the same thing, 
+but then outputs a newline afterwards.  
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (prog1 (write-string "books" nil :end 4) (write-string "worms"))
+▷ bookworms
+→ "books"
+ (progn (write-char #\*)
+        (write-line "test12" *standard-output* :end 5) 
+        (write-line "*test2")
+        (write-char #\*)
+        nil)
+▷*test1
+▷*test2
+▷*
+→  NIL
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a>,
+<a href="21.2.54-terminal-io.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="21.2.22-read-line.xhtml#DictEntry_read_line_1213"><b>read-line</b></a>, <a href="21.2.21-write-char.xhtml#DictEntry_write_char_1212"><b>write-char</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<a href="#DictEntry_write_string_1214"><b>write-line</b></a> and <a href="#DictEntry_write_string_1214"><b>write-string</b></a> return <i>string</i>,
+not the substring <i><a href="../26-glossary/b.xhtml#bounded">bounded</a></i> by <i>start</i> and <i>end</i>.
+
+<pre> (write-string string)
+==(dotimes (i (length string)
+      (write-char (char string i)))
+
+ (write-line string)
+==(prog1 (write-string string) (terpri))
+</pre>
+
+
+</dd></dl>
+</section>
+</body>
+</html>

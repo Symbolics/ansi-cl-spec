@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.6 Traversal Rules and Side Effects</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Traversal_Ru_277"><span class="secno">3.6</span> Traversal Rules and Side Effects</h2>
+<p>
+The consequences are undefined 
+
+when <i><a href="../26-glossary/c.xhtml#code">code</a></i> executed during an <i><a href="../26-glossary/o.xhtml#objecttraversing">object-traversing</a></i> operation
+
+destructively modifies the <i><a href="../26-glossary/o.xhtml#object">object</a></i> in a way that might affect the
+ongoing traversal operation.
+In particular, the following rules apply.
+</p><ul>
+<li><b>List traversal</b>
+
+<p>
+ For <i><a href="../26-glossary/l.xhtml#list">list</a></i> traversal operations, the <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i> chain of the
+ <i><a href="../26-glossary/l.xhtml#list">list</a></i> is not allowed to be destructively modified.
+
+</p></li><li><b>Array traversal</b>
+
+<p>
+  For <i><a href="../26-glossary/a.xhtml#array">array</a></i> traversal operations, the <i><a href="../26-glossary/a.xhtml#array">array</a></i> is not allowed 
+  to be adjusted and its <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>, if any, is not allowed to 
+  be changed.
+
+</p></li><li><b>Hash-table traversal</b>
+
+<p>
+  For <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i> traversal operations, new elements may not be added
+  or deleted except that the element corresponding to the current hash key 
+  may be changed or removed.
+
+</p></li><li><b>Package traversal</b>
+
+<p>
+  For <i><a href="../26-glossary/p.xhtml#package">package</a></i> traversal operations (<i>e.g.</i>,  <a href="../11-packages/11.2.20-do-symbols.xhtml#DictEntry_do_symbols__735"><b>do-symbols</b></a>),
+  new <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> may not be <i><a href="../26-glossary/i.xhtml#interned">interned</a></i> in or <i><a href="../26-glossary/u.xhtml#uninterned">uninterned</a></i> 
+  from the <i><a href="../26-glossary/p.xhtml#package">package</a></i> being traversed 
+  or any <i><a href="../26-glossary/p.xhtml#package">package</a></i> that it uses except that the 
+  current <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> may be <i><a href="../26-glossary/u.xhtml#uninterned">uninterned</a></i> from the <i><a href="../26-glossary/p.xhtml#package">package</a></i> 
+  being traversed.
+
+</p></li></ul>
+</section>
+</section>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.76 most-positive-short-float, least-positive-short-float, … — Constant Variable</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_most_positiv_850" class="entry"><span class="secno">12.2.76</span> <span class="names">most-positive-short-float, least-positive-short-float, least-positive-normalized-short-float, most-positive-double-float, least-positive-double-float, least-positive-normalized-double-float, most-positive-long-float, least-positive-long-float, least-positive-normalized-long-float, most-positive-single-float, least-positive-single-float, least-positive-normalized-single-float, most-negative-short-float, least-negative-short-float, least-negative-normalized-short-float, most-negative-single-float, least-negative-single-float, least-negative-normalized-single-float, most-negative-double-float, least-negative-double-float, least-negative-normalized-double-float, most-negative-long-float, least-negative-long-float, least-negative-normalized-long-float</span> <span class="kind">Constant Variable</span></h3>
+<dl>
+
+
+<dt><b>Constant Value:</b></dt><dd>
+
+<i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+These <i><a href="../26-glossary/c.xhtml#constantvariable">constant variables</a></i> provide a way for programs to examine
+the <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i> limits for the various float formats.
+
+<p>
+Of these <i><a href="../26-glossary/v.xhtml#variable">variables</a></i>,
+ each which has "<code>-normalized</code>" in its <i><a href="../26-glossary/n.xhtml#name">name</a></i>
+  must have a <i><a href="../26-glossary/v.xhtml#value">value</a></i> which is a <i><a href="../26-glossary/n.xhtml#normalized">normalized</a></i> <i><a href="../26-glossary/f.xhtml#float">float</a></i>, and
+ each which does not have "<code>-normalized</code>" in its name
+  may have a <i><a href="../26-glossary/v.xhtml#value">value</a></i> which is either a <i><a href="../26-glossary/n.xhtml#normalized">normalized</a></i> <i><a href="../26-glossary/f.xhtml#float">float</a></i> 
+  or a <i><a href="../26-glossary/d.xhtml#denormalized">denormalized</a></i> <i><a href="../26-glossary/f.xhtml#float">float</a></i>, as appropriate.
+
+</p><p>
+Of these <i><a href="../26-glossary/v.xhtml#variable">variables</a></i>,
+ each which has "<code>short-float</code>" in its name
+  must have a <i><a href="../26-glossary/v.xhtml#value">value</a></i> which is a <i><a href="../26-glossary/s.xhtml#shortfloat">short float</a></i>,
+ each which has "<code>single-float</code>" in its name
+  must have a <i><a href="../26-glossary/v.xhtml#value">value</a></i> which is a <i><a href="../26-glossary/s.xhtml#singlefloat">single float</a></i>,
+ each which has "<code>double-float</code>" in its name
+  must have a <i><a href="../26-glossary/v.xhtml#value">value</a></i> which is a <i><a href="../26-glossary/d.xhtml#doublefloat">double float</a></i>, and
+ each which has "<code>long-float</code>" in its name
+  must have a <i><a href="../26-glossary/v.xhtml#value">value</a></i> which is a <i><a href="../26-glossary/l.xhtml#longfloat">long float</a></i>.
+
+</p><ul>
+
+<li> 
+  <a href="#DictEntry_most_positiv_850"><b>most-positive-short-float</b></a>,
+              <a href="#DictEntry_most_positiv_850"><b>most-positive-single-float</b></a>,
+        <a href="#DictEntry_most_positiv_850"><b>most-positive-double-float</b></a>,
+	      <a href="#DictEntry_most_positiv_850"><b>most-positive-long-float</b></a>
+
+
+<p>
+  Each of these <i><a href="../26-glossary/c.xhtml#constantvariable">constant variables</a></i> has as its <i><a href="../26-glossary/v.xhtml#value">value</a></i> 
+  the positive <i><a href="../26-glossary/f.xhtml#float">float</a></i> of the largest magnitude 
+  (closest in value to, but not equal to, positive infinity)
+  for the float format implied by its name.
+
+</p></li><li>
+  <a href="#DictEntry_most_positiv_850"><b>least-positive-short-float</b></a>,
+	      <a href="#DictEntry_most_positiv_850"><b>least-positive-normalized-short-float</b></a>,
+	<a href="#DictEntry_most_positiv_850"><b>least-positive-single-float</b></a>,
+	      <a href="#DictEntry_most_positiv_850"><b>least-positive-normalized-single-float</b></a>,
+	<a href="#DictEntry_most_positiv_850"><b>least-positive-double-float</b></a>,
+	      <a href="#DictEntry_most_positiv_850"><b>least-positive-normalized-double-float</b></a>,
+	<a href="#DictEntry_most_positiv_850"><b>least-positive-long-float</b></a>,
+	      <a href="#DictEntry_most_positiv_850"><b>least-positive-normalized-long-float</b></a>
+
+
+<p>
+  Each of these <i><a href="../26-glossary/c.xhtml#constantvariable">constant variables</a></i> has as its <i><a href="../26-glossary/v.xhtml#value">value</a></i>
+  the smallest positive (nonzero) <i><a href="../26-glossary/f.xhtml#float">float</a></i>
+  for the float format implied by its name.
+
+</p></li><li>
+  <a href="#DictEntry_most_positiv_850"><b>least-negative-short-float</b></a>,
+	      <a href="#DictEntry_most_positiv_850"><b>least-negative-normalized-short-float</b></a>,
+        <a href="#DictEntry_most_positiv_850"><b>least-negative-single-float</b></a>,
+	      <a href="#DictEntry_most_positiv_850"><b>least-negative-normalized-single-float</b></a>,
+        <a href="#DictEntry_most_positiv_850"><b>least-negative-double-float</b></a>,
+	      <a href="#DictEntry_most_positiv_850"><b>least-negative-normalized-double-float</b></a>,
+        <a href="#DictEntry_most_positiv_850"><b>least-negative-long-float</b></a>,
+	      <a href="#DictEntry_most_positiv_850"><b>least-negative-normalized-long-float</b></a>
+
+
+<p>
+  Each of these <i><a href="../26-glossary/c.xhtml#constantvariable">constant variables</a></i> has as its <i><a href="../26-glossary/v.xhtml#value">value</a></i>
+  the negative (nonzero) <i><a href="../26-glossary/f.xhtml#float">float</a></i> of the smallest magnitude
+  for the float format implied by its name.
+  (If an implementation supports minus zero as a <i><a href="../26-glossary/d.xhtml#different">different</a></i> 
+   <i><a href="../26-glossary/o.xhtml#object">object</a></i> from positive zero, this value must not be minus zero.)
+
+</p></li><li>
+  <a href="#DictEntry_most_positiv_850"><b>most-negative-short-float</b></a>,
+	      <a href="#DictEntry_most_positiv_850"><b>most-negative-single-float</b></a>,
+	<a href="#DictEntry_most_positiv_850"><b>most-negative-double-float</b></a>,
+	      <a href="#DictEntry_most_positiv_850"><b>most-negative-long-float</b></a>
+
+
+<p>
+  Each of these <i><a href="../26-glossary/c.xhtml#constantvariable">constant variables</a></i> has as its <i><a href="../26-glossary/v.xhtml#value">value</a></i>
+  the negative <i><a href="../26-glossary/f.xhtml#float">float</a></i> of the largest magnitude 
+  (closest in value to, but not equal to, negative infinity)
+  for the float format implied by its name.
+
+</p></li></ul>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>24.2.6 *compile-file-pathname*, *compile-file-truename* — Variable</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_compile_fil_1411" class="entry"><span class="secno">24.2.6</span> <span class="names">*compile-file-pathname*, *compile-file-truename*</span> <span class="kind">Variable</span></h3>
+<dl>
+
+
+<dt><b>Value Type:</b></dt><dd>
+
+The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEntry_compile_fil_1411"><b>*compile-file-pathname*</b></a> must always be a <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i>          or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEntry_compile_fil_1411"><b>*compile-file-truename*</b></a> must always be a <i><a href="../26-glossary/p.xhtml#physicalpathname">physical pathname</a></i> or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</dd><dt><b>Initial Value:</b></dt><dd>
+
+<a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+During a call to <a href="24.2.1-compile-file.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>,
+  <a href="#DictEntry_compile_fil_1411"><b>*compile-file-pathname*</b></a> is <i><a href="../26-glossary/b.xhtml#bound">bound</a></i> to 
+  the <i><a href="../26-glossary/p.xhtml#pathname">pathname</a></i> denoted by the first argument to <a href="24.2.1-compile-file.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>,
+  merged against the defaults;
+  that is, it is <i><a href="../26-glossary/b.xhtml#bound">bound</a></i> to <code>(pathname (merge-pathnames <i>input-file</i>))</code>.
+During the same time interval,
+  <a href="#DictEntry_compile_fil_1411"><b>*compile-file-truename*</b></a> is <i><a href="../26-glossary/b.xhtml#bound">bound</a></i> to
+  the <i><a href="../26-glossary/t.xhtml#truename">truename</a></i> of the <i><a href="../26-glossary/f.xhtml#file">file</a></i> being <i>compiled</i>.
+
+<p>
+At other times, the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of these <i><a href="../26-glossary/v.xhtml#variable">variables</a></i> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+If a <i><a href="../26-glossary/b.xhtml#breakloop">break loop</a></i> is entered while <a href="24.2.1-compile-file.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> is ongoing,
+it is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> whether these <i><a href="../26-glossary/v.xhtml#variable">variables</a></i> retain 
+the <i><a href="../26-glossary/v.xhtml#value">values</a></i> they had just prior to entering the <i><a href="../26-glossary/b.xhtml#breakloop">break loop</a></i> 
+or whether they are <i><a href="../26-glossary/b.xhtml#bound">bound</a></i> to <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+The consequences are unspecified if 
+an attempt is made to <i><a href="../26-glossary/a.xhtml#assign">assign</a></i> or <i><a href="../26-glossary/b.xhtml#bind">bind</a></i> either of these <i><a href="../26-glossary/v.xhtml#variable">variables</a></i>.
+
+</p></dd><dt><b>Affected By:</b></dt><dd>
+
+The <i><a href="../26-glossary/f.xhtml#filesystem">file system</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="24.2.1-compile-file.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

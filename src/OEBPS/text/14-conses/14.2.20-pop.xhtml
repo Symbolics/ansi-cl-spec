@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.20 pop — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_pop_933" class="entry"><span class="secno">14.2.20</span> <span class="names">pop</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>pop</b>
+<i>place</i>
+  → <i>element</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>place</i>—a <i><a href="../26-glossary/p.xhtml#place">place</a></i>, the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of which is a <i><a href="../26-glossary/l.xhtml#list">list</a></i>
+   (possibly, but necessarily, a <i><a href="../26-glossary/d.xhtml#dottedlist">dotted list</a></i> or <i><a href="../26-glossary/c.xhtml#circularlist">circular list</a></i>).
+
+
+<p>
+<i>element</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i> (the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of the contents of <i>place</i>).
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_pop_933"><b>pop</b></a> <i><a href="../26-glossary/r.xhtml#read">reads</a></i> the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <i>place</i>,
+remembers the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of the <i><a href="../26-glossary/l.xhtml#list">list</a></i> which was retrieved,
+<i><a href="../26-glossary/w.xhtml#write">writes</a></i> the <i><a href="../26-glossary/c.xhtml#cdr">cdr</a></i> of the <i><a href="../26-glossary/l.xhtml#list">list</a></i> back into the <i>place</i>,
+and finally <i><a href="../26-glossary/y.xhtml#yield">yields</a></i> the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of the originally retrieved <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
+
+<p>
+
+For information about the <i><a href="../26-glossary/e.xhtml#evaluation">evaluation</a></i> of <i><a href="../26-glossary/s.xhtml#subform">subforms</a></i> of <i>place</i>,
+see Section <a href="../5-data-and-control-flow/5.1-generalized-reference.xhtml#SubSubSectio_Evaluation_o_370">5.1.1.1 Evaluation of Subforms to Places</a>.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq stack '(a b c)) → (A B C)
+ (pop stack) →  A  
+ stack → (B C)
+ (setq llst '((1 2 3 4))) → ((1 2 3 4))
+ (pop (car llst)) → 1
+ llst → ((2 3 4))
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+The contents of <i>place</i> are modified.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="14.2.19-push.xhtml#DictEntry_push_932"><b>push</b></a>,
+<a href="14.2.45-pushnew.xhtml#DictEntry_pushnew_958"><b>pushnew</b></a>,
+Section <a href="../5-data-and-control-flow/5.1-generalized-reference.xhtml#Section_Generalized__368">5.1 Generalized Reference</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The effect of <code>(pop <i>place</i>)</code> is roughly equivalent to
+
+<pre> (prog1 (car <i>place</i>) (setf <i>place</i> (cdr <i>place</i>)))
+</pre>
+except that the latter would evaluate any <i><a href="../26-glossary/s.xhtml#subform">subforms</a></i> of <i>place</i>
+three times, while <a href="#DictEntry_pop_933"><b>pop</b></a> evaluates them only once.
+
+</dd></dl>
+</section>
+</body>
+</html>

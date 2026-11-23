@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Glossary — V</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="glossary">
+<section>
+<h3 id="GlossaryEntr_V_1481" class="letter">V</h3>
+<dl>
+
+<dt id="validarraydimension"><b>valid array dimension:</b></dt><dd> <i>n.</i> 
+  a <i><a href="f.xhtml#fixnum">fixnum</a></i> suitable for use as an <i><a href="a.xhtml#array">array</a></i> <i><a href="d.xhtml#dimension">dimension</a></i>.
+  Such a <i><a href="f.xhtml#fixnum">fixnum</a></i> must be greater than or equal to zero, 
+  and less than the <i><a href="#value">value</a></i> of <a href="../15-arrays/15.2.24-array-dimension-limit.xhtml#DictEntry_array_dimens_1002"><b>array-dimension-limit</b></a>.
+  When multiple <i><a href="a.xhtml#array">array</a></i> <i><a href="d.xhtml#dimension">dimensions</a></i> are to be used together to specify a 
+  multi-dimensional <i><a href="a.xhtml#array">array</a></i>, there is also an implied constraint 
+  that the product of all of the <i><a href="d.xhtml#dimension">dimensions</a></i> be less than the <i><a href="#value">value</a></i> of 
+  <a href="../15-arrays/15.2.26-array-total-size-limit.xhtml#DictEntry_array_total__1004"><b>array-total-size-limit</b></a>.
+
+
+<p>
+
+<span id="validarrayindex"/></p></dd><dt><b>valid array index:</b></dt><dd> <i>n.</i> (of an <i><a href="a.xhtml#array">array</a></i>)
+  a <i><a href="f.xhtml#fixnum">fixnum</a></i> suitable for use as one of possibly several indices needed
+  to name an <i><a href="e.xhtml#element">element</a></i> of the <i><a href="a.xhtml#array">array</a></i> according to a multi-dimensional
+  Cartesian coordinate system. Such a <i><a href="f.xhtml#fixnum">fixnum</a></i> must
+  be greater than or equal to zero,
+  and must be less than the corresponding <i><a href="d.xhtml#dimension">dimension</a></i><sub>1</sub>
+  of the <i><a href="a.xhtml#array">array</a></i>.
+  (Unless otherwise explicitly specified, 
+   the phrase "a <i><a href="l.xhtml#list">list</a></i> of <i>valid array indices</i>" further implies
+   that the <i><a href="l.xhtml#length">length</a></i> of the <i><a href="l.xhtml#list">list</a></i> must be the same as the
+   <i><a href="r.xhtml#rank">rank</a></i> of the <i><a href="a.xhtml#array">array</a></i>.)
+  For a <code>2</code> by <code>3</code> array,
+	    valid array indices for the first  dimension are <code>0</code> and <code>1</code>, and
+	    valid array indices for the second dimension are <code>0</code>, <code>1</code> and <code>2</code>.
+
+
+<p>
+
+<span id="validarrayrowmajorindex"/></p></dd><dt><b>valid array row-major index:</b></dt><dd> <i>n.</i> (of an <i><a href="a.xhtml#array">array</a></i>,
+					     which might have any number 
+					     of <i><a href="d.xhtml#dimension">dimensions</a></i><sub>2</sub>)
+  a single <i><a href="f.xhtml#fixnum">fixnum</a></i> suitable for use in naming any <i><a href="e.xhtml#element">element</a></i>
+  of the <i><a href="a.xhtml#array">array</a></i>, by viewing the array's storage as a linear
+  series of <i><a href="e.xhtml#element">elements</a></i> in row-major order.
+  Such a <i><a href="f.xhtml#fixnum">fixnum</a></i> must be greater than or equal to zero,
+  and less than the <i><a href="a.xhtml#arraytotalsize">array total size</a></i> of the <i><a href="a.xhtml#array">array</a></i>.
+
+
+<p>
+
+<span id="validfillpointer"/></p></dd><dt><b>valid fill pointer:</b></dt><dd> <i>n.</i> (of an <i><a href="a.xhtml#array">array</a></i>)
+  a <i><a href="f.xhtml#fixnum">fixnum</a></i> suitable for use as a <i><a href="f.xhtml#fillpointer">fill pointer</a></i> for the <i><a href="a.xhtml#array">array</a></i>.
+  Such a <i><a href="f.xhtml#fixnum">fixnum</a></i> must be greater than or equal to zero, 
+  and less than or equal to the <i><a href="a.xhtml#arraytotalsize">array total size</a></i> of the <i><a href="a.xhtml#array">array</a></i>.
+
+
+<p>
+<span id="validlogicalpathnamehost"/></p></dd><dt><b>valid logical pathname host:</b></dt><dd> <i>n.</i>   a <i><a href="s.xhtml#string">string</a></i> that has been defined as the name of a <i><a href="l.xhtml#logicalhost">logical host</a></i>.
+  See the <i><a href="f.xhtml#function">function</a></i> <a href="../19-filenames/19.4.7-load-logical-pathname-translations.xhtml#DictEntry_load_logical_1150"><b>load-logical-pathname-translations</b></a>.
+
+<p>
+<span id="validpathnamedevice"/></p></dd><dt><b>valid pathname device:</b></dt><dd> <i>n.</i>      a <i><a href="s.xhtml#string">string</a></i>,
+     <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+     <code>:unspecific</code>, 
+  or some other <i><a href="o.xhtml#object">object</a></i> defined by the <i><a href="i.xhtml#implementation">implementation</a></i> 
+      to be a <i><a href="#validpathnamedevice">valid pathname device</a></i>.
+
+<p>
+<span id="validpathnamedirectory"/></p></dd><dt><b>valid pathname directory:</b></dt><dd> <i>n.</i>      a <i><a href="s.xhtml#string">string</a></i>,
+     a <i><a href="l.xhtml#list">list</a></i> of <i><a href="s.xhtml#string">strings</a></i>,
+     <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+
+     <code>:wild</code>,
+
+     <code>:unspecific</code>,
+  or some other <i><a href="o.xhtml#object">object</a></i> defined by the <i><a href="i.xhtml#implementation">implementation</a></i> 
+      to be a <i>valid directory component</i>.
+
+<p>
+<span id="validpathnamehost"/></p></dd><dt><b>valid pathname host:</b></dt><dd> <i>n.</i>      a <i><a href="#validphysicalpathnamehost">valid physical pathname host</a></i>
+  or a <i><a href="#validlogicalpathnamehost">valid logical pathname host</a></i>.
+
+<p>
+<span id="validpathnamename"/></p></dd><dt><b>valid pathname name:</b></dt><dd> <i>n.</i>      a <i><a href="s.xhtml#string">string</a></i>,
+     <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+     <code>:wild</code>,
+     <code>:unspecific</code>,
+  or some other <i><a href="o.xhtml#object">object</a></i> defined by the <i><a href="i.xhtml#implementation">implementation</a></i> 
+     to be a <i><a href="#validpathnamename">valid pathname name</a></i>.
+
+<p>
+<span id="validpathnametype"/></p></dd><dt><b>valid pathname type:</b></dt><dd> <i>n.</i>      a <i><a href="s.xhtml#string">string</a></i>,
+     <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+     <code>:wild</code>,
+     <code>:unspecific</code>.
+
+
+<p>
+<span id="validpathnameversion"/></p></dd><dt><b>valid pathname version:</b></dt><dd> <i>n.</i>      a non-negative <i><a href="i.xhtml#integer">integer</a></i>,
+     or one of <code>:wild</code>,
+               <code>:newest</code>,
+ 	       <code>:unspecific</code>,
+   	    or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+
+ The symbols <code>:oldest</code>, <code>:previous</code>, and <code>:installed</code> are
+ <i><a href="s.xhtml#semistandard">semi-standard</a></i> special version symbols.
+
+<p>
+<span id="validphysicalpathnamehost"/></p></dd><dt><b>valid physical pathname host:</b></dt><dd> <i>n.</i>    any of
+     a <i><a href="s.xhtml#string">string</a></i>,
+     a <i><a href="l.xhtml#list">list</a></i> of <i><a href="s.xhtml#string">strings</a></i>,
+     or the symbol <code>:unspecific</code>,
+   that is recognized by the implementation as the name of a host.
+
+<p>
+<span id="validsequenceindex"/></p></dd><dt><b>valid sequence index:</b></dt><dd> <i>n.</i> (of a <i><a href="s.xhtml#sequence">sequence</a></i>)
+  an <i><a href="i.xhtml#integer">integer</a></i> suitable for use to name an <i><a href="e.xhtml#element">element</a></i> 
+  of the <i><a href="s.xhtml#sequence">sequence</a></i>.  Such an <i><a href="i.xhtml#integer">integer</a></i> must 
+  be greater than or equal to zero,
+  and must be less than the <i><a href="l.xhtml#length">length</a></i> of the <i><a href="s.xhtml#sequence">sequence</a></i>.
+
+  (If the <i><a href="s.xhtml#sequence">sequence</a></i> is an <i><a href="a.xhtml#array">array</a></i>,
+   the <i><a href="#validsequenceindex">valid sequence index</a></i> is further constrained to be a <i><a href="f.xhtml#fixnum">fixnum</a></i>.)
+
+
+<p>
+<span id="value"/></p></dd><dt><b>value:</b></dt><dd> <i>n.</i> 
+  1. a. one of possibly several <i><a href="o.xhtml#object">objects</a></i> that are the result of
+        an <i><a href="e.xhtml#evaluation">evaluation</a></i>.
+     b. (in a situation where exactly one value is expected from the
+	 <i><a href="e.xhtml#evaluation">evaluation</a></i> of a <i><a href="f.xhtml#form">form</a></i>)
+        the <i><a href="p.xhtml#primaryvalue">primary value</a></i> returned by the <i><a href="f.xhtml#form">form</a></i>.
+     c. (of <i><a href="f.xhtml#form">forms</a></i> in an <i><a href="i.xhtml#implicitprogn">implicit progn</a></i>) one of possibly
+        several <i><a href="o.xhtml#object">objects</a></i> that result from the <i><a href="e.xhtml#evaluation">evaluation</a></i>
+        of the last <i><a href="f.xhtml#form">form</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if there are no <i><a href="f.xhtml#form">forms</a></i>.
+  2. an <i><a href="o.xhtml#object">object</a></i> associated with a <i><a href="n.xhtml#name">name</a></i> in a <i><a href="b.xhtml#binding">binding</a></i>.
+  3. (of a <i><a href="s.xhtml#symbol">symbol</a></i>) the <i><a href="#value">value</a></i> of the <i><a href="d.xhtml#dynamicvariable">dynamic variable</a></i>
+     named by that symbol.
+  4. an <i><a href="o.xhtml#object">object</a></i> associated with a <i><a href="k.xhtml#key">key</a></i> 
+     in an <i><a href="a.xhtml#associationlist">association list</a></i>, 
+	a  <i><a href="p.xhtml#propertylist">property list</a></i>,
+     or a  <i><a href="h.xhtml#hashtable">hash table</a></i>.
+
+<p>
+<span id="valuecell"/></p></dd><dt><b>value cell:</b></dt><dd> <i>n.</i> <i>Trad.</i> (of a <i><a href="s.xhtml#symbol">symbol</a></i>)
+  The <i><a href="p.xhtml#place">place</a></i> which holds the <i><a href="#value">value</a></i>, if any, of the
+  <i><a href="d.xhtml#dynamicvariable">dynamic variable</a></i> named by that <i><a href="s.xhtml#symbol">symbol</a></i>,
+  and which is <i>accessed</i> by <a href="../10-symbols/10.2.14-symbol-value.xhtml#DictEntry_symbol_value_688"><b>symbol-value</b></a>.
+  See <i><a href="c.xhtml#cell">cell</a></i>.
+
+<p>
+<span id="variable"/></p></dd><dt><b>variable:</b></dt><dd> <i>n.</i> 
+
+
+  a <i><a href="b.xhtml#binding">binding</a></i> in the "variable" <i><a href="n.xhtml#namespace">namespace</a></i>.
+  See Section <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#SubSubSubSec_Symbols_as_F_196">3.1.2.1.1 Symbols as Forms</a>.
+
+<p>
+<span id="vector"/></p></dd><dt><b>vector:</b></dt><dd> <i>n.</i> 
+  a one-dimensional <i><a href="a.xhtml#array">array</a></i>.
+
+<p>
+<span id="verticalbar"/></p></dd><dt><b>vertical-bar:</b></dt><dd> <i>n.</i>   the <i><a href="s.xhtml#standardcharacter">standard character</a></i> that is called "vertical bar" (<code>|</code>).
+  See <a href="../2-syntax/2.1-character-syntax.xhtml#fig-2-5">Figure 2-5</a>.
+
+</dd></dl>
+</section>
+</body>
+</html>

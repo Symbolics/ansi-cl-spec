@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Glossary — F</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="glossary">
+<section>
+<h3 id="GlossaryEntr_F_1466" class="letter">F</h3>
+<dl>
+<dt id="false"><b>false:</b></dt><dd> <i>n.</i>   the <i><a href="s.xhtml#symbol">symbol</a></i> <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+  used to represent the failure of a <i><a href="p.xhtml#predicate">predicate</a></i> test.
+
+<p>
+<span id="fbound"/></p></dd><dt><b>fbound:</b></dt><dd> <span class="pron">[ ˈefˌbau̇nd ]</span> <i>adj.</i> 
+							 (of a <i><a href="#functionname">function name</a></i>)
+  <i><a href="b.xhtml#bound">bound</a></i> in the <i><a href="#function">function</a></i> <i><a href="n.xhtml#namespace">namespace</a></i>.
+  (The <i><a href="n.xhtml#name">names</a></i> of <i><a href="m.xhtml#macro">macros</a></i> and <i><a href="s.xhtml#specialoperator">special operators</a></i> are <i><a href="#fbound">fbound</a></i>,
+   but the nature and <i><a href="t.xhtml#type">type</a></i> of the <i><a href="o.xhtml#object">object</a></i> which is their <i><a href="v.xhtml#value">value</a></i>
+   is <i><a href="i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+   Further, defining a <i><a href="s.xhtml#setfexpander">setf expander</a></i> <i>F</i> does not cause the <i><a href="s.xhtml#setffunction">setf function</a></i>
+   <code>(setf <i>F</i>)</code> to become defined; as such, if there is a such a definition
+   of a <i><a href="s.xhtml#setfexpander">setf expander</a></i> <i>F</i>, the <i><a href="#function">function</a></i> <code>(setf <i>F</i>)</code>
+   can be <i><a href="#fbound">fbound</a></i> if and only if, by design or coincidence, a
+   function binding for <code>(setf <i>F</i>)</code> has been independently established.)
+
+  See the <i><a href="#function">functions</a></i> <a href="../5-data-and-control-flow/5.3.4-fboundp.xhtml#DictEntry_fboundp_390"><b>fboundp</b></a> and <a href="../10-symbols/10.2.10-symbol-function.xhtml#DictEntry_symbol_funct_684"><b>symbol-function</b></a>.
+
+<p>
+<span id="feature"/></p></dd><dt><b>feature:</b></dt><dd> <i>n.</i>   1. an aspect or attribute 
+        of <i>Common Lisp</i>, 
+        of the <i><a href="i.xhtml#implementation">implementation</a></i>,
+     or of the <i><a href="e.xhtml#environment">environment</a></i>.
+  2. a <i><a href="s.xhtml#symbol">symbol</a></i> that names a <i><a href="#feature">feature</a></i><sub>1</sub>.
+  See Section <a href="../24-system-construction/24.1-system-construction-concepts.xhtml#SubSection_Features_1402">24.1.2 Features</a>.
+  The <code>:ansi-cl</code> feature is present in all conforming implementations.
+
+<p>
+<span id="featureexpression"/></p></dd><dt><b>feature expression:</b></dt><dd> <i>n.</i>   A boolean combination of <i><a href="#feature">features</a></i> used by the <code>#+</code> and <code>#-</code> 
+  <i><a href="r.xhtml#readermacro">reader macros</a></i> in order to direct conditional <i>reading</i> of
+  <i><a href="e.xhtml#expression">expressions</a></i> by the <i>Lisp reader</i>.
+  See Section <a href="../24-system-construction/24.1-system-construction-concepts.xhtml#SubSubSectio_Feature_Expr_1403">24.1.2.1 Feature Expressions</a>.
+
+<p>
+<span id="featureslist"/></p></dd><dt><b>features list:</b></dt><dd> <i>n.</i>   the <i><a href="l.xhtml#list">list</a></i> that is the <i><a href="v.xhtml#value">value</a></i> of <a href="../24-system-construction/24.2.5-features.xhtml#DictEntry_features_1410"><b>*features*</b></a>.
+
+<p>
+<span id="file"/></p></dd><dt><b>file:</b></dt><dd> <i>n.</i>   a named entry in a <i><a href="#filesystem">file system</a></i>,
+  having an <i><a href="i.xhtml#implementationdefined">implementation-defined</a></i> nature.
+
+<p>
+<span id="filecompiler"/></p></dd><dt><b>file compiler:</b></dt><dd> <i>n.</i>   any <i><a href="c.xhtml#compiler">compiler</a></i> which <i><a href="c.xhtml#compile">compiles</a></i> <i><a href="s.xhtml#sourcecode">source code</a></i> contained in a <i><a href="#file">file</a></i>,
+  producing a <i><a href="c.xhtml#compiledfile">compiled file</a></i> as output.  The <a href="../24-system-construction/24.2.1-compile-file.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a> 
+  function is the only interface to such a <i><a href="c.xhtml#compiler">compiler</a></i> provided by <i>Common Lisp</i>,
+  but there might be other, <i><a href="i.xhtml#implementationdefined">implementation-defined</a></i> mechanisms for 
+  invoking the <i><a href="#filecompiler">file compiler</a></i>.
+
+<p>
+<span id="fileposition"/></p></dd><dt><b>file position:</b></dt><dd> <i>n.</i> (in a <i><a href="s.xhtml#stream">stream</a></i>)
+  a non-negative <i><a href="i.xhtml#integer">integer</a></i> that represents a position in the <i><a href="s.xhtml#stream">stream</a></i>.
+  Not all <i><a href="s.xhtml#stream">streams</a></i> are able to represent the notion of <i><a href="#fileposition">file position</a></i>;
+  in the description of any <i><a href="o.xhtml#operator">operator</a></i> which manipulates <i><a href="#fileposition">file positions</a></i>, 
+  the behavior for <i><a href="s.xhtml#stream">streams</a></i> that don't have this notion must be explicitly stated.
+  For <i><a href="b.xhtml#binary">binary</a></i> <i><a href="s.xhtml#stream">streams</a></i>, the <i><a href="#fileposition">file position</a></i> represents the number 
+  of preceding <i><a href="b.xhtml#byte">bytes</a></i> in the <i><a href="s.xhtml#stream">stream</a></i>.
+  For <i><a href="c.xhtml#character">character</a></i> <i><a href="s.xhtml#stream">streams</a></i>, the constraint is more relaxed: 
+  <i><a href="#fileposition">file positions</a></i> must increase monotonically, the amount of the increase
+  between <i><a href="#fileposition">file positions</a></i> corresponding to any two successive characters
+  in the <i><a href="s.xhtml#stream">stream</a></i> is <i><a href="i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+<p>
+<span id="filepositiondesignator"/></p></dd><dt><b>file position designator:</b></dt><dd> <i>n.</i> (in a <i><a href="s.xhtml#stream">stream</a></i>)
+  a <i><a href="d.xhtml#designator">designator</a></i> for a <i><a href="#fileposition">file position</a></i> in that <i><a href="s.xhtml#stream">stream</a></i>; that is,
+      the symbol <code>:start</code>  
+        (denoting <code>0</code>, the first <i><a href="#fileposition">file position</a></i> in that <i><a href="s.xhtml#stream">stream</a></i>),
+      the symbol <code>:end</code>
+	(denoting the last <i><a href="#fileposition">file position</a></i> in that <i><a href="s.xhtml#stream">stream</a></i>;
+	 <i>i.e.</i>,  the position following the last <i><a href="e.xhtml#element">element</a></i> of the <i><a href="s.xhtml#stream">stream</a></i>),
+   or a <i><a href="#fileposition">file position</a></i> (denoting itself).
+
+<p>
+<span id="filestream"/></p></dd><dt><b>file stream:</b></dt><dd> <i>n.</i>   an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../21-streams/21.2.5-file-stream.xhtml#DictEntry_file_stream_1196"><b>file-stream</b></a>.
+
+<p>
+<span id="filesystem"/></p></dd><dt><b>file system:</b></dt><dd> <i>n.</i>   a facility which permits aggregations of data to be stored in named
+  <i><a href="#file">files</a></i> on some medium that is external to the <i>Lisp image</i>
+  and that therefore persists from <i><a href="s.xhtml#session">session</a></i> to <i><a href="s.xhtml#session">session</a></i>.
+
+<p>
+
+<span id="filename"/></p></dd><dt><b>filename:</b></dt><dd> <i>n.</i> 
+  a handle, not necessarily ever directly represented as an <i><a href="o.xhtml#object">object</a></i>,
+  that can be used to refer to a <i><a href="#file">file</a></i> in a <i><a href="#filesystem">file system</a></i>.
+  <i><a href="p.xhtml#pathname">Pathnames</a></i> and <i><a href="n.xhtml#namestring">namestrings</a></i> are two kinds of <i><a href="o.xhtml#object">objects</a></i> 
+  that substitute for <i><a href="#filename">filenames</a></i> in <i>Common Lisp</i>.  
+
+
+<p>
+<span id="fillpointer"/></p></dd><dt><b>fill pointer:</b></dt><dd> <i>n.</i> (of a <i><a href="v.xhtml#vector">vector</a></i>)
+  an <i><a href="i.xhtml#integer">integer</a></i> associated with a <i><a href="v.xhtml#vector">vector</a></i> that represents the
+  index above which no <i><a href="e.xhtml#element">elements</a></i> are <i><a href="a.xhtml#active">active</a></i>.
+  (A <i><a href="#fillpointer">fill pointer</a></i> is a non-negative <i><a href="i.xhtml#integer">integer</a></i> no
+   larger than the total number of <i><a href="e.xhtml#element">elements</a></i> in the <i><a href="v.xhtml#vector">vector</a></i>.
+   Not all <i><a href="v.xhtml#vector">vectors</a></i> have <i><a href="#fillpointer">fill pointers</a></i>.)
+
+<p>
+<span id="finite"/></p></dd><dt><b>finite:</b></dt><dd> <i>adj.</i> (of a <i><a href="t.xhtml#type">type</a></i>)
+  having a finite number of <i><a href="e.xhtml#element">elements</a></i>.
+  The type specifier <code>(integer 0 5)</code> denotes a finite type,
+	    but the type specifiers <a href="../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782"><b>integer</b></a> and <code>(integer 0)</code> do not.
+
+<p>
+<span id="fixnum"/></p></dd><dt><b>fixnum:</b></dt><dd> <i>n.</i> 
+  an <i><a href="i.xhtml#integer">integer</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../12-numbers/12.2.13-fixnum.xhtml#DictEntry_fixnum_787"><b>fixnum</b></a>.
+
+<p>
+<span id="float"/></p></dd><dt><b>float:</b></dt><dd> <i>n.</i>   an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../12-numbers/12.2.4-float.xhtml#DictEntry_float_778"><b>float</b></a>.
+
+<p>
+
+<span id="forvalue"/></p></dd><dt><b>for-value:</b></dt><dd> <i>adj.</i> (of a <i><a href="r.xhtml#reference">reference</a></i> to a <i><a href="b.xhtml#binding">binding</a></i>)
+  being a <i><a href="r.xhtml#reference">reference</a></i> that <i><a href="r.xhtml#read">reads</a></i><sub>1</sub>
+  the <i><a href="v.xhtml#value">value</a></i> of the <i><a href="b.xhtml#binding">binding</a></i>.
+
+
+<p>
+<span id="form"/></p></dd><dt><b>form:</b></dt><dd> <i>n.</i>   1. any <i><a href="o.xhtml#object">object</a></i> meant to be <i>evaluated</i>.
+  2.    a <i><a href="s.xhtml#symbol">symbol</a></i>,
+        a <i><a href="c.xhtml#compoundform">compound form</a></i>,
+     or a <i><a href="s.xhtml#selfevaluatingobject">self-evaluating object</a></i>.
+  3. (for an <i><a href="o.xhtml#operator">operator</a></i>, as in "&lt;&lt;<i>operator</i>&gt;&gt; <i><a href="#form">form</a></i>")
+     a <i><a href="c.xhtml#compoundform">compound form</a></i> having that <i><a href="o.xhtml#operator">operator</a></i> as its first element.
+     A <a href="../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289"><b>quote</b></a> form is a constant form.
+
+<p>
+<span id="formalargument"/></p></dd><dt><b>formal argument:</b></dt><dd> <i>n.</i> <i>Trad.</i> 
+  a <i><a href="p.xhtml#parameter">parameter</a></i>.
+
+<p>
+<span id="formalparameter"/></p></dd><dt><b>formal parameter:</b></dt><dd> <i>n.</i> <i>Trad.</i> 
+  a <i><a href="p.xhtml#parameter">parameter</a></i>.
+
+<p>
+
+<span id="format"/></p></dd><dt><b>format:</b></dt><dd> <i>v.t.</i> (a <i><a href="#formatcontrol">format control</a></i> and <i><a href="#formatargument">format arguments</a></i>)
+
+  to perform output as if by <a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>,
+  using the <i><a href="#formatstring">format string</a></i> and <i><a href="#formatargument">format arguments</a></i>.
+
+
+<p>
+
+<span id="formatargument"/></p></dd><dt><b>format argument:</b></dt><dd> <i>n.</i>   an <i><a href="o.xhtml#object">object</a></i> which is used as data by functions such as <a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>
+  which interpret <i><a href="#formatcontrol">format controls</a></i>.
+
+
+<p>
+<span id="formatcontrol"/></p></dd><dt><b>format control:</b></dt><dd> <i>n.</i>      a <i><a href="#formatstring">format string</a></i>,
+  or a <i><a href="#function">function</a></i> that obeys the <i><a href="a.xhtml#argument">argument</a></i> conventions
+     for a <i><a href="#function">function</a></i> returned by the <a href="../22-printer/22.4.2-formatter.xhtml#DictEntry_formatter_1342"><b>formatter</b></a> <i><a href="m.xhtml#macro">macro</a></i>.
+  See Section <a href="../22-printer/22.2-the-lisp-pretty-printer.xhtml#SubSubSectio_Compiling_Fo_1282">22.2.1.3 Compiling Format Strings</a>.
+
+<p>
+<span id="formatdirective"/></p></dd><dt><b>format directive:</b></dt><dd> <i>n.</i>   1. a sequence of <i><a href="c.xhtml#character">characters</a></i> in a <i><a href="#formatstring">format string</a></i>
+     which is introduced by a <i><a href="t.xhtml#tilde">tilde</a></i>, and which is specially 
+     interpreted by <i><a href="c.xhtml#code">code</a></i> which processes <i><a href="#formatstring">format strings</a></i>
+     to mean that some special operation should be performed, possibly
+     involving data supplied by the <i><a href="#formatargument">format arguments</a></i> that 
+     accompanied the <i><a href="#formatstring">format string</a></i>.  See the <i><a href="#function">function</a></i> <a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>.
+     In <code>"~D base 10 = ~8R"</code>, the character
+     	       sequences `<code>~D</code>' and `<code>~8R</code>' are format directives.
+  2. the conceptual category of all <i><a href="#formatdirective">format directives</a></i><sub>1</sub>
+     which use the same dispatch character.
+     Both <code>"~3d"</code> and <code>"~3,'0D"</code> are valid uses of the
+	       `<code>~D</code>' format directive.
+
+<p>
+<span id="formatstring"/></p></dd><dt><b>format string:</b></dt><dd> <i>n.</i>   a <i><a href="s.xhtml#string">string</a></i> which can contain both ordinary text and <i><a href="#formatdirective">format directives</a></i>,
+  and which is used in conjunction with <i><a href="#formatargument">format arguments</a></i> to describe how 
+  text output should be formatted by certain functions, such as <a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>.
+
+<p>
+<span id="freedeclaration"/></p></dd><dt><b>free declaration:</b></dt><dd> <i>n.</i>   a declaration that is not a <i><a href="b.xhtml#bounddeclaration">bound declaration</a></i>.
+  See <a href="../3-evaluation-and-compilation/3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a>.
+
+<p>
+<span id="fresh"/></p></dd><dt><b>fresh:</b></dt><dd> <i>adj.</i> 
+  1. (of an <i><a href="o.xhtml#object">object</a></i> <i>yielded</i> by a <i><a href="#function">function</a></i>)
+     having been newly-allocated by that <i><a href="#function">function</a></i>.
+     (The caller of a <i><a href="#function">function</a></i> that returns a <i><a href="#fresh">fresh</a></i> <i><a href="o.xhtml#object">object</a></i>
+      may freely modify the <i><a href="o.xhtml#object">object</a></i> without fear that such modification will
+      compromise the future correct behavior of that <i><a href="#function">function</a></i>.)
+  2. (of a <i><a href="b.xhtml#binding">binding</a></i> for a <i><a href="n.xhtml#name">name</a></i>)
+     newly-allocated; not shared with other <i><a href="b.xhtml#binding">bindings</a></i> for that <i><a href="n.xhtml#name">name</a></i>.
+
+<p>
+<span id="freshline"/></p></dd><dt><b>freshline:</b></dt><dd> <i>n.</i>   a conceptual operation on a <i><a href="s.xhtml#stream">stream</a></i>, implemented by the <i><a href="#function">function</a></i> <a href="../21-streams/21.2.19-terpri.xhtml#DictEntry_terpri_fres_1210"><b>fresh-line</b></a>
+  and by the <i><a href="#formatdirective">format directive</a></i> <code>~&amp;</code>, which advances the display position
+  to the beginning of the next line (as if a <i><a href="n.xhtml#newline">newline</a></i> had been typed, or 
+  the <i><a href="#function">function</a></i> <a href="../21-streams/21.2.19-terpri.xhtml#DictEntry_terpri_fres_1210"><b>terpri</b></a> had been called)
+  unless the <i><a href="s.xhtml#stream">stream</a></i> is already known to be positioned at the beginning of a line.
+  Unlike <i><a href="n.xhtml#newline">newline</a></i>, <i><a href="#freshline">freshline</a></i> is not a <i><a href="c.xhtml#character">character</a></i>.
+
+<p>
+<span id="funbound"/></p></dd><dt><b>funbound:</b></dt><dd> <span class="pron">[ ˈefunbau̇nd ]</span> <i>n.</i> (of a <i><a href="#functionname">function name</a></i>)
+  not <i><a href="#fbound">fbound</a></i>.
+
+<p>
+<span id="function"/></p></dd><dt><b>function:</b></dt><dd> <i>n.</i>   
+  1. an <i><a href="o.xhtml#object">object</a></i> representing code,
+     which can be <i>called</i> with zero or more <i><a href="a.xhtml#argument">arguments</a></i>,
+     and which produces zero or more <i><a href="v.xhtml#value">values</a></i>.
+  2. an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338"><b>function</b></a>.
+
+<p>
+<span id="functionblockname"/></p></dd><dt><b>function block name:</b></dt><dd> <i>n.</i> (of a <i><a href="#functionname">function name</a></i>)
+  The <i><a href="s.xhtml#symbol">symbol</a></i> that would be used as the name of an <i><a href="i.xhtml#implicitblock">implicit block</a></i>
+  which surrounds the body of a <i><a href="#function">function</a></i> having that <i><a href="#functionname">function name</a></i>.
+  If the <i><a href="#functionname">function name</a></i> is a <i><a href="s.xhtml#symbol">symbol</a></i>, its <i><a href="#functionblockname">function block name</a></i> is
+  the <i><a href="#functionname">function name</a></i> itself.
+  If the <i><a href="#functionname">function name</a></i> is a <i><a href="l.xhtml#list">list</a></i> whose <i><a href="c.xhtml#car">car</a></i> is <a href="../5-data-and-control-flow/5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a>
+  and whose <i><a href="c.xhtml#cadr">cadr</a></i> is a <i><a href="s.xhtml#symbol">symbol</a></i>, its <i><a href="#functionblockname">function block name</a></i> is 
+  the <i><a href="s.xhtml#symbol">symbol</a></i> that is the <i><a href="c.xhtml#cadr">cadr</a></i> of the <i><a href="#functionname">function name</a></i>.
+  An <i><a href="i.xhtml#implementation">implementation</a></i> which supports additional kinds of <i><a href="#functionname">function names</a></i>
+  must specify for each how the corresponding <i><a href="#functionblockname">function block name</a></i> is computed.
+
+<p>
+<span id="functioncell"/></p></dd><dt><b>function cell:</b></dt><dd> <i>n.</i> <i>Trad.</i> (of a <i><a href="s.xhtml#symbol">symbol</a></i>)
+  The <i><a href="p.xhtml#place">place</a></i> which holds the <i>definition</i> of the
+  global <i><a href="#function">function</a></i> <i><a href="b.xhtml#binding">binding</a></i>, if any, named by that <i><a href="s.xhtml#symbol">symbol</a></i>,
+  and which is <i>accessed</i> by <a href="../10-symbols/10.2.10-symbol-function.xhtml#DictEntry_symbol_funct_684"><b>symbol-function</b></a>.
+  See <i><a href="c.xhtml#cell">cell</a></i>.
+
+<p>
+<span id="functiondesignator"/></p></dd><dt><b>function designator:</b></dt><dd> <i>n.</i>   a <i><a href="d.xhtml#designator">designator</a></i> for a <i><a href="#function">function</a></i>; that is,
+  an <i><a href="o.xhtml#object">object</a></i> that denotes a <i><a href="#function">function</a></i>
+  and that is one of:
+      a <i><a href="s.xhtml#symbol">symbol</a></i> (denoting the <i><a href="#function">function</a></i> named by that <i><a href="s.xhtml#symbol">symbol</a></i>
+                       in the <i><a href="g.xhtml#globalenvironment">global environment</a></i>),
+   or a <i><a href="#function">function</a></i> (denoting itself).
+  The consequences are undefined if 
+  a <i><a href="s.xhtml#symbol">symbol</a></i> is used as a <i><a href="#functiondesignator">function designator</a></i> but
+  it does not have a global definition as a <i><a href="#function">function</a></i>,
+  or it has a global definition as a <i><a href="m.xhtml#macro">macro</a></i> or a <i><a href="s.xhtml#specialform">special form</a></i>.
+  See also <i><a href="e.xhtml#extendedfunctiondesignator">extended function designator</a></i>.
+
+<p>
+<span id="functionform"/></p></dd><dt><b>function form:</b></dt><dd> <i>n.</i>   a <i><a href="#form">form</a></i> that is a <i><a href="l.xhtml#list">list</a></i> and that has a first element 
+  which is the <i><a href="n.xhtml#name">name</a></i> of a <i><a href="#function">function</a></i> to be called on
+  <i><a href="a.xhtml#argument">arguments</a></i> which are the result of <i>evaluating</i> subsequent
+  elements of the <i><a href="#functionform">function form</a></i>.
+
+<p>
+<span id="functionname"/></p></dd><dt><b>function name:</b></dt><dd> <i>n.</i> 
+  1. (in an <i><a href="e.xhtml#environment">environment</a></i>)
+     A <i><a href="s.xhtml#symbol">symbol</a></i> or a <i><a href="l.xhtml#list">list</a></i> <code>(setf <i>symbol</i>)</code> 
+     that is the <i><a href="n.xhtml#name">name</a></i> of a <i><a href="#function">function</a></i> in that <i><a href="e.xhtml#environment">environment</a></i>.
+  2. A <i><a href="s.xhtml#symbol">symbol</a></i> or a <i><a href="l.xhtml#list">list</a></i> <code>(setf <i>symbol</i>)</code>.
+
+<p>
+<span id="functionalevaluation"/></p></dd><dt><b>functional evaluation:</b></dt><dd> <i>n.</i> 
+  the process of extracting a <i><a href="#functionalvalue">functional value</a></i> from a <i><a href="#functionname">function name</a></i>
+
+  or a <i><a href="l.xhtml#lambdaexpression">lambda expression</a></i>.
+  The evaluator performs <i><a href="#functionalevaluation">functional evaluation</a></i> 
+       implicitly when it encounters a <i><a href="#functionname">function name</a></i> 
+
+ 	or a <i><a href="l.xhtml#lambdaexpression">lambda expression</a></i>
+        in the <i><a href="c.xhtml#car">car</a></i> of a <i><a href="c.xhtml#compoundform">compound form</a></i>, 
+    or explicitly when it encounters a <a href="../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338"><b>function</b></a> <i><a href="s.xhtml#specialform">special form</a></i>.
+  Neither a use of a <i><a href="s.xhtml#symbol">symbol</a></i> as a <i><a href="#functiondesignator">function designator</a></i> nor a
+  use of the <i><a href="#function">function</a></i> <a href="../10-symbols/10.2.10-symbol-function.xhtml#DictEntry_symbol_funct_684"><b>symbol-function</b></a> to extract the <i><a href="#functionalvalue">functional value</a></i>
+  of a <i><a href="s.xhtml#symbol">symbol</a></i> is considered a <i><a href="#functionalevaluation">functional evaluation</a></i>.
+
+<p>
+<span id="functionalvalue"/></p></dd><dt><b>functional value:</b></dt><dd> <i>n.</i> 
+  1. (of a <i><a href="#functionname">function name</a></i> <i>N</i> in an <i><a href="e.xhtml#environment">environment</a></i> <i>E</i>)
+     The <i><a href="v.xhtml#value">value</a></i> of the <i><a href="b.xhtml#binding">binding</a></i> named <i>N</i>
+     in the <i><a href="#function">function</a></i> <i><a href="n.xhtml#namespace">namespace</a></i> for <i><a href="e.xhtml#environment">environment</a></i> <i>E</i>;
+
+     that is, the contents of the <i><a href="#functioncell">function cell</a></i> named <i>N</i> in 
+     <i><a href="e.xhtml#environment">environment</a></i> <i>E</i>.
+  2. (of an <i><a href="#fbound">fbound</a></i> <i><a href="s.xhtml#symbol">symbol</a></i> <i>S</i>)
+     the contents of the <i><a href="s.xhtml#symbol">symbol</a></i>'s <i><a href="#functioncell">function cell</a></i>; that is,
+     the <i><a href="v.xhtml#value">value</a></i> of the <i><a href="b.xhtml#binding">binding</a></i> named <i>S</i>
+     in the <i><a href="#function">function</a></i> <i><a href="n.xhtml#namespace">namespace</a></i> of the <i><a href="g.xhtml#globalenvironment">global environment</a></i>.
+     (A <i><a href="n.xhtml#name">name</a></i> that is a <i><a href="m.xhtml#macroname">macro name</a></i> in the <i><a href="g.xhtml#globalenvironment">global environment</a></i>
+      or is a <i><a href="s.xhtml#specialoperator">special operator</a></i> might or might not be <i><a href="#fbound">fbound</a></i>.
+
+
+      But if <i>S</i> is such a <i><a href="n.xhtml#name">name</a></i> and is <i><a href="#fbound">fbound</a></i>, the specific
+      nature of its <i><a href="#functionalvalue">functional value</a></i> is <i><a href="i.xhtml#implementationdependent">implementation-dependent</a></i>;
+      in particular, it might or might not be a <i><a href="#function">function</a></i>.)
+
+<p>
+<span id="furthercompilation"/></p></dd><dt><b>further compilation:</b></dt><dd> <i>n.</i> 
+  <i><a href="i.xhtml#implementationdependent">implementation-dependent</a></i> compilation beyond <i><a href="m.xhtml#minimalcompilation">minimal compilation</a></i>.
+  Further compilation is permitted to take place at <i><a href="r.xhtml#runtime">run time</a></i>.
+  Block compilation and generation of machine-specific instructions
+            are examples of further compilation.  
+
+</dd></dl>
+</section>
+</body>
+</html>

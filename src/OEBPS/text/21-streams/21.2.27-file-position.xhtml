@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.27 file-position — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_file_positio_1218" class="entry"><span class="secno">21.2.27</span> <span class="names">file-position</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>file-position</b>
+<i>stream</i>
+  → <i>position</i>
+<p>
+<b>file-position</b>
+<i>stream position-spec</i>
+  → <i>success-p</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>stream</i>—a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
+
+<p>
+<i>position-spec</i>—a <i><a href="../26-glossary/f.xhtml#filepositiondesignator">file position designator</a></i>.
+
+</p><p>
+<i>position</i>—a <i><a href="../26-glossary/f.xhtml#fileposition">file position</a></i> or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>success-p</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+Returns or changes the current position within a <i>stream</i>.
+
+<p>
+
+When <i>position-spec</i> is not supplied,
+<a href="#DictEntry_file_positio_1218"><b>file-position</b></a> returns the current <i><a href="../26-glossary/f.xhtml#fileposition">file position</a></i> in the <i>stream</i>,
+or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if this cannot be determined.
+
+</p><p>
+
+When <i>position-spec</i> is supplied,
+the <i><a href="../26-glossary/f.xhtml#fileposition">file position</a></i> in <i>stream</i> is set to that <i><a href="../26-glossary/f.xhtml#fileposition">file position</a></i> (if possible).
+<a href="#DictEntry_file_positio_1218"><b>file-position</b></a> returns <i><a href="../26-glossary/t.xhtml#true">true</a></i> 
+if the repositioning is performed successfully,
+or <i><a href="../26-glossary/f.xhtml#false">false</a></i> if it is not.
+
+</p><p>
+An <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> returned by <a href="#DictEntry_file_positio_1218"><b>file-position</b></a> of one argument 
+should be acceptable as <i>position-spec</i> for use with the same file.
+
+</p><p>
+For a character file,
+performing a single <a href="21.2.17-read-char.xhtml#DictEntry_read_char_1208"><b>read-char</b></a> or <a href="21.2.21-write-char.xhtml#DictEntry_write_char_1212"><b>write-char</b></a> operation
+may cause the file position to be increased by more than 1 because of
+character-set translations (such as translating between the <i>Common Lisp</i> <code>#\Newline</code> character and an external ASCII
+carriage-return/line-feed sequence) and other aspects of the
+implementation.  For a binary file, every <a href="21.2.14-read-byte.xhtml#DictEntry_read_byte_1205"><b>read-byte</b></a> 
+or <a href="21.2.15-write-byte.xhtml#DictEntry_write_byte_1206"><b>write-byte</b></a>
+operation increases the file position by 1.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defun tester ()
+   (let ((noticed '()) file-written)
+     (flet ((notice (x) (push x noticed) x))
+       (with-open-file (s "test.bin" 
+                          :element-type '(unsigned-byte 8)
+                          :direction :output
+                          :if-exists :error)
+          (notice (file-position s)) ;1
+          (write-byte 5 s) 
+          (write-byte 6 s)
+          (let ((p (file-position s)))
+            (notice p) ;2
+            (notice (when p (file-position s (1- p))))) ;3
+          (write-byte 7 s)
+          (notice (file-position s)) ;4
+          (setq file-written (truename s)))
+        (with-open-file (s file-written
+                           :element-type '(unsigned-byte 8)
+                           :direction :input)
+          (notice (file-position s)) ;5
+          (let ((length (file-length s)))
+            (notice length) ;6
+            (when length
+              (dotimes (i length)
+                (notice (read-byte s)))))) ;7,...
+        (nreverse noticed))))
+→  tester
+ (tester)
+→ (0 2 T 2 0 2 5 7)
+OR→(0 2 NIL 3 0 3 5 6 7)
+OR→(NIL NIL NIL NIL NIL NIL)
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+When the <i>position-spec</i> argument is supplied,
+the <i><a href="../26-glossary/f.xhtml#fileposition">file position</a></i> in the <i>stream</i> might be moved.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The value returned by <a href="#DictEntry_file_positio_1218"><b>file-position</b></a> increases monotonically
+as input or output operations are performed.  
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+
+
+If <i>position-spec</i> is supplied, but is too large or otherwise inappropriate, 
+an error is signaled.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="21.2.26-file-length.xhtml#DictEntry_file_length_1217"><b>file-length</b></a>,
+<a href="21.2.28-file-string-length.xhtml#DictEntry_file_string__1219"><b>file-string-length</b></a>,
+<a href="21.2.29-open.xhtml#DictEntry_open_1220"><b>open</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+Implementations that have character files represented
+as a sequence of records of bounded size might choose to encode the
+file position as, for example,
+&lt;&lt;<i>record-number</i>&gt;&gt;*&lt;&lt;<i>max-record-size</i>&gt;&gt;+&lt;&lt;<i>character-within-record</i>&gt;&gt;.
+This is a valid encoding because it increases monotonically as
+each character is read or written, though not necessarily by 1 at
+each step.  An <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> might then be considered "inappropriate"
+as <i>position-spec</i> to <a href="#DictEntry_file_positio_1218"><b>file-position</b></a> if, when decoded into
+record number and character number, it turned out that the
+supplied record was too short for the specified character number.
+
+</dd></dl>
+</section>
+</body>
+</html>

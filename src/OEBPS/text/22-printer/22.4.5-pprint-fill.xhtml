@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>22.4.5 pprint-fill, pprint-linear, pprint-tabular — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_pprint_fill_1345" class="entry"><span class="secno">22.4.5</span> <span class="names">pprint-fill, pprint-linear, pprint-tabular</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>pprint-fill</b>
+<i>stream object <code>&amp;optional</code> colon-p at-sign-p</i>
+  → <i><a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i><p><i></i>
+<b>pprint-linear</b>
+<i>stream object <code>&amp;optional</code> colon-p at-sign-p</i>
+  → <i><a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i></p><p>
+<b>pprint-tabular</b>
+<i>stream object <code>&amp;optional</code> colon-p at-sign-p tabsize</i>
+  → <i><a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>
+</i></p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>stream</i>—an <i><a href="../26-glossary/o.xhtml#output">output</a></i> <i><a href="../26-glossary/s.xhtml#streamdesignator">stream designator</a></i>.
+
+<p>
+<i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+</p><p>
+<i>colon-p</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+  The default is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.
+
+</p><p>
+<i>at-sign-p</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+  The default is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</p><p>
+<i>tabsize</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+  The default is <code>16</code>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The functions <a href="#DictEntry_pprint_fill_1345"><b>pprint-fill</b></a>, <a href="#DictEntry_pprint_fill_1345"><b>pprint-linear</b></a>, and
+<a href="#DictEntry_pprint_fill_1345"><b>pprint-tabular</b></a> specify particular ways of <i>pretty printing</i>
+a <i><a href="../26-glossary/l.xhtml#list">list</a></i> to <i>stream</i>. 
+Each function prints parentheses around the output if and only
+if <i>colon-p</i> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.
+Each function ignores its <i>at-sign-p</i> argument.
+(Both arguments are included even though only one is needed
+so that these functions can be used via <code>~/.../</code>
+and as <a href="22.4.13-set-pprint-dispatch.xhtml#DictEntry_set_pprint_d_1353"><b>set-pprint-dispatch</b></a> functions, as well as directly.)
+Each function handles abbreviation and the detection of circularity
+and sharing correctly, and uses <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>write</b></a> to print <i>object</i>
+when it is a <i><a href="../26-glossary/n.xhtml#nonlist">non-list</a></i>.
+
+
+<p>
+
+If <i>object</i> is a <i><a href="../26-glossary/l.xhtml#list">list</a></i> and 
+if the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="22.4.26-print-pretty.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+each of these functions prints <i>object</i>
+using a minimum of <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i>,
+as described in Section <a href="22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Lis_1268">22.1.3.5 Printing Lists and Conses</a>.
+Otherwise (if <i>object</i> is a <i><a href="../26-glossary/l.xhtml#list">list</a></i> and 
+	   if the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="22.4.26-print-pretty.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>):
+
+</p><ul>
+
+<li>
+The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_pprint_fill_1345"><b>pprint-linear</b></a> prints a <i><a href="../26-glossary/l.xhtml#list">list</a></i> either all on one line, 
+or with each <i><a href="../26-glossary/e.xhtml#element">element</a></i> on a separate line.  
+
+</li><li>
+The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_pprint_fill_1345"><b>pprint-fill</b></a> prints a <i><a href="../26-glossary/l.xhtml#list">list</a></i> with as many <i><a href="../26-glossary/e.xhtml#element">elements</a></i>
+as possible on each line.
+
+</li><li>
+The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_pprint_fill_1345"><b>pprint-tabular</b></a> is the same as <a href="#DictEntry_pprint_fill_1345"><b>pprint-fill</b></a>
+except that it prints the <i><a href="../26-glossary/e.xhtml#element">elements</a></i> so that they line up in columns.
+The <i>tabsize</i> specifies the column spacing in <i><a href="../26-glossary/e.xhtml#em">ems</a></i>,
+which is the total spacing from the leading edge of one column to
+the leading edge of the next.
+</li></ul>
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+Evaluating the following with a line length of <code>25</code> produces the output shown.
+
+<pre>(progn (princ "Roads ") 
+       (pprint-tabular *standard-output* '(elm main maple center) nil nil 8))
+Roads ELM     MAIN
+      MAPLE   CENTER
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+Performs output to the indicated <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+The cursor position on the indicated <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>, if it can be determined.
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_pprint_fill_1345"><b>pprint-tabular</b></a> could be defined as follows:
+
+<pre>(defun pprint-tabular (s list &amp;optional (colon-p t) at-sign-p (tabsize nil))
+  (declare (ignore at-sign-p))
+  (when (null tabsize) (setq tabsize 16))
+  (pprint-logical-block (s list :prefix (if colon-p "(" "")
+                                :suffix (if colon-p ")" ""))
+    (pprint-exit-if-list-exhausted)
+    (loop (write (pprint-pop) :stream s)
+          (pprint-exit-if-list-exhausted)
+          (write-char #\Space s)
+          (pprint-tab :section-relative 0 tabsize s)
+          (pprint-newline :fill s))))
+</pre>
+
+<p>
+Note that it would have been inconvenient to specify this function
+using <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>, because of the need to pass its <i>tabsize</i> argument
+through to a <code>~:T</code> format directive nested within an iteration over a list.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.33 find-restart — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_find_restart_658" class="entry"><span class="secno">9.2.33</span> <span class="names">find-restart</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>find-restart</b>
+<i>identifier <code>&amp;optional</code> condition</i>
+<p> restart
+
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>identifier</i>—a <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>, or a <i><a href="../26-glossary/r.xhtml#restart">restart</a></i>.
+
+<p>
+
+<i>condition</i>—a <i><a href="../26-glossary/c.xhtml#condition">condition</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+
+</p><p>
+<i>restart</i>—a <i><a href="../26-glossary/r.xhtml#restart">restart</a></i> or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_find_restart_658"><b>find-restart</b></a> searches for a particular <i><a href="../26-glossary/r.xhtml#restart">restart</a></i> in the 
+current <i><a href="../26-glossary/d.xhtml#dynamicenvironment">dynamic environment</a></i>.
+
+<p>
+
+When <i>condition</i> is <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i>, only those <i><a href="../26-glossary/r.xhtml#restart">restarts</a></i>
+are considered that are either explicitly associated with that <i>condition</i>,
+or not associated with any <i><a href="../26-glossary/c.xhtml#condition">condition</a></i>; that is, the excluded <i><a href="../26-glossary/r.xhtml#restart">restarts</a></i> 
+are those that are associated with a non-empty set of <i><a href="../26-glossary/c.xhtml#condition">conditions</a></i> of 
+which the given <i>condition</i> is not an <i><a href="../26-glossary/e.xhtml#element">element</a></i>.
+If <i>condition</i> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, all <i><a href="../26-glossary/r.xhtml#restart">restarts</a></i> are considered.
+
+
+</p><p>
+If <i>identifier</i> is a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>, then the innermost 
+(most recently established) <i><a href="../26-glossary/a.xhtml#applicablerestart">applicable restart</a></i> with that <i><a href="../26-glossary/n.xhtml#name">name</a></i> is returned.
+<a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> is returned if no such restart is found.
+
+</p><p>
+If <i>identifier</i> is a currently active restart, then it is returned.
+Otherwise, <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> is returned.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (restart-case
+     (let ((r (find-restart 'my-restart)))
+       (format t "~S is named ~S" r (restart-name r)))
+   (my-restart () nil))
+▷#&lt;RESTART 32307325&gt; is named MY-RESTART
+→  NIL
+ (find-restart 'my-restart)
+→  NIL
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+Existing restarts.
+
+<p>
+<a href="9.2.37-restart-case.xhtml#DictEntry_restart_case_662"><b>restart-case</b></a>, <a href="9.2.36-restart-bind.xhtml#DictEntry_restart_bind_661"><b>restart-bind</b></a>, <a href="9.2.39-with-condition-restarts.xhtml#DictEntry_with_conditi_664"><b>with-condition-restarts</b></a>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="9.2.32-compute-restarts.xhtml#DictEntry_compute_rest_657"><b>compute-restarts</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (find-restart <i>identifier</i>)
+ ==(find <i>identifier</i> (compute-restarts) :key :restart-name)
+</pre>
+
+<p>
+Although anonymous restarts have a name of <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+the consequences are unspecified if <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> is given as an <i>identifier</i>.  
+Occasionally, programmers lament that <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> is not permissible as an
+<i>identifier</i> argument.  In most such cases, <a href="9.2.32-compute-restarts.xhtml#DictEntry_compute_rest_657"><b>compute-restarts</b></a>
+can probably be used to simulate the desired effect.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

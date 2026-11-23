@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.56 nth-value — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_nth_value_442" class="entry"><span class="secno">5.3.56</span> <span class="names">nth-value</span> <span class="kind">Macro</span></h3>
+<dl>
+                         
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>nth-value</b>
+<i>n form</i>
+  → <i>object</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>n</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>; evaluated.
+
+<p>
+<i>form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>; evaluated as described below.
+
+</p><p>
+<i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Evaluates <i>n</i> and then <i>form</i>,
+returning as its only value the <i>n</i>th value <i>yielded</i> by <i>form</i>,
+or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if <i>n</i> is greater than or equal to the number of <i><a href="../26-glossary/v.xhtml#value">values</a></i>
+returned by <i>form</i>.  (The first returned value is numbered <code>0</code>.)
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (nth-value 0 (values 'a 'b)) →  A
+ (nth-value 1 (values 'a 'b)) →  B
+ (nth-value 2 (values 'a 'b)) →  NIL
+ (let* ((x 83927472397238947423879243432432432)
+        (y 32423489732)
+        (a (nth-value 1 (floor x y)))
+        (b (mod x y)))
+   (values a b (= a b)))
+→ 3332987528, 3332987528, <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="5.3.50-multiple-value-list.xhtml#DictEntry_multiple_val_436"><b>multiple-value-list</b></a>,
+<a href="../14-conses/14.2.22-nth.xhtml#DictEntry_nth_935"><b>nth</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+Operationally, the following relationship is true, although <a href="#DictEntry_nth_value_442"><b>nth-value</b></a> 
+might be more efficient in some <i><a href="../26-glossary/i.xhtml#implementation">implementations</a></i> 
+because, for example, some <i>consing</i> might be avoided.
+
+<pre> (nth-value <i>n</i> <i>form</i>) ==(nth <i>n</i> (multiple-value-list <i>form</i>))
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

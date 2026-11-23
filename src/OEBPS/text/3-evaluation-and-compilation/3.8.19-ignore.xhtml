@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.8.19 ignore, ignorable — Declaration</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_ignore_igno_301" class="entry"><span class="secno">3.8.19</span> <span class="names">ignore, ignorable</span> <span class="kind">Declaration</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<code>(ignore <code>{</code><i>var</i> | (<a href="../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338"><b>function</b></a> <i>fn</i>)<code>}</code><sup>*</sup>)</code>
+
+<p>
+<code>(ignorable <code>{</code><i>var</i> | (<a href="../4-types-and-classes/4.4.3-function.xhtml#DictEntry_function_338"><b>function</b></a> <i>fn</i>)<code>}</code><sup>*</sup>)</code>
+
+</p></dd><dt><b>Arguments:</b></dt><dd>
+
+<i>var</i>—a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i><a href="../26-glossary/n.xhtml#name">name</a></i>.
+
+<p>
+<i>fn</i>—a <i><a href="../26-glossary/f.xhtml#function">function</a></i> <i><a href="../26-glossary/n.xhtml#name">name</a></i>.
+
+</p></dd><dt><b>Valid Context:</b></dt><dd>
+
+<i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i>
+
+
+
+</dd><dt><b>Binding Types Affected:</b></dt><dd>
+
+<i><a href="../26-glossary/v.xhtml#variable">variable</a></i>, <i><a href="../26-glossary/f.xhtml#function">function</a></i>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+The <a href="#DictEntry_ignore_igno_301"><b>ignore</b></a> and <a href="#DictEntry_ignore_igno_301"><b>ignorable</b></a> declarations
+refer to <i><a href="../26-glossary/f.xhtml#forvalue">for-value</a></i> <i><a href="../26-glossary/r.xhtml#reference">references</a></i> 
+    to <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i> for the <i>vars</i>
+and to <i><a href="../26-glossary/f.xhtml#function">function</a></i> <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i> for the <i>fns</i>.
+
+<p>
+An <a href="#DictEntry_ignore_igno_301"><b>ignore</b></a> <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i> specifies that
+<i><a href="../26-glossary/f.xhtml#forvalue">for-value</a></i> <i><a href="../26-glossary/r.xhtml#reference">references</a></i> to the indicated <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i>
+will not
+occur within the scope of the <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i>.
+Within the <i><a href="../26-glossary/s.xhtml#scope">scope</a></i> of such a <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i>,
+it is desirable
+for a compiler to issue a warning about 
+the presence of
+either a <i><a href="../26-glossary/f.xhtml#forvalue">for-value</a></i> <i><a href="../26-glossary/r.xhtml#reference">reference</a></i> to any <i>var</i> or <i>fn</i>,
+    or a <a href="3.8.26-special.xhtml#DictEntry_special_308"><b>special</b></a> <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i> for any <i>var</i>.
+
+</p><p>
+An <a href="#DictEntry_ignore_igno_301"><b>ignorable</b></a> <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i> specifies that 
+<i><a href="../26-glossary/f.xhtml#forvalue">for-value</a></i> <i><a href="../26-glossary/r.xhtml#reference">references</a></i> to the indicated <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i>
+might or might not
+occur within the scope of the <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i>.
+Within the <i><a href="../26-glossary/s.xhtml#scope">scope</a></i> of such a <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i>,
+it is not desirable
+for a compiler to issue a warning about
+the presence or absence of
+either a <i><a href="../26-glossary/f.xhtml#forvalue">for-value</a></i> <i><a href="../26-glossary/r.xhtml#reference">reference</a></i> to any <i>var</i> or <i>fn</i>,
+    or a <a href="3.8.26-special.xhtml#DictEntry_special_308"><b>special</b></a> <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i> for any <i>var</i>.
+
+</p><p>
+When not within the <i><a href="../26-glossary/s.xhtml#scope">scope</a></i> 
+of a <a href="#DictEntry_ignore_igno_301"><b>ignore</b></a> or <a href="#DictEntry_ignore_igno_301"><b>ignorable</b></a> <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i>,
+it is desirable
+for a compiler to issue a warning about
+any <i>var</i> for which there is 
+neither a <i><a href="../26-glossary/f.xhtml#forvalue">for-value</a></i> <i><a href="../26-glossary/r.xhtml#reference">reference</a></i> 
+    nor a <a href="3.8.26-special.xhtml#DictEntry_special_308"><b>special</b></a> <i><a href="../26-glossary/d.xhtml#declaration">declaration</a></i>,
+or about
+any <i>fn</i> for which there is 
+     no <i><a href="../26-glossary/f.xhtml#forvalue">for-value</a></i> <i><a href="../26-glossary/r.xhtml#reference">reference</a></i>.
+
+</p><p>
+Any warning about a "used" or "unused" <i><a href="../26-glossary/b.xhtml#binding">binding</a></i> must be of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.3-style-warning.xhtml#DictEntry_style_warnin_628"><b>style-warning</b></a>,
+and may not affect program semantics.
+
+</p><p>
+The <i><a href="../26-glossary/s.xhtml#streamvariable">stream variables</a></i> established by 
+     <a href="../21-streams/21.2.31-with-open-file.xhtml#DictEntry_with_open_fi_1222"><b>with-open-file</b></a>,
+     <a href="../21-streams/21.2.33-with-open-stream.xhtml#DictEntry_with_open_st_1224"><b>with-open-stream</b></a>,
+     <a href="../21-streams/21.2.51-with-input-from-string.xhtml#DictEntry_with_input_f_1242"><b>with-input-from-string</b></a>,
+ and <a href="../21-streams/21.2.52-with-output-to-string.xhtml#DictEntry_with_output__1243"><b>with-output-to-string</b></a>,
+and all <i><a href="../26-glossary/i.xhtml#iterationvariable">iteration variables</a></i> are, by definition, always "used".
+Using <code>(declare (ignore <i>v</i>))</code>, 
+for such a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i>v</i> has unspecified consequences.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a>
+</dd></dl>
+</section>
+</body>
+</html>

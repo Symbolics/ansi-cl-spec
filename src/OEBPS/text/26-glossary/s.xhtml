@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Glossary — S</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="glossary">
+<section>
+<h3 id="GlossaryEntr_S_1478" class="letter">S</h3>
+<dl>
+<dt id="safe"><b>safe:</b></dt><dd> <i>adj.</i> 
+  1. (of <i><a href="c.xhtml#code">code</a></i>)
+     processed in a <i><a href="l.xhtml#lexicalenvironment">lexical environment</a></i> where the the highest
+     <b>safety</b> level (<code>3</code>) was in effect. 
+     See <a href="../3-evaluation-and-compilation/3.8.25-optimize.xhtml#DictEntry_optimize_307"><b>optimize</b></a>.
+  2. (of a <i><a href="c.xhtml#call">call</a></i>) a <i><a href="#safecall">safe call</a></i>.
+
+<p>
+<span id="safecall"/></p></dd><dt><b>safe call:</b></dt><dd> <i>n.</i>   a <i><a href="c.xhtml#call">call</a></i> in which 
+        the <i><a href="c.xhtml#call">call</a></i>,
+        the <i><a href="f.xhtml#function">function</a></i> being <i>called</i>,
+    and the point of <i><a href="f.xhtml#functionalevaluation">functional evaluation</a></i>
+  are all <i><a href="#safe">safe</a></i><sub>1</sub> <i><a href="c.xhtml#code">code</a></i>.
+  For more detailed information, see Section <a href="../3-evaluation-and-compilation/3.5-error-checking-in-function-calls.xhtml#SubSubSectio_Safe_and_Uns_268">3.5.1.1 Safe and Unsafe Calls</a>.
+
+<p>
+<span id="same"/></p></dd><dt><b>same:</b></dt><dd> <i>adj.</i> 
+  1. (of <i><a href="o.xhtml#object">objects</a></i> under a specified <i><a href="p.xhtml#predicate">predicate</a></i>) 
+     indistinguishable by that <i><a href="p.xhtml#predicate">predicate</a></i>.
+     The symbol <code>car</code>, the string <code>"car"</code>, and the string <code>"CAR"</code>
+	       are the <code>same</code> under <a href="../16-strings/16.2.10-string=.xhtml#DictEntry_string_str_1029"><b>string-equal</b></a>.
+  2. (of <i><a href="o.xhtml#object">objects</a></i> if no predicate is implied by context)
+     indistinguishable by <a href="../4-types-and-classes/4.4.23-eql.xhtml#DictEntry_eql_358"><b>eql</b></a>.
+     Note that <a href="../5-data-and-control-flow/5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a> might be capable of distinguishing some 
+     <i><a href="n.xhtml#number">numbers</a></i> and <i><a href="c.xhtml#character">characters</a></i> which <a href="../4-types-and-classes/4.4.23-eql.xhtml#DictEntry_eql_358"><b>eql</b></a> cannot 
+     distinguish, but the nature of such, if any, 
+     is <i><a href="i.xhtml#implementationdependent">implementation-dependent</a></i>.
+     Since <a href="../5-data-and-control-flow/5.3.33-eq.xhtml#DictEntry_eq_419"><b>eq</b></a> is used only rarely in this specification,
+     <a href="../4-types-and-classes/4.4.23-eql.xhtml#DictEntry_eql_358"><b>eql</b></a> is the default predicate when none is mentioned explicitly.
+     The conses returned by two successive calls to <a href="../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916"><b>cons</b></a>
+	       are never the same.
+  3. (of <i><a href="t.xhtml#type">types</a></i>) having the same set of <i><a href="e.xhtml#element">elements</a></i>;
+     that is, each <i><a href="t.xhtml#type">type</a></i> is a <i><a href="#subtype">subtype</a></i> of the others.
+     The types specified by <code>(integer 0 1)</code>,
+				      <code>(unsigned-byte 1)</code>,
+				  and <code>bit</code> are the same.
+
+<p>
+<span id="satisfythetest"/></p></dd><dt><b>satisfy the test:</b></dt><dd> <i>v.</i> 
+       (of an <i><a href="o.xhtml#object">object</a></i> being considered by a <i><a href="#sequencefunction">sequence function</a></i>)
+  1. (for a one <i><a href="a.xhtml#argument">argument</a></i> test)
+     to be in a state such that the <i><a href="f.xhtml#function">function</a></i> which is the
+     <i>predicate</i> <i><a href="a.xhtml#argument">argument</a></i> to the <i><a href="#sequencefunction">sequence function</a></i>
+     returns <i><a href="t.xhtml#true">true</a></i> when given a single <i><a href="a.xhtml#argument">argument</a></i> that is the
+     result of calling the <i><a href="#sequencefunction">sequence function</a></i>'s <i>key</i> <i><a href="a.xhtml#argument">argument</a></i>
+     on the <i><a href="o.xhtml#object">object</a></i> being considered.  
+     See Section <a href="../17-sequences/17.2-rules-about-test-functions.xhtml#SubSection_Satisfying_a_1038">17.2.2 Satisfying a One-Argument Test</a>.
+
+
+
+  2. (for a two <i><a href="a.xhtml#argument">argument</a></i> test)
+     to be in a state such that the two-place <i><a href="p.xhtml#predicate">predicate</a></i> 
+     which is the <i><a href="#sequencefunction">sequence function</a></i>'s 
+     <i>test</i> <i><a href="a.xhtml#argument">argument</a></i>
+     returns <i><a href="t.xhtml#true">true</a></i> when given a first <i><a href="a.xhtml#argument">argument</a></i> that 
+     is
+
+
+     the <i><a href="o.xhtml#object">object</a></i> being considered, 
+     and when given a second <i><a href="a.xhtml#argument">argument</a></i>
+     that is the result of calling the <i><a href="#sequencefunction">sequence function</a></i>'s 
+     <i>key</i> <i><a href="a.xhtml#argument">argument</a></i> on an <i><a href="e.xhtml#element">element</a></i> of the
+     <i><a href="#sequencefunction">sequence function</a></i>'s <i>sequence</i> <i><a href="a.xhtml#argument">argument</a></i> 
+     which is being tested for equality;
+     or to be in a state such that the <i>test-not</i> <i><a href="f.xhtml#function">function</a></i>
+     returns <i><a href="f.xhtml#false">false</a></i> given the same <i><a href="a.xhtml#argument">arguments</a></i>.
+     See Section <a href="../17-sequences/17.2-rules-about-test-functions.xhtml#SubSection_Satisfying_a_1036">17.2.1 Satisfying a Two-Argument Test</a>.
+
+<p>
+
+
+<span id="scope"/></p></dd><dt><b>scope:</b></dt><dd> <i>n.</i> 
+  the structural or textual region of code in which <i><a href="r.xhtml#reference">references</a></i> 
+  to an <i><a href="o.xhtml#object">object</a></i>, a <i><a href="b.xhtml#binding">binding</a></i>, an <i><a href="e.xhtml#exitpoint">exit point</a></i>, 
+  a <i><a href="t.xhtml#tag">tag</a></i>, or an <i><a href="e.xhtml#environment">environment</a></i> (usually by <i><a href="n.xhtml#name">name</a></i>) 
+  can occur.
+
+<p>
+<span id="script"/></p></dd><dt><b>script:</b></dt><dd> <i>n.</i> <i>ISO</i>   one of possibly several sets that form an <i><a href="e.xhtml#exhaustivepartition">exhaustive partition</a></i>
+  of the type <a href="../13-characters/13.2.1-character.xhtml#DictEntry_character_884"><b>character</b></a>.  See Section <a href="../13-characters/13.1-character-concepts.xhtml#SubSubSectio_Character_Sc_863">13.1.2.1 Character Scripts</a>.
+
+<p>
+<span id="secondaryvalue"/></p></dd><dt><b>secondary value:</b></dt><dd> <i>n.</i> (of <i><a href="v.xhtml#value">values</a></i> resulting from the
+				   <i><a href="e.xhtml#evaluation">evaluation</a></i> of a <i><a href="f.xhtml#form">form</a></i>)
+  the second <i><a href="v.xhtml#value">value</a></i>, if any, 
+  or else <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if there are fewer than two <i><a href="v.xhtml#value">values</a></i>.
+  The secondary value returned by <a href="../12-numbers/12.2.19-floor.xhtml#DictEntry_floor_ffloo_793"><b>truncate</b></a> is a remainder.
+
+<p>
+<span id="section"/></p></dd><dt><b>section:</b></dt><dd> <i>n.</i>   a partitioning of output by a <i><a href="c.xhtml#conditionalnewline">conditional newline</a></i> on a <i><a href="p.xhtml#prettyprintingstream">pretty printing stream</a></i>.
+  See Section <a href="../22-printer/22.2-the-lisp-pretty-printer.xhtml#SubSubSectio_Dynamic_Cont_1280">22.2.1.1 Dynamic Control of the Arrangement of Output</a>.
+
+<p>
+<span id="selfevaluatingobject"/></p></dd><dt><b>self-evaluating object:</b></dt><dd> <i>n.</i>   an <i><a href="o.xhtml#object">object</a></i> that is neither a <i><a href="#symbol">symbol</a></i> nor a
+
+
+  <i><a href="c.xhtml#cons">cons</a></i>.
+  If a <i><a href="#selfevaluatingobject">self-evaluating object</a></i> is <i>evaluated</i>,
+  it <i><a href="y.xhtml#yield">yields</a></i> itself as its only <i><a href="v.xhtml#value">value</a></i>.
+  Strings are self-evaluating objects.
+
+<p>
+<span id="semistandard"/></p></dd><dt><b>semi-standard:</b></dt><dd> <i>adj.</i> (of a language feature)
+  not required to be implemented by any <i><a href="c.xhtml#conformingimplementation">conforming implementation</a></i>,
+  but nevertheless recommended as the canonical approach in situations where
+  an <i><a href="i.xhtml#implementation">implementation</a></i> does plan to support such a feature.
+  The presence of <i><a href="#semistandard">semi-standard</a></i> aspects in the language is intended
+  to lessen portability problems and reduce the risk of gratuitous divergence
+  among <i><a href="i.xhtml#implementation">implementations</a></i> that might stand in the way of future 
+  standardization.
+
+<p>
+<span id="semicolon"/></p></dd><dt><b>semicolon:</b></dt><dd> <i>n.</i>   the <i><a href="#standardcharacter">standard character</a></i> that is called "semicolon" (<code>;</code>).
+  See <a href="../2-syntax/2.1-character-syntax.xhtml#fig-2-5">Figure 2-5</a>.
+
+<p>
+<span id="sequence"/></p></dd><dt><b>sequence:</b></dt><dd> <i>n.</i> 
+  1. an ordered collection of elements
+  2. a <i><a href="v.xhtml#vector">vector</a></i> or a <i><a href="l.xhtml#list">list</a></i>.
+
+<p>
+<span id="sequencefunction"/></p></dd><dt><b>sequence function:</b></dt><dd> <i>n.</i>   one of the <i><a href="f.xhtml#function">functions</a></i> in <a href="../17-sequences/17.1-sequence-concepts.xhtml#fig-17-1">Figure 17-1</a>,
+  or an <i><a href="i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="f.xhtml#function">function</a></i> 
+     that operates on one or more <i><a href="#sequence">sequences</a></i>.
+     and that is defined by the <i><a href="i.xhtml#implementation">implementation</a></i> to be a <i><a href="#sequencefunction">sequence function</a></i>.
+
+<p>
+
+<span id="sequential"/></p></dd><dt><b>sequential:</b></dt><dd> <i>adj.</i> <i>Trad.</i> (of <i><a href="b.xhtml#binding">binding</a></i> or <i>assignment</i>)
+  done in the style of <a href="../5-data-and-control-flow/5.3.20-setq.xhtml#DictEntry_setq_406"><b>setq</b></a>, <a href="../5-data-and-control-flow/5.3.18-let.xhtml#DictEntry_let_let_404"><b>let*</b></a>, or <a href="../6-iteration/6.2.1-do.xhtml#DictEntry_do_do_514"><b>do*</b></a>;
+  that is, interleaving the evaluation of the <i><a href="f.xhtml#form">forms</a></i> that produce <i><a href="v.xhtml#value">values</a></i>
+  with the <i>assignments</i> or <i><a href="b.xhtml#binding">bindings</a></i> of the <i><a href="v.xhtml#variable">variables</a></i> (or <i><a href="p.xhtml#place">places</a></i>).
+  See <i><a href="p.xhtml#parallel">parallel</a></i>.
+
+<p>
+<span id="sequentially"/></p></dd><dt><b>sequentially:</b></dt><dd> <i>adv.</i>   in a <i><a href="#sequential">sequential</a></i> way.
+
+<p>
+<span id="seriouscondition"/></p></dd><dt><b>serious condition:</b></dt><dd> <i>n.</i> 
+  a <i><a href="c.xhtml#condition">condition</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.4-serious-condition.xhtml#DictEntry_serious_cond_629"><b>serious-condition</b></a>, 
+  which represents a <i><a href="#situation">situation</a></i> that is generally sufficiently 
+  severe that entry into the <i><a href="d.xhtml#debugger">debugger</a></i> should be expected if 
+  the <i><a href="c.xhtml#condition">condition</a></i> is <i>signaled</i> but not <i>handled</i>.
+
+<p>
+<span id="session"/></p></dd><dt><b>session:</b></dt><dd> <i>n.</i>   the conceptual aggregation of events in a <i>Lisp image</i> from the time
+  it is started to the time it is terminated.
+
+<p>
+<span id="set"/></p></dd><dt><b>set:</b></dt><dd> <i>v.t.</i> <i>Trad.</i> (any <i><a href="v.xhtml#variable">variable</a></i>
+				     or a <i><a href="#symbol">symbol</a></i> that 
+				        is the <i><a href="n.xhtml#name">name</a></i> of a <i><a href="d.xhtml#dynamicvariable">dynamic variable</a></i>)
+  to <i><a href="a.xhtml#assign">assign</a></i> the <i><a href="v.xhtml#variable">variable</a></i>.
+
+<p>
+
+<span id="setfexpander"/></p></dd><dt><b>setf expander:</b></dt><dd> <i>n.</i> 
+  a function used by <a href="../5-data-and-control-flow/5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> to compute the <i><a href="#setfexpansion">setf expansion</a></i>
+  of a <i><a href="p.xhtml#place">place</a></i>.
+
+
+<p>
+
+<span id="setfexpansion"/></p></dd><dt><b>setf expansion:</b></dt><dd> <i>n.</i> 
+  a set of five <i><a href="e.xhtml#expression">expressions</a></i><sub>1</sub> that, taken together, describe 
+       how to store into a <i><a href="p.xhtml#place">place</a></i> 
+   and which <i><a href="#subform">subforms</a></i> of the macro call associated with the
+       <i><a href="p.xhtml#place">place</a></i> are evaluated.
+  See Section <a href="../5-data-and-control-flow/5.1-generalized-reference.xhtml#SubSubSectio_Setf_Expansi_372">5.1.1.2 Setf Expansions</a>.
+
+
+<p>
+<span id="setffunction"/></p></dd><dt><b>setf function:</b></dt><dd> <i>n.</i>   a <i><a href="f.xhtml#function">function</a></i> whose <i><a href="n.xhtml#name">name</a></i> is <code>(setf <i><a href="#symbol">symbol</a></i>)</code>.
+
+<p>
+
+<span id="setffunctionname"/></p></dd><dt><b>setf function name:</b></dt><dd> <i>n.</i> (of a <i><a href="#symbol">symbol</a></i> <i>S</i>)
+  the <i><a href="l.xhtml#list">list</a></i> <code>(setf <i>S</i>)</code>.
+
+
+<p>
+<span id="shadow"/></p></dd><dt><b>shadow:</b></dt><dd> <i>v.t.</i> 
+  1. to override the meaning of.
+     That binding of <code>X</code> shadows an outer one. 
+  2. to hide the presence of.
+     That <a href="../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392"><b>macrolet</b></a> of <code>F</code> shadows the
+               outer <a href="../5-data-and-control-flow/5.3.6-flet.xhtml#DictEntry_flet_labels_392"><b>flet</b></a> of <code>F</code>.
+  3. to replace.
+     That package shadows the symbol <code>cl:car</code> with
+               its own symbol <code>car</code>.
+
+<p>
+<span id="shadowingsymbol"/></p></dd><dt><b>shadowing symbol:</b></dt><dd> <i>n.</i> (in a <i><a href="p.xhtml#package">package</a></i>)
+  an <i><a href="e.xhtml#element">element</a></i> of the <i><a href="p.xhtml#package">package</a></i>'s <i><a href="#shadowingsymbolslist">shadowing symbols list</a></i>.
+
+<p>
+<span id="shadowingsymbolslist"/></p></dd><dt><b>shadowing symbols list:</b></dt><dd> <i>n.</i> (of a <i><a href="p.xhtml#package">package</a></i>)
+  a <i><a href="l.xhtml#list">list</a></i>, associated with the <i><a href="p.xhtml#package">package</a></i>, 
+  of <i><a href="#symbol">symbols</a></i> that are to be exempted from `symbol conflict errors'
+  detected when packages are <i>used</i>.
+  See the <i><a href="f.xhtml#function">function</a></i> <a href="../11-packages/11.2.24-package-shadowing-symbols.xhtml#DictEntry_package_shad_739"><b>package-shadowing-symbols</b></a>.
+
+<p>
+<span id="sharedslot"/></p></dd><dt><b>shared slot:</b></dt><dd> <i>n.</i> (of a <i><a href="c.xhtml#class">class</a></i>) 
+  a <i><a href="#slot">slot</a></i> <i><a href="a.xhtml#accessible">accessible</a></i> in more than one <i><a href="i.xhtml#instance">instance</a></i> 
+  of a <i><a href="c.xhtml#class">class</a></i>; specifically, such a <i><a href="#slot">slot</a></i> is <i><a href="a.xhtml#accessible">accessible</a></i>
+  in all <i><a href="d.xhtml#directinstance">direct instances</a></i> of the <i><a href="c.xhtml#class">class</a></i> and in those 
+  <i><a href="i.xhtml#indirectinstance">indirect instances</a></i> whose <i><a href="c.xhtml#class">class</a></i> does not 
+  <i><a href="#shadow">shadow</a></i><sub>1</sub> the <i><a href="#slot">slot</a></i>.
+
+<p>
+<span id="sharpsign"/></p></dd><dt><b>sharpsign:</b></dt><dd> <i>n.</i>   the <i><a href="#standardcharacter">standard character</a></i> that is variously called "number sign," "sharp,"
+  or "sharp sign" (<code>#</code>).
+  See <a href="../2-syntax/2.1-character-syntax.xhtml#fig-2-5">Figure 2-5</a>.
+
+<p>
+<span id="shortfloat"/></p></dd><dt><b>short float:</b></dt><dd> <i>n.</i> 
+  an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../12-numbers/12.2.5-short-float.xhtml#DictEntry_short_float_779"><b>short-float</b></a>.
+
+<p>
+<span id="sign"/></p></dd><dt><b>sign:</b></dt><dd> <i>n.</i> 
+  one of the <i><a href="#standardcharacter">standard characters</a></i> "<code>+</code>" or "<code>-</code>".
+
+<p>
+<span id="signal"/></p></dd><dt><b>signal:</b></dt><dd> <i>v.</i> 
+  to announce, using a standard protocol, that a particular situation,
+  represented by a <i><a href="c.xhtml#condition">condition</a></i>, has been detected.  
+  See Section <a href="../9-conditions/9.1-condition-system-concepts.xhtml#Section_Condition_Sy_603">9.1 Condition System Concepts</a>.
+
+<p>
+<span id="signature"/></p></dd><dt><b>signature:</b></dt><dd> <i>n.</i> (of a <i><a href="m.xhtml#method">method</a></i>)
+  a description of the <i><a href="p.xhtml#parameter">parameters</a></i> and
+  <i><a href="p.xhtml#parameterspecializer">parameter specializers</a></i> for the <i><a href="m.xhtml#method">method</a></i> which 
+  determines the <i><a href="m.xhtml#method">method</a></i>'s applicability for a given set of
+  required <i><a href="a.xhtml#argument">arguments</a></i>, and which also describes the
+  <i><a href="a.xhtml#argument">argument</a></i> conventions for its other, non-required 
+  <i><a href="a.xhtml#argument">arguments</a></i>.
+
+<p>
+<span id="similar"/></p></dd><dt><b>similar:</b></dt><dd> <i>adj.</i> (of two <i><a href="o.xhtml#object">objects</a></i>)
+  defined to be equivalent under the <i><a href="#similarity">similarity</a></i> relationship.
+
+<p>
+<span id="similarity"/></p></dd><dt><b>similarity:</b></dt><dd> <i>n.</i>   a two-place conceptual equivalence predicate, 
+  which is independent of the <i>Lisp image</i> 
+  so that two <i><a href="o.xhtml#object">objects</a></i> in different <i>Lisp images</i> 
+  can be understood to be equivalent under this predicate.
+  See Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#SubSection_Literal_Obje_227">3.2.4 Literal Objects in Compiled Files</a>.
+
+<p>
+<span id="simple"/></p></dd><dt><b>simple:</b></dt><dd> <i>adj.</i>   1. (of an <i><a href="a.xhtml#array">array</a></i>) being of <i><a href="t.xhtml#type">type</a></i> <a href="../15-arrays/15.2.2-simple-array.xhtml#DictEntry_simple_array_980"><b>simple-array</b></a>.
+  2. (of a <i><a href="c.xhtml#character">character</a></i>)
+     having no <i><a href="i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="a.xhtml#attribute">attributes</a></i>,
+     or else having <i><a href="i.xhtml#implementationdefined">implementation-defined</a></i> <i><a href="a.xhtml#attribute">attributes</a></i>
+      each of which has the <i><a href="n.xhtml#null">null</a></i> value for that <i><a href="a.xhtml#attribute">attribute</a></i>.
+
+<p>
+<span id="simplearray"/></p></dd><dt><b>simple array:</b></dt><dd> <i>n.</i> 
+  an <i><a href="a.xhtml#array">array</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../15-arrays/15.2.2-simple-array.xhtml#DictEntry_simple_array_980"><b>simple-array</b></a>.
+
+<p>
+<span id="simplebitarray"/></p></dd><dt><b>simple bit array:</b></dt><dd> <i>n.</i>   a <i><a href="b.xhtml#bitarray">bit array</a></i> that is a <i><a href="#simplearray">simple array</a></i>;
+  that is, an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <code>(simple-array bit)</code>.
+
+<p>
+<span id="simplebitvector"/></p></dd><dt><b>simple bit vector:</b></dt><dd> <i>n.</i> 
+  a <i><a href="b.xhtml#bitvector">bit vector</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../15-arrays/15.2.6-simple-bit-vector.xhtml#DictEntry_simple_bit_v_984"><b>simple-bit-vector</b></a>.
+
+<p>
+<span id="simplecondition"/></p></dd><dt><b>simple condition:</b></dt><dd> <i>n.</i> 
+  a <i><a href="c.xhtml#condition">condition</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.18-simple-condition.xhtml#DictEntry_simple_condi_643"><b>simple-condition</b></a>.
+
+<p>
+<span id="simplegeneralvector"/></p></dd><dt><b>simple general vector:</b></dt><dd> <i>n.</i> 
+  a <i><a href="#simplevector">simple vector</a></i>.
+
+<p>
+<span id="simplestring"/></p></dd><dt><b>simple string:</b></dt><dd> <i>n.</i> 
+  a <i><a href="#string">string</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../16-strings/16.2.3-simple-string.xhtml#DictEntry_simple_strin_1022"><b>simple-string</b></a>.
+
+<p>
+
+
+<span id="simplevector"/></p></dd><dt><b>simple vector:</b></dt><dd> <i>n.</i>   a <i><a href="v.xhtml#vector">vector</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../15-arrays/15.2.4-simple-vector.xhtml#DictEntry_simple_vecto_982"><b>simple-vector</b></a>,
+  sometimes called a "<i><a href="#simplegeneralvector">simple general vector</a></i>."
+  Not all <i><a href="v.xhtml#vector">vectors</a></i> that are <i><a href="#simple">simple</a></i> are <i><a href="#simplevector">simple vectors</a></i>—only
+  those that have <i><a href="e.xhtml#elementtype">element type</a></i> <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>.
+
+<p>
+<span id="singleescape"/></p></dd><dt><b>single escape:</b></dt><dd> <i>n.</i>, <i>adj.</i>   1. <i>n.</i> the <i><a href="#syntaxtype">syntax type</a></i> of a <i><a href="c.xhtml#character">character</a></i> 
+     that indicates that the next <i><a href="c.xhtml#character">character</a></i> is 
+     to be treated as an <i><a href="a.xhtml#alphabetic">alphabetic</a></i><sub>2</sub> <i><a href="c.xhtml#character">character</a></i>
+     with its <i><a href="c.xhtml#case">case</a></i> preserved.
+     For details, see Section <a href="../2-syntax/2.1-character-syntax.xhtml#SubSubSectio_Single_Escap_122">2.1.4.6 Single Escape Character</a>.
+  2. <i>adj.</i> (of a <i><a href="c.xhtml#character">character</a></i>)
+     having the <i><a href="#singleescape">single escape</a></i> <i><a href="#syntaxtype">syntax type</a></i>.
+  3. <i>n.</i> a <i><a href="#singleescape">single escape</a></i><sub>2</sub> <i><a href="c.xhtml#character">character</a></i>.
+     (In the <i><a href="#standardreadtable">standard readtable</a></i>,
+      <i><a href="#slash">slash</a></i> is the only <i><a href="#singleescape">single escape</a></i>.)
+
+<p>
+<span id="singlefloat"/></p></dd><dt><b>single float:</b></dt><dd> <i>n.</i> 
+  an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../12-numbers/12.2.5-short-float.xhtml#DictEntry_short_float_779"><b>single-float</b></a>.
+
+<p>
+<span id="singlequote"/></p></dd><dt><b>single-quote:</b></dt><dd> <i>n.</i>   the <i><a href="#standardcharacter">standard character</a></i> that is variously called
+      "apostrophe,"
+      "acute accent,"
+      "quote,"
+   or "single quote" (<code>'</code>).
+  See <a href="../2-syntax/2.1-character-syntax.xhtml#fig-2-5">Figure 2-5</a>.
+
+<p>
+<span id="singleton"/></p></dd><dt><b>singleton:</b></dt><dd> <i>adj.</i> (of a <i><a href="#sequence">sequence</a></i>)
+  having only one <i><a href="e.xhtml#element">element</a></i>.
+  <code>(list 'hello)</code> returns a singleton list.
+
+<p>
+<span id="situation"/></p></dd><dt><b>situation:</b></dt><dd> <i>n.</i> 
+  the <i><a href="e.xhtml#evaluation">evaluation</a></i> of a <i><a href="f.xhtml#form">form</a></i> in a specific <i><a href="e.xhtml#environment">environment</a></i>.
+
+<p>
+<span id="slash"/></p></dd><dt><b>slash:</b></dt><dd> <i>n.</i>   the <i><a href="#standardcharacter">standard character</a></i> that is variously called
+       "solidus" 
+    or "slash" (<code>/</code>).
+  See <a href="../2-syntax/2.1-character-syntax.xhtml#fig-2-5">Figure 2-5</a>.
+
+<p>
+
+<span id="slot"/></p></dd><dt><b>slot:</b></dt><dd> <i>n.</i> 
+  a component of an <i><a href="o.xhtml#object">object</a></i> that can store a <i><a href="v.xhtml#value">value</a></i>.
+
+<p>
+
+<span id="slotspecifier"/></p></dd><dt><b>slot specifier:</b></dt><dd> <i>n.</i>   a representation of a <i><a href="#slot">slot</a></i> 
+  that includes the <i><a href="n.xhtml#name">name</a></i> of the <i><a href="#slot">slot</a></i> and zero or more <i><a href="#slot">slot</a></i> options.
+  A <i><a href="#slot">slot</a></i> option pertains only to a single <i><a href="#slot">slot</a></i>.
+
+<p>
+<span id="sourcecode"/></p></dd><dt><b>source code:</b></dt><dd> <i>n.</i> 
+  <i><a href="c.xhtml#code">code</a></i> representing <i><a href="o.xhtml#object">objects</a></i> suitable for <i><a href="e.xhtml#evaluation">evaluation</a></i>
+  (<i>e.g.</i>,  <i><a href="o.xhtml#object">objects</a></i> created by <a href="../23-reader/23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>, 
+       by <i><a href="m.xhtml#macroexpansion">macro expansion</a></i>, 
+
+    or by <i><a href="c.xhtml#compilermacroexpansion">compiler macro expansion</a></i>).
+
+
+<p>
+<span id="sourcefile"/></p></dd><dt><b>source file:</b></dt><dd> <i>n.</i> 
+  a <i><a href="f.xhtml#file">file</a></i> which contains a textual representation of <i><a href="#sourcecode">source code</a></i>,
+  that can be edited, <i>loaded</i>, or <i>compiled</i>.
+
+<p>
+<span id="space"/></p></dd><dt><b>space:</b></dt><dd> <i>n.</i>   the <i><a href="#standardcharacter">standard character</a></i> <i>&lt;Space&gt;</i>,
+  notated for the <i>Lisp reader</i> as <code>#\Space</code>.
+
+<p>
+<span id="specialform"/></p></dd><dt><b>special form:</b></dt><dd> <i>n.</i> 
+  a <i><a href="l.xhtml#list">list</a></i>, other than a <i><a href="m.xhtml#macroform">macro form</a></i>, which is a
+  <i><a href="f.xhtml#form">form</a></i> with special syntax or special <i><a href="e.xhtml#evaluation">evaluation</a></i> 
+  rules or both, possibly manipulating the <i><a href="e.xhtml#evaluation">evaluation</a></i> 
+  <i><a href="e.xhtml#environment">environment</a></i> or control flow or both.  The first element of
+  a <i><a href="#specialform">special form</a></i> is a <i><a href="#specialoperator">special operator</a></i>.
+
+<p>
+<span id="specialoperator"/></p></dd><dt><b>special operator:</b></dt><dd> <i>n.</i> 
+  one of a fixed set of <i><a href="#symbol">symbols</a></i>, 
+  enumerated in <a href="../3-evaluation-and-compilation/3.1-evaluation.xhtml#fig-3-2">Figure 3-2</a>,
+  that may appear in the <i><a href="c.xhtml#car">car</a></i> of
+  a <i><a href="f.xhtml#form">form</a></i> in order to identify the <i><a href="f.xhtml#form">form</a></i> as a <i><a href="#specialform">special form</a></i>.
+
+<p>
+<span id="specialvariable"/></p></dd><dt><b>special variable:</b></dt><dd> <i>n.</i> <i>Trad.</i>   a <i><a href="d.xhtml#dynamicvariable">dynamic variable</a></i>.
+
+<p>
+<span id="specialize"/></p></dd><dt><b>specialize:</b></dt><dd> <i>v.t.</i> (a <i><a href="g.xhtml#genericfunction">generic function</a></i>)
+  to define a <i><a href="m.xhtml#method">method</a></i> for the <i><a href="g.xhtml#genericfunction">generic function</a></i>, or in other words,
+  to refine the behavior of the <i><a href="g.xhtml#genericfunction">generic function</a></i> by giving it a specific
+  meaning for a particular set of <i>classes</i> or <i><a href="a.xhtml#argument">arguments</a></i>. 
+
+<p>
+<span id="specialized"/></p></dd><dt><b>specialized:</b></dt><dd> <i>adj.</i> 
+  1. (of a <i><a href="g.xhtml#genericfunction">generic function</a></i>)
+     having <i><a href="m.xhtml#method">methods</a></i> which <i><a href="#specialize">specialize</a></i> the <i><a href="g.xhtml#genericfunction">generic function</a></i>.
+  2. (of an <i><a href="a.xhtml#array">array</a></i>)
+     having an <i><a href="a.xhtml#actualarrayelementtype">actual array element type</a></i>
+     that is a <i><a href="p.xhtml#propersubtype">proper subtype</a></i> of the <i><a href="t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>;
+     see Section <a href="../15-arrays/15.1-array-concepts.xhtml#SubSection_Array_Elemen_965">15.1.1 Array Elements</a>.
+     <code>(make-array 5 :element-type 'bit)</code> makes an array of length
+	       five that is specialized for bits.
+
+<p>
+<span id="specializedlambdalist"/></p></dd><dt><b>specialized lambda list:</b></dt><dd> <i>n.</i>   an <i><a href="e.xhtml#extendedlambdalist">extended lambda list</a></i> used in <i><a href="f.xhtml#form">forms</a></i> that <i><a href="e.xhtml#establish">establish</a></i>
+  <i><a href="m.xhtml#method">method</a></i> definitions, such as <a href="../7-objects/7.7.27-defmethod.xhtml#DictEntry_defmethod_583"><b>defmethod</b></a>.
+  See Section <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSection_Specialized__253">3.4.3 Specialized Lambda Lists</a>.
+
+<p>
+<span id="spreadableargumentlistdesignator"/></p></dd><dt><b>spreadable argument list designator:</b></dt><dd> <i>n.</i>   a <i><a href="d.xhtml#designator">designator</a></i> for a <i><a href="l.xhtml#list">list</a></i> of <i><a href="o.xhtml#object">objects</a></i>; that is,
+  an <i><a href="o.xhtml#object">object</a></i> that denotes a <i><a href="l.xhtml#list">list</a></i> 
+  and that is a <i>non-null</i> <i><a href="l.xhtml#list">list</a></i> <i>L1</i> of length <i>n</i>,
+  whose last element is a <i><a href="l.xhtml#list">list</a></i> <i>L2</i> of length <i>m</i>
+  (denoting a list <i>L3</i> of length <i>m+n-1</i> whose <i><a href="e.xhtml#element">elements</a></i> are
+   <i>L1<sub>i</sub></i> for <i>i &lt; n-1</i> followed by <i>L2<sub>j</sub></i> for <i>j &lt; m</i>).
+  The list (1 2 (3 4 5)) is a spreadable argument list designator for
+	    the list (1 2 3 4 5).
+
+<p>
+<span id="stackallocate"/></p></dd><dt><b>stack allocate:</b></dt><dd> <i>v.t.</i> <i>Trad.</i> 
+  to allocate in a non-permanent way, such as on a stack.  Stack-allocation
+  is an optimization technique used in some <i><a href="i.xhtml#implementation">implementations</a></i> for
+  allocating certain kinds of <i><a href="o.xhtml#object">objects</a></i> that have <i><a href="d.xhtml#dynamicextent">dynamic extent</a></i>.
+  Such <i><a href="o.xhtml#object">objects</a></i> are allocated on the stack rather than in the heap
+  so that their storage can be freed as part of unwinding the stack rather
+  than taking up space in the heap until the next garbage collection.
+  What <i><a href="t.xhtml#type">types</a></i> (if any) can have <i><a href="d.xhtml#dynamicextent">dynamic extent</a></i> can vary
+  from <i><a href="i.xhtml#implementation">implementation</a></i> to <i><a href="i.xhtml#implementation">implementation</a></i>.  No
+  <i><a href="i.xhtml#implementation">implementation</a></i> is ever required to perform stack-allocation.
+
+<p>
+
+<span id="stackallocated"/></p></dd><dt><b>stack-allocated:</b></dt><dd> <i>adj.</i> <i>Trad.</i> 
+  having been <i>stack allocated</i>.
+
+<p>
+<span id="standardcharacter"/></p></dd><dt><b>standard character:</b></dt><dd> <i>n.</i> 
+  a <i><a href="c.xhtml#character">character</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../13-characters/13.2.3-standard-char.xhtml#DictEntry_standard_cha_886"><b>standard-char</b></a>, which is one of a fixed set of 96
+  such <i><a href="c.xhtml#character">characters</a></i> required to be present in all <i><a href="c.xhtml#conformingimplementation">conforming implementations</a></i>.
+  See Section <a href="../2-syntax/2.1-character-syntax.xhtml#SubSection_Standard_Cha_114">2.1.3 Standard Characters</a>.
+
+<p>
+
+
+<span id="standardclass"/></p></dd><dt><b>standard class:</b></dt><dd> <i>n.</i> 
+  a <i><a href="c.xhtml#class">class</a></i> that is a <i><a href="g.xhtml#generalizedinstance">generalized instance</a></i> of <i><a href="c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.10-standard-class.xhtml#DictEntry_standard_cla_345"><b>standard-class</b></a>.
+
+<p>
+
+<span id="standardgenericfunction"/></p></dd><dt><b>standard generic function:</b></dt><dd>
+  a <i><a href="f.xhtml#function">function</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.6-standard-generic-function.xhtml#DictEntry_standard_gen_341"><b>standard-generic-function</b></a>.
+
+<p>
+<span id="standardinput"/></p></dd><dt><b>standard input:</b></dt><dd> <i>n.</i> 
+  the <i><a href="i.xhtml#input">input</a></i> <i><a href="#stream">stream</a></i> which is the <i><a href="v.xhtml#value">value</a></i> of the <i><a href="d.xhtml#dynamicvariable">dynamic variable</a></i>
+  <a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-input*</b></a>.
+
+<p>
+<span id="standardmethodcombination"/></p></dd><dt><b>standard method combination:</b></dt><dd> <i>n.</i> 
+  the <i><a href="m.xhtml#methodcombination">method combination</a></i> named <b>standard</b>.
+
+<p>
+<span id="standardobject"/></p></dd><dt><b>standard object:</b></dt><dd> <i>n.</i> 
+  an <i><a href="o.xhtml#object">object</a></i> that is 
+
+  a <i><a href="g.xhtml#generalizedinstance">generalized instance</a></i> 
+  of <i><a href="c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>.
+
+<p>
+<span id="standardoutput"/></p></dd><dt><b>standard output:</b></dt><dd> <i>n.</i> 
+  the <i><a href="o.xhtml#output">output</a></i> <i><a href="#stream">stream</a></i> which is the <i><a href="v.xhtml#value">value</a></i> of the <i><a href="d.xhtml#dynamicvariable">dynamic variable</a></i>
+  <a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a>.
+
+<p>
+
+<span id="standardpprintdispatchtable"/></p></dd><dt><b>standard pprint dispatch table:</b></dt><dd> <i>n.</i>   A <i><a href="p.xhtml#pprintdispatchtable">pprint dispatch table</a></i> that is <i><a href="d.xhtml#different">different</a></i> from 
+  the <i><a href="i.xhtml#initialpprintdispatchtable">initial pprint dispatch table</a></i>,
+  that implements <i>pretty printing</i> as described in this specification,
+  and that, unlike other <i><a href="p.xhtml#pprintdispatchtable">pprint dispatch tables</a></i>,
+  must never be modified by any program.
+  (Although the definite reference "the <i><a href="#standardpprintdispatchtable">standard pprint dispatch table</a></i>"
+   is generally used
+   within this document, it is actually <i><a href="i.xhtml#implementationdependent">implementation-dependent</a></i> whether a
+   single <i><a href="o.xhtml#object">object</a></i> fills the role of the <i><a href="#standardpprintdispatchtable">standard pprint dispatch table</a></i>,
+   or whether there might be multiple such objects, any one of which could be used on any
+   given occasion where "the <i><a href="#standardpprintdispatchtable">standard pprint dispatch table</a></i>" is called for.
+   As such, this phrase should be seen as an indefinite reference 
+   in all cases except for anaphoric references.)
+
+
+<p>
+
+<span id="standardreadtable"/></p></dd><dt><b>standard readtable:</b></dt><dd> <i>n.</i>   A <i><a href="r.xhtml#readtable">readtable</a></i> that is <i><a href="d.xhtml#different">different</a></i> from the <i><a href="i.xhtml#initialreadtable">initial readtable</a></i>,
+  that implements the <i><a href="e.xhtml#expression">expression</a></i> syntax defined in this specification,
+  and that, unlike other <i><a href="r.xhtml#readtable">readtables</a></i>, must never be modified by any program.
+  (Although the definite reference "the <i><a href="#standardreadtable">standard readtable</a></i>" is generally used
+   within this document, it is actually <i><a href="i.xhtml#implementationdependent">implementation-dependent</a></i> whether a
+   single <i><a href="o.xhtml#object">object</a></i> fills the role of the <i><a href="#standardreadtable">standard readtable</a></i>,
+   or whether there might be multiple such objects, any one of which could be used on any
+   given occasion where "the <i><a href="#standardreadtable">standard readtable</a></i>" is called for.
+   As such, this phrase should be seen as an indefinite reference 
+   in all cases except for anaphoric references.)
+
+
+<p>
+<span id="standardsyntax"/></p></dd><dt><b>standard syntax:</b></dt><dd> <i>n.</i>   the syntax represented by the <i><a href="#standardreadtable">standard readtable</a></i> 
+  and used as a reference syntax throughout this document.
+  See Section <a href="../2-syntax/2.1-character-syntax.xhtml#Section_Character_Sy_108">2.1 Character Syntax</a>.
+
+<p>
+<span id="standardized"/></p></dd><dt><b>standardized:</b></dt><dd> <i>adj.</i> (of a <i><a href="n.xhtml#name">name</a></i>, <i><a href="o.xhtml#object">object</a></i>, or definition)
+  having been defined by <i>Common Lisp</i>.
+  All standardized variables that are required to 
+	    hold bidirectional streams have "<code>-io*</code>" in their name.
+
+<p>
+<span id="startupenvironment"/></p></dd><dt><b>startup environment:</b></dt><dd> <i>n.</i>   the <i><a href="g.xhtml#globalenvironment">global environment</a></i> of the running <i>Lisp image</i> 
+  from which the <i><a href="c.xhtml#compiler">compiler</a></i> was invoked.
+
+<p>
+<span id="step"/></p></dd><dt><b>step:</b></dt><dd> <i>v.t.</i>, <i>n.</i> 
+  1. <i>v.t.</i> (an iteration <i><a href="v.xhtml#variable">variable</a></i>) to <i><a href="a.xhtml#assign">assign</a></i> the <i><a href="v.xhtml#variable">variable</a></i>
+     a new <i><a href="v.xhtml#value">value</a></i> at the end of an iteration, in preparation for a new iteration.
+  2. <i>n.</i> the <i><a href="c.xhtml#code">code</a></i> that identifies how the next value in an iteration
+     is to be computed.
+  3. <i>v.t.</i> (<i><a href="c.xhtml#code">code</a></i>) to specially execute the <i><a href="c.xhtml#code">code</a></i>, pausing at
+     intervals to allow user confirmation or intervention, usually for debugging.
+
+<p>
+<span id="stream"/></p></dd><dt><b>stream:</b></dt><dd> <i>n.</i> 
+  an <i><a href="o.xhtml#object">object</a></i> that can be used with an input or output function to
+  identify an appropriate source or sink of <i><a href="c.xhtml#character">characters</a></i> or 
+  <i><a href="b.xhtml#byte">bytes</a></i> for that operation.
+
+<p>
+
+
+<span id="streamassociatedwithafile"/></p></dd><dt><b>stream associated with a file:</b></dt><dd> <i>n.</i> 
+  a <i><a href="f.xhtml#filestream">file stream</a></i>, or a <i><a href="#synonymstream">synonym stream</a></i> the <i><a href="t.xhtml#target">target</a></i> 
+  of which is a <i><a href="#streamassociatedwithafile">stream associated with a file</a></i>.
+
+  Such a <i><a href="#stream">stream</a></i> cannot be created with
+      <a href="../21-streams/21.2.42-make-two-way-stream.xhtml#DictEntry_make_two_way_1233"><b>make-two-way-stream</b></a>, 
+      <a href="../21-streams/21.2.45-make-echo-stream.xhtml#DictEntry_make_echo_st_1236"><b>make-echo-stream</b></a>,
+      <a href="../21-streams/21.2.41-make-broadcast-stream.xhtml#DictEntry_make_broadca_1232"><b>make-broadcast-stream</b></a>, 
+      <a href="../21-streams/21.2.47-make-concatenated-stream.xhtml#DictEntry_make_concate_1238"><b>make-concatenated-stream</b></a>,
+      <a href="../21-streams/21.2.49-make-string-input-stream.xhtml#DictEntry_make_string__1240"><b>make-string-input-stream</b></a>,
+   or <a href="../21-streams/21.2.50-make-string-output-stream.xhtml#DictEntry_make_string__1241"><b>make-string-output-stream</b></a>.
+
+
+
+<p>
+<span id="streamdesignator"/></p></dd><dt><b>stream designator:</b></dt><dd> <i>n.</i>   a <i><a href="d.xhtml#designator">designator</a></i> for a <i><a href="#stream">stream</a></i>; that is,
+  an <i><a href="o.xhtml#object">object</a></i> that denotes a <i><a href="#stream">stream</a></i> 
+  and that is one of:
+      <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a> (denoting the <i><a href="v.xhtml#value">value</a></i> of <a href="../21-streams/21.2.54-terminal-io.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>), 
+      <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> (denoting the <i><a href="v.xhtml#value">value</a></i> of <a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-input*</b></a>
+             for <i><a href="i.xhtml#input">input</a></i> <i><a href="#streamdesignator">stream designators</a></i>
+             or denoting the <i><a href="v.xhtml#value">value</a></i> of <a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a>
+             for <i><a href="o.xhtml#output">output</a></i> <i><a href="#streamdesignator">stream designators</a></i>),
+   or a <i><a href="#stream">stream</a></i> (denoting itself).
+
+<p>
+<span id="streamelementtype"/></p></dd><dt><b>stream element type:</b></dt><dd> <i>n.</i> (of a <i><a href="#stream">stream</a></i>)
+  the <i><a href="t.xhtml#type">type</a></i> of data for which the <i><a href="#stream">stream</a></i> is specialized.
+
+
+
+<p>
+<span id="streamvariable"/></p></dd><dt><b>stream variable:</b></dt><dd> <i>n.</i>   a <i><a href="v.xhtml#variable">variable</a></i> whose <i><a href="v.xhtml#value">value</a></i> must be a <i><a href="#stream">stream</a></i>.
+
+<p>
+<span id="streamvariabledesignator"/></p></dd><dt><b>stream variable designator:</b></dt><dd> <i>n.</i>   a <i><a href="d.xhtml#designator">designator</a></i> for a <i><a href="#streamvariable">stream variable</a></i>; that is,
+  a <i><a href="#symbol">symbol</a></i> that denotes a <i><a href="#streamvariable">stream variable</a></i> 
+  and that is one of:
+      <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a> (denoting <a href="../21-streams/21.2.54-terminal-io.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>), 
+      <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> (denoting <a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-input*</b></a>
+             for <i><a href="i.xhtml#input">input</a></i> <i><a href="#streamvariabledesignator">stream variable designators</a></i>
+             or denoting <a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a>
+             for <i><a href="o.xhtml#output">output</a></i> <i><a href="#streamvariabledesignator">stream variable designators</a></i>),
+   or some other <i><a href="#symbol">symbol</a></i> (denoting itself).
+
+<p>
+<span id="string"/></p></dd><dt><b>string:</b></dt><dd> <i>n.</i> 
+  a specialized <i><a href="v.xhtml#vector">vector</a></i> that is of <i><a href="t.xhtml#type">type</a></i> <a href="../16-strings/16.2.1-string.xhtml#DictEntry_string_1020"><b>string</b></a>,
+  and whose elements are of <i><a href="t.xhtml#type">type</a></i> <a href="../13-characters/13.2.1-character.xhtml#DictEntry_character_884"><b>character</b></a> or a <i><a href="#subtype">subtype</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../13-characters/13.2.1-character.xhtml#DictEntry_character_884"><b>character</b></a>.
+
+<p>
+<span id="stringdesignator"/></p></dd><dt><b>string designator:</b></dt><dd> <i>n.</i>   a <i><a href="d.xhtml#designator">designator</a></i> for a <i><a href="#string">string</a></i>; that is,
+  an <i><a href="o.xhtml#object">object</a></i> that denotes a <i><a href="#string">string</a></i> 
+  and that is one of:
+       a <i><a href="c.xhtml#character">character</a></i> (denoting a <i><a href="#singleton">singleton</a></i> <i><a href="#string">string</a></i>
+			   that has the <i><a href="c.xhtml#character">character</a></i> as its only <i><a href="e.xhtml#element">element</a></i>),
+       a <i><a href="#symbol">symbol</a></i> (denoting the <i><a href="#string">string</a></i> that is its <i><a href="n.xhtml#name">name</a></i>),
+    or a <i><a href="#string">string</a></i> (denoting itself).
+
+  The intent is that this term be consistent with the behavior of <a href="../16-strings/16.2.1-string.xhtml#DictEntry_string_1020"><b>string</b></a>;
+  <i><a href="i.xhtml#implementation">implementations</a></i> that extend <a href="../16-strings/16.2.1-string.xhtml#DictEntry_string_1020"><b>string</b></a> must extend the meaning of 
+  this term in a compatible way.
+
+
+<p>
+<span id="stringequal"/></p></dd><dt><b>string equal:</b></dt><dd> <i>adj.</i> 
+  the <i><a href="#same">same</a></i> under <a href="../16-strings/16.2.10-string=.xhtml#DictEntry_string_str_1029"><b>string-equal</b></a>.
+
+<p>
+<span id="stringstream"/></p></dd><dt><b>string stream:</b></dt><dd> <i>n.</i> 
+  a <i><a href="#stream">stream</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../21-streams/21.2.6-string-stream.xhtml#DictEntry_string_strea_1197"><b>string-stream</b></a>.
+
+<p>
+<span id="structure"/></p></dd><dt><b>structure:</b></dt><dd> <i>n.</i> 
+  an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.13-structure-object.xhtml#DictEntry_structure_ob_348"><b>structure-object</b></a>.
+
+
+
+<p>
+<span id="structureclass"/></p></dd><dt><b>structure class:</b></dt><dd> <i>n.</i> 
+
+
+  a <i><a href="c.xhtml#class">class</a></i> that is a <i><a href="g.xhtml#generalizedinstance">generalized instance</a></i> of <i><a href="c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.9-structure-class.xhtml#DictEntry_structure_cl_344"><b>structure-class</b></a>.
+
+<p>
+<span id="structurename"/></p></dd><dt><b>structure name:</b></dt><dd> <i>n.</i>   a <i><a href="n.xhtml#name">name</a></i> defined with <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a>.
+  Usually, such a <i><a href="t.xhtml#type">type</a></i> is also a <i><a href="#structureclass">structure class</a></i>,
+
+  but there may be <i><a href="i.xhtml#implementationdependent">implementation-dependent</a></i> situations 
+  in which this is not so, if the <code>:type</code> option to <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> is used.
+
+<p>
+<span id="stylewarning"/></p></dd><dt><b>style warning:</b></dt><dd> <i>n.</i>   a <i><a href="c.xhtml#condition">condition</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.3-style-warning.xhtml#DictEntry_style_warnin_628"><b>style-warning</b></a>.
+
+<p>
+<span id="subclass"/></p></dd><dt><b>subclass:</b></dt><dd> <i>n.</i> 
+  a <i><a href="c.xhtml#class">class</a></i> that <i><a href="i.xhtml#inherit">inherits</a></i> from another <i><a href="c.xhtml#class">class</a></i>, 
+  called a <i><a href="#superclass">superclass</a></i>.
+  (No <i><a href="c.xhtml#class">class</a></i> is a <i><a href="#subclass">subclass</a></i> of itself.)
+
+<p>
+<span id="subexpression"/></p></dd><dt><b>subexpression:</b></dt><dd> <i>n.</i> (of an <i><a href="e.xhtml#expression">expression</a></i>)
+  an <i><a href="e.xhtml#expression">expression</a></i> that is contained within the <i><a href="e.xhtml#expression">expression</a></i>. 
+  (In fact, the state of being a <i><a href="#subexpression">subexpression</a></i> is not an attribute 
+   of the <i><a href="#subexpression">subexpression</a></i>, but really an attribute of the containing
+   <i><a href="e.xhtml#expression">expression</a></i> since the <i><a href="#same">same</a></i> <i><a href="o.xhtml#object">object</a></i> can at once be
+   a <i><a href="#subexpression">subexpression</a></i> in one context, and not in another.)
+
+<p>
+<span id="subform"/></p></dd><dt><b>subform:</b></dt><dd> <i>n.</i> (of a <i><a href="f.xhtml#form">form</a></i>)
+  an <i><a href="e.xhtml#expression">expression</a></i> that is a <i><a href="#subexpression">subexpression</a></i> of the <i><a href="f.xhtml#form">form</a></i>,
+  and which by virtue of its position in that <i><a href="f.xhtml#form">form</a></i> is also a
+  <i><a href="f.xhtml#form">form</a></i>.
+  <code>(f x)</code> and <code>x</code>, but not <code>exit</code>, are subforms of
+	    <code>(return-from exit (f x))</code>.
+
+<p>
+<span id="subrepertoire"/></p></dd><dt><b>subrepertoire:</b></dt><dd> <i>n.</i> 
+  a subset of a <i><a href="r.xhtml#repertoire">repertoire</a></i>.
+
+<p>
+<span id="subtype"/></p></dd><dt><b>subtype:</b></dt><dd> <i>n.</i> 
+  a <i><a href="t.xhtml#type">type</a></i> whose membership is the same as or a proper subset of the
+  membership of another <i><a href="t.xhtml#type">type</a></i>, called a <i><a href="#supertype">supertype</a></i>.
+  (Every <i><a href="t.xhtml#type">type</a></i> is a <i><a href="#subtype">subtype</a></i> of itself.)
+
+<p>
+<span id="superclass"/></p></dd><dt><b>superclass:</b></dt><dd> <i>n.</i> 
+  a <i><a href="c.xhtml#class">class</a></i> from which another <i><a href="c.xhtml#class">class</a></i> 
+  (called a <i><a href="#subclass">subclass</a></i>) <i><a href="i.xhtml#inherit">inherits</a></i>.
+  (No <i><a href="c.xhtml#class">class</a></i> is a <i><a href="#superclass">superclass</a></i> of itself.)
+  See <i><a href="#subclass">subclass</a></i>.
+
+<p>
+<span id="supertype"/></p></dd><dt><b>supertype:</b></dt><dd> <i>n.</i> 
+  a <i><a href="t.xhtml#type">type</a></i> whose membership is the same as or a proper superset
+  of the membership of another <i><a href="t.xhtml#type">type</a></i>, called a <i><a href="#subtype">subtype</a></i>.
+  (Every <i><a href="t.xhtml#type">type</a></i> is a <i><a href="#supertype">supertype</a></i> of itself.)
+  See <i><a href="#subtype">subtype</a></i>.
+
+<p>
+<span id="suppliedpparameter"/></p></dd><dt><b>supplied-p parameter:</b></dt><dd> <i>n.</i>   a <i><a href="p.xhtml#parameter">parameter</a></i> which recieves its <i><a href="g.xhtml#generalizedboolean">generalized boolean</a></i> value
+  implicitly due to the presence or absence of an <i><a href="a.xhtml#argument">argument</a></i> 
+  corresponding to another <i><a href="p.xhtml#parameter">parameter</a></i> 
+  (such as an <i><a href="o.xhtml#optionalparameter">optional parameter</a></i> or a <i><a href="r.xhtml#restparameter">rest parameter</a></i>).
+  See Section <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSection_Ordinary_Lam_243">3.4.1 Ordinary Lambda Lists</a>.
+
+<p>
+<span id="symbol"/></p></dd><dt><b>symbol:</b></dt><dd> <i>n.</i> 
+  an <i><a href="o.xhtml#object">object</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675"><b>symbol</b></a>.
+
+<p>
+<span id="symbolmacro"/></p></dd><dt><b>symbol macro:</b></dt><dd> <i>n.</i> 
+  a <i><a href="#symbol">symbol</a></i> that stands for another <i><a href="f.xhtml#form">form</a></i>.
+  See the <i><a href="m.xhtml#macro">macro</a></i> <a href="../3-evaluation-and-compilation/3.8.14-symbol-macrolet.xhtml#DictEntry_symbol_macro_296"><b>symbol-macrolet</b></a>.
+
+<p>
+<span id="synonymstream"/></p></dd><dt><b>synonym stream:</b></dt><dd> <i>n.</i> 
+  1. a <i><a href="#stream">stream</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../21-streams/21.2.7-synonym-stream.xhtml#DictEntry_synonym_stre_1198"><b>synonym-stream</b></a>, 
+     which is consequently a <i><a href="#stream">stream</a></i> that is an alias for another <i><a href="#stream">stream</a></i>,
+     which is the <i><a href="v.xhtml#value">value</a></i> of a <i><a href="d.xhtml#dynamicvariable">dynamic variable</a></i>
+     whose <i><a href="n.xhtml#name">name</a></i> is the <i><a href="#synonymstreamsymbol">synonym stream symbol</a></i> of the <i><a href="#synonymstream">synonym stream</a></i>.
+     See the <i><a href="f.xhtml#function">function</a></i> <a href="../21-streams/21.2.38-make-synonym-stream.xhtml#DictEntry_make_synonym_1229"><b>make-synonym-stream</b></a>.
+  2. (to a <i><a href="#stream">stream</a></i>)
+     a <i><a href="#synonymstream">synonym stream</a></i> which has the <i><a href="#stream">stream</a></i> as the <i><a href="v.xhtml#value">value</a></i>
+     of its <i><a href="#synonymstreamsymbol">synonym stream symbol</a></i>.
+  3. (to a <i><a href="#symbol">symbol</a></i>)
+     a <i><a href="#synonymstream">synonym stream</a></i> which has the <i><a href="#symbol">symbol</a></i> as its
+     <i><a href="#synonymstreamsymbol">synonym stream symbol</a></i>.
+
+<p>
+<span id="synonymstreamsymbol"/></p></dd><dt><b>synonym stream symbol:</b></dt><dd> <i>n.</i> (of a <i><a href="#synonymstream">synonym stream</a></i>)
+  the <i><a href="#symbol">symbol</a></i> which names the <i><a href="d.xhtml#dynamicvariable">dynamic variable</a></i> which has as its
+  <i><a href="v.xhtml#value">value</a></i> another <i><a href="#stream">stream</a></i> for which the <i><a href="#synonymstream">synonym stream</a></i>
+  is an alias.
+
+<p>
+<span id="syntaxtype"/></p></dd><dt><b>syntax type:</b></dt><dd> <i>n.</i> (of a <i><a href="c.xhtml#character">character</a></i>)
+  one of several classifications, enumerated in <a href="../2-syntax/2.1-character-syntax.xhtml#fig-2-6">Figure 2-6</a>,
+  that are used for dispatch during parsing by the <i>Lisp reader</i>.
+  See Section <a href="../2-syntax/2.1-character-syntax.xhtml#SubSection_Character_Sy_115">2.1.4 Character Syntax Types</a>.
+
+<p>
+<span id="systemclass"/></p></dd><dt><b>system class:</b></dt><dd> <i>n.</i> 
+  a <i><a href="c.xhtml#class">class</a></i> that may be of <i><a href="t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.8-built-in-class.xhtml#DictEntry_built_in_cla_343"><b>built-in-class</b></a> in a <i><a href="c.xhtml#conformingimplementation">conforming implementation</a></i>
+  and hence cannot be inherited by <i>classes</i> defined by <i><a href="c.xhtml#conformingprogram">conforming programs</a></i>.
+
+<p>
+<span id="systemcode"/></p></dd><dt><b>system code:</b></dt><dd> <i>n.</i> 
+  <i><a href="c.xhtml#code">code</a></i> supplied by the <i><a href="i.xhtml#implementation">implementation</a></i> to implement this specification
+  (<i>e.g.</i>,  the definition of <a href="../14-conses/14.2.34-mapc.xhtml#DictEntry_mapc_mapcar_947"><b>mapcar</b></a>)
+  or generated automatically in support of this specification
+  (<i>e.g.</i>,  during method combination);
+  that is, <i><a href="c.xhtml#code">code</a></i> that is not <i><a href="p.xhtml#programmercode">programmer code</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

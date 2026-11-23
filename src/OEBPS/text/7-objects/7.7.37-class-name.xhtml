@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>7.7.37 class-name — Standard Generic Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_class_name_593" class="entry"><span class="secno">7.7.37</span> <span class="names">class-name</span> <span class="kind">Standard Generic Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>class-name</b>
+<i>class</i>
+  → <i>name</i>
+</dd><dt><b>Method Signatures:</b></dt><dd>
+
+<b>class-name</b>
+<i>(<i>class</i> <a href="../4-types-and-classes/4.4.7-class.xhtml#DictEntry_class_342"><b>class</b></a>)</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>class</i>—a <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+<p>
+<i>name</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Returns the <i><a href="../26-glossary/n.xhtml#name">name</a></i> of the given <i>class</i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="7.7.28-find-class.xhtml#DictEntry_find_class_584"><b>find-class</b></a>,
+Section <a href="../4-types-and-classes/4.3-classes.xhtml#Section_Classes_319">4.3 Classes</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+If <i>S</i> is a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> such that <i>S =</i><code>(class-name <i>C</i>)</code>
+and <i>C =</i><code>(find-class <i>S</i>)</code>, then <i>S</i> is the proper name of <i>C</i>.
+For further discussion, see Section <a href="../4-types-and-classes/4.3-classes.xhtml#Section_Classes_319">4.3 Classes</a>.
+
+<p>
+The name of an anonymous <i><a href="../26-glossary/c.xhtml#class">class</a></i> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

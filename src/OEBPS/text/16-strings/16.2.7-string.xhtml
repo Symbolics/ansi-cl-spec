@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>16.2.7 string — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_string_1026" class="entry"><span class="secno">16.2.7</span> <span class="names">string</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>string</b>
+<i>x</i>
+  → <i>string</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>x</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>, a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>, or a <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
+
+
+<p>
+<i>string</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Returns a <i><a href="../26-glossary/s.xhtml#string">string</a></i> described by <i>x</i>; specifically:
+
+<ul>
+<li> If <i>x</i> is a <i><a href="../26-glossary/s.xhtml#string">string</a></i>, it is returned.
+</li><li> If <i>x</i> is a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>, its <i><a href="../26-glossary/n.xhtml#name">name</a></i> is returned.
+</li><li> 
+
+If <i>x</i> is a <i><a href="../26-glossary/c.xhtml#character">character</a></i>,
+
+then a <i><a href="../26-glossary/s.xhtml#string">string</a></i> containing that one <i><a href="../26-glossary/c.xhtml#character">character</a></i> is returned.
+</li><li>
+
+<a href="#DictEntry_string_1026"><b>string</b></a> might perform additional, <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i> conversions.
+
+</li></ul>
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (string "already a string") → "already a string"
+ (string 'elm) → "ELM"
+ (string #\c) → "c"
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+In the case where a conversion is defined neither by this specification nor
+by the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>, an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> is signaled.
+
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../4-types-and-classes/4.4.24-coerce.xhtml#DictEntry_coerce_359"><b>coerce</b></a>,
+<a href="#DictEntry_string_1026"><b>string</b></a> (<i><a href="../26-glossary/t.xhtml#type">type</a></i>).
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+<a href="../4-types-and-classes/4.4.24-coerce.xhtml#DictEntry_coerce_359"><b>coerce</b></a> can be used to convert a <i><a href="../26-glossary/s.xhtml#sequence">sequence</a></i> of <i><a href="../26-glossary/c.xhtml#character">characters</a></i>
+to a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
+
+<p>
+
+<a href="../22-printer/22.4.15-write-to-string.xhtml#DictEntry_write_to_str_1355"><b>prin1-to-string</b></a>, <a href="../22-printer/22.4.15-write-to-string.xhtml#DictEntry_write_to_str_1355"><b>princ-to-string</b></a>, <a href="../22-printer/22.4.15-write-to-string.xhtml#DictEntry_write_to_str_1355"><b>write-to-string</b></a>,
+or <a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> (with a first argument of <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>) can be used to get a
+<i><a href="../26-glossary/s.xhtml#string">string</a></i> representation of a <i><a href="../26-glossary/n.xhtml#number">number</a></i> or any other <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

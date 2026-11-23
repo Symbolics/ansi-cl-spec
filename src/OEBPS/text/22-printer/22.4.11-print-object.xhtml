@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>22.4.11 print-object — Standard Generic Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_print_object_1351" class="entry"><span class="secno">22.4.11</span> <span class="names">print-object</span> <span class="kind">Standard Generic Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>print-object</b>
+<i>object stream</i>
+  → <i>object</i>
+</dd><dt><b>Method Signatures:</b></dt><dd>
+
+<b>print-object</b>
+<i>(<i>object</i> standard-object) <i>stream</i></i>
+<p>
+
+
+<b>print-object</b>
+<i>(<i>object</i> structure-object) <i>stream</i></i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+<p>
+<i>stream</i>—a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
+
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+The <i><a href="../26-glossary/g.xhtml#genericfunction">generic function</a></i> <a href="#DictEntry_print_object_1351"><b>print-object</b></a> writes the printed representation of <i>object</i>
+to <i>stream</i>.
+The <i><a href="../26-glossary/f.xhtml#function">function</a></i> <a href="#DictEntry_print_object_1351"><b>print-object</b></a> is called by the <i>Lisp printer</i>; 
+it should not be called by the user.
+
+<p>
+
+Each implementation is required to provide a <i><a href="../26-glossary/m.xhtml#method">method</a></i> on
+the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a> and on the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.13-structure-object.xhtml#DictEntry_structure_ob_348"><b>structure-object</b></a>.
+In addition, each <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> must provide 
+<i><a href="../26-glossary/m.xhtml#method">methods</a></i> on enough other <i>classes</i> 
+so as to ensure that there is always an applicable <i><a href="../26-glossary/m.xhtml#method">method</a></i>.
+Implementations are free to add <i><a href="../26-glossary/m.xhtml#method">methods</a></i> for other <i>classes</i>.
+Users may write <i><a href="../26-glossary/m.xhtml#method">methods</a></i> for <a href="#DictEntry_print_object_1351"><b>print-object</b></a> for their own
+<i>classes</i> if they do not wish to inherit an 
+<i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> <i><a href="../26-glossary/m.xhtml#method">method</a></i>.
+
+</p><p>
+The <i><a href="../26-glossary/m.xhtml#method">method</a></i> on the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="../4-types-and-classes/4.4.13-structure-object.xhtml#DictEntry_structure_ob_348"><b>structure-object</b></a> prints the object in the
+default <code>#S</code> notation; see Section <a href="22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Str_1275">22.1.3.12 Printing Structures</a>.
+
+
+</p><p>
+<i><a href="../26-glossary/m.xhtml#method">Methods</a></i> on <a href="#DictEntry_print_object_1351"><b>print-object</b></a> are responsible for implementing
+their part of the semantics of the <i><a href="../26-glossary/p.xhtml#printercontrolvariable">printer control variables</a></i>, as follows:
+
+</p><ul>
+
+<li><a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a>
+
+<p>
+All methods for <a href="#DictEntry_print_object_1351"><b>print-object</b></a> must obey <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a>.
+This includes both user-defined methods and <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i> methods.
+Readable printing of <i><a href="../26-glossary/s.xhtml#structure">structures</a></i> and <i><a href="../26-glossary/s.xhtml#standardobject">standard objects</a></i> 
+is controlled by their <a href="#DictEntry_print_object_1351"><b>print-object</b></a> method, 
+not by their <a href="../7-objects/7.7.21-make-load-form.xhtml#DictEntry_make_load_fo_577"><b>make-load-form</b></a> <i><a href="../26-glossary/m.xhtml#method">method</a></i>.
+<i><a href="../26-glossary/s.xhtml#similarity">Similarity</a></i> for these <i><a href="../26-glossary/o.xhtml#object">objects</a></i> is application dependent
+and hence is defined to be whatever these <i><a href="../26-glossary/m.xhtml#method">methods</a></i> do; 
+see Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#SubSubSectio_Similarity_o_229">3.2.4.2 Similarity of Literal Objects</a>.
+
+</p></li><li><a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a>
+
+<p>
+Each <i><a href="../26-glossary/m.xhtml#method">method</a></i> must implement <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a>. 
+
+</p></li><li><a href="22.4.26-print-pretty.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a> 
+
+<p>
+
+
+
+The <i><a href="../26-glossary/m.xhtml#method">method</a></i> may wish to perform specialized line breaking
+or other output conditional on the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="22.4.26-print-pretty.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a>.
+For further information,
+see (for example) the <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> <a href="22.4.5-pprint-fill.xhtml#DictEntry_pprint_fill_1345"><b>pprint-fill</b></a>.
+See also Section <a href="22.2-the-lisp-pretty-printer.xhtml#SubSubSectio_Pretty_Print_1283">22.2.1.4 Pretty Print Dispatch Tables</a> and Section <a href="22.2-the-lisp-pretty-printer.xhtml#SubSection_Examples_of__1285">22.2.2 Examples of using the Pretty Printer</a>.
+
+
+</p></li><li><a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a>
+
+<p>
+<i><a href="../26-glossary/m.xhtml#method">Methods</a></i> that produce output of indefinite length must obey
+<a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a>.
+
+
+
+For further information,
+see (for example) the <i><a href="../26-glossary/m.xhtml#macro">macros</a></i> <a href="22.4.7-pprint-logical-block.xhtml#DictEntry_pprint_logic_1347"><b>pprint-logical-block</b></a>
+and <a href="22.4.9-pprint-pop.xhtml#DictEntry_pprint_pop_1349"><b>pprint-pop</b></a>.
+See also Section <a href="22.2-the-lisp-pretty-printer.xhtml#SubSubSectio_Pretty_Print_1283">22.2.1.4 Pretty Print Dispatch Tables</a> and Section <a href="22.2-the-lisp-pretty-printer.xhtml#SubSection_Examples_of__1285">22.2.2 Examples of using the Pretty Printer</a>.
+ 
+
+</p></li><li><a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a>
+
+<p>
+The printer takes care of <a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a> automatically,
+provided that each <i><a href="../26-glossary/m.xhtml#method">method</a></i> handles exactly one level of structure and
+calls <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>write</b></a> (or an equivalent <i><a href="../26-glossary/f.xhtml#function">function</a></i>) recursively if
+there are more structural levels.  The printer's decision of whether an
+<i><a href="../26-glossary/o.xhtml#object">object</a></i> has components (and therefore should not be printed when the
+printing depth is not less than <a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a>) is
+<i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.  In some implementations its 
+<a href="#DictEntry_print_object_1351"><b>print-object</b></a> <i><a href="../26-glossary/m.xhtml#method">method</a></i> is not called; 
+in others the <i><a href="../26-glossary/m.xhtml#method">method</a></i> is called, 
+and the determination that the <i><a href="../26-glossary/o.xhtml#object">object</a></i> has components is based on what
+it tries to write to the <i>stream</i>.
+
+</p></li><li><a href="22.4.19-print-circle.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a>
+
+<p>
+
+When the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="22.4.19-print-circle.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>,
+a user-defined 
+
+
+<a href="#DictEntry_print_object_1351"><b>print-object</b></a> <i><a href="../26-glossary/m.xhtml#method">method</a></i>
+
+can print <i><a href="../26-glossary/o.xhtml#object">objects</a></i> to the supplied <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> 
+using <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>write</b></a>,
+      <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>prin1</b></a>,
+      <a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>princ</b></a>,
+   or <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>
+and expect circularities to be detected 
+and printed using the <code>#<i>n</i>#</code> syntax.
+If a user-defined
+
+
+<a href="#DictEntry_print_object_1351"><b>print-object</b></a> <i><a href="../26-glossary/m.xhtml#method">method</a></i>
+
+prints to a <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> other than the one
+that was supplied, then circularity detection starts over for that
+<i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.  See <a href="22.4.19-print-circle.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a>.
+
+
+</p></li><li><a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-base*</b></a>,
+      <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a>,
+      <a href="22.4.18-print-case.xhtml#DictEntry_print_case_1358"><b>*print-case*</b></a>, 
+      <a href="22.4.21-print-gensym.xhtml#DictEntry_print_gensy_1361"><b>*print-gensym*</b></a>,
+  and <a href="22.4.16-print-array.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a>
+
+<p>
+These <i><a href="../26-glossary/p.xhtml#printercontrolvariable">printer control variables</a></i> apply to specific types of <i><a href="../26-glossary/o.xhtml#object">objects</a></i>
+and are handled by the <i><a href="../26-glossary/m.xhtml#method">methods</a></i> for those <i><a href="../26-glossary/o.xhtml#object">objects</a></i>.
+
+</p></li></ul>
+
+<p>
+If these rules are not obeyed, the results are undefined.
+
+</p><p>
+
+In general, the printer and the <a href="#DictEntry_print_object_1351"><b>print-object</b></a> methods should not
+rebind the print control variables as they operate recursively through the
+structure, but this is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</p><p>
+In some implementations the <i>stream</i> argument passed to a 
+<a href="#DictEntry_print_object_1351"><b>print-object</b></a> <i><a href="../26-glossary/m.xhtml#method">method</a></i> is not the original <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>, 
+but is an intermediate <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> that implements part of the printer.
+<i><a href="../26-glossary/m.xhtml#method">methods</a></i> should therefore not depend on the identity of this <i><a href="../26-glossary/s.xhtml#stream">stream</a></i>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="22.4.5-pprint-fill.xhtml#DictEntry_pprint_fill_1345"><b>pprint-fill</b></a>,
+<a href="22.4.7-pprint-logical-block.xhtml#DictEntry_pprint_logic_1347"><b>pprint-logical-block</b></a>,
+<a href="22.4.9-pprint-pop.xhtml#DictEntry_pprint_pop_1349"><b>pprint-pop</b></a>,
+<a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>write</b></a>,
+<a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a>,
+<a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a>,
+<a href="22.4.26-print-pretty.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a>,
+<a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a>,
+Section <a href="22.1-the-lisp-printer.xhtml#SubSection_Default_Prin_1255">22.1.3 Default Print-Object Methods</a>,
+
+Section <a href="22.1-the-lisp-printer.xhtml#SubSubSectio_Printing_Str_1275">22.1.3.12 Printing Structures</a>,
+
+Section <a href="22.2-the-lisp-pretty-printer.xhtml#SubSubSectio_Pretty_Print_1283">22.2.1.4 Pretty Print Dispatch Tables</a>,
+Section <a href="22.2-the-lisp-pretty-printer.xhtml#SubSection_Examples_of__1285">22.2.2 Examples of using the Pretty Printer</a>
+
+</dd></dl>
+</section>
+</body>
+</html>

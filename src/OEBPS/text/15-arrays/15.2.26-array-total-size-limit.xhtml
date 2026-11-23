@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>15.2.26 array-total-size-limit — Constant Variable</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_array_total__1004" class="entry"><span class="secno">15.2.26</span> <span class="names">array-total-size-limit</span> <span class="kind">Constant Variable</span></h3>
+<dl>
+
+
+<dt><b>Constant Value:</b></dt><dd>
+
+A positive
+
+<i><a href="../26-glossary/f.xhtml#fixnum">fixnum</a></i>,
+
+the exact magnitude of which is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>,
+but which is not less than <code>1024</code>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+The upper exclusive bound on the <i><a href="../26-glossary/a.xhtml#arraytotalsize">array total size</a></i> of an <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
+
+<p>
+
+The actual limit on the <i><a href="../26-glossary/a.xhtml#arraytotalsize">array total size</a></i> 
+imposed by the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>
+might vary according the <i><a href="../26-glossary/e.xhtml#elementtype">element type</a></i> of the <i><a href="../26-glossary/a.xhtml#array">array</a></i>;
+in this case, the value of <a href="#DictEntry_array_total__1004"><b>array-total-size-limit</b></a> 
+will be the smallest of these possible limits.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="15.2.7-make-array.xhtml#DictEntry_make_array_985"><b>make-array</b></a>, <a href="15.2.13-array-element-type.xhtml#DictEntry_array_elemen_991"><b>array-element-type</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

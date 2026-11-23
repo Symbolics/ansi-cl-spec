@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.55 multiple-values-limit — Constant Variable</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_multiple_val_441" class="entry"><span class="secno">5.3.55</span> <span class="names">multiple-values-limit</span> <span class="kind">Constant Variable</span></h3>
+<dl>
+
+
+<dt><b>Constant Value:</b></dt><dd>
+
+An <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> not smaller than <code>20</code>, 
+the exact magnitude of which is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+The upper exclusive bound on the number of <i><a href="../26-glossary/v.xhtml#value">values</a></i> that may be
+    returned from a <i><a href="../26-glossary/f.xhtml#function">function</a></i>,
+
+    bound or assigned by <a href="5.3.48-multiple-value-bind.xhtml#DictEntry_multiple_val_434"><b>multiple-value-bind</b></a> or <a href="5.3.52-multiple-value-setq.xhtml#DictEntry_multiple_val_438"><b>multiple-value-setq</b></a>,
+ or passed as a first argument to <a href="5.3.56-nth-value.xhtml#DictEntry_nth_value_442"><b>nth-value</b></a>.
+(If these individual limits might differ, the minimum value is used.)
+
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="5.3.14-lambda-parameters-limit.xhtml#DictEntry_lambda_param_400"><b>lambda-parameters-limit</b></a>, <a href="5.3.12-call-arguments-limit.xhtml#DictEntry_call_argumen_398"><b>call-arguments-limit</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+Implementors are encouraged to make this limit as large as possible.
+
+</dd></dl>
+</section>
+</body>
+</html>

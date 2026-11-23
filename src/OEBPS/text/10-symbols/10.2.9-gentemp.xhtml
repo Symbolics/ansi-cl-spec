@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>10.2.9 gentemp — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_gentemp_683" class="entry"><span class="secno">10.2.9</span> <span class="names">gentemp</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>gentemp</b>
+<i><code>&amp;optional</code> prefix package</i>
+  → <i>new-symbol</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>prefix</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
+ The default is <code>"T"</code>.
+
+<p>
+<i>package</i>—a <i><a href="../26-glossary/p.xhtml#packagedesignator">package designator</a></i>.
+ The default is the <i><a href="../26-glossary/c.xhtml#currentpackage">current package</a></i>.
+
+</p><p>
+<i>new-symbol</i>—a <i><a href="../26-glossary/f.xhtml#fresh">fresh</a></i>, <i><a href="../26-glossary/i.xhtml#interned">interned</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_gentemp_683"><b>gentemp</b></a> creates and returns a <i><a href="../26-glossary/f.xhtml#fresh">fresh</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>,
+<i><a href="../26-glossary/i.xhtml#interned">interned</a></i> in the indicated <i>package</i>.
+
+
+The <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> is guaranteed to be one that was not previously
+<i><a href="../26-glossary/a.xhtml#accessible">accessible</a></i> in <i>package</i>.
+It is neither <i><a href="../26-glossary/b.xhtml#bound">bound</a></i> nor <i><a href="../26-glossary/f.xhtml#fbound">fbound</a></i>, and has a <i><a href="../26-glossary/n.xhtml#null">null</a></i>
+<i><a href="../26-glossary/p.xhtml#propertylist">property list</a></i>.
+
+<p>
+The <i><a href="../26-glossary/n.xhtml#name">name</a></i> of the <i>new-symbol</i> is the concatenation 
+of the <i>prefix</i> and a suffix, which is taken from an internal
+counter used only by <a href="#DictEntry_gentemp_683"><b>gentemp</b></a>.  (If a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> by that name
+
+is already <i><a href="../26-glossary/a.xhtml#accessible">accessible</a></i> in <i>package</i>, the counter is incremented as
+many times as is necessary to produce a <i><a href="../26-glossary/n.xhtml#name">name</a></i> that is not already the
+<i><a href="../26-glossary/n.xhtml#name">name</a></i> of a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <i><a href="../26-glossary/a.xhtml#accessible">accessible</a></i> in <i>package</i>.)
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (gentemp) →  T1298
+ (gentemp "FOO") →  FOO1299
+ (find-symbol "FOO1300") →  NIL, NIL
+ (gentemp "FOO") →  FOO1300
+ (find-symbol "FOO1300") →  FOO1300, :INTERNAL
+ (intern "FOO1301") →  FOO1301, :INTERNAL
+ (gentemp "FOO") →  FOO1302
+ (gentemp) →  T1303
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+Its internal counter is incremented one or more times.
+
+<p>
+<i><a href="../26-glossary/i.xhtml#intern">Interns</a></i> the <i>new-symbol</i> in <i>package</i>.
+
+</p></dd><dt><b>Affected By:</b></dt><dd>
+
+The current state of its internal counter, and
+the current state of the <i>package</i>.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>prefix</i> is not a <i><a href="../26-glossary/s.xhtml#string">string</a></i>.
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>package</i> is not a <i><a href="../26-glossary/p.xhtml#packagedesignator">package designator</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="10.2.7-gensym.xhtml#DictEntry_gensym_681"><b>gensym</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The function <a href="#DictEntry_gentemp_683"><b>gentemp</b></a> is deprecated.
+
+<p>
+If <i>package</i> is the <a href="10.2.2-keyword.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="../26-glossary/p.xhtml#package">package</a></i>,
+the result is an <i><a href="../26-glossary/e.xhtml#externalsymbol">external symbol</a></i> of <i>package</i>.
+Otherwise, the result is an <i><a href="../26-glossary/i.xhtml#internalsymbol">internal symbol</a></i> of <i>package</i>.
+
+
+
+
+
+
+
+
+
+
+</p><p>
+The <a href="#DictEntry_gentemp_683"><b>gentemp</b></a> internal counter is independent of
+<a href="10.2.8-gensym-counter.xhtml#DictEntry_gensym_coun_682"><b>*gensym-counter*</b></a>, the counter used by <a href="10.2.7-gensym.xhtml#DictEntry_gensym_681"><b>gensym</b></a>.  
+There is no provision for accessing the <a href="#DictEntry_gentemp_683"><b>gentemp</b></a> internal counter.
+
+</p><p>
+Just because <a href="#DictEntry_gentemp_683"><b>gentemp</b></a> creates a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> which did not
+previously exist does not mean that such a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> might not be
+seen in the future (<i>e.g.</i>,  in a data file—perhaps even created by the
+same program in another session).  As such, this symbol is not truly
+unique in the same sense as a <i><a href="../26-glossary/g.xhtml#gensym">gensym</a></i> would be.  In particular,
+programs which do automatic code generation should be careful not to
+attach global attributes to such generated <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> (<i>e.g.</i>, 
+<a href="../3-evaluation-and-compilation/3.8.26-special.xhtml#DictEntry_special_308"><b>special</b></a> <i><a href="../26-glossary/d.xhtml#declaration">declarations</a></i>) and then write them into a file
+because such global attributes might, in a different session, end up
+applying to other <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> that were automatically generated on
+another day for some other purpose.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>11.2.9 shadow — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_shadow_724" class="entry"><span class="secno">11.2.9</span> <span class="names">shadow</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>shadow</b>
+<i>symbol-names <code>&amp;optional</code> package</i>
+  → <i><a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+</i><p><i></i>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>symbol-names</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for 
+		       a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/s.xhtml#stringdesignator">string designators</a></i>.
+
+
+<p>
+
+<i>package</i>—a <i><a href="../26-glossary/p.xhtml#packagedesignator">package designator</a></i>.
+
+ The default is the <i><a href="../26-glossary/c.xhtml#currentpackage">current package</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_shadow_724"><b>shadow</b></a> assures that <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> with names given 
+by <i>symbol-names</i> are <i><a href="../26-glossary/p.xhtml#present">present</a></i> 
+
+in
+the <i>package</i>.
+
+<p>
+
+Specifically, <i>package</i> is searched for <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> 
+with the <i><a href="../26-glossary/n.xhtml#name">names</a></i> supplied by <i>symbol-names</i>.
+
+For each such <i><a href="../26-glossary/n.xhtml#name">name</a></i>, if a corresponding <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> 
+
+
+is not <i><a href="../26-glossary/p.xhtml#present">present</a></i> in <i>package</i> (directly, not by inheritance), 
+then a corresponding <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> is created with that <i><a href="../26-glossary/n.xhtml#name">name</a></i>,
+and inserted into <i>package</i> as an <i><a href="../26-glossary/i.xhtml#internalsymbol">internal symbol</a></i>.
+The corresponding <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>, whether pre-existing or newly created,
+is then added, if not already present, to the <i><a href="../26-glossary/s.xhtml#shadowingsymbolslist">shadowing symbols list</a></i>
+of <i>package</i>.
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (package-shadowing-symbols (make-package 'temp)) →  NIL
+ (find-symbol 'car 'temp) →  CAR, :INHERITED
+ (shadow 'car 'temp) →  T
+ (find-symbol 'car 'temp) →  TEMP::CAR, :INTERNAL
+ (package-shadowing-symbols 'temp) → (TEMP::CAR)
+</pre>
+
+<pre> (make-package 'test-1) → #&lt;PACKAGE "TEST-1"&gt;
+ (intern "TEST" (find-package 'test-1)) →  TEST-1::TEST, NIL
+ (shadow 'test-1::test (find-package 'test-1)) →  T
+ (shadow 'TEST (find-package 'test-1)) →  T
+ (assert (not (null (member 'test-1::test (package-shadowing-symbols
+                                            (find-package 'test-1))))))
+ 
+ (make-package 'test-2) → #&lt;PACKAGE "TEST-2"&gt;
+ (intern "TEST" (find-package 'test-2)) →  TEST-2::TEST, NIL
+ (export 'test-2::test (find-package 'test-2)) →  T
+ (use-package 'test-2 (find-package 'test-1))    ;should not error
+ 
+</pre>
+
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+
+<a href="#DictEntry_shadow_724"><b>shadow</b></a> changes the state of the package system in such a 
+way that the package consistency rules do not hold across the change.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+Current state of the package system.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="11.2.24-package-shadowing-symbols.xhtml#DictEntry_package_shad_739"><b>package-shadowing-symbols</b></a>,
+
+
+Section <a href="11.1-package-concepts.xhtml#Section_Package_Conc_696">11.1 Package Concepts</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+If a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> with a name in <i>symbol-names</i> already exists
+in <i>package</i>, but by inheritance, the inherited symbol becomes
+<i>shadowed</i><sub>3</sub> by a newly created <i><a href="../26-glossary/i.xhtml#internalsymbol">internal symbol</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

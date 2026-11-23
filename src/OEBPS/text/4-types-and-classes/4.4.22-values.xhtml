@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>4.4.22 values — Type Specifier</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_values_357" class="entry"><span class="secno">4.4.22</span> <span class="names">values</span> <span class="kind">Type Specifier</span></h3>
+<dl>
+
+
+<dt><b>Compound Type Specifier Kind:</b></dt><dd>
+
+Specializing.
+
+</dd><dt><b>Compound Type Specifier Syntax:</b></dt><dd>
+
+<code>(values ↓value-typespec)</code>
+
+<p>
+
+value-typespec::= {<i>typespec</i>}*
+			<code>[</code><code>&amp;optional</code> {<i>typespec</i>}*<code>]</code>
+			<code>[</code><code>&amp;rest</code> typespec<code>]</code>
+			<code>[</code><a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSubSec_Suppressing__248"><b>&amp;allow-other-keys</b></a><code>]</code></p></dd><dt><b>Compound Type Specifier Arguments:</b></dt><dd>
+
+<i>typespec</i>—a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+
+</dd><dt><b>Compound Type Specifier Description:</b></dt><dd>
+
+This <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> can be used only as the <i>value-type</i> in a
+<a href="../5-data-and-control-flow/5.3.8-function.xhtml#DictEntry_function_394"><b>function</b></a> <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> or a <a href="../3-evaluation-and-compilation/3.8.28-the.xhtml#DictEntry_the_310"><b>the</b></a>
+<i><a href="../26-glossary/s.xhtml#specialform">special form</a></i>.  It is used to specify individual <i><a href="../26-glossary/t.xhtml#type">types</a></i> 
+when <i><a href="../26-glossary/m.xhtml#multiplevalues">multiple values</a></i> are involved.
+The <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_Specifiers_f_245"><b>&amp;optional</b></a> and <a href="../3-evaluation-and-compilation/3.4-lambda-lists.xhtml#SubSubSectio_A_specifier__246"><b>&amp;rest</b></a> markers can appear in the <i>value-type</i> list;
+they indicate the parameter list of a <i><a href="../26-glossary/f.xhtml#function">function</a></i> that, 
+when given to <a href="../5-data-and-control-flow/5.3.49-multiple-value-call.xhtml#DictEntry_multiple_val_435"><b>multiple-value-call</b></a> along with the values,
+
+would correctly receive those values.
+
+<p>
+
+The symbol <a href="../12-numbers/12.2.24-star.xhtml#DictEntry__798"><b>*</b></a> may not be among the <i>value-types</i>.
+
+</p><p>
+The symbol <a href="#DictEntry_values_357"><b>values</b></a> is not valid as a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>;
+and, specifically, it is not an abbreviation for <code>(values)</code>.
+
+
+</p></dd></dl>
+</section>
+</body>
+</html>

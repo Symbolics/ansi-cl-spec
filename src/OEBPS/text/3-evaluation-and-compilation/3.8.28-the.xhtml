@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>3.8.28 the — Special Operator</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_the_310" class="entry"><span class="secno">3.8.28</span> <span class="names">the</span> <span class="kind">Special Operator</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>the</b>
+<i>value-type form</i>
+  → <i>{<i>result</i>}*</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>value-type</i>—a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>; not evaluated.
+
+<p>
+<i>form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>; evaluated.
+
+</p><p>
+
+
+<i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> resulting from the <i><a href="../26-glossary/e.xhtml#evaluation">evaluation</a></i> of <i>form</i>.
+  These <i><a href="../26-glossary/v.xhtml#value">values</a></i> must conform to the <i><a href="../26-glossary/t.xhtml#type">type</a></i> supplied by <i>value-type</i>;
+  see below.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_the_310"><b>the</b></a> specifies that the <i><a href="../26-glossary/v.xhtml#value">values</a></i><sub>1a</sub> returned by <i>form</i>
+are of the <i><a href="../26-glossary/t.xhtml#type">types</a></i> specified by <i>value-type</i>.
+The consequences are undefined if any <i>result</i>
+is not of the declared type.
+
+<p>
+
+
+It is permissible for <i>form</i> to <i><a href="../26-glossary/y.xhtml#yield">yield</a></i> a different number of <i><a href="../26-glossary/v.xhtml#value">values</a></i> 
+than are specified by <i>value-type</i>, provided that the values
+for which <i>types</i> are declared are indeed of those <i><a href="../26-glossary/t.xhtml#type">types</a></i>.
+Missing values are treated as <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> for the purposes of checking their <i><a href="../26-glossary/t.xhtml#type">types</a></i>.
+
+</p><p>
+Regardless of number of <i><a href="../26-glossary/v.xhtml#value">values</a></i> declared by <i>value-type</i>,
+the number of <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <a href="#DictEntry_the_310"><b>the</b></a> <i><a href="../26-glossary/s.xhtml#specialform">special form</a></i> is the same as
+the number of <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by <i>form</i>. 
+
+
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (the symbol (car (list (gensym)))) → #:G9876
+ (the fixnum (+ 5 7)) → 12
+ (the (values) (truncate 3.2 2)) → 1, 1.2
+ (the integer (truncate 3.2 2)) → 1, 1.2
+ (the (values integer) (truncate 3.2 2)) → 1, 1.2
+ (the (values integer float) (truncate 3.2 2))   → 1, 1.2
+ (the (values integer float symbol) (truncate 3.2 2)) → 1, 1.2
+ (the (values integer float symbol t null list) 
+      (truncate 3.2 2)) → 1, 1.2
+ (let ((i 100))
+    (declare (fixnum i))
+    (the fixnum (1+ i))) → 101
+ (let* ((x (list 'a 'b 'c))
+        (y 5))
+    (setf (the fixnum (car x)) y)
+    x) → (5 B C)
+</pre>
+
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+The consequences are undefined if
+the <i><a href="../26-glossary/v.xhtml#value">values</a></i> <i>yielded</i> by the <i>form</i> 
+are not of the <i><a href="../26-glossary/t.xhtml#type">type</a></i> specified by <i>value-type</i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../4-types-and-classes/4.4.22-values.xhtml#DictEntry_values_357"><b>values</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The <a href="../4-types-and-classes/4.4.22-values.xhtml#DictEntry_values_357"><b>values</b></a> <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> can be used to indicate the types
+of <i><a href="../26-glossary/m.xhtml#multiplevalues">multiple values</a></i>:
+
+<pre> (the (values integer integer) (floor x y))
+ (the (values string t)
+      (gethash the-key the-string-table))
+</pre>
+
+<p>
+<a href="../5-data-and-control-flow/5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> can be used with <a href="#DictEntry_the_310"><b>the</b></a> type declarations.
+In this case the declaration is transferred to the form that
+specifies  the new value.  The resulting <a href="../5-data-and-control-flow/5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> <i><a href="../26-glossary/f.xhtml#form">form</a></i>
+is then analyzed.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

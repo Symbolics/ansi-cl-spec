@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>15.2.8 adjust-array — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_adjust_array_986" class="entry"><span class="secno">15.2.8</span> <span class="names">adjust-array</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>adjust-array</b>
+<i>array new-dimensions <code>&amp;key</code> element-type
+                                                           initial-element
+                                                           initial-contents
+                                                           fill-pointer
+                                                           displaced-to
+                                                           displaced-index-offset</i><br/> 
+  → <i>adjusted-array</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>array</i>—an <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
+
+<p>
+<i>new-dimensions</i>—a <i><a href="../26-glossary/v.xhtml#validarraydimension">valid array dimension</a></i> 
+   		      or a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/v.xhtml#validarraydimension">valid array dimensions</a></i>.
+
+</p><p>
+
+<i>element-type</i>—a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+
+
+</p><p>
+
+<i>initial-element</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+  <i>Initial-element</i> must not be supplied if either 
+  <i>initial-contents</i> or <i>displaced-to</i> is supplied.
+
+
+</p><p>
+
+<i>initial-contents</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+ If <i><a href="../26-glossary/a.xhtml#array">array</a></i> has rank greater than zero, then <i>initial-contents</i>
+ is composed of nested <i><a href="../26-glossary/s.xhtml#sequence">sequences</a></i>, the depth of which must equal
+ the rank of <i>array</i>.  Otherwise, <i><a href="../26-glossary/a.xhtml#array">array</a></i> is zero-dimensional and
+ <i>initial-contents</i> supplies the single element.
+ <i>initial-contents</i> must not be supplied if either 
+ <i>initial-element</i> or <i>displaced-to</i> is given.
+
+</p><p>
+
+<i>fill-pointer</i>—a <i><a href="../26-glossary/v.xhtml#validfillpointer">valid fill pointer</a></i> for the
+ <i><a href="../26-glossary/a.xhtml#array">array</a></i> to be created, or <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+ The default is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</p><p>
+<i>displaced-to</i>—an <i><a href="../26-glossary/a.xhtml#array">array</a></i> or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+ <i>initial-elements</i> and <i>initial-contents</i> must not be supplied
+ if <i>displaced-to</i> is supplied.
+
+
+</p><p>
+
+<i>displaced-index-offset</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <code>(fixnum 0 <i>n</i>)</code> 
+ where <i>n</i> is <code>(array-total-size <i>displaced-to</i>)</code>.
+ <i>displaced-index-offset</i> may be supplied only if <i>displaced-to</i> is supplied.
+
+
+
+</p><p>
+<i>adjusted-array</i>—an <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_adjust_array_986"><b>adjust-array</b></a> changes the dimensions or elements of <i>array</i>.
+The result is an <i><a href="../26-glossary/a.xhtml#array">array</a></i> of the same <i><a href="../26-glossary/t.xhtml#type">type</a></i> and rank as <i>array</i>,
+
+
+that is either the modified <i>array</i>,
+or a newly created <i><a href="../26-glossary/a.xhtml#array">array</a></i> to which
+<i>array</i> can be displaced, and that has 
+the given <i>new-dimensions</i>.
+
+<p>
+<i>New-dimensions</i> specify the size of each <i><a href="../26-glossary/d.xhtml#dimension">dimension</a></i> of <i>array</i>. 
+
+</p><p>
+<i>Element-type</i> specifies the <i><a href="../26-glossary/t.xhtml#type">type</a></i> of the <i><a href="../26-glossary/e.xhtml#element">elements</a></i>
+of the resulting <i><a href="../26-glossary/a.xhtml#array">array</a></i>.  If <i>element-type</i> is supplied,
+
+the consequences are unspecified if
+the <i><a href="../26-glossary/u.xhtml#upgradedarrayelementtype">upgraded array element type</a></i> of <i>element-type</i>
+is not the same as the <i><a href="../26-glossary/a.xhtml#actualarrayelementtype">actual array element type</a></i> of <i>array</i>.
+</p><p>
+If <i>initial-contents</i> is supplied, it is treated as for
+<a href="15.2.7-make-array.xhtml#DictEntry_make_array_985"><b>make-array</b></a>.  In this case none of the original contents of
+<i>array</i> appears in the resulting <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
+
+</p><p>
+
+If <i>fill-pointer</i> is an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>,
+it becomes the <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i> for the resulting <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
+If <i>fill-pointer</i> is the symbol <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>,
+it indicates that the size of the resulting <i><a href="../26-glossary/a.xhtml#array">array</a></i> 
+should be used as the <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>.
+If <i>fill-pointer</i> is <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+it indicates that the <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i> should be left as it is.
+
+
+</p><p>
+If <i>displaced-to</i>
+
+<i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i>, a <i><a href="../26-glossary/d.xhtml#displacedarray">displaced array</a></i>
+is created. The resulting <i><a href="../26-glossary/a.xhtml#array">array</a></i> shares its contents with the <i><a href="../26-glossary/a.xhtml#array">array</a></i> given by
+<i>displaced-to</i>.
+The resulting <i><a href="../26-glossary/a.xhtml#array">array</a></i> cannot contain more elements than the <i><a href="../26-glossary/a.xhtml#array">array</a></i>
+it is displaced to.  
+If <i>displaced-to</i> is not supplied or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+the resulting <i><a href="../26-glossary/a.xhtml#array">array</a></i> is not a <i><a href="../26-glossary/d.xhtml#displacedarray">displaced array</a></i>.
+If array <i>A</i> is created displaced to array <i>B</i> and subsequently
+array <i>B</i> is given to <a href="#DictEntry_adjust_array_986"><b>adjust-array</b></a>, array <i>A</i> will still be
+displaced to array <i>B</i>.
+Although <i>array</i> might be a <i><a href="../26-glossary/d.xhtml#displacedarray">displaced array</a></i>, 
+the resulting <i><a href="../26-glossary/a.xhtml#array">array</a></i> is not a <i><a href="../26-glossary/d.xhtml#displacedarray">displaced array</a></i> unless
+<i>displaced-to</i> is supplied and not <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+The interaction between <a href="#DictEntry_adjust_array_986"><b>adjust-array</b></a> and 
+displaced <i><a href="../26-glossary/a.xhtml#array">arrays</a></i> 
+is as follows given three <i><a href="../26-glossary/a.xhtml#array">arrays</a></i>, <code>A</code>, <code>B</code>, and <code>C</code>:
+
+</p><ul>
+<li><code>A</code> is not displaced before or after the call
+
+<pre> (adjust-array A ...)
+</pre>
+
+<p>
+The dimensions of <code>A</code> are altered, and the
+contents rearranged as appropriate.  
+Additional elements of <code>A</code> are taken from
+<i>initial-element</i>.  
+The use of <i>initial-contents</i> causes all old contents to be
+discarded.
+
+</p></li><li><code>A</code> is not displaced before, but is displaced to 
+<code>C</code> after the call  
+
+<pre> (adjust-array A ... :displaced-to C)
+</pre>
+
+<p>
+None of the original contents of <code>A</code> appears in 
+<code>A</code> afterwards; <code>A</code> now contains
+the contents of <code>C</code>, without any rearrangement of <code>C</code>.
+
+</p></li><li><code>A</code> is displaced to <code>B</code> 
+before the call, and is displaced to <code>C</code> after 
+the call
+
+<pre> (adjust-array A ... :displaced-to B)
+ (adjust-array A ... :displaced-to C)
+</pre>
+
+<p>
+<code>B</code> and <code>C</code> might be the same. The contents of <code>B</code> do not appear in 
+<code>A</code> afterward unless such contents also happen to be in <code>C</code>  If
+<i>displaced-index-offset</i> 
+is not supplied in the <a href="#DictEntry_adjust_array_986"><b>adjust-array</b></a> call, it defaults
+to zero; the old offset into <code>B</code> is not retained.
+
+</p></li><li><code>A</code> is displaced to <code>B</code> before the call, but not displaced
+afterward.  
+
+<pre> (adjust-array A ... :displaced-to B)
+ (adjust-array A ... :displaced-to nil)
+</pre>
+<code>A</code> gets a
+new "data region," and contents of <code>B</code> are copied into it as appropriate to
+maintain the existing old contents; additional elements of <code>A</code> 
+are taken from
+<i>initial-element</i> if supplied.  However, 
+the use of <i>initial-contents</i> causes all old contents
+to be discarded.
+
+
+</li></ul>
+
+
+<p>
+If <i>displaced-index-offset</i> is supplied,
+it specifies the offset
+of the resulting <i><a href="../26-glossary/a.xhtml#array">array</a></i> from the beginning of 
+the <i><a href="../26-glossary/a.xhtml#array">array</a></i> that it is displaced to.           
+If <i>displaced-index-offset</i> is not supplied, the offset is 0.  
+The size of the resulting <i><a href="../26-glossary/a.xhtml#array">array</a></i> plus the 
+offset value cannot exceed the size of
+the <i><a href="../26-glossary/a.xhtml#array">array</a></i> that it is displaced to.
+
+</p><p>
+
+If only <i>new-dimensions</i>
+and an <i>initial-element</i> argument are supplied,
+those elements of <i>array</i> that
+are still in bounds appear in the resulting <i><a href="../26-glossary/a.xhtml#array">array</a></i>. The elements of
+the resulting <i><a href="../26-glossary/a.xhtml#array">array</a></i> that are not in the bounds of 
+<i><a href="../26-glossary/a.xhtml#array">array</a></i> are initialized
+to <i>initial-element</i>; if <i>initial-element</i> is not provided,
+
+
+
+
+the consequences of later reading any such new <i><a href="../26-glossary/e.xhtml#element">element</a></i> of <i>new-array</i>
+before it has been initialized
+are undefined.
+
+
+</p><p>
+If <i>initial-contents</i> or <i>displaced-to</i> is supplied,
+then none of the original contents of <i>array</i> appears in the new <i><a href="../26-glossary/a.xhtml#array">array</a></i>.
+
+</p><p>
+
+
+
+
+The consequences are unspecified if <i>array</i> is adjusted 
+to a size smaller than its <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i> without supplying
+the <i>fill-pointer</i> argument so that its <i>fill-pointer</i>
+is properly adjusted in the process.
+
+</p><p>
+If <code>A</code> is displaced to <code>B</code>, the consequences are unspecified 
+if <code>B</code> is adjusted in such a way that it no longer has enough elements
+to satisfy <code>A</code>.  
+
+</p><p>
+If <a href="#DictEntry_adjust_array_986"><b>adjust-array</b></a> is applied to an <i><a href="../26-glossary/a.xhtml#array">array</a></i> that is <i><a href="../26-glossary/a.xhtml#actuallyadjustable">actually adjustable</a></i>,
+the <i><a href="../26-glossary/a.xhtml#array">array</a></i> returned is <i><a href="../26-glossary/i.xhtml#identical">identical</a></i> to <i>array</i>.
+If the <i><a href="../26-glossary/a.xhtml#array">array</a></i> returned by <a href="#DictEntry_adjust_array_986"><b>adjust-array</b></a> 
+is <i><a href="../26-glossary/d.xhtml#distinct">distinct</a></i> from <i>array</i>, then the argument <i>array</i> is unchanged.
+
+
+</p><p>
+Note that if an <i><a href="../26-glossary/a.xhtml#array">array</a></i> <i>A</i> is displaced to another <i><a href="../26-glossary/a.xhtml#array">array</a></i> <i>B</i>,
+and <i>B</i> is displaced to another <i><a href="../26-glossary/a.xhtml#array">array</a></i> <i>C</i>, and <i>B</i> is altered by
+<a href="#DictEntry_adjust_array_986"><b>adjust-array</b></a>, <i>A</i> must now refer to the adjust contents of <i>B</i>.
+This means that an implementation cannot collapse the chain to make <i>A</i>
+refer to <i>C</i> directly and forget that the chain of reference passes through
+<i>B</i>.  However, caching techniques are permitted as long as they preserve the 
+semantics specified here.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (adjustable-array-p
+  (setq ada (adjust-array
+              (make-array '(2 3)
+                          :adjustable t
+                          :initial-contents '((a b c) (1 2 3)))
+              '(4 6)))) →  T 
+ (array-dimensions ada) → (4 6) 
+ (aref ada 1 1) → 2 
+ (setq beta (make-array '(2 3) :adjustable t))
+→ #2A((NIL NIL NIL) (NIL NIL NIL)) 
+ (adjust-array beta '(4 6) :displaced-to ada)
+→ #2A((A B C NIL NIL NIL)
+       (1 2 3 NIL NIL NIL)
+       (NIL NIL NIL NIL NIL NIL) 
+       (NIL NIL NIL NIL NIL NIL))
+ (array-dimensions beta) → (4 6)
+ (aref beta 1 1) → 2 
+</pre>
+
+<p>
+
+Suppose that the 4-by-4 array in <code>m</code> looks like this:
+
+</p><pre>#2A(( alpha     beta      gamma     delta )
+    ( epsilon   zeta      eta       theta )
+    ( iota      kappa     lambda    mu    )
+    ( nu        xi        omicron   pi    ))
+</pre>
+Then the result of
+
+<pre> (adjust-array m '(3 5) :initial-element 'baz)
+</pre>
+is a 3-by-5 array with contents       
+
+<pre>#2A(( alpha     beta      gamma     delta     baz )
+    ( epsilon   zeta      eta       theta     baz )
+    ( iota      kappa     lambda    mu        baz ))
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a> is signaled if <i>fill-pointer</i> is supplied
+and <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i> but <i>array</i> has no <i><a href="../26-glossary/f.xhtml#fillpointer">fill pointer</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="15.2.9-adjustable-array-p.xhtml#DictEntry_adjustable_a_987"><b>adjustable-array-p</b></a>,    <a href="15.2.7-make-array.xhtml#DictEntry_make_array_985"><b>make-array</b></a>,
+<a href="15.2.24-array-dimension-limit.xhtml#DictEntry_array_dimens_1002"><b>array-dimension-limit</b></a>, <a href="15.2.26-array-total-size-limit.xhtml#DictEntry_array_total__1004"><b>array-total-size-limit</b></a>,
+<a href="15.2.1-array.xhtml#DictEntry_array_979"><b>array</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.15 =, /=, &lt;, &gt;, &lt;=, &gt;= — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry___lt_789" class="entry"><span class="secno">12.2.15</span> <span class="names">=, /=, &lt;, &gt;, &lt;=, &gt;=</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>=</b>
+<i><code>&amp;rest</code> numbers+</i>
+  → <i>generalized-boolean</i>
+<p>
+<b>/=</b>
+<i><code>&amp;rest</code> numbers+</i>
+  → <i>generalized-boolean</i>
+</p><p>
+<b>&lt;</b>
+<i><code>&amp;rest</code> numbers+</i>
+  → <i>generalized-boolean</i>
+</p><p>
+<b>&gt;</b>
+<i><code>&amp;rest</code> numbers+</i>
+  → <i>generalized-boolean</i>
+</p><p>
+<b>&lt;=</b>
+<i><code>&amp;rest</code> numbers+</i>
+  → <i>generalized-boolean</i>
+</p><p>
+<b>&gt;=</b>
+<i><code>&amp;rest</code> numbers+</i>
+  → <i>generalized-boolean</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>number</i>—for <a href="#DictEntry___lt_789"><b>&lt;</b></a>, <a href="#DictEntry___lt_789"><b>&gt;</b></a>, <a href="#DictEntry___lt_789"><b>&lt;=</b></a>, <a href="#DictEntry___lt_789"><b>&gt;=</b></a>: a <i>real</i>;
+		 for <a href="#DictEntry___lt_789"><b>=</b></a>, <a href="#DictEntry___lt_789"><b>/=</b></a>: a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
+
+<p>
+<i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry___lt_789"><b>=</b></a>, <a href="#DictEntry___lt_789"><b>/=</b></a>, <a href="#DictEntry___lt_789"><b>&lt;</b></a>, <a href="#DictEntry___lt_789"><b>&gt;</b></a>, <a href="#DictEntry___lt_789"><b>&lt;=</b></a>, and <a href="#DictEntry___lt_789"><b>&gt;=</b></a> 
+perform arithmetic comparisons on their arguments as follows:
+
+<ul>
+<li><a href="#DictEntry___lt_789"><b>=</b></a> 
+
+<p>
+The value of <a href="#DictEntry___lt_789"><b>=</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if all <i>numbers</i> are the same in value;
+otherwise it is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+Two <i>complexes</i> are considered equal by <a href="#DictEntry___lt_789"><b>=</b></a>
+if their real and imaginary parts are equal according to <a href="#DictEntry___lt_789"><b>=</b></a>.
+
+</p></li><li><a href="#DictEntry___lt_789"><b>/=</b></a> 
+
+<p>
+The value of <a href="#DictEntry___lt_789"><b>/=</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if no two <i>numbers</i> are the same in value;
+otherwise it is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+</p></li><li><a href="#DictEntry___lt_789"><b>&lt;</b></a> 
+
+<p>
+The value of <a href="#DictEntry___lt_789"><b>&lt;</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if the <i>numbers</i> are in monotonically increasing order;
+otherwise it is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+</p></li><li><a href="#DictEntry___lt_789"><b>&gt;</b></a> 
+
+<p>
+The value of <a href="#DictEntry___lt_789"><b>&gt;</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if the <i>numbers</i> are in monotonically decreasing order;
+otherwise it is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+</p></li><li><a href="#DictEntry___lt_789"><b>&lt;=</b></a> 
+
+<p>
+The value of <a href="#DictEntry___lt_789"><b>&lt;=</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if the <i>numbers</i> are in monotonically 
+ nondecreasing order;
+otherwise it is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+</p></li><li><a href="#DictEntry___lt_789"><b>&gt;=</b></a> 
+
+<p>
+The value of <a href="#DictEntry___lt_789"><b>&gt;=</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if the <i>numbers</i> are in monotonically
+ nonincreasing order;
+otherwise it is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+</p></li></ul>
+
+<p>
+<a href="#DictEntry___lt_789"><b>=</b></a>, <a href="#DictEntry___lt_789"><b>/=</b></a>, <a href="#DictEntry___lt_789"><b>&lt;</b></a>, <a href="#DictEntry___lt_789"><b>&gt;</b></a>, <a href="#DictEntry___lt_789"><b>&lt;=</b></a>, and <a href="#DictEntry___lt_789"><b>&gt;=</b></a> 
+perform necessary type conversions. 
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+The uses of these functions are illustrated in the next figure.
+
+
+<table id="fig-12-13" class="fig">
+<caption><span class="figlabel">Figure 12-13.</span> Uses of /=, =, &lt;, &gt;, &lt;=, and &gt;=</caption>
+
+  <tbody><tr>
+    <td><code>(= 3 3)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+    <td><code>(/= 3 3)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(= 3 5)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+    <td><code>(/= 3 5)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(= 3 3 3 3)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+    <td><code>(/= 3 3 3 3)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(= 3 3 5 3)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+    <td><code>(/= 3 3 5 3)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(= 3 6 5 2)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+    <td><code>(/= 3 6 5 2)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(= 3 2 3)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+    <td><code>(/= 3 2 3)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(&lt; 3 5)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+    <td><code>(&lt;= 3 5)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(&lt; 3 -5)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+    <td><code>(&lt;= 3 -5)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(&lt; 3 3)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+    <td><code>(&lt;= 3 3)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(&lt; 0 3 4 6 7)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+    <td><code>(&lt;= 0 3 4 6 7)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(&lt; 0 3 4 4 6)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+    <td><code>(&lt;= 0 3 4 4 6)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(&gt; 4 3)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+    <td><code>(&gt;= 4 3)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(&gt; 4 3 2 1 0)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+    <td><code>(&gt;= 4 3 2 1 0)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(&gt; 4 3 3 2 0)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+    <td><code>(&gt;= 4 3 3 2 0)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(&gt; 4 3 1 2 0)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+    <td><code>(&gt;= 4 3 1 2 0)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(= 3)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+    <td><code>(/= 3)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(&lt; 3)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+    <td><code>(&lt;= 3)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(= 3.0 #c(3.0 0.0))</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+    <td><code>(/= 3.0 #c(3.0 1.0))</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(= 3 3.0)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+    <td><code>(= 3.0s0 3.0d0)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(= 0.0 -0.0)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+    <td><code>(= 5/2 2.5)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(&gt; 0.0 -0.0)</code> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.</td>
+    <td><code>(= 0 -0.0)</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>.</td>
+  </tr>
+  <tr>
+    <td><code>(&lt;= 0 x 9)</code>          is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if <code>x</code> is between <code>0</code> and <code>9</code>, 
+			 inclusive</td>
+  </tr>
+  <tr>
+    <td><code>(&lt; 0.0 x 1.0)</code>       is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if <code>x</code> is between <code>0.0</code> and <code>1.0</code>, 
+			 exclusive</td>
+  </tr>
+  <tr>
+    <td><code>(&lt; -1 j (length v))</code> is <i><a href="../26-glossary/t.xhtml#true">true</a></i> if <code>j</code> is a <i><a href="../26-glossary/v.xhtml#validarrayindex">valid array index</a></i> for
+			 a <i><a href="../26-glossary/v.xhtml#vector">vector</a></i> <code>v</code></td>
+  </tr>
+
+
+
+
+
+
+
+
+
+</tbody></table>
+
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Might signal <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if some <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> is not a <i>real</i>.
+Might signal <a href="12.2.78-arithmetic-error.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a> if otherwise unable to fulfill its contract.
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<a href="#DictEntry___lt_789"><b>=</b></a> differs from <a href="../4-types-and-classes/4.4.23-eql.xhtml#DictEntry_eql_358"><b>eql</b></a> in that
+<code>(= 0.0 -0.0)</code> is always true,
+because <a href="#DictEntry___lt_789"><b>=</b></a> compares the mathematical values of its operands,
+whereas <a href="../4-types-and-classes/4.4.23-eql.xhtml#DictEntry_eql_358"><b>eql</b></a> compares the representational values, so to speak.
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>1.8 Deprecated Language Features</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Deprecated_L_101"><span class="secno">1.8</span> Deprecated Language Features</h2>
+<p>
+Deprecated language features are not expected to appear in future <i>Common Lisp</i> standards, but are required to be implemented for conformance with this
+standard; see Section <a href="1.5-conformance.xhtml#SubSubSectio_Required_Lan_88">1.5.1.1 Required Language Features</a>.
+
+</p><p>
+<i><a href="../26-glossary/c.xhtml#conformingprogram">Conforming programs</a></i> can use deprecated features;
+however, it is considered good programming style to avoid them.
+It is permissible for the compiler to produce <i><a href="../26-glossary/s.xhtml#stylewarning">style warnings</a></i> 
+about the use of such features at compile time, 
+but there should be no such warnings at program execution time.
+</p>
+<section>
+<h3 id="SubSection_Deprecated_F_102"><span class="secno">1.8.1</span> Deprecated Functions</h3>
+<p>
+
+
+
+
+The <i><a href="../26-glossary/f.xhtml#function">functions</a></i> in the next figure are deprecated.
+</p><table id="fig-1-2" class="fig">
+<caption><span class="figlabel">Figure 1-2.</span> Deprecated Functions</caption>
+
+  <tbody><tr>
+    <td>assoc-if-not</td>
+    <td>nsubst-if-not</td>
+    <td>require</td>
+  </tr>
+  <tr>
+    <td>count-if-not</td>
+    <td>nsubstitute-if-not</td>
+    <td>set</td>
+  </tr>
+  <tr>
+    <td>delete-if-not</td>
+    <td>position-if-not</td>
+    <td>subst-if-not</td>
+  </tr>
+  <tr>
+    <td>find-if-not</td>
+    <td>provide</td>
+    <td>substitute-if-not</td>
+  </tr>
+  <tr>
+    <td>gentemp</td>
+    <td>rassoc-if-not</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>member-if-not</td>
+    <td>remove-if-not</td>
+    <td/>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h3 id="SubSection_Deprecated_A_103"><span class="secno">1.8.2</span> Deprecated Argument Conventions</h3>
+<p>
+
+
+The ability to pass a numeric <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> to <a href="../10-symbols/10.2.7-gensym.xhtml#DictEntry_gensym_681"><b>gensym</b></a> has been deprecated.
+
+
+</p><p>
+
+The <code>:test-not</code> <i><a href="../26-glossary/a.xhtml#argument">argument</a></i> to the <i><a href="../26-glossary/f.xhtml#function">functions</a></i> in the next figure are deprecated.
+
+</p><table id="fig-1-3" class="fig">
+<caption><span class="figlabel">Figure 1-3.</span> Functions with Deprecated :TEST-NOT Arguments</caption>
+
+  <tbody><tr>
+    <td>adjoin</td>
+    <td>nset-difference</td>
+    <td>search</td>
+  </tr>
+  <tr>
+    <td>assoc</td>
+    <td>nset-exclusive-or</td>
+    <td>set-difference</td>
+  </tr>
+  <tr>
+    <td>count</td>
+    <td>nsublis</td>
+    <td>set-exclusive-or</td>
+  </tr>
+  <tr>
+    <td>delete</td>
+    <td>nsubst</td>
+    <td>sublis</td>
+  </tr>
+  <tr>
+    <td>delete-duplicates</td>
+    <td>nsubstitute</td>
+    <td>subsetp</td>
+  </tr>
+  <tr>
+    <td>find</td>
+    <td>nunion</td>
+    <td>subst</td>
+  </tr>
+  <tr>
+    <td>intersection</td>
+    <td>position</td>
+    <td>substitute</td>
+  </tr>
+  <tr>
+    <td>member</td>
+    <td>rassoc</td>
+    <td>tree-equal</td>
+  </tr>
+  <tr>
+    <td>mismatch</td>
+    <td>remove</td>
+    <td>union</td>
+  </tr>
+  <tr>
+    <td>nintersection</td>
+    <td>remove-duplicates</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+
+<p>
+
+
+The use of the situation names <a href="../3-evaluation-and-compilation/3.8.3-compile.xhtml#DictEntry_compile_285"><b>compile</b></a>, <a href="../24-system-construction/24.2.3-load.xhtml#DictEntry_load_1408"><b>load</b></a>, and <a href="../3-evaluation-and-compilation/3.8.4-eval.xhtml#DictEntry_eval_286"><b>eval</b></a>
+in <a href="../3-evaluation-and-compilation/3.8.5-eval-when.xhtml#DictEntry_eval_when_287"><b>eval-when</b></a> is deprecated.
+
+
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Deprecated_V_104"><span class="secno">1.8.3</span> Deprecated Variables</h3>
+<p>
+
+
+The <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <a href="../24-system-construction/24.2.10-modules.xhtml#DictEntry_modules_1415"><b>*modules*</b></a> is deprecated.
+
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Deprecated_R_105"><span class="secno">1.8.4</span> Deprecated Reader Syntax</h3>
+<p>
+
+
+The <code>#S</code> <i><a href="../26-glossary/r.xhtml#readermacro">reader macro</a></i> forces keyword names into the <a href="../10-symbols/10.2.2-keyword.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="../26-glossary/p.xhtml#package">package</a></i>;
+see Section <a href="../2-syntax/2.4-standard-macro-characters.xhtml#SubSubSectio_Sharpsign_S_173">2.4.8.13 Sharpsign S</a>.
+This feature is deprecated;
+in the future, keyword names will be taken in the package they are read in,
+so <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> that are actually in the <a href="../10-symbols/10.2.2-keyword.xhtml#DictEntry_keyword_676"><code>keyword</code></a> <i><a href="../26-glossary/p.xhtml#package">package</a></i>
+should be used if that is what is desired.
+
+
+
+
+</p>
+</section>
+</section>
+</section>
+</body>
+</html>

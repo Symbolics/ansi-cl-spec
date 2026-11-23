@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>14.2.22 nth — Accessor</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_nth_935" class="entry"><span class="secno">14.2.22</span> <span class="names">nth</span> <span class="kind">Accessor</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>nth</b>
+<i>n list</i>
+  → <i>object</i>
+<p>
+(<b>setf</b>
+(<b>nth</b> <i>n list</i>) <i>new-object</i>)
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>n</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>.
+
+<p>
+<i>list</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i>,
+
+	       which might be a <i><a href="../26-glossary/d.xhtml#dottedlist">dotted list</a></i> or a <i><a href="../26-glossary/c.xhtml#circularlist">circular list</a></i>.
+
+
+</p><p>
+<i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+</p><p>
+<i>new-object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_nth_935"><b>nth</b></a> locates the <i>n</i>th element of <i>list</i>,
+where the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of the <i>list</i> is the "zeroth" element.
+
+
+
+Specifically,
+
+<pre> (nth <i>n</i> <i>list</i>) ==(car (nthcdr <i>n</i> <i>list</i>))
+</pre>
+
+
+<p>
+<a href="#DictEntry_nth_935"><b>nth</b></a> may be used to specify a <i>place</i> to <a href="../25-environment/25.2.15-documentation.xhtml#DictEntry_documentatio_1442"><b>setf</b></a>.
+
+Specifically,
+
+
+
+</p><pre> (setf (nth <i>n</i> <i>list</i>) <i>new-object</i>) ==(setf (car (nthcdr <i>n</i> <i>list</i>)) <i>new-object</i>)
+</pre>
+
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (nth 0 '(foo bar baz)) →  FOO
+ (nth 1 '(foo bar baz)) →  BAR
+ (nth 3 '(foo bar baz)) →  NIL
+ (setq 0-to-3 (list 0 1 2 3)) → (0 1 2 3)
+ (setf (nth 2 0-to-3) "two") → "two"
+ 0-to-3 → (0 1 "two" 3)
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../17-sequences/17.3.3-elt.xhtml#DictEntry_elt_1043"><b>elt</b></a>,
+<a href="14.2.21-first.xhtml#DictEntry_first_secon_934"><b>first</b></a>,
+<a href="14.2.31-nthcdr.xhtml#DictEntry_nthcdr_944"><b>nthcdr</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

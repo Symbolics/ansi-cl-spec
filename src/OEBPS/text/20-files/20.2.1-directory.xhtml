@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>20.2.1 directory — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_directory_1168" class="entry"><span class="secno">20.2.1</span> <span class="names">directory</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>directory</b>
+<i>pathspec <code>&amp;key</code></i>
+  → <i>pathnames</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>pathspec</i>—a <i><a href="../26-glossary/p.xhtml#pathnamedesignator">pathname designator</a></i>,
+		   which may contain <i><a href="../26-glossary/w.xhtml#wild">wild</a></i> components.
+
+
+<p>
+<i>pathnames</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of
+
+<i><a href="../26-glossary/p.xhtml#physicalpathname">physical pathnames</a></i>.
+
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Determines which, if any, <i><a href="../26-glossary/f.xhtml#file">files</a></i> that are present
+in the file system have names matching <i>pathspec</i>,
+and returns a 
+
+<i><a href="../26-glossary/f.xhtml#fresh">fresh</a></i>
+
+<i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/p.xhtml#pathname">pathnames</a></i> corresponding to the <i><a href="../26-glossary/t.xhtml#truename">truenames</a></i> of
+those <i><a href="../26-glossary/f.xhtml#file">files</a></i>.
+
+<p>
+An <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> may be extended to accept 
+<i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i> keyword arguments to <a href="#DictEntry_directory_1168"><b>directory</b></a>.  
+
+</p></dd><dt><b>Affected By:</b></dt><dd>
+
+The host computer's file system.
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+
+If the attempt to obtain a directory listing is not successful,
+an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="20.2.9-file-error.xhtml#DictEntry_file_error_1176"><b>file-error</b></a> is signaled.
+
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../19-filenames/19.4.1-pathname.xhtml#DictEntry_pathname_1144"><b>pathname</b></a>,
+
+<a href="../19-filenames/19.4.2-logical-pathname.xhtml#DictEntry_logical_path_1145"><b>logical-pathname</b></a>,
+
+<a href="20.2.3-ensure-directories-exist.xhtml#DictEntry_ensure_direc_1170"><b>ensure-directories-exist</b></a>,
+Section <a href="20.1-file-system-concepts.xhtml#Section_File_System__1162">20.1 File System Concepts</a>,
+Section <a href="../21-streams/21.1-stream-concepts.xhtml#SubSubSubSec_Open_and_Clo_1183">21.1.1.1.2 Open and Closed Streams</a>,
+
+Section <a href="../19-filenames/19.1-overview-of-filenames.xhtml#SubSection_Pathnames_as_1095">19.1.2 Pathnames as Filenames</a>
+
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+If the <i>pathspec</i> is not <i><a href="../26-glossary/w.xhtml#wild">wild</a></i>,
+the resulting list will contain either zero or one elements.
+
+<p>
+<i>Common Lisp</i> specifies "<code>&amp;key</code>" in the argument list to <a href="#DictEntry_directory_1168"><b>directory</b></a> 
+even though no <i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> keyword arguments to <a href="#DictEntry_directory_1168"><b>directory</b></a> are defined.
+"<code>:allow-other-keys t</code>"
+may be used in <i><a href="../26-glossary/c.xhtml#conformingprogram">conforming programs</a></i> in order to quietly ignore any
+additional keywords which are passed by the program but not supported
+by the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

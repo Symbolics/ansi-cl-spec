@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>23.2.13 *read-base* — Variable</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_read_base_1393" class="entry"><span class="secno">23.2.13</span> <span class="names">*read-base*</span> <span class="kind">Variable</span></h3>
+<dl>
+
+
+<dt><b>Value Type:</b></dt><dd>
+
+a <i><a href="../26-glossary/r.xhtml#radix">radix</a></i>.
+
+</dd><dt><b>Initial Value:</b></dt><dd>
+
+<code>10</code>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+Controls the interpretation of tokens by <a href="23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> as being
+<i><a href="../26-glossary/i.xhtml#integer">integers</a></i> or <i><a href="../26-glossary/r.xhtml#ratio">ratios</a></i>.  
+
+<p>
+The <i><a href="../26-glossary/v.xhtml#value">value</a></i> of <a href="#DictEntry_read_base_1393"><b>*read-base*</b></a>, called the <b><i>current input base</i></b>,
+is the radix in which <i><a href="../26-glossary/i.xhtml#integer">integers</a></i> and
+<i><a href="../26-glossary/r.xhtml#ratio">ratios</a></i> are to be read by the <i>Lisp reader</i>.
+The parsing of other numeric <i><a href="../26-glossary/t.xhtml#type">types</a></i> (<i>e.g.</i>,  <i><a href="../26-glossary/f.xhtml#float">floats</a></i>) is 
+not affected by this option.
+
+</p><p>
+The effect of <a href="#DictEntry_read_base_1393"><b>*read-base*</b></a> on the reading of any particular
+<i><a href="../26-glossary/r.xhtml#rational">rational</a></i> number can be locally overridden by explicit use of the
+<code>#O</code>, <code>#X</code>, <code>#B</code>, or <code>#<i>n</i>R</code> syntax
+or by a trailing decimal point.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (dotimes (i 6)
+   (let ((*read-base* (+ 10. i)))
+     (let ((object (read-from-string "(\\DAD DAD |BEE| BEE 123. 123)")))
+       (print (list *read-base* object)))))
+▷(10 (DAD DAD BEE BEE 123 123))
+▷(11 (DAD DAD BEE BEE 123 146))
+▷(12 (DAD DAD BEE BEE 123 171))
+▷(13 (DAD DAD BEE BEE 123 198))
+▷(14 (DAD 2701 BEE BEE 123 227))
+▷(15 (DAD 3088 BEE 2699 123 258))
+→  NIL
+</pre>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+Altering the input radix can be useful when reading data files in special formats.
+
+</dd></dl>
+</section>
+</body>
+</html>

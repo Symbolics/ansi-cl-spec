@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>25.2.10 time — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_time_1437" class="entry"><span class="secno">25.2.10</span> <span class="names">time</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>time</b>
+<i>form</i>
+  → <i>{<i>result</i>}*</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>; evaluated as described below.
+
+<p>
+<i>results</i>—the <i><a href="../26-glossary/v.xhtml#value">values</a></i> returned by the <i>form</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_time_1437"><b>time</b></a> evaluates <i>form</i> in the current <i><a href="../26-glossary/e.xhtml#environment">environment</a></i> (lexical and dynamic).
+A call to <a href="#DictEntry_time_1437"><b>time</b></a> can be compiled.
+
+
+<p>
+<a href="#DictEntry_time_1437"><b>time</b></a> prints various timing data and other information to <i><a href="../26-glossary/t.xhtml#traceoutput">trace output</a></i>.
+The nature and format of the printed information is <i><a href="../26-glossary/i.xhtml#implementationdefined">implementation-defined</a></i>.
+Implementations are encouraged to provide such information as 
+     elapsed real time,
+     machine run time,
+ and storage management statistics.
+
+</p></dd><dt><b>Affected By:</b></dt><dd>
+
+The accuracy of the results depends, among other things, on the accuracy
+of the corresponding functions provided by the underlying operating system.
+
+<p>
+The magnitude of the results may depend on 
+  the hardware,
+  the operating system,
+  the lisp implementation,
+ and the state of the global environment.
+Some specific issues which frequently affect the outcome are
+  hardware speed,
+  nature of the scheduler (if any),
+  number of competing processes (if any),
+  system paging,
+  whether the call is interpreted or compiled,
+  whether functions called are compiled,
+  the kind of garbage collector involved and whether it runs,
+  whether internal data structures (e.g., hash tables) are implicitly reorganized,
+  <i>etc.</i>
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="25.2.12-get-internal-real-time.xhtml#DictEntry_get_internal_1439"><b>get-internal-real-time</b></a>,
+<a href="25.2.13-get-internal-run-time.xhtml#DictEntry_get_internal_1440"><b>get-internal-run-time</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+In general, these timings are not guaranteed to be reliable enough for
+marketing comparisons. Their value is primarily heuristic, for tuning
+purposes.
+
+<p>
+For useful background information on the complicated issues involved in
+interpreting timing results, see <i>Performance and Evaluation of Lisp Programs</i>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

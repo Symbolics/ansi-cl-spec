@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.82 floating-point-inexact — Condition Type</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_floating_poi_856" class="entry"><span class="secno">12.2.82</span> <span class="names">floating-point-inexact</span> <span class="kind">Condition Type</span></h3>
+<dl>
+
+
+<dt><b>Class Precedence List:</b></dt><dd>
+
+<a href="#DictEntry_floating_poi_856"><b>floating-point-inexact</b></a>,
+<a href="12.2.78-arithmetic-error.xhtml#DictEntry_arithmetic_e_852"><b>arithmetic-error</b></a>,
+<a href="../9-conditions/9.2.5-error.xhtml#DictEntry_error_630"><b>error</b></a>,
+<a href="../9-conditions/9.2.4-serious-condition.xhtml#DictEntry_serious_cond_629"><b>serious-condition</b></a>,
+<a href="../9-conditions/9.2.1-condition.xhtml#DictEntry_condition_626"><b>condition</b></a>,
+<a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+
+</dd><dt><b>Description:</b></dt><dd>
+
+The <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="#DictEntry_floating_poi_856"><b>floating-point-inexact</b></a> consists of 
+error conditions that occur because of certain 
+
+floating point traps.
+
+<p>
+It is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> whether floating point traps
+occur, and whether or how they may be enabled or disabled.  Therefore,
+conforming code may establish handlers for this condition, but must not
+depend on its being <i>signaled</i>.
+
+</p></dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>24.1 System Construction Concepts</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_System_Const_1400"><span class="secno">24.1</span> System Construction Concepts</h2>
+<section>
+<h3 id="SubSection_Loading_1401"><span class="secno">24.1.1</span> Loading</h3>
+<p>
+
+To <a href="24.2.3-load.xhtml#DictEntry_load_1408"><b>load</b></a> a <i><a href="../26-glossary/f.xhtml#file">file</a></i> is to treat its contents as <i><a href="../26-glossary/c.xhtml#code">code</a></i>
+and <i><a href="../26-glossary/e.xhtml#execute">execute</a></i> that <i><a href="../26-glossary/c.xhtml#code">code</a></i>.
+The <i><a href="../26-glossary/f.xhtml#file">file</a></i> may contain <b><i>source code</i></b> or <b><i>compiled code</i></b>.
+
+</p><p>
+A <i><a href="../26-glossary/f.xhtml#file">file</a></i> containing <i><a href="../26-glossary/s.xhtml#sourcecode">source code</a></i> is called a <b><i>source file</i></b>.
+<i>Loading</i> a <i><a href="../26-glossary/s.xhtml#sourcefile">source file</a></i> is accomplished essentially 
+by sequentially <i>reading</i><sub>2</sub> the <i><a href="../26-glossary/f.xhtml#form">forms</a></i> in the file,
+<i>evaluating</i> each immediately after it is <i><a href="../26-glossary/r.xhtml#read">read</a></i>.
+
+</p><p>
+
+A <i><a href="../26-glossary/f.xhtml#file">file</a></i> containing <i><a href="../26-glossary/c.xhtml#compiledcode">compiled code</a></i> is called a <b><i>compiled file</i></b>.
+<i>Loading</i> a <i><a href="../26-glossary/c.xhtml#compiledfile">compiled file</a></i> is similar to <i>loading</i> a <i><a href="../26-glossary/s.xhtml#sourcefile">source file</a></i>,
+except that the <i><a href="../26-glossary/f.xhtml#file">file</a></i> does not contain text but rather an
+<i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> representation of pre-digested <i><a href="../26-glossary/e.xhtml#expression">expressions</a></i>
+created by the <i><a href="../26-glossary/c.xhtml#compiler">compiler</a></i>.  Often, a <i><a href="../26-glossary/c.xhtml#compiledfile">compiled file</a></i> can be <i>loaded</i>
+more quickly than a <i><a href="../26-glossary/s.xhtml#sourcefile">source file</a></i>.
+See Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#Section_Compilation_213">3.2 Compilation</a>.
+
+</p><p>
+The way in which a <i><a href="../26-glossary/s.xhtml#sourcefile">source file</a></i> is distinguished from a <i><a href="../26-glossary/c.xhtml#compiledfile">compiled file</a></i> 
+is <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+
+</p>
+</section>
+<section>
+<h3 id="SubSection_Features_1402"><span class="secno">24.1.2</span> Features</h3>
+<p>
+
+
+A <b><i>feature</i></b> is an aspect or attribute
+     of <i>Common Lisp</i>, 
+     of the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>,
+  or of the <i><a href="../26-glossary/e.xhtml#environment">environment</a></i>.
+A <i><a href="../26-glossary/f.xhtml#feature">feature</a></i> is identified by a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+
+</p><p>
+A <i><a href="../26-glossary/f.xhtml#feature">feature</a></i> is said to be <b><i>present</i></b> in a <i>Lisp image</i>
+if and only if the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> naming it is an <i><a href="../26-glossary/e.xhtml#element">element</a></i> of the
+<i><a href="../26-glossary/l.xhtml#list">list</a></i> held by the <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <a href="24.2.5-features.xhtml#DictEntry_features_1410"><b>*features*</b></a>, 
+which is called the <b><i>features list</i></b>.
+</p>
+<section>
+<h4 id="SubSubSectio_Feature_Expr_1403"><span class="secno">24.1.2.1</span> Feature Expressions</h4>
+<p>
+
+
+Boolean combinations of <i><a href="../26-glossary/f.xhtml#feature">features</a></i>, called <b><i>feature expressions</i></b>,
+are used by the <code>#+</code> and <code>#-</code> <i><a href="../26-glossary/r.xhtml#readermacro">reader macros</a></i> in order to
+direct conditional <i>reading</i> of <i><a href="../26-glossary/e.xhtml#expression">expressions</a></i> by the <i>Lisp reader</i>.
+
+</p><p>
+The rules for interpreting a <i><a href="../26-glossary/f.xhtml#featureexpression">feature expression</a></i> are as follows:
+
+</p><ul>
+
+<li><i><a href="../26-glossary/f.xhtml#feature">feature</a></i>
+
+<p>
+If a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> naming a <i><a href="../26-glossary/f.xhtml#feature">feature</a></i> is used as a <i><a href="../26-glossary/f.xhtml#featureexpression">feature expression</a></i>,
+the <i><a href="../26-glossary/f.xhtml#featureexpression">feature expression</a></i> succeeds if that <i><a href="../26-glossary/f.xhtml#feature">feature</a></i> is <i><a href="../26-glossary/p.xhtml#present">present</a></i>;
+otherwise it fails.
+
+</p></li><li><code>(not <i>feature-conditional</i>)</code>
+
+<p>
+A <a href="../4-types-and-classes/4.4.19-not.xhtml#DictEntry_not_354"><b>not</b></a> <i><a href="../26-glossary/f.xhtml#featureexpression">feature expression</a></i> succeeds 
+if its argument <i>feature-conditional</i> fails;
+otherwise, it succeeds.
+
+</p></li><li><code>(and {<i>feature-conditional</i>}*)</code>
+
+<p>
+An <a href="../4-types-and-classes/4.4.20-and.xhtml#DictEntry_and_355"><b>and</b></a> <i><a href="../26-glossary/f.xhtml#featureexpression">feature expression</a></i> succeeds 
+if all of its argument <i>feature-conditionals</i> succeed;
+otherwise, it fails.
+
+</p></li><li><code>(or {<i>feature-conditional</i>}*)</code>
+
+<p>
+An <a href="../4-types-and-classes/4.4.21-or.xhtml#DictEntry_or_356"><b>or</b></a> <i><a href="../26-glossary/f.xhtml#featureexpression">feature expression</a></i> succeeds 
+if any of its argument <i>feature-conditionals</i> succeed;
+otherwise, it fails.
+
+</p></li></ul>
+<section>
+<h5 id="SubSubSubSec_Examples_of__1404"><span class="secno">24.1.2.1.1</span> Examples of Feature Expressions</h5>
+<p>
+
+
+
+For example, suppose that
+ in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> A, the <i><a href="../26-glossary/f.xhtml#feature">features</a></i> <code>spice</code> and <code>perq</code> are <i><a href="../26-glossary/p.xhtml#present">present</a></i>,
+			     but the <i><a href="../26-glossary/f.xhtml#feature">feature</a></i> <code>lispm</code> is not <i><a href="../26-glossary/p.xhtml#present">present</a></i>;
+ in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> B, the feature <code>lispm</code> is <i><a href="../26-glossary/p.xhtml#present">present</a></i>,
+			     but the <i><a href="../26-glossary/f.xhtml#feature">features</a></i> <code>spice</code> and <code>perq</code> are
+			      not <i><a href="../26-glossary/p.xhtml#present">present</a></i>;
+ and 
+ in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> C, none of the features <code>spice</code>, <i>lispm</i>, or <code>perq</code> are
+			     <i><a href="../26-glossary/p.xhtml#present">present</a></i>.
+The next figure shows some sample <i><a href="../26-glossary/e.xhtml#expression">expressions</a></i>, and how they would be 
+<i><a href="../26-glossary/r.xhtml#read">read</a></i><sub>2</sub> in these <i><a href="../26-glossary/i.xhtml#implementation">implementations</a></i>.
+
+</p><table id="fig-24-1" class="fig">
+<caption><span class="figlabel">Figure 24-1.</span> Features examples</caption>
+
+  <tbody><tr>
+    <td><code>(cons #+spice "Spice" #-spice "Lispm" x)</code> </td>
+  </tr>
+  <tr>
+    <td>
+   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> A <i> ... </i></td>
+    <td><code>(CONS "Spice" X)</code></td>
+  </tr>
+  <tr>
+    <td>   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> B <i> ... </i></td>
+    <td><code>(CONS "Lispm" X)</code></td>
+  </tr>
+  <tr>
+    <td>   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> C <i> ... </i></td>
+    <td><code>(CONS "Lispm" X)</code></td>
+  </tr>
+  <tr>
+    <td>
+<code>(cons #+spice "Spice" #+LispM "Lispm" x)</code> </td>
+  </tr>
+  <tr>
+    <td>
+   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> A <i> ... </i></td>
+    <td><code>(CONS "Spice" X)</code></td>
+  </tr>
+  <tr>
+    <td>   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> B <i> ... </i></td>
+    <td><code>(CONS "Lispm" X)</code></td>
+  </tr>
+  <tr>
+    <td>   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> C <i> ... </i></td>
+    <td><code>(CONS X)</code></td>
+  </tr>
+  <tr>
+    <td>
+<code>(setq a '(1 2 #+perq 43 #+(not perq) 27))</code> </td>
+  </tr>
+  <tr>
+    <td>
+   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> A <i> ... </i></td>
+    <td><code>(SETQ A '(1 2 43))</code></td>
+  </tr>
+  <tr>
+    <td>   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> B <i> ... </i></td>
+    <td><code>(SETQ A '(1 2 27))</code></td>
+  </tr>
+  <tr>
+    <td>   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> C <i> ... </i></td>
+    <td><code>(SETQ A '(1 2 27))</code></td>
+  </tr>
+  <tr>
+    <td>
+<code>(let ((a 3) #+(or spice lispm) (b 3)) (foo a))</code> </td>
+  </tr>
+  <tr>
+    <td>
+   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> A <i> ... </i></td>
+    <td><code>(LET ((A 3) (B 3)) (FOO A))</code></td>
+  </tr>
+  <tr>
+    <td>   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> B <i> ... </i></td>
+    <td><code>(LET ((A 3) (B 3)) (FOO A))</code></td>
+  </tr>
+  <tr>
+    <td>   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> C <i> ... </i></td>
+    <td><code>(LET ((A 3)) (FOO A))</code></td>
+  </tr>
+  <tr>
+    <td>
+<code>(cons #+Lispm "#+Spice" #+Spice "foo" #-(or Lispm Spice) 7 x)</code> </td>
+  </tr>
+  <tr>
+    <td>
+   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> A <i> ... </i></td>
+    <td><code>(CONS "foo" X)</code></td>
+  </tr>
+  <tr>
+    <td>   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> B <i> ... </i></td>
+    <td><code>(CONS "#+Spice" X)</code></td>
+  </tr>
+  <tr>
+    <td>   in <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> C <i> ... </i></td>
+    <td><code>(CONS 7 X)</code></td>
+  </tr>
+</tbody></table>
+</section>
+</section>
+</section>
+</section>
+</section>
+</body>
+</html>

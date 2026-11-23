@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>22.4.27 *print-readably* — Variable</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_print_reada_1367" class="entry"><span class="secno">22.4.27</span> <span class="names">*print-readably*</span> <span class="kind">Variable</span></h3>
+<dl>
+
+
+
+<dt><b>Value Type:</b></dt><dd>
+
+a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</dd><dt><b>Initial Value:</b></dt><dd>
+
+
+<i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+If <a href="#DictEntry_print_reada_1367"><b>*print-readably*</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>,
+some special rules for printing <i><a href="../26-glossary/o.xhtml#object">objects</a></i> go into effect.
+Specifically, printing any <i><a href="../26-glossary/o.xhtml#object">object</a></i> <i>O<sub>1</sub></i> produces a printed 
+representation that, when seen by the <i>Lisp reader</i> 
+
+while the <i><a href="../26-glossary/s.xhtml#standardreadtable">standard readtable</a></i> is in effect,
+will produce 
+an <i><a href="../26-glossary/o.xhtml#object">object</a></i> <i>O<sub>2</sub></i> that is <i><a href="../26-glossary/s.xhtml#similar">similar</a></i> to <i>O<sub>1</sub></i>.
+The printed representation produced might or might not be the same as
+the printed representation produced when <a href="#DictEntry_print_reada_1367"><b>*print-readably*</b></a> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+If printing an <i><a href="../26-glossary/o.xhtml#object">object</a></i> <i><a href="../26-glossary/r.xhtml#readably">readably</a></i> is not possible,
+an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="22.4.29-print-not-readable.xhtml#DictEntry_print_not_re_1369"><b>print-not-readable</b></a> is signaled rather than 
+using a syntax (<i>e.g.</i>,  the "<code>#&lt;</code>" syntax) that would not be readable by
+the same <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>.
+If the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of some other <i><a href="../26-glossary/p.xhtml#printercontrolvariable">printer control variable</a></i> is such
+that these requirements would be violated, the <i><a href="../26-glossary/v.xhtml#value">value</a></i> of that other
+<i><a href="../26-glossary/v.xhtml#variable">variable</a></i> is ignored.
+
+<p>
+
+Specifically, if <a href="#DictEntry_print_reada_1367"><b>*print-readably*</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>,
+printing proceeds as if
+      <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a>,
+      <a href="22.4.16-print-array.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a>,
+  and <a href="22.4.21-print-gensym.xhtml#DictEntry_print_gensy_1361"><b>*print-gensym*</b></a> were also <i><a href="../26-glossary/t.xhtml#true">true</a></i>,
+and as if 
+      <a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a>,
+      <a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a>,
+  and <a href="22.4.23-print-lines.xhtml#DictEntry_print_lines_1363"><b>*print-lines*</b></a> were <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+
+</p><p>
+If <a href="#DictEntry_print_reada_1367"><b>*print-readably*</b></a> is <i><a href="../26-glossary/f.xhtml#false">false</a></i>,
+the normal rules for printing and the normal interpretations
+of other <i><a href="../26-glossary/p.xhtml#printercontrolvariable">printer control variables</a></i> are in effect.
+
+</p><p>
+Individual <i><a href="../26-glossary/m.xhtml#method">methods</a></i> for <a href="22.4.11-print-object.xhtml#DictEntry_print_object_1351"><b>print-object</b></a>, including user-defined
+<i><a href="../26-glossary/m.xhtml#method">methods</a></i>, are responsible for implementing these requirements.
+
+</p><p>
+If <a href="../23-reader/23.2.15-read-eval.xhtml#DictEntry_read_eval_1395"><b>*read-eval*</b></a> is <i><a href="../26-glossary/f.xhtml#false">false</a></i> and <a href="#DictEntry_print_reada_1367"><b>*print-readably*</b></a> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>,
+any such method that would output a reference to the "<code>#.</code>" <i><a href="../26-glossary/r.xhtml#readermacro">reader macro</a></i>
+will either output something else or will signal an error (as described above).
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (let ((x (list "a" '\a (gensym) '((a (b (c))) d e f g)))
+       (*print-escape* nil)
+       (*print-gensym* nil)
+       (*print-level* 3)
+       (*print-length* 3))
+   (write x)
+   (let ((*print-readably* t))
+     (terpri)
+     (write x)
+     :done))
+▷(a a G4581 ((A #) D E ...))
+▷("a" |a| #:G4581 ((A (B (C))) D E F G))
+→ :DONE
+
+;; This is setup code is shared between the examples
+;; of three hypothetical implementations which follow.
+ (setq table (make-hash-table)) → #&lt;HASH-TABLE EQL 0/120 32005763&gt; 
+ (setf (gethash table 1) 'one) →  ONE
+ (setf (gethash table 2) 'two) →  TWO
+
+;; Implementation A
+ (let ((*print-readably* t)) (print table))
+ Error: Can't print #&lt;HASH-TABLE EQL 0/120 32005763&gt; readably.
+
+;; Implementation B
+;; No standardized #S notation for hash tables is defined, 
+;; but there might be an implementation-defined notation.
+ (let ((*print-readably* t)) (print table))
+▷#S(HASH-TABLE :TEST EQL :SIZE 120 :CONTENTS (1 ONE 2 TWO))
+→ #&lt;HASH-TABLE EQL 0/120 32005763&gt;
+
+;; Implementation C
+;; Note that #. notation can only be used if *READ-EVAL* is true.
+;; If *READ-EVAL* were false, this same implementation might have to
+;; signal an error unless it had yet another printing strategy to fall
+;; back on.
+ (let ((*print-readably* t)) (print table))
+▷#.(LET ((HASH-TABLE (MAKE-HASH-TABLE)))
+▷    (SETF (GETHASH 1 HASH-TABLE) ONE)
+▷    (SETF (GETHASH 2 HASH-TABLE) TWO)
+▷    HASH-TABLE)
+→ #&lt;HASH-TABLE EQL 0/120 32005763&gt;
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="22.4.14-write.xhtml#DictEntry_write_prin1_1354"><b>write</b></a>, <a href="22.4.12-print-unreadable-object.xhtml#DictEntry_print_unread_1352"><b>print-unreadable-object</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The rules for "<i><a href="../26-glossary/s.xhtml#similarity">similarity</a></i>" imply that 
+<code>#A</code> or <code>#(</code> 
+syntax cannot be used for <i><a href="../26-glossary/a.xhtml#array">arrays</a></i> of <i><a href="../26-glossary/e.xhtml#elementtype">element type</a></i>
+other than <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>.  
+An implementation will have to use another syntax 
+or signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="22.4.29-print-not-readable.xhtml#DictEntry_print_not_re_1369"><b>print-not-readable</b></a>.  
+
+</dd></dl>
+</section>
+</body>
+</html>

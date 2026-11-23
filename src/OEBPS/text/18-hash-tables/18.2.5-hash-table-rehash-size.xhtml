@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>18.2.5 hash-table-rehash-size — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_hash_table_r_1082" class="entry"><span class="secno">18.2.5</span> <span class="names">hash-table-rehash-size</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>hash-table-rehash-size</b>
+<i>hash-table</i>
+  → <i>rehash-size</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>hash-table</i>—a <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i>.
+
+<p>
+<i>rehash-size</i>—a <i>real</i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <code>(or (integer 1 *) (float (1.0) *))</code>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+Returns the current rehash size of <i>hash-table</i>,
+suitable for use in a call to <a href="18.2.2-make-hash-table.xhtml#DictEntry_make_hash_ta_1079"><b>make-hash-table</b></a> 
+in order to produce a <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i> 
+with state corresponding to the current state of the <i>hash-table</i>.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (setq table (make-hash-table :size 100 :rehash-size 1.4))
+→ #&lt;HASH-TABLE EQL 0/100 2556371&gt;
+ (hash-table-rehash-size table) → 1.4
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>hash-table</i> is not a <i><a href="../26-glossary/h.xhtml#hashtable">hash table</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="18.2.2-make-hash-table.xhtml#DictEntry_make_hash_ta_1079"><b>make-hash-table</b></a>,
+<a href="18.2.6-hash-table-rehash-threshold.xhtml#DictEntry_hash_table_r_1083"><b>hash-table-rehash-threshold</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+If the hash table was created with an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i> rehash size,
+the result is an <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>,
+indicating that the rate of growth of the <i>hash-table</i> when rehashed
+is intended to be additive;
+otherwise,
+the result is a <i><a href="../26-glossary/f.xhtml#float">float</a></i>, 
+indicating that the rate of growth of the <i>hash-table</i> when rehashed
+is intended to be multiplicative.
+However, this value is only advice to the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>;
+the actual amount by which the <i>hash-table</i> will grow upon rehash is
+<i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i>.
+
+
+</dd></dl>
+</section>
+</body>
+</html>

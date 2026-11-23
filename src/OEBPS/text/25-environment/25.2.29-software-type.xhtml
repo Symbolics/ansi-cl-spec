@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>25.2.29 software-type, software-version — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_software_typ_1456" class="entry"><span class="secno">25.2.29</span> <span class="names">software-type, software-version</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>software-type</b>
+<i> &lt; <i>no arguments</i> &gt; </i>
+  → <i>description</i>
+<p>
+<b>software-version</b>
+<i> &lt; <i>no arguments</i> &gt; </i>
+  → <i>description</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>description</i>—a <i><a href="../26-glossary/s.xhtml#string">string</a></i> or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_software_typ_1456"><b>software-type</b></a> returns a <i><a href="../26-glossary/s.xhtml#string">string</a></i> that identifies the
+generic name of any relevant supporting software, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if no
+appropriate or relevant result can be produced.          
+
+<p>
+
+<a href="#DictEntry_software_typ_1456"><b>software-version</b></a> returns a <i><a href="../26-glossary/s.xhtml#string">string</a></i> that identifies 
+the version of any relevant supporting software, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if no 
+appropriate or relevant result can be produced.          
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (software-type) → "Multics"
+ (software-version) → "1.3x"
+</pre>
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+Operating system environment.
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+This information should be of use to maintainers of the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i>.
+
+</dd></dl>
+</section>
+</body>
+</html>

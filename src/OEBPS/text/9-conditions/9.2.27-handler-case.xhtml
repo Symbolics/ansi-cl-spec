@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>9.2.27 handler-case — Macro</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_handler_case_652" class="entry"><span class="secno">9.2.27</span> <span class="names">handler-case</span> <span class="kind">Macro</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<b>handler-case</b>
+<i><i>expression</i>
+		   [[{<i>error-clause</i>}* | ↓no-error-clause]]</i>
+  → <i>{<i>result</i>}*</i>
+<p>
+
+clause::= ↓error-clause | ↓no-error-clause</p><p>
+
+error-clause::= (typespec (<code>[</code>var<code>]</code>) 
+		      {<i>declaration</i>}* {<i>form</i>}*)</p><p>
+
+no-error-clause::= (<code>:no-error</code> <i>lambda-list</i> 
+			 {<i>declaration</i>}* {<i>form</i>}*)</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>expression</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
+
+<p>
+<i>typespec</i>—a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+
+</p><p>
+<i>var</i>—a <i><a href="../26-glossary/v.xhtml#variable">variable</a></i> <i><a href="../26-glossary/n.xhtml#name">name</a></i>. 
+
+</p><p>
+<i>lambda-list</i>—an <i><a href="../26-glossary/o.xhtml#ordinarylambdalist">ordinary lambda list</a></i>.
+
+</p><p>
+<i>declaration</i>—a <a href="../3-evaluation-and-compilation/3.8.18-declare.xhtml#DictEntry_declare_300"><b>declare</b></a> <i><a href="../26-glossary/e.xhtml#expression">expression</a></i>; not evaluated.
+
+</p><p>
+<i>form</i>—a <i><a href="../26-glossary/f.xhtml#form">form</a></i>.
+
+</p><p>
+<i>results</i>—In the normal situation, the values returned are those that result from
+   the evaluation of <i>expression</i>;
+   in the exceptional situation when control is transferred to a <i>clause</i>,
+   the value of the last <i>form</i> in that <i>clause</i> is returned.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_handler_case_652"><b>handler-case</b></a> executes <i>expression</i> in a <i><a href="../26-glossary/d.xhtml#dynamicenvironment">dynamic environment</a></i> where
+various handlers are active.  Each <i>error-clause</i> specifies how to 
+handle a <i><a href="../26-glossary/c.xhtml#condition">condition</a></i> matching the indicated <i>typespec</i>. 
+A <i>no-error-clause</i> allows the specification of a particular action
+if control returns normally.
+
+<p>
+
+
+If a <i><a href="../26-glossary/c.xhtml#condition">condition</a></i> is signaled for which there is an appropriate
+<i>error-clause</i> during the execution of <i>expression</i>
+(<i>i.e.</i>,  one for which <code>(typep <i><a href="../26-glossary/c.xhtml#condition">condition</a></i> '<i>typespec</i>)</code>
+returns <i><a href="../26-glossary/t.xhtml#true">true</a></i>) and if there is no intervening handler for a 
+<i><a href="../26-glossary/c.xhtml#condition">condition</a></i> of that <i><a href="../26-glossary/t.xhtml#type">type</a></i>, then control is transferred to
+the body of the relevant <i>error-clause</i>.  In this case, the 
+dynamic state is unwound appropriately (so that the handlers established
+around the <i>expression</i> are no longer active), and <i>var</i> is bound to
+the <i><a href="../26-glossary/c.xhtml#condition">condition</a></i> that had been signaled.
+
+If more than one case is provided, those cases are made accessible
+in parallel.  That is, in
+
+</p><pre>  (handler-case <i>form</i>
+    (<i>typespec1</i> (<i>var1</i>) <i>form1</i>)
+    (<i>typespec2</i> (<i>var2</i>) <i>form2</i>))
+</pre>
+
+<p>
+if the first <i>clause</i> (containing <i>form1</i>) has been selected, 
+the handler for the second is no longer visible (or vice versa).
+
+</p><p>
+   The <i>clauses</i>
+are searched sequentially from top to bottom. If there is <i><a href="../26-glossary/t.xhtml#type">type</a></i>
+   overlap between <i>typespecs</i>, 
+the earlier of the <i>clauses</i> is selected.
+
+</p><p>
+   If <i>var</i> 
+is not needed, it can be omitted. That is, a <i>clause</i> such as:
+
+</p><pre>  (<i>typespec</i> (<i>var</i>) (declare (ignore <i>var</i>)) <i>form</i>)
+</pre>
+
+<p>
+can be written
+ <code>(<i>typespec</i> () <i>form</i>)</code>.
+
+</p><p>
+
+
+   If there are no <i>forms</i> in a selected <i>clause</i>, the case, and therefore
+   <a href="#DictEntry_handler_case_652"><b>handler-case</b></a>, returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+    If execution of <i>expression</i> 
+returns normally and no <i>no-error-clause</i>
+   exists, the values returned by 
+<i>expression</i> are returned by <a href="#DictEntry_handler_case_652"><b>handler-case</b></a>.
+   If execution of 
+<i>expression</i> returns normally and a <i>no-error-clause</i>
+   does exist, the values returned are used as arguments to the function
+   described by constructing
+ <code>(lambda <i>lambda-list</i> {<i>form</i>}*)</code>
+   from the <i>no-error-clause</i>, and the <i><a href="../26-glossary/v.xhtml#value">values</a></i> of that function call are
+   returned by <a href="#DictEntry_handler_case_652"><b>handler-case</b></a>.
+
+The handlers which were established around the <i>expression</i> are no longer active at the time of this call.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (defun assess-condition (condition)
+   (handler-case (signal condition)
+     (warning () "Lots of smoke, but no fire.")
+     ((or arithmetic-error control-error cell-error stream-error)
+        (condition)
+       (format nil "~S looks especially bad." condition))
+     (serious-condition (condition)
+       (format nil "~S looks serious." condition))
+     (condition () "Hardly worth mentioning.")))
+→  ASSESS-CONDITION
+ (assess-condition (make-condition 'stream-error :stream *terminal-io*))
+→ "#&lt;STREAM-ERROR 12352256&gt; looks especially bad."
+ (define-condition random-condition (condition) () 
+   (:report (lambda (condition stream)
+              (declare (ignore condition))
+              (princ "Yow" stream))))
+→  RANDOM-CONDITION
+ (assess-condition (make-condition 'random-condition))
+→ "Hardly worth mentioning."
+</pre>
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="9.2.26-handler-bind.xhtml#DictEntry_handler_bind_651"><b>handler-bind</b></a>,
+<a href="9.2.28-ignore-errors.xhtml#DictEntry_ignore_error_653"><b>ignore-errors</b></a>,
+Section <a href="9.1-condition-system-concepts.xhtml#Section_Condition_Sy_603">9.1 Condition System Concepts</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<pre> (handler-case form
+   (<i>type1</i> (<i>var1</i>) . <i>body1</i>)
+   (<i>type2</i> (<i>var2</i>) . <i>body2</i>) ...)
+</pre>
+is approximately equivalent to:
+
+<pre> (block #1=#:g0001
+   (let ((#2=#:g0002 nil))
+     (tagbody
+       (handler-bind ((<i>type1</i> #'(lambda (temp)
+                                       (setq #1# temp)
+                                       (go #3=#:g0003)))
+                      (<i>type2</i> #'(lambda (temp)
+                                       (setq #2# temp)
+                                       (go #4=#:g0004))) ...)
+       (return-from #1# form))
+         #3# (return-from #1# (let ((<i>var1</i> #2#)) . <i>body1</i>))
+         #4# (return-from #1# (let ((<i>var2</i> #2#)) . <i>body2</i>)) ...)))
+</pre>
+
+<pre> (handler-case form
+   (<i>type1</i> <i>(var1)</i> . <i>body1</i>)
+   ...
+   (:no-error (<i>varN-1</i> <i>varN-2</i> ...) . <i>bodyN</i>))
+</pre>
+is approximately equivalent to:
+
+<pre> (block #1=#:error-return
+  (multiple-value-call #'(lambda (<i>varN-1</i> <i>varN-2</i> ...) . <i>bodyN</i>)
+     (block #2=#:normal-return
+       (return-from #1#
+         (handler-case (return-from #2# form)
+           (<i>type1</i> (<i>var1</i>) . <i>body1</i>) ...)))))
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

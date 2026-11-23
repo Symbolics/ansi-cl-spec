@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>22.4.14 write, prin1, print, pprint, princ — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_write_prin1_1354" class="entry"><span class="secno">22.4.14</span> <span class="names">write, prin1, print, pprint, princ</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+
+<table>
+<tbody><tr><td><b>write</b> <i>object</i> <code>&amp;key</code></td><td><i>array base case circle escape gensym</i></td></tr>
+<tr><td/><td><i>length level lines miser-width pprint-dispatch</i></td></tr>
+<tr><td/><td><i>pretty radix readably right-margin stream</i></td></tr>
+</tbody></table>
+  → object
+
+<p>
+<b>prin1</b>
+<i>object <code>&amp;optional</code> output-stream</i>
+  → <i>object</i>
+</p><p>
+<b>princ</b>
+<i>object <code>&amp;optional</code> output-stream</i>
+  → <i>object</i>
+</p><p>
+<b>print</b>
+<i>object <code>&amp;optional</code> output-stream</i>
+  → <i>object</i>
+</p><p>
+<b>pprint</b>
+<i>object <code>&amp;optional</code> output-stream</i>
+  → <i> &lt; <i>no values</i> &gt; </i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>object</i>—an <i><a href="../26-glossary/o.xhtml#object">object</a></i>.
+
+<p>
+<i>output-stream</i>—an <i><a href="../26-glossary/o.xhtml#output">output</a></i> <i><a href="../26-glossary/s.xhtml#streamdesignator">stream designator</a></i>.
+		        The default is <i><a href="../26-glossary/s.xhtml#standardoutput">standard output</a></i>.
+
+</p><p>
+<i>array</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+</p><p>
+<i>base</i>—a <i><a href="../26-glossary/r.xhtml#radix">radix</a></i>.
+</p><p>
+<i>case</i>—a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <code>(member :upcase :downcase :capitalize)</code>.
+</p><p>
+<i>circle</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+</p><p>
+<i>escape</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+</p><p>
+<i>gensym</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+</p><p>
+<i>length</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+</p><p>
+<i>level</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+</p><p>
+<i>lines</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+</p><p>
+<i>miser-width</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+</p><p>
+<i>pprint-dispatch</i>—a <i><a href="../26-glossary/p.xhtml#pprintdispatchtable">pprint dispatch table</a></i>.
+</p><p>
+<i>pretty</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+</p><p>
+<i>radix</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+</p><p>
+<i>readably</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+</p><p>
+<i>right-margin</i>—a non-negative <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>.
+</p><p>
+<i>stream—an <i><a href="../26-glossary/o.xhtml#output">output</a></i> <i><a href="../26-glossary/s.xhtml#streamdesignator">stream designator</a></i>.
+The default is <i><a href="../26-glossary/s.xhtml#standardoutput">standard output</a></i>.</i>
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_write_prin1_1354"><b>write</b></a>, <a href="#DictEntry_write_prin1_1354"><b>prin1</b></a>, <a href="#DictEntry_write_prin1_1354"><b>princ</b></a>, <a href="#DictEntry_write_prin1_1354"><b>print</b></a>, and <a href="#DictEntry_write_prin1_1354"><b>pprint</b></a>
+write the printed representation of <i>object</i> to <i>output-stream</i>.
+
+<p>
+
+<a href="#DictEntry_write_prin1_1354"><b>write</b></a> is the general entry point to the <i>Lisp printer</i>.
+For each explicitly supplied <i><a href="../26-glossary/k.xhtml#keywordparameter">keyword parameter</a></i> named in the next figure,
+the corresponding <i><a href="../26-glossary/p.xhtml#printercontrolvariable">printer control variable</a></i> is dynamically bound to its <i><a href="../26-glossary/v.xhtml#value">value</a></i>
+while printing goes on;
+for each <i><a href="../26-glossary/k.xhtml#keywordparameter">keyword parameter</a></i> in the next figure that is not explicitly supplied,
+the value of the corresponding <i><a href="../26-glossary/p.xhtml#printercontrolvariable">printer control variable</a></i> is the same as it was
+at the time <a href="#DictEntry_write_prin1_1354"><b>write</b></a> was invoked.
+Once the appropriate <i><a href="../26-glossary/b.xhtml#binding">bindings</a></i> are <i>established</i>,
+the <i><a href="../26-glossary/o.xhtml#object">object</a></i> is output by the <i>Lisp printer</i>.
+
+</p><table id="fig-22-7" class="fig">
+<caption><span class="figlabel">Figure 22-7.</span> Argument correspondences for the WRITE function.</caption>
+<tbody><tr><th>Parameter</th>
+<th>Corresponding Dynamic Variable</th>
+</tr>
+
+  <tr>
+    <td><i>array</i></td>
+    <td><a href="22.4.16-print-array.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>base</i></td>
+    <td><a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-base*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>case</i></td>
+    <td><a href="22.4.18-print-case.xhtml#DictEntry_print_case_1358"><b>*print-case*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>circle</i></td>
+    <td><a href="22.4.19-print-circle.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>escape</i></td>
+    <td><a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>gensym</i></td>
+    <td><a href="22.4.21-print-gensym.xhtml#DictEntry_print_gensy_1361"><b>*print-gensym*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>length</i></td>
+    <td><a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>level</i></td>
+    <td><a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>lines</i></td>
+    <td><a href="22.4.23-print-lines.xhtml#DictEntry_print_lines_1363"><b>*print-lines*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>miser-width</i></td>
+    <td><a href="22.4.24-print-miser-width.xhtml#DictEntry_print_miser_1364"><b>*print-miser-width*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>pprint-dispatch</i></td>
+    <td><a href="22.4.25-print-pprint-dispatch.xhtml#DictEntry_print_pprin_1365"><b>*print-pprint-dispatch*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>pretty</i></td>
+    <td><a href="22.4.26-print-pretty.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>radix</i></td>
+    <td><a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>readably</i></td>
+    <td><a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a></td>
+  </tr>
+  <tr>
+    <td><i>right-margin</i></td>
+    <td><a href="22.4.28-print-right-margin.xhtml#DictEntry_print_right_1368"><b>*print-right-margin*</b></a></td>
+  </tr>
+</tbody></table>
+
+
+<p>
+
+<a href="#DictEntry_write_prin1_1354"><b>prin1</b></a>, <a href="#DictEntry_write_prin1_1354"><b>princ</b></a>, <a href="#DictEntry_write_prin1_1354"><b>print</b></a>, and <a href="#DictEntry_write_prin1_1354"><b>pprint</b></a> implicitly 
+<i><a href="../26-glossary/b.xhtml#bind">bind</a></i> certain print parameters to particular values.  The remaining parameter
+values are taken from 
+     <a href="22.4.16-print-array.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a>,
+     <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-base*</b></a>,
+     <a href="22.4.18-print-case.xhtml#DictEntry_print_case_1358"><b>*print-case*</b></a>, 
+     <a href="22.4.19-print-circle.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a>,
+     <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a>,
+     <a href="22.4.21-print-gensym.xhtml#DictEntry_print_gensy_1361"><b>*print-gensym*</b></a>,
+     <a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a>,
+     <a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a>,
+     <a href="22.4.23-print-lines.xhtml#DictEntry_print_lines_1363"><b>*print-lines*</b></a>,
+     <a href="22.4.24-print-miser-width.xhtml#DictEntry_print_miser_1364"><b>*print-miser-width*</b></a>,
+     <a href="22.4.25-print-pprint-dispatch.xhtml#DictEntry_print_pprin_1365"><b>*print-pprint-dispatch*</b></a>,
+     <a href="22.4.26-print-pretty.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a>, 
+     <a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a>, 
+ and <a href="22.4.28-print-right-margin.xhtml#DictEntry_print_right_1368"><b>*print-right-margin*</b></a>.
+
+
+</p><p>
+<a href="#DictEntry_write_prin1_1354"><b>prin1</b></a> produces output suitable for input to <a href="../23-reader/23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>.  
+It binds <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a> to <i><a href="../26-glossary/t.xhtml#true">true</a></i>.
+</p><p>
+
+<a href="#DictEntry_write_prin1_1354"><b>princ</b></a> is just like <a href="#DictEntry_write_prin1_1354"><b>prin1</b></a> except that the
+output has no <i><a href="../26-glossary/e.xhtml#escape">escape</a></i> <i><a href="../26-glossary/c.xhtml#character">characters</a></i>.
+It binds <a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a>   to <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+
+     and <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a> to <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+The general rule is that output from <a href="#DictEntry_write_prin1_1354"><b>princ</b></a> is intended to look
+good to people, while output from <a href="#DictEntry_write_prin1_1354"><b>prin1</b></a> is intended to
+be acceptable to <a href="../23-reader/23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>.
+
+</p><p>
+
+<a href="#DictEntry_write_prin1_1354"><b>print</b></a> is just like <a href="#DictEntry_write_prin1_1354"><b>prin1</b></a> 
+except that the printed representation
+of <i>object</i> is preceded by a newline 
+and followed by a space.
+
+</p><p>
+
+<a href="#DictEntry_write_prin1_1354"><b>pprint</b></a> is just like <a href="#DictEntry_write_prin1_1354"><b>print</b></a> except that the trailing
+space is omitted and 
+<i>object</i> is printed with the <a href="22.4.26-print-pretty.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a> flag <i><a href="../26-glossary/n.xhtml#nonnil">non-nil</a></i> 
+to produce pretty output.
+
+</p><p>
+<i>Output-stream</i> specifies the <i><a href="../26-glossary/s.xhtml#stream">stream</a></i> to which 
+output is to be sent.  
+
+</p></dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-output*</b></a>,
+<a href="../21-streams/21.2.54-terminal-io.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>,
+<a href="22.4.20-print-escape.xhtml#DictEntry_print_escap_1360"><b>*print-escape*</b></a>,
+<a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-radix*</b></a>,
+<a href="22.4.17-print-base.xhtml#DictEntry_print_base_1357"><b>*print-base*</b></a>,
+<a href="22.4.19-print-circle.xhtml#DictEntry_print_circl_1359"><b>*print-circle*</b></a>,
+<a href="22.4.26-print-pretty.xhtml#DictEntry_print_prett_1366"><b>*print-pretty*</b></a>,
+<a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-level*</b></a>,
+<a href="22.4.22-print-level.xhtml#DictEntry_print_level_1362"><b>*print-length*</b></a>,
+<a href="22.4.18-print-case.xhtml#DictEntry_print_case_1358"><b>*print-case*</b></a>,
+<a href="22.4.21-print-gensym.xhtml#DictEntry_print_gensy_1361"><b>*print-gensym*</b></a>,
+<a href="22.4.16-print-array.xhtml#DictEntry_print_array_1356"><b>*print-array*</b></a>,
+<a href="../23-reader/23.2.14-read-default-float-format.xhtml#DictEntry_read_defaul_1394"><b>*read-default-float-format*</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../23-reader/23.2.7-readtable-case.xhtml#DictEntry_readtable_ca_1387"><b>readtable-case</b></a>,
+Section <a href="22.3-formatted-output.xhtml#SubSection_FORMAT_Print_1305">22.3.4 FORMAT Printer Operations</a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+The <i><a href="../26-glossary/f.xhtml#function">functions</a></i> <a href="#DictEntry_write_prin1_1354"><b>prin1</b></a> and <a href="#DictEntry_write_prin1_1354"><b>print</b></a> do not bind <a href="22.4.27-print-readably.xhtml#DictEntry_print_reada_1367"><b>*print-readably*</b></a>.
+
+<pre> (prin1 object output-stream)
+==(write object :stream output-stream :escape t)
+</pre>
+
+<pre> (princ object output-stream)
+==(write object stream output-stream :escape nil :readably nil)
+</pre>
+
+
+<pre> (print object output-stream)
+==(progn (terpri output-stream)
+           (write object :stream output-stream
+                         :escape t)
+           (write-char #\space output-stream))
+</pre>
+
+<pre> (pprint object output-stream)
+==(write object :stream output-stream :escape t :pretty t)
+</pre>
+</dd></dl>
+</section>
+</body>
+</html>

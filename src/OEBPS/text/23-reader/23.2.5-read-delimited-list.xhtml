@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>23.2.5 read-delimited-list — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_read_delimit_1385" class="entry"><span class="secno">23.2.5</span> <span class="names">read-delimited-list</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>read-delimited-list</b>
+<i>char <code>&amp;optional</code> input-stream recursive-p</i>
+  → <i>list</i>
+</dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>char</i>—a <i><a href="../26-glossary/c.xhtml#character">character</a></i>.
+
+<p>
+<i>input-stream</i>—an <i><a href="../26-glossary/i.xhtml#input">input</a></i> <i><a href="../26-glossary/s.xhtml#streamdesignator">stream designator</a></i>.
+ The default is <i><a href="../26-glossary/s.xhtml#standardinput">standard input</a></i>.
+
+</p><p>
+<i>recursive-p</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+ The default is <i><a href="../26-glossary/f.xhtml#false">false</a></i>.
+
+</p><p>
+<i>list</i>—a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of the <i><a href="../26-glossary/o.xhtml#object">objects</a></i> read.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_read_delimit_1385"><b>read-delimited-list</b></a> reads <i><a href="../26-glossary/o.xhtml#object">objects</a></i> from <i>input-stream</i> 
+until the next character after an <i><a href="../26-glossary/o.xhtml#object">object</a></i>'s
+representation (ignoring <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>2</sub> characters and comments) is <i>char</i>.
+
+<p>
+
+<a href="#DictEntry_read_delimit_1385"><b>read-delimited-list</b></a> looks ahead at each step
+for the next non-<i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>2</sub> <i><a href="../26-glossary/c.xhtml#character">character</a></i>
+and peeks at it as if with <a href="../21-streams/21.2.16-peek-char.xhtml#DictEntry_peek_char_1207"><b>peek-char</b></a>.
+If it is <i>char</i>, 
+then the <i><a href="../26-glossary/c.xhtml#character">character</a></i> is consumed and the <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/o.xhtml#object">objects</a></i> is returned.
+If it is a <i><a href="../26-glossary/c.xhtml#constituent">constituent</a></i> or <i><a href="../26-glossary/e.xhtml#escape">escape</a></i> <i><a href="../26-glossary/c.xhtml#character">character</a></i>,
+then <a href="23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> is used to read an <i><a href="../26-glossary/o.xhtml#object">object</a></i>,
+which is added to the end of the <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
+If it is a <i><a href="../26-glossary/m.xhtml#macrocharacter">macro character</a></i>,
+its <i><a href="../26-glossary/r.xhtml#readermacrofunction">reader macro function</a></i> is called;
+if the function returns a <i><a href="../26-glossary/v.xhtml#value">value</a></i>,
+that <i><a href="../26-glossary/v.xhtml#value">value</a></i> is added to the <i><a href="../26-glossary/l.xhtml#list">list</a></i>.
+The peek-ahead process is then repeated.
+
+</p><p>
+If <i>recursive-p</i> is <i><a href="../26-glossary/t.xhtml#true">true</a></i>,
+this call is expected to be embedded in a higher-level call to <a href="23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a> 
+or a similar function.
+
+</p><p>
+
+It is an error to reach end-of-file during the operation of
+<a href="#DictEntry_read_delimit_1385"><b>read-delimited-list</b></a>.
+
+</p><p>
+The consequences are undefined
+if <i>char</i> has a <i><a href="../26-glossary/s.xhtml#syntaxtype">syntax type</a></i> of <i><a href="../26-glossary/w.xhtml#whitespace">whitespace</a></i><sub>2</sub>
+in the <i><a href="../26-glossary/c.xhtml#currentreadtable">current readtable</a></i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (read-delimited-list #\]) 1 2 3 4 5 6 ]
+→ (1 2 3 4 5 6)
+</pre>
+
+Suppose you wanted <code>#{<i>a</i> <i>b</i> <i>c</i> <i> ... </i> <i>z</i>}</code>
+to read as a list of all pairs of the elements <i>a</i>, <i>b</i>, <i>c</i>, 
+<i> ... </i>, <i>z</i>, for example.
+
+<pre> #{p q z a}  reads as  ((p q) (p z) (p a) (q z) (q a) (z a))
+</pre>
+This can be done by specifying a macro-character definition for <code>#{</code>
+that does two things: reads in all the items up to the <code>}</code>,
+and constructs the pairs.  <a href="#DictEntry_read_delimit_1385"><b>read-delimited-list</b></a> performs
+the first task.
+
+<pre> (defun |#{-reader| (stream char arg)
+   (declare (ignore char arg))
+   (mapcon #'(lambda (x)
+              (mapcar #'(lambda (y) (list (car x) y)) (cdr x)))
+          (read-delimited-list #\} stream t))) → |#{-reader|
+
+ (set-dispatch-macro-character #\# #\{ #'|#{-reader|) →  T 
+ (set-macro-character #\} (get-macro-character #\) <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>))
+</pre>
+Note that <i><a href="../26-glossary/t.xhtml#true">true</a></i> is supplied for the <i>recursive-p</i> argument.
+
+<p>
+
+It is necessary here to give a definition to the character <code>}</code> as
+well to prevent it from being a constituent.
+If the line
+
+</p><pre> (set-macro-character #\} (get-macro-character #\) <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>))
+</pre>
+shown above were not included, then the <code>}</code> in
+
+<pre> #{ p q z a}
+</pre>
+would be considered a constituent character, part of the symbol named
+<code>a}</code>.  This could be corrected by putting a space before
+the <code>}</code>, but it is better to call
+<a href="23.2.10-set-macro-character.xhtml#DictEntry_set_macro_ch_1390"><b>set-macro-character</b></a>.
+
+<p>
+
+Giving <code>}</code> the same	      
+definition as the standard definition of the character <code>)</code> has the
+twin benefit of making it terminate tokens for use with 
+<a href="#DictEntry_read_delimit_1385"><b>read-delimited-list</b></a> and also making it invalid for use in any
+other context. Attempting to read a stray <code>}</code> will signal an error.
+
+</p></dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="../21-streams/21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*standard-input*</b></a>,
+<a href="23.2.17-readtable.xhtml#DictEntry_readtable_1397"><b>*readtable*</b></a>,
+<a href="../21-streams/21.2.54-terminal-io.xhtml#DictEntry_terminal_io_1245"><b>*terminal-io*</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+
+
+
+
+
+
+
+
+
+<a href="23.2.4-read.xhtml#DictEntry_read_read_p_1384"><b>read</b></a>,
+<a href="../21-streams/21.2.16-peek-char.xhtml#DictEntry_peek_char_1207"><b>peek-char</b></a>,
+<a href="../21-streams/21.2.17-read-char.xhtml#DictEntry_read_char_1208"><b>read-char</b></a>,
+<a href="../21-streams/21.2.20-unread-char.xhtml#DictEntry_unread_char_1211"><b>unread-char</b></a>.
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+
+<a href="#DictEntry_read_delimit_1385"><b>read-delimited-list</b></a> is intended for use in implementing <i><a href="../26-glossary/r.xhtml#readermacro">reader macros</a></i>.
+Usually it is desirable for <i>char</i> to be a <i><a href="../26-glossary/t.xhtml#terminating">terminating</a></i> <i><a href="../26-glossary/m.xhtml#macrocharacter">macro character</a></i>
+so that it can be used to delimit tokens; however, <a href="#DictEntry_read_delimit_1385"><b>read-delimited-list</b></a>
+makes no attempt to alter the syntax specified for <i>char</i> by the current
+readtable.  The caller must make any necessary changes to the readtable syntax 
+explicitly.
+
+</dd></dl>
+</section>
+</body>
+</html>

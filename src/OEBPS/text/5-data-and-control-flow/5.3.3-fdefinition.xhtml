@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>5.3.3 fdefinition — Accessor</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_fdefinition_389" class="entry"><span class="secno">5.3.3</span> <span class="names">fdefinition</span> <span class="kind">Accessor</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>fdefinition</b>
+<i>function-name</i>
+  → <i>definition</i>
+<p>
+(<b>setf</b>
+(<b>fdefinition</b> <i>function-name</i>) <i>new-definition</i>)
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>function-name</i>—a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i>.
+
+In the non-<a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> case, 
+the <i><a href="../26-glossary/n.xhtml#name">name</a></i> must be <i><a href="../26-glossary/f.xhtml#fbound">fbound</a></i> in the <i><a href="../26-glossary/g.xhtml#globalenvironment">global environment</a></i>.
+
+
+<p>
+<i>definition</i>—Current global function definition named by <i>function-name</i>.  
+
+</p><p>
+<i>new-definition</i>—a <i><a href="../26-glossary/f.xhtml#function">function</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_fdefinition_389"><b>fdefinition</b></a> <i>accesses</i> the current global function definition
+named by <i>function-name</i>.  The definition may be a
+<i><a href="../26-glossary/f.xhtml#function">function</a></i> or may be an <i><a href="../26-glossary/o.xhtml#object">object</a></i> representing a 
+<i><a href="../26-glossary/s.xhtml#specialform">special form</a></i> or <i><a href="../26-glossary/m.xhtml#macro">macro</a></i>.
+
+The value returned by <a href="#DictEntry_fdefinition_389"><b>fdefinition</b></a> when <a href="5.3.4-fboundp.xhtml#DictEntry_fboundp_390"><b>fboundp</b></a> returns true
+but the <i>function-name</i> denotes a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> or 
+<i><a href="../26-glossary/s.xhtml#specialform">special form</a></i> is not well-defined, but <a href="#DictEntry_fdefinition_389"><b>fdefinition</b></a> does not signal an error. 
+
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>function-name</i> is not a <i><a href="../26-glossary/f.xhtml#functionname">function name</a></i>.
+
+<p>
+An error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="5.3.69-undefined-function.xhtml#DictEntry_undefined_fu_455"><b>undefined-function</b></a> is signaled 
+in the non-<a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> case if <i>function-name</i> is not <i><a href="../26-glossary/f.xhtml#fbound">fbound</a></i>.
+
+</p></dd><dt><b>See Also:</b></dt><dd>
+
+<a href="5.3.4-fboundp.xhtml#DictEntry_fboundp_390"><b>fboundp</b></a>,
+<a href="5.3.5-fmakunbound.xhtml#DictEntry_fmakunbound_391"><b>fmakunbound</b></a>,
+<a href="../3-evaluation-and-compilation/3.8.11-macro-function.xhtml#DictEntry_macro_functi_293"><b>macro-function</b></a>,
+
+<a href="../3-evaluation-and-compilation/3.8.29-special-operator-p.xhtml#DictEntry_special_oper_311"><b>special-operator-p</b></a>,
+
+<a href="../10-symbols/10.2.10-symbol-function.xhtml#DictEntry_symbol_funct_684"><b>symbol-function</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<a href="#DictEntry_fdefinition_389"><b>fdefinition</b></a> cannot <i><a href="../26-glossary/a.xhtml#access">access</a></i> the value of a lexical function name
+produced by <a href="5.3.6-flet.xhtml#DictEntry_flet_labels_392"><b>flet</b></a> or <a href="5.3.6-flet.xhtml#DictEntry_flet_labels_392"><b>labels</b></a>; it can <i><a href="../26-glossary/a.xhtml#access">access</a></i> only
+the global function value.
+
+<p>
+<a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> can be used with 
+<a href="#DictEntry_fdefinition_389"><b>fdefinition</b></a> to replace a global function
+definition when the <i>function-name</i>'s function definition 
+does not represent a <i><a href="../26-glossary/s.xhtml#specialform">special form</a></i>.
+
+<a href="5.3.64-setf.xhtml#DictEntry_setf_psetf_450"><b>setf</b></a> of <a href="#DictEntry_fdefinition_389"><b>fdefinition</b></a> 
+requires a <i><a href="../26-glossary/f.xhtml#function">function</a></i> as the new value.
+It is an error to set the <a href="#DictEntry_fdefinition_389"><b>fdefinition</b></a> of a <i>function-name</i>
+to a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>, a <i><a href="../26-glossary/l.xhtml#list">list</a></i>, or the value returned
+by <a href="#DictEntry_fdefinition_389"><b>fdefinition</b></a> on the name of a <i><a href="../26-glossary/m.xhtml#macro">macro</a></i> 
+or <i><a href="../26-glossary/s.xhtml#specialform">special form</a></i>.
+
+
+</p></dd></dl>
+</section>
+</body>
+</html>

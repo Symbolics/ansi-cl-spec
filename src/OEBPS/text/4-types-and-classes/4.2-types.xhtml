@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>4.2 Types</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body>
+<section>
+<section>
+<h2 id="Section_Types_315"><span class="secno">4.2</span> Types</h2>
+<section>
+<h3 id="SubSection_Data_Type_De_316"><span class="secno">4.2.1</span> Data Type Definition</h3>
+<p>
+
+Information about <i><a href="../26-glossary/t.xhtml#type">type</a></i> usage is located in 
+the sections specified in <a href="#fig-4-1">Figure 4-1</a>. 
+<a href="4.3-classes.xhtml#fig-4-7">Figure 4-7</a> lists some <i>classes</i> 
+that are particularly relevant to the object system.
+<a href="../9-conditions/9.1-condition-system-concepts.xhtml#fig-9-1">Figure 9-1</a> lists the defined <i><a href="../26-glossary/c.xhtml#condition">condition</a></i> <i><a href="../26-glossary/t.xhtml#type">types</a></i>.
+
+</p><table id="fig-4-1" class="fig">
+<caption><span class="figlabel">Figure 4-1.</span> Cross-References to Data Type Information</caption>
+
+  <tbody><tr>
+    <td><b>Section</b></td>
+    <td>Data Type</td>
+  </tr>
+  <tr>
+    <td>Section <a href="4.3-classes.xhtml#Section_Classes_319">4.3 Classes</a></td>
+    <td>Object System types</td>
+  </tr>
+  <tr>
+    <td>Section <a href="../7-objects/7.5-slots.xhtml#Section_Slots_536">7.5 Slots</a></td>
+    <td>Object System types</td>
+  </tr>
+  <tr>
+    <td>Chapter <a href="../7-objects/index.xhtml#Chapter_Objects_519">7 Objects</a></td>
+    <td>Object System types</td>
+  </tr>
+  <tr>
+    <td>Section <a href="../7-objects/7.6-generic-functions-and-methods.xhtml#Section_Generic_Func_540">7.6 Generic Functions and Methods</a></td>
+    <td>Object System types</td>
+  </tr>
+  <tr>
+    <td>Section <a href="../9-conditions/9.1-condition-system-concepts.xhtml#Section_Condition_Sy_603">9.1 Condition System Concepts</a></td>
+    <td>Condition System types</td>
+  </tr>
+  <tr>
+    <td>Chapter <a href="index.xhtml#Chapter_Types_and_Cl_313">4 Types and Classes</a></td>
+    <td>Miscellaneous types		</td>
+  </tr>
+  <tr>
+    <td>Chapter <a href="../2-syntax/index.xhtml#Chapter_Syntax_107">2 Syntax</a></td>
+    <td>All types—read and print syntax</td>
+  </tr>
+  <tr>
+    <td>
+
+Section <a href="../22-printer/22.1-the-lisp-printer.xhtml#Section_The_Lisp_Pri_1250">22.1 The Lisp Printer</a></td>
+    <td>All types—print syntax</td>
+  </tr>
+  <tr>
+    <td>Section <a href="../3-evaluation-and-compilation/3.2-compilation.xhtml#Section_Compilation_213">3.2 Compilation</a></td>
+    <td>All types—compilation issues</td>
+  </tr>
+</tbody></table>
+</section>
+<section>
+<h3 id="SubSection_Type_Relatio_317"><span class="secno">4.2.2</span> Type Relationships</h3>
+<ul>
+
+<li>
+The <i><a href="../26-glossary/t.xhtml#type">types</a></i> <a href="../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916"><b>cons</b></a>, <a href="../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675"><b>symbol</b></a>, <a href="../15-arrays/15.2.1-array.xhtml#DictEntry_array_979"><b>array</b></a>, <a href="../12-numbers/12.2.1-number.xhtml#DictEntry_number_775"><b>number</b></a>,
+<a href="../13-characters/13.2.1-character.xhtml#DictEntry_character_884"><b>character</b></a>, <a href="../18-hash-tables/18.2.1-hash-table.xhtml#DictEntry_hash_table_1078"><b>hash-table</b></a>, 
+
+<a href="4.4.3-function.xhtml#DictEntry_function_338"><b>function</b></a>,
+
+<a href="../23-reader/23.2.1-readtable.xhtml#DictEntry_readtable_1381"><b>readtable</b></a>, <a href="../11-packages/11.2.1-package.xhtml#DictEntry_package_716"><b>package</b></a>, <a href="../19-filenames/19.4.1-pathname.xhtml#DictEntry_pathname_1144"><b>pathname</b></a>, <a href="../21-streams/21.2.1-stream.xhtml#DictEntry_stream_1192"><b>stream</b></a>, 
+<a href="../12-numbers/12.2.39-random-state.xhtml#DictEntry_random_state_813"><b>random-state</b></a>, <a href="../9-conditions/9.2.1-condition.xhtml#DictEntry_condition_626"><b>condition</b></a>, <a href="../9-conditions/9.2.31-restart.xhtml#DictEntry_restart_656"><b>restart</b></a>,
+and any single other <i><a href="../26-glossary/t.xhtml#type">type</a></i> created by <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a>,
+
+
+
+<a href="../9-conditions/9.2.29-define-condition.xhtml#DictEntry_define_condi_654"><b>define-condition</b></a>,
+
+
+or <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> are <i><a href="../26-glossary/p.xhtml#pairwise">pairwise</a></i> <i><a href="../26-glossary/d.xhtml#disjoint">disjoint</a></i>, 
+except for type relations explicitly established by specifying 
+<i>superclasses</i> in <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> 
+
+
+or <a href="../9-conditions/9.2.29-define-condition.xhtml#DictEntry_define_condi_654"><b>define-condition</b></a>
+
+
+or the <code>:include</code> option of <b>destruct</b>.
+
+</li><li> Any two <i><a href="../26-glossary/t.xhtml#type">types</a></i> created by <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> are 
+<i><a href="../26-glossary/d.xhtml#disjoint">disjoint</a></i> unless
+one is a <i><a href="../26-glossary/s.xhtml#supertype">supertype</a></i> of the other by virtue of
+the <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> <code>:include</code> option.
+
+</li><li>
+Any two <i><a href="../26-glossary/d.xhtml#distinct">distinct</a></i> <i>classes</i> created by <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> 
+
+or <a href="../9-conditions/9.2.29-define-condition.xhtml#DictEntry_define_condi_654"><b>define-condition</b></a>
+are <i><a href="../26-glossary/d.xhtml#disjoint">disjoint</a></i> unless they have a common <i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> or
+one <i><a href="../26-glossary/c.xhtml#class">class</a></i> is a <i><a href="../26-glossary/s.xhtml#subclass">subclass</a></i> of the other.
+
+
+
+</li><li> 
+An implementation may be extended to add other <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i>
+relationships between the specified <i><a href="../26-glossary/t.xhtml#type">types</a></i>, as long as they do
+not violate the type relationships and disjointness requirements
+specified here.  An implementation may define additional <i><a href="../26-glossary/t.xhtml#type">types</a></i>
+that are <i><a href="../26-glossary/s.xhtml#subtype">subtypes</a></i> or <i><a href="../26-glossary/s.xhtml#supertype">supertypes</a></i> of any
+specified <i><a href="../26-glossary/t.xhtml#type">types</a></i>, as long as each additional <i><a href="../26-glossary/t.xhtml#type">type</a></i> is
+a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a> and a <i><a href="../26-glossary/s.xhtml#supertype">supertype</a></i> of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> and the disjointness requirements
+are not violated.
+
+<p>
+
+At the discretion of the implementation, either <a href="4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a>
+or <a href="4.4.13-structure-object.xhtml#DictEntry_structure_ob_348"><b>structure-object</b></a> might appear in any class precedence list
+for a <i><a href="../26-glossary/s.xhtml#systemclass">system class</a></i> that does not already specify either 
+<a href="4.4.14-standard-object.xhtml#DictEntry_standard_obj_349"><b>standard-object</b></a> or <a href="4.4.13-structure-object.xhtml#DictEntry_structure_ob_348"><b>structure-object</b></a>.  If it does,
+it must precede the <i><a href="../26-glossary/c.xhtml#class">class</a></i> <a href="4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a> and follow all other <i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> <i>classes</i>.
+
+
+</p></li></ul>
+</section>
+<section>
+<h3 id="SubSection_Type_Specifi_318"><span class="secno">4.2.3</span> Type Specifiers</h3>
+<p>
+
+<i><a href="../26-glossary/t.xhtml#typespecifier">Type specifiers</a></i> can be <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>, <i>classes</i>, or <i><a href="../26-glossary/l.xhtml#list">lists</a></i>.
+<a href="#fig-4-2">Figure 4-2</a> lists <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i> that are
+  <i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> <i><a href="../26-glossary/a.xhtml#atomictypespecifier">atomic type specifiers</a></i>, and
+<a href="#fig-4-3">Figure 4-3</a> lists
+ <i><a href="../26-glossary/s.xhtml#standardized">standardized</a></i> <i><a href="../26-glossary/c.xhtml#compoundtypespecifier">compound type specifier</a></i> <i><a href="../26-glossary/n.xhtml#name">names</a></i>.
+For syntax information, see the dictionary entry for the corresponding <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>.
+It is possible to define new <i><a href="../26-glossary/t.xhtml#typespecifier">type specifiers</a></i> using
+ <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a>,
+ <a href="../9-conditions/9.2.29-define-condition.xhtml#DictEntry_define_condi_654"><b>define-condition</b></a>,
+ <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a>, 
+or
+ <a href="4.4.25-deftype.xhtml#DictEntry_deftype_360"><b>deftype</b></a>.
+
+</p><table id="fig-4-2" class="fig">
+<caption><span class="figlabel">Figure 4-2.</span> Standardized Atomic Type Specifiers</caption>
+
+  <tbody><tr>
+    <td>arithmetic-error</td>
+    <td>function</td>
+    <td>simple-condition</td>
+  </tr>
+  <tr>
+    <td>array</td>
+    <td>generic-function</td>
+    <td>simple-error</td>
+  </tr>
+  <tr>
+    <td>atom</td>
+    <td>hash-table</td>
+    <td>simple-string</td>
+  </tr>
+  <tr>
+    <td>base-char</td>
+    <td>integer</td>
+    <td>simple-type-error</td>
+  </tr>
+  <tr>
+    <td>base-string</td>
+    <td>keyword</td>
+    <td>simple-vector</td>
+  </tr>
+  <tr>
+    <td>bignum</td>
+    <td>list</td>
+    <td>simple-warning</td>
+  </tr>
+  <tr>
+    <td>bit</td>
+    <td>logical-pathname</td>
+    <td>single-float</td>
+  </tr>
+  <tr>
+    <td>bit-vector</td>
+    <td>long-float</td>
+    <td>standard-char</td>
+  </tr>
+  <tr>
+    <td>broadcast-stream</td>
+    <td>method</td>
+    <td>standard-class</td>
+  </tr>
+  <tr>
+    <td>built-in-class</td>
+    <td>method-combination</td>
+    <td>standard-generic-function</td>
+  </tr>
+  <tr>
+    <td>cell-error</td>
+    <td>nil</td>
+    <td>standard-method</td>
+  </tr>
+  <tr>
+    <td>character</td>
+    <td>null</td>
+    <td>standard-object</td>
+  </tr>
+  <tr>
+    <td>class</td>
+    <td>number</td>
+    <td>storage-condition</td>
+  </tr>
+  <tr>
+    <td>compiled-function</td>
+    <td>package</td>
+    <td>stream</td>
+  </tr>
+  <tr>
+    <td>complex</td>
+    <td>package-error</td>
+    <td>stream-error</td>
+  </tr>
+  <tr>
+    <td>concatenated-stream</td>
+    <td>parse-error</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>condition</td>
+    <td>pathname</td>
+    <td>string-stream</td>
+  </tr>
+  <tr>
+    <td>cons</td>
+    <td>print-not-readable</td>
+    <td>structure-class</td>
+  </tr>
+  <tr>
+    <td>control-error</td>
+    <td>program-error</td>
+    <td>structure-object</td>
+  </tr>
+  <tr>
+    <td>division-by-zero</td>
+    <td>random-state</td>
+    <td>style-warning</td>
+  </tr>
+  <tr>
+    <td>double-float</td>
+    <td>ratio</td>
+    <td>symbol</td>
+  </tr>
+  <tr>
+    <td>echo-stream</td>
+    <td>rational</td>
+    <td>synonym-stream</td>
+  </tr>
+  <tr>
+    <td>end-of-file</td>
+    <td>reader-error</td>
+    <td>t</td>
+  </tr>
+  <tr>
+    <td>error</td>
+    <td>readtable</td>
+    <td>two-way-stream</td>
+  </tr>
+  <tr>
+    <td>extended-char</td>
+    <td>real</td>
+    <td>type-error</td>
+  </tr>
+  <tr>
+    <td>file-error</td>
+    <td>restart</td>
+    <td>unbound-slot</td>
+  </tr>
+  <tr>
+    <td>file-stream</td>
+    <td>sequence</td>
+    <td>unbound-variable</td>
+  </tr>
+  <tr>
+    <td>fixnum</td>
+    <td>serious-condition</td>
+    <td>undefined-function</td>
+  </tr>
+  <tr>
+    <td>float</td>
+    <td>short-float</td>
+    <td>unsigned-byte</td>
+  </tr>
+  <tr>
+    <td>floating-point-inexact</td>
+    <td>signed-byte</td>
+    <td>vector</td>
+  </tr>
+  <tr>
+    <td>floating-point-invalid-operation</td>
+    <td>simple-array</td>
+    <td>warning</td>
+  </tr>
+  <tr>
+    <td>floating-point-overflow</td>
+    <td>simple-base-string</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>floating-point-underflow</td>
+    <td>simple-bit-vector</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+               
+
+If a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> is a <i><a href="../26-glossary/l.xhtml#list">list</a></i>, the <i><a href="../26-glossary/c.xhtml#car">car</a></i> of the <i><a href="../26-glossary/l.xhtml#list">list</a></i> 
+is a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>, and the rest of the <i><a href="../26-glossary/l.xhtml#list">list</a></i> is subsidiary
+<i><a href="../26-glossary/t.xhtml#type">type</a></i> information.  Such a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> is called 
+a <b><i>compound type specifier</i></b>.
+Except as explicitly stated otherwise,
+the subsidiary items can be unspecified.
+The unspecified subsidiary items are indicated
+by writing <code>*</code>.  For example, to completely specify
+a <i><a href="../26-glossary/v.xhtml#vector">vector</a></i>, the <i><a href="../26-glossary/t.xhtml#type">type</a></i> of the elements
+and the length of the <i><a href="../26-glossary/v.xhtml#vector">vector</a></i> must be present.
+
+</p><pre> (vector double-float 100)
+</pre><p>
+The following leaves the length unspecified:
+
+</p><pre> (vector double-float *)
+</pre><p>
+The following leaves the element type unspecified:
+
+</p><pre> (vector * 100)                                      
+</pre><p>
+Suppose that two <i><a href="../26-glossary/t.xhtml#typespecifier">type specifiers</a></i> are the same except that the first
+has a <code>*</code> where the second has a more explicit specification.
+Then the second denotes a <i><a href="../26-glossary/s.xhtml#subtype">subtype</a></i> 
+of the <i><a href="../26-glossary/t.xhtml#type">type</a></i> denoted by the first.
+
+</p><p>
+
+If a <i><a href="../26-glossary/l.xhtml#list">list</a></i> has one or more unspecified items at the end, 
+those items can be dropped.
+If dropping all occurrences of <code>*</code> results in a <i><a href="../26-glossary/s.xhtml#singleton">singleton</a></i> <i><a href="../26-glossary/l.xhtml#list">list</a></i>,
+then the parentheses can be dropped as well (the list can be replaced
+by the <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> in its <i><a href="../26-glossary/c.xhtml#car">car</a></i>).  
+For example,                       
+<code>(vector double-float *)</code>                    
+can be abbreviated to <code>(vector double-float)</code>,               
+and <code>(vector * *)</code> can be abbreviated to <code>(vector)</code> 
+and then to 
+<code>vector</code>.
+
+</p><table id="fig-4-3" class="fig">
+<caption><span class="figlabel">Figure 4-3.</span> Standardized Compound Type Specifier Names</caption>
+
+  <tbody><tr>
+    <td>and</td>
+    <td>long-float</td>
+    <td>simple-base-string</td>
+  </tr>
+  <tr>
+    <td>array</td>
+    <td>member</td>
+    <td>simple-bit-vector</td>
+  </tr>
+  <tr>
+    <td>base-string</td>
+    <td>mod</td>
+    <td>simple-string</td>
+  </tr>
+  <tr>
+    <td>bit-vector</td>
+    <td>not</td>
+    <td>simple-vector</td>
+  </tr>
+  <tr>
+    <td>complex</td>
+    <td>or</td>
+    <td>single-float</td>
+  </tr>
+  <tr>
+    <td>cons</td>
+    <td>rational</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>double-float</td>
+    <td>real</td>
+    <td>unsigned-byte</td>
+  </tr>
+  <tr>
+    <td>eql</td>
+    <td>satisfies</td>
+    <td>values</td>
+  </tr>
+  <tr>
+    <td>float</td>
+    <td>short-float</td>
+    <td>vector</td>
+  </tr>
+  <tr>
+    <td>function</td>
+    <td>signed-byte</td>
+    <td/>
+  </tr>
+  <tr>
+    <td>integer</td>
+    <td>simple-array</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+
+<p>
+The next figure show the <i><a href="../26-glossary/d.xhtml#definedname">defined names</a></i> that can be used as 
+<i><a href="../26-glossary/c.xhtml#compoundtypespecifier">compound type specifier</a></i> <i><a href="../26-glossary/n.xhtml#name">names</a></i>
+but that cannot be used as <i><a href="../26-glossary/a.xhtml#atomictypespecifier">atomic type specifiers</a></i>.
+
+</p><table id="fig-4-4" class="fig">
+<caption><span class="figlabel">Figure 4-4.</span> Standardized Compound-Only Type Specifier Names</caption>
+
+  <tbody><tr>
+    <td>and</td>
+    <td>mod</td>
+    <td>satisfies</td>
+  </tr>
+  <tr>
+    <td>eql</td>
+    <td>not</td>
+    <td>values</td>
+  </tr>
+  <tr>
+    <td>member</td>
+    <td>or</td>
+    <td/>
+  </tr>
+</tbody></table>
+
+
+<p>
+
+New <i><a href="../26-glossary/t.xhtml#typespecifier">type specifiers</a></i> can come into existence in two ways.
+</p><ul>
+<li> 
+ Defining a structure by using <a href="../8-structures/8.1.1-defstruct.xhtml#DictEntry_defstruct_600"><b>defstruct</b></a> without using
+ the <code>:type</code> specifier or defining a <i><a href="../26-glossary/c.xhtml#class">class</a></i> by using 
+ <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> 
+
+ or <a href="../9-conditions/9.2.29-define-condition.xhtml#DictEntry_define_condi_654"><b>define-condition</b></a>
+ automatically causes the name of the structure 
+ or class to be a new <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>.
+</li><li> 
+ <a href="4.4.25-deftype.xhtml#DictEntry_deftype_360"><b>deftype</b></a> can be used to define <b><i>derived type specifiers</i></b>,
+ which act as `abbreviations' for other <i><a href="../26-glossary/t.xhtml#typespecifier">type specifiers</a></i>.
+</li></ul>
+
+<p>
+A <i><a href="../26-glossary/c.xhtml#class">class</a></i> <i><a href="../26-glossary/o.xhtml#object">object</a></i> can be used as a <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i>. 
+When used this way, it denotes the set of all members of that <i><a href="../26-glossary/c.xhtml#class">class</a></i>.
+
+</p><p>
+The next figure shows some <i><a href="../26-glossary/d.xhtml#definedname">defined names</a></i> relating to 
+<i><a href="../26-glossary/t.xhtml#type">types</a></i> and <i><a href="../26-glossary/d.xhtml#declaration">declarations</a></i>.
+
+</p><table id="fig-4-5" class="fig">
+<caption><span class="figlabel">Figure 4-5.</span> Defined names relating to types and declarations.</caption>
+
+  <tbody><tr>
+    <td>coerce</td>
+    <td>defstruct</td>
+    <td>subtypep</td>
+  </tr>
+  <tr>
+    <td>declaim</td>
+    <td>deftype</td>
+    <td>the</td>
+  </tr>
+  <tr>
+    <td>declare</td>
+    <td>ftype</td>
+    <td>type</td>
+  </tr>
+  <tr>
+    <td>defclass</td>
+    <td>locally</td>
+    <td>type-of</td>
+  </tr>
+  <tr>
+    <td>define-condition</td>
+    <td>proclaim</td>
+    <td>typep</td>
+  </tr>
+</tbody></table>
+
+
+<p>
+The next figure shows all <i><a href="../26-glossary/d.xhtml#definedname">defined names</a></i> that are <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> <i><a href="../26-glossary/n.xhtml#name">names</a></i>,
+whether for <i><a href="../26-glossary/a.xhtml#atomictypespecifier">atomic type specifiers</a></i> or <i><a href="../26-glossary/c.xhtml#compoundtypespecifier">compound type specifiers</a></i>;
+this list is the union of the lists in <a href="#fig-4-2">Figure 4-2</a> 
+and <a href="#fig-4-3">Figure 4-3</a>.
+
+</p><table id="fig-4-6" class="fig">
+<caption><span class="figlabel">Figure 4-6.</span> Standardized Type Specifier Names</caption>
+
+  <tbody><tr>
+    <td>and</td>
+    <td>function</td>
+    <td>simple-array</td>
+  </tr>
+  <tr>
+    <td>arithmetic-error</td>
+    <td>generic-function</td>
+    <td>simple-base-string</td>
+  </tr>
+  <tr>
+    <td>array</td>
+    <td>hash-table</td>
+    <td>simple-bit-vector</td>
+  </tr>
+  <tr>
+    <td>atom</td>
+    <td>integer</td>
+    <td>simple-condition</td>
+  </tr>
+  <tr>
+    <td>base-char</td>
+    <td>keyword</td>
+    <td>simple-error</td>
+  </tr>
+  <tr>
+    <td>base-string</td>
+    <td>list</td>
+    <td>simple-string</td>
+  </tr>
+  <tr>
+    <td>bignum</td>
+    <td>logical-pathname</td>
+    <td>simple-type-error</td>
+  </tr>
+  <tr>
+    <td>bit</td>
+    <td>long-float</td>
+    <td>simple-vector</td>
+  </tr>
+  <tr>
+    <td>bit-vector</td>
+    <td>member</td>
+    <td>simple-warning</td>
+  </tr>
+  <tr>
+    <td>broadcast-stream</td>
+    <td>method</td>
+    <td>single-float</td>
+  </tr>
+  <tr>
+    <td>built-in-class</td>
+    <td>method-combination</td>
+    <td>standard-char</td>
+  </tr>
+  <tr>
+    <td>cell-error</td>
+    <td>mod</td>
+    <td>standard-class</td>
+  </tr>
+  <tr>
+    <td>character</td>
+    <td>nil</td>
+    <td>standard-generic-function</td>
+  </tr>
+  <tr>
+    <td>class</td>
+    <td>not</td>
+    <td>standard-method</td>
+  </tr>
+  <tr>
+    <td>compiled-function</td>
+    <td>null</td>
+    <td>standard-object</td>
+  </tr>
+  <tr>
+    <td>complex</td>
+
+    <td>number</td>
+    <td>storage-condition</td>
+  </tr>
+  <tr>
+    <td>concatenated-stream</td>
+    <td>or</td>
+    <td>stream</td>
+  </tr>
+  <tr>
+    <td>condition</td>
+    <td>package</td>
+    <td>stream-error</td>
+  </tr>
+  <tr>
+    <td>cons</td>
+    <td>package-error</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>control-error</td>
+    <td>parse-error</td>
+    <td>string-stream</td>
+  </tr>
+  <tr>
+    <td>division-by-zero</td>
+    <td>pathname</td>
+    <td>structure-class</td>
+  </tr>
+  <tr>
+    <td>double-float</td>
+    <td>print-not-readable</td>
+    <td>structure-object</td>
+  </tr>
+  <tr>
+    <td>echo-stream</td>
+    <td>program-error</td>
+    <td>style-warning</td>
+  </tr>
+  <tr>
+    <td>end-of-file</td>
+    <td>random-state</td>
+    <td>symbol</td>
+  </tr>
+  <tr>
+    <td>eql</td>
+    <td>ratio</td>
+    <td>synonym-stream</td>
+  </tr>
+  <tr>
+    <td>error</td>
+    <td>rational</td>
+    <td>t</td>
+  </tr>
+  <tr>
+    <td>extended-char</td>
+    <td>reader-error</td>
+    <td>two-way-stream</td>
+  </tr>
+  <tr>
+    <td>file-error</td>
+    <td>readtable</td>
+    <td>type-error</td>
+  </tr>
+  <tr>
+    <td>file-stream</td>
+    <td>real</td>
+    <td>unbound-slot</td>
+  </tr>
+  <tr>
+    <td>fixnum</td>
+    <td>restart</td>
+    <td>unbound-variable</td>
+  </tr>
+  <tr>
+    <td>float</td>
+    <td>satisfies</td>
+    <td>undefined-function</td>
+  </tr>
+  <tr>
+    <td>floating-point-inexact</td>
+    <td>sequence</td>
+    <td>unsigned-byte</td>
+  </tr>
+  <tr>
+    <td>floating-point-invalid-operation</td>
+    <td>serious-condition</td>
+    <td>values</td>
+  </tr>
+  <tr>
+    <td>floating-point-overflow</td>
+    <td>short-float</td>
+    <td>vector</td>
+  </tr>
+  <tr>
+    <td>floating-point-underflow</td>
+    <td>signed-byte</td>
+    <td>warning</td>
+  </tr>
+</tbody></table>
+</section>
+</section>
+</section>
+</body>
+</html>

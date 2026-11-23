@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>12.2.50 realpart, imagpart — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_realpart_im_824" class="entry"><span class="secno">12.2.50</span> <span class="names">realpart, imagpart</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>realpart</b>
+<i>number</i>
+  → <i>real</i>
+<p>
+<b>imagpart</b>
+<i>number</i>
+  → <i>real</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>number</i>—a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
+
+<p>
+<i>real</i>—a <i>real</i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+<a href="#DictEntry_realpart_im_824"><b>realpart</b></a> and <a href="#DictEntry_realpart_im_824"><b>imagpart</b></a> return the real and
+imaginary parts of <i>number</i> respectively.
+
+If <i>number</i> is 
+
+<i>real</i>,
+
+then <a href="#DictEntry_realpart_im_824"><b>realpart</b></a> returns <i>number</i> and <a href="#DictEntry_realpart_im_824"><b>imagpart</b></a>
+returns <code>(* 0 <i>number</i>)</code>, which has the effect that the
+imaginary part of a <i><a href="../26-glossary/r.xhtml#rational">rational</a></i> is <code>0</code> and that of
+a <i><a href="../26-glossary/f.xhtml#float">float</a></i> is a floating-point zero of the same format.
+
+</dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (realpart #c(23 41)) → 23
+ (imagpart #c(23 41.0)) → 41.0
+ (realpart #c(23 41.0)) → 23.0
+ (imagpart 23.0) → 0.0
+</pre>
+
+</dd><dt><b>Exceptional Situations:</b></dt><dd>
+
+Should signal an error of <i><a href="../26-glossary/t.xhtml#type">type</a></i> <a href="../4-types-and-classes/4.4.29-type-error.xhtml#DictEntry_type_error_364"><b>type-error</b></a> if <i>number</i> is not a <i><a href="../26-glossary/n.xhtml#number">number</a></i>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="12.2.2-complex.xhtml#DictEntry_complex_776"><b>complex</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>

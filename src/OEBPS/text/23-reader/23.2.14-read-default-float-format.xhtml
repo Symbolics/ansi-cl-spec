@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>23.2.14 *read-default-float-format* — Variable</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_read_defaul_1394" class="entry"><span class="secno">23.2.14</span> <span class="names">*read-default-float-format*</span> <span class="kind">Variable</span></h3>
+<dl>
+
+
+<dt><b>Value Type:</b></dt><dd>
+
+
+one of the <i><a href="../26-glossary/a.xhtml#atomictypespecifier">atomic type specifiers</a></i> 
+    <a href="../12-numbers/12.2.5-short-float.xhtml#DictEntry_short_float_779"><b>short-float</b></a>,
+    <a href="../12-numbers/12.2.5-short-float.xhtml#DictEntry_short_float_779"><b>single-float</b></a>,
+    <a href="../12-numbers/12.2.5-short-float.xhtml#DictEntry_short_float_779"><b>double-float</b></a>,
+ or <a href="../12-numbers/12.2.5-short-float.xhtml#DictEntry_short_float_779"><b>long-float</b></a>, 
+ or else some other <i><a href="../26-glossary/t.xhtml#typespecifier">type specifier</a></i> defined 
+    by the <i><a href="../26-glossary/i.xhtml#implementation">implementation</a></i> to be acceptable.
+
+</dd><dt><b>Initial Value:</b></dt><dd>
+
+The <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> <a href="../12-numbers/12.2.5-short-float.xhtml#DictEntry_short_float_779"><b>single-float</b></a>.
+
+</dd><dt><b>Description:</b></dt><dd>
+
+
+Controls the floating-point format that is to be used when reading a
+floating-point number that has no <i><a href="../26-glossary/e.xhtml#exponentmarker">exponent marker</a></i> or that has
+<code>e</code> or <code>E</code> for an <i><a href="../26-glossary/e.xhtml#exponentmarker">exponent marker</a></i>.  Other <i><a href="../26-glossary/e.xhtml#exponentmarker">exponent markers</a></i>
+explicitly prescribe the floating-point format to be used.
+
+<p>
+The printer uses <a href="#DictEntry_read_defaul_1394"><b>*read-default-float-format*</b></a> to guide the
+choice of <i><a href="../26-glossary/e.xhtml#exponentmarker">exponent markers</a></i> when printing floating-point numbers.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (let ((*read-default-float-format* 'double-float))
+   (read-from-string "(1.0 1.0e0 1.0s0 1.0f0 1.0d0 1.0L0)"))
+→ (1.0   1.0   1.0   1.0 1.0   1.0)   ;Implementation has float format F.
+→ (1.0   1.0   1.0s0 1.0 1.0   1.0)   ;Implementation has float formats S and F.
+→ (1.0d0 1.0d0 1.0   1.0 1.0d0 1.0d0) ;Implementation has float formats F and D.
+→ (1.0d0 1.0d0 1.0s0 1.0 1.0d0 1.0d0) ;Implementation has float formats S, F, D.
+→ (1.0d0 1.0d0 1.0   1.0 1.0d0 1.0L0) ;Implementation has float formats F, D, L.
+→ (1.0d0 1.0d0 1.0s0 1.0 1.0d0 1.0L0) ;Implementation has formats S, F, D, L.
+</pre>
+
+</dd></dl>
+</section>
+</body>
+</html>

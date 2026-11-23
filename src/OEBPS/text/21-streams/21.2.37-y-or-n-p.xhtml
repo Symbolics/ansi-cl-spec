@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>21.2.37 y-or-n-p, yes-or-no-p — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_y_or_n_p_ye_1228" class="entry"><span class="secno">21.2.37</span> <span class="names">y-or-n-p, yes-or-no-p</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>y-or-n-p</b>
+<i><code>&amp;optional</code> control <code>&amp;rest</code> arguments</i>
+  → <i>generalized-boolean</i>
+<p>
+<b>yes-or-no-p</b>
+<i><code>&amp;optional</code> control <code>&amp;rest</code> arguments</i>
+  → <i>generalized-boolean</i>
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+
+<i>control</i>—a <i><a href="../26-glossary/f.xhtml#formatcontrol">format control</a></i>.
+
+
+<p>
+<i>arguments</i>—<i><a href="../26-glossary/f.xhtml#formatargument">format arguments</a></i> for <i>control</i>.
+
+</p><p>
+<i>generalized-boolean</i>—a <i><a href="../26-glossary/g.xhtml#generalizedboolean">generalized boolean</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+These functions ask a question and parse a response from the user.
+They return <i><a href="../26-glossary/t.xhtml#true">true</a></i> if the answer is affirmative,
+or <i><a href="../26-glossary/f.xhtml#false">false</a></i> if the answer is negative.
+
+<p>
+
+
+<a href="#DictEntry_y_or_n_p_ye_1228"><b>y-or-n-p</b></a> is for asking the user a question whose answer is either
+"yes" or "no."  
+It is intended that the reply require
+the user to answer a yes-or-no question with a single
+character.
+
+<a href="#DictEntry_y_or_n_p_ye_1228"><b>yes-or-no-p</b></a> is also for asking the user a question
+whose answer is either "Yes" or "No."  
+It is intended that the reply require
+the user to take more action than just a single keystroke, such as typing
+the full word <code>yes</code> or <code>no</code> followed by a newline.
+
+</p><p>
+<a href="#DictEntry_y_or_n_p_ye_1228"><b>y-or-n-p</b></a> types out a message (if supplied), reads an answer
+in some <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> manner (intended to be short and simple,
+such as reading a single character such as <code>Y</code> or <code>N</code>).
+<a href="#DictEntry_y_or_n_p_ye_1228"><b>yes-or-no-p</b></a> types out a message (if supplied), 
+attracts the user's attention (for example, by ringing
+the terminal's bell),
+and reads an answer
+in some <i><a href="../26-glossary/i.xhtml#implementationdependent">implementation-dependent</a></i> manner (intended to be multiple characters,
+such as <code>YES</code> or <code>NO</code>).
+
+</p><p>
+
+
+If <i>format-control</i> is supplied and not <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>,
+then a <a href="21.2.19-terpri.xhtml#DictEntry_terpri_fres_1210"><b>fresh-line</b></a> operation is performed; then
+a message is printed as if <i>format-control</i> and <i>arguments</i>
+were given to <a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>.
+In any case, <a href="#DictEntry_y_or_n_p_ye_1228"><b>yes-or-no-p</b></a> and <a href="#DictEntry_y_or_n_p_ye_1228"><b>y-or-n-p</b></a> will provide 
+a prompt such as "<code>(Y or N)</code>" or "<code>(Yes or No)</code>" if appropriate.
+
+</p><p>
+
+
+
+All input and output are performed using <i>query I/O</i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+
+<pre> (y-or-n-p "(t or nil) given by")
+▷(t or nil) given by (Y or N) <span class="user">Y</span>
+→ <i><a href="../26-glossary/t.xhtml#true">true</a></i>
+ (yes-or-no-p "a ~S message" 'frightening) 
+▷ a FRIGHTENING message (Yes or No) <span class="user">no</span>
+→ <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+ (y-or-n-p "Produce listing file?") 
+▷ Produce listing file?
+▷ Please respond with Y or N. <span class="user">n</span>
+→ <i><a href="../26-glossary/f.xhtml#false">false</a></i>
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+Output to and input from <i>query I/O</i> will occur.
+
+</dd><dt><b>Affected By:</b></dt><dd>
+
+<a href="21.2.53-debug-io.xhtml#DictEntry_debug_io__1244"><b>*query-io*</b></a>.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="../22-printer/22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a>
+
+</dd><dt><b>Notes:</b></dt><dd>
+
+<a href="#DictEntry_y_or_n_p_ye_1228"><b>yes-or-no-p</b></a> and <a href="#DictEntry_y_or_n_p_ye_1228"><b>yes-or-no-p</b></a> do not add question marks
+to the end of the prompt string, so any desired question mark or other
+punctuation should be explicitly included in the text query.
+
+</dd></dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>11.2.10 shadowing-import — Function</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body class="entry">
+<section>
+<h3 id="DictEntry_shadowing_im_725" class="entry"><span class="secno">11.2.10</span> <span class="names">shadowing-import</span> <span class="kind">Function</span></h3>
+<dl>
+
+
+<dt><b>Syntax:</b></dt><dd>
+
+<b>shadowing-import</b>
+<i>symbols <code>&amp;optional</code> package</i>
+  → <i><a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>
+</i><p><i></i>
+
+</p></dd><dt><b>Arguments and Values:</b></dt><dd>
+
+<i>symbols</i>—a <i><a href="../26-glossary/d.xhtml#designator">designator</a></i> for a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of <i><a href="../26-glossary/s.xhtml#symbol">symbols</a></i>.
+
+<p>
+
+<i>package</i>—a <i><a href="../26-glossary/p.xhtml#packagedesignator">package designator</a></i>.
+
+ The default is the <i><a href="../26-glossary/c.xhtml#currentpackage">current package</a></i>.
+
+</p></dd><dt><b>Description:</b></dt><dd>
+
+
+<a href="#DictEntry_shadowing_im_725"><b>shadowing-import</b></a> is like <a href="11.2.6-import.xhtml#DictEntry_import_721"><b>import</b></a>, 
+but it does not signal an error even if the importation of a <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> 
+would shadow some <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> already <i><a href="../26-glossary/a.xhtml#accessible">accessible</a></i> in <i>package</i>.  
+
+<p>
+
+<a href="#DictEntry_shadowing_im_725"><b>shadowing-import</b></a> inserts each of <i>symbols</i> 
+into <i>package</i> as an internal symbol, regardless
+of whether another <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> of the same name is shadowed by this
+action.
+If a different <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> of the same name is already <i><a href="../26-glossary/p.xhtml#present">present</a></i>
+in <i>package</i>,
+that <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> is first <i><a href="../26-glossary/u.xhtml#uninterned">uninterned</a></i> from <i>package</i>.
+The new <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> is added to <i>package</i>'s shadowing-symbols list.  
+
+</p><p>
+
+<a href="#DictEntry_shadowing_im_725"><b>shadowing-import</b></a> does name-conflict
+checking to the extent that it checks whether a distinct existing
+<i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i> with the same name is <i><a href="../26-glossary/a.xhtml#accessible">accessible</a></i>; if so, it is shadowed by
+the new <i><a href="../26-glossary/s.xhtml#symbol">symbol</a></i>, which implies that it must be uninterned
+if it was 
+
+<i><a href="../26-glossary/p.xhtml#present">present</a></i> in <i>package</i>.
+
+</p></dd><dt><b>Examples:</b></dt><dd>
+
+<pre> (in-package "COMMON-LISP-USER") → #&lt;PACKAGE "COMMON-LISP-USER"&gt;
+ (setq sym (intern "CONFLICT")) →  CONFLICT
+ (intern "CONFLICT" (make-package 'temp)) →  TEMP::CONFLICT, NIL
+ (package-shadowing-symbols 'temp) →  NIL
+ (shadowing-import sym 'temp) →  T 
+ (package-shadowing-symbols 'temp) → (CONFLICT)
+</pre>
+
+</dd><dt><b>Side Effects:</b></dt><dd>
+
+
+<a href="#DictEntry_shadowing_im_725"><b>shadowing-import</b></a> 
+changes the state of the package system in such a way that
+the consistency rules do not hold across the change.
+
+<p>
+<i>package</i>'s shadowing-symbols list is modified.
+
+</p></dd><dt><b>Affected By:</b></dt><dd>
+
+Current state of the package system.
+
+</dd><dt><b>See Also:</b></dt><dd>
+
+<a href="11.2.6-import.xhtml#DictEntry_import_721"><b>import</b></a>, <a href="11.2.15-unintern.xhtml#DictEntry_unintern_730"><b>unintern</b></a>, <a href="11.2.24-package-shadowing-symbols.xhtml#DictEntry_package_shad_739"><b>package-shadowing-symbols</b></a>
+
+</dd></dl>
+</section>
+</body>
+</html>
