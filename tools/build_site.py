@@ -6,7 +6,8 @@ OEBPS/ (the same path as an inventory.json href). Web-only files are generated h
 written into src/:
 
   index.html            landing page (generated)
-  nav.xhtml css/ images/ text/   copied unchanged from src/OEBPS/
+  nav.xhtml css/ images/ text/   copied from src/OEBPS/, with navigation chrome spliced into each page
+  assets/site.css       stylesheet for the chrome (tools/site/assets/)
   ANSI-Common-Lisp.epub inventory.json inventory.LICENSE   copied from dist/ (run ./build.sh first)
 
 Output is deterministic. The output directory is replaced.
@@ -17,6 +18,10 @@ import re
 import shutil
 import sys
 from pathlib import Path
+
+# tools/site/ is imported as tools.site (a top-level name "site" would clash with the stdlib module)
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from tools.site import check, chrome, toc as tocmod  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://symbolics.github.io/ansi-cl-spec/"
@@ -32,8 +37,9 @@ INDEX = """<!DOCTYPE html>
 <title>{title}</title>
 <link rel="canonical" href="{site}"/>
 <link rel="stylesheet" type="text/css" href="css/book.css"/>
+<link rel="stylesheet" type="text/css" href="assets/site.css"/>
 <style>
-body {{ max-width: 44em; margin: 0 auto; padding: 0 1em 2em; font-family: Georgia, "Times New Roman", serif; }}
+body {{ font-family: Georgia, "Times New Roman", serif; }}
 ul.start li {{ margin: 0.35em 0; }}
 .notice {{ font-size: 0.9em; margin-top: 2em; border-top: 1px solid rgba(128,128,128,0.4); padding-top: 0.8em; }}
 </style>
@@ -89,6 +95,20 @@ def landing_page(oebps, site=SITE):
     return INDEX.format(site=html.escape(site), repo=REPO, **esc)
 
 
+def add_navigation(oebps, out):
+    """Splice the site chrome into every copied page and install the stylesheet."""
+    toc = tocmod.Toc.load(oebps)
+    edition_title = opf_field((oebps / "content.opf").read_text(encoding="utf-8"),
+                              r'<dc:title id="title">(.*?)</dc:title>') or "ANSI Common Lisp"
+    pages = ["nav.xhtml"] + sorted(p.relative_to(out).as_posix() for p in (out / "text").rglob("*.xhtml"))
+    for page in pages:
+        f = out / page
+        f.write_text(chrome.add_chrome(f.read_text(encoding="utf-8"), toc, page, edition_title), encoding="utf-8")
+    assets = out / "assets"
+    assets.mkdir()
+    shutil.copyfile(Path(__file__).resolve().parent / "site" / "assets" / "site.css", assets / "site.css")
+
+
 def build_site(oebps, dist, out, site=SITE):
     oebps, dist, out = Path(oebps), Path(dist), Path(out)
     missing = [n for n in DOWNLOADS if not (dist / n).is_file()]
@@ -106,6 +126,7 @@ def build_site(oebps, dist, out, site=SITE):
     for name in DOWNLOADS:
         shutil.copyfile(dist / name, out / name)
     (out / "index.html").write_text(landing_page(oebps, site), encoding="utf-8")
+    add_navigation(oebps, out)
     return out
 
 
@@ -115,11 +136,14 @@ def main(argv=None):
     ap.add_argument("--dist", default=str(ROOT / "dist"))
     ap.add_argument("--out", default=str(ROOT / "dist" / "site"))
     ap.add_argument("--site", default=SITE, help="public base URL (for the canonical link)")
+    ap.add_argument("--no-check", action="store_true", help="skip the output check (tools/site/check.py)")
     a = ap.parse_args(argv)
     out = build_site(a.oebps, a.dist, a.out, a.site)
     n = sum(1 for p in out.rglob("*") if p.is_file())
     print("built site %s (%d files)" % (out, n))
-    return 0
+    if a.no_check:
+        return 0
+    return check.main([str(out)])
 
 
 if __name__ == "__main__":

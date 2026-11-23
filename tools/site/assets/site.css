@@ -1,0 +1,78 @@
+/* Web edition chrome. Only site-* classes and the page body layout; the book's own classes are untouched. */
+:root {
+  --site-fg: #1d1d1f;
+  --site-bg: #ffffff;
+  --site-muted: #5f6368;
+  --site-line: rgba(128, 128, 128, 0.35);
+  --site-link: #0b57a4;
+  --site-bar: #f3f4f6;
+  --site-content-w: 48em;
+  --site-sidebar-w: 0px; /* a sidebar sets this; the page body leaves room for it */
+  --site-gutter: max(0.75rem, calc((100vw - var(--site-sidebar-w) - var(--site-content-w)) / 2));
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --site-fg: #e6e6e6;
+    --site-bg: #16181c;
+    --site-muted: #9aa0a6;
+    --site-line: rgba(160, 160, 160, 0.3);
+    --site-link: #8ab4f8;
+    --site-bar: #22262c;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 var(--site-gutter) 2em calc(var(--site-sidebar-w) + var(--site-gutter));
+  color: var(--site-fg);
+  background: var(--site-bg);
+  overflow-wrap: break-word;
+}
+body.cover { padding: 0; }
+body a { color: var(--site-link); }
+img, table { max-width: 100%; }
+pre { overflow-x: auto; }
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2em 1em;
+  margin: 0 calc(-1 * var(--site-gutter)) 1em;
+  padding: 0.5em var(--site-gutter);
+  background: var(--site-bar);
+  border-bottom: 1px solid var(--site-line);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+body.cover .site-header { margin: 0 0 1em; padding-inline: 0.75rem; text-align: left; }
+.site-header a { text-decoration: none; }
+.site-header a:hover, .site-pager a:hover { text-decoration: underline; }
+.site-title { font-weight: 600; }
+.site-crumbs { flex: 1 1 100%; color: var(--site-muted); }
+.site-crumbs ol { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+.site-crumbs li + li::before { content: "\203A"; margin: 0 0.45em; color: var(--site-muted); }
+.site-crumbs [aria-current="page"] { color: var(--site-fg); font-weight: 600; }
+
+.site-pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5em 1.5em;
+  margin: 2em 0 0.5em;
+  padding-top: 0.8em;
+  border-top: 1px solid var(--site-line);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+}
+.site-pager a { text-decoration: none; }
+.site-pager .site-next { margin-left: auto; text-align: right; }
+.site-notice {
+  margin: 0.5em 0 0;
+  color: var(--site-muted);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+}
