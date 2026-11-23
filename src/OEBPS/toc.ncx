@@ -2931,32 +2931,34 @@
 </navPoint>
 </navPoint>
 </navPoint>
-<navPoint id="np1464" playOrder="1465"><navLabel><text>Index</text></navLabel><content src="text/index/nonalph.xhtml#index"/>
-<navPoint id="np1465" playOrder="1466"><navLabel><text>Non-alphabetic</text></navLabel><content src="text/index/nonalph.xhtml#IndexChapter_NON_ALPHABET_4"/></navPoint>
-<navPoint id="np1466" playOrder="1467"><navLabel><text>A</text></navLabel><content src="text/index/a.xhtml#IndexChapter_A_11"/></navPoint>
-<navPoint id="np1467" playOrder="1468"><navLabel><text>B</text></navLabel><content src="text/index/b.xhtml#IndexChapter_B_12"/></navPoint>
-<navPoint id="np1468" playOrder="1469"><navLabel><text>C</text></navLabel><content src="text/index/c.xhtml#IndexChapter_C_13"/></navPoint>
-<navPoint id="np1469" playOrder="1470"><navLabel><text>D</text></navLabel><content src="text/index/d.xhtml#IndexChapter_D_14"/></navPoint>
-<navPoint id="np1470" playOrder="1471"><navLabel><text>E</text></navLabel><content src="text/index/e.xhtml#IndexChapter_E_15"/></navPoint>
-<navPoint id="np1471" playOrder="1472"><navLabel><text>F</text></navLabel><content src="text/index/f.xhtml#IndexChapter_F_16"/></navPoint>
-<navPoint id="np1472" playOrder="1473"><navLabel><text>G</text></navLabel><content src="text/index/g.xhtml#IndexChapter_G_18"/></navPoint>
-<navPoint id="np1473" playOrder="1474"><navLabel><text>H</text></navLabel><content src="text/index/h.xhtml#IndexChapter_H_19"/></navPoint>
-<navPoint id="np1474" playOrder="1475"><navLabel><text>I</text></navLabel><content src="text/index/i.xhtml#IndexChapter_I_3"/></navPoint>
-<navPoint id="np1475" playOrder="1476"><navLabel><text>J</text></navLabel><content src="text/index/j.xhtml#IndexChapter_J_6"/></navPoint>
-<navPoint id="np1476" playOrder="1477"><navLabel><text>K</text></navLabel><content src="text/index/k.xhtml#IndexChapter_K_22"/></navPoint>
-<navPoint id="np1477" playOrder="1478"><navLabel><text>L</text></navLabel><content src="text/index/l.xhtml#IndexChapter_L_24"/></navPoint>
-<navPoint id="np1478" playOrder="1479"><navLabel><text>M</text></navLabel><content src="text/index/m.xhtml#IndexChapter_M_25"/></navPoint>
-<navPoint id="np1479" playOrder="1480"><navLabel><text>N</text></navLabel><content src="text/index/n.xhtml#IndexChapter_N_26"/></navPoint>
-<navPoint id="np1480" playOrder="1481"><navLabel><text>O</text></navLabel><content src="text/index/o.xhtml#IndexChapter_O_27"/></navPoint>
-<navPoint id="np1481" playOrder="1482"><navLabel><text>P</text></navLabel><content src="text/index/p.xhtml#IndexChapter_P_28"/></navPoint>
-<navPoint id="np1482" playOrder="1483"><navLabel><text>Q</text></navLabel><content src="text/index/q.xhtml#IndexChapter_Q_29"/></navPoint>
-<navPoint id="np1483" playOrder="1484"><navLabel><text>R</text></navLabel><content src="text/index/r.xhtml#IndexChapter_R_30"/></navPoint>
-<navPoint id="np1484" playOrder="1485"><navLabel><text>S</text></navLabel><content src="text/index/s.xhtml#IndexChapter_S_31"/></navPoint>
-<navPoint id="np1485" playOrder="1486"><navLabel><text>T</text></navLabel><content src="text/index/t.xhtml#IndexChapter_T_32"/></navPoint>
-<navPoint id="np1486" playOrder="1487"><navLabel><text>U</text></navLabel><content src="text/index/u.xhtml#IndexChapter_U_33"/></navPoint>
-<navPoint id="np1487" playOrder="1488"><navLabel><text>V</text></navLabel><content src="text/index/v.xhtml#IndexChapter_V_34"/></navPoint>
-<navPoint id="np1488" playOrder="1489"><navLabel><text>W</text></navLabel><content src="text/index/w.xhtml#IndexChapter_W_35"/></navPoint>
-<navPoint id="np1489" playOrder="1490"><navLabel><text>X Y Z</text></navLabel><content src="text/index/xyz.xhtml#IndexChapter_X_Y_Z_36"/></navPoint>
+<navPoint id="np-errata" playOrder="1465"><navLabel><text>Errata and Corrections</text></navLabel><content src="text/back/errata.xhtml#errata-title"/>
+</navPoint>
+<navPoint id="np1464" playOrder="1466"><navLabel><text>Index</text></navLabel><content src="text/index/nonalph.xhtml#index"/>
+<navPoint id="np1465" playOrder="1467"><navLabel><text>Non-alphabetic</text></navLabel><content src="text/index/nonalph.xhtml#IndexChapter_NON_ALPHABET_4"/></navPoint>
+<navPoint id="np1466" playOrder="1468"><navLabel><text>A</text></navLabel><content src="text/index/a.xhtml#IndexChapter_A_11"/></navPoint>
+<navPoint id="np1467" playOrder="1469"><navLabel><text>B</text></navLabel><content src="text/index/b.xhtml#IndexChapter_B_12"/></navPoint>
+<navPoint id="np1468" playOrder="1470"><navLabel><text>C</text></navLabel><content src="text/index/c.xhtml#IndexChapter_C_13"/></navPoint>
+<navPoint id="np1469" playOrder="1471"><navLabel><text>D</text></navLabel><content src="text/index/d.xhtml#IndexChapter_D_14"/></navPoint>
+<navPoint id="np1470" playOrder="1472"><navLabel><text>E</text></navLabel><content src="text/index/e.xhtml#IndexChapter_E_15"/></navPoint>
+<navPoint id="np1471" playOrder="1473"><navLabel><text>F</text></navLabel><content src="text/index/f.xhtml#IndexChapter_F_16"/></navPoint>
+<navPoint id="np1472" playOrder="1474"><navLabel><text>G</text></navLabel><content src="text/index/g.xhtml#IndexChapter_G_18"/></navPoint>
+<navPoint id="np1473" playOrder="1475"><navLabel><text>H</text></navLabel><content src="text/index/h.xhtml#IndexChapter_H_19"/></navPoint>
+<navPoint id="np1474" playOrder="1476"><navLabel><text>I</text></navLabel><content src="text/index/i.xhtml#IndexChapter_I_3"/></navPoint>
+<navPoint id="np1475" playOrder="1477"><navLabel><text>J</text></navLabel><content src="text/index/j.xhtml#IndexChapter_J_6"/></navPoint>
+<navPoint id="np1476" playOrder="1478"><navLabel><text>K</text></navLabel><content src="text/index/k.xhtml#IndexChapter_K_22"/></navPoint>
+<navPoint id="np1477" playOrder="1479"><navLabel><text>L</text></navLabel><content src="text/index/l.xhtml#IndexChapter_L_24"/></navPoint>
+<navPoint id="np1478" playOrder="1480"><navLabel><text>M</text></navLabel><content src="text/index/m.xhtml#IndexChapter_M_25"/></navPoint>
+<navPoint id="np1479" playOrder="1481"><navLabel><text>N</text></navLabel><content src="text/index/n.xhtml#IndexChapter_N_26"/></navPoint>
+<navPoint id="np1480" playOrder="1482"><navLabel><text>O</text></navLabel><content src="text/index/o.xhtml#IndexChapter_O_27"/></navPoint>
+<navPoint id="np1481" playOrder="1483"><navLabel><text>P</text></navLabel><content src="text/index/p.xhtml#IndexChapter_P_28"/></navPoint>
+<navPoint id="np1482" playOrder="1484"><navLabel><text>Q</text></navLabel><content src="text/index/q.xhtml#IndexChapter_Q_29"/></navPoint>
+<navPoint id="np1483" playOrder="1485"><navLabel><text>R</text></navLabel><content src="text/index/r.xhtml#IndexChapter_R_30"/></navPoint>
+<navPoint id="np1484" playOrder="1486"><navLabel><text>S</text></navLabel><content src="text/index/s.xhtml#IndexChapter_S_31"/></navPoint>
+<navPoint id="np1485" playOrder="1487"><navLabel><text>T</text></navLabel><content src="text/index/t.xhtml#IndexChapter_T_32"/></navPoint>
+<navPoint id="np1486" playOrder="1488"><navLabel><text>U</text></navLabel><content src="text/index/u.xhtml#IndexChapter_U_33"/></navPoint>
+<navPoint id="np1487" playOrder="1489"><navLabel><text>V</text></navLabel><content src="text/index/v.xhtml#IndexChapter_V_34"/></navPoint>
+<navPoint id="np1488" playOrder="1490"><navLabel><text>W</text></navLabel><content src="text/index/w.xhtml#IndexChapter_W_35"/></navPoint>
+<navPoint id="np1489" playOrder="1491"><navLabel><text>X Y Z</text></navLabel><content src="text/index/xyz.xhtml#IndexChapter_X_Y_Z_36"/></navPoint>
 </navPoint>
 </navMap>
 </ncx>

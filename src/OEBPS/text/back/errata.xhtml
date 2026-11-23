@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en" xml:lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Errata and Corrections</title>
+<link rel="stylesheet" type="text/css" href="../../css/book.css"/>
+</head>
+<body>
+<section epub:type="errata" id="errata">
+<h1 id="errata-title">Errata and Corrections</h1>
+
+<h2 id="errata-about">About this page</h2>
+<p>This edition reproduces the draft ANSI Common Lisp standard (dpANS3R) as faithfully as possible. Errors that crept in while converting the TeX source to EPUB, that is, differences from dpANS3R that were introduced by the conversion, have been corrected and are not listed individually. A small number of errors that are present in the draft itself have been corrected here as well. Every place where this edition differs from the draft text for that reason is listed below, so that a reader holding the original can find it.</p>
+<p>Corrections were made only where the draft is clearly wrong by its own rules (other entries of the same document, or the semantics of the language), and each changed example was run in SBCL 2.6.2. Values that the draft marks implementation-dependent are left as printed.</p>
+
+<h2 id="errata-corrections">Corrections to the draft</h2>
+<p>Each item names the section and entry (linked to the corrected place), what the draft said, and what this edition says.</p>
+<ol>
+<li><a href="../3-evaluation-and-compilation/3.8.12-macroexpand.xhtml#macroexpand">3.8.12 macroexpand, macroexpand-1</a>. Draft: <code>(defmacro delta ...)</code> returns <code>EPSILON</code>. Here: <code>DELTA</code>.</li>
+<li><a href="../3-evaluation-and-compilation/3.8.15-macroexpand-hook.xhtml#*macroexpand-hook*">3.8.15 *macroexpand-hook*</a>. Draft: output <code>Now expanding (MACHOOK 1 2)</code>. Here: <code>Now expanding: (MACHOOK 1 2)</code>, matching the hook's format string.</li>
+<li><a href="../3-evaluation-and-compilation/3.8.20-dynamic-extent.xhtml#dynamic-extent">3.8.20 dynamic-extent</a>. Draft: the example calls <code>string-search</code>, which is not a Common Lisp function. Here: <code>search</code>.</li>
+<li><a href="../5-data-and-control-flow/5.3.4-fboundp.xhtml#fboundp">5.3.4 fboundp</a>. Draft: <code>(fboundp 'nth-value)</code> is false. Here: true, since <code>nth-value</code> is a macro and the names of macros are fbound.</li>
+<li><a href="../5-data-and-control-flow/5.3.28-throw.xhtml#throw">5.3.28 throw</a>. Draft: the printed line and its prose omit the final period of <code>"The inner catch returns ~s.~%"</code>. Here: the period is shown.</li>
+<li><a href="../7-objects/7.7.1-function-keywords.xhtml#function-keywords">7.7.1 function-keywords</a>. Draft: the second call examines the method of <code>gf1</code> but shows <code>(), false</code>. Here: it examines the method of <code>gf2</code>, which has no keywords.</li>
+<li><a href="../9-conditions/9.2.40-with-simple-restart.xhtml#with-simple-restart">9.2.40 with-simple-restart</a>. Draft: the example uses the non-existent <code>fixnump</code>. Here: <code>(typep result 'fixnum)</code>.</li>
+<li><a href="../9-conditions/9.2.40-with-simple-restart.xhtml#with-simple-restart">9.2.40 with-simple-restart</a>. Draft: <code>(or (compute-fixnum-power-of-2 x) 'something big)</code>, which returns <code>SOMETHING</code>. Here: <code>'something-big</code>, matching the result shown.</li>
+<li><a href="../9-conditions/9.2.43-muffle-warning.xhtml#muffle-warning">9.2.43 muffle-warning</a>. Draft: <code>(defun quiet-warning-handler ...)</code> returns <code>CUSTOM-WARNING-HANDLER</code>. Here: <code>QUIET-WARNING-HANDLER</code>.</li>
+<li><a href="../11-packages/11.2.9-shadow.xhtml#shadow">11.2.9 shadow</a>. Draft: <code>(find-symbol 'car 'temp)</code>, a symbol where a string is required. Here: <code>(find-symbol "CAR" 'temp)</code> (two places).</li>
+<li><a href="../12-numbers/12.2.23-sinh.xhtml#asinh">12.2.23 sinh, cosh, tanh, asinh, acosh, atanh (inverse hyperbolic sine)</a>. Draft: a number with imaginary part π/2 is in the range “if and only if its imaginary part is non-negative”. Here: “its real part is non-negative”.</li>
+<li><a href="../12-numbers/12.2.23-sinh.xhtml#atanh">12.2.23 sinh, cosh, tanh, asinh, acosh, atanh (inverse hyperbolic tangent)</a>. Draft: a number with imaginary part π/2 is in the range “if and only if its imaginary part is strictly positive”. Here: “its real part is strictly positive”.</li>
+<li><a href="../12-numbers/12.2.43-random-state.xhtml#*random-state*">12.2.43 *random-state*</a>. Draft: <code>(random)</code> with no argument, which is an error. Here: <code>(random 100)</code>.</li>
+<li><a href="../14-conses/14.2.12-subst.xhtml#subst">14.2.12 subst, subst-if, subst-if-not, nsubst, nsubst-if, nsubst-if-not</a>. Draft: <code>(subst-if-not '(x) #'consp tree1)</code> returns <code>(1 X)</code>. Here: <code>((X) ((X) (X) X) ((X) (X) (X) X) ((X) (X) (X) (X) X) X)</code>, the value the definition prescribes.</li>
+<li><a href="../14-conses/14.2.43-intersection.xhtml#intersection">14.2.43 intersection, nintersection</a>. Draft: the lists are built with unquoted <code>a b c d</code>. Here: <code>'a 'b 'c 'd</code>.</li>
+<li><a href="../14-conses/14.2.47-set-exclusive-or.xhtml#set-exclusive-or">14.2.47 set-exclusive-or, nset-exclusive-or</a>. Draft: <code>(list (("a" . "b") ...))</code>, which calls a list as a function (two places). Here: <code>(copy-list '(("a" . "b") ...))</code>.</li>
+<li><a href="../17-sequences/17.3.21-merge.xhtml#merge">17.3.21 merge</a>. Draft: <code>(copy-seq :nosy")</code> and <code>(vector ((red . 1) (blue . 4)))</code> (and the analogous second vector). Here: <code>(copy-seq "nosy")</code>, <code>(vector '(red . 1) '(blue . 4))</code> and <code>(vector '(yellow . 2) '(green . 7))</code>.</li>
+<li><a href="../19-filenames/19.4.13-wild-pathname-p.xhtml#wild-pathname-p">19.4.13 wild-pathname-p</a>. Draft: <code>(pathname :name "F*O")</code>. Here: <code>(make-pathname :name "F*O")</code>.</li>
+<li><a href="../22-printer/22.4.18-print-case.xhtml#*print-case*">22.4.18 *print-case*</a>. Draft: <code>(defun test-print-case ...)</code> returns <code>TEST-PC</code>. Here: <code>TEST-PRINT-CASE</code>.</li>
+<li><a href="../22-printer/22.4.27-print-readably.xhtml#*print-readably*">22.4.27 *print-readably*</a>. Draft: <code>(setf (gethash table 1) 'one)</code> and <code>(setf (gethash table 2) 'two)</code>, arguments reversed. Here: <code>(gethash 1 table)</code> and <code>(gethash 2 table)</code>.</li>
+<li><a href="../26-glossary/i.xhtml#fig-26-2">26.1 Glossary, I/O customization variable (Figure 26-2)</a>. Draft: <code>query-io*</code>. Here: <code>*query-io*</code>.</li>
+</ol>
+
+<h2 id="errata-editorial">Editorial corrections of typographical errors</h2>
+<p>Deliberate edits relative to the draft text:</p>
+<ul>
+<li><a href="../5-data-and-control-flow/5.3.34-eql.xhtml#eql">5.3.34 eql</a>. “folowing” is spelled “following”.</li>
+<li><a href="../7-objects/7.7.27-defmethod.xhtml#defmethod">7.7.27 defmethod</a>. the syntax <code>keyword</code> <code>var</code>, which the draft typesets with no space (“keywordvar”), has a space.</li>
+<li><a href="../21-streams/21.2.33-with-open-stream.xhtml#with-open-stream">21.2.33 with-open-stream</a>. the duplicated “the” in “assign the the variable” is removed.</li>
+</ul>
+<p>Doubled words in the draft, each reduced to one:</p>
+<ul>
+<li><a href="../2-syntax/2.3-interpretation-of-tokens.xhtml#SubSection_Valid_Patter_140">2.3.5 Valid Patterns for Tokens</a>. “in the the keyword package”.</li>
+<li><a href="../4-types-and-classes/4.4.4-compiled-function.xhtml#compiled-function">4.4.4 compiled-function</a>. “a a compiled function”.</li>
+<li><a href="../7-objects/7.7.34-find-method.xhtml#find-method">7.7.34 find-method</a>. “an an error”.</li>
+<li><a href="../11-packages/11.2.16-in-package.xhtml#in-package">11.2.16 in-package</a>. “Causes the the package”.</li>
+<li><a href="../12-numbers/12.2.59-parse-integer.xhtml#parse-integer">12.2.59 parse-integer</a>. “a a non-empty sequence”.</li>
+<li><a href="../14-conses/14.2.11-sublis.xhtml#sublis">14.2.11 sublis, nsublis</a>. “structure structure”.</li>
+<li><a href="../14-conses/14.2.45-pushnew.xhtml#pushnew">14.2.45 pushnew</a>. “part part of the element”.</li>
+<li><a href="../22-printer/22.2-the-lisp-pretty-printer.xhtml#SubSubSectio_Compiling_Fo_1282">22.2.1.3 Compiling Format Strings</a>. “the the formatter macro”.</li>
+<li><a href="../22-printer/22.4.12-print-unreadable-object.xhtml#print-unreadable-object">22.4.12 print-unreadable-object</a>. “in the the angle brackets”.</li>
+<li><a href="../24-system-construction/24.2.7-load-pathname.xhtml#*load-pathname*">24.2.7 *load-pathname*, *load-truename*</a>. “the the first argument”.</li>
+<li><a href="../A-appendix/A.1-removed-language-features.xhtml#SubSection_Requirements_1486">A.1.1 Requirements for removed and deprecated features</a>. “in the the common-lisp package”.</li>
+<li><a href="../26-glossary/c.xhtml#copy">26.1 Glossary, copy</a>. “to to the function random”.</li>
+<li><a href="../26-glossary/e.xhtml#em">26.1 Glossary, em</a>. “of of a letter M”.</li>
+<li><a href="../26-glossary/s.xhtml#safe">26.1 Glossary, safe</a>. “where the the highest safety level”.</li>
+</ul>
+</section>
+</body>
+</html>
