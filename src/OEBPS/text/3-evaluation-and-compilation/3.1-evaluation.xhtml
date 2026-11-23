@@ -1023,7 +1023,7 @@ If, in this example, one were to change the <code>(funcall f)</code> to
 <code>(funcall g)</code>, then the value of the call <code>(contorted-example nil nil 2)</code>
 would be <code>9</code>.  The value would change because 
 <a href="../5-data-and-control-flow/5.3.7-funcall.xhtml#DictEntry_funcall_393"><b>funcall</b></a> would cause the
-execution of <code>(return-from here<i><sub>2</sub></i> 4)</code>, thereby causing
+execution of <code>(return-from here<i><sub>2</sub></i> 4)</code>, thereby causing
 a return from the inner <i><a href="../26-glossary/e.xhtml#exitpoint">exit point</a></i> (here<i><sub>2</sub></i>).
 When that occurs, the value <code>4</code> is returned from the
 middle invocation of <code>contorted-example</code>, <code>5</code> is added to that

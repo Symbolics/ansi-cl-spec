@@ -1197,7 +1197,7 @@ parameter <i>n</i>, then the padded text must fit on the current line with
 <i>n</i> character positions to spare to avoid outputting the first clause's
 text.  For example, the control string
 
-</p><pre> "~%;; ~{ ~&lt;~%;; ~1:; ~S~&gt;~^ ,~} .~%"
+</p><pre> "~%;; ~{ ~&lt;~%;; ~1:; ~S~&gt;~^ ,~} .~%"
 </pre>
 
 <p>
@@ -1212,7 +1212,7 @@ prefix parameter, then it is used as the width of the line,
 thus overriding the natural line width of the output stream.  To make
 the preceding example use a line width of 50, one would write
 
-</p><pre> "~%;; ~{ ~&lt;~%;; ~1,50:; ~S~&gt;~^ ,~} .~%"
+</p><pre> "~%;; ~{ ~&lt;~%;; ~1,50:; ~S~&gt;~^ ,~} .~%"
 </pre><p>
 
 If the second argument is not supplied, then <a href="22.4.31-format.xhtml#DictEntry_format_1371"><b>format</b></a> uses the
@@ -1347,7 +1347,7 @@ The combination of <code>~[</code> and <code>#</code> is useful, for
 example, for dealing with English conventions for printing lists:
 
 </p><pre> (setq foo "Items:~#[ none~; ~S~; ~S and ~S~
-           ~:;~@{~#[~; and~] ~S~^ ,~}~].")
+           ~:;~@{~#[~; and~] ~S~^ ,~}~].")
  (format nil foo) →  "Items: none."
  (format nil foo 'foo) →  "Items: FOO."
  (format nil foo 'foo 'bar) →  "Items: FOO and BAR."
@@ -1409,7 +1409,7 @@ is used, whether
 or not all of the last sublist had been processed.  
 For example:
 
-</p><pre> (format nil "Pairs:~:{&lt;~S,~S&gt;~} ." 
+</p><pre> (format nil "Pairs:~:{&lt;~S,~S&gt;~} ." 
                  '((a 1) (b 2) (c 3)))
 → "Pairs: &lt;A,1&gt; &lt;B,2&gt; &lt;C,3&gt;."
 </pre>
@@ -1422,7 +1422,7 @@ using one argument that is a list, all the remaining arguments
 are used as the list of arguments for the iteration.
 Example:
 
-</p><pre> (format nil "Pairs:~@{&lt;~S,~S&gt;~} ." 'a 1 'b 2 'c 3)
+</p><pre> (format nil "Pairs:~@{&lt;~S,~S&gt;~} ." 'a 1 'b 2 'c 3)
 → "Pairs: &lt;A,1&gt; &lt;B,2&gt; &lt;C,3&gt;."
 </pre><p>
 If the iteration is terminated before all the remaining arguments are
@@ -1441,7 +1441,7 @@ On each iteration, the next argument is
 used as a <i><a href="../26-glossary/l.xhtml#list">list</a></i> of arguments to <i>str</i>.
 Example:
 
-</p><pre> (format nil "Pairs:~:@{&lt;~S,~S&gt;~} ." 
+</p><pre> (format nil "Pairs:~:@{&lt;~S,~S&gt;~} ." 
               '(a 1) '(b 2) '(c 3)) 
 → "Pairs: &lt;A,1&gt; &lt;B,2&gt; &lt;C,3&gt;."
 </pre><p>
@@ -1683,7 +1683,7 @@ the latter terminates the entire iteration if and only if no
 arguments remain for the current iteration step.
 For example:
 
-</p><pre> (format nil "~:{ ~@?~:^ ...~} " '(("a") ("b"))) → "a...b"
+</p><pre> (format nil "~:{ ~@?~:^ ...~} " '(("a") ("b"))) → "a...b"
 </pre>
 
 

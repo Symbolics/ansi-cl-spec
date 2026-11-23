@@ -335,7 +335,7 @@ or <i><a href="../26-glossary/d.xhtml#dot">dot</a></i>.  (A similar caveat holds
 <code>`(x1 x2 x3 ... xn . atom)</code>
 may be interpreted to mean
 
-<pre> (append [ x1][ x2][ x3]... [ xn](quote atom))
+<pre> (append [ x1][ x2][ x3]... [ xn](quote atom))
 </pre>
 where the brackets are used to indicate
 a transformation of an <i>xj</i> as follows:
@@ -361,7 +361,7 @@ thereby reducing it to the previous case.
 </li><li>
 <code>`(x1 x2 x3 ... xn . ,form)</code> may be interpreted to mean
 
-<pre> (append [ x1][ x2][ x3]... [ xn] form)
+<pre> (append [ x1][ x2][ x3]... [ xn] form)
 </pre>
 where the brackets indicate a transformation of an <code>xj</code> as described above.
 
