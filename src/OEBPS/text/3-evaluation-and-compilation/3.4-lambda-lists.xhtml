@@ -687,7 +687,7 @@ or <i><a href="../26-glossary/o.xhtml#object">object</a></i> for which that <i><
 </p><table>
 <tbody><tr><td>
 lambda-list::= </td><td>(<code>{</code><i>var</i> | 
-(<i>var</i> [<i>specializer</i>])<sup>*</sup><br/>
+(<i>var</i> [<i>specializer</i>])<code>}</code><sup>*</sup><br/>
 		     <code>[</code><code>&amp;optional</code> <code>{</code><i>var</i> | 
                (<i>var</i> <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup><code>]</code><br/>
 		     <code>[</code><code>&amp;rest</code> <i>var</i><code>]</code><br/>
@@ -731,7 +731,7 @@ a <i><a href="../26-glossary/m.xhtml#macrolambdalist">macro lambda list</a></i> 
 </p><table>
 <tbody><tr><td>
 reqvars::= </td><td><code>{</code><i>var</i> | 
-↓<i>pattern</i><code>}</code></td></tr>
+↓<i>pattern</i><code>}</code><sup>*</sup></td></tr>
 </tbody></table>
 <table>
 <tbody><tr><td>
@@ -741,8 +741,8 @@ optvars::= </td><td><code>[</code><code>&amp;optional</code> <code>{</code><i>va
 </tbody></table>
 <table>
 <tbody><tr><td>
-restvar::= </td><td><code>[</code><code>{</code><code>&amp;rest</code> | <code>&amp;body</code><code>}</code> <code>]</code><code>{</code><i>var</i> | 
-↓<i>pattern</i><code>}</code></td></tr>
+restvar::= </td><td><code>[</code><code>{</code><code>&amp;rest</code> | <code>&amp;body</code><code>}</code> <code>{</code><i>var</i> | 
+↓<i>pattern</i><code>}</code><code>]</code></td></tr>
 </tbody></table>
 <table>
 <tbody><tr><td>
@@ -781,7 +781,7 @@ lambda-list::= </td><td>(↓wholevar ↓envvar
 <table>
 <tbody><tr><td>
 pattern::= </td>
-<td>(↓wholevar↓reqvars↓optvars↓restvar↓keyvars↓auxvars) |</td></tr>
+<td>(↓wholevar ↓reqvars ↓optvars ↓restvar ↓keyvars ↓auxvars) |</td></tr>
 <tr><td/><td>(↓wholevar ↓reqvars ↓optvars <code>.</code>
 <i>var</i>)</td></tr></tbody></table>
 
@@ -1145,15 +1145,14 @@ reqvars::= <code>{</code><i>var</i> |
 ↓<i>lambda-list</i><code>}</code><sup>*</sup></p><p>
 
 optvars::= <code>[</code><code>&amp;optional</code> <code>{</code><i>var</i> | 
-                         (<i>var</i> <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup><code>]</code></p><p>
+                         (<code>{</code><i>var</i> | ↓<i>lambda-list</i><code>}</code> <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup><code>]</code></p><p>
 
 restvar::= <code>[</code><code>{</code><code>&amp;rest</code> | <code>&amp;body</code><code>}</code> <code>{</code><i>var</i> | 
                          ↓<i>lambda-list</i><code>}</code><code>]</code></p><p>
 
 keyvars::= <code>[</code><code>&amp;key</code> <code>{</code><i>var</i> | 
-                         (<code>{</code><i>var</i> | (<i>keyword-name</i> <i>var</i>)<code>}</code> 
-                         <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup>[<code>&amp;
-                         allow-other-keys</code>]<code>]</code></p><p>
+                         (<code>{</code><i>var</i> | (<i>keyword-name</i> <code>{</code><i>var</i> | ↓<i>lambda-list</i><code>}</code>)<code>}</code> 
+                         <i>[</i>init-form [supplied-p-parameter <i>]</i>])<code>}</code><sup>*</sup>[<code>&amp;allow-other-keys</code>]<code>]</code></p><p>
 
 auxvars::= <code>[</code><code>&amp;aux</code> <code>{</code><i>var</i> | (<i>var</i> <i>[</i><i>init-form</i> <i>]</i>)<code>}</code><sup>*</sup><code>]</code></p><p>
 

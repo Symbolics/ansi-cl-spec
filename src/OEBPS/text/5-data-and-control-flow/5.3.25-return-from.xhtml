@@ -50,7 +50,7 @@ as described in Section <a href="5.2-transfer-of-control-to-an-exit-point.xhtml#
     (dotimes (i 10) (incf a) (when (oddp i) (return)))
     a) → 2
  (defun temp (x)
-    (if x (return-from temp '))
+    (if x (return-from temp 'dummy))
     44) →  TEMP
  (temp nil) → 44
  (temp t) →  DUMMY

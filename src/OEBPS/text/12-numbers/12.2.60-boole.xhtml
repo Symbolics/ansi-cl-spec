@@ -129,7 +129,7 @@ specified for any <i>op</i> in the next figure.
 ;;; of the possible values of OP to each possible combination of bits.
  (progn
    (format t "~&amp;Results of (BOOLE &lt;op&gt; #b0011 #b0101) ...~
-           ~% - Op---- - Decimal-- - Binary- - Bits - ~%")
+           ~%---Op-------Decimal-----Binary----Bits---~%")
    (dolist (symbol '(boole-1     boole-2    boole-and  boole-andc1
                      boole-andc2 boole-c1   boole-c2   boole-clr
                      boole-eqv   boole-ior  boole-nand boole-nor
@@ -138,7 +138,7 @@ specified for any <i>op</i> in the next figure.
        (format t "~&amp; ~A~13T~3,' D~23T~:*~5,' B~31T ...~4,'0B~%" 
                symbol result (logand result #b1111)))))
 ▷ Results of (BOOLE &lt;op&gt; #b0011 #b0101) ...
-▷ - Op---- - Decimal-- - Binary- - Bits - 
+▷ ---Op-------Decimal-----Binary----Bits---
 ▷ BOOLE-1       3          11    ...0011
 ▷ BOOLE-2       5         101    ...0101
 ▷ BOOLE-AND     1           1    ...0001

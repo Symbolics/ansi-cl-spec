@@ -97,9 +97,9 @@ returns <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>ni
 If it is desired that <code>#$<i>foo</i></code> :
 as if it were <code>(dollars <i>foo</i>)</code>.
 
-<pre>(defun |#<i>-reader| (stream subchar arg)
+<pre>(defun |#$-reader| (stream subchar arg)
    (declare (ignore subchar arg))
-   (list 'dollars (read stream t nil t))) → |#</i>-reader|
+   (list 'dollars (read stream t nil t))) → |#$-reader|
  (set-dispatch-macro-character #\# #\$ #'|#$-reader|) →  T
 </pre>
 </dd><dt data-section="see-also"><b>See Also:</b></dt><dd>

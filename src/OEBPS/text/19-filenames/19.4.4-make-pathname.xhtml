@@ -144,11 +144,11 @@ in a file system that does not support <code>:wild-inferiors</code>.
  ;;  file name.
  (make-pathname :directory '(:absolute "PUBLIC" "GAMES")
                 :name "CHESS" :type "DB")
-→ #P"SYS<i>DISK:[PUBLIC.GAMES]CHESS.DB" 
+→ #P"SYS$DISK:[PUBLIC.GAMES]CHESS.DB" 
  (make-pathname :host "BOBBY"
                 :directory '(:absolute "PUBLIC" "GAMES")
                 :name "CHESS" :type "DB")
-→ #P"BOBBY::SYS</i>DISK:[PUBLIC.GAMES]CHESS.DB" 
+→ #P"BOBBY::SYS$DISK:[PUBLIC.GAMES]CHESS.DB" 
 
  ;; Implementation C -- an implementation with simultaneous access to
  ;;  multiple file systems from the same Lisp image.  In this 
@@ -160,10 +160,10 @@ in a file system that does not support <code>:wild-inferiors</code>.
                            :directory '(:absolute "PUBLIC" "GAMES")
                            :name "CHESS" :type "DB"))))
 ▷#P"MY-LISPM:&gt;public&gt;games&gt;chess.db"
-▷#P"MY-VAX:SYS<i>DISK:[PUBLIC.GAMES]CHESS.DB"
+▷#P"MY-VAX:SYS$DISK:[PUBLIC.GAMES]CHESS.DB"
 ▷#P"MY-UNIX:/public/games/chess.db"
 ▷#P"MY-LISPM:&gt;public&gt;games&gt;chess.db" 
-▷#P"MY-VAX:SYS</i>DISK:[PUBLIC.GAMES]CHESS.DB" 
+▷#P"MY-VAX:SYS$DISK:[PUBLIC.GAMES]CHESS.DB" 
 ▷#P"MY-UNIX:/PUBLIC/GAMES/CHESS.DB" 
 →  NIL
 </pre>

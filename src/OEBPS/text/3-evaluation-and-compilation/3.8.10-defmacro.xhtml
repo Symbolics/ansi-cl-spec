@@ -15,7 +15,7 @@
 <dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>defmacro</b>
-<i>name lambda-list [[{<i>declaration</i>}* $|$ <i>documentation</i>]] {<i>form</i>}*</i><br/>   
+<i>name lambda-list [[{<i>declaration</i>}* <i>|</i> <i>documentation</i>]] {<i>form</i>}*</i><br/>   
   → <i>name</i>
 </dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
@@ -182,7 +182,7 @@ would be a valid call for the second definition but not for the first.
 
  (defmacro dm2b (&amp;whole form a (&amp;whole b (c . d) &amp;optional (e 5)) 
                  &amp;body f &amp;environment env)
-   "(,',form ,,a ,',b ,',(macroexpand c env) ,',d ,',e ,',f))
+   ``(,',form ,,a ,',b ,',(macroexpand c env) ,',d ,',e ,',f))
  ;Note that because backquote is involved, implementations may differ
  ;slightly in the nature (though not the functionality) of the expansion.
  (macroexpand '(dm2b x1 (((incf x2) x3 x4)) x5 x6))

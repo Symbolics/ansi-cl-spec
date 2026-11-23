@@ -37,8 +37,8 @@ The consequences are undefined if <i>literal objects</i> (including
  (quote (setq a 3)) → (SETQ A 3)
  a → 1
  'a →  A
- "a → (QUOTE A) 
- "'a → (QUOTE (QUOTE A))
+ ''a → (QUOTE A) 
+ '''a → (QUOTE (QUOTE A))
  (setq a 43) → 43
  (list a (cons a 3)) → (43 (43 . 3))
  (list (quote a) (quote (cons a 3))) → (A (CONS A 3)) 

@@ -126,8 +126,8 @@ As an example, consider this <i><a href="../26-glossary/r.xhtml#readermacro">rea
                    then (progn (read-char stream t nil t)
                                (read-preserving-whitespace stream t nil t))
                    collect dir
-                   while (eql (peek-char nil stream nil nil t) #\ ))))
- (set-macro-character #\  #'slash-reader)
+                   while (eql (peek-char nil stream nil nil t) #\/))))
+ (set-macro-character #\/ #'slash-reader)
 </pre>
 
 <p>

@@ -24,15 +24,15 @@
 option::= {(<code>:nicknames</code> {<i>nickname</i>}*)}* | <br/>
 		(<code>:documentation</code> <i>string</i>)           | <br/>
 		{(<code>:use</code> {<i>package-name</i>}*)}*   | <br/>
-		{(<code>:shadow</code> {<i>symbol-name</i>}*)}*  | <br/>
+		{(<code>:shadow</code> {↓<i>symbol-name</i>}*)}*  | <br/>
 		{(<code>:shadowing-import-from</code> 
 			   <i>package-name</i>
-			   {<i>symbol-name</i>}*)}*               | <br/>
+			   {↓<i>symbol-name</i>}*)}*               | <br/>
 	        {(<code>:import-from</code>
 			   <i>package-name</i>
-			   {<i>symbol-name</i>}*)}*               | <br/>
-	        {(<code>:export</code> {<i>symbol-name</i>}*)}*  | <br/>
-		{(<code>:intern</code> {<i>symbol-name</i>}*)}*  | <br/>
+			   {↓<i>symbol-name</i>}*)}*               | <br/>
+	        {(<code>:export</code> {↓<i>symbol-name</i>}*)}*  | <br/>
+		{(<code>:intern</code> {↓<i>symbol-name</i>}*)}*  | <br/>
 		(<code>:size</code> <i><a href="../26-glossary/i.xhtml#integer">integer</a></i>)</p></dd><dt data-section="arguments-and-values"><b>Arguments and Values:</b></dt><dd>
 
 <i>defined-package-name</i>—a <i><a href="../26-glossary/s.xhtml#stringdesignator">string designator</a></i>.

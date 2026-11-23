@@ -69,8 +69,8 @@ be available for use by programs that understand only the standard
 
 <pre> (macrolet ((foo (&amp;environment env)
                (if (macro-function 'bar env)
-                  "yes
-                  "no)))
+                  ''yes
+                  ''no)))
     (list (foo)
           (macrolet ((bar () :beep))
              (foo))))

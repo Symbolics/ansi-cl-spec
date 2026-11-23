@@ -620,14 +620,14 @@ handled according to the next figure.
 <caption><span class="figlabel">Figure 3-7.</span> <b>EVAL-WHEN processing</b></caption>
 <tbody><tr><th>CT</th><th>LT</th><th>E</th><th>Mode</th><th>Action</th><th>New Mode</th></tr>
 
-<tr><td>Yes</td><td>Yes</td><td>---</td><td>---</td><td>Process</td><td>compile-time-too</td></tr>
+<tr><td>Yes</td><td>Yes</td><td>—</td><td>—</td><td>Process</td><td>compile-time-too</td></tr>
 <tr><td>No</td><td>Yes</td><td>Yes</td><td> CTT</td><td>Process</td><td>compile-time-too</td></tr>
 <tr><td>No</td><td>Yes</td><td>Yes</td><td> NCT</td><td>Process</td><td>not-compile-time</td></tr>
-<tr><td>No</td><td>Yes</td><td>No</td><td>---</td><td>Process</td><td>not-compile-time</td></tr>
-<tr><td>Yes</td><td>No</td><td>---</td><td>---</td><td>Evaluate</td><td>---</td></tr>
-<tr><td>No</td><td>No</td><td>Yes</td><td> CTT</td><td>Evaluate</td><td>---</td></tr>
-<tr><td>No</td><td>No</td><td>Yes</td><td> NCT</td><td>Discard</td><td>---</td></tr>
-<tr><td>No</td><td>No</td><td>No</td><td>---</td><td>Discard</td><td>---</td></tr>
+<tr><td>No</td><td>Yes</td><td>No</td><td>—</td><td>Process</td><td>not-compile-time</td></tr>
+<tr><td>Yes</td><td>No</td><td>—</td><td>—</td><td>Evaluate</td><td>—</td></tr>
+<tr><td>No</td><td>No</td><td>Yes</td><td> CTT</td><td>Evaluate</td><td>—</td></tr>
+<tr><td>No</td><td>No</td><td>Yes</td><td> NCT</td><td>Discard</td><td>—</td></tr>
+<tr><td>No</td><td>No</td><td>No</td><td>—</td><td>Discard</td><td>—</td></tr>
 </tbody></table>
 
 <p>

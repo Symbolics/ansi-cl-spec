@@ -20,36 +20,36 @@
      <i>executed</i> in an <i><a href="e.xhtml#environment">environment</a></i> where <i><a href="b.xhtml#binding">bindings</a></i> for
      the <i><a href="v.xhtml#value">values</a></i> of its <i><a href="p.xhtml#parameter">parameters</a></i> have been <i>established</i>
      based on the <i><a href="a.xhtml#argument">arguments</a></i>.
-     Calling the function <a href="../12-numbers/12.2.25-plus.xhtml#DictEntry__799"><b>+</b></a> with the arguments 
-               <code>5</code> and <code>1</code> yields a value of <code>6</code>.
+     "Calling the function <a href="../12-numbers/12.2.25-plus.xhtml#DictEntry__799"><b>+</b></a> with the arguments 
+               <code>5</code> and <code>1</code> yields a value of <code>6</code>."
   2. <i>n.</i> a <i><a href="s.xhtml#situation">situation</a></i> in which a <i><a href="f.xhtml#function">function</a></i> is called.
 
 <p>
 <span id="capturedinitializationform"/></p></dd><dt><b>captured initialization form:</b></dt><dd> <i>n.</i>   an <i><a href="i.xhtml#initializationform">initialization form</a></i> along with the <i><a href="l.xhtml#lexicalenvironment">lexical environment</a></i>
   in which the <i><a href="f.xhtml#form">form</a></i> that defined the <i><a href="i.xhtml#initializationform">initialization form</a></i>
   was <i>evaluated</i>.
-  Each newly added shared slot is set to the result of evaluating
+  "Each newly added shared slot is set to the result of evaluating
             the captured initialization form for the slot that was specified
-            in the <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> form for the new class.
+            in the <a href="../7-objects/7.7.25-defclass.xhtml#DictEntry_defclass_581"><b>defclass</b></a> form for the new class."
 
 <p>
 <span id="car"/></p></dd><dt><b>car:</b></dt><dd> <i>n.</i>   1. a. (of a <i><a href="#cons">cons</a></i>) 
         the component of a <i><a href="#cons">cons</a></i> corresponding to the first
         <i><a href="a.xhtml#argument">argument</a></i> to <a href="../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916"><b>cons</b></a>; the other component is the
         <i><a href="#cdr">cdr</a></i>.
-	The function <a href="../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplaca</b></a> modifies the car of a cons.
+	"The function <a href="../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplaca</b></a> modifies the car of a cons."
      b. (of a <i><a href="l.xhtml#list">list</a></i>)
         the first <i><a href="e.xhtml#element">element</a></i> of the <i><a href="l.xhtml#list">list</a></i>, or <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if the
         <i><a href="l.xhtml#list">list</a></i> is the <i><a href="e.xhtml#emptylist">empty list</a></i>.
   2. the <i><a href="o.xhtml#object">object</a></i> that is held in the <i><a href="#car">car</a></i><sub>1</sub>.
-     The function <a href="../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>car</b></a> returns the car of a cons.
+     "The function <a href="../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>car</b></a> returns the car of a cons."
 
 <p>
 <span id="case"/></p></dd><dt><b>case:</b></dt><dd> <i>n.</i> (of a <i><a href="#character">character</a></i>)
   the property of being either <i><a href="u.xhtml#uppercase">uppercase</a></i> or <i><a href="l.xhtml#lowercase">lowercase</a></i>.
   Not all <i><a href="#character">characters</a></i> have <i><a href="#case">case</a></i>.
-  The characters <code>#\A</code> and <code>#\a</code> have case,
-	    but the character <code>#\$</code> has no case.
+  "The characters <code>#\A</code> and <code>#\a</code> have case,
+	    but the character <code>#\$</code> has no case."
   See Section <a href="../13-characters/13.1-character-concepts.xhtml#SubSubSectio_Characters_W_869">13.1.4.3 Characters With Case</a> and the <i><a href="f.xhtml#function">function</a></i> <a href="../13-characters/13.2.15-upper-case-p.xhtml#DictEntry_upper_case_p_898"><b>both-case-p</b></a>.
 
 <p>
@@ -80,13 +80,13 @@
   1. a. (of a <i><a href="#cons">cons</a></i>) 
         the component of a <i><a href="#cons">cons</a></i> corresponding to the second <i><a href="a.xhtml#argument">argument</a></i>
         to <a href="../14-conses/14.2.3-cons.xhtml#DictEntry_cons_916"><b>cons</b></a>; the other component is the <i><a href="#car">car</a></i>.
-	The function <a href="../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplacd</b></a> modifies the cdr of a cons.
+	"The function <a href="../14-conses/14.2.8-rplaca.xhtml#DictEntry_rplaca_rpla_921"><b>rplacd</b></a> modifies the cdr of a cons."
      b. (of a <i><a href="l.xhtml#list">list</a></i> <i>L<sub>1</sub></i>)
         either the <i><a href="l.xhtml#list">list</a></i> <i>L<sub>2</sub></i> that contains 
 	       the <i><a href="e.xhtml#element">elements</a></i> of <i>L<sub>1</sub></i> that follow after the first, 
 	or else <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a> if <i>L<sub>1</sub></i> is the <i><a href="e.xhtml#emptylist">empty list</a></i>.
   2. the <i><a href="o.xhtml#object">object</a></i> that is held in the <i><a href="#cdr">cdr</a></i><sub>1</sub>.
-     The function <a href="../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>cdr</b></a> returns the cdr of a cons.
+     "The function <a href="../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>cdr</b></a> returns the cdr of a cons."
 
 <p>
 <span id="cell"/></p></dd><dt><b>cell:</b></dt><dd> <i>n.</i> <i>Trad.</i> (of an <i><a href="o.xhtml#object">object</a></i>)
@@ -147,7 +147,7 @@
      other <i><a href="o.xhtml#object">objects</a></i> called its <i><a href="i.xhtml#indirectinstance">indirect instances</a></i>,
      and that acts as a <i><a href="t.xhtml#typespecifier">type specifier</a></i> for a set of objects
      called its <i><a href="g.xhtml#generalizedinstance">generalized instances</a></i>.
-     The class <a href="../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782"><b>integer</b></a> is a subclass of the class <a href="../12-numbers/12.2.1-number.xhtml#DictEntry_number_775"><b>number</b></a>.
+     "The class <a href="../12-numbers/12.2.8-integer.xhtml#DictEntry_integer_782"><b>integer</b></a> is a subclass of the class <a href="../12-numbers/12.2.1-number.xhtml#DictEntry_number_775"><b>number</b></a>."
      (Note that the phrase "the <i><a href="#class">class</a></i> <code>foo</code>" is often substituted for
       the more precise phrase "the <i><a href="#class">class</a></i> named <code>foo</code>"—in both
       cases, a <i><a href="#class">class</a></i> <i><a href="o.xhtml#object">object</a></i> (not a <i><a href="s.xhtml#symbol">symbol</a></i>) is denoted.)
@@ -155,8 +155,8 @@
      the uniquely determined <i><a href="#class">class</a></i> of which the <i><a href="o.xhtml#object">object</a></i> is
      a <i><a href="d.xhtml#directinstance">direct instance</a></i>.
      See the <i><a href="f.xhtml#function">function</a></i> <a href="../7-objects/7.7.39-class-of.xhtml#DictEntry_class_of_595"><b>class-of</b></a>.
-     The class of the object returned by <a href="../10-symbols/10.2.7-gensym.xhtml#DictEntry_gensym_681"><b>gensym</b></a> 
- 	       is <a href="../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675"><b>symbol</b></a>.
+     "The class of the object returned by <a href="../10-symbols/10.2.7-gensym.xhtml#DictEntry_gensym_681"><b>gensym</b></a> 
+ 	       is <a href="../10-symbols/10.2.1-symbol.xhtml#DictEntry_symbol_675"><b>symbol</b></a>."
      (Note that with this usage a phrase such as "its <i><a href="#class">class</a></i> is <code>foo</code>" 
       is often substituted for the more precise phrase
       "its <i><a href="#class">class</a></i> is the <i><a href="#class">class</a></i> named <code>foo</code>"—in both
@@ -368,7 +368,7 @@
 
 <p>
 <span id="compositestream"/></p></dd><dt><b>composite stream:</b></dt><dd> <i>n.</i>   a <i><a href="s.xhtml#stream">stream</a></i> that is composed of one or more other <i><a href="s.xhtml#stream">streams</a></i>.
-  <a href="../21-streams/21.2.38-make-synonym-stream.xhtml#DictEntry_make_synonym_1229"><b>make-synonym-stream</b></a> creates a composite stream.
+  "<a href="../21-streams/21.2.38-make-synonym-stream.xhtml#DictEntry_make_synonym_1229"><b>make-synonym-stream</b></a> creates a composite stream."
 
 <p>
 <span id="compoundform"/></p></dd><dt><b>compound form:</b></dt><dd> <i>n.</i>   a <i><a href="n.xhtml#nonempty">non-empty</a></i> <i><a href="l.xhtml#list">list</a></i> which is a <i><a href="f.xhtml#form">form</a></i>:
@@ -380,7 +380,7 @@
 <p>
 <span id="compoundtypespecifier"/></p></dd><dt><b>compound type specifier:</b></dt><dd> <i>n.</i>   a <i><a href="t.xhtml#typespecifier">type specifier</a></i> that is a <i><a href="#cons">cons</a></i>;
   <i>i.e.</i>,  a <i><a href="t.xhtml#typespecifier">type specifier</a></i> that is not an <i><a href="a.xhtml#atomictypespecifier">atomic type specifier</a></i>.
-  <code>(vector single-float)</code> is a compound type specifier.
+  "<code>(vector single-float)</code> is a compound type specifier."
 
 <p>
 <span id="concatenatedstream"/></p></dd><dt><b>concatenated stream:</b></dt><dd> <i>n.</i>   an <i><a href="i.xhtml#input">input</a></i> <i><a href="s.xhtml#stream">stream</a></i> of <i><a href="t.xhtml#type">type</a></i> <a href="../21-streams/21.2.3-concatenated-stream.xhtml#DictEntry_concatenated_1194"><b>concatenated-stream</b></a>.
@@ -474,20 +474,20 @@
    that neither affects nor is affected by the state of any <i><a href="o.xhtml#object">object</a></i>
      except those <i><a href="o.xhtml#object">objects</a></i> that are <i><a href="o.xhtml#otherwiseinaccessiblepart">otherwise inaccessible parts</a></i>
      of <i><a href="o.xhtml#object">objects</a></i> created by the <i><a href="f.xhtml#form">form</a></i> itself.
-  A <a href="../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>car</b></a> form in which the argument is a
-            <a href="../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289"><b>quote</b></a> form is a constant form.
+  "A <a href="../14-conses/14.2.9-car.xhtml#DictEntry_car____cdr_922"><b>car</b></a> form in which the argument is a
+            <a href="../3-evaluation-and-compilation/3.8.7-quote.xhtml#DictEntry_quote_289"><b>quote</b></a> form is a constant form."
 
 <p>
 <span id="constantobject"/></p></dd><dt><b>constant object:</b></dt><dd> <i>n.</i>   an <i><a href="o.xhtml#object">object</a></i> that is constrained (<i>e.g.</i>,  by its context in a <i><a href="p.xhtml#program">program</a></i>
   or by the source from which it was obtained) to be <i><a href="i.xhtml#immutable">immutable</a></i>.
-  A literal object that has been processed by <a href="../24-system-construction/24.2.1-compile-file.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>
-	    is a constant object.
+  "A literal object that has been processed by <a href="../24-system-construction/24.2.1-compile-file.xhtml#DictEntry_compile_file_1406"><b>compile-file</b></a>
+	    is a constant object."
 
 <p>
 <span id="constantvariable"/></p></dd><dt><b>constant variable:</b></dt><dd> <i>n.</i>   a <i><a href="v.xhtml#variable">variable</a></i>, the <i><a href="v.xhtml#value">value</a></i> of which can never change;
   that is, a <i><a href="k.xhtml#keyword">keyword</a></i><sub>1</sub> or a <i><a href="n.xhtml#namedconstant">named constant</a></i>.
-  The symbols <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>, <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, <code>:direction</code>, and
-            <a href="../12-numbers/12.2.72-most-positive-fixnum.xhtml#DictEntry_most_positiv_846"><b>most-positive-fixnum</b></a> are constant variables.
+  "The symbols <a href="../4-types-and-classes/4.4.16-t.xhtml#DictEntry_t_351"><b>t</b></a>, <a href="../4-types-and-classes/4.4.1-nil.xhtml#DictEntry_nil_336"><b>nil</b></a>, <code>:direction</code>, and
+            <a href="../12-numbers/12.2.72-most-positive-fixnum.xhtml#DictEntry_most_positiv_846"><b>most-positive-fixnum</b></a> are constant variables."
 
 <p>
 <span id="constituent"/></p></dd><dt><b>constituent:</b></dt><dd> <i>n.</i>, <i>adj.</i>   1. a. <i>n.</i> the <i><a href="s.xhtml#syntaxtype">syntax type</a></i> of a <i><a href="#character">character</a></i> that is part of a <i><a href="t.xhtml#token">token</a></i>.
@@ -509,7 +509,7 @@
   a <i><a href="s.xhtml#stream">stream</a></i> whose source or sink is a Lisp <i><a href="o.xhtml#object">object</a></i>.
   Note that since a <i><a href="s.xhtml#stream">stream</a></i> is another Lisp <i><a href="o.xhtml#object">object</a></i>,
   <i><a href="#compositestream">composite streams</a></i> are considered <i><a href="#constructedstream">constructed streams</a></i>.
-  A string stream is a constructed stream.
+  "A string stream is a constructed stream."
 
 <p>
 <span id="contagion"/></p></dd><dt><b>contagion:</b></dt><dd> <i>n.</i>   a process whereby operations on <i><a href="o.xhtml#object">objects</a></i> of differing <i><a href="t.xhtml#type">types</a></i>
@@ -568,8 +568,8 @@
   1. (by a <i><a href="r.xhtml#restart">restart</a></i> other than <a href="../9-conditions/9.2.41-abort.xhtml#DictEntry_abort_666"><b>abort</b></a> 
       that has been associated with the <i><a href="e.xhtml#error">error</a></i>)
      capable of being corrected by invoking that <i><a href="r.xhtml#restart">restart</a></i>.
-     The function <a href="../9-conditions/9.2.12-cerror.xhtml#DictEntry_cerror_637"><b>cerror</b></a> signals an error 
-	       that is correctable by the <a href="../9-conditions/9.2.42-continue.xhtml#DictEntry_continue_667"><b>continue</b></a> <i><a href="r.xhtml#restart">restart</a></i>.
+     "The function <a href="../9-conditions/9.2.12-cerror.xhtml#DictEntry_cerror_637"><b>cerror</b></a> signals an error 
+	       that is correctable by the <a href="../9-conditions/9.2.42-continue.xhtml#DictEntry_continue_667"><b>continue</b></a> <i><a href="r.xhtml#restart">restart</a></i>."
 
      (Note that correctability is not a property of an
       <i><a href="e.xhtml#error">error</a></i> <i><a href="o.xhtml#object">object</a></i>, but rather a property of the 
@@ -581,9 +581,9 @@
 
   2. (when no specific <i><a href="r.xhtml#restart">restart</a></i> is mentioned)
      <i><a href="#correctable">correctable</a></i><sub>1</sub> by at least one <i><a href="r.xhtml#restart">restart</a></i>.
-     <a href="../11-packages/11.2.6-import.xhtml#DictEntry_import_721"><b>import</b></a> signals a correctable error of <i><a href="t.xhtml#type">type</a></i> <a href="../11-packages/11.2.29-package-error.xhtml#DictEntry_package_erro_744"><b>package-error</b></a>
+     "<a href="../11-packages/11.2.6-import.xhtml#DictEntry_import_721"><b>import</b></a> signals a correctable error of <i><a href="t.xhtml#type">type</a></i> <a href="../11-packages/11.2.29-package-error.xhtml#DictEntry_package_erro_744"><b>package-error</b></a>
 	       if any of the imported symbols has the same name as
-	        some distinct symbol already accessible in the package.
+	        some distinct symbol already accessible in the package."
 
 <p>
 <span id="currentinputbase"/></p></dd><dt><b>current input base:</b></dt><dd> <i>n.</i> (in a <i><a href="d.xhtml#dynamicenvironment">dynamic environment</a></i>)

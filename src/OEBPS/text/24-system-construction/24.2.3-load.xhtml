@@ -182,7 +182,7 @@ That is, <code>(pathname (merge-pathnames <i>filespec</i>))</code>.
 → <i><a href="../26-glossary/t.xhtml#true">true</a></i>
 </pre>
 
-<pre> ;- - [Begin file SETUP]- - 
+<pre> ;----[Begin file SETUP]----
  (in-package "MY-STUFF")
  (defmacro compile-truename () `',*compile-file-truename*)
  (defvar *my-compile-truename* (compile-truename) "Just for debugging.")
@@ -190,7 +190,7 @@ That is, <code>(pathname (merge-pathnames <i>filespec</i>))</code>.
  (defun load-my-system ()
    (dolist (module-name '("FOO" "BAR" "BAZ"))
      (load (merge-pathnames module-name *my-load-pathname*))))
- ;- - [End of file SETUP]- - 
+ ;----[End of file SETUP]----
 
  
  (load "SETUP")

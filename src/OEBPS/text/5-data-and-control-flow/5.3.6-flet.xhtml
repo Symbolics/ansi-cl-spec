@@ -246,15 +246,15 @@ visible at the site of the macro call which produced the expansion.
     (flet ((flet1 (n) (+ 2 (flet1 n))))
       (flet1 2))) → 6
 
- (defun -function () 'top-level) →  DUMMY-FUNCTION 
- (funcall #'-function) →  TOP-LEVEL 
- (flet ((-function () 'shadow)) 
-      (funcall #'-function)) →  SHADOW 
- (eq (funcall #'-function) (funcall '-function))
+ (defun dummy-function () 'top-level) →  DUMMY-FUNCTION 
+ (funcall #'dummy-function) →  TOP-LEVEL 
+ (flet ((dummy-function () 'shadow)) 
+      (funcall #'dummy-function)) →  SHADOW 
+ (eq (funcall #'dummy-function) (funcall 'dummy-function))
 → <i><a href="../26-glossary/t.xhtml#true">true</a></i> 
- (flet ((-function () 'shadow))
-   (eq (funcall #'-function)
-       (funcall '-function)))
+ (flet ((dummy-function () 'shadow))
+   (eq (funcall #'dummy-function)
+       (funcall 'dummy-function)))
 → <i><a href="../26-glossary/f.xhtml#false">false</a></i> 
 
  (defun recursive-times (k n)

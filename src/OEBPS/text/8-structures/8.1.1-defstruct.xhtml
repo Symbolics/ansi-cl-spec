@@ -15,7 +15,7 @@
 <dt data-section="syntax"><b>Syntax:</b></dt><dd>
 
 <b>defstruct</b>
-<i>name-and-options [documentation] {<i>slot-description</i>}*</i><br/>   
+<i>name-and-options [documentation] {↓<i>slot-description</i>}*</i><br/>   
   → <i>structure-name</i>
 <p>
 
@@ -24,7 +24,7 @@ name-and-options::= structure-name |
 
 
 options::= ↓conc-name-option          |<br/>
-                 {<i>constructor-option</i>}*    |<br/>
+                 {↓<i>constructor-option</i>}*    |<br/>
                  ↓copier-option             |<br/>
                  ↓include-option            |<br/>
                  ↓initial-offset-option     |<br/>
@@ -54,7 +54,7 @@ predicate-option::= <code>:predicate</code>         |
 			  (<code>:predicate</code> <i>predicate-name</i>)</p><p>
 
 include-option::= (<code>:include</code> <i>included-structure-name</i>
-					     {<i>slot-description</i>}*)</p><p>
+					     {↓<i>slot-description</i>}*)</p><p>
 
 
 printer-option::= ↓print-object-option | ↓print-function-option</p><p>

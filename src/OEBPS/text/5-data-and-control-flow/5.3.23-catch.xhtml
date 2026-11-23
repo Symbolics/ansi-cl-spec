@@ -92,10 +92,10 @@ of the <i><a href="../26-glossary/e.xhtml#evaluation">evaluation</a></i> of the 
 
 </p></dd><dt data-section="examples"><b>Examples:</b></dt><dd>
 
-<pre> (catch '-tag 1 2 (throw '-tag 3) 4) → 3
- (catch '-tag 1 2 3 4) → 4
+<pre> (catch 'dummy-tag 1 2 (throw 'dummy-tag 3) 4) → 3
+ (catch 'dummy-tag 1 2 3 4) → 4
  (defun throw-back (tag) (throw tag t)) →  THROW-BACK
- (catch '-tag (throw-back '-tag) 2) →  T
+ (catch 'dummy-tag (throw-back 'dummy-tag) 2) →  T
 
  ;; Contrast behavior of this example with corresponding example of BLOCK.
  (catch 'c
